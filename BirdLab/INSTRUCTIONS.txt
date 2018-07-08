@@ -1,0 +1,138 @@
+Teaching documents for a course taught in Ecuador:
+
+	Octave1.txt
+	Octave2.txt
+	Octave3.txt
+
+%%%%%%%%%%%%%%%%%%%%
+chopsyl.m  CHOPS A SONG INTO ITS COMPONENTS SYLLABLES
+%%%%%%%%%%%%%%%%%%%%
+1) Load a clean song file into Matlab, e.g. [a,Fs] = wavread('song.wav');
+This file should be filtered, choped, scaled... in the best shape possible.
+
+2) Run chopsyl
+
+[syls nops] = chopsyl(a, Fs, fnum);
+
+syls will be a cell array with each individual syllable.
+bops will be a cell array with each individual silence between syllables.
+
+fnum is a number for the filter that is used to parse the syllables.
+Start with 100.  The useful range is from 75 to 200.
+
+3) Click on the plot to best cut off the peaks - these peaks are the syllables. 
+If the click isn't in a good spot, then you can try again.
+
+4) You can save the syllables if you wish - save foobar.mat syls nops
+
+%%%%%%%%%%%%%%%%%%%%
+makesong.m  ARBITRARY CONSTRUCTION OF STIMULI FROM COMPONENT SYLLABLES
+%%%%%%%%%%%%%%%%%%%%
+1) Run chopsyl or load the output from chopsyl.
+
+2) Make a sequence using the follow syntax
+
+Each item is a letter followed by a number.
+The letter can be f, r, s, or n.
+f=forward syllable, r=reversed syllable, s='silent' syllable - correct duration
+but all zeros, n=silence between syllables.
+
+Here is an example:
+      a = ['f1';'n1';'r2';'n2';'s11';'n3';'f5'];
+
+Produces a song with the following: 1st syllable, 1st silence, 2nd syllable reversed,
+2nd silence, 'silent' 11th sylable, 3rd silence, 5th syllable.
+
+3) Use the script to make the signal: out = makesong(syls, nops, a);
+Where syls is the syllable cell array from chopsyls, nops is the intersyllable silences
+from chopsyls, and a is the sequence that you want to make.
+
+4) Save the data to a wav file for import to Spike2: wavwrite(out, Fs, 16, 'filename.wav');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+bs_converter.m  CONVERTS DATA INTO A FORMAT THAT CAN BE USED WITH THE BS TOOLS
+%%%%%%%%%%%%%%%%%%%%
+1) Load a data matlab file from Spike2. The spike times MUST have been loaded
+into one or more Event+ and/or Event- channels within Spike2.   
+
+load ag2020HVC.mat
+
+3) Identify the variables using whos
+Ch31 is the keyboard codes.
+Ch4 might be the spikes.
+Ch3 might be the acoustic stimuli.
+
+4) Run the script:  agData = bs_converter(ag_Ch4, ag_Ch31, ag_Ch3, [0.5 10]);
+where ag_Ch4 is the spike time data
+ag_Ch31 is the keycodes data
+ag_Ch3 is the stimulus
+[0.5 10] is the time (in seconds) before (0.5) and after (10) the onset of 
+the stimulus that we will chop out.  I typically use [0.2 15] for stimuli that
+were presented every 20 seconds.
+
+5) It will ask you for a label for each stimulus.  Use numbers and letters only.
+
+6) You can save the data if you wish: save foobar.mat agData
+
+%%%%%%%%%%%%%%%%%%%%
+bs_raster.m  BASIC RASTER PLOT FUNCTION
+%%%%%%%%%%%%%%%%%%%%
+
+1) figure; bs_raster(agData(1).Spikes);
+
+where (1) is the keycode from Spike2.
+
+%%%%%%%%%%%%%%%%%%%%
+bs_isiHist.m  Calculate simple Inter Spike Interval histogram
+%%%%%%%%%%%%%%%%%%%%
+
+1) a = bs_isiHist(agData(1).Spikes);
+
+2) plot(a.tims, a.hist);
+
+%%%%%%%%%%%%%%%%%%%%
+bs_extractor.m  EXTRACT BURSTS AND ISOLATED SPIKES
+%%%%%%%%%%%%%%%%%%%%
+
+1) [bursts isos] = bs_extractor(agData(1).Spikes, 50);
+The "50" is the threshold in milliseconds.
+
+bursts and isos are spike arrays for use with and of the bs functions
+
+2) figure; subplot(2,1,1); bs_raster(bursts); subplot(2,1,2); bs_raster(isos);
+
+%%%%%%%%%%%%%%%%%%%%
+bs_Z.m  Calculate Z score
+%%%%%%%%%%%%%%%%%%%%
+
+1) z = bs_Z(spiketimes, startstim, endstim, startspon, endspon);
+e.g. z = bs_Z(AgData(1).Spikes, 0.3, 4.4, 5, 8.1);
+
+Times are in seconds.
+Z scores above 1 generally indicate significant responses.
+
+%%%%%%%%%%%%%%%%%%%%
+bs_DP.m  Calculate D-prime
+%%%%%%%%%%%%%%%%%%%%
+
+1) dp = bs_DP( spiketimes1, stimwind1, spiketimes2, stimwind2 );
+e.g. dp = bs_DP( AgData(1).Spikes, [0.5 4.8], AgData(2).Spikes, [0.2 4.5])
+
+%%%%%%%%%%%%%%%%%%%%
+bs_physplot.m  Plots a raster with PSTH and stimulus osc.
+%%%%%%%%%%%%%%%%%%%%
+
+1) bs_physplot(spikes, signal, Fs, len, binwidth);
+e.g. bs_physplot(AgData(1).Spikes, AgData(1).Stim, 11025, 10, 50)
+
+spikes is the spike array
+signal is the stimulus data
+Fs is the sampling rate of the stimulus 
+len is the length, in seconds, of the plot
+binwidth is the width of the PSTH bins, in milliseconds
+
+
