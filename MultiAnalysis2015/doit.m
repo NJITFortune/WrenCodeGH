@@ -1,0 +1,11 @@
+for j=1:length(tmp); 
+    figure(j); clf;
+        ax(1) = subplot(2,1,1); 
+            plot(tmp(j).srast.tim, tmp(j).srast.spers, 'b'); 
+            hold on;
+            plot(pmt(j).srast.tim, pmt(j).srast.spers, 'm');
+            hold off;
+        ax(2) = subplot(212); plot(tmp(j).tim, tmp(j).stim); 
+        text(-5, 1, tmp(j).StimName);
+        linkaxes(ax, 'x');
+end;
