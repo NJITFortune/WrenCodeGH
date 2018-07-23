@@ -21,6 +21,8 @@ out.Mfm = []; out.Mfmd = [];
 
 mm = []; ff = [];
 
+spdosnd = 1/331.2; Speed of sound is 331.2 meters per second
+
 figure(1); clf; subplot(211); hold on; subplot(212); hold on;
 
 %% Cycle through every duet in the structure
@@ -35,20 +37,22 @@ for d = 1:length(in)
         currFisi = in(d).fsyl(s+1).syltim(1) - in(d).fsyl(s).syltim(2);
         currMisi = in(d).msyl(s+1).syltim(1) - in(d).msyl(s).syltim(2);
 
-        if currFisi > 0.22; 
-            if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49;
+        % These are very long ISIs
+        if currFisi > 0.22 
+            if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49
             ff(end+1) = d;
             end
         end
-        if currMisi > 0.22; 
-            if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49;
+        if currMisi > 0.22
+            if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49
             mm(end+1) = d;
             end
         end
             
         figure(1);
+
         
-        if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49; % Male to Female
+        if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49 % Male to Female
             subplot(211); plot(in(d).distance+0.1, currFisi, 'k*');
                 out.Fmf(end+1) = currFisi;
                 out.Fmfd(end+1) = in(d).distance;
@@ -112,75 +116,75 @@ linkaxes(axxx, 'xy'); xlim([-1 12]); ylim([-0.02 0.18]);
 %    subplot(212); plot(jj+0.2, mean(out.Mfm([out.Mfmd] == jj)),'b*');
 
 %% Autogenous ISI - Start F1 through M to Start F2 and Start M1 through F to Start M2
-
-F2F = []; F2Fd = []; F2Fm = [];
-M2M = []; M2Md = []; M2Mf = [];
-
-% Cycle through every duet in the structure
-for d = 1:length(in)
-    
-    numsyls = length(in(d).fsyl);
-    
-    % Cycle through every syllable except the last 2
-    for s=1:numsyls-2
-       
-        if in(d).fsyl(s).sexsyltype > 49 % We have a female syllable
-            if in(d).fsyl(s+1).sexsyltype < 49 % Next syllable is a male
-%                 nextfemsylidx = find(find(in(d).fsy(s).sexsyltype > 49) > s+1, 1); % Find next female syllable, if it exists
-%                 if nextfemsylidx > 1 % We found one
-                if in(d).fsyl(s+2).sexsyltype > 49 % The subsequent syllable is also a female
-                    F2F(end+1) = in(d).fsyl(s+2).syltim(1) - in(d).fsyl(s).syltim(2); 
-                    F2Fm(end+1) = in(d).fsyl(s+2).syltim(1) - in(d).fsyl(s).syltim(2) - in(d).fsyl(s+1).sylen;
-                    F2Fd(end+1) = in(d).distance;
-                end
-            end
-        end
-
-        if in(d).msyl(s).sexsyltype < 49 % We have a male syllable
-            if in(d).msyl(s+1).sexsyltype > 49 % Next syllable is a female
-                if in(d).msyl(s+2).sexsyltype < 49 % The subsequent syllable is also a male syllable
-                    M2M(end+1) = in(d).msyl(s+2).syltim(1) - in(d).msyl(s).syltim(2); 
-                    M2Mf(end+1) = in(d).msyl(s+2).syltim(1) - in(d).msyl(s).syltim(2) - in(d).msyl(s+1).sylen; 
-                    M2Md(end+1) = in(d).distance;
-                end
-            end
-        end  
-        
-    end
-end
-
-out.F2F = F2F; out.F2Fd = F2Fd; out.F2Fm = F2Fm;
-out.M2M = M2M; out.M2Md = M2Md; out.M2Mf = M2Mf;
-
-
-figure(3); clf; 
-subplot(211); hold on; 
-    for j=1:length(out.F2Fd); plot(out.F2Fd(j), out.F2F(j), '*m');end;
-    for j=1:length(out.M2Md); plot(out.M2Md(j)+0.1, out.M2M(j), '*b');end;   
-subplot(212); hold on;
-    for jj = 1:length(distances)
-        FFF(jj) = mean(out.F2F([out.F2Fd] == distances(jj)));
-        MMM(jj) = mean(out.M2M([out.M2Md] == distances(jj)));
-        FFFstd(jj) = std(out.F2F([out.F2Fd] == distances(jj)));
-        MMMstd(jj) = std(out.M2M([out.M2Md] == distances(jj)));
-    end
-
-    errorbar(distances-0.1, FFF, FFFstd, 'om');
-    errorbar(distances+0.1, MMM, MMMstd, 'ob');
-
-figure(4); clf; 
-subplot(211); hold on; 
-    for j=1:length(out.F2Fd); plot(out.F2Fd(j), out.F2Fm(j), '*m');end;
-    for j=1:length(out.M2Md); plot(out.M2Md(j)+0.1, out.M2Mf(j), '*b');end;   
-subplot(212); hold on;
-    for jj = 1:length(distances)
-        FFFm(jj) = mean(out.F2Fm([out.F2Fd] == distances(jj)));
-        MMMf(jj) = mean(out.M2Mf([out.M2Md] == distances(jj)));
-        FFFmstd(jj) = std(out.F2Fm([out.F2Fd] == distances(jj)));
-        MMMfstd(jj) = std(out.M2Mf([out.M2Md] == distances(jj)));
-    end
-
-    errorbar(distances-0.1, FFFm, FFFmstd, 'om');
-    errorbar(distances+0.1, MMMf, MMMfstd, 'ob');
+% 
+% F2F = []; F2Fd = []; F2Fm = [];
+% M2M = []; M2Md = []; M2Mf = [];
+% 
+% % Cycle through every duet in the structure
+% for d = 1:length(in)
+%     
+%     numsyls = length(in(d).fsyl);
+%     
+%     % Cycle through every syllable except the last 2
+%     for s=1:numsyls-2
+%        
+%         if in(d).fsyl(s).sexsyltype > 49 % We have a female syllable
+%             if in(d).fsyl(s+1).sexsyltype < 49 % Next syllable is a male
+% %                 nextfemsylidx = find(find(in(d).fsy(s).sexsyltype > 49) > s+1, 1); % Find next female syllable, if it exists
+% %                 if nextfemsylidx > 1 % We found one
+%                 if in(d).fsyl(s+2).sexsyltype > 49 % The subsequent syllable is also a female
+%                     F2F(end+1) = in(d).fsyl(s+2).syltim(1) - in(d).fsyl(s).syltim(2); 
+%                     F2Fm(end+1) = in(d).fsyl(s+2).syltim(1) - in(d).fsyl(s).syltim(2) - in(d).fsyl(s+1).sylen;
+%                     F2Fd(end+1) = in(d).distance;
+%                 end
+%             end
+%         end
+% 
+%         if in(d).msyl(s).sexsyltype < 49 % We have a male syllable
+%             if in(d).msyl(s+1).sexsyltype > 49 % Next syllable is a female
+%                 if in(d).msyl(s+2).sexsyltype < 49 % The subsequent syllable is also a male syllable
+%                     M2M(end+1) = in(d).msyl(s+2).syltim(1) - in(d).msyl(s).syltim(2); 
+%                     M2Mf(end+1) = in(d).msyl(s+2).syltim(1) - in(d).msyl(s).syltim(2) - in(d).msyl(s+1).sylen; 
+%                     M2Md(end+1) = in(d).distance;
+%                 end
+%             end
+%         end  
+%         
+%     end
+% end
+% 
+% out.F2F = F2F; out.F2Fd = F2Fd; out.F2Fm = F2Fm;
+% out.M2M = M2M; out.M2Md = M2Md; out.M2Mf = M2Mf;
+% 
+% 
+% figure(3); clf; 
+% subplot(211); hold on; 
+%     for j=1:length(out.F2Fd); plot(out.F2Fd(j), out.F2F(j), '*m');end;
+%     for j=1:length(out.M2Md); plot(out.M2Md(j)+0.1, out.M2M(j), '*b');end;   
+% subplot(212); hold on;
+%     for jj = 1:length(distances)
+%         FFF(jj) = mean(out.F2F([out.F2Fd] == distances(jj)));
+%         MMM(jj) = mean(out.M2M([out.M2Md] == distances(jj)));
+%         FFFstd(jj) = std(out.F2F([out.F2Fd] == distances(jj)));
+%         MMMstd(jj) = std(out.M2M([out.M2Md] == distances(jj)));
+%     end
+% 
+%     errorbar(distances-0.1, FFF, FFFstd, 'om');
+%     errorbar(distances+0.1, MMM, MMMstd, 'ob');
+% 
+% figure(4); clf; 
+% subplot(211); hold on; 
+%     for j=1:length(out.F2Fd); plot(out.F2Fd(j), out.F2Fm(j), '*m');end;
+%     for j=1:length(out.M2Md); plot(out.M2Md(j)+0.1, out.M2Mf(j), '*b');end;   
+% subplot(212); hold on;
+%     for jj = 1:length(distances)
+%         FFFm(jj) = mean(out.F2Fm([out.F2Fd] == distances(jj)));
+%         MMMf(jj) = mean(out.M2Mf([out.M2Md] == distances(jj)));
+%         FFFmstd(jj) = std(out.F2Fm([out.F2Fd] == distances(jj)));
+%         MMMfstd(jj) = std(out.M2Mf([out.M2Md] == distances(jj)));
+%     end
+% 
+%     errorbar(distances-0.1, FFFm, FFFmstd, 'om');
+%     errorbar(distances+0.1, MMMf, MMMfstd, 'ob');
     
     
