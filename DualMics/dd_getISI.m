@@ -21,7 +21,7 @@ out.Mfm = []; out.Mfmd = [];
 
 mm = []; ff = [];
 
-spdosnd = 1/331.2; Speed of sound is 331.2 meters per second
+% spdosnd = 1/331.2; % Speed of sound is 331.2 meters per second
 
 figure(1); clf; subplot(211); hold on; subplot(212); hold on;
 
