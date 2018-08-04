@@ -1,7 +1,24 @@
 function [out, sumdat, stats] = wRS_Chronic(in, padding)
 % Usage: Calculates response strength to solo and duet syllables.
-%
+% Relies on rs, a nested function below, to calculate Response Strength.
+% Load the Chronic data structure first:
+% load ChronicCompleat2017p.mat (OLD)
+% load ChronicCompleat2018a.mat (Current as of 4-Aug-2018)
 
+% 'pad' is a critical variable - it is the shift in the window around the
+% clicked boundaries of the syllables for the calculation of RS. 
+% The boundaries of each syllable are used for this analysis. This is
+% inherently problematic as we expect pre-motor activity in awake animals to occur PRIOR to
+% the sound and auditory activity in urethane-anesthetized animals to occur AFTER the sound.
+% We are comfortable with using a value of '0' it is a rather unbiased. Change
+% the value of padding in seconds (e.g. 0.020 or -0.030) to look at the effects on the results.
+pad = 0.000; 
+
+% The user can specify the padding via an argin for convenience.
+if nargin == 2; pad = padding; end
+
+
+% Initializing variables
 sumdat.fduetAutogenous.rsNorm = []; sumdat.fduetAutogenous.rsRaw = [];
 sumdat.mduetAutogenous.rsNorm = []; sumdat.mduetAutogenous.rsRaw = [];
 sumdat.fduetHeterogenous.rsNorm = []; sumdat.fduetHeterogenous.rsRaw = [];
@@ -11,59 +28,64 @@ sumdat.mSolo.rsNorm = []; sumdat.mSolo.rsRaw = [];
 sumdat.fAud.rsNorm = []; sumdat.fAud.rsRaw = [];
 sumdat.mAud.rsNorm = []; sumdat.mAud.rsRaw = [];
 
-% load ChronicCompleat2017p.mat
 
-pad = 0; 
-
-if nargin == 2; pad = padding; end;
-% The boundaries of each syllable are used for this analysis. This is
-% inherently problematic as we expect pre-motor activity in awake animals to occur PRIOR to
-% the sound and auditory activity in urethane-anesthetized animals to occur AFTER the sound.
-% We are comfortable with this approach because it is a rather unbiased. Change
-% the value of padding in seconds (e.g. 0.005 or -0.003) to look at the effects.
     
 %% List of duets with syllable indices and locations for spontaneous activity
 
 % 1-2: m17
 
-    msolosyls{1} = [1 2 3 4]; mduetsyls{1} = [5 7 9 11 13];
-    fsolosyls{1} = []; fduetsyls{1} = [6 8 10 12 14];
+    msolosyls{1} = [1 2 3 4]; 
+    mduetsyls{1} = [5 7 9 11 13];
+    fsolosyls{1} = []; 
+    fduetsyls{1} = [6 8 10 12 14];
     spon(:,1) = [-5.5, -0.5]; % This is a mess. 
     
 % 3-4: j160806
 
-    msolosyls{2} = [2]; mduetsyls{2} = [4 6 8 10 12];
-    fsolosyls{2} = [1]; fduetsyls{2} = [3 5 7 9 11 13];    
+    msolosyls{2} = [2]; 
+    mduetsyls{2} = [4 6 8 10 12];
+    fsolosyls{2} = [1]; 
+    fduetsyls{2} = [3 5 7 9 11 13];    
     spon(:,2) = [-5.0, 0.0]; 
     
 % 5-6: j160807
     
-    msolosyls{3} = []; mduetsyls{3} = [3 6 8 11 13 16 18 21 23];
-    fsolosyls{3} = [1 2]; fduetsyls{3} = [4 5 7 9 10 13 14 15 17 19 20 22 24];
+    msolosyls{3} = []; 
+    mduetsyls{3} = [3 6 8 11 13 16 18 21 23];
+    fsolosyls{3} = [1 2]; 
+    fduetsyls{3} = [4 5 7 9 10 13 14 15 17 19 20 22 24];
     spon(:,3) = [-5.0, 0.0];
     
 % 7-8: j160815
     
-    msolosyls{4} = []; mduetsyls{4} = [3 5 7];
-    fsolosyls{4} = [1 2]; fduetsyls{4} = [4 6 8];
+    msolosyls{4} = []; 
+    mduetsyls{4} = [3 5 7];
+    fsolosyls{4} = [1 2]; 
+    fduetsyls{4} = [4 6 8];
     spon(:,4) = [-2.5, -1.0];
 
 % 9-10: j161009
     
-    msolosyls{5} = []; mduetsyls{5} = [3 5 7 9 11 14 16 19 21];
-    fsolosyls{5} = [1 2]; fduetsyls{5} = [4 6 8 10 12 13 15 17 18 20];
+    msolosyls{5} = []; 
+    mduetsyls{5} = [3 5 7 9 11 14 16 19 21];
+    fsolosyls{5} = [1 2]; 
+    fduetsyls{5} = [4 6 8 10 12 13 15 17 18 20];
     spon(:,5) = [-5.0, 0.0];
 
 % 11-12: j161022
     
-    msolosyls{6} = []; mduetsyls{6} = [4 6 8 10 12 14];
-    fsolosyls{6} = [1 2 3]; fduetsyls{6} = [5 7 9 11 13];
+    msolosyls{6} = []; 
+    mduetsyls{6} = [4 6 8 10 12 14];
+    fsolosyls{6} = [1 2 3]; 
+    fduetsyls{6} = [5 7 9 11 13];
     spon(:,6) = [-3.5, 0.0];
 
 % 13-14: j17060848
     
-    msolosyls{7} = [1 2 3 4 5]; mduetsyls{7} = [8 10 13 15 18 20];
-    fsolosyls{7} = []; fduetsyls{7} = [6 7 9 11 12 14 17 19];
+    msolosyls{7} = [1 2 3 4 5]; 
+    mduetsyls{7} = [8 10 13 15 18 20];
+    fsolosyls{7} = []; 
+    fduetsyls{7} = [6 7 9 11 12 14 17 19];
     spon(:,7) = [-3.0, 0.0];
 
 % 15-16: j170081733 
@@ -76,23 +98,24 @@ if nargin == 2; pad = padding; end;
     
 for curpair = 1:length(spon)
     
-    % Solo syllables MALE
+    % Solo syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(msolosyls{curpair}) % Male sang solo syllables
         out(curpair).fAud = rs(in(curpair*2), msolosyls{curpair}, spon(:,curpair), pad);
         out(curpair).mSolo = rs(in((curpair*2)-1), msolosyls{curpair}, spon(:,curpair), pad);
-        for kk = 1:length(msolosyls{curpair});
+        for kk = 1:length(msolosyls{curpair})
             sumdat.fAud.rsNorm(end+1) = out(curpair).fAud(kk).rsNorm;
             sumdat.fAud.rsRaw(end+1) = out(curpair).fAud(kk).rsRaw;
             sumdat.mSolo.rsNorm(end+1) = out(curpair).mSolo(kk).rsNorm;
             sumdat.mSolo.rsRaw(end+1) = out(curpair).mSolo(kk).rsRaw;
         end
-    end;
+    end
     
-    % Solo syllables FEMALE
+    % Solo syllables FEMALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(fsolosyls{curpair}) % Female sang solo syllables
         out(curpair).mAud = rs(in((curpair*2)-1), fsolosyls{curpair}, spon(:,curpair), pad);
         out(curpair).fSolo = rs(in(curpair*2), fsolosyls{curpair}, spon(:,curpair), pad);
-        for kk = 1:length(fsolosyls{curpair});
+        
+        for kk = 1:length(fsolosyls{curpair})
             sumdat.mAud.rsNorm(end+1) = out(curpair).mAud(kk).rsNorm;
             sumdat.mAud.rsRaw(end+1) = out(curpair).mAud(kk).rsRaw;
             sumdat.fSolo.rsNorm(end+1) = out(curpair).fSolo(kk).rsNorm;
@@ -100,15 +123,15 @@ for curpair = 1:length(spon)
         end
     end
     
-    % Motor activity (Autogenous) during duet (bird's own syllables)
+    % Motor activity (Autogenous) during duet (bird's own syllables) %%%%%%
     out(curpair).mduetA = rs(in((curpair*2)-1), mduetsyls{curpair}, spon(:,curpair), pad);
     out(curpair).fduetA = rs(in(curpair*2), fduetsyls{curpair}, spon(:,curpair), pad);
     
-    for kk = 1:length(out(curpair).mduetA);
+    for kk = 1:length(out(curpair).mduetA)
         sumdat.mduetAutogenous.rsNorm(end+1) = out(curpair).mduetA(kk).rsNorm;
         sumdat.mduetAutogenous.rsRaw(end+1) = out(curpair).mduetA(kk).rsRaw;
     end
-    for kk = 1:length(out(curpair).fduetA);
+    for kk = 1:length(out(curpair).fduetA)
         sumdat.fduetAutogenous.rsNorm(end+1) = out(curpair).fduetA(kk).rsNorm;
         sumdat.fduetAutogenous.rsRaw(end+1) = out(curpair).fduetA(kk).rsRaw;
     end
@@ -117,12 +140,11 @@ for curpair = 1:length(spon)
     out(curpair).mduetH = rs(in((curpair*2)-1), fduetsyls{curpair}, spon(:,curpair), pad);
     out(curpair).fduetH = rs(in(curpair*2), mduetsyls{curpair}, spon(:,curpair), pad);
     
-
-    for kk = 1:length(out(curpair).mduetH);
+    for kk = 1:length(out(curpair).mduetH)
         sumdat.mduetHeterogenous.rsNorm(end+1) = out(curpair).mduetH(kk).rsNorm;
         sumdat.mduetHeterogenous.rsRaw(end+1) = out(curpair).mduetH(kk).rsRaw;
     end
-    for kk = 1:length(out(curpair).fduetH);
+    for kk = 1:length(out(curpair).fduetH)
         sumdat.fduetHeterogenous.rsNorm(end+1) = out(curpair).fduetH(kk).rsNorm;
         sumdat.fduetHeterogenous.rsRaw(end+1) = out(curpair).fduetH(kk).rsRaw;
     end
@@ -134,18 +156,18 @@ end
 
 %%%% MOTOR
 
-% For the Normalized data. Not doing STD because of assymetry of
+% For the Normalized data. Not doing STD because of asymetry of
 % distribution.
-m(1) = mean(sumdat.mduetAutogenous.rsNorm); s(1) = std(sumdat.mduetAutogenous.rsNorm);
-m(2) = mean(sumdat.mSolo.rsNorm); s(2) = std(sumdat.mSolo.rsNorm);
-m(3) = mean(sumdat.fduetAutogenous.rsNorm); s(3) = std(sumdat.fduetAutogenous.rsNorm);
-m(4) = mean(sumdat.fSolo.rsNorm); s(4) = std(sumdat.fSolo.rsNorm);
+    m(1) = mean(sumdat.mduetAutogenous.rsNorm); s(1) = std(sumdat.mduetAutogenous.rsNorm);
+    m(2) = mean(sumdat.mSolo.rsNorm); s(2) = std(sumdat.mSolo.rsNorm);
+    m(3) = mean(sumdat.fduetAutogenous.rsNorm); s(3) = std(sumdat.fduetAutogenous.rsNorm);
+    m(4) = mean(sumdat.fSolo.rsNorm); s(4) = std(sumdat.fSolo.rsNorm);
 
 % For raw data
-mraw(1) = mean(sumdat.mduetAutogenous.rsNorm); sraw(1) = std(sumdat.mduetAutogenous.rsRaw);
-mraw(2) = mean(sumdat.mSolo.rsNorm); sraw(3) = std(sumdat.mSolo.rsRaw);
-mraw(3) = mean(sumdat.fduetAutogenous.rsNorm); sraw(2) = std(sumdat.fduetAutogenous.rsRaw);
-mraw(4) = mean(sumdat.fSolo.rsNorm); sraw(4) = std(sumdat.fSolo.rsRaw);
+    mraw(1) = mean(sumdat.mduetAutogenous.rsNorm); sraw(1) = std(sumdat.mduetAutogenous.rsRaw);
+    mraw(2) = mean(sumdat.mSolo.rsNorm); sraw(3) = std(sumdat.mSolo.rsRaw);
+    mraw(3) = mean(sumdat.fduetAutogenous.rsNorm); sraw(2) = std(sumdat.fduetAutogenous.rsRaw);
+    mraw(4) = mean(sumdat.fSolo.rsNorm); sraw(4) = std(sumdat.fSolo.rsRaw);
 
 figure(1); clf; 
 
@@ -180,25 +202,25 @@ subplot(122); hold on;
 %% Compute stats     
     
 % Autogenous duet RS significant from 0?
-stats.m.dNAuto.mean = mean(sumdat.mduetAutogenous.rsNorm);
-[stats.m.dNAuto.H, stats.m.dNAuto.P, stats.m.dNAuto.CI, stats.m.dNAuto.stats]  = ttest(sumdat.mduetAutogenous.rsNorm);
-stats.m.dRAuto.mean = mean(sumdat.mduetAutogenous.rsRaw);
-[stats.m.dRAuto.H, stats.m.dRAuto.P, stats.m.dRAuto.CI, stats.m.dRAuto.stats]  = ttest(sumdat.mduetAutogenous.rsRaw);
-stats.f.dNAuto.mean = mean(sumdat.fduetAutogenous.rsNorm);
-[stats.f.dNAuto.H, stats.f.dNAuto.P, stats.f.dNAuto.CI, stats.f.dNAuto.stats]  = ttest(sumdat.fduetAutogenous.rsNorm);
-stats.f.dRAuto.mean = mean(sumdat.fduetAutogenous.rsRaw);
-[stats.f.dRAuto.H, stats.f.dRAuto.P, stats.f.dRAuto.CI, stats.f.dRAuto.stats]  = ttest(sumdat.fduetAutogenous.rsRaw);
+    stats.m.dNAuto.mean = mean(sumdat.mduetAutogenous.rsNorm);
+    [stats.m.dNAuto.H, stats.m.dNAuto.P, stats.m.dNAuto.CI, stats.m.dNAuto.stats]  = ttest(sumdat.mduetAutogenous.rsNorm);
+    stats.m.dRAuto.mean = mean(sumdat.mduetAutogenous.rsRaw);
+    [stats.m.dRAuto.H, stats.m.dRAuto.P, stats.m.dRAuto.CI, stats.m.dRAuto.stats]  = ttest(sumdat.mduetAutogenous.rsRaw);
+    stats.f.dNAuto.mean = mean(sumdat.fduetAutogenous.rsNorm);
+    [stats.f.dNAuto.H, stats.f.dNAuto.P, stats.f.dNAuto.CI, stats.f.dNAuto.stats]  = ttest(sumdat.fduetAutogenous.rsNorm);
+    stats.f.dRAuto.mean = mean(sumdat.fduetAutogenous.rsRaw);
+    [stats.f.dRAuto.H, stats.f.dRAuto.P, stats.f.dRAuto.CI, stats.f.dRAuto.stats]  = ttest(sumdat.fduetAutogenous.rsRaw);
     
 % Autogenous Solo RS significant from 0?
 
-stats.m.sNAuto.mean = mean(sumdat.mSolo.rsNorm);
-[stats.m.sNAuto.H, stats.m.sNAuto.P, stats.m.sNAuto.CI, stats.m.sNAuto.stats]  = ttest(sumdat.mSolo.rsNorm);
-stats.m.sRAuto.mean = mean(sumdat.mSolo.rsRaw);
-[stats.m.sRAuto.H, stats.m.sRAuto.P, stats.m.sRAuto.CI, stats.m.sRAuto.stats]  = ttest(sumdat.mSolo.rsRaw);
-stats.f.sNAuto.mean = mean(sumdat.fSolo.rsNorm);
-[stats.f.sNAuto.H, stats.f.sNAuto.P, stats.f.sNAuto.CI, stats.f.sNAuto.stats]  = ttest(sumdat.fSolo.rsNorm);
-stats.m.sRAuto.mean = mean(sumdat.fSolo.rsRaw);
-[stats.f.sRAuto.H, stats.f.sRAuto.P, stats.f.sRAuto.CI, stats.f.sRAuto.stats]  = ttest(sumdat.fSolo.rsRaw);
+    stats.m.sNAuto.mean = mean(sumdat.mSolo.rsNorm);
+    [stats.m.sNAuto.H, stats.m.sNAuto.P, stats.m.sNAuto.CI, stats.m.sNAuto.stats]  = ttest(sumdat.mSolo.rsNorm);
+    stats.m.sRAuto.mean = mean(sumdat.mSolo.rsRaw);
+    [stats.m.sRAuto.H, stats.m.sRAuto.P, stats.m.sRAuto.CI, stats.m.sRAuto.stats]  = ttest(sumdat.mSolo.rsRaw);
+    stats.f.sNAuto.mean = mean(sumdat.fSolo.rsNorm);
+    [stats.f.sNAuto.H, stats.f.sNAuto.P, stats.f.sNAuto.CI, stats.f.sNAuto.stats]  = ttest(sumdat.fSolo.rsNorm);
+    stats.m.sRAuto.mean = mean(sumdat.fSolo.rsRaw);
+    [stats.f.sRAuto.H, stats.f.sRAuto.P, stats.f.sRAuto.CI, stats.f.sRAuto.stats]  = ttest(sumdat.fSolo.rsRaw);
 
 % Difference between Autogenous Duet and Solo RS motor?
 
@@ -209,25 +231,25 @@ stats.m.sRAuto.mean = mean(sumdat.fSolo.rsRaw);
 
 % Heterogenous duet RS significant from 0?
 
-stats.m.dNHetero.mean = mean(sumdat.mduetHeterogenous.rsNorm);
-[stats.m.dNHetero.H, stats.m.dNHetero.P, stats.m.dNHetero.CI, stats.m.dNHetero.stats]  = ttest(sumdat.mduetHeterogenous.rsNorm);
-stats.m.dRHetero.mean = mean(sumdat.mduetHeterogenous.rsRaw);
-[stats.m.dRHetero.H, stats.m.dRHetero.P, stats.m.dRHetero.CI, stats.m.dRHetero.stats]  = ttest(sumdat.mduetHeterogenous.rsRaw);
-stats.f.dNHetero.mean = mean(sumdat.fduetHeterogenous.rsNorm);
-[stats.f.dNHetero.H, stats.f.dNHetero.P, stats.f.dNHetero.CI, stats.f.dNHetero.stats]  = ttest(sumdat.fduetHeterogenous.rsNorm);
-stats.f.dRHetero.mean = mean(sumdat.fduetHeterogenous.rsRaw);
-[stats.f.dRHetero.H, stats.f.dRHetero.P, stats.f.dRHetero.CI, stats.f.dRHetero.stats]  = ttest(sumdat.fduetHeterogenous.rsRaw);
+    stats.m.dNHetero.mean = mean(sumdat.mduetHeterogenous.rsNorm);
+    [stats.m.dNHetero.H, stats.m.dNHetero.P, stats.m.dNHetero.CI, stats.m.dNHetero.stats]  = ttest(sumdat.mduetHeterogenous.rsNorm);
+    stats.m.dRHetero.mean = mean(sumdat.mduetHeterogenous.rsRaw);
+    [stats.m.dRHetero.H, stats.m.dRHetero.P, stats.m.dRHetero.CI, stats.m.dRHetero.stats]  = ttest(sumdat.mduetHeterogenous.rsRaw);
+    stats.f.dNHetero.mean = mean(sumdat.fduetHeterogenous.rsNorm);
+    [stats.f.dNHetero.H, stats.f.dNHetero.P, stats.f.dNHetero.CI, stats.f.dNHetero.stats]  = ttest(sumdat.fduetHeterogenous.rsNorm);
+    stats.f.dRHetero.mean = mean(sumdat.fduetHeterogenous.rsRaw);
+    [stats.f.dRHetero.H, stats.f.dRHetero.P, stats.f.dRHetero.CI, stats.f.dRHetero.stats]  = ttest(sumdat.fduetHeterogenous.rsRaw);
     
 % Heterogenous Solo RS significant from 0?
 
-stats.m.sNHetero.mean = mean(sumdat.mAud.rsNorm);
-[stats.m.sNHetero.H, stats.m.sNHetero.P, stats.m.sNHetero.CI, stats.m.sNHetero.stats]  = ttest(sumdat.mAud.rsNorm);
-stats.m.sRHetero.mean = mean(sumdat.mAud.rsRaw);
-[stats.m.sRHetero.H, stats.m.sRHetero.P, stats.m.sRHetero.CI, stats.m.sRHetero.stats]  = ttest(sumdat.mAud.rsRaw);
-stats.f.sNHetero.mean = mean(sumdat.fAud.rsNorm);
-[stats.f.sNHetero.H, stats.f.sNHetero.P, stats.f.sNHetero.CI, stats.f.sNHetero.stats]  = ttest(sumdat.fAud.rsNorm);
-stats.f.sRHetero.mean = mean(sumdat.fAud.rsRaw);
-[stats.f.sRHetero.H, stats.f.sRHetero.P, stats.f.sRHetero.CI, stats.f.sRHetero.stats]  = ttest(sumdat.fAud.rsRaw);
+    stats.m.sNHetero.mean = mean(sumdat.mAud.rsNorm);
+    [stats.m.sNHetero.H, stats.m.sNHetero.P, stats.m.sNHetero.CI, stats.m.sNHetero.stats]  = ttest(sumdat.mAud.rsNorm);
+    stats.m.sRHetero.mean = mean(sumdat.mAud.rsRaw);
+    [stats.m.sRHetero.H, stats.m.sRHetero.P, stats.m.sRHetero.CI, stats.m.sRHetero.stats]  = ttest(sumdat.mAud.rsRaw);
+    stats.f.sNHetero.mean = mean(sumdat.fAud.rsNorm);
+    [stats.f.sNHetero.H, stats.f.sNHetero.P, stats.f.sNHetero.CI, stats.f.sNHetero.stats]  = ttest(sumdat.fAud.rsNorm);
+    stats.f.sRHetero.mean = mean(sumdat.fAud.rsRaw);
+    [stats.f.sRHetero.H, stats.f.sRHetero.P, stats.f.sRHetero.CI, stats.f.sRHetero.stats]  = ttest(sumdat.fAud.rsRaw);
 
 % Difference between Heterogenous Duet and Solo RS motor?
 
@@ -281,6 +303,11 @@ function qwe = rs(struc, syllabl, spontan, padme)
 end
 
 end
+
+
+
+
+%% Award-winning (tm) code (not used!)
 %     % Get firing rates during Auditory-only 
 %         MaudSpikeCount = 0; Mauduration = 0; Msylcount = 0;
 %         FaudSpikeCount = 0; Fauduration = 0; Fsylcount = 0;
