@@ -28,9 +28,8 @@ sumdat.mSolo.rsNorm = []; sumdat.mSolo.rsRaw = [];
 sumdat.fAud.rsNorm = []; sumdat.fAud.rsRaw = [];
 sumdat.mAud.rsNorm = []; sumdat.mAud.rsRaw = [];
 
-
     
-%% List of duets with syllable indices and locations for spontaneous activity
+%% List of Chronic singing data with syllable indices and locations for spontaneous activity
 
 % 1-2: m17
 
@@ -90,8 +89,10 @@ sumdat.mAud.rsNorm = []; sumdat.mAud.rsRaw = [];
 
 % 15-16: j170081733 
 
-%     msolosyls{8} = []; mduetsyls{8} = [3 8];
-%     fsolosyls{8} = 1; fduetsyls{8} = [2 4 5 7 9 10];
+%     msolosyls{8} = []; 
+%     mduetsyls{8} = [3 8];
+%     fsolosyls{8} = 1; 
+%     fduetsyls{8} = [2 4 5 7 9 10];
 %     spon(:,8) = [-5, 0];
 
 %% Loop to calculate RS values for each pair of wrens   
