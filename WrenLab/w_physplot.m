@@ -1,4 +1,4 @@
-function bs_physplot(w, widx, s, sidx, win, binwidth, plt_type, prt)
+function w_physplot(w, widx, s, sidx, win, binwidth, plt_type, prt)
 % bs_physplot(struct, stimnum, win, binwidth, plt_type, prt)
 % struct: The output from bs_converter
 % stimnum: Which stimulus we want to process
@@ -10,8 +10,8 @@ function bs_physplot(w, widx, s, sidx, win, binwidth, plt_type, prt)
 
 %% Setup
 
-if nargin < 7; plt_type = 0; end; % Default osc plot
-if nargin < 8; prt = 0; end; % Default no print
+if nargin < 7; plt_type = 0; end % Default osc plot
+if nargin < 8; prt = 0; end % Default no print
 
 binwidth = binwidth/1000;
 
