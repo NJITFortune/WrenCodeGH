@@ -161,8 +161,12 @@ end
 % distribution.
     m(1) = mean(sumdat.mduetAutogenous.rsNorm); s(1) = std(sumdat.mduetAutogenous.rsNorm);
     m(2) = mean(sumdat.mSolo.rsNorm); s(2) = std(sumdat.mSolo.rsNorm);
-    m(3) = mean(sumdat.fduetAutogenous.rsNorm); s(3) = std(sumdat.fduetAutogenous.rsNorm);
+%     m(3) = mean(sumdat.fduetAutogenous.rsNorm); s(3) = std(sumdat.fduetAutogenous.rsNorm);
+%     m(4) = mean(sumdat.fSolo.rsNorm); s(4) = std(sumdat.fSolo.rsNorm);
+    m(3) = mean(sumdat.fduetAutogenous.rsNorm(6:end-8)); s(3) = std(sumdat.fduetAutogenous.rsNorm(6:end-8));
     m(4) = mean(sumdat.fSolo.rsNorm); s(4) = std(sumdat.fSolo.rsNorm);
+
+
 
 % For raw data
     mraw(1) = mean(sumdat.mduetAutogenous.rsNorm); sraw(1) = std(sumdat.mduetAutogenous.rsRaw);
