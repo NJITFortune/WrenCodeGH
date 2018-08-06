@@ -1,7 +1,5 @@
-function w_physplot(w, widx, s, sidx, win, binwidth, plt_type, prt)
-% bs_physplot(struct, stimnum, win, binwidth, plt_type, prt)
-% struct: The output from bs_converter
-% stimnum: Which stimulus we want to process
+function w_gphysplot(spikes, signal, Fs, win, binwidth, plt_type, prt)
+% w_gphysplot(spikes, stim, Fs, win, binwidth, plt_type, prt)
 % win: [start stop] in Seconds (pre-onset times are negative!!!!)
 % binwidth: The histogram bindwidth in milliseconds
 % plt_type is optional: 0 for osc and 1 for specgram
@@ -10,15 +8,11 @@ function w_physplot(w, widx, s, sidx, win, binwidth, plt_type, prt)
 
 %% Setup
 
-if nargin < 7; plt_type = 0; end % Default osc plot
-if nargin < 8; prt = 0; end % Default no print
+if nargin < 6; plt_type = 0; end % Default osc plot
+if nargin < 7; prt = 0; end % Default no print
 
 binwidth = binwidth/1000;
-
-spikes = w(widx).spikes;
-signal = s(sidx).stim;
-tim = s(sidx).tim;
-stimname = w(widx).stimname;
+tim = 1/Fs:1/Fs:length(signal)/Fs;
 
 set(gcf, 'Color', [1,1,1]); % This sets the background to white
 
@@ -50,18 +44,18 @@ axs(2)=subplot(4,1,3);
 
 % Fill the bins, cycle by bin
 
-for i = 1:binnum;
+for i = 1:binnum
     binstart = (i-1)*binwidth + win(1);
     binend   =     i*binwidth + win(1);   
     tims(i) = binstart;
     
     % and cycle here by reps of the stimulus
     
-    for j = 1:length(spikes);       
+    for j = 1:length(spikes)       
         repbinisi = sum (spikes{j} > binstart & spikes{j} <= binend);
         a(i) = a(i) + repbinisi;
-    end;
-end;
+    end
+end
 
 % And now add the overlapping histogram (because we can)
 
@@ -82,42 +76,32 @@ axs(3)=subplot(4,1,4);
     tt = find(tim > win(1) & tim < win(2));
 
 % Option to plot an oscillogram
-    if plt_type == 0;
+    if plt_type == 0
         plot(tim(tt),signal(tt));
         h = gca; set(h, 'Ycolor', [1,1,1], 'Box', 'off'); 
         f = axis;
         axis([win(1) win(2) f(3) f(4)]);
         text(win(1)+1, -2, stimname, 'BackgroundColor',[.7 .9 .7]);
-    end;
+    end
 
 % Option to plot an spectrogram
-    if plt_type == 1;
+    if plt_type == 1
         specgram(signal(tt),2048,w.stim(widx).Fs,[],2000);
         xx = [abs(win(1)), abs(win(1))]; yy = [600, 4900];
-        text(1, 4000, w(widx).StimName, 'BackgroundColor',[.7 .9 .7]);
         hold on; plot(xx, yy, 'b', 'LineWidth', 1); hold off;
         ylim([500 5000]); colormap(flipud(hot)); caxis([0 50]);
         h = gca; ts = str2num(get(h,'XTickLabel')); set(h, 'Box', 'off');
         ts = ts + win(1);
         set(h,'XTickLabel', ts);
-    end;
+    end
 
     linkaxes(axs,'x');
+        
+%% Printing to PNG
     
-% Label the plot with relevant information
-    lbl = [w(widx).birdname ', ' w(widx).date ', ' w(widx).sex ', site:' w(widx).site ', unit:' w(widx).unit];
-    if w(widx).sex == 'M';
-    xlabel(lbl, 'FontSize', 16, 'FontWeight', 'bold', 'Color', [0 0 1]);
-    end;
-    if w(widx).sex == 'F';
-    xlabel(lbl, 'FontSize', 16, 'FontWeight', 'bold', 'Color', [1 0 1]);
-    end;
-    
-%% Printing to PDF
-    
-    if prt == 1;
-        fn = [w(widx).birdname w(widx).date w(widx).sex w(widx).site '_' w(widx).unit '-' num2str(widx)];
+    if prt == 1
+        fn = 'PrintFile.png';
         print(gcf,'-dpng', fn);
-    end;    
+    end    
 
     
