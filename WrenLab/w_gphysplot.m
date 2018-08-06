@@ -81,12 +81,11 @@ axs(3)=subplot(4,1,4);
         h = gca; set(h, 'Ycolor', [1,1,1], 'Box', 'off'); 
         f = axis;
         axis([win(1) win(2) f(3) f(4)]);
-        text(win(1)+1, -2, stimname, 'BackgroundColor',[.7 .9 .7]);
     end
 
 % Option to plot an spectrogram
     if plt_type == 1
-        specgram(signal(tt),2048,w.stim(widx).Fs,[],2000);
+        specgram(signal(tt),2048,Fs,[],2000);
         xx = [abs(win(1)), abs(win(1))]; yy = [600, 4900];
         hold on; plot(xx, yy, 'b', 'LineWidth', 1); hold off;
         ylim([500 5000]); colormap(flipud(hot)); caxis([0 50]);
