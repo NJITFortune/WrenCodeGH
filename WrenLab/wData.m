@@ -1,4 +1,4 @@
-function [msolosyls, mduetsyls, fsolosyls, spon] = wData
+function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
 % This function only returns the identities of syllables for use in the
 % analysis of the wren chronic data.
 
