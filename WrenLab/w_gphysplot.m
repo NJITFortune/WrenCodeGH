@@ -13,7 +13,7 @@ if nargin < 4; plt_type = 0; end % Default osc plot
 signal = in.duet;
 Fs = in.Fs;
 binwidth = binwidth/1000;
-tim = 1/Fs:1/Fs:length(signal)/Fs;
+tim = in.tim;
 
 set(gcf, 'Color', [1,1,1]); % This sets the background to white
 
