@@ -86,7 +86,7 @@ axs(3)=subplot(4,1,4);
 
 % Option to plot an spectrogram
     if plt_type == 1
-        specgram(signal(tt),2048,Fs,[],2000);
+        specgram(signal(tt),512,Fs,[],500);
         xx = [abs(win(1)), abs(win(1))]; yy = [600, 4900];
         hold on; plot(xx, yy, 'b', 'LineWidth', 1); hold off;
         ylim([500 5000]); colormap(flipud(hot)); caxis([-50 50]);
