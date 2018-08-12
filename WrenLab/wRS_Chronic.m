@@ -182,7 +182,7 @@ subplot(121); hold on;
     errorbar([1 2], m(1:2), s(1:2), 'b' );
     plot([3 4], m(3:4), 'mo'); 
     errorbar([3 4], m(3:4), s(3:4), 'm' );
-    ylim([-5 20]); xlim([0.5 4.5]); plot
+    ylim([-5 20]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 % subplot(132); hold on;
 %     plot([1 2], mraw(1:2), 'b*'); 
@@ -201,7 +201,7 @@ subplot(122); hold on;
         errorbar(4, mean(sumdat.fAud.rsNorm), std(sumdat.mAud.rsNorm), 'm');
     plot(3, mean(sumdat.fduetHeterogenous.rsNorm), 'mo');
         errorbar(3, mean(sumdat.fduetHeterogenous.rsNorm), std(sumdat.fduetHeterogenous.rsNorm), 'm');
-    ylim([-5 20]); xlim([0.5 4.5]);
+    ylim([-5 20]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 %% Compute stats     
     
