@@ -30,7 +30,7 @@ axs(1)=subplot(2,1,1);
     xlim([win(1) win(2)]);
     % Position the plot appropriately
     h = gca; set(h, 'XTickLabel', [], 'Ydir', 'reverse', 'YAxisLocation', 'left');
-    set(h, 'Position', [0.1300, 0.5100, 0.7750, 0.4400]);
+    %set(h, 'Position', [0.1300, 0.5100, 0.7750, 0.4400]);
 
 %% The Histogram
 
