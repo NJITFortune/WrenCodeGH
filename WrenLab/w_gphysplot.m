@@ -1,5 +1,7 @@
 function w_gphysplot(in, win, binwidth, plt_type)
-% w_gphysplot(spikes, stim, Fs, win, binwidth, plt_type, prt)
+% w_gphysplot(in, win, binwidth, plt_type)
+% For plotting the Chronic data.
+% in is the data structure for a single Chronic event (e.g. w(2))
 % win: [start stop] in Seconds (pre-onset times are negative!!!!)
 % binwidth: The histogram bindwidth in milliseconds
 % plt_type is optional: 0 for osc and 1 for specgram
