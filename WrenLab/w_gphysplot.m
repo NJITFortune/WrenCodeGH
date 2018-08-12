@@ -108,6 +108,7 @@ for j=1:3 % For each subplot
     for k=1:length(in.syl)
         if ~isempty(in.syl(k).tim)
         plot([in.syl(k).tim(1), in.syl(k).tim(1)], [xx(3), xx(4)], 'g-');
+        text(in.syl(k).tim(1), xx(4)-(0.10*xx(4)), num2str(k));
         plot([in.syl(k).tim(2), in.syl(k).tim(2)], [xx(3), xx(4)], 'r-');        
         end        
     end
