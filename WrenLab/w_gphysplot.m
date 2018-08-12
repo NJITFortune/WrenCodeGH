@@ -97,11 +97,4 @@ axs(3)=subplot(4,1,4);
 
     linkaxes(axs,'x');
         
-%% Printing to PNG
-    
-    if prt == 1
-        fn = 'PrintFile.png';
-        print(gcf,'-dpng', fn);
-    end    
-
     
