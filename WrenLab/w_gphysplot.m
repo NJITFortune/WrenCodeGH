@@ -66,7 +66,7 @@ end
 
 % And plot!
 
-    bar(tims + binwidth/2,a,'k');
+    bar(tims + binwidth/2, a,'k'); % Standard histogram plot
     hold on; 
     plot(swpsthdata.tim, swpsthdata.spers, 'r');
     xlim([win(1) win(2)]);
@@ -98,5 +98,25 @@ axs(3)=subplot(3,1,3);
     end
 
     linkaxes(axs,'x');
+    
+%% Now plot the Syllable starts and ends
+
+for j=1:3 % For each subplot
+    
+        subplot(3,1,j); hold on;
+    
+    for k=1:length(in.syltim)
+    
+        plot
+        
+        
+    end
+end
+
+
+
+
+
+
         
     
