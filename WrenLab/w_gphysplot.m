@@ -21,7 +21,7 @@ set(gcf, 'Color', [1,1,1]); % This sets the background to white
 
 % The axs bit is so that we can link axes so the user can zoom in and out
 % and all of the subplots will stay aligned in time
-axs(1)=subplot(2,1,1);
+axs(1)=subplot(3,1,1);
 
 % This calls our plotting function "bs_raster"
     bs_raster(in.Cspikes);
@@ -30,11 +30,11 @@ axs(1)=subplot(2,1,1);
     xlim([win(1) win(2)]);
     % Position the plot appropriately
     h = gca; set(h, 'XTickLabel', [], 'Ydir', 'reverse', 'YAxisLocation', 'left');
-    %set(h, 'Position', [0.1300, 0.5100, 0.7750, 0.4400]);
+    % set(h, 'Position', [0.1300, 0.5100, 0.7750, 0.4400]);
 
 %% The Histogram
 
-axs(2)=subplot(4,1,3);
+axs(2)=subplot(3,1,2);
 
 % How many bins?
 
@@ -72,7 +72,7 @@ end
     
 %% Plot the stimulus
 
-axs(3)=subplot(4,1,4);
+axs(3)=subplot(3,1,3);
 
     tt = find(tim > win(1) & tim < win(2));
 
