@@ -68,7 +68,7 @@ end
 
     bar(tims + binwidth/2, a,'k'); % Standard histogram plot
     hold on; 
-    plot(swpsthdata.tim, swpsthdata.spers, 'r');
+    plot(swpsthdata.tim, swpsthdata.spers, 'm', 'LineWidth', 3);
     xlim([win(1) win(2)]);
     h = gca; set(h, 'XTickLabel', [], 'Box', 'off');
     
