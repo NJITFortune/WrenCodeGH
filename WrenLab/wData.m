@@ -56,9 +56,9 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
 % 13-14: j17060848
     
     msolosyls{7} = [1 2 3 4 5]; 
-    mduetsyls{7} = [8 10 13 15 18 20];
+    mduetsyls{7} = [7 9 11 13 15 17];
     fsolosyls{7} = []; 
-    fduetsyls{7} = [6 7 9 11 12 14 16 17 19];
+    fduetsyls{7} = [6 8 10 12 14 16];
     spon(:,7) = [-3.0, 0.0];
 
 % 15-16: j170081733 
