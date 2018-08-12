@@ -89,7 +89,7 @@ axs(3)=subplot(3,1,3);
         specgram(signal(tt),512,Fs,[],500);
         xx = [abs(win(1)), abs(win(1))]; yy = [600, 4900];
         hold on; plot(xx, yy, 'b', 'LineWidth', 1); hold off;
-        ylim([500 5000]); colormap(flipud(hot)); caxis([-50 50]);
+        ylim([500 5000]); colormap(flipud(hot)); caxis([-20 20]);
 %         h = gca; ts = str2num(get(h,'XTickLabel')); set(h, 'Box', 'off');
 %         ts = ts + win(1);
 %         set(h,'XTickLabel', ts);
