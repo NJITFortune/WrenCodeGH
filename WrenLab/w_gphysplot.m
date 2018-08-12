@@ -104,7 +104,7 @@ axs(3)=subplot(3,1,3);
 for j=1:3 % For each subplot
     
         subplot(3,1,j); hold on;
-        xx = axis;
+        xx = axis
     for k=1:length(in.syl)
         
         plot([in.syl(k).tim(1), in.syl(k).tim(1)], [xx(3), xx(4)], 'g-');
