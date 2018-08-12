@@ -1,4 +1,4 @@
-function w_gphysplot(spikes, signal, Fs, win, binwidth, plt_type, prt)
+function w_gphysplot(in, win, binwidth, plt_type)
 % w_gphysplot(spikes, stim, Fs, win, binwidth, plt_type, prt)
 % win: [start stop] in Seconds (pre-onset times are negative!!!!)
 % binwidth: The histogram bindwidth in milliseconds
@@ -8,11 +8,12 @@ function w_gphysplot(spikes, signal, Fs, win, binwidth, plt_type, prt)
 
 %% Setup
 
-if nargin < 6; plt_type = 0; end % Default osc plot
-if nargin < 7; prt = 0; end % Default no print
+if nargin < 4; plt_type = 0; end % Default osc plot
 
+Fs = in.Fs;
 binwidth = binwidth/1000;
 tim = 1/Fs:1/Fs:length(signal)/Fs;
+signal = in.duet;
 
 set(gcf, 'Color', [1,1,1]); % This sets the background to white
 
@@ -23,7 +24,7 @@ set(gcf, 'Color', [1,1,1]); % This sets the background to white
 axs(1)=subplot(2,1,1);
 
 % This calls our plotting function "bs_raster"
-    bs_raster(spikes);
+    bs_raster(in.Cspikes);
     
     % set the window width to what the user asked for in "win"
     xlim([win(1) win(2)]);
@@ -51,15 +52,15 @@ for i = 1:binnum
     
     % and cycle here by reps of the stimulus
     
-    for j = 1:length(spikes)       
-        repbinisi = sum (spikes{j} > binstart & spikes{j} <= binend);
+    for j = 1:length(in.Cspikes)       
+        repbinisi = sum (in.Cspikes{j} > binstart & in.Cspikes{j} <= binend);
         a(i) = a(i) + repbinisi;
     end
 end
 
 % And now add the overlapping histogram (because we can)
 
-    swpsthdata = bs_swPSTH(spikes, win, binwidth*1000, 0);
+    swpsthdata = bs_swPSTH(in.Cspikes, win, binwidth*1000, 0);
 
 % And plot!
 
