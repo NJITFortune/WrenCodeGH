@@ -112,11 +112,5 @@ for j=1:3 % For each subplot
                 
     end
 end
-
-
-
-
-
-
         
     
