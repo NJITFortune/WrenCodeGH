@@ -180,7 +180,7 @@ end % curpair (cycle through spons)
     guessmspon = sum(mspon) / (numsteps+extrasteps);
     
     figure(4); clf; plot(degreebase, out.malautobin, '*-b'); hold on; 
-                plot([0 0], [1 140], 'k-'); plot([360 360], [1 140], 'k-');
+                plot([0 0], [1 250], 'k-'); plot([360 360], [1 250], 'k-');
 
     figure(1); clf; 
         subplot(121); plot(degreebase, out.fembin, '*-m'); hold on;
