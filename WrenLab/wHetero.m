@@ -245,7 +245,7 @@ end % curpair (cycle through spons)
             plot([0 360], [guessfspon, guessfspon], 'r-');
             
         subplot(122); plot(degreebase, out.malautobin, '*-b'); hold on;   
-            plot([0 0], [1 20], 'k-'); plot([360 360], [1 20], 'k-'); 
+            plot([0 0], [1 max(out.malautobin)], 'k-'); plot([360 360], [1 max(out.malautobin)], 'k-'); 
             plot([0 360], [guessmspon, guessmspon], 'c-');
             
             
