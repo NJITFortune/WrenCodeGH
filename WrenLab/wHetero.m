@@ -37,7 +37,7 @@ if nargin == 2; pad = padding; end
 
 for curpair = 1:length(spon) % Cycle for each pair
     
-    % DUET Syllables
+    % DUET Syllables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     for j = 1:length(mduetsyls{curpair}) % Male duet syllables
         
         idx = length(f)+1;
@@ -90,7 +90,7 @@ for curpair = 1:length(spon) % Cycle for each pair
         
     end % End of female duet syllables
     
-    % SOLO Syllables
+    % SOLO Syllables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     for j = 1:length(msolosyls{curpair}) % Male solo syllables
         
         idx = length(f)+1;
