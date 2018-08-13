@@ -144,58 +144,58 @@ for curpair = 1:length(spon) % Cycle for each pair
     
     
     
-    % SOLO Syllables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    for j = 1:length(msolosyls{curpair}) % Male solo syllables
-        
-        idx = length(f)+1;
-        cursylstart = in(curpair*2).syl(msolosyls{curpair}(j)).tim(1);
-        cursylend = in(curpair*2).syl(msolosyls{curpair}(j)).tim(2);
-        curdur = cursylend - cursylstart;
-        curstepdur = curdur / numsteps;
-        
-        for k = -extrasteps:numsteps+extrasteps-1
-            tmp = 0; spontmp = 0;
-            sponstart = spon(1,curpair) + ((abs(spon(1,curpair) - spon(2,curpair)) - curstepdur) * rand);
-            sponend = sponstart + curstepdur;
-            for i=1:4 % 4 electrodes in a tetrode always
-                femsolobin(k+extrasteps+1) = femsolobin(k+extrasteps+1) + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
-                    & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
-                tmp = tmp + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
-                    & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
-                spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
-                    & in(curpair*2).Cspikes{i} < sponend));
-            end
-            fsolo(idx).bins(k+extrasteps+1) = tmp;
-            fsolospon(end+1) = spontmp;
-        end        
-        
-    end % End of male duet syllables    
-    
-    for j = 1:length(fsolosyls{curpair}) % Female solo syllables
-        
-        idx = length(m)+1;
-        cursylstart = in((curpair*2)-1).syl(fsolosyls{curpair}(j)).tim(1);
-        cursylend = in((curpair*2)-1).syl(fsolosyls{curpair}(j)).tim(2);
-        curdur = cursylend - cursylstart;
-        curstepdur = curdur / numsteps;
-        
-        for k = -extrasteps:numsteps+extrasteps-1         
-            tmp = 0; spontmp = 0;
-            sponstart = spon(1,curpair) + ((abs(spon(1,curpair) - spon(2,curpair)) - curstepdur) * rand);
-            sponend = sponstart + curstepdur;
-            for i=1:4 % 4 electrodes in a tetrode always
-                malsolobin(k+extrasteps+1) = malsolobin(k+extrasteps+1) + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
-                    & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
-                tmp = tmp + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
-                    & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
-                spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
-                    & in(curpair*2).Cspikes{i} < sponend));
-            end
-            msolo(idx).bins(k+extrasteps+1) = tmp;
-            msolospon(end+1) = spontmp;
-        end        
-        
-    end % End of female solo syllables    
+%     % SOLO Syllables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     for j = 1:length(msolosyls{curpair}) % Male solo syllables
+%         
+%         idx = length(f)+1;
+%         cursylstart = in(curpair*2).syl(msolosyls{curpair}(j)).tim(1);
+%         cursylend = in(curpair*2).syl(msolosyls{curpair}(j)).tim(2);
+%         curdur = cursylend - cursylstart;
+%         curstepdur = curdur / numsteps;
+%         
+%         for k = -extrasteps:numsteps+extrasteps-1
+%             tmp = 0; spontmp = 0;
+%             sponstart = spon(1,curpair) + ((abs(spon(1,curpair) - spon(2,curpair)) - curstepdur) * rand);
+%             sponend = sponstart + curstepdur;
+%             for i=1:4 % 4 electrodes in a tetrode always
+%                 femsolobin(k+extrasteps+1) = femsolobin(k+extrasteps+1) + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
+%                     & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+%                 tmp = tmp + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
+%                     & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+%                 spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
+%                     & in(curpair*2).Cspikes{i} < sponend));
+%             end
+%             fsolo(idx).bins(k+extrasteps+1) = tmp;
+%             fsolospon(end+1) = spontmp;
+%         end        
+%         
+%     end % End of male duet syllables    
+%     
+%     for j = 1:length(fsolosyls{curpair}) % Female solo syllables
+%         
+%         idx = length(m)+1;
+%         cursylstart = in((curpair*2)-1).syl(fsolosyls{curpair}(j)).tim(1);
+%         cursylend = in((curpair*2)-1).syl(fsolosyls{curpair}(j)).tim(2);
+%         curdur = cursylend - cursylstart;
+%         curstepdur = curdur / numsteps;
+%         
+%         for k = -extrasteps:numsteps+extrasteps-1         
+%             tmp = 0; spontmp = 0;
+%             sponstart = spon(1,curpair) + ((abs(spon(1,curpair) - spon(2,curpair)) - curstepdur) * rand);
+%             sponend = sponstart + curstepdur;
+%             for i=1:4 % 4 electrodes in a tetrode always
+%                 malsolobin(k+extrasteps+1) = malsolobin(k+extrasteps+1) + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
+%                     & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+%                 tmp = tmp + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
+%                     & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+%                 spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
+%                     & in(curpair*2).Cspikes{i} < sponend));
+%             end
+%             msolo(idx).bins(k+extrasteps+1) = tmp;
+%             msolospon(end+1) = spontmp;
+%         end        
+%         
+%     end % End of female solo syllables    
     
 end % curpair (cycle through spons)
 
@@ -207,42 +207,44 @@ end % curpair (cycle through spons)
     
     out.mautospon = mautospon;
     out.malautobin = malautobin;
+    out.fautospon = fautospon;
+    out.fautobin = femautobin;
 
-
-    out.msolospon = msolospon;
-    out.fsolospon = fsolospon;
-    out.malsolobin = malsolobin;
-    out.femsolobin = femsolobin;
-    
-    
+%     out.msolospon = msolospon;
+%     out.fsolospon = fsolospon;
+%     out.malsolobin = malsolobin;
+%     out.femsolobin = femsolobin;
+        
     
     guessfspon = sum(fspon) / (numsteps+extrasteps);
     guessmspon = sum(mspon) / (numsteps+extrasteps);
     
-    figure(4); clf; plot(degreebase, out.malautobin, '*-b'); hold on; 
-                plot([0 0], [1 250], 'k-'); plot([360 360], [1 250], 'k-');
-
-    figure(1); clf; 
+    figure(1); clf; % Separate plots for HETEROGENOUS
+    
         subplot(121); plot(degreebase, out.fembin, '*-m'); hold on;
-            plot([0 0], [1 140], 'k-'); plot([360 360], [1 140], 'k-');
-            plot([0 360], [guessfspon, guessfspon], 'r-');
-        subplot(122); plot(degreebase, out.malbin, '*-b'); hold on;   
-            plot([0 0], [1 180], 'k-'); plot([360 360], [1 180], 'k-'); 
-            plot([0 360], [guessmspon, guessmspon], 'c-');
+            plot([0, 0], [1, max(out.fembin)], 'k-'); plot([360, 360], [1, max(out.fembin)], 'k-');
+            plot([0, 360], [guessfspon, guessfspon], 'r-');
             
-    figure(2); clf; 
+        subplot(122); plot(degreebase, out.malbin, '*-b'); hold on;   
+            plot([0, 0], [1, max(out.malbin)], 'k-'); plot([360, 360], [1, max(out.malbin)], 'k-'); 
+            plot([0, 360], [guessmspon, guessmspon], 'c-');
+            
+    figure(2); clf; % Single plot for HETEROGENOUS
             plot(degreebase, out.fembin/max(out.fembin), '*-m'); 
             hold on;
             plot(degreebase, out.malbin/max(out.malbin), '*-b');
-            plot([0 0], [0 1], 'k-'); plot([360 360], [0 1], 'k-');
+
+            plot([0, 0], [0, 1], 'k-'); plot([360 360], [0 1], 'k-');
+            
             plot([0 360], [guessfspon/max(out.fembin), guessfspon/max(out.fembin)], 'r-');
             plot([0 360], [guessmspon/max(out.malbin), guessmspon/max(out.malbin)], 'c-');
             
     figure(3); clf; 
-        subplot(121); plot(degreebase, out.femsolobin, '*-m'); hold on;
-            plot([0 0], [1 20], 'k-'); plot([360 360], [1 20], 'k-');
+        subplot(121); plot(degreebase, out.fautobin, '*-m'); hold on;
+            plot([0, 0], [1, max(out.fautobin)], 'k-'); plot([360, 360], [1, max(out.fautobin)], 'k-');
             plot([0 360], [guessfspon, guessfspon], 'r-');
-        subplot(122); plot(degreebase, out.malsolobin, '*-b'); hold on;   
+            
+        subplot(122); plot(degreebase, out.malautobin, '*-b'); hold on;   
             plot([0 0], [1 20], 'k-'); plot([360 360], [1 20], 'k-'); 
             plot([0 360], [guessmspon, guessmspon], 'c-');
             
