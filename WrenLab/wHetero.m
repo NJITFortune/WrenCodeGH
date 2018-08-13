@@ -20,7 +20,6 @@ if nargin == 2
     extrasteps = floor(numsteps/2);
 end
 
-
 % Set up the degrees
     degreestep = 360 / numsteps;
     degreebase = -extrasteps*degreestep:degreestep:numsteps*degreestep+degreestep*(extrasteps-1);
