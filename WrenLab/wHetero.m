@@ -28,14 +28,17 @@ if nargin == 2; pad = padding; end
 
     fembin = zeros(1, numsteps+(2*extrasteps));
     malbin = zeros(1, numsteps+(2*extrasteps));
+    femsolobin = fembin; malsolobin = malbin;
     f(1).bins = fembin;
     m(1).bins = malbin;
-    mspon = []; fspon = [];
+    mspon = []; fspon = []; msolospon = []; fsolospon = [];
+    fsolo(1).bins = fembin;
+    msolo(1).bins = malbin;
 
 for curpair = 1:length(spon) % Cycle for each pair
     
     % DUET Syllables
-    for j = 1:length(mduetsyls{curpair}) % Male syllables
+    for j = 1:length(mduetsyls{curpair}) % Male duet syllables
         
         idx = length(f)+1;
         cursylstart = in(curpair*2).syl(mduetsyls{curpair}(j)).tim(1);
@@ -59,9 +62,9 @@ for curpair = 1:length(spon) % Cycle for each pair
             fspon(end+1) = spontmp;
         end        
         
-    end % End of male syllables
+    end % End of male duet syllables
         
-    for j = 1:length(fduetsyls{curpair}) % Female syllables
+    for j = 1:length(fduetsyls{curpair}) % Female duet syllables
         
         idx = length(m)+1;
         cursylstart = in((curpair*2)-1).syl(fduetsyls{curpair}(j)).tim(1);
@@ -85,7 +88,60 @@ for curpair = 1:length(spon) % Cycle for each pair
             mspon(end+1) = spontmp;
         end        
         
-    end % End of male syllables
+    end % End of female duet syllables
+    
+    % SOLO Syllables
+    for j = 1:length(msolosyls{curpair}) % Male solo syllables
+        
+        idx = length(f)+1;
+        cursylstart = in(curpair*2).syl(msolosyls{curpair}(j)).tim(1);
+        cursylend = in(curpair*2).syl(msolosyls{curpair}(j)).tim(2);
+        curdur = cursylend - cursylstart;
+        curstepdur = curdur / numsteps;
+        
+        for k = -extrasteps:numsteps+extrasteps-1
+            tmp = 0; spontmp = 0;
+            sponstart = spon(1,curpair) + ((abs(spon(1,curpair) - spon(2,curpair)) - curstepdur) * rand);
+            sponend = sponstart + curstepdur;
+            for i=1:4 % 4 electrodes in a tetrode always
+                femsolobin(k+extrasteps+1) = femsolobin(k+extrasteps+1) + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
+                    & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+                tmp = tmp + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
+                    & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+                spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
+                    & in(curpair*2).Cspikes{i} < sponend));
+            end
+            fsolo(idx).bins(k+extrasteps+1) = tmp;
+            fsolospon(end+1) = spontmp;
+        end        
+        
+    end % End of male duet syllables    
+    
+    for j = 1:length(fsolosyls{curpair}) % Female solo syllables
+        
+        idx = length(m)+1;
+        cursylstart = in((curpair*2)-1).syl(fsolosyls{curpair}(j)).tim(1);
+        cursylend = in((curpair*2)-1).syl(fsolosyls{curpair}(j)).tim(2);
+        curdur = cursylend - cursylstart;
+        curstepdur = curdur / numsteps;
+        
+        for k = -extrasteps:numsteps+extrasteps-1         
+            tmp = 0; spontmp = 0;
+            sponstart = spon(1,curpair) + ((abs(spon(1,curpair) - spon(2,curpair)) - curstepdur) * rand);
+            sponend = sponstart + curstepdur;
+            for i=1:4 % 4 electrodes in a tetrode always
+                malsolobin(k+extrasteps+1) = malsolobin(k+extrasteps+1) + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
+                    & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+                tmp = tmp + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
+                    & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+                spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
+                    & in(curpair*2).Cspikes{i} < sponend));
+            end
+            msolo(idx).bins(k+extrasteps+1) = tmp;
+            msolospon(end+1) = spontmp;
+        end        
+        
+    end % End of female solo syllables    
     
 end % curpair (cycle through spons)
 
