@@ -106,10 +106,13 @@ for curpair = 1:length(spon) % Cycle for each pair
         curdur = cursylend - cursylstart;
         curstepdur = curdur / numsteps;
         
-        for k = -extrasteps:numsteps+extrasteps-1         
-            tmp = 0; spontmp = 0;
+        for k = -extrasteps:numsteps+extrasteps-1    
+            
+            tmp = 0; spontmp = 0;  autotmp = 0; sponautotmp = 0;
             sponstart = spon(1,curpair) + ((abs(spon(1,curpair) - spon(2,curpair)) - curstepdur) * rand);
             sponend = sponstart + curstepdur;
+            
+            % HETEROGENOUS (female syllables, male spikes)    
             for i=1:4 % 4 electrodes in a tetrode always
                 malbin(k+extrasteps+1) = malbin(k+extrasteps+1) + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
                     & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
@@ -118,11 +121,28 @@ for curpair = 1:length(spon) % Cycle for each pair
                 spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
                     & in(curpair*2).Cspikes{i} < sponend));
             end
-            m(idx).bins(k+extrasteps+1) = tmp;
-            mspon(end+1) = spontmp;
+            
+                m(idx).bins(k+extrasteps+1) = tmp;
+                mspon(end+1) = spontmp;
+                
+            % AUTOGENOUS (female syllables, female spikes)
+            for i=1:4 % 4 electrodes in a tetrode always
+                femautobin(k+extrasteps+1) = femautobin(k+extrasteps+1) + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
+                    & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+                autotmp = autotmp + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
+                    & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+                sponautotmp = sponautotmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
+                    & in(curpair*2).Cspikes{i} < sponend));
+            end
+                    
+                fauto(idx).bins(k+extrasteps+1) = autotmp;
+                fautospon(end+1) = sponautotmp;                
+                
         end        
         
     end % End of female duet syllables
+    
+    
     
     % SOLO Syllables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     for j = 1:length(msolosyls{curpair}) % Male solo syllables
