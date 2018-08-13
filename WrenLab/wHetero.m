@@ -163,6 +163,10 @@ end % curpair (cycle through spons)
     out.fspon = fspon;
     out.malbin = malbin;
     out.fembin = fembin;
+    
+    out.mautospon = mautospon;
+    out.malautobin = malautobin;
+
 
     out.msolospon = msolospon;
     out.fsolospon = fsolospon;
@@ -174,6 +178,8 @@ end % curpair (cycle through spons)
     
     guessfspon = sum(fspon) / (numsteps+extrasteps);
     guessmspon = sum(mspon) / (numsteps+extrasteps);
+    
+    figure(4); clf; plot(degreebase, out.malautobin, '*-b');
     
     figure(1); clf; 
         subplot(121); plot(degreebase, out.fembin, '*-m'); hold on;
