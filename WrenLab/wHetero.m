@@ -176,6 +176,13 @@ end % curpair (cycle through spons)
             plot([0 360], [guessfspon/max(out.fembin), guessfspon/max(out.fembin)], 'r-');
             plot([0 360], [guessmspon/max(out.malbin), guessmspon/max(out.malbin)], 'c-');
             
+    figure(3); clf; 
+        subplot(121); plot(degreebase, out.femsolobin, '*-m'); hold on;
+            plot([0 0], [1 140], 'k-'); plot([360 360], [1 140], 'k-');
+            plot([0 360], [guessfspon, guessfspon], 'r-');
+        subplot(122); plot(degreebase, out.malsolobin, '*-b'); hold on;   
+            plot([0 0], [1 180], 'k-'); plot([360 360], [1 180], 'k-'); 
+            plot([0 360], [guessmspon, guessmspon], 'c-');
             
             
 allsteps = length(f(1).bins);
