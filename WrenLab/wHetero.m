@@ -5,63 +5,82 @@ function out = wHetero(in, padding)
 % load ChronicCompleat2017p.mat (OLD)
 % load ChronicCompleat2018a.mat (Current as of 4-Aug-2018)
 
-% 'pad' is a critical variable - it is the shift in the window around the
-% clicked boundaries of the syllables for the calculation of RS. 
-% The boundaries of each syllable are used for this analysis. This is
-% inherently problematic as we expect pre-motor activity in awake animals to occur PRIOR to
-% the sound and auditory activity in urethane-anesthetized animals to occur AFTER the sound.
-% We are comfortable with using a value of '0' it is a rather unbiased. Change
-% the value of padding in seconds (e.g. 0.020 or -0.030) to look at the effects on the results.
-pad = 0.000; 
+%% Setup
 
+% pad = 0.000; 
 % analpad = 0.050;
-numsteps = 20;
-extrasteps = 10;
 
-degreestep = 360 / numsteps;
-degreebase = -extrasteps*degreestep:degreestep:numsteps*degreestep+degreestep*(extrasteps-1);
+% How many bins do we want for our cycle? numsteps is into 360 degrees
+    numsteps = 20;
+    extrasteps = 10;
+
+% Set up the degrees
+    degreestep = 360 / numsteps;
+    degreebase = -extrasteps*degreestep:degreestep:numsteps*degreestep+degreestep*(extrasteps-1);
 
 % The user can specify the padding via an argin for convenience.
 if nargin == 2; pad = padding; end
 
+% These are our descriptions of the syllables
+
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData;
 
+% Initialize the bins for each segment of the cycle (and beyond!)
     fembin = zeros(1, numsteps+(2*extrasteps));
     malbin = zeros(1, numsteps+(2*extrasteps));
-    malautobin = malbin;
+
+    malautobin = malbin; femautobin = malbin;
     femsolobin = fembin; malsolobin = malbin;
-    f(1).bins = fembin;
-    m(1).bins = malbin;
-    mauto(1).bins = malbin;
+    
+    f(1).bins = fembin; m(1).bins = malbin;
+    fsolo(1).bins = fembin; msolo(1).bins = malbin;
+    mauto(1).bins = malbin; fauto(1).bins = fembin;
+
     mspon = []; fspon = []; msolospon = []; fsolospon = [];
     mautospon = []; fautospon = [];    
-    fsolo(1).bins = fembin;
-    msolo(1).bins = malbin;
 
+
+    
+%% Cycle through each pair    
 for curpair = 1:length(spon) % Cycle for each pair
     
-    % DUET Syllables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    for j = 1:length(mduetsyls{curpair}) % Male duet syllables
+% DUET MALE Syllables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    for j = 1:length(mduetsyls{curpair}) % For each male duet syllable
         
-        idx = length(f)+1;
-        cursylstart = in(curpair*2).syl(mduetsyls{curpair}(j)).tim(1);
-        cursylend = in(curpair*2).syl(mduetsyls{curpair}(j)).tim(2);
-        curdur = cursylend - cursylstart;
-        curstepdur = curdur / numsteps;
+        idx = length(f)+1; % Add into the next entry in the structure
+        cursylstart = in(curpair*2).syl(mduetsyls{curpair}(j)).tim(1); % Start time of current syllable
+        cursylend = in(curpair*2).syl(mduetsyls{curpair}(j)).tim(2); % End time of current syllable
+        curdur = cursylend - cursylstart; % Duration of the entire syllable
+        curstepdur = curdur / numsteps; % Duration of our segment (normalizes to 360 degrees)
         
+
+        % Cycle through each segment
         for k = -extrasteps:numsteps+extrasteps-1
-            tmp = 0; spontmp = 0; autotmp = 0; sponautotmp = 0;
-            sponstart = spon(1,curpair) + ((abs(spon(1,curpair) - spon(2,curpair)) - curstepdur) * rand);
-            sponend = sponstart + curstepdur;
-            for i=1:4 % 4 electrodes in a tetrode always
+            
+            tmp = 0; spontmp = 0; autotmp = 0; sponautotmp = 0; 
+            % This picks a random window within the spontaneous window with
+            % the same duration as the syllable
+                sponstart = spon(1,curpair) + ((abs(spon(1,curpair) - spon(2,curpair)) - curstepdur) * rand);
+                sponend = sponstart + curstepdur;
+            
+            % HETEROGENOUS (male syllables, female spikes)    
+            for i=1:4 % 4 electrodes in a tetrode always (CHRONIC DATA ONLY)
+                % Simply sum up the number of spikes in the window.
+                % fembin is the sum of all (across duets) 
                 fembin(k+extrasteps+1) = fembin(k+extrasteps+1) + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
                     & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+                % Redundant, but tmp is data from each duet only (resets between duets)
                 tmp = tmp + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
                     & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+                % Same but for spontaneous.
                 spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
                     & in(curpair*2).Cspikes{i} < sponend));
             end
             
+                f(idx).bins(k+extrasteps+1) = tmp;
+                fspon(end+1) = spontmp;
+            
+            % AUTOGENOUS (male syllables, male spikes)
             for i=1:4 % 4 electrodes in a tetrode always
                 malautobin(k+extrasteps+1) = malautobin(k+extrasteps+1) + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
                     & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
@@ -70,14 +89,15 @@ for curpair = 1:length(spon) % Cycle for each pair
                 sponautotmp = sponautotmp + length(find(in((curpair*2)-1).Cspikes{i} > sponstart ...
                     & in((curpair*2)-1).Cspikes{i} < sponend));
             end
-            m(idx).bins(k+extrasteps+1) = tmp;
-            mspon(end+1) = spontmp;
-            mauto(idx).bins(k+extrasteps+1) = autotmp;
-            mautospon(end+1) = sponautotmp;
+                    
+                mauto(idx).bins(k+extrasteps+1) = autotmp;
+                mautospon(end+1) = sponautotmp;
+
         end        
         
     end % End of male duet syllables
         
+% DUET FEMALE Syllables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     for j = 1:length(fduetsyls{curpair}) % Female duet syllables
         
         idx = length(m)+1;
