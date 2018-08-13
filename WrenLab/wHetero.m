@@ -1,4 +1,4 @@
-function out = wHetero(in, padding)
+function out = wHetero(in, numsteps)
 % Usage: Calculates response strength to solo and duet syllables.
 % Relies on rs, a nested function below, to calculate Response Strength.
 % Load the Chronic data structure first:
@@ -11,8 +11,15 @@ function out = wHetero(in, padding)
 % analpad = 0.050;
 
 % How many bins do we want for our cycle? numsteps is into 360 degrees
+
+if nargin == 1
     numsteps = 20;
     extrasteps = 10;
+end
+if nargin == 2
+    extrasteps = floor(numsteps/2);
+end
+
 
 % Set up the degrees
     degreestep = 360 / numsteps;
