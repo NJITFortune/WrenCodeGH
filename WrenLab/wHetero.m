@@ -31,7 +31,9 @@ if nargin == 2; pad = padding; end
     femsolobin = fembin; malsolobin = malbin;
     f(1).bins = fembin;
     m(1).bins = malbin;
+    mauto(1).bins = malbin;
     mspon = []; fspon = []; msolospon = []; fsolospon = [];
+    mautospon = []; fautospon = [];    
     fsolo(1).bins = fembin;
     msolo(1).bins = malbin;
 
@@ -47,7 +49,7 @@ for curpair = 1:length(spon) % Cycle for each pair
         curstepdur = curdur / numsteps;
         
         for k = -extrasteps:numsteps+extrasteps-1
-            tmp = 0; spontmp = 0;
+            tmp = 0; spontmp = 0; autotmp = 0; sponautotmp = 0;
             sponstart = spon(1,curpair) + ((abs(spon(1,curpair) - spon(2,curpair)) - curstepdur) * rand);
             sponend = sponstart + curstepdur;
             for i=1:4 % 4 electrodes in a tetrode always
@@ -58,8 +60,19 @@ for curpair = 1:length(spon) % Cycle for each pair
                 spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
                     & in(curpair*2).Cspikes{i} < sponend));
             end
-            f(idx).bins(k+extrasteps+1) = tmp;
-            fspon(end+1) = spontmp;
+            
+            for i=1:4 % 4 electrodes in a tetrode always
+                malautobin(k+extrasteps+1) = malautobin(k+extrasteps+1) + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
+                    & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+                autotmp = autotmp + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
+                    & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+                sponautotmp = sponautotmp + length(find(in((curpair*2)-1).Cspikes{i} > sponstart ...
+                    & in((curpair*2)-1).Cspikes{i} < sponend));
+            end
+            m(idx).bins(k+extrasteps+1) = tmp;
+            mspon(end+1) = spontmp;
+            mauto(idx).bins(k+extrasteps+1) = autotmp;
+            mautospon(end+1) = sponautotmp;
         end        
         
     end % End of male duet syllables
@@ -155,6 +168,8 @@ end % curpair (cycle through spons)
     out.fsolospon = fsolospon;
     out.malsolobin = malsolobin;
     out.femsolobin = femsolobin;
+    
+    out.mauto
     
     
     guessfspon = sum(fspon) / (numsteps+extrasteps);
