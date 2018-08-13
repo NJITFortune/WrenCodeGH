@@ -151,6 +151,12 @@ end % curpair (cycle through spons)
     out.malbin = malbin;
     out.fembin = fembin;
 
+    out.msolospon = msolospon;
+    out.fsolospon = fsolospon;
+    out.malsolobin = malsolobin;
+    out.femsolobin = femsolobin;
+    
+    
     guessfspon = sum(fspon) / (numsteps+extrasteps);
     guessmspon = sum(mspon) / (numsteps+extrasteps);
     
