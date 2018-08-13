@@ -179,8 +179,9 @@ end % curpair (cycle through spons)
     guessfspon = sum(fspon) / (numsteps+extrasteps);
     guessmspon = sum(mspon) / (numsteps+extrasteps);
     
-    figure(4); clf; plot(degreebase, out.malautobin, '*-b');
-    
+    figure(4); clf; plot(degreebase, out.malautobin, '*-b'); hold on; 
+                plot([0 0], [1 140], 'k-'); plot([360 360], [1 140], 'k-');
+
     figure(1); clf; 
         subplot(121); plot(degreebase, out.fembin, '*-m'); hold on;
             plot([0 0], [1 140], 'k-'); plot([360 360], [1 140], 'k-');
@@ -207,23 +208,23 @@ end % curpair (cycle through spons)
             
             
 allsteps = length(f(1).bins);
-for jj = 1:allsteps     
-    for kk = 2:length(f)
-        z(kk-1) = f(kk).bins(jj);
-    end        
-    out.medianf(jj) = median(z); 
-    out.stdf(jj) = std(z);
-    out.modef(jj) = mode(z);
-end
-allsteps = length(m(1).bins);
-for jj = 1:allsteps     
-    for kk = 2:length(m)
-        z(kk-1) = m(kk).bins(jj);
-    end        
-    out.medianm(jj) = median(z); 
-    out.stdm(jj) = std(z);
-    out.modem(jj) = mode(z);
-end
+% for jj = 1:allsteps     
+%     for kk = 2:length(f)
+%         z(kk-1) = f(kk).bins(jj);
+%     end        
+%     out.medianf(jj) = median(z); 
+%     out.stdf(jj) = std(z);
+%     out.modef(jj) = mode(z);
+% end
+% allsteps = length(m(1).bins);
+% for jj = 1:allsteps     
+%     for kk = 2:length(m)
+%         z(kk-1) = m(kk).bins(jj);
+%     end        
+%     out.medianm(jj) = median(z); 
+%     out.stdm(jj) = std(z);
+%     out.modem(jj) = mode(z);
+% end
 
 
 % figure(2); clf;
