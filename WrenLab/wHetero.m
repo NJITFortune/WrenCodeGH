@@ -239,7 +239,7 @@ end % curpair (cycle through spons)
             plot([0 360], [guessfspon/max(out.fembin), guessfspon/max(out.fembin)], 'r-');
             plot([0 360], [guessmspon/max(out.malbin), guessmspon/max(out.malbin)], 'c-');
             
-    figure(3); clf; 
+    figure(3); clf; % Separate plots for AUTOGENOUS
         subplot(121); plot(degreebase, out.fautobin, '*-m'); hold on;
             plot([0, 0], [1, max(out.fautobin)], 'k-'); plot([360, 360], [1, max(out.fautobin)], 'k-');
             plot([0 360], [guessfspon, guessfspon], 'r-');
@@ -247,6 +247,17 @@ end % curpair (cycle through spons)
         subplot(122); plot(degreebase, out.malautobin, '*-b'); hold on;   
             plot([0 0], [1 max(out.malautobin)], 'k-'); plot([360 360], [1 max(out.malautobin)], 'k-'); 
             plot([0 360], [guessmspon, guessmspon], 'c-');
+            
+    figure(4); clf; % Single plot for AUTOGENOUS
+            plot(degreebase, out.fautobin/max(out.fautobin), '*-m'); 
+            hold on;
+            plot(degreebase, out.malautobin/max(out.malautobin), '*-b');
+
+            plot([0, 0], [0, 1], 'k-'); plot([360 360], [0 1], 'k-');
+            
+            plot([0 360], [guessfspon/max(out.fautobin), guessfspon/max(out.fautobin)], 'r-');
+            plot([0 360], [guessmspon/max(out.malautobin), guessmspon/max(out.malautobin)], 'c-');
+
             
             
 allsteps = length(f(1).bins);
