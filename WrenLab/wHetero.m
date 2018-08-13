@@ -7,9 +7,6 @@ function out = wHetero(in, numsteps)
 
 %% Setup
 
-% pad = 0.000; 
-% analpad = 0.050;
-
 % How many bins do we want for our cycle? numsteps is into 360 degrees
 
 if nargin == 1
@@ -23,9 +20,6 @@ end
 % Set up the degrees
     degreestep = 360 / numsteps;
     degreebase = -extrasteps*degreestep:degreestep:numsteps*degreestep+degreestep*(extrasteps-1);
-
-% The user can specify the padding via an argin for convenience.
-if nargin == 2; pad = padding; end
 
 % These are our descriptions of the syllables
 
