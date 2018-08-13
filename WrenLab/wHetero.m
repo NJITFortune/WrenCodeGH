@@ -28,6 +28,7 @@ if nargin == 2; pad = padding; end
 
     fembin = zeros(1, numsteps+(2*extrasteps));
     malbin = zeros(1, numsteps+(2*extrasteps));
+    malautobin = malbin;
     femsolobin = fembin; malsolobin = malbin;
     f(1).bins = fembin;
     m(1).bins = malbin;
