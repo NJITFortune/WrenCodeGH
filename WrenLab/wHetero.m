@@ -15,8 +15,8 @@ function out = wHetero(in, padding)
 pad = 0.000; 
 
 % analpad = 0.050;
-numsteps = 20;
-extrasteps = 10;
+numsteps = 10;
+extrasteps = 5;
 
 degreestep = 360 / numsteps;
 degreebase = -extrasteps*degreestep:degreestep:numsteps*degreestep+degreestep*(extrasteps-1);
