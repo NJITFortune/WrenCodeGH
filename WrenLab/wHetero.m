@@ -174,7 +174,6 @@ end % curpair (cycle through spons)
     out.malsolobin = malsolobin;
     out.femsolobin = femsolobin;
     
-    out.mauto
     
     
     guessfspon = sum(fspon) / (numsteps+extrasteps);
