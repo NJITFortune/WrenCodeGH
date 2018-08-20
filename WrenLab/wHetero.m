@@ -37,7 +37,10 @@ function out = wHetero(in)
     fheterodeg(1).bins = femheterodegbins; 
     mheterodeg(1).bins = malheterodegbins;
     
-    fheterotim(1).bins = zeros(1,prepostwindows); 
+    fPREheterotim(1).bins = zeros(1,prepostwindows); 
+    fPOSTheterotim(1).bins = zeros(1,prepostwindows); 
+    mPREheterotim(1).bins = zeros(1,prepostwindows); 
+    mPOSTheterotim(1).bins = zeros(1,prepostwindows); 
     mheterotim(1).bins = zeros(1,prepostwindows);
     malautotimbin = zeros(1,prepostwindows); 
     femautotimbin = zeros(1,prepostwindows); 
@@ -58,9 +61,11 @@ function out = wHetero(in)
     fautospondeg = [];    
     mautospontim = []; 
     fautospontim = [];    
-    femtimbin = zeros(1,prepostwindows);
-    maltimbin = zeros(1,prepostwindows);
-    
+    femPREtimbin = zeros(1,prepostwindows);
+    femPOSTtimbin = zeros(1,prepostwindows);
+    malPREtimbin = zeros(1,prepostwindows);
+    malPOSTtimbin = zeros(1,prepostwindows);
+
 
 
     
@@ -118,7 +123,7 @@ for curpair = 1:length(spon) % Cycle for each pair
         
         % Cycle through time-based analysis  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         for k = 1:prepostwindows % 20 segments (10 before and 10 after) around start and end syllables
-            tmp = 0; spontmp = 0; autotmp = 0; sponautotmp = 0; 
+            tmp = 0; tmp1 = 0; spontmp = 0; autotmp = 0; sponautotmp = 0; 
             % This picks a random window within the spontaneous window with
             % the same duration as the syllable
                 sponstart = spon(1,curpair) + ((abs(spon(1,curpair) - spon(2,curpair)) - windowdur) * rand);
@@ -129,15 +134,19 @@ for curpair = 1:length(spon) % Cycle for each pair
                 % Simply sum up the number of spikes in the window.
                 % fembin is the sum of all (across duets) 
                 tmp = tmp + length(find(in(curpair*2).Cspikes{i} > cursylstart-(prepostwindows*(windowdur/2))+windowdur*(k-1) ...
-                    & in(curpair*2).Cspikes{i} < cursylstart-(prepostwindows*(windowdur/2))+windowdur*k));
+                    & in(curpair*2).Cspikes{i} < cursylstart-(prepostwindows*(windowdur/2))+windowdur*k));                
+                femPREtimbin(k) = femPREtimbin(k) + tmp;
                 
-                femtimbin(k) = femtimbin(k) + tmp;
+                tmp1 = tmp1 + length(find(in(curpair*2).Cspikes{i} > cursylend-(prepostwindows*(windowdur/2))+windowdur*(k-1) ...
+                    & in(curpair*2).Cspikes{i} < cursylend-(prepostwindows*(windowdur/2))+windowdur*k));                
+                femPOSTtimbin(k) = femPOSTtimbin(k) + tmp1;
                
                 spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
                     & in(curpair*2).Cspikes{i} < sponend));
             end
             
-                fheterotim(idx).bins(k) = tmp;
+                fPREheterotim(idx).bins(k) = tmp;
+                fPOSTheterotim(idx).bins(k) = tmp1;
                 fspontim(end+1) = spontmp;
             
             % AUTOGENOUS (male syllables, male spikes)
@@ -204,7 +213,7 @@ for curpair = 1:length(spon) % Cycle for each pair
         
         % Cycle through time-based analysis  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         for k = 1:prepostwindows % 20 segments (10 before and 10 after) around start and end syllables
-            tmp = 0; spontmp = 0; autotmp = 0; sponautotmp = 0; 
+            tmp = 0; tmp1 = 0; spontmp = 0; autotmp = 0; sponautotmp = 0; 
             % This picks a random window within the spontaneous window with
             % the same duration as the syllable
                 sponstart = spon(1,curpair) + ((abs(spon(1,curpair) - spon(2,curpair)) - windowdur) * rand);
@@ -216,14 +225,18 @@ for curpair = 1:length(spon) % Cycle for each pair
                 % fembin is the sum of all (across duets) 
                 tmp = tmp + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart-(prepostwindows*(windowdur/2))+windowdur*(k-1) ...
                     & in((curpair*2)-1).Cspikes{i} < cursylstart-(prepostwindows*(windowdur/2))+windowdur*k));
+                malPREtimbin(k) = malPREtimbin(k) + tmp;
+
+                tmp1 = tmp1 + length(find(in((curpair*2)-1).Cspikes{i} > cursylend-(prepostwindows*(windowdur/2))+windowdur*(k-1) ...
+                    & in((curpair*2)-1).Cspikes{i} < cursylend-(prepostwindows*(windowdur/2))+windowdur*k));
+                malPOSTtimbin(k) = malPOSTtimbin(k) + tmp;
                 
-                maltimbin(k) = maltimbin(k) + tmp;
-               
                 spontmp = spontmp + length(find(in((curpair*2)-1).Cspikes{i} > sponstart ...
                     & in((curpair*2)-1).Cspikes{i} < sponend));
             end
             
-                mheterotim(idx).bins(k) = tmp;
+                mPREheterotim(idx).bins(k) = tmp;
+                mPOSTheterotim(idx).bins(k) = tmp1;
                 mspontim(end+1) = spontmp;
             
             % AUTOGENOUS (female syllables, female spikes)
@@ -310,10 +323,15 @@ end % curpair (cycle through spons)
     out.mspontim = mspontim;
     out.fspondeg = fspontim;
     
-    out.malbintim = maltimbin;
-    out.fembintim = femtimbin;
-            figure(5); clf; plot(windowtims, out.fembintim, '*-m');
-            hold on; plot(windowtims, out.malbintim, '*-b');
+    out.malPREbintim = malPREtimbin;
+    out.femPREbintim = femPREtimbin;
+            figure(5); clf; plot(windowtims, out.femPREbintim, '*-m');
+            hold on; plot(windowtims, out.malPREbintim, '*-b');
+            
+    out.malPOSTbintim = malPOSTtimbin;
+    out.femPOSTbintim = femPOSTtimbin;
+            figure(6); clf; plot(windowtims, out.femPOSTbintim, '*-m');
+            hold on; plot(windowtims, out.malPOSTbintim, '*-b');
     
     out.mautospondeg = mautospondeg;
     out.malautobindeg = malautodegbin;
