@@ -17,8 +17,8 @@ function out = wHetero(in)
     degreebase = -extrasteps*degreestep:degreestep:numsteps*degreestep+degreestep*(extrasteps-1);
 
 % For time analysis    
-    windowdur = 0.005; % 5 millisecond window (meaning +/- 50 msec from boundary)
-    prepostwindows = 20; % 10 before and 10 after
+    windowdur = 0.010; % 5 millisecond window (meaning +/- 50 msec from boundary)
+    prepostwindows = 10; % half before and half after
         
 % These are our descriptions of the syllables
 
