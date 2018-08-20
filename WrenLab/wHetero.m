@@ -309,7 +309,8 @@ end % curpair (cycle through spons)
     
     out.malbintim = maltimbin;
     out.fembintim = femtimbin;
-            figure(5); plot(windowtims, out.fembintim, '*-m');
+            figure(5); clf; plot(windowtims, out.fembintim, '*-m');
+            hold on; ot(windowtims, out.malbintim, '*-b');
     
     out.mautospondeg = mautospondeg;
     out.malautobindeg = malautodegbin;
