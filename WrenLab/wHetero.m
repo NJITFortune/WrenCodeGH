@@ -296,9 +296,9 @@ end % curpair (cycle through spons)
             plot([0, 360], [guessmspon, guessmspon], 'c-');
             
     figure(2); clf; % Single plot for HETEROGENOUS
-            plot(degreebase, out.fembin/max(out.fembin), '*-m'); 
+            plot(degreebase, out.fembindeg/max(out.fembindeg), '*-m'); 
             hold on;
-            plot(degreebase, out.malbin/max(out.malbin), '*-b');
+            plot(degreebase, out.malbindeg/max(out.malbindeg), '*-b');
 
             plot([0, 0], [0, 1], 'k-'); plot([360 360], [0 1], 'k-');
             
