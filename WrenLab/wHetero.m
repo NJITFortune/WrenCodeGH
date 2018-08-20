@@ -268,8 +268,8 @@ end % curpair (cycle through spons)
 
     out.mspontim = mspontim;
     out.fspondeg = fspontim;
-    out.malbintim = maldegreebin;
-    out.fembintim = femdegreebin;
+    out.malbintim = maltimbin;
+    out.fembintim = femtimbin;
     
     out.mautospondeg = mautospondeg;
     out.malautobindeg = malautodegbin;
