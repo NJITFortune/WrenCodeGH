@@ -137,10 +137,11 @@ for curpair = 1:length(spon) % Cycle for each pair
             
             % AUTOGENOUS (male syllables, male spikes)
             for i=1:4 % 4 electrodes in a tetrode always
-                malautodegbin(k) = malautodegbin(k) + length(find(in((curpair*2)-1).Cspikes{i} > (cursylstart-0.050) + windowdur*(k-1) ...
-                    & in((curpair*2)-1).Cspikes{i} < (cursylstart-0.050) + curstepdur*k));
-                autotmp = autotmp + length(find(in((curpair*2)-1).Cspikes{i} > (cursylstart-0.050) + curstepdur*(k-1) ...
-                    & in((curpair*2)-1).Cspikes{i} < (cursylstart-0.050) + curstepdur*k));
+                autotmp = autotmp + length(find(in((curpair*2)-1).Cspikes{i} > (cursylstart-(prepostwindows*windowdur/2)) + curstepdur*(k-1) ...
+                    & in((curpair*2)-1).Cspikes{i} < (cursylstart-(prepostwindows*windowdur/2)) + curstepdur*k));
+
+                malautodegbin(k) = malautodegbin(k) + autotmp;
+                
                 sponautotmp = sponautotmp + length(find(in((curpair*2)-1).Cspikes{i} > sponstart ...
                     & in((curpair*2)-1).Cspikes{i} < sponend));
             end
