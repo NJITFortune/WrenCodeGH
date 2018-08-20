@@ -70,7 +70,6 @@ for curpair = 1:length(spon) % Cycle for each pair
         cursylend = in(curpair*2).syl(mduetsyls{curpair}(j)).tim(2); % End time of current syllable
         curdur = cursylend - cursylstart; % Duration of the entire syllable
         curstepdur = curdur / numsteps; % Duration of our segment (normalizes to 360 degrees)
-        
 
         % Cycle through each degree segment  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         for k = -extrasteps:numsteps+extrasteps-1
@@ -84,13 +83,11 @@ for curpair = 1:length(spon) % Cycle for each pair
             % HETEROGENOUS (male syllables, female spikes)    
             for i=1:4 % 4 electrodes in a tetrode always (CHRONIC DATA ONLY)
                 % Simply sum up the number of spikes in the window.
-                % fembin is the sum of all (across duets) 
-                femheterodegbins(k+extrasteps+1) = femheterodegbins(k+extrasteps+1) + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
-                    & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
-                % Redundant, but tmp is data from each duet only (resets between duets)
                 tmp = tmp + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
                     & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
-                % Same but for spontaneous.
+                
+                femheterodegbins(k+extrasteps+1) = femheterodegbins(k+extrasteps+1) + tmp;
+                
                 spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
                     & in(curpair*2).Cspikes{i} < sponend));
             end
@@ -100,10 +97,11 @@ for curpair = 1:length(spon) % Cycle for each pair
             
             % AUTOGENOUS (male syllables, male spikes)
             for i=1:4 % 4 electrodes in a tetrode always
-                malautodegbin(k+extrasteps+1) = malautodegbin(k+extrasteps+1) + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
-                    & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
                 autotmp = autotmp + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
                     & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
+                
+                malautodegbin(k+extrasteps+1) = malautodegbin(k+extrasteps+1) + autotmp;
+                
                 sponautotmp = sponautotmp + length(find(in((curpair*2)-1).Cspikes{i} > sponstart ...
                     & in((curpair*2)-1).Cspikes{i} < sponend));
             end
@@ -114,7 +112,7 @@ for curpair = 1:length(spon) % Cycle for each pair
         end  % END OF DEGREE ANALYSIS
         
         % Cycle through time-based analysis  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        for k = 1:20 % 20 segments (10 before and 10 after) around start and end syllables
+        for k = 1:prepostwindows % 20 segments (10 before and 10 after) around start and end syllables
             tmp = 0; spontmp = 0; autotmp = 0; sponautotmp = 0; 
             % This picks a random window within the spontaneous window with
             % the same duration as the syllable
@@ -125,10 +123,10 @@ for curpair = 1:length(spon) % Cycle for each pair
             for i=1:4 % 4 electrodes in a tetrode always (CHRONIC DATA ONLY)
                 % Simply sum up the number of spikes in the window.
                 % fembin is the sum of all (across duets) 
-                femtimbin(k) = femtimbin(k) + length(find(in(curpair*2).Cspikes{i} > (cursylstart-0.050) + windowdur*(k-1) ...
-                    & in(curpair*2).Cspikes{i} < (cursylstart-0.050) + windowdur*k));
+                femtimbin(k) = femtimbin(k) + length(find(in(curpair*2).Cspikes{i} > (prepostwindows*windowdur/2) + windowdur*(k-1) ...
+                    & in(curpair*2).Cspikes{i} < (cursylstart-(prepostwindows*windowdur/2)) + windowdur*k));
                 % Redundant, but tmp is data from each duet only (resets between duets)
-                tmp = tmp + length(find(in(curpair*2).Cspikes{i} > (cursylstart-0.050) + windowdur*k ...
+                tmp = tmp + length(find(in(curpair*2).Cspikes{i} > (cursylstart-(prepostwindows*windowdur/2) + windowdur*(k-1) ...
                     & in(curpair*2).Cspikes{i} < (cursylstart-0.050) + windowdur*(k+1)));
                 % Same but for spontaneous.
                 spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
