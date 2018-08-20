@@ -53,6 +53,8 @@ end
     fsolospon = [];
     mautospondeg = []; 
     fautospondeg = [];    
+    mautospontim = []; 
+    fautospontim = [];    
     
     femtimbin = zeros(1,20);
     maltimbin = zeros(1,20);
