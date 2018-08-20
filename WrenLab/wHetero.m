@@ -19,6 +19,7 @@ function out = wHetero(in)
 % For time analysis    
     windowdur = 0.020; % millisecond window (meaning +/- msec from boundary)
     prepostwindows = 21; % half before and half after
+    windowtims = -0.200:0.020:0.200;
         
 % These are our descriptions of the syllables
 
@@ -268,6 +269,7 @@ end % curpair (cycle through spons)
     
     out.malbintim = maltimbin;
     out.fembintim = femtimbin;
+            figure(5); plot(windowtims, out.fembintim, '*-m');
     
     out.mautospondeg = mautospondeg;
     out.malautobindeg = malautodegbin;
