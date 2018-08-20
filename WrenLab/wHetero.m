@@ -18,7 +18,7 @@ function out = wHetero(in)
 
 % For time analysis    
     windowdur = 0.020; % millisecond window (meaning +/- msec from boundary)
-    prepostwindows = 20; % half before and half after
+    prepostwindows = 21; % half before and half after
         
 % These are our descriptions of the syllables
 
