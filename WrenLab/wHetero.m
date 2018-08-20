@@ -184,7 +184,7 @@ for curpair = 1:length(spon) % Cycle for each pair
                 mPREheterotim(idx).bins(k) = tmp;
                 mPOSTheterotim(idx).bins(k) = tmp1;
                 mspontim(end+1) = spontmp;
-            
+        end
         
     end % End of female duet syllables
     
