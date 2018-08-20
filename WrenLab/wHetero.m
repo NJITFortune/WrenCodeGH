@@ -35,8 +35,9 @@ function out = wHetero(in)
     
     fheterodeg(1).bins = femheterodegbins; 
     mheterodeg(1).bins = malheterodegbins;
-    fheterotim(1).bins = femheterodegbins; 
-    mheterotim(1).bins = malheterodegbins;
+    
+    fheterotim(1).bins = zeros(1,prepostwindows); 
+    mheterotim(1).bins = zeros(1,prepostwindows);
 
     fsolo(1).bins = femheterodegbins; 
     msolo(1).bins = malheterodegbins;
@@ -123,8 +124,8 @@ for curpair = 1:length(spon) % Cycle for each pair
             for i=1:4 % 4 electrodes in a tetrode always (CHRONIC DATA ONLY)
                 % Simply sum up the number of spikes in the window.
                 % fembin is the sum of all (across duets) 
-                tmp = tmp + length(find(in(curpair*2).Cspikes{i} > cursylstart-(prepostwindows*windowdur/2)+windowdur*(k-1) ...
-                    & in(curpair*2).Cspikes{i} < cursylstart-(prepostwindows*windowdur/2)+windowdur*k));
+                tmp = tmp + length(find(in(curpair*2).Cspikes{i} > cursylstart-(prepostwindows*(windowdur/2))+windowdur*(k-1) ...
+                    & in(curpair*2).Cspikes{i} < cursylstart-(prepostwindows*(windowdur/2))+windowdur*k));
                 
                 femtimbin(k) = femtimbin(k) + tmp;
                
