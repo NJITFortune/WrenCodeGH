@@ -56,8 +56,8 @@ function out = wHetero(in)
     mautospontim = []; 
     fautospontim = [];    
     
-    femtimbin = zeros(1,20);
-    maltimbin = zeros(1,20);
+    femtimbin = zeros(1,prepostwindows);
+    maltimbin = zeros(1,prepostwindows);
 
     
 %% Cycle through each pair    
@@ -265,6 +265,7 @@ end % curpair (cycle through spons)
 
     out.mspontim = mspontim;
     out.fspondeg = fspontim;
+    
     out.malbintim = maltimbin;
     out.fembintim = femtimbin;
     
