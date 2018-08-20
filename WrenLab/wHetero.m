@@ -51,8 +51,8 @@ end
     
     msolospon = []; 
     fsolospon = [];
-    mautospon = []; 
-    fautospon = [];    
+    mautospondeg = []; 
+    fautospondeg = [];    
     
     femtimbin = zeros(1,20);
     maltimbin = zeros(1,20);
@@ -108,7 +108,7 @@ for curpair = 1:length(spon) % Cycle for each pair
             end
                     
                 mautodeg(idx).bins(k+extrasteps+1) = autotmp;
-                mautospon(end+1) = sponautotmp;
+                mautospondeg(end+1) = sponautotmp;
 
         end  % END OF DEGREE ANALYSIS
         
@@ -148,10 +148,8 @@ for curpair = 1:length(spon) % Cycle for each pair
                     & in((curpair*2)-1).Cspikes{i} < sponend));
             end
                     
-                mautodeg(idx).bins(k) = autotmp;
-                mautospon(end+1) = sponautotmp;
-
-        
+                mautotim(idx).bins(k) = autotmp;
+                mautospontim(end+1) = sponautotmp;
         
         end
         
@@ -197,7 +195,7 @@ for curpair = 1:length(spon) % Cycle for each pair
             end
                     
                 fautodeg(idx).bins(k+extrasteps+1) = autotmp;
-                fautospon(end+1) = sponautotmp;                
+                fautospondeg(end+1) = sponautotmp;                
                 
         end        
         
@@ -261,15 +259,20 @@ for curpair = 1:length(spon) % Cycle for each pair
 end % curpair (cycle through spons)
 
 
-    out.mspon = mspondeg;
-    out.fspon = fspondeg;
-    out.malbin = maldegreebin;
-    out.fembin = femdegreebin;
+    out.mspondeg = mspondeg;
+    out.fspondeg = fspondeg;
+    out.malbindeg = maldegreebin;
+    out.fembindeg = femdegreebin;
+
+    out.mspontim = mspontim;
+    out.fspondeg = fspontim;
+    out.malbintim = maldegreebin;
+    out.fembintim = femdegreebin;
     
-    out.mautospon = mautospon;
-    out.malautobin = malautodegbin;
-    out.fautospon = fautospon;
-    out.fautobin = femautodegbin;
+    out.mautospondeg = mautospondeg;
+    out.malautobindeg = malautodegbin;
+    out.fautospondeg = fautospondeg;
+    out.fautobindeg = femautodegbin;
 
 %     out.msolospon = msolospon;
 %     out.fsolospon = fsolospon;
