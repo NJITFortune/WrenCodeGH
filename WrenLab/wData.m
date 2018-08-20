@@ -63,6 +63,9 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
 
 % 15-16: j170081733 
 
+% This is a special case as the birds sang at the same time for two
+% syllables.  
+
     msolosyls{8} = []; 
     mduetsyls{8} = [3 8];
     fsolosyls{8} = 1; 
