@@ -39,6 +39,8 @@ function out = wHetero(in)
     
     fheterotim(1).bins = zeros(1,prepostwindows); 
     mheterotim(1).bins = zeros(1,prepostwindows);
+    malautotimbin(1).bins = zeros(1,prepostwindows); 
+    femautotimbin(1).bins = zeros(1,prepostwindows); 
 
     fsolo(1).bins = femheterodegbins; 
     msolo(1).bins = malheterodegbins;
@@ -59,7 +61,6 @@ function out = wHetero(in)
     femtimbin = zeros(1,prepostwindows);
     maltimbin = zeros(1,prepostwindows);
     
-    malautotimbin = [];    
 
 
     
