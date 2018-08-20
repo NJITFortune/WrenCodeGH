@@ -36,13 +36,19 @@ end
     
     fheterodeg(1).bins = femdegreebin; 
     mheterodeg(1).bins = maldegreebin;
+    fheterotim(1).bins = femdegreebin; 
+    mheterotim(1).bins = maldegreebin;
+
     fsolo(1).bins = femdegreebin; 
     msolo(1).bins = maldegreebin;
     mautodeg(1).bins = maldegreebin; 
     fautodeg(1).bins = femdegreebin;
 
-    mspon = []; 
-    fspon = []; 
+    mspondeg = []; 
+    fspondeg = []; 
+    fspontim = [];
+    mspontim = [];
+    
     msolospon = []; 
     fsolospon = [];
     mautospon = []; 
@@ -89,7 +95,7 @@ for curpair = 1:length(spon) % Cycle for each pair
             end
             
                 fheterodeg(idx).bins(k+extrasteps+1) = tmp;
-                fspon(end+1) = spontmp;
+                fspondeg(end+1) = spontmp;
             
             % AUTOGENOUS (male syllables, male spikes)
             for i=1:4 % 4 electrodes in a tetrode always
@@ -119,8 +125,8 @@ for curpair = 1:length(spon) % Cycle for each pair
             for i=1:4 % 4 electrodes in a tetrode always (CHRONIC DATA ONLY)
                 % Simply sum up the number of spikes in the window.
                 % fembin is the sum of all (across duets) 
-                femtimbin(k) = femtimbin(k) + length(find(in(curpair*2).Cspikes{i} > (cursylstart-0.050) + windowdur*k ...
-                    & in(curpair*2).Cspikes{i} < (cursylstart-0.050) + windowdur*(k+1)));
+                femtimbin(k) = femtimbin(k) + length(find(in(curpair*2).Cspikes{i} > (cursylstart-0.050) + windowdur*(k-1) ...
+                    & in(curpair*2).Cspikes{i} < (cursylstart-0.050) + windowdur*k));
                 % Redundant, but tmp is data from each duet only (resets between duets)
                 tmp = tmp + length(find(in(curpair*2).Cspikes{i} > (cursylstart-0.050) + windowdur*k ...
                     & in(curpair*2).Cspikes{i} < (cursylstart-0.050) + windowdur*(k+1)));
@@ -128,6 +134,22 @@ for curpair = 1:length(spon) % Cycle for each pair
                 spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
                     & in(curpair*2).Cspikes{i} < sponend));
             end
+            
+                fheterotim(idx).bins(k) = tmp;
+                fspontim(end+1) = spontmp;
+            
+            % AUTOGENOUS (male syllables, male spikes)
+            for i=1:4 % 4 electrodes in a tetrode always
+                malautodegbin(k) = malautodegbin(k) + length(find(in((curpair*2)-1).Cspikes{i} > (cursylstart-0.050) + windowdur*(k-1) ...
+                    & in((curpair*2)-1).Cspikes{i} < (cursylstart-0.050) + curstepdur*k));
+                autotmp = autotmp + length(find(in((curpair*2)-1).Cspikes{i} > (cursylstart-0.050) + curstepdur*(k-1) ...
+                    & in((curpair*2)-1).Cspikes{i} < (cursylstart-0.050) + curstepdur*k));
+                sponautotmp = sponautotmp + length(find(in((curpair*2)-1).Cspikes{i} > sponstart ...
+                    & in((curpair*2)-1).Cspikes{i} < sponend));
+            end
+                    
+                mautodeg(idx).bins(k) = autotmp;
+                mautospon(end+1) = sponautotmp;
 
         
         
@@ -162,7 +184,7 @@ for curpair = 1:length(spon) % Cycle for each pair
             end
             
                 mheterodeg(idx).bins(k+extrasteps+1) = tmp;
-                mspon(end+1) = spontmp;
+                mspondeg(end+1) = spontmp;
                 
             % AUTOGENOUS (female syllables, female spikes)
             for i=1:4 % 4 electrodes in a tetrode always
@@ -239,8 +261,8 @@ for curpair = 1:length(spon) % Cycle for each pair
 end % curpair (cycle through spons)
 
 
-    out.mspon = mspon;
-    out.fspon = fspon;
+    out.mspon = mspondeg;
+    out.fspon = fspondeg;
     out.malbin = maldegreebin;
     out.fembin = femdegreebin;
     
@@ -255,8 +277,8 @@ end % curpair (cycle through spons)
 %     out.femsolobin = femsolobin;
         
     
-    guessfspon = sum(fspon) / (numsteps+extrasteps);
-    guessmspon = sum(mspon) / (numsteps+extrasteps);
+    guessfspon = sum(fspondeg) / (numsteps+extrasteps);
+    guessmspon = sum(mspondeg) / (numsteps+extrasteps);
     
     figure(1); clf; % Separate plots for HETEROGENOUS
     
