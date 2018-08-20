@@ -63,8 +63,10 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
 
 % 15-16: j170081733 
 
-%     msolosyls{8} = []; 
-%     mduetsyls{8} = [3 8];
-%     fsolosyls{8} = 1; 
-%     fduetsyls{8} = [2 4 5 7 9 10];
-%     spon(:,8) = [-5, 0];
+    msolosyls{8} = []; 
+    mduetsyls{8} = [3 8];
+    fsolosyls{8} = 1; 
+    fduetsyls{8} = [2 4 5 7 9 10];
+    spon(:,8) = [-5, 0];
+    
+    
