@@ -28,11 +28,6 @@ function out = wHetero(in)
 % Initialize the bins for each segment of the cycle (and beyond!)
     femheterodegbins = zeros(1, numsteps+(2*extrasteps));
     malheterodegbins = zeros(1, numsteps+(2*extrasteps));
-
-    malautodegbin = malheterodegbins; 
-    femautodegbin = malheterodegbins;
-    %femsolodegbin = femdegreebin; 
-    %malsolodegbin = maldegreebin;
     
     fheterodeg(1).bins = femheterodegbins; 
     mheterodeg(1).bins = malheterodegbins;
@@ -42,13 +37,9 @@ function out = wHetero(in)
     mPREheterotim(1).bins = zeros(1,prepostwindows); 
     mPOSTheterotim(1).bins = zeros(1,prepostwindows); 
     mheterotim(1).bins = zeros(1,prepostwindows);
-    malautotimbin = zeros(1,prepostwindows); 
-    femautotimbin = zeros(1,prepostwindows); 
     
     fsolo(1).bins = femheterodegbins; 
     msolo(1).bins = malheterodegbins;
-    mautodeg(1).bins = malheterodegbins; 
-    fautodeg(1).bins = femheterodegbins;
 
     mspondeg = []; 
     fspondeg = []; 
@@ -57,10 +48,6 @@ function out = wHetero(in)
     
     msolospon = []; 
     fsolospon = [];
-    mautospondeg = []; 
-    fautospondeg = [];    
-    mautospontim = []; 
-    fautospontim = [];    
     femPREtimbin = zeros(1,prepostwindows);
     femPOSTtimbin = zeros(1,prepostwindows);
     malPREtimbin = zeros(1,prepostwindows);
@@ -105,20 +92,6 @@ for curpair = 1:length(spon) % Cycle for each pair
                 fheterodeg(idx).bins(k+extrasteps+1) = tmp;
                 fspondeg(end+1) = spontmp;
             
-            % AUTOGENOUS (male syllables, male spikes)
-            for i=1:4 % 4 electrodes in a tetrode always
-                autotmp = autotmp + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
-                    & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
-                
-                malautodegbin(k+extrasteps+1) = malautodegbin(k+extrasteps+1) + autotmp;
-                
-                sponautotmp = sponautotmp + length(find(in((curpair*2)-1).Cspikes{i} > sponstart ...
-                    & in((curpair*2)-1).Cspikes{i} < sponend));
-            end
-                    
-                mautodeg(idx).bins(k+extrasteps+1) = autotmp;
-                mautospondeg(end+1) = sponautotmp;
-
         end  % END OF DEGREE ANALYSIS
         
         % Cycle through time-based analysis  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -148,21 +121,7 @@ for curpair = 1:length(spon) % Cycle for each pair
                 fPREheterotim(idx).bins(k) = tmp;
                 fPOSTheterotim(idx).bins(k) = tmp1;
                 fspontim(end+1) = spontmp;
-            
-            % AUTOGENOUS (male syllables, male spikes)
-            for i=1:4 % 4 electrodes in a tetrode always
-                autotmp = autotmp + length(find(in((curpair*2)-1).Cspikes{i} > (cursylstart-(prepostwindows*windowdur/2)) + curstepdur*(k-1) ...
-                    & in((curpair*2)-1).Cspikes{i} < (cursylstart-(prepostwindows*windowdur/2)) + curstepdur*k));
-
-                malautotimbin(k) = malautotimbin(k) + autotmp;
-                
-                sponautotmp = sponautotmp + length(find(in((curpair*2)-1).Cspikes{i} > sponstart ...
-                    & in((curpair*2)-1).Cspikes{i} < sponend));
-            end
                     
-                mautotim(idx).bins(k) = autotmp;
-                mautospontim(end+1) = sponautotmp;
-        
         end
         
         
@@ -195,20 +154,7 @@ for curpair = 1:length(spon) % Cycle for each pair
             
                 mheterodeg(idx).bins(k+extrasteps+1) = tmp;
                 mspondeg(end+1) = spontmp;
-                
-            % AUTOGENOUS (female syllables, female spikes)
-            for i=1:4 % 4 electrodes in a tetrode always
-                femautodegbin(k+extrasteps+1) = femautodegbin(k+extrasteps+1) + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
-                    & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
-                autotmp = autotmp + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
-                    & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
-                sponautotmp = sponautotmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
-                    & in(curpair*2).Cspikes{i} < sponend));
-            end
-                    
-                fautodeg(idx).bins(k+extrasteps+1) = autotmp;
-                fautospondeg(end+1) = sponautotmp;                
-                
+                                
         end        
         
         % Cycle through time-based analysis  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -239,21 +185,6 @@ for curpair = 1:length(spon) % Cycle for each pair
                 mPOSTheterotim(idx).bins(k) = tmp1;
                 mspontim(end+1) = spontmp;
             
-            % AUTOGENOUS (female syllables, female spikes)
-            for i=1:4 % 4 electrodes in a tetrode always
-                autotmp = autotmp + length(find(in(curpair*2).Cspikes{i} > (cursylstart-(prepostwindows*windowdur/2)) + curstepdur*(k-1) ...
-                    & in(curpair*2).Cspikes{i} < (cursylstart-(prepostwindows*windowdur/2)) + curstepdur*k));
-
-                femautotimbin(k) = femautotimbin(k) + autotmp;
-                
-                sponautotmp = sponautotmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
-                    & in(curpair*2).Cspikes{i} < sponend));
-            end
-                    
-                fautotim(idx).bins(k) = autotmp;
-                fautospontim(end+1) = sponautotmp;
-        
-        end
         
     end % End of female duet syllables
     
@@ -333,11 +264,6 @@ end % curpair (cycle through spons)
             figure(6); clf; plot(windowtims, out.femPOSTbintim, '*-m');
             hold on; plot(windowtims, out.malPOSTbintim, '*-b');
     
-    out.mautospondeg = mautospondeg;
-    out.malautobindeg = malautodegbin;
-    out.fautospondeg = fautospondeg;
-    out.fautobindeg = femautodegbin;
-
 %     out.msolospon = msolospon;
 %     out.fsolospon = fsolospon;
 %     out.malsolobin = malsolobin;
@@ -366,28 +292,7 @@ end % curpair (cycle through spons)
             
             plot([0 360], [guessfspon/max(out.fembindeg), guessfspon/max(out.fembindeg)], 'r-');
             plot([0 360], [guessmspon/max(out.malbindeg), guessmspon/max(out.malbindeg)], 'c-');
-            
-    figure(3); clf; % Separate plots for AUTOGENOUS
-        subplot(121); plot(degreebase, out.fautobindeg, '*-m'); hold on;
-            plot([0, 0], [1, max(out.fautobindeg)], 'k-'); plot([360, 360], [1, max(out.fautobindeg)], 'k-');
-            plot([0 360], [guessfspon, guessfspon], 'r-');
-            
-        subplot(122); plot(degreebase, out.malautobindeg, '*-b'); hold on;   
-            plot([0 0], [1 max(out.malautobindeg)], 'k-'); plot([360 360], [1 max(out.malautobindeg)], 'k-'); 
-            plot([0 360], [guessmspon, guessmspon], 'c-');
-            
-    figure(4); clf; % Single plot for AUTOGENOUS
-            plot(degreebase, out.fautobindeg/max(out.fautobindeg), '*-m'); 
-            hold on;
-            plot(degreebase, out.malautobindeg/max(out.malautobindeg), '*-b');
-
-            plot([0, 0], [0, 1], 'k-'); plot([360 360], [0 1], 'k-');
-            
-            plot([0 360], [guessfspon/max(out.fautobindeg), guessfspon/max(out.fautobindeg)], 'r-');
-            plot([0 360], [guessmspon/max(out.malautobindeg), guessmspon/max(out.malautobindeg)], 'c-');
-
-            
-            
+                        
 allsteps = length(fheterodeg(1).bins);
 % for jj = 1:allsteps     
 %     for kk = 2:length(f)
