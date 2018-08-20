@@ -229,7 +229,7 @@ for curpair = 1:length(spon) % Cycle for each pair
 
                 tmp1 = tmp1 + length(find(in((curpair*2)-1).Cspikes{i} > cursylend-(prepostwindows*(windowdur/2))+windowdur*(k-1) ...
                     & in((curpair*2)-1).Cspikes{i} < cursylend-(prepostwindows*(windowdur/2))+windowdur*k));
-                malPOSTtimbin(k) = malPOSTtimbin(k) + tmp;
+                malPOSTtimbin(k) = malPOSTtimbin(k) + tmp1;
                 
                 spontmp = spontmp + length(find(in((curpair*2)-1).Cspikes{i} > sponstart ...
                     & in((curpair*2)-1).Cspikes{i} < sponend));
