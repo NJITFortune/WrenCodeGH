@@ -1,4 +1,4 @@
-function out = wHetero(in, numsteps)
+function out = wHetero(in)
 % Usage: Calculates response strength to solo and duet syllables.
 % Relies on rs, a nested function below, to calculate Response Strength.
 % Load the Chronic data structure first:
@@ -9,40 +9,39 @@ function out = wHetero(in, numsteps)
 
 % How many bins do we want for our cycle? numsteps is into 360 degrees
 
-if nargin == 1
     numsteps = 20;
     extrasteps = 10;
-end
-if nargin == 2
-    extrasteps = floor(numsteps/2);
-end
 
 % Set up the degrees
     degreestep = 360 / numsteps;
     degreebase = -extrasteps*degreestep:degreestep:numsteps*degreestep+degreestep*(extrasteps-1);
 
+% For time analysis    
+    windowdur = 0.005; % 5 millisecond window (meaning +/- 50 msec from boundary)
+    prepostwindows = 20; % 10 before and 10 after
+        
 % These are our descriptions of the syllables
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData;
 
 % Initialize the bins for each segment of the cycle (and beyond!)
-    femdegreebin = zeros(1, numsteps+(2*extrasteps));
-    maldegreebin = zeros(1, numsteps+(2*extrasteps));
+    femheterodegbins = zeros(1, numsteps+(2*extrasteps));
+    malheterodegbins = zeros(1, numsteps+(2*extrasteps));
 
-    malautodegbin = maldegreebin; 
-    femautodegbin = maldegreebin;
+    malautodegbin = malheterodegbins; 
+    femautodegbin = malheterodegbins;
     %femsolodegbin = femdegreebin; 
     %malsolodegbin = maldegreebin;
     
-    fheterodeg(1).bins = femdegreebin; 
-    mheterodeg(1).bins = maldegreebin;
-    fheterotim(1).bins = femdegreebin; 
-    mheterotim(1).bins = maldegreebin;
+    fheterodeg(1).bins = femheterodegbins; 
+    mheterodeg(1).bins = malheterodegbins;
+    fheterotim(1).bins = femheterodegbins; 
+    mheterotim(1).bins = malheterodegbins;
 
-    fsolo(1).bins = femdegreebin; 
-    msolo(1).bins = maldegreebin;
-    mautodeg(1).bins = maldegreebin; 
-    fautodeg(1).bins = femdegreebin;
+    fsolo(1).bins = femheterodegbins; 
+    msolo(1).bins = malheterodegbins;
+    mautodeg(1).bins = malheterodegbins; 
+    fautodeg(1).bins = femheterodegbins;
 
     mspondeg = []; 
     fspondeg = []; 
@@ -86,7 +85,7 @@ for curpair = 1:length(spon) % Cycle for each pair
             for i=1:4 % 4 electrodes in a tetrode always (CHRONIC DATA ONLY)
                 % Simply sum up the number of spikes in the window.
                 % fembin is the sum of all (across duets) 
-                femdegreebin(k+extrasteps+1) = femdegreebin(k+extrasteps+1) + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
+                femheterodegbins(k+extrasteps+1) = femheterodegbins(k+extrasteps+1) + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
                     & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
                 % Redundant, but tmp is data from each duet only (resets between duets)
                 tmp = tmp + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
@@ -116,7 +115,6 @@ for curpair = 1:length(spon) % Cycle for each pair
         
         % Cycle through time-based analysis  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         for k = 1:20 % 20 segments (10 before and 10 after) around start and end syllables
-            windowdur = 0.005; % 5 millisecond window (meaning +/- 50 msec from boundary)
             tmp = 0; spontmp = 0; autotmp = 0; sponautotmp = 0; 
             % This picks a random window within the spontaneous window with
             % the same duration as the syllable
@@ -175,7 +173,7 @@ for curpair = 1:length(spon) % Cycle for each pair
             
             % HETEROGENOUS (female syllables, male spikes)    
             for i=1:4 % 4 electrodes in a tetrode always
-                maldegreebin(k+extrasteps+1) = maldegreebin(k+extrasteps+1) + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
+                malheterodegbins(k+extrasteps+1) = malheterodegbins(k+extrasteps+1) + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
                     & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
                 tmp = tmp + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart + curstepdur*k ...
                     & in((curpair*2)-1).Cspikes{i} < cursylstart + curstepdur*(k+1)));
@@ -263,8 +261,8 @@ end % curpair (cycle through spons)
 
     out.mspondeg = mspondeg;
     out.fspondeg = fspondeg;
-    out.malbindeg = maldegreebin;
-    out.fembindeg = femdegreebin;
+    out.malbindeg = malheterodegbins;
+    out.fembindeg = femheterodegbins;
 
     out.mspontim = mspontim;
     out.fspondeg = fspontim;
