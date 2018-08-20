@@ -142,7 +142,7 @@ for curpair = 1:length(spon) % Cycle for each pair
                 autotmp = autotmp + length(find(in((curpair*2)-1).Cspikes{i} > (cursylstart-(prepostwindows*windowdur/2)) + curstepdur*(k-1) ...
                     & in((curpair*2)-1).Cspikes{i} < (cursylstart-(prepostwindows*windowdur/2)) + curstepdur*k));
 
-                malautodegbin(k) = malautodegbin(k) + autotmp;
+                malautotimbin(k) = malautotimbin(k) + autotmp;
                 
                 sponautotmp = sponautotmp + length(find(in((curpair*2)-1).Cspikes{i} > sponstart ...
                     & in((curpair*2)-1).Cspikes{i} < sponend));
@@ -198,6 +198,46 @@ for curpair = 1:length(spon) % Cycle for each pair
                 fautospondeg(end+1) = sponautotmp;                
                 
         end        
+        
+        % Cycle through time-based analysis  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        for k = 1:prepostwindows % 20 segments (10 before and 10 after) around start and end syllables
+            tmp = 0; spontmp = 0; autotmp = 0; sponautotmp = 0; 
+            % This picks a random window within the spontaneous window with
+            % the same duration as the syllable
+                sponstart = spon(1,curpair) + ((abs(spon(1,curpair) - spon(2,curpair)) - windowdur) * rand);
+                sponend = sponstart + windowdur;
+                
+            % HETEROGENOUS (female syllables, male spikes)    
+            for i=1:4 % 4 electrodes in a tetrode always (CHRONIC DATA ONLY)
+                % Simply sum up the number of spikes in the window.
+                % fembin is the sum of all (across duets) 
+                tmp = tmp + length(find(in((curpair*2)-1).Cspikes{i} > cursylstart-(prepostwindows*(windowdur/2))+windowdur*(k-1) ...
+                    & in((curpair*2)-1).Cspikes{i} < cursylstart-(prepostwindows*(windowdur/2))+windowdur*k));
+                
+                maltimbin(k) = maltimbin(k) + tmp;
+               
+                spontmp = spontmp + length(find(in((curpair*2)-1).Cspikes{i} > sponstart ...
+                    & in((curpair*2)-1).Cspikes{i} < sponend));
+            end
+            
+                mheterotim(idx).bins(k) = tmp;
+                mspontim(end+1) = spontmp;
+            
+            % AUTOGENOUS (female syllables, female spikes)
+            for i=1:4 % 4 electrodes in a tetrode always
+                autotmp = autotmp + length(find(in(curpair*2).Cspikes{i} > (cursylstart-(prepostwindows*windowdur/2)) + curstepdur*(k-1) ...
+                    & in(curpair*2).Cspikes{i} < (cursylstart-(prepostwindows*windowdur/2)) + curstepdur*k));
+
+                femautotimbin(k) = femautotimbin(k) + autotmp;
+                
+                sponautotmp = sponautotmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
+                    & in(curpair*2).Cspikes{i} < sponend));
+            end
+                    
+                fautotim(idx).bins(k) = autotmp;
+                fautospontim(end+1) = sponautotmp;
+        
+        end
         
     end % End of female duet syllables
     
