@@ -302,8 +302,8 @@ end % curpair (cycle through spons)
 
             plot([0, 0], [0, 1], 'k-'); plot([360 360], [0 1], 'k-');
             
-            plot([0 360], [guessfspon/max(out.fembin), guessfspon/max(out.fembin)], 'r-');
-            plot([0 360], [guessmspon/max(out.malbin), guessmspon/max(out.malbin)], 'c-');
+            plot([0 360], [guessfspon/max(out.fembindeg), guessfspon/max(out.fembindeg)], 'r-');
+            plot([0 360], [guessmspon/max(out.malbindeg), guessmspon/max(out.malbindeg)], 'c-');
             
     figure(3); clf; % Separate plots for AUTOGENOUS
         subplot(121); plot(degreebase, out.fautobin, '*-m'); hold on;
