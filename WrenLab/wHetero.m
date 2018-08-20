@@ -123,8 +123,8 @@ for curpair = 1:length(spon) % Cycle for each pair
             for i=1:4 % 4 electrodes in a tetrode always (CHRONIC DATA ONLY)
                 % Simply sum up the number of spikes in the window.
                 % fembin is the sum of all (across duets) 
-                tmp = tmp + length(find(in(curpair*2).Cspikes{i} > (cursylstart-(prepostwindows*windowdur/2) + windowdur*(k-1) ...
-                    & in(curpair*2).Cspikes{i} < (cursylstart-(prepostwindows*windowdur/2)) + windowdur*k)));
+                tmp = tmp + length(find(in(curpair*2).Cspikes{i} > cursylstart-(prepostwindows*windowdur/2)+windowdur*(k-1) ...
+                    & in(curpair*2).Cspikes{i} < cursylstart-(prepostwindows*windowdur/2)+windowdur*k));
                 
                 femtimbin(k) = femtimbin(k) + tmp;
                
