@@ -25,7 +25,6 @@ function out = wAutoSolo(in)
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData;
 
-length(fsolosyls)
 % Initialize the bins for each segment of the cycle (and beyond!)
 
     malautodegbins = zeros(1, numsteps+(2*extrasteps));
@@ -170,6 +169,7 @@ for curpair = 1:length(spon) % Cycle for each pair
             
                 fautodeg(idx).bins(k+extrasteps+1) = tmp;
                 fspondeg(end+1) = spontmp;
+                
         end % End of Degree analysis
         
         % Cycle through time-based analysis  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
