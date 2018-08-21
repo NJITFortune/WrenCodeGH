@@ -277,8 +277,8 @@ end % curpair (cycle through spons)
     
     out.malPREbintim = malPREtimbin;
     out.femPREbintim = femPREtimbin;
-            figure(5); clf; plot(windowtims, out.femPREbintim, '*-m');
-            hold on; plot(windowtims, out.malPREbintim, '*-b');
+            figure(5); clf; plot(windowtims, out.femPREbintim / length(fduetsyls), '*-m');
+            hold on; plot(windowtims, out.malPREbintim / length(mduetsyls), '*-b');
             
     out.malPOSTbintim = malPOSTtimbin;
     out.femPOSTbintim = femPOSTtimbin;
