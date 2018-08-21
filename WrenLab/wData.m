@@ -7,7 +7,8 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
 
 % 1-2: m17
 
-    msolosyls{1} = [1 2 3 4]; 
+    %msolosyls{1} = [1 2 3 4]; % Orig
+        msolosyls{1} = [1 2 3 4]; % Solitary
     mduetsyls{1} = [5 7 9 11 13];
     fsolosyls{1} = []; 
     fduetsyls{1} = [6 8 10 12 14];
@@ -15,9 +16,10 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     
 % 3-4: j160806
 
-    msolosyls{2} = [2]; 
+    %msolosyls{2} = 2; % Orig
+        msolosyls{2} = 2; % Solitary
     mduetsyls{2} = [4 6 8 10 12];
-    fsolosyls{2} = [1]; 
+    fsolosyls{2} = 1; 
     fduetsyls{2} = [3 5 7 9 11 13];    
     spon(:,2) = [-5.0, 0.0]; 
     
@@ -25,7 +27,8 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     
     msolosyls{3} = []; 
     mduetsyls{3} = [3 5 7 9 11 13 15 17 19];
-    fsolosyls{3} = [1 2]; 
+    %fsolosyls{3} = [1 2]; % Orig
+        fsolosyls{3} = 1; % Solitary
     fduetsyls{3} = [4 6 8 10 12 14 16 18 20];
     spon(:,3) = [-5.0, 0.0];
     
@@ -33,7 +36,8 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     
     msolosyls{4} = []; 
     mduetsyls{4} = [3 5 7];
-    fsolosyls{4} = [1 2]; 
+    %fsolosyls{4} = [1 2]; % Orig
+        fsolosyls{4} = 1; % Solitary
     fduetsyls{4} = [4 6 8];
     spon(:,4) = [-2.5, -1.0];
 
@@ -41,7 +45,8 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     
     msolosyls{5} = []; 
     mduetsyls{5} = [3 5 7 9 11 13 15 17 19];
-    fsolosyls{5} = [1 2]; 
+    %fsolosyls{5} = [1 2]; % Orig
+        fsolosyls{5} = 1; % Solitary
     fduetsyls{5} = [4 6 8 10 12 14 16 18];
     spon(:,5) = [-5.0, 0.0];
 
@@ -49,13 +54,15 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     
     msolosyls{6} = []; 
     mduetsyls{6} = [4 6 8 10 12 14];
-    fsolosyls{6} = [1 2 3]; 
+    %fsolosyls{6} = [1 2 3]; % Orig
+        fsolosyls{6} = [1 2]; % Solitary
     fduetsyls{6} = [5 7 9 11 13];
     spon(:,6) = [-3.5, 0.0];
 
 % 13-14: j17060848
     
-    msolosyls{7} = [1 2 3 4 5]; 
+    %msolosyls{7} = [1 2 3 4 5]; % Orig
+        msolosyls{7} = [1 2 3 4]; % Solitary
     mduetsyls{7} = [7 9 11 13 15 17];
     fsolosyls{7} = []; 
     fduetsyls{7} = [6 8 10 12 14 16];
