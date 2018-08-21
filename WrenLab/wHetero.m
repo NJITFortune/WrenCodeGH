@@ -25,6 +25,17 @@ function out = wHetero(in)
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData;
 
+totfemduetsyls = 0;
+for j=1:length(fduetsyls)
+    totfemduetsyls = totfemduetsyls + length(fduetsyls{j});
+end
+totmalduetsyls = 0;
+for j=1:length(mduetsyls)
+    totmalduetsyls = totmalduetsyls + length(mduetsyls{j});
+end
+
+
+
 % Initialize the bins for each segment of the cycle (and beyond!)
     femheterodegbins = zeros(1, numsteps+(2*extrasteps));
     malheterodegbins = zeros(1, numsteps+(2*extrasteps));
