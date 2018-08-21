@@ -25,6 +25,7 @@ function out = wAutoSolo(in)
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData;
 
+length(fsolosyls)
 % Initialize the bins for each segment of the cycle (and beyond!)
 
     malautodegbins = zeros(1, numsteps+(2*extrasteps));
