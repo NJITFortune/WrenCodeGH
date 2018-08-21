@@ -25,6 +25,16 @@ function out = wAuto(in)
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData;
 
+totfemduetsyls = 0;
+for j=1:length(fduetsyls)
+    totfemduetsyls = totfemduetsyls + length(fduetsyls{j});
+end
+totmalduetsyls = 0;
+for j=1:length(mduetsyls)
+    totmalduetsyls = totmalduetsyls + length(mduetsyls{j});
+end
+
+
 % Initialize the bins for each segment of the cycle (and beyond!)
 
     malautodegbins = zeros(1, numsteps+(2*extrasteps));
@@ -277,14 +287,14 @@ end % curpair (cycle through spons)
     
     out.malPREbintim = malPREtimbin;
     out.femPREbintim = femPREtimbin;
-            figure(5); clf; plot(windowtims, out.femPREbintim / length(fduetsyls), '*-m');
-            hold on; plot(windowtims, out.malPREbintim / length(mduetsyls), '*-b');
+            figure(5); clf; plot(windowtims, out.femPREbintim / totfemduetsyls, '*-m');
+            hold on; plot(windowtims, out.malPREbintim / totmalduetsyls, '*-b');
             
     out.malPOSTbintim = malPOSTtimbin;
     out.femPOSTbintim = femPOSTtimbin;
     
-            figure(6); clf; plot(windowtims, out.femPOSTbintim / length(fduetsyls), '*-m');
-            hold on; plot(windowtims, out.malPOSTbintim / length(mduetsyls), '*-b');
+            figure(6); clf; plot(windowtims, out.femPOSTbintim / totfemduetsyls, '*-m');
+            hold on; plot(windowtims, out.malPOSTbintim / totmalduetsyls, '*-b');
     
     out.mautospondeg = mautospondeg;
     out.malautobindeg = malautodegbins;
