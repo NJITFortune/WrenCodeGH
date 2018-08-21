@@ -268,13 +268,13 @@ end % curpair (cycle through spons)
     
     out.malPREbintim = malPREtimbin;
     out.femPREbintim = femPREtimbin;
-            figure(15); clf; plot(windowtims, out.femPREbintim, '*-m');
-            hold on; plot(windowtims, out.malPREbintim, '*-b');
+            figure(15); clf; plot(windowtims, out.femPREbintim / totfemsolosyls, '*-m');
+            hold on; plot(windowtims, out.malPREbintim / totmalsolosyls, '*-b');
             
     out.malPOSTbintim = malPOSTtimbin;
     out.femPOSTbintim = femPOSTtimbin;
-            figure(16); clf; plot(windowtims, out.femPOSTbintim, '*-m');
-            hold on; plot(windowtims, out.malPOSTbintim, '*-b');
+            figure(16); clf; plot(windowtims, out.femPOSTbintim / totfemsolosyls, '*-m');
+            hold on; plot(windowtims, out.malPOSTbintim / totmalsolosyls, '*-b');
     
 %     out.msolospon = msolospon;
 %     out.fsolospon = fsolospon;
