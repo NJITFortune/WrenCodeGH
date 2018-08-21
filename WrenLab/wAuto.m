@@ -270,7 +270,7 @@ end % curpair (cycle through spons)
     out.mspondeg = mspondeg;
     out.fspondeg = fspondeg;
     out.malbindeg = malautodegbins;
-    out.fembindeg = malautodegbins;
+    out.fembindeg = femautodegbins;
 
     out.mspontim = mspontim;
     out.fspondeg = mspontim;
