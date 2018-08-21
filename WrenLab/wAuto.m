@@ -156,7 +156,7 @@ for curpair = 1:length(spon) % Cycle for each pair
                 tmp = tmp + length(find(in(curpair*2).Cspikes{i} > cursylstart + curstepdur*k ...
                     & in(curpair*2).Cspikes{i} < cursylstart + curstepdur*(k+1)));
                 
-                femheterodegbins(k+extrasteps+1) = femheterodegbins(k+extrasteps+1) + tmp;
+                femautodegbins(k+extrasteps+1) = femautodegbins(k+extrasteps+1) + tmp;
                 
                 spontmp = spontmp + length(find(in(curpair*2).Cspikes{i} > sponstart ...
                     & in(curpair*2).Cspikes{i} < sponend));
