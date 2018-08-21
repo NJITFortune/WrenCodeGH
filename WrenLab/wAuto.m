@@ -300,7 +300,7 @@ end % curpair (cycle through spons)
     guessfspon = sum(fspondeg) / (numsteps+extrasteps);
     guessmspon = sum(mspondeg) / (numsteps+extrasteps);
     
-    figure(1); clf; % Separate plots for HETEROGENOUS
+    figure(1); clf; % Separate plots for AUTOGENOUS
     
         subplot(121); plot(degreebase, out.fembindeg, '*-m'); hold on;
             plot([0, 0], [1, max(out.fembindeg)], 'k-'); plot([360, 360], [1, max(out.fembindeg)], 'k-');
@@ -310,7 +310,7 @@ end % curpair (cycle through spons)
             plot([0, 0], [1, max(out.malbindeg)], 'k-'); plot([360, 360], [1, max(out.malbindeg)], 'k-'); 
             plot([0, 360], [guessmspon, guessmspon], 'c-');
             
-    figure(2); clf; % Single plot for HETEROGENOUS
+    figure(2); clf; % Single plot for AUTOGENOUS
             plot(degreebase, out.fembindeg/max(out.fembindeg), '*-m'); 
             hold on;
             plot(degreebase, out.malbindeg/max(out.malbindeg), '*-b');
@@ -318,27 +318,7 @@ end % curpair (cycle through spons)
             plot([0, 0], [0, 1], 'k-'); plot([360 360], [0 1], 'k-');
             
             plot([0 360], [guessfspon/max(out.fembindeg), guessfspon/max(out.fembindeg)], 'r-');
-            plot([0 360], [guessmspon/max(out.malbindeg), guessmspon/max(out.malbindeg)], 'c-');
-            
-    figure(3); clf; % Separate plots for AUTOGENOUS
-        subplot(121); plot(degreebase, out.fautobindeg, '*-m'); hold on;
-            plot([0, 0], [1, max(out.fautobindeg)], 'k-'); plot([360, 360], [1, max(out.fautobindeg)], 'k-');
-            plot([0 360], [guessfspon, guessfspon], 'r-');
-            
-        subplot(122); plot(degreebase, out.malautobindeg, '*-b'); hold on;   
-            plot([0 0], [1 max(out.malautobindeg)], 'k-'); plot([360 360], [1 max(out.malautobindeg)], 'k-'); 
-            plot([0 360], [guessmspon, guessmspon], 'c-');
-            
-    figure(4); clf; % Single plot for AUTOGENOUS
-            plot(degreebase, out.fautobindeg/max(out.fautobindeg), '*-m'); 
-            hold on;
-            plot(degreebase, out.malautobindeg/max(out.malautobindeg), '*-b');
-
-            plot([0, 0], [0, 1], 'k-'); plot([360 360], [0 1], 'k-');
-            
-            plot([0 360], [guessfspon/max(out.fautobindeg), guessfspon/max(out.fautobindeg)], 'r-');
-            plot([0 360], [guessmspon/max(out.malautobindeg), guessmspon/max(out.malautobindeg)], 'c-');
-
+            plot([0 360], [guessmspon/max(out.malbindeg), guessmspon/max(out.malbindeg)], 'c-');            
             
             
 allsteps = length(fautodeg(1).bins);
