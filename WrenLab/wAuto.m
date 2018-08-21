@@ -51,7 +51,7 @@ function out = wAuto(in)
     mspondeg = []; 
     fspondeg = []; 
     mspontim = [];
-    mspontim = [];
+    fspontim = [];
     
     msolospon = []; 
     fsolospon = [];
