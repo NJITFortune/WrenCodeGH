@@ -25,6 +25,17 @@ function out = wAutoSolo(in)
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData;
 
+% How many solo sylables do we have?
+
+totfemsolosyls = 0;
+for j=1:length(fduetsyls)
+    totfemsolosyls = totfemsolosyls + length(fduetsyls{j});
+end
+totmalsolosyls = 0;
+for j=1:length(mduetsyls)
+    totmalsolosyls = totmalsolosyls + length(mduetsyls{j});
+end
+
 % Initialize the bins for each segment of the cycle (and beyond!)
 
     malautodegbins = zeros(1, numsteps+(2*extrasteps));
@@ -278,8 +289,8 @@ end % curpair (cycle through spons)
     
     out.malPREbintim = malPREtimbin;
     out.femPREbintim = femPREtimbin;
-            figure(15); clf; plot(windowtims, out.femPREbintim / length(fsolosyls), '*-m');
-            hold on; plot(windowtims, out.malPREbintim / length(msolosyls), '*-b');
+            figure(15); clf; plot(windowtims, out.femPREbintim / totfemsolosyls, '*-m');
+            hold on; plot(windowtims, out.malPREbintim / totmalsolosyls, '*-b');
             
     out.malPOSTbintim = malPOSTtimbin;
     out.femPOSTbintim = femPOSTtimbin;
