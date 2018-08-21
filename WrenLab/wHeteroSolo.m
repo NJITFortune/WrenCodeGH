@@ -1,4 +1,4 @@
-function out = wHetero(in)
+function out = wHeteroSolo(in)
 % Usage: Calculates response strength to solo and duet syllables.
 % Relies on rs, a nested function below, to calculate Response Strength.
 % Load the Chronic data structure first:
