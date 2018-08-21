@@ -1,4 +1,4 @@
-function out = wAuto(in)
+function out = wAutoSolo(in)
 % Usage: Calculates response strength to solo and duet syllables.
 % Relies on rs, a nested function below, to calculate Response Strength.
 % Load the Chronic data structure first:
