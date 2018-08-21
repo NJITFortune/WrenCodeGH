@@ -45,7 +45,7 @@ function out = wAuto(in)
     
     fsolo(1).bins = malautodegbins; 
     msolo(1).bins = malautodegbins;
-    mautodeg(1).bins = malheterodegbins; 
+    mautodeg(1).bins = malautodegbins; 
     fautodeg(1).bins = malautodegbins;
 
     mspondeg = []; 
