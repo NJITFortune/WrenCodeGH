@@ -73,11 +73,11 @@ function out = wAutoSolo(in)
 for curpair = 1:length(spon) % Cycle for each pair
     
 % DUET MALE Syllables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    for j = 1:length(mduetsyls{curpair}) % For each male duet syllable
+    for j = 1:length(msolosyls{curpair}) % For each male duet syllable
         
         idx = length(mautodeg)+1; % Add into the next entry in the structure
-        cursylstart = in(curpair*2).syl(mduetsyls{curpair}(j)).tim(1); % Start time of current syllable
-        cursylend = in(curpair*2).syl(mduetsyls{curpair}(j)).tim(2); % End time of current syllable
+        cursylstart = in(curpair*2).syl(msolosyls{curpair}(j)).tim(1); % Start time of current syllable
+        cursylend = in(curpair*2).syl(msolosyls{curpair}(j)).tim(2); % End time of current syllable
         curdur = cursylend - cursylstart; % Duration of the entire syllable
         curstepdur = curdur / numsteps; % Duration of our segment (normalizes to 360 degrees)
 
@@ -142,11 +142,11 @@ for curpair = 1:length(spon) % Cycle for each pair
     end % End of male duet syllables
         
 % DUET FEMALE Syllables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    for j = 1:length(fduetsyls{curpair}) % Female duet syllables
+    for j = 1:length(fsolosyls{curpair}) % Female duet syllables
         
         idx = length(fautodeg)+1;
-        cursylstart = in(curpair*2).syl(fduetsyls{curpair}(j)).tim(1);
-        cursylend = in(curpair*2).syl(fduetsyls{curpair}(j)).tim(2);
+        cursylstart = in(curpair*2).syl(fsolosyls{curpair}(j)).tim(1);
+        cursylend = in(curpair*2).syl(fsolosyls{curpair}(j)).tim(2);
         curdur = cursylend - cursylstart;
         curstepdur = curdur / numsteps;
         
