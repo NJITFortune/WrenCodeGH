@@ -17,7 +17,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
 % 3-4: j160806
 
     %msolosyls{2} = 2; % Orig
-        msolosyls{2} = 2; % Solitary
+        msolosyls{2} = []; % Solitary
     mduetsyls{2} = [4 6 8 10 12];
     fsolosyls{2} = 1; 
     fduetsyls{2} = [3 5 7 9 11 13];    
