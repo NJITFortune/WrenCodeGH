@@ -268,12 +268,12 @@ end % curpair (cycle through spons)
     
     out.malPREbintim = malPREtimbin;
     out.femPREbintim = femPREtimbin;
-            figure(5); clf; plot(windowtims, out.femPREbintim, '*-m');
+            figure(15); clf; plot(windowtims, out.femPREbintim, '*-m');
             hold on; plot(windowtims, out.malPREbintim, '*-b');
             
     out.malPOSTbintim = malPOSTtimbin;
     out.femPOSTbintim = femPOSTtimbin;
-            figure(6); clf; plot(windowtims, out.femPOSTbintim, '*-m');
+            figure(16); clf; plot(windowtims, out.femPOSTbintim, '*-m');
             hold on; plot(windowtims, out.malPOSTbintim, '*-b');
     
 %     out.msolospon = msolospon;
@@ -285,7 +285,7 @@ end % curpair (cycle through spons)
     guessfspon = sum(fspondeg) / (numsteps+extrasteps);
     guessmspon = sum(mspondeg) / (numsteps+extrasteps);
     
-    figure(1); clf; % Separate plots for HETEROGENOUS
+    figure(11); clf; % Separate plots for HETEROGENOUS
     
         subplot(121); plot(degreebase, out.fembindeg, '*-m'); hold on;
             plot([0, 0], [1, max(out.fembindeg)], 'k-'); plot([360, 360], [1, max(out.fembindeg)], 'k-');
@@ -295,7 +295,7 @@ end % curpair (cycle through spons)
             plot([0, 0], [1, max(out.malbindeg)], 'k-'); plot([360, 360], [1, max(out.malbindeg)], 'k-'); 
             plot([0, 360], [guessmspon, guessmspon], 'c-');
             
-    figure(2); clf; % Single plot for HETEROGENOUS
+    figure(12); clf; % Single plot for HETEROGENOUS
             plot(degreebase, out.fembindeg/max(out.fembindeg), '*-m'); 
             hold on;
             plot(degreebase, out.malbindeg/max(out.malbindeg), '*-b');
