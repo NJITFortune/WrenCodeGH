@@ -64,6 +64,11 @@ function out = wAuto(in)
     malPREtimbin = zeros(1,prepostwindows);
     malPOSTtimbin = zeros(1,prepostwindows);
     
+    femPREtimbin = zeros(1,prepostwindows);
+    femPOSTtimbin = zeros(1,prepostwindows);
+    femPREtimbin = zeros(1,prepostwindows);
+    femPOSTtimbin = zeros(1,prepostwindows);
+    
 %% Cycle through each pair    
 for curpair = 1:length(spon) % Cycle for each pair
     
