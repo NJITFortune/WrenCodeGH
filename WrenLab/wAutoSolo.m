@@ -28,12 +28,12 @@ function out = wAutoSolo(in)
 % How many solo sylables do we have?
 
 totfemsolosyls = 0;
-for j=1:length(fduetsyls)
-    totfemsolosyls = totfemsolosyls + length(fduetsyls{j});
+for j=1:length(fsolosyls)
+    totfemsolosyls = totfemsolosyls + length(fsolosyls{j});
 end
 totmalsolosyls = 0;
-for j=1:length(mduetsyls)
-    totmalsolosyls = totmalsolosyls + length(mduetsyls{j});
+for j=1:length(msolosyls)
+    totmalsolosyls = totmalsolosyls + length(msolosyls{j});
 end
 
 % Initialize the bins for each segment of the cycle (and beyond!)
