@@ -99,7 +99,7 @@ sumdat.mAud.rsNorm = []; sumdat.mAud.rsRaw = [];
 %% Loop to calculate RS values for each pair of wrens   
     
 for curpair = 1:length(spon)
-    
+    curpair
     % Solo syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(msolosyls{curpair}) % Male sang solo syllables
         out(curpair).fAud = rs(in(curpair*2), msolosyls{curpair}, spon(:,curpair), pad);
