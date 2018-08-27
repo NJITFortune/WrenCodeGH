@@ -295,7 +295,7 @@ function qwe = rs(struc, syllabl, spontan, padme)
         
         
         qwe(j).sylnum = syllabl(j);
-        qwe(j).rsNorm = (stimrate - sponrate) / sponrate;
+        qwe(j).rsNorm = (stimrate - sponrate) / sponrate + 0.0000000000001;
         qwe(j).rsRaw = stimrate - sponrate;
         qwe(j).sponrate = sponrate;
         qwe(j).spikerate = stimrate;
