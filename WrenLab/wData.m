@@ -95,12 +95,13 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     
 % 19-20: j160800a 
 
-% This a sequence with just one male syllable and varying female amplitudes.
+% This just one female syllable.
 
     msolosyls{10} = []; 
-    mduetsyls{10} = 2;
+    mduetsyls{10} = [];
     fsolosyls{10} = 1; 
-    fduetsyls{10} = [3 4];
-    spon(:,9) = [0, 1.5]; % Both of the spontaneous ranges are not ideal
+    fduetsyls{10} = [];
+    spon(:,10) = [0, 2]; 
+
     
     
