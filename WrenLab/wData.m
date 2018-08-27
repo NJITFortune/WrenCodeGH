@@ -1,6 +1,6 @@
 function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
 % This function only returns the identities of syllables for use in the
-% analysis of the wren chronic data.  Data ChronicCompleat2018c.mat
+% analysis of the wren chronic data.  Data ChronicCompleat2018d.mat
 
 
 %% List of Chronic singing data with syllable indices and locations for spontaneous activity
