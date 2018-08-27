@@ -83,4 +83,18 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     fduetsyls{8} = [2 4 5 7 9 10];
     spon(:,8) = [-5, 0];
     
+% 17-18: j07 
+
+% This is a special case as the birds sang at the same time for two
+% syllables.  Syllables 6 and 11 are overlapping.  They are omitted
+% from the list below because I don't have a separate category for 
+% them. This is good for general analysis of autogenous and heterogenous
+% contributions. Use a custom analysis to example what happened with 
+% the overlapping syllables and the associated intervals.
+
+    msolosyls{8} = []; 
+    mduetsyls{8} = [3 8];
+    fsolosyls{8} = 1; 
+    fduetsyls{8} = [2 4 5 7 9 10];
+    spon(:,8) = [-5, 0];
     
