@@ -141,7 +141,7 @@ for curpair = 1:length(spon) % Cycle for each pair
         
 % DUET FEMALE Syllables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     for j = 1:length(fsolosyls{curpair}) % Female duet syllables
-        j
+        curpair
         idx = length(mheterodeg)+1;
         cursylstart = in((curpair*2)-1).syl(fsolosyls{curpair}(j)).tim(1);
         cursylend = in((curpair*2)-1).syl(fsolosyls{curpair}(j)).tim(2);
