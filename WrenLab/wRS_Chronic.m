@@ -126,29 +126,32 @@ for curpair = 1:length(spon)
     end
     
     % Motor activity (Autogenous) during duet (bird's own syllables) %%%%%%
-    out(curpair).mduetA = rs(in((curpair*2)-1), mduetsyls{curpair}, spon(:,curpair), pad);
-    out(curpair).fduetA = rs(in(curpair*2), fduetsyls{curpair}, spon(:,curpair), pad);
-    
-    for kk = 1:length(out(curpair).mduetA)
-        sumdat.mduetAutogenous.rsNorm(end+1) = out(curpair).mduetA(kk).rsNorm;
-        sumdat.mduetAutogenous.rsRaw(end+1) = out(curpair).mduetA(kk).rsRaw;
-    end
-    for kk = 1:length(out(curpair).fduetA)
-        sumdat.fduetAutogenous.rsNorm(end+1) = out(curpair).fduetA(kk).rsNorm;
-        sumdat.fduetAutogenous.rsRaw(end+1) = out(curpair).fduetA(kk).rsRaw;
-    end
-    
+    if ~isempty(mduetsyls{curpair}) % Female sang solo syllables
+        out(curpair).mduetA = rs(in((curpair*2)-1), mduetsyls{curpair}, spon(:,curpair), pad);
+        out(curpair).fduetA = rs(in(curpair*2), fduetsyls{curpair}, spon(:,curpair), pad);
+
+        for kk = 1:length(out(curpair).mduetA)
+            sumdat.mduetAutogenous.rsNorm(end+1) = out(curpair).mduetA(kk).rsNorm;
+            sumdat.mduetAutogenous.rsRaw(end+1) = out(curpair).mduetA(kk).rsRaw;
+        end
+        for kk = 1:length(out(curpair).fduetA)
+            sumdat.fduetAutogenous.rsNorm(end+1) = out(curpair).fduetA(kk).rsNorm;
+            sumdat.fduetAutogenous.rsRaw(end+1) = out(curpair).fduetA(kk).rsRaw;
+        end
+    end 
     % Auditory activity (Heterogenous) during duet (other bird's syllables)
-    out(curpair).mduetH = rs(in((curpair*2)-1), fduetsyls{curpair}, spon(:,curpair), pad);
-    out(curpair).fduetH = rs(in(curpair*2), mduetsyls{curpair}, spon(:,curpair), pad);
-    
-    for kk = 1:length(out(curpair).mduetH)
-        sumdat.mduetHeterogenous.rsNorm(end+1) = out(curpair).mduetH(kk).rsNorm;
-        sumdat.mduetHeterogenous.rsRaw(end+1) = out(curpair).mduetH(kk).rsRaw;
-    end
-    for kk = 1:length(out(curpair).fduetH)
-        sumdat.fduetHeterogenous.rsNorm(end+1) = out(curpair).fduetH(kk).rsNorm;
-        sumdat.fduetHeterogenous.rsRaw(end+1) = out(curpair).fduetH(kk).rsRaw;
+    if ~isempty(fduetsyls{curpair}) % Female sang solo syllables
+        out(curpair).mduetH = rs(in((curpair*2)-1), fduetsyls{curpair}, spon(:,curpair), pad);
+        out(curpair).fduetH = rs(in(curpair*2), mduetsyls{curpair}, spon(:,curpair), pad);
+
+        for kk = 1:length(out(curpair).mduetH)
+            sumdat.mduetHeterogenous.rsNorm(end+1) = out(curpair).mduetH(kk).rsNorm;
+            sumdat.mduetHeterogenous.rsRaw(end+1) = out(curpair).mduetH(kk).rsRaw;
+        end
+        for kk = 1:length(out(curpair).fduetH)
+            sumdat.fduetHeterogenous.rsNorm(end+1) = out(curpair).fduetH(kk).rsNorm;
+            sumdat.fduetHeterogenous.rsRaw(end+1) = out(curpair).fduetH(kk).rsRaw;
+        end
     end
 
 end
