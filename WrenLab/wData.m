@@ -183,5 +183,14 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     fduetsyls{18} = [];
     spon(:,18) = [0, 1.5]; 
 
-    
+ % 37-38: j160951b 
+
+% Female solo syllable.
+
+    msolosyls{19} = []; 
+    mduetsyls{19} = [];
+    fsolosyls{19} = 1; 
+    fduetsyls{19} = [];
+    spon(:,19) = [0, 2]; 
+   
     
