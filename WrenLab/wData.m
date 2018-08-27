@@ -87,9 +87,9 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
 % This a sequence with just one male syllable and varying female amplitudes.
 
     msolosyls{9} = []; 
-    mduetsyls{9} = 2;
+    mduetsyls{9} = []; % Male sang syllable 2
     fsolosyls{9} = 1; 
-    fduetsyls{9} = [3 4];
+    fduetsyls{9} = []; % Female sang loudly after male, syllables 3 and 4
 %    spon(:,9) = [0, 1.5]; % Both of the spontaneous ranges are not ideal
     spon(:,9) = [0, 6.5]; % Both of the spontaneous ranges are not ideal
     
