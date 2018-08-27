@@ -89,7 +89,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
 
     msolosyls{9} = []; 
     mduetsyls{9} = [];
-    fsolosyls{9} = [; 
+    fsolosyls{9} = []; 
     fduetsyls{9} = [];
     spon(:,9) = [-5, 0];
     
