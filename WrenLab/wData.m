@@ -85,13 +85,13 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
 % 17-18: j160734 
 
 % This a female-only sequence with varying amplitudes.
-
-    msolosyls{9} = []; 
-    mduetsyls{9} = [];
-    fsolosyls{9} = [1 2 3 4]; 
-    fduetsyls{9} = [];
-%    spon(:,9) = [0, 1.5]; % Both of the spontaneous ranges are not ideal
-    spon(:,9) = [0, 6.5]; % Both of the spontaneous ranges are not ideal
-    
+% 
+%     msolosyls{9} = []; 
+%     mduetsyls{9} = [];
+%     fsolosyls{9} = [1 2 3 4]; 
+%     fduetsyls{9} = [];
+% %    spon(:,9) = [0, 1.5]; % Both of the spontaneous ranges are not ideal
+%     spon(:,9) = [0, 6.5]; % Both of the spontaneous ranges are not ideal
+%     
     
     
