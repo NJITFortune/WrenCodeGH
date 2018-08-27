@@ -111,7 +111,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     mduetsyls{11} = [];
     fsolosyls{11} = 1; 
     fduetsyls{11} = [];
-    spon(:,11) = [0, 2]; 
+    spon(:,11) = [0, 1.5]; 
     
     
     
