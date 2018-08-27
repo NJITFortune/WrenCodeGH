@@ -92,5 +92,5 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     fsolosyls{9} = [1 2 3 4]; 
     fduetsyls{9} = [];
     spon(:,9) = [0, 1.5]; 
-    spon(:,9) = [0, 1]; 
+    spon(:,9) = [0, 6.5]; 
     
