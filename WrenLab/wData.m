@@ -84,7 +84,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     
 % 17-18: j160734 
 
-% This a female-only sequence with varying amplitudes.
+% This a sequence with just one male syllable and varying female amplitudes.
 
     msolosyls{9} = []; 
     mduetsyls{9} = 2;
