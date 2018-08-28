@@ -125,7 +125,7 @@ subplot(121); hold on; title('Normalized RS');
     errorbar([3 4], meanNorm(3:4), s(3:4), 'm' );
     ylim([-5 20]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
-subplot(121); hold on; title('Raw RS');
+subplot(122); hold on; title('Raw RS');
     plot([1 2], meanRaw(1:2), 'bo'); 
     errorbar([1 2], meanRaw(1:2), s(1:2), 'b' );
     plot([3 4], meanRaw(3:4), 'mo'); 
@@ -139,6 +139,8 @@ subplot(121); hold on; title('Raw RS');
 %     errorbar([3 4], mraw(3:4), sraw(3:4), 'm' );% /sqrt(length(mChron)));
 
 %%%% SENSORY
+
+figure(2); clf; 
 
 subplot(122); hold on;
     plot(2, mean(sumdat.mAud.rsNorm), 'bo');
