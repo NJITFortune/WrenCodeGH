@@ -19,14 +19,14 @@ if nargin == 2; pad = padding; end
 
 
 % Initializing variables
-sumdat.fduetAutogenous.rsNorm = []; sumdat.fduetAutogenous.rsRaw = [];
-sumdat.mduetAutogenous.rsNorm = []; sumdat.mduetAutogenous.rsRaw = [];
-sumdat.fduetHeterogenous.rsNorm = []; sumdat.fduetHeterogenous.rsRaw = [];
-sumdat.mduetHeterogenous.rsNorm = []; sumdat.mduetHeterogenous.rsRaw = [];
-sumdat.fSolo.rsNorm = []; sumdat.fSolo.rsRaw = [];
-sumdat.mSolo.rsNorm = []; sumdat.mSolo.rsRaw = [];
-sumdat.fAud.rsNorm = []; sumdat.fAud.rsRaw = [];
-sumdat.mAud.rsNorm = []; sumdat.mAud.rsRaw = [];
+sumdat.fDuetAuto.rsNorm = []; sumdat.fDuetAuto.rsRaw = [];
+sumdat.mDuetAuto.rsNorm = []; sumdat.mDuetAuto.rsRaw = [];
+sumdat.fDuetHetero.rsNorm = []; sumdat.fDuetHetero.rsRaw = [];
+sumdat.mDuetHetero.rsNorm = []; sumdat.mDuetHetero.rsRaw = [];
+sumdat.fSoloAuto.rsNorm = []; sumdat.fAutoSolo.rsRaw = [];
+sumdat.mSoloAuto.rsNorm = []; sumdat.mSolo.rsRaw = [];
+sumdat.fSoloHetero.rsNorm = []; sumdat.fSoloHeter.rsRaw = [];
+sumdat.mSoloHetero.rsNorm = []; sumdat.mSoloHetero.rsRaw = [];
 
     
 %% List of Chronic singing data with syllable indices and locations for spontaneous activity
@@ -39,55 +39,58 @@ for curpair = 1:length(spon)
     
     % Solo syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(msolosyls{curpair}) % Male sang solo syllables
-        out(curpair).fAud = rs(in(curpair*2), msolosyls{curpair}, spon(:,curpair), pad);
-        out(curpair).mSolo = rs(in((curpair*2)-1), msolosyls{curpair}, spon(:,curpair), pad);
+        
+        % Calculate RS values
+        out(curpair).fSoloHetero = rs(in(curpair*2), msolosyls{curpair}, spon(:,curpair), pad);
+        out(curpair).mSoloAuto = rs(in((curpair*2)-1), msolosyls{curpair}, spon(:,curpair), pad);
+        
         for kk = 1:length(msolosyls{curpair})
-            sumdat.fAud.rsNorm(end+1) = out(curpair).fAud(kk).rsNorm;
-            sumdat.fAud.rsRaw(end+1) = out(curpair).fAud(kk).rsRaw;
-            sumdat.mSolo.rsNorm(end+1) = out(curpair).mSolo(kk).rsNorm;
-            sumdat.mSolo.rsRaw(end+1) = out(curpair).mSolo(kk).rsRaw;
+            sumdat.fSoloHetero.rsNorm(end+1) = out(curpair).fSoloHetero(kk).rsNorm;
+            sumdat.fSoloHetero.rsRaw(end+1) = out(curpair).fSoloHetero(kk).rsRaw;
+            sumdat.mSoloAuto.rsNorm(end+1) = out(curpair).mSoloAuto(kk).rsNorm;
+            sumdat.mSoloAuto.rsRaw(end+1) = out(curpair).mSoloAuto(kk).rsRaw;
         end
     end
     
     % Solo syllables FEMALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(fsolosyls{curpair}) % Female sang solo syllables
-        out(curpair).mAud = rs(in((curpair*2)-1), fsolosyls{curpair}, spon(:,curpair), pad);
-        out(curpair).fSolo = rs(in(curpair*2), fsolosyls{curpair}, spon(:,curpair), pad);
+        
+        out(curpair).mSoloHetero = rs(in((curpair*2)-1), fsolosyls{curpair}, spon(:,curpair), pad);
+        out(curpair).fSoloAuto = rs(in(curpair*2), fsolosyls{curpair}, spon(:,curpair), pad);
         
         for kk = 1:length(fsolosyls{curpair})
-            sumdat.mAud.rsNorm(end+1) = out(curpair).mAud(kk).rsNorm;
-            sumdat.mAud.rsRaw(end+1) = out(curpair).mAud(kk).rsRaw;
-            sumdat.fSolo.rsNorm(end+1) = out(curpair).fSolo(kk).rsNorm;
-            sumdat.fSolo.rsRaw(end+1) = out(curpair).fSolo(kk).rsRaw;
+            sumdat.mSoloHetero.rsNorm(end+1) = out(curpair).mSoloHetero(kk).rsNorm;
+            sumdat.mSoloHetero.rsRaw(end+1) = out(curpair).mSoloHetero(kk).rsRaw;
+            sumdat.fSoloAuto.rsNorm(end+1) = out(curpair).fSoloAuto(kk).rsNorm;
+            sumdat.fSoloAuto.rsRaw(end+1) = out(curpair).fSoloAuto(kk).rsRaw;
         end
     end
     
-    % Motor activity (Autogenous) during duet (bird's own syllables) %%%%%%
-    if ~isempty(mduetsyls{curpair}) % Female sang solo syllables
-        out(curpair).mduetA = rs(in((curpair*2)-1), mduetsyls{curpair}, spon(:,curpair), pad);
-        out(curpair).fduetA = rs(in(curpair*2), fduetsyls{curpair}, spon(:,curpair), pad);
+    %% Duet syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    if ~isempty(mduetsyls{curpair}) % Male sang duet syllables
+        
+        out(curpair).mDuetAuto = rs(in((curpair*2)-1), mduetsyls{curpair}, spon(:,curpair), pad);
+        out(curpair).fDuetHetero = rs(in(curpair*2), mduetsyls{curpair}, spon(:,curpair), pad);
 
-        for kk = 1:length(out(curpair).mduetA)
-            sumdat.mduetAutogenous.rsNorm(end+1) = out(curpair).mduetA(kk).rsNorm;
-            sumdat.mduetAutogenous.rsRaw(end+1) = out(curpair).mduetA(kk).rsRaw;
-        end
-        for kk = 1:length(out(curpair).fduetA)
-            sumdat.fduetAutogenous.rsNorm(end+1) = out(curpair).fduetA(kk).rsNorm;
-            sumdat.fduetAutogenous.rsRaw(end+1) = out(curpair).fduetA(kk).rsRaw;
+        for kk = 1:length(mduetsyls{curpair})
+            sumdat.mDuetAuto.rsNorm(end+1) = out(curpair).mDuetAuto(kk).rsNorm;
+            sumdat.mDuetAuto.rsRaw(end+1) = out(curpair).mDuetAuto(kk).rsRaw;
+            sumdat.fDuetHetero.rsNorm(end+1) = out(curpair).fDuetHetero(kk).rsNorm;
+            sumdat.fDuetHetero.rsRaw(end+1) = out(curpair).fDuetHetero(kk).rsRaw;
         end
     end 
-    % Auditory activity (Heterogenous) during duet (other bird's syllables)
+    
+    %% Duet syllables FEMALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(fduetsyls{curpair}) % Female sang solo syllables
-        out(curpair).mduetH = rs(in((curpair*2)-1), fduetsyls{curpair}, spon(:,curpair), pad);
-        out(curpair).fduetH = rs(in(curpair*2), mduetsyls{curpair}, spon(:,curpair), pad);
+        
+        out(curpair).mDuetHetero = rs(in((curpair*2)-1), fduetsyls{curpair}, spon(:,curpair), pad);
+        out(curpair).fDuetAuto = rs(in(curpair*2), fduetsyls{curpair}, spon(:,curpair), pad);
 
-        for kk = 1:length(out(curpair).mduetH)
-            sumdat.mduetHeterogenous.rsNorm(end+1) = out(curpair).mduetH(kk).rsNorm;
-            sumdat.mduetHeterogenous.rsRaw(end+1) = out(curpair).mduetH(kk).rsRaw;
-        end
-        for kk = 1:length(out(curpair).fduetH)
-            sumdat.fduetHeterogenous.rsNorm(end+1) = out(curpair).fduetH(kk).rsNorm;
-            sumdat.fduetHeterogenous.rsRaw(end+1) = out(curpair).fduetH(kk).rsRaw;
+        for kk = 1:length(fduetsyls{curpair})
+            sumdat.mDuetHetero.rsNorm(end+1) = out(curpair).mDuetHetero(kk).rsNorm;
+            sumdat.mDuetHetero.rsRaw(end+1) = out(curpair).mDuetHetero(kk).rsRaw;
+            sumdat.fDuetAuto.rsNorm(end+1) = out(curpair).fDuetAuto(kk).rsNorm;
+            sumdat.fDuetAuto.rsRaw(end+1) = out(curpair).fDuetAuto(kk).rsRaw;
         end
     end
 
@@ -100,32 +103,33 @@ end
 
 % For the Normalized data. Not doing STD because of asymetry of
 % distribution.
-    m(1) = mean(sumdat.mduetAutogenous.rsNorm); s(1) = std(sumdat.mduetAutogenous.rsNorm);
-    m(2) = mean(sumdat.mSolo.rsNorm); s(2) = std(sumdat.mSolo.rsNorm);
-%     m(3) = mean(sumdat.fduetAutogenous.rsNorm); s(3) = std(sumdat.fduetAutogenous.rsNorm);
-%     m(4) = mean(sumdat.fSolo.rsNorm); s(4) = std(sumdat.fSolo.rsNorm);
-    m(3) = mean(sumdat.fduetAutogenous.rsNorm(6:end-8)); s(3) = std(sumdat.fduetAutogenous.rsNorm(6:end-8));
-    m(4) = mean(sumdat.fSolo.rsNorm); s(4) = std(sumdat.fSolo.rsNorm);
-%     m(1) = mean(sumdat.mduetAutogenous.rsRaw); s(1) = std(sumdat.mduetAutogenous.rsRaw);
-%     m(2) = mean(sumdat.mSolo.rsRaw); s(2) = std(sumdat.mSolo.rsRaw);
-%     m(3) = mean(sumdat.fduetAutogenous.rsRaw(6:end-8)); s(3) = std(sumdat.fduetAutogenous.rsRaw(6:end-8));
-%     m(4) = mean(sumdat.fSolo.rsRaw); s(4) = std(sumdat.fSolo.rsRaw);
 
-
+    meanNorm(1) = mean(sumdat.mDuetAuto.rsNorm); s(1) = std(sumdat.mDuetAuto.rsNorm);
+    meanNorm(2) = mean(sumdat.mSoloAuto.rsNorm); s(2) = std(sumdat.mSoloAuto.rsNorm);
+    meanNorm(3) = mean(sumdat.fDuetAuto.rsNorm); s(3) = std(sumdat.fDuetAuto.rsNorm);
+    meanNorm(4) = mean(sumdat.fSoloAuto.rsNorm); s(4) = std(sumdat.fSoloAuto.rsNorm);
 
 % For raw data
-    mraw(1) = mean(sumdat.mduetAutogenous.rsNorm); sraw(1) = std(sumdat.mduetAutogenous.rsRaw);
-    mraw(2) = mean(sumdat.mSolo.rsNorm); sraw(3) = std(sumdat.mSolo.rsRaw);
-    mraw(3) = mean(sumdat.fduetAutogenous.rsNorm); sraw(2) = std(sumdat.fduetAutogenous.rsRaw);
-    mraw(4) = mean(sumdat.fSolo.rsNorm); sraw(4) = std(sumdat.fSolo.rsRaw);
+
+    meanRaw(1) = mean(sumdat.mDuetAuto.rsNorm); sraw(1) = std(sumdat.mDuetAuto.rsRaw);
+    meanRaw(2) = mean(sumdat.mSoloAuto.rsNorm); sraw(3) = std(sumdat.mSoloAuto.rsRaw);
+    meanRaw(3) = mean(sumdat.fDuetAuto.rsNorm); sraw(2) = std(sumdat.fDuetAuto.rsRaw);
+    meanRaw(4) = mean(sumdat.fSoloAuto.rsNorm); sraw(4) = std(sumdat.fSoloAuto.rsRaw);
 
 figure(1); clf; 
 
-subplot(121); hold on;
-    plot([1 2], m(1:2), 'bo'); 
-    errorbar([1 2], m(1:2), s(1:2), 'b' );
-    plot([3 4], m(3:4), 'mo'); 
-    errorbar([3 4], m(3:4), s(3:4), 'm' );
+subplot(121); hold on; title('Normalized RS');
+    plot([1 2], meanNorm(1:2), 'bo'); 
+    errorbar([1 2], meanNorm(1:2), s(1:2), 'b' );
+    plot([3 4], meanNorm(3:4), 'mo'); 
+    errorbar([3 4], meanNorm(3:4), s(3:4), 'm' );
+    ylim([-5 20]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+
+subplot(121); hold on; title('Raw RS');
+    plot([1 2], meanRaw(1:2), 'bo'); 
+    errorbar([1 2], meanRaw(1:2), s(1:2), 'b' );
+    plot([3 4], meanRaw(3:4), 'mo'); 
+    errorbar([3 4], meanRaw(3:4), s(3:4), 'm' );
     ylim([-5 20]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 % subplot(132); hold on;
@@ -214,35 +218,35 @@ subplot(122); hold on;
 function qwe = rs(struc, syllabl, spontan, padme)
  
    % Get spontaneous rate 
-    sponSpikeCount = 0;  
+        sponSpikeCount = 0;  
     
         for i=1:4 % 4 electrodes in a tetrode always
             sponSpikeCount = sponSpikeCount + length(find(struc.Cspikes{i} > spontan(1) & struc.Cspikes{i} < spontan(2)));
         end
 
-        sponrate = sponSpikeCount / (spontan(2) - spontan(1));
-        sponrate = sponrate/4;
+        sponSPS = sponSpikeCount / (spontan(2) - spontan(1)); % This is spikes per second
+        sponSPS = sponSPS/4; % Divide by 4 because we have 4 electrodes
    
     % Loop for each syllable
     
-    for j = 1:length(syllabl)    
+        for j = 1:length(syllabl)    
     
-    % Get the spikes for that syllable
-    stimSpikeCount = 0; 
+        % Get the spikes for that syllable
+        stimSpikeCount = 0; 
     
         for i=1:4 % 4 electrodes in a tetrode always
-            stimSpikeCount = stimSpikeCount + length(find(struc.Cspikes{i} > struc.syl(syllabl(j)).tim(1)-padme & struc.Cspikes{i} < struc.syl(syllabl(j)).tim(2)-padme));
+            stimSpikeCount = stimSpikeCount + length(find(struc.Cspikes{i} >= struc.syl(syllabl(j)).tim(1)-padme & struc.Cspikes{i} < struc.syl(syllabl(j)).tim(2)-padme));
         end
         
-        stimrate = stimSpikeCount / (struc.syl(syllabl(j)).tim(2) - struc.syl(syllabl(j)).tim(1));
-        stimrate = stimrate/4;
+        stimSPS = stimSpikeCount / (struc.syl(syllabl(j)).tim(2) - struc.syl(syllabl(j)).tim(1)); % This is spikes per second
+        stimSPS = stimSPS/4; % Divide by 4 because we have 4 electrodes
         
         
         qwe(j).sylnum = syllabl(j);
-        qwe(j).rsNorm = (stimrate - sponrate) / sponrate + 0.0000000000001;
-        qwe(j).rsRaw = stimrate - sponrate;
-        qwe(j).sponrate = sponrate;
-        qwe(j).spikerate = stimrate;
+        qwe(j).rsNorm = (stimSPS - sponSPS) / sponSPS + 0.0000000000001; % Avoid divide by zero
+        qwe(j).rsRaw = stimSPS - sponSPS;
+        qwe(j).sponrate = sponSPS;
+        qwe(j).spikerate = stimSPS;
         qwe(j).spontim = spontan;
         qwe(j).syltim = [struc.syl(syllabl(j)).tim(1), struc.syl(syllabl(j)).tim(2)];
         qwe(j).pad = padme;
