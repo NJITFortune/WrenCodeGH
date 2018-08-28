@@ -134,7 +134,7 @@ end
     meanSPS(3) = mean(sumdat.fDuetAuto.SPS); sps(3) = std(sumdat.fDuetAuto.SPS);
     meanSPS(4) = mean(sumdat.fSoloAuto.SPS); sps(4) = std(sumdat.fSoloAuto.SPS);
     
-figure(1); clf; 
+figure(21); clf; 
 
 subplot(131); hold on; title('Auto Normalized RS');
     plot([1 2], meanNorm(1:2), 'bo'); 
@@ -191,7 +191,7 @@ subplot(133); hold on; title('Auto Spikes/Second');
     meanSPS(3) = mean(sumdat.fDuetHetero.SPS); sps(3) = std(sumdat.fDuetHetero.SPS);
     meanSPS(4) = mean(sumdat.fSoloHetero.SPS); sps(4) = std(sumdat.fSoloHetero.SPS);
     
-figure(2); clf; 
+figure(22); clf; 
 
 subplot(131); hold on; title('Hetero Normalized RS');
     plot([1 2], meanNorm(1:2), 'bo'); 
