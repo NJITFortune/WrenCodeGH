@@ -25,7 +25,7 @@ sumdat.fDuetHetero.rsNorm = []; sumdat.fDuetHetero.rsRaw = [];
 sumdat.mDuetHetero.rsNorm = []; sumdat.mDuetHetero.rsRaw = [];
 sumdat.fSoloAuto.rsNorm = []; sumdat.fAutoSolo.rsRaw = [];
 sumdat.mSoloAuto.rsNorm = []; sumdat.mSolo.rsRaw = [];
-sumdat.fSoloHetero.rsNorm = []; sumdat.fSoloHeter.rsRaw = [];
+sumdat.fSoloHetero.rsNorm = []; sumdat.fSoloHetero.rsRaw = [];
 sumdat.mSoloHetero.rsNorm = []; sumdat.mSoloHetero.rsRaw = [];
 
     
