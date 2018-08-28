@@ -28,7 +28,15 @@ sumdat.mSoloAuto.rsNorm = []; sumdat.mSoloAuto.rsRaw = [];
 sumdat.fSoloHetero.rsNorm = []; sumdat.fSoloHetero.rsRaw = [];
 sumdat.mSoloHetero.rsNorm = []; sumdat.mSoloHetero.rsRaw = [];
 
-    
+sumdat.mSoloHetero.SPS = [];
+sumdat.fSoloHetero.SPS = [];
+sumdat.mDuetHetero.SPS = [];
+sumdat.fDuetHetero.SPS = [];
+sumdat.mSoloAuto.SPS = [];
+sumdat.fSoloAuto.SPS = [];
+sumdat.mDuetAuto.SPS = [];
+sumdat.fDuetAuto.SPS = [];
+
 %% List of Chronic singing data with syllable indices and locations for spontaneous activity
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData;
