@@ -196,23 +196,23 @@ figure(2); clf;
 subplot(131); hold on; title('Hetero Normalized RS');
     plot([1 2], meanNorm(1:2), 'bo'); 
     errorbar([1 2], meanNorm(1:2), s(1:2), 'b' );
-        for p=1:length(sumdat.mDuetHetero.rsNorm); plot(1.1, sumdat.mDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 4); end
-        for p=1:length(sumdat.mSoloHetero.rsNorm); plot(2.1, sumdat.mSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 4); end
+        for p=1:length(sumdat.mDuetHetero.rsNorm); plot(1.1, sumdat.mDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloHetero.rsNorm); plot(2.1, sumdat.mSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
     plot([3 4], meanNorm(3:4), 'mo'); 
     errorbar([3 4], meanNorm(3:4), s(3:4), 'm' );
-        for p=1:length(sumdat.fDuetHetero.rsNorm); plot(3.1, sumdat.fDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 4); end
-        for p=1:length(sumdat.fSoloHetero.rsNorm); plot(4.1, sumdat.fSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 4); end
+        for p=1:length(sumdat.fDuetHetero.rsNorm); plot(3.1, sumdat.fDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.fSoloHetero.rsNorm); plot(4.1, sumdat.fSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
     ylim([-5 35]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 subplot(132); hold on; title('Hetero Raw RS');
     plot([1 2], meanRaw(1:2), 'bo'); 
     errorbar([1 2], meanRaw(1:2), sraw(1:2), 'b' );
-        for p=1:length(sumdat.mDuetHetero.rsRaw); plot(1.1, sumdat.mDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 4); end
-        for p=1:length(sumdat.mSoloHetero.rsRaw); plot(2.1, sumdat.mSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 4); end
+        for p=1:length(sumdat.mDuetHetero.rsRaw); plot(1.1, sumdat.mDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloHetero.rsRaw); plot(2.1, sumdat.mSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
     plot([3 4], meanRaw(3:4), 'mo'); 
     errorbar([3 4], meanRaw(3:4), sraw(3:4), 'm' );
-        for p=1:length(sumdat.fDuetHetero.rsRaw); plot(3.1, sumdat.fDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 4); end
-        for p=1:length(sumdat.fSoloHetero.rsRaw); plot(4.1, sumdat.fSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 4); end
+        for p=1:length(sumdat.fDuetHetero.rsRaw); plot(3.1, sumdat.fDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.fSoloHetero.rsRaw); plot(4.1, sumdat.fSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
     ylim([-10 50]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 subplot(133); hold on; title('Hetero Spikes/Second');
