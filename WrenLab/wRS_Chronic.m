@@ -130,7 +130,7 @@ subplot(122); hold on; title('Raw RS');
     errorbar([1 2], meanRaw(1:2), sraw(1:2), 'b' );
     plot([3 4], meanRaw(3:4), 'mo'); 
     errorbar([3 4], meanRaw(3:4), sraw(3:4), 'm' );
-    ylim([-5 20]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    ylim([-5 50]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 % subplot(132); hold on;
 %     plot([1 2], mraw(1:2), 'b*'); 
