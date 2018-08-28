@@ -167,7 +167,7 @@ subplot(133); hold on; title('Auto Spikes/Second');
     errorbar([3 4], meanSPS(3:4), sps(3:4), 'm' );
         for p=1:length(sumdat.fDuetAuto.SPS); plot(3.1, sumdat.fDuetAuto.SPS(p), 'k.', 'MarkerSize', 4); end
         for p=1:length(sumdat.fSoloAuto.SPS); plot(4.1, sumdat.fSoloAuto.SPS(p), 'k.', 'MarkerSize', 4); end
-    ylim([0 100]); xlim([0.5 4.5]); 
+    ylim([0 60]); xlim([0.5 4.5]); 
 
     
 %% Plot SENSORY
