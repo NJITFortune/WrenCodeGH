@@ -163,7 +163,7 @@ subplot(132); hold on; title('Raw RS');
         for p=1:length(sumdat.fSoloAuto.rsRaw); plot(4.1, sumdat.fSoloAuto.rsRaw(p), 'k*'); end
     ylim([-5 100]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
-subplot(133); hold on; title('Raw RS');
+subplot(133); hold on; title('Spikes/Second');
     plot([1 2], meanSPS(1:2), 'bo'); 
     errorbar([1 2], meanSPS(1:2), sps(1:2), 'b' );
         for p=1:length(sumdat.mDuetAuto.SPS); plot(1.1, sumdat.mDuetAuto.SPS(p), 'b*'); end
