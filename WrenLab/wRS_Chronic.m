@@ -121,8 +121,12 @@ figure(1); clf;
 subplot(121); hold on; title('Normalized RS');
     plot([1 2], meanNorm(1:2), 'bo'); 
     errorbar([1 2], meanNorm(1:2), s(1:2), 'b' );
+        for p=1:length(sumdat.mDuetAuto.rsNorm); plot(1.1, sumdat.mDuetAuto.rsNorm(p), 'k*'); end
+        for p=1:length(sumdat.mDuetAuto.rsNorm); plot(2.1, sumdat.mSoloAuto.rsNorm(p), 'k*'); end
     plot([3 4], meanNorm(3:4), 'mo'); 
     errorbar([3 4], meanNorm(3:4), s(3:4), 'm' );
+        for p=1:length(sumdat.fDuetAuto.rsNorm); plot(1.1, sumdat.fDuetAuto.rsNorm(p), 'k*'); end
+        for p=1:length(sumdat.fDuetAuto.rsNorm); plot(2.1, sumdat.fSoloAuto.rsNorm(p), 'k*'); end
     ylim([-5 20]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 subplot(122); hold on; title('Raw RS');
