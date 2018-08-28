@@ -139,34 +139,34 @@ figure(1); clf;
 subplot(131); hold on; title('Auto Normalized RS');
     plot([1 2], meanNorm(1:2), 'bo'); 
     errorbar([1 2], meanNorm(1:2), s(1:2), 'b' );
-        for p=1:length(sumdat.mDuetAuto.rsNorm); plot(1.1, sumdat.mDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 4); end
-        for p=1:length(sumdat.mSoloAuto.rsNorm); plot(2.1, sumdat.mSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 4); end
+        for p=1:length(sumdat.mDuetAuto.rsNorm); plot(1.1, sumdat.mDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloAuto.rsNorm); plot(2.1, sumdat.mSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
     plot([3 4], meanNorm(3:4), 'mo'); 
     errorbar([3 4], meanNorm(3:4), s(3:4), 'm' );
-        for p=1:length(sumdat.fDuetAuto.rsNorm); plot(3.1, sumdat.fDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 4); end
-        for p=1:length(sumdat.fSoloAuto.rsNorm); plot(4.1, sumdat.fSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 4); end
+        for p=1:length(sumdat.fDuetAuto.rsNorm); plot(3.1, sumdat.fDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.fSoloAuto.rsNorm); plot(4.1, sumdat.fSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
     ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 subplot(132); hold on; title('Auto Raw RS');
     plot([1 2], meanRaw(1:2), 'bo'); 
     errorbar([1 2], meanRaw(1:2), sraw(1:2), 'b' );
-        for p=1:length(sumdat.mDuetAuto.rsRaw); plot(1.1, sumdat.mDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 4); end
-        for p=1:length(sumdat.mSoloAuto.rsRaw); plot(2.1, sumdat.mSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 4); end
+        for p=1:length(sumdat.mDuetAuto.rsRaw); plot(1.1, sumdat.mDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloAuto.rsRaw); plot(2.1, sumdat.mSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
     plot([3 4], meanRaw(3:4), 'mo'); 
     errorbar([3 4], meanRaw(3:4), sraw(3:4), 'm' );
-        for p=1:length(sumdat.fDuetAuto.rsRaw); plot(3.1, sumdat.fDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 4); end
-        for p=1:length(sumdat.fSoloAuto.rsRaw); plot(4.1, sumdat.fSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 4); end
+        for p=1:length(sumdat.fDuetAuto.rsRaw); plot(3.1, sumdat.fDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.fSoloAuto.rsRaw); plot(4.1, sumdat.fSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
     ylim([-10 100]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 subplot(133); hold on; title('Auto Spikes/Second');
     plot([1 2], meanSPS(1:2), 'bo'); 
     errorbar([1 2], meanSPS(1:2), sps(1:2), 'b' );
-        for p=1:length(sumdat.mDuetAuto.SPS); plot(1.1, sumdat.mDuetAuto.SPS(p), 'k.', 'MarkerSize', 4); end
-        for p=1:length(sumdat.mSoloAuto.SPS); plot(2.1, sumdat.mSoloAuto.SPS(p), 'k.', 'MarkerSize', 4); end
+        for p=1:length(sumdat.mDuetAuto.SPS); plot(1.1, sumdat.mDuetAuto.SPS(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloAuto.SPS); plot(2.1, sumdat.mSoloAuto.SPS(p), 'k.', 'MarkerSize', 8); end
     plot([3 4], meanSPS(3:4), 'mo'); 
     errorbar([3 4], meanSPS(3:4), sps(3:4), 'm' );
-        for p=1:length(sumdat.fDuetAuto.SPS); plot(3.1, sumdat.fDuetAuto.SPS(p), 'k.', 'MarkerSize', 4); end
-        for p=1:length(sumdat.fSoloAuto.SPS); plot(4.1, sumdat.fSoloAuto.SPS(p), 'k.', 'MarkerSize', 4); end
+        for p=1:length(sumdat.fDuetAuto.SPS); plot(3.1, sumdat.fDuetAuto.SPS(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.fSoloAuto.SPS); plot(4.1, sumdat.fSoloAuto.SPS(p), 'k.', 'MarkerSize', 8); end
     ylim([0 100]); xlim([0.5 4.5]); 
 
     
