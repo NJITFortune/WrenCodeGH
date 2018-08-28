@@ -111,10 +111,10 @@ end
 
 % For raw data
 
-    meanRaw(1) = mean(sumdat.mDuetAuto.rsNorm); sraw(1) = std(sumdat.mDuetAuto.rsRaw);
-    meanRaw(2) = mean(sumdat.mSoloAuto.rsNorm); sraw(3) = std(sumdat.mSoloAuto.rsRaw);
-    meanRaw(3) = mean(sumdat.fDuetAuto.rsNorm); sraw(2) = std(sumdat.fDuetAuto.rsRaw);
-    meanRaw(4) = mean(sumdat.fSoloAuto.rsNorm); sraw(4) = std(sumdat.fSoloAuto.rsRaw);
+    meanRaw(1) = mean(sumdat.mDuetAuto.rsRaw); sraw(1) = std(sumdat.mDuetAuto.rsRaw);
+    meanRaw(2) = mean(sumdat.mSoloAuto.rsRaw); sraw(3) = std(sumdat.mSoloAuto.rsRaw);
+    meanRaw(3) = mean(sumdat.fDuetAuto.rsRaw); sraw(2) = std(sumdat.fDuetAuto.rsRaw);
+    meanRaw(4) = mean(sumdat.fSoloAuto.rsRaw); sraw(4) = std(sumdat.fSoloAuto.rsRaw);
 
 figure(1); clf; 
 
@@ -127,9 +127,9 @@ subplot(121); hold on; title('Normalized RS');
 
 subplot(122); hold on; title('Raw RS');
     plot([1 2], meanRaw(1:2), 'bo'); 
-    errorbar([1 2], meanRaw(1:2), s(1:2), 'b' );
+    errorbar([1 2], meanRaw(1:2), sraw(1:2), 'b' );
     plot([3 4], meanRaw(3:4), 'mo'); 
-    errorbar([3 4], meanRaw(3:4), s(3:4), 'm' );
+    errorbar([3 4], meanRaw(3:4), sraw(3:4), 'm' );
     ylim([-5 20]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 % subplot(132); hold on;
