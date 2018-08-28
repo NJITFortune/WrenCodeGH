@@ -156,7 +156,7 @@ subplot(132); hold on; title('Auto Raw RS');
     errorbar([3 4], meanRaw(3:4), sraw(3:4), 'm' );
         for p=1:length(sumdat.fDuetAuto.rsRaw); plot(3.1, sumdat.fDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 4); end
         for p=1:length(sumdat.fSoloAuto.rsRaw); plot(4.1, sumdat.fSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 4); end
-    ylim([-10 100]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    ylim([-10 50]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 subplot(133); hold on; title('Auto Spikes/Second');
     plot([1 2], meanSPS(1:2), 'bo'); 
