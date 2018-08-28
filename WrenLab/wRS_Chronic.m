@@ -138,7 +138,7 @@ subplot(122); hold on; title('Raw RS');
     errorbar([3 4], meanRaw(3:4), sraw(3:4), 'm' );
         for p=1:length(sumdat.fDuetAuto.rsRaw); plot(3.1, sumdat.fDuetAuto.rsRaw(p), 'k*'); end
         for p=1:length(sumdat.fSoloAuto.rsRaw); plot(4.1, sumdat.fSoloAuto.rsRaw(p), 'k*'); end
-    ylim([-5 50]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    ylim([-5 100]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 % subplot(132); hold on;
 %     plot([1 2], mraw(1:2), 'b*'); 
