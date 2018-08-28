@@ -168,7 +168,7 @@ subplot(133); hold on; title('Raw RS');
     errorbar([1 2], meanSPS(1:2), sps(1:2), 'b' );
         for p=1:length(sumdat.mDuetAuto.SPS); plot(1.1, sumdat.mDuetAuto.SPS(p), 'b*'); end
         for p=1:length(sumdat.mSoloAuto.SPS); plot(2.1, sumdat.mSoloAuto.SPS(p), 'b*'); end
-    plot([3 4], meanRaw(3:4), 'mo'); 
+    plot([3 4], meanSPS(3:4), 'mo'); 
     errorbar([3 4], meanSPS(3:4), sps(3:4), 'm' );
         for p=1:length(sumdat.fDuetAuto.SPS); plot(3.1, sumdat.fDuetAuto.SPS(p), 'm*'); end
         for p=1:length(sumdat.fSoloAuto.SPS); plot(4.1, sumdat.fSoloAuto.SPS(p), 'm*'); end
