@@ -145,7 +145,7 @@ subplot(131); hold on; title('Auto Normalized RS');
     errorbar([3 4], meanNorm(3:4), s(3:4), 'm' );
         for p=1:length(sumdat.fDuetAuto.rsNorm); plot(3.1, sumdat.fDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 4); end
         for p=1:length(sumdat.fSoloAuto.rsNorm); plot(4.1, sumdat.fSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 4); end
-    ylim([-5 20]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    ylim([-5 50]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 subplot(132); hold on; title('Auto Raw RS');
     plot([1 2], meanRaw(1:2), 'bo'); 
