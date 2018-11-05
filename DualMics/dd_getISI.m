@@ -80,7 +80,7 @@ out.ff = ff;
 out.mm = mm;
 
 figure(2); clf; subplot(211); hold on; subplot(212); hold on;
-distances = [0 1 2 3 5 7 9 10];
+% distances = [0 1 2 3 5 7 9 10];
 distances = sort(unique([in.distance]));
 for jj = 1:length(distances)
     
