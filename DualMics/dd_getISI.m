@@ -1,6 +1,6 @@
 function out = dd_getISI(in)
 % out = dd_getISI(in)
-% Where in is a structure for two-microphone recordings of wrens
+% Where "in" is a structure for two-microphone recordings of wrens
 % This is not a general tool.
 % out includes the following:
 % out.Fmf = []; Female microphone, ISI male-to-female 
