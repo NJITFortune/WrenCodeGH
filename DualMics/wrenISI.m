@@ -104,14 +104,14 @@ end
 figure(2); clf; subplot(211); hold on; subplot(212); hold on;
 ax(1) = subplot(211); 
     plot(distances-0.1, Ffm(1)+(2*(distances-1)*spdosnd), 'k-');
-    errorbar(distances-0.1, Ffm, Ffmstd, 'ob');
-    errorbar(distances+0.1, Fmf, Fmfstd, '*m', 'LineWidth', 2);
+    errorbar(distances-0.1, Ffm, Ffmstd, 'db');
+    errorbar(distances+0.1, Fmf, Fmfstd, 'om', 'LineWidth', 2);
     text(3, 0.15, 'Female Microphone', 'Color', 'm');
 
 ax(2) = subplot(212); 
     plot(distances-0.1, Mmf(1)+(2*(distances-1)*spdosnd), 'k-');
-    errorbar(distances+0.1, Mfm, Ffmstd, '*b', 'LineWidth', 2);
-    errorbar(distances-0.1, Mmf, Fmfstd, 'om');
+    errorbar(distances+0.1, Mfm, Ffmstd, 'ob', 'LineWidth', 2);
+    errorbar(distances-0.1, Mmf, Fmfstd, 'dm');
     text(3, 0.15, 'Male Microphone', 'Color', 'b');
 
 linkaxes(ax, 'xy'); xlim([0 8]); ylim([-0.02 0.18]);
