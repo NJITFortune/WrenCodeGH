@@ -43,7 +43,9 @@ for d = 1:length(in)
     
     numsyls = length(in(d).fsyl);
     
-    % Cycle through every syllable except the last
+    % Cycle through every syllable except the last (avoid last because it
+    % has no inter-syllable-interval.
+    
     for s=1:numsyls-1
         
         % Get the ISI for the current syllable on each microphone
@@ -64,7 +66,6 @@ for d = 1:length(in)
             
         figure(1);
 
-        
         if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49 % Male to Female
             subplot(211); plot(in(d).distance+0.1, currFisi, 'k*');
                 out.Fmf(end+1) = currFisi;
@@ -87,8 +88,8 @@ for d = 1:length(in)
         
 end
 
-figure(1); subplot(211); plot([0 11], [0 0], 'k-');
-figure(1); subplot(212); plot([0 11], [0 0], 'k-');
+figure(1); subplot(211); plot([0 8], [0 0], 'k-');
+figure(1); subplot(212); plot([0 8], [0 0], 'k-');
 out.ff = ff;
 out.mm = mm;
 
