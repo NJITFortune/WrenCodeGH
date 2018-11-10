@@ -74,11 +74,11 @@ figure(1); clf; subplot(211); hold on; subplot(212); hold on;
 figure(1); subplot(211); plot([0 8], [0 0], 'k-'); ylim([-0.05 0.25]);
 figure(1); subplot(212); plot([0 8], [0 0], 'k-'); ylim([-0.05 0.25]);
             subplot(211); text(3, 0.2, 'Female Microphone', 'Color', 'm');
-            subplot(211); plot(out.Fmfd+0.1, out.Fmf, 'k*');
-            subplot(211); plot(out.Ffmd, out.Ffm, 'mo');
+            subplot(211); plot(out.Fmfd+0.1, out.Fmf, 'm*');
+            subplot(211); plot(out.Ffmd, out.Ffm, 'bo');
             subplot(212); text(3, 0.2, 'Male Microphone', 'Color', 'b');
-            subplot(212); plot(out.Mmfd, out.Mmf, 'bo');
-            subplot(212); plot(out.Mfmd+0.1, out.Mfm, 'k*');
+            subplot(212); plot(out.Mmfd, out.Mmf, 'mo');
+            subplot(212); plot(out.Mfmd+0.1, out.Mfm, 'b*');
 
 
 %% Perform statistics
