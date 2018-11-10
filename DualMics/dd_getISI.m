@@ -32,7 +32,7 @@ out.Ffm = []; out.Ffmd = [];
 out.Mmf = []; out.Mmfd = [];
 out.Mfm = []; out.Mfmd = [];
 
-out.mm = []; out.ff = [];
+% out.mm = []; out.ff = [];
 
 % spdosnd = 1/331.2; % Speed of sound is 331.2 meters per second
 
@@ -53,16 +53,16 @@ for d = 1:length(in)
         currMisi = in(d).msyl(s+1).syltim(1) - in(d).msyl(s).syltim(2);
 
         % These are very long ISIs
-        if currFisi > 0.22 
-            if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49
-            out.ff(end+1) = d;
-            end
-        end
-        if currMisi > 0.22
-            if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49
-            out.mm(end+1) = d;
-            end
-        end
+%         if currFisi > 0.22 
+%             if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49
+%             out.ff(end+1) = d;
+%             end
+%         end
+%         if currMisi > 0.22
+%             if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49
+%             out.mm(end+1) = d;
+%             end
+%         end
             
         figure(1);
 
