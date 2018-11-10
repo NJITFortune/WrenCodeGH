@@ -25,7 +25,7 @@ function out = dd_getISI(in)
 % out.Mfm = []; Male microphone, ISI female-to-male
 % out.Mfmd = []; Male microphone, distance for current ISI female-to-male
 
-mmfcnt = 0; mfmcnt = 0; fmfcnt = 0; ffmcnt = 0;
+% mmfcnt = 0; mfmcnt = 0; fmfcnt = 0; ffmcnt = 0;
 
 out.Fmf = []; out.Fmfd = [];
 out.Ffm = []; out.Ffmd = [];
