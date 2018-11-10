@@ -73,10 +73,10 @@ figure(1); clf; subplot(211); hold on; subplot(212); hold on;
 
 figure(1); subplot(211); plot([0 8], [0 0], 'k-'); ylim([-0.05 0.25]);
 figure(1); subplot(212); plot([0 8], [0 0], 'k-'); ylim([-0.05 0.25]);
-            subplot(211); plot(in(d).distance+0.1, currFisi, 'k*');
-            subplot(211); plot(in(d).distance, currFisi, 'mo');
-            subplot(212); plot(in(d).distance, currMisi, 'bo');
-            subplot(212); plot(in(d).distance+0.1, currMisi, 'k*');
+            subplot(211); plot(out.Fmfd+0.1, out.Fmf, 'k*');
+            subplot(211); plot(out.Ffmd, out.Ffm, 'mo');
+            subplot(212); plot(out.Mmfd, out.Mmf, 'bo');
+            subplot(212); plot(out.Mfmd+0.1, out.Mfm, 'k*');
 
 
 %% Perform statistics
