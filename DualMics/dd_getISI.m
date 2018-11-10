@@ -118,6 +118,7 @@ axxx(1) = subplot(211);
     text(10, 0.0, 'Female Microphone', 'Color', 'm');
 
 axxx(2) = subplot(212); 
+    plot(distances-0.1, Mmf(1)+((distances-1)*spdosnd), 'k-');
     errorbar(distances+0.1, Mfm, Ffmstd, '*b', 'LineWidth', 2);
     errorbar(distances-0.1, Mmf, Fmfstd, 'om');
     text(10, 0.0, 'Male Microphone', 'Color', 'b');
