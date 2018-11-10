@@ -34,7 +34,7 @@ out.Mfm = []; out.Mfmd = [];
 
 % out.mm = []; out.ff = [];
 
-% spdosnd = 1/331.2; % Speed of sound is 331.2 meters per second
+spdosnd = 1/331.2; % Speed of sound is 331.2 meters per second
 
 figure(1); clf; subplot(211); hold on; subplot(212); hold on;
 
@@ -91,9 +91,12 @@ end
 figure(1); subplot(211); plot([0 8], [0 0], 'k-'); ylim([-0.05 0.25]);
 figure(1); subplot(212); plot([0 8], [0 0], 'k-'); ylim([-0.05 0.25]);
 
+
+
 figure(2); clf; subplot(211); hold on; subplot(212); hold on;
-% distances = [0 1 2 3 5 7 9 10];
+
 distances = sort(unique([in.distance]));
+
 for jj = 1:length(distances)
     
     Ffm(jj) = mean(out.Ffm([out.Ffmd] == distances(jj)));
@@ -108,13 +111,16 @@ for jj = 1:length(distances)
 
 end
 
-axxx(1) = subplot(211); errorbar(distances-0.1, Ffm, Ffmstd, 'ob');
-errorbar(distances+0.1, Fmf, Fmfstd, '*m', 'LineWidth', 2);
-text(10, 0.0, 'Female Microphone', 'Color', 'm');
+axxx(1) = subplot(211); 
+    plot(distances-0.1, Ffm(1)+((distances-1)*spdosnd), 'k-');
+    errorbar(distances-0.1, Ffm, Ffmstd, 'ob');
+    errorbar(distances+0.1, Fmf, Fmfstd, '*m', 'LineWidth', 2);
+    text(10, 0.0, 'Female Microphone', 'Color', 'm');
 
-axxx(2) = subplot(212); errorbar(distances+0.1, Mfm, Ffmstd, '*b', 'LineWidth', 2);
-errorbar(distances-0.1, Mmf, Fmfstd, 'om');
-text(10, 0.0, 'Male Microphone', 'Color', 'b');
+axxx(2) = subplot(212); 
+    errorbar(distances+0.1, Mfm, Ffmstd, '*b', 'LineWidth', 2);
+    errorbar(distances-0.1, Mmf, Fmfstd, 'om');
+    text(10, 0.0, 'Male Microphone', 'Color', 'b');
 
 linkaxes(axxx, 'xy'); xlim([-1 12]); ylim([-0.02 0.18]);
     
