@@ -12,7 +12,10 @@ function out = wrenISI(in)
 % fsyl msyl             Structure with syllable data
 %   fftFreqs            Frequencies for plotting with fftPower
 %   fftPower            Power at frequencies in fftFreqs for the syllable
+%   sex                 'F' for female syllable, 'M' for male
+%   sexsyltype          Numeric identifiers for individual syllables, males 1-20, females 50-70   
 %   
+
 
 % This is not a general tool.
 % out includes the following:
