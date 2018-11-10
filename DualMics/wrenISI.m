@@ -1,7 +1,7 @@
 function out = wrenISI(in)
-% out = dd_getISI(in)
-% Where "in" is a structure for two-microphone recordings of wrens
-% "in" is composed of 
+% Usage: out = dd_getISI(in)
+% 'in' is a structure for two-microphone recordings of wrens
+% 'in' is composed of 
 % day month year        Date of the recording 
 % Location              Name of the study site
 % vision                1 Visual cues present, 0 Visual cues absent
@@ -17,7 +17,6 @@ function out = wrenISI(in)
 %   
 
 
-% This is not a general tool.
 % out includes the following:
 % out.Fmf = []; Female microphone, ISI male-to-female 
 % out.Fmfd = []; Female microphone, distance for current ISI male-to-female
@@ -28,8 +27,6 @@ function out = wrenISI(in)
 % out.Mfm = []; Male microphone, ISI female-to-male
 % out.Mfmd = []; Male microphone, distance for current ISI female-to-male
 
-% mmfcnt = 0; mfmcnt = 0; fmfcnt = 0; ffmcnt = 0;
-
 out.Fmf = []; out.Fmfd = [];
 out.Ffm = []; out.Ffmd = [];
 out.Mmf = []; out.Mmfd = [];
@@ -39,9 +36,8 @@ out.Mfm = []; out.Mfmd = [];
 
 spdosnd = 1/331.2; % Speed of sound is 331.2 meters per second
 
-figure(1); clf; subplot(211); hold on; subplot(212); hold on;
 
-%% Cycle through every duet in the structure
+%% Cycle through every duet in the structure to retrieve ISIs
 for d = 1:length(in)
     
     numsyls = length(in(d).fsyl);
@@ -55,36 +51,35 @@ for d = 1:length(in)
         currFisi = in(d).fsyl(s+1).syltim(1) - in(d).fsyl(s).syltim(2);
         currMisi = in(d).msyl(s+1).syltim(1) - in(d).msyl(s).syltim(2);
             
-        figure(1);
-
         if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49 % Male to Female
-            subplot(211); plot(in(d).distance+0.1, currFisi, 'k*');
                 out.Fmf(end+1) = currFisi;
                 out.Fmfd(end+1) = in(d).distance;
-            subplot(212); plot(in(d).distance, currMisi, 'bo');
                 out.Mmf(end+1) = currMisi;
                 out.Mmfd(end+1) = in(d).distance;
         end
-        if in(d).fsyl(s).sexsyltype > 49 && in(d).fsyl(s+1).sexsyltype < 49; % Female to Male
-            subplot(211); plot(in(d).distance, currFisi, 'mo');
+        if in(d).fsyl(s).sexsyltype > 49 && in(d).fsyl(s+1).sexsyltype < 49 % Female to Male
                 out.Ffm(end+1) = currFisi;
                 out.Ffmd(end+1) = in(d).distance;
-            subplot(212); plot(in(d).distance+0.1, currMisi, 'k*');
                 out.Mfm(end+1) = currMisi;
                 out.Mfmd(end+1) = in(d).distance;
         end        
                         
     end
-            
-        
+                    
 end
+
+%% Plot the raw data
+figure(1); clf; subplot(211); hold on; subplot(212); hold on;
 
 figure(1); subplot(211); plot([0 8], [0 0], 'k-'); ylim([-0.05 0.25]);
 figure(1); subplot(212); plot([0 8], [0 0], 'k-'); ylim([-0.05 0.25]);
+            subplot(211); plot(in(d).distance+0.1, currFisi, 'k*');
+            subplot(211); plot(in(d).distance, currFisi, 'mo');
+            subplot(212); plot(in(d).distance, currMisi, 'bo');
+            subplot(212); plot(in(d).distance+0.1, currMisi, 'k*');
 
 
-
-figure(2); clf; subplot(211); hold on; subplot(212); hold on;
+%% Perform statistics
 
 distances = sort(unique([in.distance]));
 
@@ -102,6 +97,9 @@ for jj = 1:length(distances)
 
 end
 
+
+%% Plot the analyzed data
+figure(2); clf; subplot(211); hold on; subplot(212); hold on;
 axxx(1) = subplot(211); 
     plot(distances-0.1, Ffm(1)+(2*(distances-1)*spdosnd), 'k-');
     errorbar(distances-0.1, Ffm, Ffmstd, 'ob');
