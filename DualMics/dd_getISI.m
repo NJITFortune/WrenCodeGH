@@ -32,7 +32,7 @@ out.Ffm = []; out.Ffmd = [];
 out.Mmf = []; out.Mmfd = [];
 out.Mfm = []; out.Mfmd = [];
 
-mm = []; ff = [];
+out.mm = []; out.ff = [];
 
 % spdosnd = 1/331.2; % Speed of sound is 331.2 meters per second
 
@@ -55,12 +55,12 @@ for d = 1:length(in)
         % These are very long ISIs
         if currFisi > 0.22 
             if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49
-            ff(end+1) = d;
+            out.ff(end+1) = d;
             end
         end
         if currMisi > 0.22
             if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49
-            mm(end+1) = d;
+            out.mm(end+1) = d;
             end
         end
             
@@ -88,10 +88,8 @@ for d = 1:length(in)
         
 end
 
-figure(1); subplot(211); plot([0 8], [0 0], 'k-');
-figure(1); subplot(212); plot([0 8], [0 0], 'k-');
-out.ff = ff;
-out.mm = mm;
+figure(1); subplot(211); plot([0 8], [0 0], 'k-'); ylim([-0.05 0.25]);
+figure(1); subplot(212); plot([0 8], [0 0], 'k-'); ylim([-0.05 0.25]);
 
 figure(2); clf; subplot(211); hold on; subplot(212); hold on;
 % distances = [0 1 2 3 5 7 9 10];
