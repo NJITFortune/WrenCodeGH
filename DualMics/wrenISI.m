@@ -10,7 +10,9 @@ function out = wrenISI(in)
 % maleMic               Audio recording from microphone at male cage
 % Fs                    Sample rate of audio recordings
 % fsyl msyl             Structure with syllable data
-%   fft
+%   fftFreqs            Frequencies for plotting with fftPower
+%   fftPower            Power at frequencies in fftFreqs for the syllable
+%   
 
 % This is not a general tool.
 % out includes the following:
