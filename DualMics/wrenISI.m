@@ -1,18 +1,16 @@
-function out = dd_getISI(in)
+function out = wrenISI(in)
 % out = dd_getISI(in)
 % Where "in" is a structure for two-microphone recordings of wrens
 % "in" is composed of 
-% day
-% distance
-% femMic    
-% Fs        
-% fsyl      
+% day month year        Date of the recording 
+% distance              Distance between the two cages in meters  
+% femMic                Audio recording from microphone at female cage
+% maleMic               Audio recording from microphone at male cage
+% Fs                    Sample rate of audio recordings
+% fsyl                  
 % Location  
-% maleMic   
-% month     
 % msyl      
 % vision    
-% year      
 
 % This is not a general tool.
 % out includes the following:
