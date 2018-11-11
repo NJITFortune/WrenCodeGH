@@ -6,16 +6,17 @@ figure(1); clf;
 
 Fs = duet(idx).Fs;
 prpspc = flipud(gray);
+plotlims = [-10 30];
 
 ax(1) = subplot(211); hold on; 
-    specgram(duet(idx).femMic, 1024, Fs, [], 1000); ylim([0 6000]); colormap(prpspc); caxis([-10 30]);
+    specgram(duet(idx).femMic, 1024, Fs, [], 1000); ylim([0 6000]); colormap(prpspc); caxis([plotlims]);
     for j=1:length(duet(idx).fsyl) 
         plot([duet(idx).fsyl(j).syltim(1) duet(idx).fsyl(j).syltim(1)], [500 5500], 'g', 'LineWidth', 1);
         plot([duet(idx).fsyl(j).syltim(2) duet(idx).fsyl(j).syltim(2)], [500 5500], 'r', 'LineWidth', 1);
     end
 
 ax(2) = subplot(212); hold on;
-    specgram(duet(idx).maleMic, 1024, Fs, [], 1000); ylim([0 6000]); colormap(prpspc); caxis([-10 30]);
+    specgram(duet(idx).maleMic, 1024, Fs, [], 1000); ylim([0 6000]); colormap(prpspc); caxis([plotlims]);
     for j=1:length(duet(idx).msyl) 
         plot([duet(idx).msyl(j).syltim(1) duet(idx).msyl(j).syltim(1)], [500 5500], 'g', 'LineWidth', 1);
         plot([duet(idx).msyl(j).syltim(2) duet(idx).msyl(j).syltim(2)], [500 5500], 'r', 'LineWidth', 1);
