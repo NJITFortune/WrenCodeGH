@@ -32,8 +32,6 @@ out.Ffm = []; out.Ffmd = [];
 out.Mmf = []; out.Mmfd = [];
 out.Mfm = []; out.Mfmd = [];
 
-% out.mm = []; out.ff = [];
-
 spdosnd = 1/331.2; % Speed of sound is 331.2 meters per second
 
 
