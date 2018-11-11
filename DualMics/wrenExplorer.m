@@ -8,7 +8,7 @@ Fs = duet(idx).Fs;
 prpspc = flipud('HOT');
 
 ax(1) = subplot(211); hold on; 
-    specgram(duet(idx).femMic, 1024, Fs, [], 1000); ylim([0 6000]); colormap(prpspc);
+    specgram(duet(idx).femMic, 1024, Fs, [], 1000); ylim([0 6000]); colormap('HOT');
     for j=1:length(duet(idx).fsyl) 
         plot([duet(idx).fsyl(j).syltim(1) duet(idx).fsyl(j).syltim(1)], [500 5500], 'g', 'LineWidth', 2);
         plot([duet(idx).fsyl(j).syltim(2) duet(idx).fsyl(j).syltim(2)], [500 5500], 'r', 'LineWidth', 2);
