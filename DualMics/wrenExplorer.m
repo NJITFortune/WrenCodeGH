@@ -1,6 +1,6 @@
 function wrenExplorer(duet, idx)
 % Plot the spectrograms for each microphone with lines indicating starts 
-% and ends for each syllable.
+% and ends for each syllable with other information.
 
 figure(1); clf; 
 
