@@ -6,7 +6,7 @@ figure(1); clf;
 
 Fs = duet(idx).Fs;
 prpspc = flipud(gray);
-plotlims = [-10 30];
+plotlims = [-15 30];
 
 ax(1) = subplot(211); hold on; 
     specgram(duet(idx).femMic, 1024, Fs, [], 1000); ylim([0 6000]); colormap(prpspc); caxis(plotlims);
