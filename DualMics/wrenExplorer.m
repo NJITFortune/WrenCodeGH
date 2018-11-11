@@ -14,10 +14,10 @@ ax(1) = subplot(211); hold on;
     for j=1:length(duet(idx).fsyl) 
         if duet(idx).fsyl(j).sexsyltype < 49 % Male Syllable
            plot([duet(idx).fsyl(j).syltim(1) duet(idx).fsyl(j).syltim(2)], [5500, 5500], 'b', 'LineWidth', 2);
-           text(mean([duet(idx).fsyl(j).syltim(1) duet(idx).fsyl(j).syltim(2)]), 5500, num2str(duet(idx).fsyl(j).sexsyltype), 'Color', 'k');
+           text(mean([duet(idx).fsyl(j).syltim(1) duet(idx).fsyl(j).syltim(2)]), 5200, num2str(duet(idx).fsyl(j).sexsyltype), 'Color', 'k', 'HorizontalAlignment', 'center');
         else
            plot([duet(idx).fsyl(j).syltim(1) duet(idx).fsyl(j).syltim(2)], [500, 500], 'm', 'LineWidth', 2);
-           text(mean([duet(idx).fsyl(j).syltim(1) duet(idx).fsyl(j).syltim(2)]), 500, num2str(duet(idx).fsyl(j).sexsyltype-50), 'Color', 'k');            
+           text(mean([duet(idx).fsyl(j).syltim(1) duet(idx).fsyl(j).syltim(2)]), 200, num2str(duet(idx).fsyl(j).sexsyltype-50), 'Color', 'k', 'HorizontalAlignment', 'center');            
         end
         plot([duet(idx).fsyl(j).syltim(1) duet(idx).fsyl(j).syltim(1)], [500 5500], 'g', 'LineWidth', 1);
         plot([duet(idx).fsyl(j).syltim(2) duet(idx).fsyl(j).syltim(2)], [500 5500], 'r', 'LineWidth', 1);
