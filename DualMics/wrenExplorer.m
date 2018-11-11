@@ -15,7 +15,7 @@ ax(1) = subplot(211); hold on;
     end
 
 ax(2) = subplot(212); hold on;
-    specgram(duet(idx).maleMic, 1024, Fs, [], 1000); ylim([0 6000]); colormap(prpspc);
+    specgram(duet(idx).maleMic, 1024, Fs, [], 1000); ylim([0 6000]); colormap('HOT');
     for j=1:length(duet(idx).msyl) 
         plot([duet(idx).msyl(j).syltim(1) duet(idx).msyl(j).syltim(1)], [500 5500], 'g', 'LineWidth', 2);
         plot([duet(idx).msyl(j).syltim(2) duet(idx).msyl(j).syltim(2)], [500 5500], 'r', 'LineWidth', 2);
