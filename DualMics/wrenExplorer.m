@@ -4,6 +4,8 @@ function wrenExplorer(duet, idx)
 
 figure(1); clf; 
 
+Fs = duet(idx).Fs;
+
 ax(1) = subplot(211); hold on; 
     specgram(duet(idx).femMic, 1024, Fs, [], 1000); ylim([0 6000]);
     for j=1:length(duet(idx).fsyl) 
