@@ -38,7 +38,7 @@ ax(2) = subplot(212); hold on;
         plot([duet(idx).msyl(j).syltim(2) duet(idx).msyl(j).syltim(2)], [500 5500], 'r', 'LineWidth', 1);
     end
 
-linkaxes(ax, 'xy');
+linkaxes(ax, 'xy'); xlim([0 duet(idx).msyl(end).syltim(2)+0.5]);
 
 %     %% Get lists of syllables
 %     
