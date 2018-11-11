@@ -14,7 +14,7 @@ ax(1) = subplot(211); hold on;
     end
 
 ax(2) = subplot(212); hold on;
-    specgram(duet(idx).malMic, 1024, Fs, [], 1000); ylim([0 6000]);
+    specgram(duet(idx).maleMic, 1024, Fs, [], 1000); ylim([0 6000]);
     for j=1:length(duet(idx).msyl) 
         plot([duet(idx).msyl(j).syltim(1) duet(1).msyl(j).syltim(1)], [500 5500], 'g', 'LineWidth', 2);
         plot([duet(idx).msyl(j).syltim(2) duet(1).msyl(j).syltim(2)], [500 5500], 'r', 'LineWidth', 2);
