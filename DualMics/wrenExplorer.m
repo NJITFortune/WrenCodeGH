@@ -20,6 +20,13 @@ ax(2) = subplot(212); hold on;
     specgram(duet(idx).maleMic, 1024, Fs, [], 1000); ylim([0 6000]); colormap(prpspc); caxis(plotlims);
     text(0.1, 5000, 'Male Microphone', 'Color', 'b');
     for j=1:length(duet(idx).msyl) 
+        if duet(idx).msyl(j).sexsyltype < 49 % Male Syllable
+           plot([duet(idx).msyl(j).syltim(1) duet(idx).msyl(j).syltim(2)], [500, 500], 'b', 'LineWidth', 2);
+           text(mean([duet(idx).msyl(j).syltim(1) duet(idx).msyl(j).syltim(2)]), 500, num2str(duet(idx).msyl(j).sexsyltype), 'Color', 'k');
+        else
+           plot([duet(idx).msyl(j).syltim(1) duet(idx).msyl(j).syltim(2)], [5500, 5500], 'm', 'LineWidth', 2);
+           text(mean([duet(idx).msyl(j).syltim(1) duet(idx).msyl(j).syltim(2)]), 5500, num2str(duet(idx).msyl(j).sexsyltype-50), 'Color', 'k');            
+        end
         plot([duet(idx).msyl(j).syltim(1) duet(idx).msyl(j).syltim(1)], [500 5500], 'g', 'LineWidth', 1);
         plot([duet(idx).msyl(j).syltim(2) duet(idx).msyl(j).syltim(2)], [500 5500], 'r', 'LineWidth', 1);
     end
