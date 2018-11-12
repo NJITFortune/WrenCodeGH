@@ -114,7 +114,7 @@ ax(2) = subplot(212);
     text(3, 0.15, 'Male Microphone', 'Color', 'b');
     text(3, 0.05, 'Expected effect of distance', 'Color', 'k');
 
-linkaxes(ax, 'xy'); xlim([0 8]); ylim([-0.02 0.18]);
+linkaxes(ax, 'xy'); xlim([min(distances)-0.5 max(distances)+0.5]); ylim([-0.02 0.2]);
     
 %    subplot(211); errorbar(jj, mean(out.Ffm([out.Ffmd] == jj)) , std(out.Ffm([out.Ffmd] == jj)), 'om');
 %    subplot(212); errorbar(jj, mean(out.Fmf([out.Fmfd] == jj)) , std(out.Fmf([out.Fmfd] == jj)), '*m');
