@@ -1,18 +1,6 @@
 function out = dd_ISI_chron(in)
-% out = dd_getISI(in)
+% out = dd_ISI_chron(in)
 % Where "in" is a structure for two-microphone recordings of wrens
-% "in" is composed of 
-% day
-% distance
-% femMic    
-% Fs        
-% fsyl      
-% Location  
-% maleMic   
-% month     
-% msyl      
-% vision    
-% year      
 
 % This is not a general tool.
 % out includes the following:
@@ -51,18 +39,6 @@ for d = 1:length(in)
         % Get the ISI for the current syllable on each microphone
         currFisi = in(d).fsyl(s+1).syltim(1) - in(d).fsyl(s).syltim(2);
         currMisi = in(d).msyl(s+1).syltim(1) - in(d).msyl(s).syltim(2);
-
-        % These are very long ISIs
-%         if currFisi > 0.22 
-%             if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49
-%             out.ff(end+1) = d;
-%             end
-%         end
-%         if currMisi > 0.22
-%             if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49
-%             out.mm(end+1) = d;
-%             end
-%         end
             
         figure(1);
 
@@ -74,7 +50,7 @@ for d = 1:length(in)
                 out.Mmf(end+1) = currMisi;
                 out.Mmfd(end+1) = in(d).distance;
         end
-        if in(d).fsyl(s).sexsyltype > 49 && in(d).fsyl(s+1).sexsyltype < 49; % Female to Male
+        if in(d).fsyl(s).sexsyltype > 49 && in(d).fsyl(s+1).sexsyltype < 49 % Female to Male
             subplot(211); plot(in(d).distance, currFisi, 'mo');
                 out.Ffm(end+1) = currFisi;
                 out.Ffmd(end+1) = in(d).distance;
