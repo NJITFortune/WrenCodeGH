@@ -1,4 +1,4 @@
-function out = dd_getISI(in)
+function out = dd_ISI_chron(in)
 % out = dd_getISI(in)
 % Where "in" is a structure for two-microphone recordings of wrens
 % "in" is composed of 
