@@ -39,7 +39,8 @@ for d = 1:length(in)
                 
                 if s+2 <= numsyls
                 if in(d).fsyl(s+2).sexsyltype < 49 % Male to Female to Male (AHA interval for male)
-                    out.M.aha(end+1) = in(d).fsyl(s+2).syltim(1) - in(d).fsyl(s).syltim(2);
+                    out.M.aha(end+1) = in(d).msyl(s+2).syltim(1) - in(d).msyl(s).syltim(2);
+                    out.M.ahad(end+1) = in(d).distance;
                 end
                 end
         end
@@ -53,8 +54,9 @@ for d = 1:length(in)
                 out.M.had(end+1) = in(d).distance;
                 
                 if s+2 <= numsyls
-                if in(d).fsyl(s+2).sexsyltype > 49 % Female to Male to Female (AHA interval for male)
-                    out.M.aha(end+1) = in(d).fsyl(s+2).syltim(1) - in(d).fsyl(s).syltim(2);
+                if in(d).fsyl(s+2).sexsyltype > 49 % Female to Male to Female (AHA interval for female)
+                    out.F.aha(end+1) = in(d).fsyl(s+2).syltim(1) - in(d).fsyl(s).syltim(2);
+                    out.F.ahad(end+1) = in(d).distance;
                 end
                 end
         end        
