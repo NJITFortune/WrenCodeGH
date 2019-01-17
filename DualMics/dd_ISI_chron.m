@@ -1,28 +1,14 @@
 function out = dd_ISI_chron(in)
 % out = dd_ISI_chron(in)
-% Where "in" is a structure for two-microphone recordings of wrens
-
-% This is not a general tool.
-% out includes the following:
-% out.Fmf = []; Female microphone, ISI male-to-female 
-% out.Fmfd = []; Female microphone, distance for current ISI male-to-female
-% out.Ffm = []; Female microphone, ISI female-to-male
-% out.Ffmd = []; Female microphone, distance for current ISI female-to-male
-% out.Mmf = []; Male microphone, ISI male-to-female
-% out.Mmfd = []; Male microphone, distance for current ISI male-to-female
-% out.Mfm = []; Male microphone, ISI female-to-male
-% out.Mfmd = []; Male microphone, distance for current ISI female-to-male
-
-% mmfcnt = 0; mfmcnt = 0; fmfcnt = 0; ffmcnt = 0;
-
-out.Fmf = []; out.Fmfd = [];
-out.Ffm = []; out.Ffmd = [];
-out.Mmf = []; out.Mmfd = [];
-out.Mfm = []; out.Mfmd = [];
-
-% out.mm = []; out.ff = [];
+% Where "in" is a structure for two-microphone recordings of wrens.
 
 spdosnd = 1/331.2; % Speed of sound is 331.2 meters per second
+
+out.F.ha = []; out.F.had = []; % Female microphone, Het-Aut ISI
+out.F.ah = []; out.F.ahd = []; % Female microphone, Aut-Het ISI
+out.M.ah = []; out.M.ahd = [];
+out.M.ha = []; out.M.had = [];
+
 
 figure(1); clf; subplot(211); hold on; subplot(212); hold on;
 
