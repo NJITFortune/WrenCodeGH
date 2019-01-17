@@ -6,9 +6,8 @@ spdosnd = 1/331.2; % Speed of sound is 331.2 meters per second
 
 out.F.ha = []; out.F.had = []; % Female microphone, Het-Aut ISI
 out.F.ah = []; out.F.ahd = []; % Female microphone, Aut-Het ISI
-out.M.ah = []; out.M.ahd = [];
-out.M.ha = []; out.M.had = [];
-
+out.M.ah = []; out.M.ahd = []; % Male microphone, Aut-Het ISI
+out.M.ha = []; out.M.had = []; % Male microphone, Het-Aut ISI
 
 figure(1); clf; subplot(211); hold on; subplot(212); hold on;
 
@@ -30,19 +29,19 @@ for d = 1:length(in)
 
         if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49 % Male to Female
             subplot(211); plot(in(d).distance+0.1, currFisi, 'k*');
-                out.Fmf(end+1) = currFisi;
-                out.Fmfd(end+1) = in(d).distance;
+                out.F.ha(end+1) = currFisi;
+                out.F.had(end+1) = in(d).distance;
             subplot(212); plot(in(d).distance, currMisi, 'bo');
-                out.Mmf(end+1) = currMisi;
-                out.Mmfd(end+1) = in(d).distance;
+                out.M.ah(end+1) = currMisi;
+                out.M.ahd(end+1) = in(d).distance;
         end
         if in(d).fsyl(s).sexsyltype > 49 && in(d).fsyl(s+1).sexsyltype < 49 % Female to Male
             subplot(211); plot(in(d).distance, currFisi, 'mo');
-                out.Ffm(end+1) = currFisi;
-                out.Ffmd(end+1) = in(d).distance;
+                out.F.ah(end+1) = currFisi;
+                out.F.ahd(end+1) = in(d).distance;
             subplot(212); plot(in(d).distance+0.1, currMisi, 'k*');
-                out.Mfm(end+1) = currMisi;
-                out.Mfmd(end+1) = in(d).distance;
+                out.M.ha(end+1) = currMisi;
+                out.M.had(end+1) = in(d).distance;
         end        
                         
     end
