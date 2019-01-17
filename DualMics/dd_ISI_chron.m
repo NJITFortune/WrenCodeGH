@@ -80,10 +80,10 @@ for jj = length(distances):-1:1
     Fahstd(jj) = std(out.F.ah([out.F.ahd] == distances(jj)));
     Fhastd(jj) = std(out.F.ha([out.F.had] == distances(jj)));
 
-    Mha(jj) = mean(out.Mfm([out.Ffmd] == distances(jj)));
-    Mah(jj) = mean(out.Mmf([out.Fmfd] == distances(jj)));
-    Mfmstd(jj) = std(out.Mfm([out.Ffmd] == distances(jj)));
-    Mmfstd(jj) = std(out.Mmf([out.Fmfd] == distances(jj)));
+    Mha(jj) = mean(out.M.ha([out.F.ahd] == distances(jj)));
+    Mah(jj) = mean(out.M.ah([out.F.had] == distances(jj)));
+    Mhastd(jj) = std(out.M.ha([out.F.ahd] == distances(jj)));
+    Mahstd(jj) = std(out.M.ah([out.F.had] == distances(jj)));
 
 end
 
@@ -94,9 +94,9 @@ axxx(1) = subplot(211);
     text(10, 0.0, 'Female Microphone', 'Color', 'm');
 
 axxx(2) = subplot(212); 
-    plot(distances-0.1, Mmf(1)+(2*(distances-1)*spdosnd), 'k-');
-    errorbar(distances+0.1, Mha, Fahstd, '*b', 'LineWidth', 2);
-    errorbar(distances-0.1, Mmf, Fhastd, 'om');
+    plot(distances-0.1, Mah(1)+(2*(distances-1)*spdosnd), 'k-');
+    errorbar(distances+0.1, Mha, Mahstd, '*b', 'LineWidth', 2);
+    errorbar(distances-0.1, Mah, Mhastd, 'om');
     text(10, 0.0, 'Male Microphone', 'Color', 'b');
 
 linkaxes(axxx, 'xy'); xlim([-1 12]); ylim([-0.02 0.18]);
