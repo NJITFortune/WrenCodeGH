@@ -37,10 +37,11 @@ for d = 1:length(in)
                 out.M.ah(end+1) = currMisi;
                 out.M.ahd(end+1) = in(d).distance;
                 
+                if s+2 <= numsyls
                 if in(d).fsyl(s+2).sexsyltype < 49 % Male to Female to Male (AHA interval for male)
                     out.M.aha(end+1) = in(d).fsyl(s+2).syltim(1) - in(d).fsyl(s).syltim(2);
                 end
-                    
+                end
         end
         
         if in(d).fsyl(s).sexsyltype > 49 && in(d).fsyl(s+1).sexsyltype < 49 % Female to Male
@@ -51,8 +52,10 @@ for d = 1:length(in)
                 out.M.ha(end+1) = currMisi;
                 out.M.had(end+1) = in(d).distance;
                 
+                if s+2 <= numsyls
                 if in(d).fsyl(s+2).sexsyltype > 49 % Female to Male to Female (AHA interval for male)
                     out.M.aha(end+1) = in(d).fsyl(s+2).syltim(1) - in(d).fsyl(s).syltim(2);
+                end
                 end
         end        
                         
@@ -70,30 +73,30 @@ figure(2); clf; subplot(211); hold on; subplot(212); hold on;
 
 distances = sort(unique([in.distance]));
 
-for jj = 1:length(distances)
+for jj = length(distances):-1:1
     
-    Ffm(jj) = mean(out.Ffm([out.Ffmd] == distances(jj)));
-    Fmf(jj) = mean(out.Fmf([out.Fmfd] == distances(jj)));
-    Ffmstd(jj) = std(out.Ffm([out.Ffmd] == distances(jj)));
-    Fmfstd(jj) = std(out.Fmf([out.Fmfd] == distances(jj)));
+    Fah(jj) = mean(out.F.ah([out.F.ahd] == distances(jj)));
+    Fha(jj) = mean(out.F.ha([out.F.had] == distances(jj)));
+    Fahstd(jj) = std(out.F.ah([out.F.ahd] == distances(jj)));
+    Fhastd(jj) = std(out.F.ha([out.F.had] == distances(jj)));
 
-    Mfm(jj) = mean(out.Mfm([out.Ffmd] == distances(jj)));
-    Mmf(jj) = mean(out.Mmf([out.Fmfd] == distances(jj)));
+    Mha(jj) = mean(out.Mfm([out.Ffmd] == distances(jj)));
+    Mah(jj) = mean(out.Mmf([out.Fmfd] == distances(jj)));
     Mfmstd(jj) = std(out.Mfm([out.Ffmd] == distances(jj)));
     Mmfstd(jj) = std(out.Mmf([out.Fmfd] == distances(jj)));
 
 end
 
 axxx(1) = subplot(211); 
-    plot(distances-0.1, Ffm(1)+(2*(distances-1)*spdosnd), 'k-');
-    errorbar(distances-0.1, Ffm, Ffmstd, 'ob');
-    errorbar(distances+0.1, Fmf, Fmfstd, '*m', 'LineWidth', 2);
+    plot(distances-0.1, Fah(1)+(2*(distances-1)*spdosnd), 'k-');
+    errorbar(distances-0.1, Fah, Fahstd, 'ob');
+    errorbar(distances+0.1, Fha, Fhastd, '*m', 'LineWidth', 2);
     text(10, 0.0, 'Female Microphone', 'Color', 'm');
 
 axxx(2) = subplot(212); 
     plot(distances-0.1, Mmf(1)+(2*(distances-1)*spdosnd), 'k-');
-    errorbar(distances+0.1, Mfm, Ffmstd, '*b', 'LineWidth', 2);
-    errorbar(distances-0.1, Mmf, Fmfstd, 'om');
+    errorbar(distances+0.1, Mha, Fahstd, '*b', 'LineWidth', 2);
+    errorbar(distances-0.1, Mmf, Fhastd, 'om');
     text(10, 0.0, 'Male Microphone', 'Color', 'b');
 
 linkaxes(axxx, 'xy'); xlim([-1 12]); ylim([-0.02 0.18]);
