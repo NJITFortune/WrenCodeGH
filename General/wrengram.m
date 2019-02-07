@@ -1,4 +1,4 @@
-function wrengram(sig, Fs, cmap);
+function wrengram(sig, Fs, cmap)
 % Usage: wrengram (signal, Fs, [colormap]);
 % colormap is either 1 for HOT or 2 for grayscale.
 % wrengram makes a nice spectrogram for Wren songs
