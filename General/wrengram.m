@@ -6,17 +6,16 @@ function wrengram(sig, Fs, cmap)
 
 if nargin == 2; cmap=1; end;
 
-mag = 300;
-cx = [0 50];
+mag = 300; % A scalar for the specgram
+cx = [0 50]; % Color Axis map
 
-        foo = sig - mean(sig);
-        mx = max( abs(foo) );
-        foo = foo * mag/mx;
-        tim = 1/Fs:1/Fs:length(sig)/Fs;
+        foo = sig - mean(sig); % Eliminate DC offset
+        mx = max( abs(foo) ); foo = foo * mag/mx; % Normalize to +/- 300
+        tim = 1/Fs:1/Fs:length(sig)/Fs; % Compute time series for data
 
         ax(1) = subplot(2,1,2,'position', [0 0 1 0.2]);
         plot(tim(1:5:end), foo(1:5:end), 'b');
-	axis([tim(1) tim(end) -mag mag]);
+        axis([tim(1) tim(end) -mag mag]);
 
 	ax(2) = subplot(2,1,1,'position', [0 0.2 1 0.8]);
         specgram(sig,1024,Fs,[],1000); 	
