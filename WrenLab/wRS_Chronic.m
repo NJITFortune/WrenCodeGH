@@ -254,9 +254,9 @@ subplot(133); hold on; title('Hetero Spikes/Second');
     stts.m.dRAuto.mean = mean(sumdat.mDuetAuto.rsRaw);
     [stts.m.dRAuto.H, stts.m.dRAuto.P, stts.m.dRAuto.CI, stts.m.dRAuto.stats]  = ttest(sumdat.mDuetAuto.rsRaw);
     
-    stts.f.dNAuto.mean = mean(sumdat.fduetAutogenous.rsNorm);
+    stts.f.dNAuto.mean = mean(sumdat.fDuetAuto.rsNorm);
     [stts.f.dNAuto.H, stts.f.dNAuto.P, stts.f.dNAuto.CI, stts.f.dNAuto.stats]  = ttest(sumdat.fDuetAuto.rsNorm);
-    stts.f.dRAuto.mean = mean(sumdat.fduetAutogenous.rsRaw);
+    stts.f.dRAuto.mean = mean(sumdat.fDuetAuto.rsRaw);
     [stts.f.dRAuto.H, stts.f.dRAuto.P, stts.f.dRAuto.CI, stts.f.dRAuto.stats]  = ttest(sumdat.fDuetAuto.rsRaw);
     
 % Autogenous Solo RS significant from 0?
