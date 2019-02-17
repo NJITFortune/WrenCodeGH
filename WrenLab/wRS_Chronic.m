@@ -228,6 +228,7 @@ subplot(133); hold on; title('Hetero Spikes/Second');
 
 
     stats= 0;
+    
 % subplot(132); hold on;
 %     plot([1 2], mraw(1:2), 'b*'); 
 %     errorbar([1 2], mraw(1:2), sraw(1:2), 'b' );% /sqrt(length(fChron)));
