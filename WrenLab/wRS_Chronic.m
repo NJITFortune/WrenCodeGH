@@ -253,7 +253,7 @@ figure(2); clf;
 % %% Compute stats     
     
 % Autogenous duet RS significant from 0?
-    stats.m.dNAuto.mean = mean(sumdat.mduetAutogenous.rsNorm);
+    stats.m.dNAuto.mean = mean(sumdat.mduetAuto.rsNorm);
     [stats.m.dNAuto.H, stats.m.dNAuto.P, stats.m.dNAuto.CI, stats.m.dNAuto.stats]  = ttest(sumdat.mduetAutogenous.rsNorm);
     stats.m.dRAuto.mean = mean(sumdat.mduetAutogenous.rsRaw);
     [stats.m.dRAuto.H, stats.m.dRAuto.P, stats.m.dRAuto.CI, stats.m.dRAuto.stats]  = ttest(sumdat.mduetAutogenous.rsRaw);
