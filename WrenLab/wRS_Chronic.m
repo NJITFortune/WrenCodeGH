@@ -328,7 +328,7 @@ function qwe = rs(struc, syllabl, spontan, padme)
    
     % Loop for each syllable
     
-        for j = 1:length(syllabl)    
+    for j = 1:length(syllabl)    
     
         % Get the spikes for that syllable
         stimSpikeCount = 0; 
