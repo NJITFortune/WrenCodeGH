@@ -252,7 +252,7 @@ subplot(133); hold on; title('Hetero Spikes/Second');
 % %% Compute stats     
     
 % Autogenous duet RS significant from 0?
-    stats.mdNAutomean = mean(sumdat.mDuetAuto.rsNorm);
+    mdNAutomean = mean(sumdat.mDuetAuto.rsNorm);
     [stats.m.dNAuto.H, stats.m.dNAuto.P, stats.m.dNAuto.CI, stats.m.dNAuto.stats]  = ttest(sumdat.mDuetAuto.rsNorm);
     stats.m.dRAuto.mean = mean(sumdat.mduetAutogenous.rsRaw);
     [stats.m.dRAuto.H, stats.m.dRAuto.P, stats.m.dRAuto.CI, stats.m.dRAuto.stats]  = ttest(sumdat.mDuetAuto.rsRaw);
