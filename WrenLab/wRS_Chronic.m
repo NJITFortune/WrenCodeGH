@@ -304,10 +304,10 @@ subplot(133); hold on; title('Hetero Spikes/Second');
 
 % Difference between Heterogenous Duet and Solo RS motor?
 
-[stts.m.SvsDNHetero.H, stts.m.SvsDNHetero.P, stts.m.SvsDNHetero.CI, stts.m.SvsDNHetero.stats]  = ttest2(sumdat.mAud.rsNorm, sumdat.mduetHeterogenous.rsNorm);
-[stts.m.SvsDRHetero.H, stts.m.SvsDRHetero.P, stts.m.SvsDRHetero.CI, stts.m.SvsDRHetero.stats]  = ttest2(sumdat.mAud.rsRaw, sumdat.mduetHeterogenous.rsRaw);
-[stts.f.SvsDNHetero.H, stts.f.SvsDNHetero.P, stts.f.SvsDNHetero.CI, stts.f.SvsDNHetero.stats]  = ttest2(sumdat.fAud.rsNorm, sumdat.fduetHeterogenous.rsNorm);
-[stts.f.SvsDRHetero.H, stts.f.SvsDRHetero.P, stts.f.SvsDRHetero.CI, stts.f.SvsDRHetero.stats]  = ttest2(sumdat.fAud.rsRaw, sumdat.fduetHeterogenous.rsRaw);
+[stts.m.SvsDNHetero.H, stts.m.SvsDNHetero.P, stts.m.SvsDNHetero.CI, stts.m.SvsDNHetero.stats]  = ttest2(sumdat.mSoloHetero.rsNorm, sumdat.mDuetHetero.rsNorm);
+[stts.m.SvsDRHetero.H, stts.m.SvsDRHetero.P, stts.m.SvsDRHetero.CI, stts.m.SvsDRHetero.stats]  = ttest2(sumdat.mSoloHetero.rsRaw, sumdat.mDuetHetero.rsRaw);
+[stts.f.SvsDNHetero.H, stts.f.SvsDNHetero.P, stts.f.SvsDNHetero.CI, stts.f.SvsDNHetero.stats]  = ttest2(sumdat.fSoloHetero.rsNorm, sumdat.fDuetHetero.rsNorm);
+[stts.f.SvsDRHetero.H, stts.f.SvsDRHetero.P, stts.f.SvsDRHetero.CI, stts.f.SvsDRHetero.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.fDuetHetero.rsRaw);
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
