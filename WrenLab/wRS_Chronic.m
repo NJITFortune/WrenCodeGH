@@ -1,4 +1,4 @@
-function [out, sumdat, stats] = wRS_Chronic(in, padding)
+function [out, sumdat, stts] = wRS_Chronic(in, padding)
 % Usage: Calculates response strength to solo and duet syllables.
 % Relies on rs, a nested function below, to calculate Response Strength.
 % Load the Chronic data structure first:
@@ -225,9 +225,6 @@ subplot(133); hold on; title('Hetero Spikes/Second');
         for p=1:length(sumdat.fDuetHetero.SPS); plot(3.1, sumdat.fDuetHetero.SPS(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloHetero.SPS); plot(4.1, sumdat.fSoloHetero.SPS(p), 'k.', 'MarkerSize', 8); end
     ylim([-1 55]); xlim([0.5 4.5]); 
-
-
-    stats= 0;
     
 % subplot(132); hold on;
 %     plot([1 2], mraw(1:2), 'b*'); 
@@ -252,62 +249,62 @@ subplot(133); hold on; title('Hetero Spikes/Second');
 % %% Compute stats     
     
 % Autogenous duet RS significant from 0?
-    mdNAutomean = mean(sumdat.mDuetAuto.rsNorm);
-    [stats.m.dNAuto.H, stats.m.dNAuto.P, stats.m.dNAuto.CI, stats.m.dNAuto.stats]  = ttest(sumdat.mDuetAuto.rsNorm);
-    stats.m.dRAuto.mean = mean(sumdat.mduetAutogenous.rsRaw);
-    [stats.m.dRAuto.H, stats.m.dRAuto.P, stats.m.dRAuto.CI, stats.m.dRAuto.stats]  = ttest(sumdat.mDuetAuto.rsRaw);
+    stts.mdNAutomean = mean(sumdat.mDuetAuto.rsNorm);
+    [stts.m.dNAuto.H, stts.m.dNAuto.P, stts.m.dNAuto.CI, stts.m.dNAuto.stats]  = ttest(sumdat.mDuetAuto.rsNorm);
+    stts.m.dRAuto.mean = mean(sumdat.mduetAutogenous.rsRaw);
+    [stts.m.dRAuto.H, stts.m.dRAuto.P, stts.m.dRAuto.CI, stts.m.dRAuto.stats]  = ttest(sumdat.mDuetAuto.rsRaw);
     
-    stats.f.dNAuto.mean = mean(sumdat.fduetAutogenous.rsNorm);
-    [stats.f.dNAuto.H, stats.f.dNAuto.P, stats.f.dNAuto.CI, stats.f.dNAuto.stats]  = ttest(sumdat.fDuetAuto.rsNorm);
-    stats.f.dRAuto.mean = mean(sumdat.fduetAutogenous.rsRaw);
-    [stats.f.dRAuto.H, stats.f.dRAuto.P, stats.f.dRAuto.CI, stats.f.dRAuto.stats]  = ttest(sumdat.fDuetAuto.rsRaw);
+    stts.f.dNAuto.mean = mean(sumdat.fduetAutogenous.rsNorm);
+    [stts.f.dNAuto.H, stts.f.dNAuto.P, stts.f.dNAuto.CI, stts.f.dNAuto.stats]  = ttest(sumdat.fDuetAuto.rsNorm);
+    stts.f.dRAuto.mean = mean(sumdat.fduetAutogenous.rsRaw);
+    [stts.f.dRAuto.H, stts.f.dRAuto.P, stts.f.dRAuto.CI, stts.f.dRAuto.stats]  = ttest(sumdat.fDuetAuto.rsRaw);
     
 % Autogenous Solo RS significant from 0?
 
-    stats.m.sNAuto.mean = mean(sumdat.mSolo.rsNorm);
-    [stats.m.sNAuto.H, stats.m.sNAuto.P, stats.m.sNAuto.CI, stats.m.sNAuto.stats]  = ttest(sumdat.mSolo.rsNorm);
-    stats.m.sRAuto.mean = mean(sumdat.mSolo.rsRaw);
-    [stats.m.sRAuto.H, stats.m.sRAuto.P, stats.m.sRAuto.CI, stats.m.sRAuto.stats]  = ttest(sumdat.mSolo.rsRaw);
-    stats.f.sNAuto.mean = mean(sumdat.fSolo.rsNorm);
-    [stats.f.sNAuto.H, stats.f.sNAuto.P, stats.f.sNAuto.CI, stats.f.sNAuto.stats]  = ttest(sumdat.fSolo.rsNorm);
-    stats.m.sRAuto.mean = mean(sumdat.fSolo.rsRaw);
-    [stats.f.sRAuto.H, stats.f.sRAuto.P, stats.f.sRAuto.CI, stats.f.sRAuto.stats]  = ttest(sumdat.fSolo.rsRaw);
+    stts.m.sNAuto.mean = mean(sumdat.mSolo.rsNorm);
+    [stts.m.sNAuto.H, stts.m.sNAuto.P, stts.m.sNAuto.CI, stts.m.sNAuto.stats]  = ttest(sumdat.mSolo.rsNorm);
+    stts.m.sRAuto.mean = mean(sumdat.mSolo.rsRaw);
+    [stts.m.sRAuto.H, stts.m.sRAuto.P, stts.m.sRAuto.CI, stts.m.sRAuto.stats]  = ttest(sumdat.mSolo.rsRaw);
+    stts.f.sNAuto.mean = mean(sumdat.fSolo.rsNorm);
+    [stts.f.sNAuto.H, stts.f.sNAuto.P, stts.f.sNAuto.CI, stts.f.sNAuto.stats]  = ttest(sumdat.fSolo.rsNorm);
+    stts.m.sRAuto.mean = mean(sumdat.fSolo.rsRaw);
+    [stts.f.sRAuto.H, stts.f.sRAuto.P, stts.f.sRAuto.CI, stts.f.sRAuto.stats]  = ttest(sumdat.fSolo.rsRaw);
 
 % Difference between Autogenous Duet and Solo RS motor?
 
-[stats.m.SvsDNAuto.H, stats.m.SvsDNAuto.P, stats.m.SvsDNAuto.CI, stats.m.SvsDNAuto.stats]  = ttest2(sumdat.mSolo.rsNorm, sumdat.mduetAutogenous.rsNorm);
-[stats.m.SvsDRAuto.H, stats.m.SvsDRAuto.P, stats.m.SvsDRAuto.CI, stats.m.SvsDRAuto.stats]  = ttest2(sumdat.mSolo.rsRaw, sumdat.mduetAutogenous.rsRaw);
-[stats.f.SvsDNAuto.H, stats.f.SvsDNAuto.P, stats.f.SvsDNAuto.CI, stats.f.SvsDNAuto.stats]  = ttest2(sumdat.fSolo.rsNorm, sumdat.fduetAutogenous.rsNorm);
-[stats.f.SvsDRAuto.H, stats.f.SvsDRAuto.P, stats.f.SvsDRAuto.CI, stats.f.SvsDRAuto.stats]  = ttest2(sumdat.fSolo.rsRaw, sumdat.fduetAutogenous.rsRaw);
+[stts.m.SvsDNAuto.H, stts.m.SvsDNAuto.P, stts.m.SvsDNAuto.CI, stts.m.SvsDNAuto.stats]  = ttest2(sumdat.mSolo.rsNorm, sumdat.mduetAutogenous.rsNorm);
+[stts.m.SvsDRAuto.H, stts.m.SvsDRAuto.P, stts.m.SvsDRAuto.CI, stts.m.SvsDRAuto.stats]  = ttest2(sumdat.mSolo.rsRaw, sumdat.mduetAutogenous.rsRaw);
+[stts.f.SvsDNAuto.H, stts.f.SvsDNAuto.P, stts.f.SvsDNAuto.CI, stts.f.SvsDNAuto.stats]  = ttest2(sumdat.fSolo.rsNorm, sumdat.fduetAutogenous.rsNorm);
+[stts.f.SvsDRAuto.H, stts.f.SvsDRAuto.P, stts.f.SvsDRAuto.CI, stts.f.SvsDRAuto.stats]  = ttest2(sumdat.fSolo.rsRaw, sumdat.fduetAutogenous.rsRaw);
 
 % Heterogenous duet RS significant from 0?
 
-    stats.m.dNHetero.mean = mean(sumdat.mduetHeterogenous.rsNorm);
-    [stats.m.dNHetero.H, stats.m.dNHetero.P, stats.m.dNHetero.CI, stats.m.dNHetero.stats]  = ttest(sumdat.mduetHeterogenous.rsNorm);
-    stats.m.dRHetero.mean = mean(sumdat.mduetHeterogenous.rsRaw);
-    [stats.m.dRHetero.H, stats.m.dRHetero.P, stats.m.dRHetero.CI, stats.m.dRHetero.stats]  = ttest(sumdat.mduetHeterogenous.rsRaw);
-    stats.f.dNHetero.mean = mean(sumdat.fduetHeterogenous.rsNorm);
-    [stats.f.dNHetero.H, stats.f.dNHetero.P, stats.f.dNHetero.CI, stats.f.dNHetero.stats]  = ttest(sumdat.fduetHeterogenous.rsNorm);
-    stats.f.dRHetero.mean = mean(sumdat.fduetHeterogenous.rsRaw);
-    [stats.f.dRHetero.H, stats.f.dRHetero.P, stats.f.dRHetero.CI, stats.f.dRHetero.stats]  = ttest(sumdat.fduetHeterogenous.rsRaw);
+    stts.m.dNHetero.mean = mean(sumdat.mduetHeterogenous.rsNorm);
+    [stts.m.dNHetero.H, stts.m.dNHetero.P, stts.m.dNHetero.CI, stts.m.dNHetero.stats]  = ttest(sumdat.mduetHeterogenous.rsNorm);
+    stts.m.dRHetero.mean = mean(sumdat.mduetHeterogenous.rsRaw);
+    [stts.m.dRHetero.H, stts.m.dRHetero.P, stts.m.dRHetero.CI, stts.m.dRHetero.stats]  = ttest(sumdat.mduetHeterogenous.rsRaw);
+    stts.f.dNHetero.mean = mean(sumdat.fduetHeterogenous.rsNorm);
+    [stts.f.dNHetero.H, stts.f.dNHetero.P, stts.f.dNHetero.CI, stts.f.dNHetero.stats]  = ttest(sumdat.fduetHeterogenous.rsNorm);
+    stts.f.dRHetero.mean = mean(sumdat.fduetHeterogenous.rsRaw);
+    [stts.f.dRHetero.H, stts.f.dRHetero.P, stts.f.dRHetero.CI, stts.f.dRHetero.stats]  = ttest(sumdat.fduetHeterogenous.rsRaw);
     
 % Heterogenous Solo RS significant from 0?
 
-    stats.m.sNHetero.mean = mean(sumdat.mAud.rsNorm);
-    [stats.m.sNHetero.H, stats.m.sNHetero.P, stats.m.sNHetero.CI, stats.m.sNHetero.stats]  = ttest(sumdat.mAud.rsNorm);
-    stats.m.sRHetero.mean = mean(sumdat.mAud.rsRaw);
-    [stats.m.sRHetero.H, stats.m.sRHetero.P, stats.m.sRHetero.CI, stats.m.sRHetero.stats]  = ttest(sumdat.mAud.rsRaw);
-    stats.f.sNHetero.mean = mean(sumdat.fAud.rsNorm);
-    [stats.f.sNHetero.H, stats.f.sNHetero.P, stats.f.sNHetero.CI, stats.f.sNHetero.stats]  = ttest(sumdat.fAud.rsNorm);
-    stats.f.sRHetero.mean = mean(sumdat.fAud.rsRaw);
-    [stats.f.sRHetero.H, stats.f.sRHetero.P, stats.f.sRHetero.CI, stats.f.sRHetero.stats]  = ttest(sumdat.fAud.rsRaw);
+    stts.m.sNHetero.mean = mean(sumdat.mAud.rsNorm);
+    [stts.m.sNHetero.H, stts.m.sNHetero.P, stts.m.sNHetero.CI, stts.m.sNHetero.stats]  = ttest(sumdat.mAud.rsNorm);
+    stts.m.sRHetero.mean = mean(sumdat.mAud.rsRaw);
+    [stts.m.sRHetero.H, stts.m.sRHetero.P, stts.m.sRHetero.CI, stts.m.sRHetero.stats]  = ttest(sumdat.mAud.rsRaw);
+    stts.f.sNHetero.mean = mean(sumdat.fAud.rsNorm);
+    [stts.f.sNHetero.H, stts.f.sNHetero.P, stts.f.sNHetero.CI, stts.f.sNHetero.stats]  = ttest(sumdat.fAud.rsNorm);
+    stts.f.sRHetero.mean = mean(sumdat.fAud.rsRaw);
+    [stts.f.sRHetero.H, stts.f.sRHetero.P, stts.f.sRHetero.CI, stts.f.sRHetero.stats]  = ttest(sumdat.fAud.rsRaw);
 
 % Difference between Heterogenous Duet and Solo RS motor?
 
-[stats.m.SvsDNHetero.H, stats.m.SvsDNHetero.P, stats.m.SvsDNHetero.CI, stats.m.SvsDNHetero.stats]  = ttest2(sumdat.mAud.rsNorm, sumdat.mduetHeterogenous.rsNorm);
-[stats.m.SvsDRHetero.H, stats.m.SvsDRHetero.P, stats.m.SvsDRHetero.CI, stats.m.SvsDRHetero.stats]  = ttest2(sumdat.mAud.rsRaw, sumdat.mduetHeterogenous.rsRaw);
-[stats.f.SvsDNHetero.H, stats.f.SvsDNHetero.P, stats.f.SvsDNHetero.CI, stats.f.SvsDNHetero.stats]  = ttest2(sumdat.fAud.rsNorm, sumdat.fduetHeterogenous.rsNorm);
-[stats.f.SvsDRHetero.H, stats.f.SvsDRHetero.P, stats.f.SvsDRHetero.CI, stats.f.SvsDRHetero.stats]  = ttest2(sumdat.fAud.rsRaw, sumdat.fduetHeterogenous.rsRaw);
+[stts.m.SvsDNHetero.H, stts.m.SvsDNHetero.P, stts.m.SvsDNHetero.CI, stts.m.SvsDNHetero.stats]  = ttest2(sumdat.mAud.rsNorm, sumdat.mduetHeterogenous.rsNorm);
+[stts.m.SvsDRHetero.H, stts.m.SvsDRHetero.P, stts.m.SvsDRHetero.CI, stts.m.SvsDRHetero.stats]  = ttest2(sumdat.mAud.rsRaw, sumdat.mduetHeterogenous.rsRaw);
+[stts.f.SvsDNHetero.H, stts.f.SvsDNHetero.P, stts.f.SvsDNHetero.CI, stts.f.SvsDNHetero.stats]  = ttest2(sumdat.fAud.rsNorm, sumdat.fduetHeterogenous.rsNorm);
+[stts.f.SvsDRHetero.H, stts.f.SvsDRHetero.P, stts.f.SvsDRHetero.CI, stts.f.SvsDRHetero.stats]  = ttest2(sumdat.fAud.rsRaw, sumdat.fduetHeterogenous.rsRaw);
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
