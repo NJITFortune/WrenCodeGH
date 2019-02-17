@@ -110,7 +110,7 @@ for curpair = 1:length(spon)
         end
     end
 
-end
+end % End of calculations
 
 
 %% Plot MOTOR
@@ -237,8 +237,7 @@ subplot(133); hold on; title('Hetero Spikes/Second');
 
 %%%% SENSORY
 
-figure(2); clf; 
-
+% figure(2); clf; 
 % subplot(122); hold on;
 %     plot(2, mean(sumdat.mAud.rsNorm), 'bo');
 %         errorbar(2, mean(sumdat.mAud.rsNorm), std(sumdat.mAud.rsNorm), 'b');
