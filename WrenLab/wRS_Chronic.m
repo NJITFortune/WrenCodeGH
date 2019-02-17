@@ -252,14 +252,15 @@ subplot(133); hold on; title('Hetero Spikes/Second');
 % %% Compute stats     
     
 % Autogenous duet RS significant from 0?
-    stats.m.dNAuto.mean = mean(sumdat.mDuetAuto.rsNorm);
-    [stats.m.dNAuto.H, stats.m.dNAuto.P, stats.m.dNAuto.CI, stats.m.dNAuto.stats]  = ttest(sumdat.mduetAutogenous.rsNorm);
+    stats.mdNAutomean = mean(sumdat.mDuetAuto.rsNorm);
+    [stats.m.dNAuto.H, stats.m.dNAuto.P, stats.m.dNAuto.CI, stats.m.dNAuto.stats]  = ttest(sumdat.mDuetAuto.rsNorm);
     stats.m.dRAuto.mean = mean(sumdat.mduetAutogenous.rsRaw);
-    [stats.m.dRAuto.H, stats.m.dRAuto.P, stats.m.dRAuto.CI, stats.m.dRAuto.stats]  = ttest(sumdat.mduetAutogenous.rsRaw);
+    [stats.m.dRAuto.H, stats.m.dRAuto.P, stats.m.dRAuto.CI, stats.m.dRAuto.stats]  = ttest(sumdat.mDuetAuto.rsRaw);
+    
     stats.f.dNAuto.mean = mean(sumdat.fduetAutogenous.rsNorm);
-    [stats.f.dNAuto.H, stats.f.dNAuto.P, stats.f.dNAuto.CI, stats.f.dNAuto.stats]  = ttest(sumdat.fduetAutogenous.rsNorm);
+    [stats.f.dNAuto.H, stats.f.dNAuto.P, stats.f.dNAuto.CI, stats.f.dNAuto.stats]  = ttest(sumdat.fDuetAuto.rsNorm);
     stats.f.dRAuto.mean = mean(sumdat.fduetAutogenous.rsRaw);
-    [stats.f.dRAuto.H, stats.f.dRAuto.P, stats.f.dRAuto.CI, stats.f.dRAuto.stats]  = ttest(sumdat.fduetAutogenous.rsRaw);
+    [stats.f.dRAuto.H, stats.f.dRAuto.P, stats.f.dRAuto.CI, stats.f.dRAuto.stats]  = ttest(sumdat.fDuetAuto.rsRaw);
     
 % Autogenous Solo RS significant from 0?
 
