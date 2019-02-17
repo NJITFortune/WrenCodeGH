@@ -239,16 +239,16 @@ subplot(133); hold on; title('Hetero Spikes/Second');
 
 figure(2); clf; 
 
-subplot(122); hold on;
-    plot(2, mean(sumdat.mAud.rsNorm), 'bo');
-        errorbar(2, mean(sumdat.mAud.rsNorm), std(sumdat.mAud.rsNorm), 'b');
-    plot(1, mean(sumdat.mduetHeterogenous.rsNorm), 'bo');
-        errorbar(1, mean(sumdat.mduetHeterogenous.rsNorm), std(sumdat.mduetHeterogenous.rsNorm), 'b');
-    plot(4, mean(sumdat.fAud.rsNorm), 'mo');
-        errorbar(4, mean(sumdat.fAud.rsNorm), std(sumdat.mAud.rsNorm), 'm');
-    plot(3, mean(sumdat.fduetHeterogenous.rsNorm), 'mo');
-        errorbar(3, mean(sumdat.fduetHeterogenous.rsNorm), std(sumdat.fduetHeterogenous.rsNorm), 'm');
-    ylim([-5 20]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+% subplot(122); hold on;
+%     plot(2, mean(sumdat.mAud.rsNorm), 'bo');
+%         errorbar(2, mean(sumdat.mAud.rsNorm), std(sumdat.mAud.rsNorm), 'b');
+%     plot(1, mean(sumdat.mduetHeterogenous.rsNorm), 'bo');
+%         errorbar(1, mean(sumdat.mduetHeterogenous.rsNorm), std(sumdat.mduetHeterogenous.rsNorm), 'b');
+%     plot(4, mean(sumdat.fAud.rsNorm), 'mo');
+%         errorbar(4, mean(sumdat.fAud.rsNorm), std(sumdat.mAud.rsNorm), 'm');
+%     plot(3, mean(sumdat.fduetHeterogenous.rsNorm), 'mo');
+%         errorbar(3, mean(sumdat.fduetHeterogenous.rsNorm), std(sumdat.fduetHeterogenous.rsNorm), 'm');
+%     ylim([-5 20]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 % 
 % %% Compute stats     
     
