@@ -38,7 +38,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     %fsolosyls{4} = [1 2]; % Orig
         fsolosyls{4} = 1; % Solitary
     fduetsyls{4} = [4 6 8];
-    spon(:,4) = [-2.5, -1.0];
+    spon(:,4) = [4.5, -1.0];
 
 % 9-10: j161009
     
