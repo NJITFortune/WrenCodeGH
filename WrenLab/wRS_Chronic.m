@@ -280,14 +280,15 @@ subplot(133); hold on; title('Hetero Spikes/Second');
 
 % Heterogenous duet RS significant from 0?
 
-    stts.m.dNHetero.mean = mean(sumdat.mduetHeterogenous.rsNorm);
-    [stts.m.dNHetero.H, stts.m.dNHetero.P, stts.m.dNHetero.CI, stts.m.dNHetero.stats]  = ttest(sumdat.mduetHeterogenous.rsNorm);
-    stts.m.dRHetero.mean = mean(sumdat.mduetHeterogenous.rsRaw);
-    [stts.m.dRHetero.H, stts.m.dRHetero.P, stts.m.dRHetero.CI, stts.m.dRHetero.stats]  = ttest(sumdat.mduetHeterogenous.rsRaw);
-    stts.f.dNHetero.mean = mean(sumdat.fduetHeterogenous.rsNorm);
-    [stts.f.dNHetero.H, stts.f.dNHetero.P, stts.f.dNHetero.CI, stts.f.dNHetero.stats]  = ttest(sumdat.fduetHeterogenous.rsNorm);
-    stts.f.dRHetero.mean = mean(sumdat.fduetHeterogenous.rsRaw);
-    [stts.f.dRHetero.H, stts.f.dRHetero.P, stts.f.dRHetero.CI, stts.f.dRHetero.stats]  = ttest(sumdat.fduetHeterogenous.rsRaw);
+    stts.m.dNHetero.mean = mean(sumdat.mDuetHetero.rsNorm);
+    [stts.m.dNHetero.H, stts.m.dNHetero.P, stts.m.dNHetero.CI, stts.m.dNHetero.stats]  = ttest(sumdat.mDuetHetero.rsNorm);
+    stts.m.dRHetero.mean = mean(sumdat.mDuetHetero.rsRaw);
+    [stts.m.dRHetero.H, stts.m.dRHetero.P, stts.m.dRHetero.CI, stts.m.dRHetero.stats]  = ttest(sumdat.mDuetHetero.rsRaw);
+    
+    stts.f.dNHetero.mean = mean(sumdat.fDuetHetero.rsNorm);
+    [stts.f.dNHetero.H, stts.f.dNHetero.P, stts.f.dNHetero.CI, stts.f.dNHetero.stats]  = ttest(sumdat.fDuetHetero.rsNorm);
+    stts.f.dRHetero.mean = mean(sumdat.fDuetHetero.rsRaw);
+    [stts.f.dRHetero.H, stts.f.dRHetero.P, stts.f.dRHetero.CI, stts.f.dRHetero.stats]  = ttest(sumdat.fDuetHetero.rsRaw);
     
 % Heterogenous Solo RS significant from 0?
 
