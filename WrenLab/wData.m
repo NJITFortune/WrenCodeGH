@@ -90,8 +90,8 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     mduetsyls{9} = []; 
     fsolosyls{9} = 1; 
     fduetsyls{9} = [3 4]; % Female sang loudly after male, syllables 3 and 4
-%    spon(:,9) = [0, 1.5]; % Both of the spontaneous ranges are not ideal
-    spon(:,9) = [0, 6.5]; % Both of the spontaneous ranges are not ideal
+    spon(:,9) = [0, 1.5]; % Both of the spontaneous ranges are not ideal
+%    spon(:,9) = [0, 6.5]; % Both of the spontaneous ranges are not ideal
     
 % 19-20: j160800a 
 
@@ -213,7 +213,6 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     fduetsyls{21} = [];
     spon(:,21) = [0, 2]; 
 
-    
     
     
 
