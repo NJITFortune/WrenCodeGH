@@ -181,7 +181,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     mduetsyls{18} = [];
     fsolosyls{18} = 1; 
     fduetsyls{18} = [];
-    spon(:,18) = [0, 1.5]; 
+    spon(:,18) = [0, 2]; 
 
  % 37-38: j160951b 
 
