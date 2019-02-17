@@ -261,14 +261,15 @@ subplot(133); hold on; title('Hetero Spikes/Second');
     
 % Autogenous Solo RS significant from 0?
 
-    stts.m.sNAuto.mean = mean(sumdat.mSolo.rsNorm);
-    [stts.m.sNAuto.H, stts.m.sNAuto.P, stts.m.sNAuto.CI, stts.m.sNAuto.stats]  = ttest(sumdat.mSolo.rsNorm);
-    stts.m.sRAuto.mean = mean(sumdat.mSolo.rsRaw);
-    [stts.m.sRAuto.H, stts.m.sRAuto.P, stts.m.sRAuto.CI, stts.m.sRAuto.stats]  = ttest(sumdat.mSolo.rsRaw);
-    stts.f.sNAuto.mean = mean(sumdat.fSolo.rsNorm);
-    [stts.f.sNAuto.H, stts.f.sNAuto.P, stts.f.sNAuto.CI, stts.f.sNAuto.stats]  = ttest(sumdat.fSolo.rsNorm);
-    stts.m.sRAuto.mean = mean(sumdat.fSolo.rsRaw);
-    [stts.f.sRAuto.H, stts.f.sRAuto.P, stts.f.sRAuto.CI, stts.f.sRAuto.stats]  = ttest(sumdat.fSolo.rsRaw);
+    stts.m.sNAuto.mean = mean(sumdat.mSoloAuto.rsNorm);
+    [stts.m.sNAuto.H, stts.m.sNAuto.P, stts.m.sNAuto.CI, stts.m.sNAuto.stats]  = ttest(sumdat.mSoloAuto.rsNorm);
+    stts.m.sRAuto.mean = mean(sumdat.mSoloAuto.rsRaw);
+    [stts.m.sRAuto.H, stts.m.sRAuto.P, stts.m.sRAuto.CI, stts.m.sRAuto.stats]  = ttest(sumdat.mSoloAuto.rsRaw);
+    
+    stts.f.sNAuto.mean = mean(sumdat.fSoloAuto.rsNorm);
+    [stts.f.sNAuto.H, stts.f.sNAuto.P, stts.f.sNAuto.CI, stts.f.sNAuto.stats]  = ttest(sumdat.fSoloAuto.rsNorm);
+    stts.m.sRAuto.mean = mean(sumdat.fSoloAuto.rsRaw);
+    [stts.f.sRAuto.H, stts.f.sRAuto.P, stts.f.sRAuto.CI, stts.f.sRAuto.stats]  = ttest(sumdat.fSoloAuto.rsRaw);
 
 % Difference between Autogenous Duet and Solo RS motor?
 
