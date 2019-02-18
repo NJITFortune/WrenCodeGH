@@ -93,126 +93,126 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     spon(:,9) = [0, 1.5]; % Both of the spontaneous ranges are not ideal
 %    spon(:,9) = [0, 6.5]; % Both of the spontaneous ranges are not ideal
     
-% 19-20: j160800a 
-
-% This just one female syllable.
-
-    msolosyls{10} = []; 
-    mduetsyls{10} = [];
-    fsolosyls{10} = 1; 
-    fduetsyls{10} = [];
-    spon(:,10) = [0, 2]; 
-
-% 21-22: j160800b 
-
-% Another solo female syllable.
-
-    msolosyls{11} = []; 
-    mduetsyls{11} = [];
-    fsolosyls{11} = 1; 
-    fduetsyls{11} = [];
-    spon(:,11) = [0, 1.5]; 
-    
-% 23-24: j160928a 
-
-% Female solo syllable.
-
-    msolosyls{12} = []; 
-    mduetsyls{12} = [];
-    fsolosyls{12} = 1; 
-    fduetsyls{12} = [];
-    spon(:,12) = [0, 2]; 
-    
-% 25-26: j160928b 
-
-% Female solo syllable.
-
-    msolosyls{13} = []; 
-    mduetsyls{13} = [];
-    fsolosyls{13} = 1; 
-    fduetsyls{13} = [];
-    spon(:,13) = [0, 2]; 
-    
-% 27-28: j160934a 
-
-% Female solo syllable.
-
-    msolosyls{14} = []; 
-    mduetsyls{14} = [];
-    fsolosyls{14} = 1; 
-    fduetsyls{14} = [];
-    spon(:,14) = [0, 2]; 
-    
-% 29-30: j160934b 
-
-% Female solo syllable.
-
-    msolosyls{15} = []; 
-    mduetsyls{15} = [];
-    fsolosyls{15} = 1; 
-    fduetsyls{15} = [];
-    spon(:,15) = [0, 2]; 
-    
-% 31-32: j160934c 
-
-% Female solo syllable.
-
-    msolosyls{16} = []; 
-    mduetsyls{16} = [];
-    fsolosyls{16} = 1; 
-    fduetsyls{16} = [];
-    spon(:,16) = [3, 5]; 
-    
-% 33-34: j160934d 
-
-% Female solo syllable.
-
-    msolosyls{17} = []; 
-    mduetsyls{17} = [];
-    fsolosyls{17} = 1; 
-    fduetsyls{17} = [];
-    spon(:,17) = [0, 2]; 
-    
-% 35-36: j160951a 
-
-% Female solo syllable.
-
-    msolosyls{18} = []; 
-    mduetsyls{18} = [];
-    fsolosyls{18} = 1; 
-    fduetsyls{18} = [];
-    spon(:,18) = [2.5, 4.0]; 
-
- % 37-38: j160951b 
-
-% Female solo syllable.
-
-    msolosyls{19} = []; 
-    mduetsyls{19} = [];
-    fsolosyls{19} = 1; 
-    fduetsyls{19} = [];
-    spon(:,19) = [0, 2]; 
-   
-% 39-40: j160951c 
-
-% Female solo syllable.
-
-    msolosyls{20} = []; 
-    mduetsyls{20} = [];
-    fsolosyls{20} = 1; 
-    fduetsyls{20} = [];
-    spon(:,20) = [0, 2]; 
-    
-% 41-42: j160951d 
-
-% Female solo syllable.
-
-    msolosyls{21} = []; 
-    mduetsyls{21} = [];
-    fsolosyls{21} = 1; 
-    fduetsyls{21} = [];
-    spon(:,21) = [3.5, 5.5[]; 
-
-    
+% % 19-20: j160800a 
+% 
+% % This just one female syllable.
+% 
+%     msolosyls{10} = []; 
+%     mduetsyls{10} = [];
+%     fsolosyls{10} = 1; 
+%     fduetsyls{10} = [];
+%     spon(:,10) = [0, 2]; 
+% 
+% % 21-22: j160800b 
+% 
+% % Another solo female syllable.
+% 
+%     msolosyls{11} = []; 
+%     mduetsyls{11} = [];
+%     fsolosyls{11} = 1; 
+%     fduetsyls{11} = [];
+%     spon(:,11) = [0, 1.5]; 
+%     
+% % 23-24: j160928a 
+% 
+% % Female solo syllable.
+% 
+%     msolosyls{12} = []; 
+%     mduetsyls{12} = [];
+%     fsolosyls{12} = 1; 
+%     fduetsyls{12} = [];
+%     spon(:,12) = [0, 2]; 
+%     
+% % 25-26: j160928b 
+% 
+% % Female solo syllable.
+% 
+%     msolosyls{13} = []; 
+%     mduetsyls{13} = [];
+%     fsolosyls{13} = 1; 
+%     fduetsyls{13} = [];
+%     spon(:,13) = [0, 2]; 
+%     
+% % 27-28: j160934a 
+% 
+% % Female solo syllable.
+% 
+%     msolosyls{14} = []; 
+%     mduetsyls{14} = [];
+%     fsolosyls{14} = 1; 
+%     fduetsyls{14} = [];
+%     spon(:,14) = [0, 2]; 
+%     
+% % 29-30: j160934b 
+% 
+% % Female solo syllable.
+% 
+%     msolosyls{15} = []; 
+%     mduetsyls{15} = [];
+%     fsolosyls{15} = 1; 
+%     fduetsyls{15} = [];
+%     spon(:,15) = [0, 2]; 
+%     
+% % 31-32: j160934c 
+% 
+% % Female solo syllable.
+% 
+%     msolosyls{16} = []; 
+%     mduetsyls{16} = [];
+%     fsolosyls{16} = 1; 
+%     fduetsyls{16} = [];
+%     spon(:,16) = [3, 5]; 
+%     
+% % 33-34: j160934d 
+% 
+% % Female solo syllable.
+% 
+%     msolosyls{17} = []; 
+%     mduetsyls{17} = [];
+%     fsolosyls{17} = 1; 
+%     fduetsyls{17} = [];
+%     spon(:,17) = [0, 2]; 
+%     
+% % 35-36: j160951a 
+% 
+% % Female solo syllable.
+% 
+%     msolosyls{18} = []; 
+%     mduetsyls{18} = [];
+%     fsolosyls{18} = 1; 
+%     fduetsyls{18} = [];
+%     spon(:,18) = [2.5, 4.0]; 
+% 
+%  % 37-38: j160951b 
+% 
+% % Female solo syllable.
+% 
+%     msolosyls{19} = []; 
+%     mduetsyls{19} = [];
+%     fsolosyls{19} = 1; 
+%     fduetsyls{19} = [];
+%     spon(:,19) = [0, 2]; 
+%    
+% % 39-40: j160951c 
+% 
+% % Female solo syllable.
+% 
+%     msolosyls{20} = []; 
+%     mduetsyls{20} = [];
+%     fsolosyls{20} = 1; 
+%     fduetsyls{20} = [];
+%     spon(:,20) = [0, 2]; 
+%     
+% % 41-42: j160951d 
+% 
+% % Female solo syllable.
+% 
+%     msolosyls{21} = []; 
+%     mduetsyls{21} = [];
+%     fsolosyls{21} = 1; 
+%     fduetsyls{21} = [];
+%     spon(:,21) = [3.5, 5.5]; 
+% 
+%     
     
 
