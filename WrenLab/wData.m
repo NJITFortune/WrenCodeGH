@@ -92,7 +92,12 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     fduetsyls{9} = [3 4]; % Female sang loudly after male, syllables 3 and 4
     spon(:,9) = [0, 1.5]; % Both of the spontaneous ranges are not ideal
 %    spon(:,9) = [0, 6.5]; % Both of the spontaneous ranges are not ideal
-    
+
+
+% DATA FROM HERE ARE FROM ONE PAIR. WE WERE WORRIED ABOUT A STRONG PSUEDO-REPLICATION
+% ISSUE, AND SO WE DID THE ANALYSES WITHOUT THESE DATA AND GET THE SAME
+% MAJOR RESULTS.
+
 % 19-20: j160800a 
 
 % This just one female syllable.
