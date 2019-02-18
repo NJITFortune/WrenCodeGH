@@ -180,8 +180,8 @@ subplot(133); hold on; title('Auto Spikes/Second');
 % For raw RS data
 
     meanRaw(1) = mean(sumdat.mDuetHetero.rsRaw); sraw(1) = std(sumdat.mDuetHetero.rsRaw);
-    meanRaw(2) = mean(sumdat.mSoloHetero.rsRaw); sraw(3) = std(sumdat.mSoloHetero.rsRaw);
-    meanRaw(3) = mean(sumdat.fDuetHetero.rsRaw); sraw(2) = std(sumdat.fDuetHetero.rsRaw);
+    meanRaw(2) = mean(sumdat.mSoloHetero.rsRaw); sraw(2) = std(sumdat.mSoloHetero.rsRaw);
+    meanRaw(3) = mean(sumdat.fDuetHetero.rsRaw); sraw(3) = std(sumdat.fDuetHetero.rsRaw);
     meanRaw(4) = mean(sumdat.fSoloHetero.rsRaw); sraw(4) = std(sumdat.fSoloHetero.rsRaw);
 
 % For raw SPS data
