@@ -52,7 +52,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
         fsolosyls{5} = 1; % Solitary
     fduetsyls{5} = [4 6 8 10 12 14 16 18];
     spon(:,5) = [-5.0, 0.0];
-    Aspon(:,5) = [-3.0, 0.0];
+    Aspon(:,5) = [-5.0, 0.0];
 
 % 11-12: j161022
     
