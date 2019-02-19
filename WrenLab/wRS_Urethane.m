@@ -118,13 +118,13 @@ end % End of calculations
     meanNorm(1) = mean(sumdat.mDuetAuto.rsNorm); s(1) = std(sumdat.mDuetAuto.rsNorm);
     meanNorm(2) = mean(sumdat.mDuetHetero.rsNorm); s(2) = std(sumdat.mDuetHetero.rsNorm);
     meanNorm(3) = mean(sumdat.mSoloAuto.rsNorm); s(3) = std(sumdat.mSoloAuto.rsNorm);
-    meanNorm(4) = mean(sumdat.mSoloHetero.rsNorm); s(3) = std(sumdat.mSoloHetero.rsNorm);
+    meanNorm(4) = mean(sumdat.mSoloHetero.rsNorm); s(4) = std(sumdat.mSoloHetero.rsNorm);
 
 % For raw RS data
 
     meanRaw(1) = mean(sumdat.mDuetAuto.rsRaw); sraw(1) = std(sumdat.mDuetAuto.rsRaw);
-    meanRaw(2) = mean(sumdat.mDuetHetero.rsRaw); sraw(3) = std(sumdat.mDuetHetero.rsRaw);
-    meanRaw(3) = mean(sumdat.mSoloAuto.rsRaw); sraw(2) = std(sumdat.mSoloAuto.rsRaw);
+    meanRaw(2) = mean(sumdat.mDuetHetero.rsRaw); sraw(2) = std(sumdat.mDuetHetero.rsRaw);
+    meanRaw(3) = mean(sumdat.mSoloAuto.rsRaw); sraw(3) = std(sumdat.mSoloAuto.rsRaw);
     meanRaw(4) = mean(sumdat.mSoloHetero.rsRaw); sraw(4) = std(sumdat.mSoloHetero.rsRaw);
 
 % For raw SPS data
@@ -177,14 +177,14 @@ subplot(133); hold on; title('Male Spikes/Second');
 
     meanNorm(1) = mean(sumdat.fDuetAuto.rsNorm); s(1) = std(sumdat.fDuetAuto.rsNorm);
     meanNorm(2) = mean(sumdat.fDuetHetero.rsNorm); s(2) = std(sumdat.fDuetHetero.rsNorm);
-    meanNorm(3) = mean(sumdat.fSoloAuto.rsNorm); s(2) = std(sumdat.fSoloAuto.rsNorm);
-    meanNorm(4) = mean(sumdat.fSoloHetero.rsNorm); s(3) = std(sumdat.fSoloHetero.rsNorm);
+    meanNorm(3) = mean(sumdat.fSoloAuto.rsNorm); s(3) = std(sumdat.fSoloAuto.rsNorm);
+    meanNorm(4) = mean(sumdat.fSoloHetero.rsNorm); s(4) = std(sumdat.fSoloHetero.rsNorm);
 
 % For raw RS data
 
     meanRaw(1) = mean(sumdat.fDuetAuto.rsRaw); sraw(1) = std(sumdat.fDuetAuto.rsRaw);
-    meanRaw(2) = mean(sumdat.fDuetHetero.rsRaw); sraw(3) = std(sumdat.fDuetHetero.rsRaw);
-    meanRaw(3) = mean(sumdat.fSoloAuto.rsRaw); sraw(2) = std(sumdat.fSoloAuto.rsRaw);
+    meanRaw(2) = mean(sumdat.fDuetHetero.rsRaw); sraw(2) = std(sumdat.fDuetHetero.rsRaw);
+    meanRaw(3) = mean(sumdat.fSoloAuto.rsRaw); sraw(3) = std(sumdat.fSoloAuto.rsRaw);
     meanRaw(4) = mean(sumdat.fSoloHetero.rsRaw); sraw(4) = std(sumdat.fSoloHetero.rsRaw);
 
 % For raw SPS data
