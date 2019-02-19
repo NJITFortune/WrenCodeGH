@@ -40,7 +40,7 @@ sumdat.fDuetAuto.SPS = [];
 %% List of Chronic singing data with syllable indices and locations for spontaneous activity
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, ~, Aspon] = wData;
-Aspon(:,1)
+
 %% Loop to calculate RS values for each pair of wrens   
     
 for curpair = 1:length(Aspon) % length(spon)
