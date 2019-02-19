@@ -40,7 +40,7 @@ sumdat.fDuetAuto.SPS = [];
 %% List of Chronic singing data with syllable indices and locations for spontaneous activity
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, ~, Aspon] = wData;
-
+Aspon
 %% Loop to calculate RS values for each pair of wrens   
     
 for curpair = 1:length(Aspon) % length(spon)
@@ -319,10 +319,10 @@ subplot(133); hold on; title('Female Spikes/Second');
 
 % Difference between Auto and Hetero in the duet?
 
-[stts.m.AvsHNDuet.H, stts.m.AvsHNDuet.P, stts.m.AvsHNDuet.CI, stts.m.AvsHNDuet.stats]  = ttest2(sumdat.mDuetHetero.rsNorm, sumdat.mDuetAutoo.rsNorm);
-[stts.m.AvsHRDuet.H, stts.m.AvsHRDuet.P, stts.m.AvsHRDuet.CI, stts.m.AvsHRDuet.stats]  = ttest2(sumdat.mDuetHetero.rsRaw, sumdat.mDuetAutoo.rsRaw);
-[stts.f.AvsHNDuet.H, stts.f.AvsHNDuet.P, stts.f.AvsHNDuet.CI, stts.f.AvsHNDuet.stats]  = ttest2(sumdat.fDuetHetero.rsNorm, sumdat.fDuetAutoo.rsNorm);
-[stts.f.AvsHRDuet.H, stts.f.AvsHRDuet.P, stts.f.AvsHRDuet.CI, stts.f.AvsHRDuet.stats]  = ttest2(sumdat.fDuetHetero.rsRaw, sumdat.fDuetAutoo.rsRaw);
+[stts.m.AvsHNDuet.H, stts.m.AvsHNDuet.P, stts.m.AvsHNDuet.CI, stts.m.AvsHNDuet.stats]  = ttest2(sumdat.mDuetHetero.rsNorm, sumdat.mDuetAuto.rsNorm);
+[stts.m.AvsHRDuet.H, stts.m.AvsHRDuet.P, stts.m.AvsHRDuet.CI, stts.m.AvsHRDuet.stats]  = ttest2(sumdat.mDuetHetero.rsRaw, sumdat.mDuetAuto.rsRaw);
+[stts.f.AvsHNDuet.H, stts.f.AvsHNDuet.P, stts.f.AvsHNDuet.CI, stts.f.AvsHNDuet.stats]  = ttest2(sumdat.fDuetHetero.rsNorm, sumdat.fDuetAuto.rsNorm);
+[stts.f.AvsHRDuet.H, stts.f.AvsHRDuet.P, stts.f.AvsHRDuet.CI, stts.f.AvsHRDuet.stats]  = ttest2(sumdat.fDuetHetero.rsRaw, sumdat.fDuetAuto.rsRaw);
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
