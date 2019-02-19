@@ -1,4 +1,4 @@
-function w_gphysplot(in, win, binwidth, plt_type)
+function w_Aphysplot(in, win, binwidth, plt_type)
 % w_gphysplot(in, win, binwidth, plt_type)
 % For plotting the Chronic data.
 % in is the data structure for a single Chronic event (e.g. w(2))
