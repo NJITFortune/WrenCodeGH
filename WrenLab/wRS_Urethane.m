@@ -317,6 +317,14 @@ subplot(133); hold on; title('Female Spikes/Second');
 [stts.f.SvsDRHetero.H, stts.f.SvsDRHetero.P, stts.f.SvsDRHetero.CI, stts.f.SvsDRHetero.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.fDuetHetero.rsRaw);
 
 
+% Difference between Auto and Hetero in the duet?
+
+[stts.m.AvsHNDuet.H, stts.m.AvsHNDuet.P, stts.m.AvsHNDuet.CI, stts.m.AvsHNDuet.stats]  = ttest2(sumdat.mDuetHetero.rsNorm, sumdat.mDuetAutoo.rsNorm);
+[stts.m.AvsHRDuet.H, stts.m.AvsHRDuet.P, stts.m.AvsHRDuet.CI, stts.m.AvsHRDuet.stats]  = ttest2(sumdat.mDuetHetero.rsRaw, sumdat.mDuetAutoo.rsRaw);
+[stts.f.AvsHNDuet.H, stts.f.AvsHNDuet.P, stts.f.AvsHNDuet.CI, stts.f.AvsHNDuet.stats]  = ttest2(sumdat.fDuetHetero.rsNorm, sumdat.fDuetAutoo.rsNorm);
+[stts.f.AvsHRDuet.H, stts.f.AvsHRDuet.P, stts.f.AvsHRDuet.CI, stts.f.AvsHRDuet.stats]  = ttest2(sumdat.fDuetHetero.rsRaw, sumdat.fDuetAutoo.rsRaw);
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     
 %% Response Strength nested function
