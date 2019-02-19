@@ -117,7 +117,7 @@ end % End of calculations
 
     meanNorm(1) = mean(sumdat.mDuetAuto.rsNorm); s(1) = std(sumdat.mDuetAuto.rsNorm);
     meanNorm(2) = mean(sumdat.mDuetHetero.rsNorm); s(2) = std(sumdat.mDuetHetero.rsNorm);
-    meanNorm(3) = mean(sumdat.mSoloAuto.rsNorm); s(2) = std(sumdat.mSoloAuto.rsNorm);
+    meanNorm(3) = mean(sumdat.mSoloAuto.rsNorm); s(3) = std(sumdat.mSoloAuto.rsNorm);
     meanNorm(4) = mean(sumdat.mSoloHetero.rsNorm); s(3) = std(sumdat.mSoloHetero.rsNorm);
 
 % For raw RS data
