@@ -39,18 +39,18 @@ sumdat.fDuetAuto.SPS = [];
 
 %% List of Chronic singing data with syllable indices and locations for spontaneous activity
 
-[msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData;
+[msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, ~] = wData;
 
 %% Loop to calculate RS values for each pair of wrens   
     
-for curpair = 1:length(spon)
+for curpair = 1:length(Cspon)
     
     % Solo syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(msolosyls{curpair}) % Male sang solo syllables
         
         % Calculate RS values
-        out(curpair).fSoloHetero = rs(in(curpair*2), msolosyls{curpair}, spon(:,curpair), pad);
-        out(curpair).mSoloAuto = rs(in((curpair*2)-1), msolosyls{curpair}, spon(:,curpair), pad);
+        out(curpair).fSoloHetero = rs(in(curpair*2), msolosyls{curpair}, Cspon(:,curpair), pad);
+        out(curpair).mSoloAuto = rs(in((curpair*2)-1), msolosyls{curpair}, Cspon(:,curpair), pad);
         
         for kk = 1:length(msolosyls{curpair})
             sumdat.fSoloHetero.rsNorm(end+1) = out(curpair).fSoloHetero(kk).rsNorm;
@@ -65,8 +65,8 @@ for curpair = 1:length(spon)
     % Solo syllables FEMALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(fsolosyls{curpair}) % Female sang solo syllables
         
-        out(curpair).mSoloHetero = rs(in((curpair*2)-1), fsolosyls{curpair}, spon(:,curpair), pad);
-        out(curpair).fSoloAuto = rs(in(curpair*2), fsolosyls{curpair}, spon(:,curpair), pad);
+        out(curpair).mSoloHetero = rs(in((curpair*2)-1), fsolosyls{curpair}, Cspon(:,curpair), pad);
+        out(curpair).fSoloAuto = rs(in(curpair*2), fsolosyls{curpair}, Cspon(:,curpair), pad);
         
         for kk = 1:length(fsolosyls{curpair})
             sumdat.mSoloHetero.rsNorm(end+1) = out(curpair).mSoloHetero(kk).rsNorm;
@@ -81,8 +81,8 @@ for curpair = 1:length(spon)
     %% Duet syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(mduetsyls{curpair}) % Male sang duet syllables
         
-        out(curpair).mDuetAuto = rs(in((curpair*2)-1), mduetsyls{curpair}, spon(:,curpair), pad);
-        out(curpair).fDuetHetero = rs(in(curpair*2), mduetsyls{curpair}, spon(:,curpair), pad);
+        out(curpair).mDuetAuto = rs(in((curpair*2)-1), mduetsyls{curpair}, Cspon(:,curpair), pad);
+        out(curpair).fDuetHetero = rs(in(curpair*2), mduetsyls{curpair}, Cspon(:,curpair), pad);
 
         for kk = 1:length(mduetsyls{curpair})
             sumdat.mDuetAuto.rsNorm(end+1) = out(curpair).mDuetAuto(kk).rsNorm; 
@@ -97,8 +97,8 @@ for curpair = 1:length(spon)
     %% Duet syllables FEMALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(fduetsyls{curpair}) % Female sang solo syllables
         
-        out(curpair).mDuetHetero = rs(in((curpair*2)-1), fduetsyls{curpair}, spon(:,curpair), pad);
-        out(curpair).fDuetAuto = rs(in(curpair*2), fduetsyls{curpair}, spon(:,curpair), pad);
+        out(curpair).mDuetHetero = rs(in((curpair*2)-1), fduetsyls{curpair}, Cspon(:,curpair), pad);
+        out(curpair).fDuetAuto = rs(in(curpair*2), fduetsyls{curpair}, Cspon(:,curpair), pad);
 
         for kk = 1:length(fduetsyls{curpair})
             sumdat.mDuetHetero.rsNorm(end+1) = out(curpair).mDuetHetero(kk).rsNorm;
