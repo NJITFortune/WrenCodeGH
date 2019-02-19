@@ -331,7 +331,7 @@ function qwe = rs(struc, syllabl, spontan, padme)
         end
 
         sponSPS = sponSpikeCount / (spontan(2) - spontan(1)); % This is spikes per second
-        sponSPS = sponSPS/length(struc.Aspikes); % Divide by 4 because we have 4 electrodes
+        sponSPS = sponSPS/length(struc.Aspikes); % Divide by number of repetitions
    
     % Loop for each syllable
     
@@ -345,7 +345,7 @@ function qwe = rs(struc, syllabl, spontan, padme)
         end
         
         stimSPS = stimSpikeCount / (struc.syl(syllabl(j)).tim(2) - struc.syl(syllabl(j)).tim(1)); % This is spikes per second
-        stimSPS = stimSPS/4; % Divide by 4 because we have 4 electrodes
+        stimSPS = stimSPS/length(struc.Aspikes); % Divide by number of repetitions
         
         
         qwe(j).sylnum = syllabl(j);
