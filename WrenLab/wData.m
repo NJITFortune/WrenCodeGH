@@ -13,6 +13,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, spon] = wData
     fsolosyls{1} = []; 
     fduetsyls{1} = [6 8 10 12 14];
     spon(:,1) = [-5.5, -0.5]; % This is a mess. 
+    Aspon(:,1) = [
     
 % 3-4: j160806
 
