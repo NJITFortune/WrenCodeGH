@@ -1,4 +1,4 @@
-function [out, sumdat, stts] = wRS_Chronic(in, padding)
+function [out, sumdat, stts] = wRS_Urethane(in, padding)
 % Usage: Calculates response strength to solo and duet syllables.
 % Relies on rs, a nested function below, to calculate Response Strength.
 % Load the Chronic data structure first:
@@ -145,7 +145,8 @@ subplot(131); hold on; title('Auto Normalized RS');
     errorbar([3 4], meanNorm(3:4), s(3:4), 'm' );
         for p=1:length(sumdat.fDuetAuto.rsNorm); plot(3.1, sumdat.fDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloAuto.rsNorm); plot(4.1, sumdat.fSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-    ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    % ylim([-5 40]); 
+    xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 subplot(132); hold on; title('Auto Raw RS');
     plot([1 2], meanRaw(1:2), 'bo'); 
@@ -156,7 +157,8 @@ subplot(132); hold on; title('Auto Raw RS');
     errorbar([3 4], meanRaw(3:4), sraw(3:4), 'm' );
         for p=1:length(sumdat.fDuetAuto.rsRaw); plot(3.1, sumdat.fDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloAuto.rsRaw); plot(4.1, sumdat.fSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-    ylim([-10 100]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    % ylim([-10 100]); 
+    xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 subplot(133); hold on; title('Auto Spikes/Second');
     plot([1 2], meanSPS(1:2), 'bo'); 
@@ -167,7 +169,8 @@ subplot(133); hold on; title('Auto Spikes/Second');
     errorbar([3 4], meanSPS(3:4), sps(3:4), 'm' );
         for p=1:length(sumdat.fDuetAuto.SPS); plot(3.1, sumdat.fDuetAuto.SPS(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloAuto.SPS); plot(4.1, sumdat.fSoloAuto.SPS(p), 'k.', 'MarkerSize', 8); end
-    ylim([0 100]); xlim([0.5 4.5]); 
+    % ylim([0 100]); 
+    xlim([0.5 4.5]); 
 
     
 %% Plot SENSORY
@@ -202,7 +205,8 @@ subplot(131); hold on; title('Hetero Normalized RS');
     errorbar([3 4], meanNorm(3:4), s(3:4), 'm' );
         for p=1:length(sumdat.fDuetHetero.rsNorm); plot(3.1, sumdat.fDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloHetero.rsNorm); plot(4.1, sumdat.fSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
-    ylim([-5 35]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    % ylim([-5 35]); 
+    xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 subplot(132); hold on; title('Hetero Raw RS');
     plot([1 2], meanRaw(1:2), 'bo'); 
@@ -213,7 +217,8 @@ subplot(132); hold on; title('Hetero Raw RS');
     errorbar([3 4], meanRaw(3:4), sraw(3:4), 'm' );
         for p=1:length(sumdat.fDuetHetero.rsRaw); plot(3.1, sumdat.fDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloHetero.rsRaw); plot(4.1, sumdat.fSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
-    ylim([-10 50]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    % ylim([-10 50]); 
+    xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
 subplot(133); hold on; title('Hetero Spikes/Second');
     plot([1 2], meanSPS(1:2), 'bo'); 
@@ -224,7 +229,8 @@ subplot(133); hold on; title('Hetero Spikes/Second');
     errorbar([3 4], meanSPS(3:4), sps(3:4), 'm' );
         for p=1:length(sumdat.fDuetHetero.SPS); plot(3.1, sumdat.fDuetHetero.SPS(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloHetero.SPS); plot(4.1, sumdat.fSoloHetero.SPS(p), 'k.', 'MarkerSize', 8); end
-    ylim([-1 55]); xlim([0.5 4.5]); 
+    % ylim([-1 55]); 
+    xlim([0.5 4.5]); 
     
 % subplot(132); hold on;
 %     plot([1 2], mraw(1:2), 'b*'); 
@@ -319,8 +325,8 @@ function qwe = rs(struc, syllabl, spontan, padme)
    % Get spontaneous rate 
         sponSpikeCount = 0;  
     
-        for i=1:4 % 4 electrodes in a tetrode always
-            sponSpikeCount = sponSpikeCount + length(find(struc.Cspikes{i} > spontan(1) & struc.Cspikes{i} < spontan(2)));
+        for i=1:length(struc.Aspikes) % For each repetition of the stimulus
+            sponSpikeCount = sponSpikeCount + length(find(struc.Aspikes{i} > spontan(1) & struc.Aspikes{i} < spontan(2)));
         end
 
         sponSPS = sponSpikeCount / (spontan(2) - spontan(1)); % This is spikes per second
@@ -333,8 +339,8 @@ function qwe = rs(struc, syllabl, spontan, padme)
         % Get the spikes for that syllable
         stimSpikeCount = 0; 
     
-        for i=1:4 % 4 electrodes in a tetrode always
-            stimSpikeCount = stimSpikeCount + length(find(struc.Cspikes{i} >= struc.syl(syllabl(j)).tim(1)-padme & struc.Cspikes{i} < struc.syl(syllabl(j)).tim(2)-padme));
+        for i=1:length(struc.Aspikes) % For each repetition of the stimulus
+            stimSpikeCount = stimSpikeCount + length(find(struc.Aspikes{i} >= struc.syl(syllabl(j)).tim(1)-padme & struc.Aspikes{i} < struc.syl(syllabl(j)).tim(2)-padme));
         end
         
         stimSPS = stimSpikeCount / (struc.syl(syllabl(j)).tim(2) - struc.syl(syllabl(j)).tim(1)); % This is spikes per second
