@@ -358,14 +358,14 @@ function qwe = rs(struc, syllabl, spontan, padme)
         for i=1:length(struc.Aspikes) % For each repetition of the stimulus
             
 %             if j < length(syllabl)
-%                 sylender = struc.syl(syllabl(j+1)).tim(1)-padme; % Beginning of next syllable              
+%                 sylender = struc.syl(syllabl(j+1)).tim(1)+padme; % Beginning of next syllable              
 %             end
 %             if j == length(syllabl)
-%                 sylender = struc.syl(syllabl(j)).tim(2)-padme; % End of the current syllable
+%                 sylender = struc.syl(syllabl(j)).tim(2)+padme; % End of the current syllable
 %             end
             
-            stimSpikeCount = stimSpikeCount + length(find(struc.Aspikes{i} >= struc.syl(syllabl(j)).tim(1)-padme & struc.Aspikes{i} < struc.syl(syllabl(j)).tim(2)-padme));
-%            stimSpikeCount = stimSpikeCount + length(find(struc.Aspikes{i} >= struc.syl(syllabl(j)).tim(1)-padme & struc.Aspikes{i} < sylender));
+            stimSpikeCount = stimSpikeCount + length(find(struc.Aspikes{i} >= struc.syl(syllabl(j)).tim(1)+padme & struc.Aspikes{i} < struc.syl(syllabl(j)).tim(2)+padme));
+%            stimSpikeCount = stimSpikeCount + length(find(struc.Aspikes{i} >= struc.syl(syllabl(j)).tim(1)+padme & struc.Aspikes{i} < sylender));
 
         end
         
