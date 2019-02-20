@@ -111,7 +111,11 @@ for j=1:3 % For each subplot
         plot([in.syl(k).tim(1), in.syl(k).tim(1)], [xx(3), xx(4)], 'g-');
         
         if in.sylsex(k) == 1 % This is a male syllable
-            text(in.syl(k).tim(1), xx(4)-(0.10*xx(4)), num2str(k), 'Color', 'm');
+            text(in.syl(k).tim(1), xx(4)-(0.10*xx(4)), num2str(k), 'Color', 'b', 'FontSize',14);
+        end
+        if in.sylsex(k) == 2 % This is a female syllable
+            text(in.syl(k).tim(1), xx(4)-(0.10*xx(4)), num2str(k), 'Color', 'm', 'FontSize',14);
+        end
         
         plot([in.syl(k).tim(2), in.syl(k).tim(2)], [xx(3), xx(4)], 'r-');        
         end        
