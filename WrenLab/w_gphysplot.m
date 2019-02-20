@@ -110,8 +110,8 @@ for j=1:3 % For each subplot
         if ~isempty(in.syl(k).tim)
         plot([in.syl(k).tim(1), in.syl(k).tim(1)], [xx(3), xx(4)], 'g-');
         
-        if in.
-        text(in.syl(k).tim(1), xx(4)-(0.10*xx(4)), num2str(k));
+        if in.sylsex(k) == 1 % This is a male syllable
+            text(in.syl(k).tim(1), xx(4)-(0.10*xx(4)), num2str(k), 'Color', 'm');
         
         plot([in.syl(k).tim(2), in.syl(k).tim(2)], [xx(3), xx(4)], 'r-');        
         end        
