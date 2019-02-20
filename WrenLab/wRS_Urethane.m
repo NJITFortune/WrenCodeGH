@@ -332,6 +332,13 @@ subplot(133); hold on; title('Female Spikes/Second');
 [stts.f.AvsHRSolo.H, stts.f.AvsHRSolo.P, stts.f.AvsHRSolo.CI, stts.f.AvsHRSolo.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.fSoloAuto.rsRaw);
 
 
+    fprintf('Male Chronic DSI diff from zero? p = %1.2e \n', foo.mc_diffzero.p);
+    fprintf('Female Chronic DSI diff from zero? p = %1.2e \n', foo.mc_diffzero.p);
+    fprintf('Male Acute DSI diff from zero? p = %1.2e \n', foo.mc_diffzero.p);
+    fprintf('Female Acute DSI diff from zero? p = %1.2e \n \n', foo.mc_diffzero.p);
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     
 %% Response Strength nested function
