@@ -159,6 +159,7 @@ subplot(132); hold on; title('Male Raw RS');
         for p=1:length(sumdat.mSoloHetero.rsRaw); plot(4.1, sumdat.mSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
     % ylim([-10 100]); 
     xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    xticklabels({'DA','DH','SA','SH'})
 
 subplot(133); hold on; title('Male Spikes/Second');
     plot([1 2], meanSPS(1:2), 'bo'); 
