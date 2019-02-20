@@ -73,24 +73,24 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
 
 % j160815: January 2016, 08:15am, male index 7, female index 8
 
-    [mChron(end+1), mAcute(end+1)] = dsi(wren(7), [2 3 4 5 6 7 8], padding);
-    [fChron(end+1), fAcute(end+1)] = dsi(wren(8), [2 3 4 5 6 7 8], padding);
+    [mChron(end+1), mAcute(end+1)] = dsi(wren(7), sort([mduetsyls{4}, fduetsyls{4}]), padding);
+    [fChron(end+1), fAcute(end+1)] = dsi(wren(8), sort([mduetsyls{4}, fduetsyls{4}]), padding);
 
 % j161009: January 2016, 10:09am, male index 9, female index 10
 
-    [mChron(end+1), mAcute(end+1)] = dsi(wren(9),  [3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19], padding);
-    [fChron(end+1), fAcute(end+1)] = dsi(wren(10), [3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19], padding);
+    [mChron(end+1), mAcute(end+1)] = dsi(wren(9),  sort([mduetsyls{5}, fduetsyls{5}]), padding);
+    [fChron(end+1), fAcute(end+1)] = dsi(wren(10), sort([mduetsyls{5}, fduetsyls{5}]), padding);
 
 % j161022: January 2016, 10:22am, male index 11, female index 12
 
-    [mChron(end+1), mAcute(end+1)] = dsi(wren(11), [3 4 5 6 7 8 9 10 11 12 13 14], padding);
-    [fChron(end+1), fAcute(end+1)] = dsi(wren(12), [3 4 5 6 7 8 9 10 11 12 13 14], padding);
+    [mChron(end+1), mAcute(end+1)] = dsi(wren(11), sort([mduetsyls{6}, fduetsyls{6}]), padding);
+    [fChron(end+1), fAcute(end+1)] = dsi(wren(12), sort([mduetsyls{6}, fduetsyls{6}]), padding);
 
 % j17060848: 06 January 2017, 08:48am, male index 13, female index 14
     % NOTE THAT THESE DATA ARE MISSING FEMALE ACUTE (failed recording)
     
-    [mChron(end+1), mAcute(end+1)] = dsi(wren(13), [5 6 7 8 9 10 11 12 13 14 15 16 17], padding);
-    [fChron(end+1), fAcute(end+1)] = dsi(wren(14), [5 6 7 8 9 10 11 12 13 14 15 16 17], padding);
+    [mChron(end+1), mAcute(end+1)] = dsi(wren(13), sort([mduetsyls{7}, fduetsyls{7}]), padding);
+    [fChron(end+1), fAcute(end+1)] = dsi(wren(14), sort([mduetsyls{7}, fduetsyls{7}]), padding);
         
 % j17081733: 08 January 2017, 5:33pm, male index 15, female index 16
     % Syllables 6 and 11 are both birds at the same time. Because of this,
@@ -98,8 +98,8 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
     % (one male and one female) of each motif.
     % This is a special case to be highlighted elsewhere.
 
-    [mChron(end+1), mAcute(end+1)] = dsi(wren(15), [2 3 7 8], padding);
-    [fChron(end+1), fAcute(end+1)] = dsi(wren(16), [2 3 7 8], padding);
+    [mChron(end+1), mAcute(end+1)] = dsi(wren(15), sort([mduetsyls{8}, fduetsyls{8}]), padding);
+    [fChron(end+1), fAcute(end+1)] = dsi(wren(16), sort([mduetsyls{8}, fduetsyls{8}]), padding);
     
     
 % Transfer to the output structure. Lazy.
