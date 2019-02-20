@@ -62,8 +62,9 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
 
 % j160806: January 2016, 08:06am, male index 3, female index 4
 
-    [mChron(end+1), mAcute(end+1)] = dsi(wren(3), [3 4 5 6 7 8 9 10 11 12 13], padding);
-    [fChron(end+1), fAcute(end+1)] = dsi(wren(4), [3 4 5 6 7 8 9 10 11 12 13], padding);
+    [mChron(end+1), mAcute(end+1)] = dsi(wren(3), sort([mduetsyls{2}, fduetsyls{2}]), padding);
+    [fChron(end+1), fAcute(end+1)] = dsi(wren(4), sort([mduetsyls{2}, fduetsyls{2}]), padding);
+%    [fChron(end+1), fAcute(end+1)] = dsi(wren(4), [3 4 5 6 7 8 9 10 11 12 13], padding);
 
 % j160807: January 2016, 08:07am, male index 5, female index 6
 
