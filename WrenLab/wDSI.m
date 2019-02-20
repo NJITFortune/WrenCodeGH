@@ -46,8 +46,7 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
 % awake and urethane anesthetized recordings, we can use a 2-sample t-test. 
 % Happiness and Joy.
 
-%% List of Chronic singing data with syllable indices and locations for spontaneous activity
-
+%% List of Chronic and Acute duet singing with syllable indices 
 [~, mduetsyls, ~, fduetsyls, ~, ~] = wData;
 
 
