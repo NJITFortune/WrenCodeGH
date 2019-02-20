@@ -134,7 +134,7 @@ end % End of calculations
     meanSPS(3) = mean(sumdat.mSoloAuto.SPS); sps(3) = std(sumdat.mSoloAuto.SPS);
     meanSPS(4) = mean(sumdat.mSoloHetero.SPS); sps(4) = std(sumdat.mSoloHetero.SPS);
     
-figure(21); clf; 
+figure(23); clf; 
 
 subplot(131); hold on; title('Male Normalized RS');
     plot([1 2], meanNorm(1:2), 'bo'); 
@@ -195,7 +195,7 @@ subplot(133); hold on; title('Male Spikes/Second');
     meanSPS(4) = mean(sumdat.fSoloHetero.SPS); sps(4) = std(sumdat.fSoloHetero.SPS);
 
     
-figure(22); clf; 
+figure(24); clf; 
 
 subplot(131); hold on; title('Female Normalized RS');
     plot([1 2], meanNorm(1:2), 'bo'); 
