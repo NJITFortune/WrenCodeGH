@@ -12,6 +12,7 @@ function [out, sumdat, stts] = wRS_Chronic(in, padding)
 % the sound and auditory activity in urethane-anesthetized animals to occur AFTER the sound.
 % We are comfortable with using a value of '0' it is a rather unbiased. Change
 % the value of padding in seconds (e.g. 0.020 or -0.030) to look at the effects on the results.
+
 pad = 0.000; 
 
 % The user can specify the padding via an argin for convenience.
