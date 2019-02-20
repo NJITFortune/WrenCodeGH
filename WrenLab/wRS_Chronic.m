@@ -309,6 +309,13 @@ subplot(133); hold on; title('Hetero Spikes/Second');
 [stts.f.SvsDRHetero.H, stts.f.SvsDRHetero.P, stts.f.SvsDRHetero.CI, stts.f.SvsDRHetero.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.fDuetHetero.rsRaw);
 
 
+    fprintf(' \n');
+
+    fprintf('Male Auto Duet vs Solo? p = %1.2e \n', stts.m.SvsDRHetero.P);
+    fprintf('Female Auto Duet vs Solo? p = %1.2e \n', stts.f.SvsDRHetero.P);
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     
 %% Response Strength nested function
