@@ -344,6 +344,10 @@ subplot(133); hold on; title('Female Spikes/Second');
     fprintf('Female Auto Solo Raw RS different from zero? p = %1.2e \n', stts.f.sRAuto.P);
     fprintf('Female Hetero Solo Raw RS different from zero? p = %1.2e \n', stts.f.sRHetero.P);
 
+    fprintf(' \n');
+
+    fprintf('Male Auto Duet vs Hetero? p = %1.2e \n', stts.m.AvsHRDuet.P);
+    fprintf('Female Auto Duet vs Hetero? p = %1.2e \n', stts.f.AvsHRDuet.P);
 
     
 
