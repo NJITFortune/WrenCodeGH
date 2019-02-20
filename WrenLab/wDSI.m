@@ -167,11 +167,11 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        
 %% DSI nested function
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        
-function [chron, acute] = dsi(struct, rango, pad)
+function [chron, acute] = dsi(struct, sylist, pad)
 % Calculates dsi which is: 
 %   (autogenous - heterogenous) / (autogenous + heterogenous)
 % where autogenous and heterogenous are the spike rates during those elements.
-% rango is the idex numbers of the syllables to be used in the analysis.
+% sylist is the idx numbers of the syllables to be used in the analysis.
 % pad is the shift (in seconds) of the syllable boundaries (negative are
 % earlier in the duet and positive are later in the duet).
 
@@ -190,39 +190,39 @@ function [chron, acute] = dsi(struct, rango, pad)
 
 %% Count spikes for each syllable in the list    
     
-    for j=1:length(rango) % For every duet syllable as specified by the user in rango
+    for j=1:length(sylist) % For every duet syllable as specified by the user in rango
 
             ChronSpkCnt = 0; % Temporary spike count for Awake electrodes in the cell array of TOEs
             AcutSpkcnt = 0; % Temporary spike count for Chronic replay reps in the cell array of TOEs
 
             % Count the number of spikes in the clicked syllable range 
             for k = 1:length(struct.Cspikes)
-                ChronSpkCnt = ChronSpkCnt + length(find(struct.Cspikes{k} > struct.syl(rango(j)).tim(1)-pad & ...
-                    struct.Cspikes{k} < struct.syl(rango(j)).tim(2))-pad);
+                ChronSpkCnt = ChronSpkCnt + length(find(struct.Cspikes{k} > struct.syl(sylist(j)).tim(1)-pad & ...
+                    struct.Cspikes{k} < struct.syl(sylist(j)).tim(2))-pad);
             end
             for k = 1:length(struct.Aspikes)
-                AcutSpkcnt = AcutSpkcnt + length(find(struct.Aspikes{k} > struct.syl(rango(j)).tim(1)+pad & ...
-                    struct.Aspikes{k} < struct.syl(rango(j)).tim(2))+pad);
+                AcutSpkcnt = AcutSpkcnt + length(find(struct.Aspikes{k} > struct.syl(sylist(j)).tim(1)+pad & ...
+                    struct.Aspikes{k} < struct.syl(sylist(j)).tim(2))+pad);
             end
 
             % Sort into male and female.
-            if struct.sylsex(rango(j)) == 1 % We have a male syllable
+            if struct.sylsex(sylist(j)) == 1 % We have a male syllable
                 mcspikes = mcspikes + ChronSpkCnt;
                 maspikes = maspikes + AcutSpkcnt;
-                mdur = mdur + (struct.syl(rango(j)).tim(2) - struct.syl(rango(j)).tim(1));
+                mdur = mdur + (struct.syl(sylist(j)).tim(2) - struct.syl(sylist(j)).tim(1));
             end
 
-            if struct.sylsex(rango(j)) == 2 % We have a female syllable
+            if struct.sylsex(sylist(j)) == 2 % We have a female syllable
                 fcspikes = fcspikes + ChronSpkCnt;
                 faspikes = faspikes + AcutSpkcnt;
-                fdur = fdur + (struct.syl(rango(j)).tim(2) - struct.syl(rango(j)).tim(1));
+                fdur = fdur + (struct.syl(sylist(j)).tim(2) - struct.syl(sylist(j)).tim(1));
             end
 
-            if struct.sylsex(rango(j)) == 3 % Both birds sang at the same time
+            if struct.sylsex(sylist(j)) == 3 % Both birds sang at the same time
                 %fcspikes = fcspikes + Ctmpspikecount; 
-                mcspikes = mcspikes + ChronSpkCnt;
+                %mcspikes = mcspikes + ChronSpkCnt;
                 %fdur = fdur + (struct(i).syl(j).tim(2) - struct(i).syl(j).tim(1));
-                mdur = mdur + (struct.syl(rango(j)).tim(2) - struct.syl(rango(j)).tim(1));
+                %mdur = mdur + (struct.syl(sylist(j)).tim(2) - struct.syl(sylist(j)).tim(1));
             end
             
     end
