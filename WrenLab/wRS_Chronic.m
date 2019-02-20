@@ -316,7 +316,7 @@ subplot(133); hold on; title('Hetero Spikes/Second');
     fprintf(' \n');
 
     fprintf('Male Hetero Duet Raw RS different from zero? p = %1.2e \n', stts.m.dRHetero.P);
-    fprintf('Female Hetero Solo Raw RS different from zero? p = %1.2e \n', stts.m.sRHetero.P);
+    fprintf('Male Hetero Solo Raw RS different from zero? p = %1.2e \n', stts.m.sRHetero.P);
     fprintf('Female Hetero Duet Raw RS different from zero? p = %1.2e \n', stts.f.dRHetero.P);
     fprintf('Female Hetero Solo Raw RS different from zero? p = %1.2e \n', stts.f.sRHetero.P);
     
