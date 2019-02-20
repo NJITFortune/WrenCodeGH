@@ -356,7 +356,7 @@ function qwe = rs(struc, syllabl, spontan, padme)
         stimSpikeCount = 0; 
     
         for i=1:length(struc.Aspikes) % For each repetition of the stimulus
-            
+            % (padme shifts the window in seconds, negative earlier, positive later)
 %             if j < length(syllabl)
 %                 sylender = struc.syl(syllabl(j+1)).tim(1)+padme; % Beginning of next syllable              
 %             end

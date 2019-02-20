@@ -45,13 +45,18 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
 % somewhat diluted. Third, because we are sampling the same HVC both during 
 % awake and urethane anesthetized recordings, we can use a 2-sample t-test. 
 % Happiness and Joy.
-    
+
+%% List of Chronic singing data with syllable indices and locations for spontaneous activity
+
+[msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData;
+
+
 % For each of the duets we calculate the DSI separately for the female and
 % the male. 
 
 % m17: March 2017, male index 1, female index 2
 
-    [mChron(end+1), mAcute(end+1)] = dsi(wren(1), [5 6 7 8 9 10 11 12 13 14], padding);
+    [mChron(end+1), mAcute(end+1)] = dsi(wren(1), sort([mduetsyls{1}, fduetsyls{1}, padding);
     [fChron(end+1), fAcute(end+1)] = dsi(wren(2), [5 6 7 8 9 10 11 12 13 14], padding);
 
 % j160806: January 2016, 08:06am, male index 3, female index 4
