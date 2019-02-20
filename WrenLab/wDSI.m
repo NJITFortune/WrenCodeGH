@@ -6,7 +6,7 @@ function foo = wDSI(wren, pdnum)
 % activity during autogenous and heterogenous duet song elements. 
 %
 % Usage: foo = wDSI(wren, padding)
-% wren is the structure in ChronicCompleat2018.mat - See end for a discription.
+% wren is the structure in ChronicCompleat2019a.mat - See end for a discription.
 % padding is shift of syllable windows earlier (negative) or later (positive) in seconds.
 % Default is 0. See description below for more information.
 % THIS SCRIPT CALCULATES ON A BIRD-BY-BIRD BASIS (DSI values are calcuated from data
