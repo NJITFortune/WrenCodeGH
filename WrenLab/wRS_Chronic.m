@@ -334,8 +334,8 @@ function qwe = rs(struc, syllabl, spontan, padme)
         % Get the spikes for that syllable
         stimSpikeCount = 0; 
     
-        for i=1:4 % 4 electrodes in a tetrode always
-            stimSpikeCount = stimSpikeCount + length(find(struc.Cspikes{i} >= struc.syl(syllabl(j)).tim(1)-padme & struc.Cspikes{i} < struc.syl(syllabl(j)).tim(2)-padme));
+        for i=1:4 % 4 electrodes in a tetrode always (padme shifts the window in seconds, negative earlier, positive later)
+            stimSpikeCount = stimSpikeCount + length(find(struc.Cspikes{i} >= struc.syl(syllabl(j)).tim(1)+padme & struc.Cspikes{i} < struc.syl(syllabl(j)).tim(2)+padme));
         end
         
         stimSPS = stimSpikeCount / (struc.syl(syllabl(j)).tim(2) - struc.syl(syllabl(j)).tim(1)); % This is spikes per second
