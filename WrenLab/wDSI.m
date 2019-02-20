@@ -61,8 +61,8 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
 
 % j160807: January 2016, 08:07am, male index 5, female index 6
 
-    [mChron(end+1), mAcute(end+1)] = dsi(wren(5), [3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24], padding);
-    [fChron(end+1), fAcute(end+1)] = dsi(wren(6), [3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24], padding);
+    [mChron(end+1), mAcute(end+1)] = dsi(wren(5), [2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18], padding);
+    [fChron(end+1), fAcute(end+1)] = dsi(wren(6), [2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18], padding);
 
 % j160815: January 2016, 08:15am, male index 7, female index 8
 
@@ -71,8 +71,8 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
 
 % j161009: January 2016, 10:09am, male index 9, female index 10
 
-    [mChron(end+1), mAcute(end+1)] = dsi(wren(9),  [3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21], padding);
-    [fChron(end+1), fAcute(end+1)] = dsi(wren(10), [3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21], padding);
+    [mChron(end+1), mAcute(end+1)] = dsi(wren(9),  [3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19], padding);
+    [fChron(end+1), fAcute(end+1)] = dsi(wren(10), [3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19], padding);
 
 % j161022: January 2016, 10:22am, male index 11, female index 12
 
@@ -82,8 +82,8 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
 % j17060848: 06 January 2017, 08:48am, male index 13, female index 14
     % NOTE THAT THESE DATA ARE MISSING FEMALE ACUTE (failed recording)
     
-    [mChron(end+1), mAcute(end+1)] = dsi(wren(13), [5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20], padding);
-    [fChron(end+1), fAcute(end+1)] = dsi(wren(14), [5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20], padding);
+    [mChron(end+1), mAcute(end+1)] = dsi(wren(13), [5 6 7 8 9 10 11 12 13 14 15 16 17], padding);
+    [fChron(end+1), fAcute(end+1)] = dsi(wren(14), [5 6 7 8 9 10 11 12 13 14 15 16 17], padding);
         
 % j17081733: 08 January 2017, 5:33pm, male index 15, female index 16
     % Syllables 6 and 11 are both birds at the same time. Because of this,

@@ -43,7 +43,7 @@ sumdat.fDuetAuto.SPS = [];
 
 %% Loop to calculate RS values for each pair of wrens   
     
-for curpair = 1:3 %length(Aspon) % length(spon)
+for curpair = [1 2 3 4 5 6] % 1:length(Aspon) % length(spon)
     
     % Solo syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(msolosyls{curpair}) % Male sang solo syllables
@@ -324,6 +324,13 @@ subplot(133); hold on; title('Female Spikes/Second');
 [stts.f.AvsHNDuet.H, stts.f.AvsHNDuet.P, stts.f.AvsHNDuet.CI, stts.f.AvsHNDuet.stats]  = ttest2(sumdat.fDuetHetero.rsNorm, sumdat.fDuetAuto.rsNorm);
 [stts.f.AvsHRDuet.H, stts.f.AvsHRDuet.P, stts.f.AvsHRDuet.CI, stts.f.AvsHRDuet.stats]  = ttest2(sumdat.fDuetHetero.rsRaw, sumdat.fDuetAuto.rsRaw);
 
+% Difference between Auto and Hetero in the Solo?
+
+[stts.m.AvsHNSolo.H, stts.m.AvsHNSolo.P, stts.m.AvsHNSolo.CI, stts.m.AvsHNSolo.stats]  = ttest2(sumdat.mSoloHetero.rsNorm, sumdat.mSoloAuto.rsNorm);
+[stts.m.AvsHRSolo.H, stts.m.AvsHRSolo.P, stts.m.AvsHRSolo.CI, stts.m.AvsHRSolo.stats]  = ttest2(sumdat.mSoloHetero.rsRaw, sumdat.mSoloAuto.rsRaw);
+[stts.f.AvsHNSolo.H, stts.f.AvsHNSolo.P, stts.f.AvsHNSolo.CI, stts.f.AvsHNSolo.stats]  = ttest2(sumdat.fSoloHetero.rsNorm, sumdat.fSoloAuto.rsNorm);
+[stts.f.AvsHRSolo.H, stts.f.AvsHRSolo.P, stts.f.AvsHRSolo.CI, stts.f.AvsHRSolo.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.fSoloAuto.rsRaw);
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     
@@ -349,7 +356,17 @@ function qwe = rs(struc, syllabl, spontan, padme)
         stimSpikeCount = 0; 
     
         for i=1:length(struc.Aspikes) % For each repetition of the stimulus
+            
+%             if j < length(syllabl)
+%                 sylender = struc.syl(syllabl(j+1)).tim(1)-padme; % Beginning of next syllable              
+%             end
+%             if j == length(syllabl)
+%                 sylender = struc.syl(syllabl(j)).tim(2)-padme; % End of the current syllable
+%             end
+            
             stimSpikeCount = stimSpikeCount + length(find(struc.Aspikes{i} >= struc.syl(syllabl(j)).tim(1)-padme & struc.Aspikes{i} < struc.syl(syllabl(j)).tim(2)-padme));
+%            stimSpikeCount = stimSpikeCount + length(find(struc.Aspikes{i} >= struc.syl(syllabl(j)).tim(1)-padme & struc.Aspikes{i} < sylender));
+
         end
         
         stimSPS = stimSpikeCount / (struc.syl(syllabl(j)).tim(2) - struc.syl(syllabl(j)).tim(1)); % This is spikes per second
