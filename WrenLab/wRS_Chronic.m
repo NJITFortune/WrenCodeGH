@@ -310,7 +310,7 @@ subplot(133); hold on; title('Hetero Spikes/Second');
 
 
 
-    fprintf('Male Auto Duet vs Solo? p = %1.2e \n', stts.m.SvsDRAutoo.P);
+    fprintf('Male Auto Duet vs Solo? p = %1.2e \n', stts.m.SvsDRAuto.P);
     fprintf('Female Auto Duet vs Solo? p = %1.2e \n', stts.f.SvsDRAuto.P);
 
     fprintf(' \n');
