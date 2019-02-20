@@ -48,7 +48,7 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
 
 %% List of Chronic singing data with syllable indices and locations for spontaneous activity
 
-[msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData;
+[~, mduetsyls, ~, fduetsyls, ~, ~] = wData;
 
 
 % For each of the duets we calculate the DSI separately for the female and
