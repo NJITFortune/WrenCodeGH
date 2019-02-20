@@ -332,8 +332,11 @@ subplot(133); hold on; title('Female Spikes/Second');
 [stts.f.AvsHRSolo.H, stts.f.AvsHRSolo.P, stts.f.AvsHRSolo.CI, stts.f.AvsHRSolo.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.fSoloAuto.rsRaw);
 
 
-    fprintf('Male Auto Duet Raw RS different from zero? p = %1.2e \n', foo.mc_diffzero.p);
-    fprintf('Male Auto Solo Raw RS different from zero? p = %1.2e \n', foo.mc_diffzero.p);
+    fprintf('Male Auto Duet Raw RS different from zero? p = %1.2e \n', stts.m.dRAuto.P);
+    fprintf('Male Auto Solo Raw RS different from zero? p = %1.2e \n', stts.m.sRAuto.P);
+    fprintf('Female Auto Duet Raw RS different from zero? p = %1.2e \n', stts.f.dRAuto.P);
+    fprintf('Female Auto Solo Raw RS different from zero? p = %1.2e \n', stts.f.sRAuto.P);
+
 
     
 
