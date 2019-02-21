@@ -107,8 +107,10 @@ for j=1:3 % For each subplot
         xx = axis;
     for k=1:length(in.syl)
         if ~isempty(in.syl(k).tim)
+            
         plot([in.syl(k).tim(1), in.syl(k).tim(1)], [xx(3), xx(4)], 'g-');
-        plot([in.syl(k).tim(2), in.syl(k).tim(2)], [xx(3), xx(4)], 'r-');        
+        plot([in.syl(k).tim(2), in.syl(k).tim(2)], [xx(3), xx(4)], 'r-');  
+        
         if in.sylsex(k) == 1 % This is a male syllable
             text(in.syl(k).tim(1), xx(4)-(0.10*xx(4)), num2str(k), 'Color', 'b', 'FontSize',14);
         end
