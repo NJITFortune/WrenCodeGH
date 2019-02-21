@@ -121,5 +121,9 @@ for j=1:3 % For each subplot
         end        
     end
 end
+
+%         for i=1:4 % 4 electrodes in a tetrode always (padme shifts the window in seconds, negative earlier, positive later)
+%             stimSpikeCount = stimSpikeCount + length(find(struc.Cspikes{i} >= struc.syl(syllabl(j)).tim(1)+padme & struc.Cspikes{i} < struc.syl(syllabl(j)).tim(2)+padme));
+%         end
         
     
