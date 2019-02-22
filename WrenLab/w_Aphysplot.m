@@ -77,10 +77,11 @@ end
 axs(3)=subplot(3,1,3);
 
     tt = find(tim > win(1) & tim < win(2));
+    tt = tt(1:2:end);
 
 % Option to plot an oscillogram
     if plt_type == 0
-        plot(tim(tt),signal(tt), 'k-');
+        plot(tim(tt), signal(tt), 'k-');
         h = gca; set(h, 'Ycolor', [1,1,1], 'Box', 'off'); 
         f = axis;
         axis([win(1) win(2) f(3) f(4)]);
