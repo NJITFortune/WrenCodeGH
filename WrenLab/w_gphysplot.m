@@ -130,12 +130,16 @@ end
         for i=1:length(in.Cspikes) 
             stimSpikeCount = stimSpikeCount + length(find(in.Cspikes{i} >= in.syl(j).tim(1) & in.Cspikes{i} < in.syl(j).tim(2)));     
         end
+            stimSpikeRate = stimSpikeCount / (length(in.Cspikes)*(in.syl(j).tim(2) - in.syl(j).tim(1)));
+
             subplot(3,1,1); 
         if in.sylsex(j) == 1 % This is a male syllable
-            text(in.syl(j).tim(1)+0.050, -0.1, num2str(stimSpikeCount), 'Color', 'b', 'FontSize',10); 
+            text(in.syl(j).tim(1)+0.050, 0.5, num2str(stimSpikeCount), 'Color', 'b', 'FontSize',10); 
+            text(in.syl(j).tim(1)+0.050, -0.1, num2str(round(stimSpikeRate)), 'Color', 'b', 'FontSize',10);             
         end
         if in.sylsex(j) == 2 % This is a female syllable
-            text(in.syl(j).tim(1)+0.050, -0.1, num2str(stimSpikeCount), 'Color', 'm', 'FontSize',10); 
+            text(in.syl(j).tim(1)+0.050, 0.5, num2str(stimSpikeCount), 'Color', 'm', 'FontSize',10); 
+            text(in.syl(j).tim(1)+0.050, -0.1, num2str(round(stimSpikeRate)), 'Color', 'm', 'FontSize',10); 
         end
         end 
     end

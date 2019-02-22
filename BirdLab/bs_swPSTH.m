@@ -57,7 +57,7 @@ spb = spb / (binwidth * length(spikes));
 
 %% And plot!
 if plt ~= 0 
-    plot(tims,spb, clrs(plt,:)); xlim([win(1) win(2)]);
+    plot(tims,spb, clrs(plt,:), 'LineWidth', 2); xlim([win(1) win(2)]);
 end
 
 %% And put the data into our output structure

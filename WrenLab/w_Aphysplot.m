@@ -26,7 +26,10 @@ set(gcf, 'Color', [1,1,1]); % This sets the background to white
 axs(1)=subplot(3,1,1);
 
 % This calls our plotting function "bs_raster"
-    bs_raster(in.Aspikes);
+    for kk = length(in.Aspikes):-1:1
+        tmpspks{kk} = in.Aspikes{kk}(in.Aspikes{kk} > win(1) & in.Aspikes{kk} < win(2));
+    end
+    bs_raster(tmpspks);
     
     % set the window width to what the user asked for in "win"
     xlim([win(1) win(2)]);
@@ -133,12 +136,16 @@ end
         for i=1:length(in.Aspikes) 
             stimSpikeCount = stimSpikeCount + length(find(in.Aspikes{i} >= in.syl(j).tim(1) & in.Aspikes{i} < in.syl(j).tim(2)));     
         end
+            stimSpikeRate = stimSpikeCount / (length(in.Aspikes)*(in.syl(j).tim(2) - in.syl(j).tim(1)));
+            
             subplot(3,1,1); 
         if in.sylsex(j) == 1 % This is a male syllable
-            text(in.syl(j).tim(1)+0.050, -1, num2str(stimSpikeCount), 'Color', 'b', 'FontSize',10); 
+            text(in.syl(j).tim(1)+0.050, 1, num2str(stimSpikeCount), 'Color', 'b', 'FontSize',10); 
+            text(in.syl(j).tim(1)+0.050, -5, num2str(round(stimSpikeRate)), 'Color', 'b', 'FontSize',10);             
         end
         if in.sylsex(j) == 2 % This is a female syllable
-            text(in.syl(j).tim(1)+0.050, -1, num2str(stimSpikeCount), 'Color', 'm', 'FontSize',10); 
+            text(in.syl(j).tim(1)+0.050, 1, num2str(stimSpikeCount), 'Color', 'm', 'FontSize',10); 
+            text(in.syl(j).tim(1)+0.050, -5, num2str(round(stimSpikeRate)), 'Color', 'm', 'FontSize',10); 
         end
         end 
     end
