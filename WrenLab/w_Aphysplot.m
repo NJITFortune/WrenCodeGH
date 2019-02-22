@@ -66,9 +66,9 @@ end
 
 % And plot!
 
-    bar(tims + binwidth/2, a,'k'); % Standard histogram plot
+    bar(tims + binwidth/2, a, 'FaceColor', '[0.9290, 0.6940, 0.1250]', 'EdgeColor', '[0.9290, 0.6940, 0.1250]'); % Standard histogram plot
     hold on; 
-    plot(swpsthdata.tim, swpsthdata.spers, 'm', 'LineWidth', 3);
+        plot(swpsthdata.tim, swpsthdata.spers, 'Color', '[0.4940, 0.1840, 0.5560]', 'LineWidth', 3);
     xlim([win(1) win(2)]);
     h = gca; set(h, 'XTickLabel', [], 'Box', 'off');
     
@@ -80,7 +80,7 @@ axs(3)=subplot(3,1,3);
 
 % Option to plot an oscillogram
     if plt_type == 0
-        plot(tim(tt),signal(tt));
+        plot(tim(tt),signal(tt), 'k-');
         h = gca; set(h, 'Ycolor', [1,1,1], 'Box', 'off'); 
         f = axis;
         axis([win(1) win(2) f(3) f(4)]);
@@ -105,6 +105,7 @@ for j=1:3 % For each subplot
     
         subplot(3,1,j); hold on;
         xx = axis;
+        
     for k=1:length(in.syl)
         if ~isempty(in.syl(k).tim)
             
@@ -116,10 +117,36 @@ for j=1:3 % For each subplot
         end
         if in.sylsex(k) == 2 % This is a female syllable
             text(in.syl(k).tim(1), xx(4)-(0.10*xx(4)), num2str(k), 'Color', 'm', 'FontSize',14);
-        end
-
+        end        
+                
         end        
     end
 end
         
+
+%% Now add spike counts
+
+    for j=1:length(in.syl)
+        if ~isempty(in.syl(j).tim)
+            stimSpikeCount = 0;
+        for i=1:length(in.Aspikes) 
+            stimSpikeCount = stimSpikeCount + length(find(in.Aspikes{i} >= in.syl(j).tim(1) & in.Aspikes{i} < in.syl(j).tim(2)));     
+        end
+            subplot(3,1,1); 
+        if in.sylsex(j) == 1 % This is a male syllable
+            text(in.syl(j).tim(1)+0.050, -1, num2str(stimSpikeCount), 'Color', 'b', 'FontSize',10); 
+        end
+        if in.sylsex(j) == 2 % This is a female syllable
+            text(in.syl(j).tim(1)+0.050, -1, num2str(stimSpikeCount), 'Color', 'm', 'FontSize',10); 
+        end
+        end 
+    end
+    
+ %% Add the ID of the duet to the plot
+    if in.sexy == 1 % Male bird
+        subplot(313); text(0, -0.2, in.id, 'Color', 'b', 'FontSize',12);
+    end
+    if in.sexy == 2 % Female bird
+        subplot(313); text(0, -0.2, in.id, 'Color', 'm', 'FontSize',12);
+    end
     

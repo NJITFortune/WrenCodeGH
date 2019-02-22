@@ -9,7 +9,7 @@ function out = bs_swPSTH(spikes, win, binwidth, plt)
 
 %% Preparations
 
-if nargin < 4; plt = 1; end;
+if nargin < 4; plt = 1; end
 clrs(1,:)='b-'; clrs(2,:)='m-'; clrs(3,:)='r-'; 
 clrs(4,:)='g-'; clrs(5,:)='c-'; clrs(6,:)='k-';
 
@@ -49,8 +49,8 @@ for i = 1:binnum
         repbinisi = sum (spikes{j} > binstart & spikes{j} <= binend);
         % For the current bin (i) add the number of spikes (repbinisi)
         spb(i) = spb(i) + repbinisi;
-    end;
-end;
+    end
+end
 
 % Normalize to spikes per second. 
 spb = spb / (binwidth * length(spikes));
@@ -58,7 +58,7 @@ spb = spb / (binwidth * length(spikes));
 %% And plot!
 if plt ~= 0 
     plot(tims,spb, clrs(plt,:)); xlim([win(1) win(2)]);
-end;
+end
 
 %% And put the data into our output structure
 out.tim = tims;

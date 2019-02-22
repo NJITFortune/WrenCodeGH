@@ -151,12 +151,16 @@ subplot(131); hold on; title('Male Normalized RS');
 subplot(132); hold on; title('Male Raw RS');
     plot([1 2], meanRaw(1:2), 'bo'); 
     errorbar([1 2], meanRaw(1:2), sraw(1:2), 'b', 'LineWidth', 2);
-        for p=1:length(sumdat.mDuetAuto.rsRaw); plot(1.1, sumdat.mDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.mDuetHetero.rsRaw); plot(2.1, sumdat.mDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mDuetAuto.rsRaw); plot(1.1, sumdat.mDuetAuto.rsRaw(p), 'w.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mDuetHetero.rsRaw); plot(2.1, sumdat.mDuetHetero.rsRaw(p), 'w.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mDuetAuto.rsRaw); text(1.1, sumdat.mDuetAuto.rsRaw(p), num2str(p)); end
+        for p=1:length(sumdat.mDuetHetero.rsRaw); text(2.1, sumdat.mDuetHetero.rsRaw(p), num2str(p)); end
     plot([3 4], meanRaw(3:4), 'mo'); 
     errorbar([3 4], meanRaw(3:4), sraw(3:4), 'b', 'LineWidth', 1);
-        for p=1:length(sumdat.mSoloAuto.rsRaw); plot(3.1, sumdat.mSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.mSoloHetero.rsRaw); plot(4.1, sumdat.mSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+%         for p=1:length(sumdat.mSoloAuto.rsRaw); plot(3.1, sumdat.mSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+%         for p=1:length(sumdat.mSoloHetero.rsRaw); plot(4.1, sumdat.mSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloAuto.rsRaw); text(3.1, sumdat.mSoloAuto.rsRaw(p), num2str(p)); end
+        for p=1:length(sumdat.mSoloHetero.rsRaw); text(4.1, sumdat.mSoloHetero.rsRaw(p), num2str(p)); end
     % ylim([-10 100]); 
     xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({'DA','DH','SA','SH'})
