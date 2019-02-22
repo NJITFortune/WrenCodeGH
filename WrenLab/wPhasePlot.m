@@ -13,7 +13,7 @@ if nargin < 2; pad = 0; end
 
 birdlist = 1:12;
 
-% For each bird
+%% For each bird
 for ff = birdlist
     
     
