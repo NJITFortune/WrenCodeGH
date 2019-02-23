@@ -111,8 +111,8 @@ function [vector_strength, phasespikes, regularspikes] = wPhasor(spiketimes, tim
         
         for k = 1:length(spiketimes)
 
-        prespikes =  [prespikes,  spiketimes{k}(spiketimes{k} > tims(j,2)-wid & spiketimes{k} < tims(j,2))'];
-        postspikes = [postspikes, spiketimes{k}(spiketimes{k} > tims(j,2) & spiketimes{k} < tims(j,2)+wid)'];
+        prespikes =  [prespikes,  ((spiketimes{k}(spiketimes{k} > tims(j,2)-wid & spiketimes{k} < tims(j,2))) - tims(j,2)-wid)'];
+        postspikes = [postspikes, ((spiketimes{k}(spiketimes{k} > tims(j,2) & spiketimes{k} < tims(j,2)+wid)) - tims(j,2))'];
         
         PHASEprespikes = [PHASEprespikes, (pi * ((spiketimes{k}(spiketimes{k} > tims(j,1) & spiketimes{k} < tims(j,2)))-tims(j,1)) / (tims(j,2) - tims(j,1)))'];
         PHASEpostspikes = [PHASEpostspikes, (pi + (pi * ((spiketimes{k}(spiketimes{k} > tims(j,2) & spiketimes{k} < tims(j,3)))-tims(j,2)) / (tims(j,3) - tims(j,2))))' ];
