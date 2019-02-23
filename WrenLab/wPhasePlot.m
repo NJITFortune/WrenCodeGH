@@ -48,6 +48,9 @@ end
 
 %% Fetch the vector strengths and plot
 
+plotwid = 0.300; plotwind = 100; % For raw data
+% plotwid = pi*2; plotwind = 100; % For Normalized data
+
 if in(ff).sexy == 1 % This is a male
     [out(ff).AH.Uvs, out(ff).AH.uPhaseSpikes, out(ff).AH.uSpikes] = wPhasor(in(ff).Aspikes, Msyltims);
     [out(ff).AH.Cvs, out(ff).AH.cPhaseSpikes, out(ff).AH.cSpikes] = wPhasor(in(ff).Cspikes, Msyltims);
@@ -55,10 +58,10 @@ if in(ff).sexy == 1 % This is a male
     [out(ff).HA.Cvs, out(ff).HA.cPhaseSpikes, out(ff).HA.cSpikes] = wPhasor(in(ff).Cspikes, Fsyltims);   
     
 figure(ff); clf;
-subplot(411); bs_swPSTH(out(ff).AH.cSpikes,[0, pi*2], 100, 1); 
-subplot(412); bs_swPSTH(out(ff).AH.uSpikes,[0, pi*2], 100, 6);
-subplot(413); bs_swPSTH(out(ff).HA.cSpikes,[0, pi*2], 100, 1);
-subplot(414); bs_swPSTH(out(ff).HA.uSpikes,[0, pi*2], 100, 6);
+subplot(411); bs_swPSTH(out(ff).AH.cSpikes,[0, plotwid], plotwind, 1); 
+subplot(412); bs_swPSTH(out(ff).AH.uSpikes,[0, plotwid], plotwind, 6);
+subplot(413); bs_swPSTH(out(ff).HA.cSpikes,[0, plotwid], plotwind, 1);
+subplot(414); bs_swPSTH(out(ff).HA.uSpikes,[0, plotwid], plotwind, 6);
 end
 
 if in(ff).sexy == 2 % This is a female
@@ -68,10 +71,10 @@ if in(ff).sexy == 2 % This is a female
     [out(ff).HA.Cvs, out(ff).HA.cPhaseSpikes, out(ff).HA.cSpikes] = wPhasor(in(ff).Cspikes, Msyltims);    
 
 figure(ff); clf;
-subplot(411); bs_swPSTH(out(ff).AH.cSpikes,[0, pi*2], 100, 2); 
-subplot(412); bs_swPSTH(out(ff).AH.uSpikes,[0, pi*2], 100, 6);
-subplot(413); bs_swPSTH(out(ff).HA.cSpikes,[0, pi*2], 100, 2);
-subplot(414); bs_swPSTH(out(ff).HA.uSpikes,[0, pi*2], 100, 6);
+subplot(411); bs_swPSTH(out(ff).AH.cSpikes,[0, plotwid], plotwind, 2); 
+subplot(412); bs_swPSTH(out(ff).AH.uSpikes,[0, plotwid], plotwind, 6);
+subplot(413); bs_swPSTH(out(ff).HA.cSpikes,[0, plotwid], plotwind, 2);
+subplot(414); bs_swPSTH(out(ff).HA.uSpikes,[0, plotwid], plotwind, 6);
 end
 
 
