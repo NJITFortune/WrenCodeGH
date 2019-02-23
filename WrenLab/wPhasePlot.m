@@ -55,10 +55,10 @@ if in(ff).sexy == 1 % This is a male
     [out(ff).HA.Cvs, out(ff).HA.cPhaseSpikes, out(ff).HA.cSpikes] = wPhasor(in(ff).Cspikes, Fsyltims);   
     
 figure(ff); clf;
-subplot(411); bs_swPSTH(out(ff).AH.cp,[0, pi*2], 100, 1); 
-subplot(412); bs_swPSTH(out(ff).AH.up,[0, pi*2], 100, 6);
-subplot(413); bs_swPSTH(out(ff).HA.cp,[0, pi*2], 100, 1);
-subplot(414); bs_swPSTH(out(ff).HA.up,[0, pi*2], 100, 6);
+subplot(411); bs_swPSTH(out(ff).AH.cSpikes,[0, pi*2], 100, 1); 
+subplot(412); bs_swPSTH(out(ff).AH.uSpikes,[0, pi*2], 100, 6);
+subplot(413); bs_swPSTH(out(ff).HA.cSpikes,[0, pi*2], 100, 1);
+subplot(414); bs_swPSTH(out(ff).HA.uSpikes,[0, pi*2], 100, 6);
 end
 
 if in(ff).sexy == 2 % This is a female
