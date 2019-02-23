@@ -49,10 +49,10 @@ end
 %% Fetch the vector strengths and plot
 
 if in(ff).sexy == 1 % This is a male
-    [out(ff).AH.uv, out(ff).AH.up] = wPhasor(in(ff).Aspikes, Msyltims);
-    [out(ff).AH.cv, out(ff).AH.cp] = wPhasor(in(ff).Cspikes, Msyltims);
-    [out(ff).HA.uv, out(ff).HA.up] = wPhasor(in(ff).Aspikes, Fsyltims);
-    [out(ff).HA.cv, out(ff).HA.cp] = wPhasor(in(ff).Cspikes, Fsyltims);   
+    [out(ff).AH.Uvs, out(ff).AH.uPhaseSpikes, out(ff).AH.uSpikes] = wPhasor(in(ff).Aspikes, Msyltims);
+    [out(ff).AH.Cvs, out(ff).AH.cPhaseSpikes, out(ff).AH.cSpikes] = wPhasor(in(ff).Cspikes, Msyltims);
+    [out(ff).HA.Uvs, out(ff).HA.uPhaseSpikes, out(ff).HA.uSpikes] = wPhasor(in(ff).Aspikes, Fsyltims);
+    [out(ff).HA.Cvs, out(ff).HA.cPhaseSpikes, out(ff).HA.cSpikes] = wPhasor(in(ff).Cspikes, Fsyltims);   
     
 figure(ff); clf;
 subplot(411); bs_swPSTH(out(ff).AH.cp,[0, pi*2], 100, 1); 
@@ -62,16 +62,16 @@ subplot(414); bs_swPSTH(out(ff).HA.up,[0, pi*2], 100, 6);
 end
 
 if in(ff).sexy == 2 % This is a female
-    [out(ff).AH.uv, out(ff).AH.up] = wPhasor(in(ff).Aspikes, Fsyltims);
-    [out(ff).AH.cv, out(ff).AH.cp] = wPhasor(in(ff).Cspikes, Fsyltims);
-    [out(ff).HA.uv, out(ff).HA.up] = wPhasor(in(ff).Aspikes, Msyltims);
-    [out(ff).HA.cv, out(ff).HA.cp] = wPhasor(in(ff).Cspikes, Msyltims);    
+    [out(ff).AH.Uvs, out(ff).AH.uPhaseSpikes, out(ff).AH.uSpikes] = wPhasor(in(ff).Aspikes, Fsyltims);
+    [out(ff).AH.Cvs, out(ff).AH.cPhaseSpikes, out(ff).AH.cSpikes] = wPhasor(in(ff).Cspikes, Fsyltims);
+    [out(ff).HA.Uvs, out(ff).HA.uPhaseSpikes, out(ff).HA.uSpikes] = wPhasor(in(ff).Aspikes, Msyltims);
+    [out(ff).HA.Cvs, out(ff).HA.cPhaseSpikes, out(ff).HA.cSpikes] = wPhasor(in(ff).Cspikes, Msyltims);    
 
 figure(ff); clf;
-subplot(411); bs_swPSTH(out(ff).AH.cp,[0, pi*2], 100, 2); 
-subplot(412); bs_swPSTH(out(ff).AH.up,[0, pi*2], 100, 6);
-subplot(413); bs_swPSTH(out(ff).HA.cp,[0, pi*2], 100, 2);
-subplot(414); bs_swPSTH(out(ff).HA.up,[0, pi*2], 100, 6);
+subplot(411); bs_swPSTH(out(ff).AH.cSpikes,[0, pi*2], 100, 2); 
+subplot(412); bs_swPSTH(out(ff).AH.uSpikes,[0, pi*2], 100, 6);
+subplot(413); bs_swPSTH(out(ff).HA.cSpikes,[0, pi*2], 100, 2);
+subplot(414); bs_swPSTH(out(ff).HA.uSpikes,[0, pi*2], 100, 6);
 end
 
 
@@ -97,21 +97,29 @@ end
 
 
 
-function [vector_strength, phasespikes] = wPhasor(spiketimes, tims)
+function [vector_strength, phasespikes, regularspikes] = wPhasor(spiketimes, tims)
     
     
     for j = length(tims):-1:1     
+        
         prespikes = []; postspikes = [];
+        PHASEprespikes = []; PHASEpostspikes = [];
         
         for k = 1:length(spiketimes)
 
-        prespikes = [prespikes, (pi * ((spiketimes{k}(spiketimes{k} > tims(j,1) & spiketimes{k} < tims(j,2)))-tims(j,1)) / (tims(j,2) - tims(j,1)))'];
-        postspikes = [postspikes, (pi + (pi * ((spiketimes{k}(spiketimes{k} > tims(j,2) & spiketimes{k} < tims(j,3)))-tims(j,2)) / (tims(j,3) - tims(j,2))))' ];
+        prespikes =  [prespikes,  spiketimes{k}(spiketimes{k} > tims(j,1) & spiketimes{k} < tims(j,2))'];
+        postspikes = [postspikes, spiketimes{k}(spiketimes{k} > tims(j,2) & spiketimes{k} < tims(j,3))'];
+        
+        PHASEprespikes = [PHASEprespikes, (pi * ((spiketimes{k}(spiketimes{k} > tims(j,1) & spiketimes{k} < tims(j,2)))-tims(j,1)) / (tims(j,2) - tims(j,1)))'];
+        PHASEpostspikes = [PHASEpostspikes, (pi + (pi * ((spiketimes{k}(spiketimes{k} > tims(j,2) & spiketimes{k} < tims(j,3)))-tims(j,2)) / (tims(j,3) - tims(j,2))))' ];
         
         end
     
-        phasespikes{j} = sort([prespikes postspikes]);
+        regularspikes{j} = sort([prespikes postspikes]);
+        
+        phasespikes{j} = sort([PHASEprespikes PHASEpostspikes]);
         phasespikes{j} = phasespikes{j}(~isnan(phasespikes{j}));
+        
         vector_strength(j) = sqrt(mean(cos(phasespikes{j})).^2 + mean(sin(phasespikes{j})).^2);
 
     end
