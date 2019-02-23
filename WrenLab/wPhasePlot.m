@@ -89,7 +89,7 @@ end % Cycle for every bird
 
 for ff = birdlist
     % Which urethane vector strength is better?    
-    out(ff).maxUV = max([out(ff).HA.uv out(ff).AH.uv]);     
+    out(ff).maxUV = max([out(ff).HA.Uvs out(ff).AH.Uvs]);     
 end
 
 
