@@ -50,14 +50,14 @@ end
 
 %% Fetch the vector strengths and plot
 
-% plotwid = 0.500; plotwind = 10; % For raw data
+Rplotwid = 0.500; Rplotwind = 10; % For raw data
 plotwid = pi*2; plotwind = 100; % For Normalized data
 
 if in(ff).sexy == 1 % This is a male
     [out(ff).AH.Uvs, out(ff).AH.uPhaseSpikes, out(ff).AH.uSpikes] = wPhasor(in(ff).Aspikes, Msyltims);
     [out(ff).AH.Cvs, out(ff).AH.cPhaseSpikes, out(ff).AH.cSpikes] = wPhasor(in(ff).Cspikes, Msyltims);
     [out(ff).HA.Uvs, out(ff).HA.uPhaseSpikes, out(ff).HA.uSpikes] = wPhasor(in(ff).Aspikes, Fsyltims);
-    [out(ff).HA.Cvs, out(ff).HA.cPhaseSpikes, out(ff).HA.cSpikes] = wPhasor(in(ff).Cspikes, Fsyltims);   
+    [out(ff).HA.Cvs, out(ff).HA.cPhaseSpikes, out(ff).HA.cSpikes] = wPhasor(in(ff).Cspikes, Fsyltims);
 end
 
 if in(ff).sexy == 2 % This is a female
@@ -78,24 +78,66 @@ end
 
 [stts.H, stts.P, stts.CI] = ttest2([out(1:2:end).maxUV], [out(2:2:end).maxUV]);
 
-%% Use this to plot each bird
+%% Use this to plot each bird and calculate the mean
 for ff = birdlist
     if in(ff).sexy == 1 % This is a male
         figure(ff); clf;
         subplot(411); bs_swPSTH(out(ff).AH.cPhaseSpikes,[0, plotwid], plotwind, 1); 
-        subplot(412); bs_swPSTH(out(ff).AH.uPhaseSpikes,[0, plotwid], plotwind, 6);
-        subplot(413); bs_swPSTH(out(ff).HA.cPhaseSpikes,[0, plotwid], plotwind, 1);
-        subplot(414); bs_swPSTH(out(ff).HA.uPhaseSpikes,[0, plotwid], plotwind, 6);
+        subplot(412); mAHuP(ff) = bs_swPSTH(out(ff).AH.uPhaseSpikes,[0, plotwid], plotwind, 6);
+        subplot(413); mHAcP(ff) = bs_swPSTH(out(ff).HA.cPhaseSpikes,[0, plotwid], plotwind, 1);
+        subplot(414); mHAuP(ff) = bs_swPSTH(out(ff).HA.uPhaseSpikes,[0, plotwid], plotwind, 6);
+        
+        figure(ff+100); clf;
+        subplot(411); bs_swPSTH(out(ff).AH.cSpikes,[0, Rplotwid], Rplotwind, 1); 
+        subplot(412); mAHuR(ff) = bs_swPSTH(out(ff).AH.uSpikes,[0, Rplotwid], Rplotwind, 6);
+        subplot(413); mHAcR(ff) = bs_swPSTH(out(ff).HA.cSpikes,[0, Rplotwid], Rplotwind, 1);
+        subplot(414); mHAuR(ff) = bs_swPSTH(out(ff).HA.uSpikes,[0, Rplotwid], Rplotwind, 6);
     end
 
     if in(ff).sexy == 2 % This is a female
     figure(ff); clf;
-        subplot(411); bs_swPSTH(out(ff).AH.cPhaseSpikes,[0, plotwid], plotwind, 2); 
-        subplot(412); bs_swPSTH(out(ff).AH.uPhaseSpikes,[0, plotwid], plotwind, 6);
+        subplot(411); fAHcP(ff) = bs_swPSTH(out(ff).AH.cPhaseSpikes,[0, plotwid], plotwind, 2); 
+        subplot(412); fAHuP(ff) = bs_swPSTH(out(ff).AH.uPhaseSpikes,[0, plotwid], plotwind, 6);
         subplot(413); bs_swPSTH(out(ff).HA.cPhaseSpikes,[0, plotwid], plotwind, 2);
-        subplot(414); bs_swPSTH(out(ff).HA.uPhaseSpikes,[0, plotwid], plotwind, 6);
+        subplot(414); fHAuP(ff) = bs_swPSTH(out(ff).HA.uPhaseSpikes,[0, plotwid], plotwind, 6);
+        
+        figure(ff+100); clf;
+        subplot(411); fAHcR(ff) = bs_swPSTH(out(ff).AH.cSpikes,[0, Rplotwid], Rplotwind, 1); 
+        subplot(412); fAHuR(ff) = bs_swPSTH(out(ff).AH.uSpikes,[0, Rplotwid], Rplotwind, 6);
+        subplot(413); bs_swPSTH(out(ff).HA.cSpikes,[0, Rplotwid], Rplotwind, 1);
+        subplot(414); fHAuR(ff) = bs_swPSTH(out(ff).HA.uSpikes,[0, Rplotwid], Rplotwind, 6);
+    end
 end
+
+UrethaneMalePhase = mHAuP(1).spers / max(mHAuP(1).spers);
+UrethaneFemalePhase = fAHuP(2).spers / max(fAHuP(2).spers);
+
+UrethaneMaleReal = mHAuR(1).spers / max(mHAuR(1).spers);
+UrethaneFemaleReal = fAHuR(2).spers / max(fAHuR(2).spers);
+
+for tt = 3:2:length(birdlist)
+
+    UrethaneMalePhase = UrethaneMalePhase + mHAuP(tt).spers / max(mHAuP(tt).spers);
+    UrethaneMaleReal = UrethaneMaleReal + mHAuR(tt).spers / max(mHAuR(tt).spers);
 end
+
+for tt = 4:2:length(birdlist)
+
+    UrethaneFemalePhase = UrethaneFemalePhase + fAHuP(tt).spers / max(fAHuP(tt).spers);
+    UrethaneFemaleReal = UrethaneFemaleReal + fAHuR(tt).spers / max(fAHuR(tt).spers);   
+    
+end
+
+figure(28); clf;
+subplot(2,1,1); plot(UrethaneMalePhase, 'b'); hold on;
+subplot(2,1,1); plot(UrethaneFemalePhase, 'm');
+xlim([0 200*pi]);
+subplot(2,1,2); plot(UrethaneMaleReal, 'b'); hold on;
+subplot(2,1,2); plot(UrethaneFemaleReal, 'm');
+xlim([0 500]);
+
+
+
 
 %% Embedded vector strength function
 function [vector_strength, phasespikes, regularspikes] = wPhasor(spiketimes, tims)
