@@ -48,7 +48,7 @@ end
 
 %% Fetch the vector strengths and plot
 
-plotwid = 0.300; plotwind = 100; % For raw data
+plotwid = 0.300; plotwind = 10; % For raw data
 % plotwid = pi*2; plotwind = 100; % For Normalized data
 
 if in(ff).sexy == 1 % This is a male
