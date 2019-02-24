@@ -90,17 +90,25 @@ end
 for jj = length(fcSPER(:,1)):-1:1
     
     foo.mcSPER(jj) = sum(mcSPER(jj,:));
+        foo.mcSPERstd = std(mcSPER(jj,:));
     foo.fcSPER(jj) = sum(fcSPER(jj,:));
+        foo.fcSPERstd = std(fcSPER(jj,:));
     foo.muSPER(jj) = sum(muSPER(jj,:));
+        foo.muSPERstd = std(muSPER(jj,:));
     foo.fuSPER(jj) = sum(fuSPER(jj,:));
+        foo.fuSPERstd = std(fuSPER(jj,:));
     
 end
 
 % And normalize again!
     foo.mcSPER = foo.mcSPER / max(foo.mcSPER);
+        foo.mcSPERstd = foo.mcSPERstd / max(foo.mcSPER);
     foo.muSPER = foo.muSPER / max(foo.muSPER);
+        foo.fcSPERstd = foo.fcSPERstd / max(foo.fcSPER);
     foo.fcSPER = foo.fcSPER / max(foo.fcSPER);
+        foo.muSPERstd = foo.muSPERstd / max(foo.muSPER);
     foo.fuSPER = foo.fuSPER / max(foo.fuSPER);
+        foo.fuSPERstd = foo.fuSPERstd / max(foo.fuSPER);
 
 figure(27); clf;
     ax(1) = subplot(211); hold on;
