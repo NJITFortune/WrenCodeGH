@@ -20,8 +20,8 @@ overlap = 0.1;
 binwidth = binwidth/1000;
 
 % This is the length of the window over which we will do the analysis.
-% win values are given by the user.
-    len = win(2) - win(1);
+% win values are given by the user. We add one bin to either side.
+    len = (win(2) + binwidth) - (win(1) + binwidth);
 
 % Calculate how many bins we will need - divide the length (len) by the
 % stepsize (binwidth*overlap)
@@ -57,7 +57,7 @@ spb = spb / (binwidth * length(spikes));
 
 %% And plot!
 if plt ~= 0 
-    plot(tims,spb, clrs(plt,:), 'LineWidth', 2); xlim([win(1) win(2)]);
+    plot(tims(2:end-1),spb(2:end-1), clrs(plt,:), 'LineWidth', 2); xlim([win(1) win(2)]);
 end
 
 %% And put the data into our output structure
