@@ -90,13 +90,13 @@ end
 for jj = length(fcSPER(:,1)):-1:1
     
     foo.mcSPER(jj) = sum(mcSPER(jj,:));
-        foo.mcSPERstd = std(mcSPER(jj,:));
+        foo.mcSPERstd(jj) = std(mcSPER(jj,:));
     foo.fcSPER(jj) = sum(fcSPER(jj,:));
-        foo.fcSPERstd = std(fcSPER(jj,:));
+        foo.fcSPERstd(jj) = std(fcSPER(jj,:));
     foo.muSPER(jj) = sum(muSPER(jj,:));
-        foo.muSPERstd = std(muSPER(jj,:));
+        foo.muSPERstd(jj) = std(muSPER(jj,:));
     foo.fuSPER(jj) = sum(fuSPER(jj,:));
-        foo.fuSPERstd = std(fuSPER(jj,:));
+        foo.fuSPERstd(jj) = std(fuSPER(jj,:));
     
 end
 
