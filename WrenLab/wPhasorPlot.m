@@ -64,7 +64,8 @@ figure(28); clf;
 linkaxes(xa, 'xy'); xlim([foo.Smctim(1), foo.Smctim(end)]); ylim([0, 1.05]);
 
 
-
+% figure(1); clf; hold on;
+% figure(2); clf; hold on;
 
 %% Average PSTHs
 
@@ -76,6 +77,9 @@ for mdat = 1:2:ldat
     % Normalize the data
     mcSPER(:,ceil(mdat/2)) = mcSPER(:,ceil(mdat/2)) / max(mcSPER(:,ceil(mdat/2)));
     muSPER(:,ceil(mdat/2)) = muSPER(:,ceil(mdat/2)) / max(muSPER(:,ceil(mdat/2)));
+    
+%    figure(1); plot(mcSPER(:,ceil(mdat/2))/max(mcSPER(:,ceil(mdat/2))));
+    
 end
 % Concatenate the Female data
 for fdat = 2:2:ldat
@@ -85,42 +89,71 @@ for fdat = 2:2:ldat
     % Normalize the data
     fcSPER(:,ceil(fdat/2)) = fcSPER(:,ceil(fdat/2)) / max(fcSPER(:,ceil(fdat/2)));
     fuSPER(:,ceil(fdat/2)) = fuSPER(:,ceil(fdat/2)) / max(fuSPER(:,ceil(fdat/2)));
+
+%    figure(2); plot(fcSPER(:,ceil(fdat/2))/max(fcSPER(:,ceil(fdat/2))));
+
 end
 
 for jj = length(fcSPER(:,1)):-1:1
     
     foo.mcSPER(jj) = sum(mcSPER(jj,:));
         foo.mcSPERstd(jj) = std(mcSPER(jj,:));
+
     foo.fcSPER(jj) = sum(fcSPER(jj,:));
         foo.fcSPERstd(jj) = std(fcSPER(jj,:));
+        
     foo.muSPER(jj) = sum(muSPER(jj,:));
         foo.muSPERstd(jj) = std(muSPER(jj,:));
+        
     foo.fuSPER(jj) = sum(fuSPER(jj,:));
         foo.fuSPERstd(jj) = std(fuSPER(jj,:));
     
 end
 
 % And normalize again!
-    foo.mcSPER = foo.mcSPER / max(foo.mcSPER);
-        foo.mcSPERstd = foo.mcSPERstd / max(foo.mcSPER);
-    foo.muSPER = foo.muSPER / max(foo.muSPER);
-        foo.fcSPERstd = foo.fcSPERstd / max(foo.fcSPER);
-    foo.fcSPER = foo.fcSPER / max(foo.fcSPER);
-        foo.muSPERstd = foo.muSPERstd / max(foo.muSPER);
-    foo.fuSPER = foo.fuSPER / max(foo.fuSPER);
-        foo.fuSPERstd = foo.fuSPERstd / max(foo.fuSPER);
+        foo.mcSPERstd = foo.mcSPERstd / (ldat/2);
+    foo.mcSPER = foo.mcSPER / (ldat/2);
+
+        foo.muSPERstd = foo.muSPERstd / (ldat/2);
+    foo.muSPER = foo.muSPER / (ldat/2);
+        
+        foo.fcSPERstd = foo.fcSPERstd / (ldat/2);
+    foo.fcSPER = foo.fcSPER / (ldat/2);
+        
+        foo.fuSPERstd = foo.fuSPERstd / (ldat/2);
+    foo.fuSPER = foo.fuSPER / (ldat/2);
 
 figure(27); clf;
     ax(1) = subplot(211); hold on;
-    plot(foo.mctim, foo.mcSPER, 'b', 'LineWidth', 2);
-    plot(foo.fctim, foo.fcSPER, 'm', 'LineWidth', 2);
-    plot([pi, pi], [0 1.1], 'k');
-    ax(2) = subplot(212); hold on;
-    plot(foo.mutim, foo.muSPER, 'b', 'LineWidth', 2);
-    plot(foo.futim, foo.fuSPER, 'm', 'LineWidth', 2);
-    plot([pi, pi], [0 1.1], 'k');
     
-linkaxes(ax, 'xy'); xlim([foo.futim(1), foo.futim(end)]); ylim([0, 1.05]);
+    % Male Chronic STD and Data
+        plot(foo.mctim, foo.mcSPER + 2*(foo.mcSPERstd), 'c', 'LineWidth', 1);
+        plot(foo.mctim, foo.mcSPER - 2*(foo.mcSPERstd), 'c', 'LineWidth', 1);
+        plot(foo.mctim, foo.mcSPER, 'b', 'LineWidth', 2);
+
+    % Female Chronic STD and Data
+        plot(foo.fctim, foo.fcSPER + 2*(foo.fcSPERstd), 'r', 'LineWidth', 1);
+        plot(foo.fctim, foo.fcSPER - 2*(foo.fcSPERstd), 'r', 'LineWidth', 1);
+        plot(foo.fctim, foo.fcSPER, 'm', 'LineWidth', 2);
+        
+        plot([pi, pi], [0 1.1], 'k');
+        
+        
+    ax(2) = subplot(212); hold on;
+    
+    % Male Urethane STD and Data
+        plot(foo.mutim, foo.muSPER + 2*(foo.muSPERstd), 'c', 'LineWidth', 1);
+        plot(foo.mutim, foo.muSPER - 2*(foo.muSPERstd), 'c', 'LineWidth', 1);
+        plot(foo.mutim, foo.muSPER, 'b', 'LineWidth', 2);
+        
+    % Female Urethane STD and Data
+        plot(foo.futim, foo.fuSPER + 2*(foo.fuSPERstd), 'r', 'LineWidth', 1);
+        plot(foo.futim, foo.fuSPER - 2*(foo.fuSPERstd), 'r', 'LineWidth', 1);
+        plot(foo.futim, foo.fuSPER, 'm', 'LineWidth', 2);
+        
+        plot([pi, pi], [0 1.1], 'k');
+    
+linkaxes(ax, 'xy'); xlim([0, 2*pi]); ylim([0, 1.05]);
 
 
 
