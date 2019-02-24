@@ -71,8 +71,8 @@ linkaxes(xa, 'xy'); xlim([foo.Smctim(1), foo.Smctim(end)]); ylim([0, 1.05]);
 % Concatenate the Male data
 for mdat = 1:2:ldat
     % Get the data in Spikes per Second
-    [mcSPER(:,ceil(mdat/2)), foo.mctim, foo.mcFs] = swPSTH(data(mdat).HA.cPhaseSpikes, Pwin, Pbinwid);
-    [muSPER(:,ceil(mdat/2)), foo.mutim, foo.muFs] = swPSTH(data(mdat).HA.uPhaseSpikes, Pwin, Pbinwid);
+    [mcSPER(:,ceil(mdat/2)), foo.mctim, foo.mcFs] = swPSTH(data(mdat).AH.cPhaseSpikes, Pwin, Pbinwid);
+    [muSPER(:,ceil(mdat/2)), foo.mutim, foo.muFs] = swPSTH(data(mdat).AH.uPhaseSpikes, Pwin, Pbinwid);
     % Normalize the data
     mcSPER(:,ceil(mdat/2)) = mcSPER(:,ceil(mdat/2)) / max(mcSPER(:,ceil(mdat/2)));
     muSPER(:,ceil(mdat/2)) = muSPER(:,ceil(mdat/2)) / max(muSPER(:,ceil(mdat/2)));
@@ -80,8 +80,8 @@ end
 % Concatenate the Female data
 for fdat = 2:2:ldat
     % Get the data in Spikes per Second
-    [fcSPER(:,ceil(fdat/2)), foo.fctim, foo.fcFs] = swPSTH(data(fdat).AH.cPhaseSpikes, Pwin, Pbinwid);
-    [fuSPER(:,ceil(fdat/2)), foo.futim, foo.fuFs] = swPSTH(data(fdat).AH.uPhaseSpikes, Pwin, Pbinwid);
+    [fcSPER(:,ceil(fdat/2)), foo.fctim, foo.fcFs] = swPSTH(data(fdat).HA.cPhaseSpikes, Pwin, Pbinwid);
+    [fuSPER(:,ceil(fdat/2)), foo.futim, foo.fuFs] = swPSTH(data(fdat).HA.uPhaseSpikes, Pwin, Pbinwid);
     % Normalize the data
     fcSPER(:,ceil(fdat/2)) = fcSPER(:,ceil(fdat/2)) / max(fcSPER(:,ceil(fdat/2)));
     fuSPER(:,ceil(fdat/2)) = fuSPER(:,ceil(fdat/2)) / max(fuSPER(:,ceil(fdat/2)));
