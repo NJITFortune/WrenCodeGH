@@ -120,8 +120,8 @@ end % End of calculations
 % For raw RS data
 
     meanRaw(1) = mean(sumdat.mDuetAuto.rsRaw); sraw(1) = std(sumdat.mDuetAuto.rsRaw);
-    meanRaw(2) = mean(sumdat.mSoloAuto.rsRaw); sraw(3) = std(sumdat.mSoloAuto.rsRaw);
-    meanRaw(3) = mean(sumdat.fDuetAuto.rsRaw); sraw(2) = std(sumdat.fDuetAuto.rsRaw);
+    meanRaw(2) = mean(sumdat.mSoloAuto.rsRaw); sraw(2) = std(sumdat.mSoloAuto.rsRaw);
+    meanRaw(3) = mean(sumdat.fDuetAuto.rsRaw); sraw(3) = std(sumdat.fDuetAuto.rsRaw);
     meanRaw(4) = mean(sumdat.fSoloAuto.rsRaw); sraw(4) = std(sumdat.fSoloAuto.rsRaw);
 
 % For raw SPS data
