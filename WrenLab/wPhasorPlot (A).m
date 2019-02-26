@@ -127,13 +127,15 @@ figure(27); clf;
     ax(1) = subplot(211); hold on;
     
     % Male Chronic STD and Data
-        plot(foo.mctim, foo.mcSPER + 2*(foo.mcSPERstd), 'c', 'LineWidth', 1);
-        plot(foo.mctim, foo.mcSPER - 2*(foo.mcSPERstd), 'c', 'LineWidth', 1);
+%         plot(foo.mctim, foo.mcSPER + 2*(foo.mcSPERstd), 'c', 'LineWidth', 1);
+%         plot(foo.mctim, foo.mcSPER - 2*(foo.mcSPERstd), 'c', 'LineWidth', 1);
+fill([foo.mctim' flipud(foo.mctim)'],[(foo.mcSPER - 2*(foo.mcSPERstd)) (foo.mcSPER(end:-1:1) + 2*(foo.mcSPERstd(end:-1:1)))],[0.6 0.9 0.9],'linestyle','none');
         plot(foo.mctim, foo.mcSPER, 'b', 'LineWidth', 2);
 
     % Female Chronic STD and Data
-        plot(foo.fctim, foo.fcSPER + 2*(foo.fcSPERstd), 'r', 'LineWidth', 1);
-        plot(foo.fctim, foo.fcSPER - 2*(foo.fcSPERstd), 'r', 'LineWidth', 1);
+%         plot(foo.fctim, foo.fcSPER + 2*(foo.fcSPERstd), 'r', 'LineWidth', 1);
+%         plot(foo.fctim, foo.fcSPER - 2*(foo.fcSPERstd), 'r', 'LineWidth', 1);
+fill([foo.fctim' flipud(foo.fctim)'],[(foo.fcSPER - 2*(foo.fcSPERstd)) (foo.fcSPER(end:-1:1) + 2*(foo.fcSPERstd(end:-1:1)))],[0.9 0.8 0.9],'linestyle','none');
         plot(foo.fctim, foo.fcSPER, 'm', 'LineWidth', 2);
         
         plot([pi, pi], [0 1.1], 'k');
@@ -142,18 +144,22 @@ figure(27); clf;
     ax(2) = subplot(212); hold on;
     
     % Male Urethane STD and Data
-        plot(foo.mutim, foo.muSPER + 2*(foo.muSPERstd), 'c', 'LineWidth', 1);
-        plot(foo.mutim, foo.muSPER - 2*(foo.muSPERstd), 'c', 'LineWidth', 1);
+%         plot(foo.mutim, foo.muSPER + 2*(foo.muSPERstd), 'c', 'LineWidth', 1);
+%         plot(foo.mutim, foo.muSPER - 2*(foo.muSPERstd), 'c', 'LineWidth', 1);
+fill([foo.mutim' flipud(foo.mutim)'],[(foo.muSPER - 2*(foo.muSPERstd)) (foo.muSPER(end:-1:1) + 2*(foo.muSPERstd(end:-1:1)))],[0.6 0.9 0.9],'linestyle','none');
         plot(foo.mutim, foo.muSPER, 'b', 'LineWidth', 2);
         
     % Female Urethane STD and Data
-        plot(foo.futim, foo.fuSPER + 2*(foo.fuSPERstd), 'r', 'LineWidth', 1);
-        plot(foo.futim, foo.fuSPER - 2*(foo.fuSPERstd), 'r', 'LineWidth', 1);
+%         plot(foo.futim, foo.fuSPER + 2*(foo.fuSPERstd), 'r', 'LineWidth', 1);
+%         plot(foo.futim, foo.fuSPER - 2*(foo.fuSPERstd), 'r', 'LineWidth', 1);
+fill([foo.futim' flipud(foo.futim)'],[(foo.fuSPER - 2*(foo.fuSPERstd)) (foo.fuSPER(end:-1:1) + 2*(foo.fuSPERstd(end:-1:1)))],[0.9 0.8 0.9],'linestyle','none');
         plot(foo.futim, foo.fuSPER, 'm', 'LineWidth', 2);
         
-        plot([pi, pi], [0 1.1], 'k');
+        midpnt = ((foo.futim(end)-foo.futim(1))/2) + foo.futim(1);
+        
+        plot([midpnt, midpnt], [0 1.1], 'k');
     
-linkaxes(ax, 'xy'); xlim([0, 2*pi]); ylim([0, 1.05]);
+linkaxes(ax, 'xy'); xlim([foo.futim(1), foo.futim(end)]); ylim([0, 1.05]);
 
 
 
