@@ -18,8 +18,8 @@ function [ clicktimes ] = clickplotter( data, Fs, preclick )
 		figprop = get(gcf,'Position'); 
         set(gcf,'Position',[figprop(1) figprop(2) 1000 400]);
 
-%        oscson(data,Fs);
-        oscsonlow(data,Fs,[-50 60]);
+        oscson(data,Fs);
+%        oscsonlow(data,Fs,[-50 60]);
 
 	% Plot prior click in the main window
 
