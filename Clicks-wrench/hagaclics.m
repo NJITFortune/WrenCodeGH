@@ -176,21 +176,21 @@ while cntu < 10;
 
         % Do Ofer's analysis
 
-        [q,w,e,r,t,y,u,k,o,p]=deriva(sng(stt) - mean(sng(stt)),Fs);
-
-                struct(sylnum).ofer_mSpecDeriv = q;
-                struct(sylnum).ofer_mAM = w;
-                struct(sylnum).ofer_mFM = e;
-                struct(sylnum).ofer_mEntropy = r;
-                struct(sylnum).ofer_mAmp = t;
-                struct(sylnum).ofer_Gravity = y;
-                struct(sylnum).ofer_mPitchGood = u;
-                struct(sylnum).ofer_mPitch = k;
-                struct(sylnum).ofer_PitchChose = o;
-                struct(sylnum).ofer_PitchWeight = p;
-                
-                struct(sylnum).ofer_PW = mean(p);
-                struct(sylnum).ofer_GC = mean(y);
+%         [q,w,e,r,t,y,u,k,o,p]=deriva(sng(stt) - mean(sng(stt)),Fs);
+% 
+%                 struct(sylnum).ofer_mSpecDeriv = q;
+%                 struct(sylnum).ofer_mAM = w;
+%                 struct(sylnum).ofer_mFM = e;
+%                 struct(sylnum).ofer_mEntropy = r;
+%                 struct(sylnum).ofer_mAmp = t;
+%                 struct(sylnum).ofer_Gravity = y;
+%                 struct(sylnum).ofer_mPitchGood = u;
+%                 struct(sylnum).ofer_mPitch = k;
+%                 struct(sylnum).ofer_PitchChose = o;
+%                 struct(sylnum).ofer_PitchWeight = p;
+%                 
+%                 struct(sylnum).ofer_PW = mean(p);
+%                 struct(sylnum).ofer_GC = mean(y);
                 
             % add the fundamental components of the syllable
 
