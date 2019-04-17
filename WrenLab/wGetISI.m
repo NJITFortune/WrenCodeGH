@@ -8,9 +8,7 @@ out.m = []; out.f = [];
 
 
 for j=1:length(mduetsyls)    
-    j
     for k=1:length(mduetsyls{j})
-        k
         if ~isempty(find(fduetsyls{j} == mduetsyls{j}(k)+1, 1))
             out.m(end+1) = in(j*2).syl(mduetsyls{j}(k)+1).tim(1) - in(j*2).syl(mduetsyls{j}(k)).tim(2);
         end
