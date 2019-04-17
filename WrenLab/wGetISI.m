@@ -4,13 +4,13 @@ function out = wGetISI(in)
 % Get the list of duet syllables
 [~, mduetsyls, ~, fduetsyls, ~, ~] = wData;
 
-out.m = []; out.f = [];
+out.HAm = []; out.f = [];
 
 
-for j=1:length(mduetsyls)    
-    for k=1:length(mduetsyls{j})
-        if ~isempty(find(fduetsyls{j} == mduetsyls{j}(k)-1, 1))
-            out.m(end+1) = in(j*2).syl(mduetsyls{j}(k)).tim(1) - in(j*2).syl(mduetsyls{j}(k)-1).tim(2);
+for j=1:length(mduetsyls)    % For each duet
+    for k=1:length(mduetsyls{j}) % For each male duet syllable in each duet
+        if ~isempty(find(fduetsyls{j} == mduetsyls{j}(k)-1, 1)) % If there was a prior female syllable
+            out.HAm(end+1) = in(j*2).syl(mduetsyls{j}(k)).tim(1) - in(j*2).syl(mduetsyls{j}(k)-1).tim(2);
         end
     end
 end
