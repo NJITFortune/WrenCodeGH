@@ -142,26 +142,26 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
     [foo.ma_diffzero.sig, foo.ma_diffzero.p, foo.ma_diffzero.ci, foo.ma_diffzero.stats] = ttest(mAcute);
     [foo.fa_diffzero.sig, foo.fa_diffzero.p, foo.fa_diffzero.ci, foo.fa_diffzero.stats] = ttest(fAcute);
 
-    fprintf('Male Chronic DSI diff from zero? p = %1.2e \n', foo.mc_diffzero.p);
-    fprintf('Female Chronic DSI diff from zero? p = %1.2e \n', foo.mc_diffzero.p);
-    fprintf('Male Acute DSI diff from zero? p = %1.2e \n', foo.mc_diffzero.p);
-    fprintf('Female Acute DSI diff from zero? p = %1.2e \n \n', foo.mc_diffzero.p);
+    fprintf('Male Chronic DSI diff from zero? p = %1.6f \n', foo.mc_diffzero.p);
+    fprintf('Female Chronic DSI diff from zero? p = %1.6f \n', foo.mc_diffzero.p);
+    fprintf('Male Acute DSI diff from zero? p = %1.6f \n', foo.mc_diffzero.p);
+    fprintf('Female Acute DSI diff from zero? p = %1.6f \n \n', foo.mc_diffzero.p);
 
 % Statistics - Two sample t-test: do Chronic and Acute differ?
 
     [foo.mChronVacute.sig, foo.mChronVacute.p, foo.mChronVacute.ci, foo.mChronVacute.stats] = ttest2(mChron, mAcute);
     [foo.fChronVacute.sig, foo.fChronVacute.p, foo.fChronVacute.ci, foo.fChronVacute.stats] = ttest2(fChron, fAcute);
 
-    fprintf('Male Chronic and Acute DSIs differ? p = %1.4f \n', foo.mChronVacute.p);
-    fprintf('Female Chronic and Acute DSIs differ? p = %1.4f \n \n', foo.fChronVacute.p);
+    fprintf('Male Chronic and Acute DSIs differ? p = %1.6f \n', foo.mChronVacute.p);
+    fprintf('Female Chronic and Acute DSIs differ? p = %1.6f \n \n', foo.fChronVacute.p);
 
 % Statistics - Two sample t-test: do males differ from females? Test for each Chronic and Acute.
 
     [foo.cFemVmale.sig, foo.cFemVmale.p, foo.cFemVmale.ci, foo.cFemVmale.stats] = ttest2(mChron, fChron);
     [foo.aFemVmale.sig, foo.aFemVmale.p, foo.aFemVmale.ci, foo.aFemVmale.stats] = ttest2(mAcute, fAcute);
 
-    fprintf('Chronic Female and Chronic Male DSIs differ? p = %1.2e \n', foo.cFemVmale.p);
-    fprintf('Acute Female and Acute Male DSIs differ? p = %1.2e \n', foo.aFemVmale.p);
+    fprintf('Chronic Female and Chronic Male DSIs differ? p = %1.6f \n', foo.cFemVmale.p);
+    fprintf('Acute Female and Acute Male DSIs differ? p = %1.6f \n', foo.aFemVmale.p);
         
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        
