@@ -184,6 +184,14 @@ xlim([0 100*pi]);
 figure(28); clf; % Male followed by Female PHASE
 subplot(2,1,1); plot(ChronicMalePhaseAH, 'b'); hold on;
 subplot(2,1,1); plot(ChronicFemalePhaseHA, 'm');
+xlim([0 100*pi]);
+subplot(2,1,2); plot(UrethaneMalePhaseAH, 'b'); hold on;
+subplot(2,1,2); plot(UrethaneFemalePhaseHA, 'm');
+xlim([0 100*pi]);
+
+figure(29); clf; % Male followed by Female PHASE
+subplot(2,1,1); plot(ChronicMalePhaseAH, 'b'); hold on;
+subplot(2,1,1); plot(ChronicFemalePhaseHA, 'm');
 xlim([0 200*pi]);
 subplot(2,1,2); plot(UrethaneMalePhaseAH, 'b'); hold on;
 subplot(2,1,2); plot(UrethaneFemalePhaseHA, 'm');
