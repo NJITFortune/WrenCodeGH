@@ -158,7 +158,7 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
 % Statistics - Two sample t-test: do males differ from females? Test for each Chronic and Acute.
 
     [foo.cFemVmale.sig, foo.cFemVmale.p, foo.cFemVmale.ci, foo.cFemVmale.stats] = ttest2(mChron, fChron);
-    [foo.aFemVmale.sig, foo.aFemVmale.p, foo.aFemVmale.ci, foo.aFemVmale.stats] = ttest2(mAcute, fAcute);
+    [foo.aFemVmale.sig, foo.aFemVmale.p, foo.aFemVmale.ci, foo.aFemVmale.stats] = ttest2(mAcute, fAcute, 'vartype', 'unequal');
 
     fprintf('Chronic Female and Chronic Male DSIs differ? p = %1.6f \n', foo.cFemVmale.p);
     fprintf('Acute Female and Acute Male DSIs differ? p = %1.6f \n', foo.aFemVmale.p);
