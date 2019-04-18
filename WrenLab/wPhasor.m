@@ -48,25 +48,25 @@ end
 %% Fetch the vector strengths and plot
 
 if in(ff).sexy == 1 % This is a male
-    [out(ff).AH.Uvs, out(ff).AH.uPhaseSpikes, out(ff).AH.uSpikes] = wPhasor(in(ff).Aspikes, Msyltims);
-    [out(ff).AH.Cvs, out(ff).AH.cPhaseSpikes, out(ff).AH.cSpikes] = wPhasor(in(ff).Cspikes, Msyltims);
-    [out(ff).HA.Uvs, out(ff).HA.uPhaseSpikes, out(ff).HA.uSpikes] = wPhasor(in(ff).Aspikes, Fsyltims);
-    [out(ff).HA.Cvs, out(ff).HA.cPhaseSpikes, out(ff).HA.cSpikes] = wPhasor(in(ff).Cspikes, Fsyltims);
+    [out(ff).AH.Uvs, out(ff).AH.uPhaseSpikes, out(ff).AH.uSpikes] = wPhaseCut(in(ff).Aspikes, Msyltims);
+    [out(ff).AH.Cvs, out(ff).AH.cPhaseSpikes, out(ff).AH.cSpikes] = wPhaseCut(in(ff).Cspikes, Msyltims);
+    [out(ff).HA.Uvs, out(ff).HA.uPhaseSpikes, out(ff).HA.uSpikes] = wPhaseCut(in(ff).Aspikes, Fsyltims);
+    [out(ff).HA.Cvs, out(ff).HA.cPhaseSpikes, out(ff).HA.cSpikes] = wPhaseCut(in(ff).Cspikes, Fsyltims);
     out(ff).sexy = 1;
 end
 
 if in(ff).sexy == 2 % This is a female
-    [out(ff).AH.Uvs, out(ff).AH.uPhaseSpikes, out(ff).AH.uSpikes] = wPhasor(in(ff).Aspikes, Fsyltims);
-    [out(ff).AH.Cvs, out(ff).AH.cPhaseSpikes, out(ff).AH.cSpikes] = wPhasor(in(ff).Cspikes, Fsyltims);
-    [out(ff).HA.Uvs, out(ff).HA.uPhaseSpikes, out(ff).HA.uSpikes] = wPhasor(in(ff).Aspikes, Msyltims);
-    [out(ff).HA.Cvs, out(ff).HA.cPhaseSpikes, out(ff).HA.cSpikes] = wPhasor(in(ff).Cspikes, Msyltims);    
+    [out(ff).AH.Uvs, out(ff).AH.uPhaseSpikes, out(ff).AH.uSpikes] = wPhaseCut(in(ff).Aspikes, Fsyltims);
+    [out(ff).AH.Cvs, out(ff).AH.cPhaseSpikes, out(ff).AH.cSpikes] = wPhaseCut(in(ff).Cspikes, Fsyltims);
+    [out(ff).HA.Uvs, out(ff).HA.uPhaseSpikes, out(ff).HA.uSpikes] = wPhaseCut(in(ff).Aspikes, Msyltims);
+    [out(ff).HA.Cvs, out(ff).HA.cPhaseSpikes, out(ff).HA.cSpikes] = wPhaseCut(in(ff).Cspikes, Msyltims);    
     out(ff).sexy = 2;
 end
 
 end % Cycle for every bird
 
 %% Embedded vector strength function
-function [vector_strength, phasespikes, regularspikes] = wPhasor(spiketimes, tims)
+function [vector_strength, phasespikes, regularspikes] = wPhaseCut(spiketimes, tims)
 
     wid = 0.250; % This is window in msec before and after the middle of the ISI.
     paddington = 0.050; % Pad the window so that we minimize edge effects during analysis.
