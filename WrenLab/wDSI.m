@@ -77,12 +77,12 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
 
 % j161009: January 2016, 10:09am, male index 9, female index 10
 
-    [mChron(end+1), mAcute(end+1)] = dsi(wren(9),  sort([mduetsyls{5}, fduetsyls{5}]), padding);
+    [mChron(end+1), mAcute(end+1)] = dsi(wren(9),  sort([mduetsyls{5}, fduetsyls{5}]), padding)
     [fChron(end+1), fAcute(end+1)] = dsi(wren(10), sort([mduetsyls{5}, fduetsyls{5}]), padding);
 
 % j161022: January 2016, 10:22am, male index 11, female index 12
 
-    [mChron(end+1), mAcute(end+1)] = dsi(wren(11), sort([mduetsyls{6}, fduetsyls{6}]), padding);
+    [mChron(end+1), mAcute(end+1)] = dsi(wren(11), sort([mduetsyls{6}, fduetsyls{6}]), padding)
     [fChron(end+1), fAcute(end+1)] = dsi(wren(12), sort([mduetsyls{6}, fduetsyls{6}]), padding);
 
 % j17060848: 06 January 2017, 08:48am, male index 13, female index 14
