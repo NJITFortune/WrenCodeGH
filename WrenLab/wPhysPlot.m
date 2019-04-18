@@ -16,7 +16,7 @@ plt_type = 1;
 % Do you want to plot the raster plot for the acute data?  Usually this
 % should be no, which is Arasplot = 0;  This can take A LONG TIME.
 
-Arasplot = 0;
+Arasplot = 1;
 
 % The duration, in seconds, of the bins used for the PSTH. binwidth = 0.050 is a good value.
 binwidth = 0.50; % Usually 0.050
@@ -25,7 +25,7 @@ binwidth = 0.50; % Usually 0.050
 % Use 'Widx = [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16];' for all duets in the structure
 % Widx = [11 12 13 14 15 16];
 % Widx = [3 4 5 6 7 8 9 10 11 12 13 14 15 16];
-Widx = [3 4 5 6];
+Widx = [5 9 11];
 % These are the time window around the start of the duet that will be
 % plotted. [-2 8] plots 2 seconds prior and 8 seconds after the onset of
 % the duet song. These can be adjusted to zoom in and zoom out.
