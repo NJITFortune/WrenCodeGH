@@ -150,7 +150,7 @@ end
             
         end
         text(win(1,Widx(kk))+0.5, 0.5, id, 'BackgroundColor',[.7 .9 .7]);
-    end;
+    end
 
 % Option to plot an spectrogram
     if plt_type == 1
@@ -164,7 +164,7 @@ end
         %ylim([500 5000]); colormap(flipud('HOT')); caxis([0 40]);
         ylim([500 5000]); colormap(flipud(gray)); caxis([-10 20]);
         
-        % Add the syllable lines to the oscillogram and add the colors
+        % Add the syllable lines to the sonogram and add the colors
         % indicated sex. This code is duplicated above for the oscillogram option.
         for lblss = 1:length(data(Widx(kk)).sylsex) % add syllable lines
             plot([data(Widx(kk)).syl(lblss).tim(1)+offsetim data(Widx(kk)).syl(lblss).tim(1)+offsetim], [600 4500], 'g-');
@@ -193,17 +193,17 @@ end
     lbl = [id ', ' data(Widx(kk)).wrensex ];
     if data(Widx(kk)).wrensex == 'M'
     xlabel(lbl, 'FontSize', 16, 'FontWeight', 'bold', 'Color', [0 0 1]);
-    end;
+    end
     if data(Widx(kk)).wrensex == 'F'
     xlabel(lbl, 'FontSize', 16, 'FontWeight', 'bold', 'Color', [1 0 1]);
-    end;
+    end
     
 % Printing to PNG or PDF
     
     if prt ~= 0
         fn = [data(Widx(kk)).birdname data(Widx(kk)).date data(Widx(kk)).sex data(Widx(kk)).site '_' data(Widx(kk)).unit '-' num2str(Widx(kk))];
-        if prt == 1; print(gcf,'-dpng', fn); end;
-        if prt == 2; print(gcf,'-dpdf', fn); end;
+        if prt == 1; print(gcf,'-dpng', fn); end
+        if prt == 2; print(gcf,'-dpdf', fn); end
     end    
 
 % Do the Acute Raster plot 
@@ -215,11 +215,28 @@ if Arasplot ~= 0
 
     w_raster(Aspikes);
     
+    for slbls = 1:length(data(Widx(kk)).sylsex)
+        plot([data(Widx(kk)).syl(slbls).tim(1) data(Widx(kk)).syl(slbls).tim(1)], [0 length(Aspikes)], 'g-');
+        plot([data(Widx(kk)).syl(slbls).tim(2) data(Widx(kk)).syl(slbls).tim(2)], [0 length(Aspikes)], 'r-');
+            if data(Widx(kk)).sylsex(slbls) == 1 
+                plot([data(Widx(kk)).syl(slbls).tim(1) data(Widx(kk)).syl(slbls).tim(2)], [0 0], 'b-', 'LineWidth', 2); 
+            end 
+            if data(Widx(kk)).sylsex(slbls) == 2 
+                plot([data(Widx(kk)).syl(slbls).tim(1) data(Widx(kk)).syl(slbls).tim(2)], [0 0], 'm-', 'LineWidth', 2); 
+            end
+            
+     end
+    
+    
+    
+    
+    
     % set the window width to what the user asked for in "win"
     xlim([win(1,Widx(kk)) win(2,Widx(kk))]);
     
 end
-    
+
+pause(2)
     
 end % End of main plot loop 
     
@@ -230,7 +247,7 @@ function w_raster(spiketimes, col)
 % col is the color, e.g. 'b' or 'm'
 % Version 18 September 2017. Original J.A.Bender 7/25/07
 
-if nargin < 2; col = 'k'; end; % Default to black tick marks
+if nargin < 2; col = 'k'; end % Default to black tick marks
 
 hold on;
 
@@ -291,8 +308,8 @@ for i = 1:binnum
         repbinisi = sum (spikes{j} > binstart & spikes{j} <= binend);
         % For the current bin (i) add the number of spikes (repbinisi)
         spb(i) = spb(i) + repbinisi;
-    end;
-end;
+    end
+end
 
 % Normalize to spikes per second. 
 spb = spb / (binwidth * length(spikes));
