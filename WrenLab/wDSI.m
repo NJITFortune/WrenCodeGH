@@ -149,15 +149,15 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
 
 % Statistics - Two sample t-test: do Chronic and Acute differ?
 
-    [foo.mChronVacute.sig, foo.mChronVacute.p, foo.mChronVacute.ci, foo.mChronVacute.stats] = ttest2(mChron, mAcute);
-    [foo.fChronVacute.sig, foo.fChronVacute.p, foo.fChronVacute.ci, foo.fChronVacute.stats] = ttest2(fChron, fAcute);
+    [foo.mChronVacute.sig, foo.mChronVacute.p, foo.mChronVacute.ci, foo.mChronVacute.stats] = ttest2(mChron, mAcute, 'vartype', 'unequal');
+    [foo.fChronVacute.sig, foo.fChronVacute.p, foo.fChronVacute.ci, foo.fChronVacute.stats] = ttest2(fChron, fAcute, 'vartype', 'unequal');
 
     fprintf('Male Chronic and Acute DSIs differ? p = %1.6f \n', foo.mChronVacute.p);
     fprintf('Female Chronic and Acute DSIs differ? p = %1.6f \n \n', foo.fChronVacute.p);
 
 % Statistics - Two sample t-test: do males differ from females? Test for each Chronic and Acute.
 
-    [foo.cFemVmale.sig, foo.cFemVmale.p, foo.cFemVmale.ci, foo.cFemVmale.stats] = ttest2(mChron, fChron);
+    [foo.cFemVmale.sig, foo.cFemVmale.p, foo.cFemVmale.ci, foo.cFemVmale.stats] = ttest2(mChron, fChron, 'vartype', 'unequal');
     [foo.aFemVmale.sig, foo.aFemVmale.p, foo.aFemVmale.ci, foo.aFemVmale.stats] = ttest2(mAcute, fAcute, 'vartype', 'unequal');
 
     fprintf('Chronic Female and Chronic Male DSIs differ? p = %1.6f \n', foo.cFemVmale.p);
@@ -218,12 +218,12 @@ function [chron, acute] = dsi(struct, sylist, pad)
                 fdur = fdur + (struct.syl(sylist(j)).tim(2) - struct.syl(sylist(j)).tim(1));
             end
 
-            if struct.sylsex(sylist(j)) == 3 % Both birds sang at the same time
+            %if struct.sylsex(sylist(j)) == 3 % Both birds sang at the same time
                 %fcspikes = fcspikes + Ctmpspikecount; 
                 %mcspikes = mcspikes + ChronSpkCnt;
                 %fdur = fdur + (struct(i).syl(j).tim(2) - struct(i).syl(j).tim(1));
                 %mdur = mdur + (struct.syl(sylist(j)).tim(2) - struct.syl(sylist(j)).tim(1));
-            end
+            %end
             
     end
 
