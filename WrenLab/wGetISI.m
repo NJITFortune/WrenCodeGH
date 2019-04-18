@@ -6,7 +6,6 @@ function out = wGetISI(in)
 
 out.FM = []; out.MF = [];
 
-
 for j=1:length(mduetsyls)    % For each duet
     for k=1:length(mduetsyls{j}) % For each male duet syllable in each duet
         if ~isempty(find(fduetsyls{j} == mduetsyls{j}(k)-1, 1)) % If there was a prior female syllable
@@ -24,3 +23,7 @@ for j=1:length(fduetsyls)
 end
 
 
+fprintf('The mean and std for M2F ISI is  %1.3f %1.3f \n', mean(out.MF), std(out.MF));
+fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(out.FM), std(out.FM));
+[~, pVal, ~, ~] =  ttest2(out.FM, out.MF, 'vartype', 'unequal');
+fprintf('Are these different or not %1.5f \n', pVal);
