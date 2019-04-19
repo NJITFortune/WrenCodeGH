@@ -84,10 +84,10 @@ if in(ff).sexy == 1 % This is a male
     % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
     if ~isempty(mduetsyls{sylstrdx})    
     Mwhichduet = Mwhichduet + 1;
-    [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseCut(in(ff).Aspikes, currM2Fsyltim, widow);
-    [MAHC(Mwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currM2Fsyltim, widow);
-    [MHAU(Mwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Aspikes, currF2Msyltim, widow);
-    [MHAC(Mwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currF2Msyltim, widow);
+    [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow);
+    [MAHC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow);
+    [MHAU(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow);
+    [MHAC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow);
     
     bins4plot = (M(Mwhichduet).bintims(2:end) + M(Mwhichduet).bintims(1:end-1))/2; % Time bins adjusted for proper plotting
     end
@@ -95,13 +95,13 @@ if in(ff).sexy == 1 % This is a male
     % U=Urethane, C=Chronic
     if ~isempty(msolosyls{sylstrdx})
         Mwhichmalesolosyl = Mwhichmalesolosyl+1; % We are using a different indexing here
-        [MSAU(Mwhichmalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Aspikes, currMsolosyltims, widow);
-        [MSAC(Mwhichmalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currMsolosyltims, widow);
+        [MSAU(Mwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow);
+        [MSAC(Mwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow);
     end
     if ~isempty(fsolosyls{sylstrdx})
         Mwhichfemalesolosyl = Mwhichfemalesolosyl +1;
-        [MSHU(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Aspikes, currFsolosyltims, widow);
-        [MSHC(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currFsolosyltims, widow);
+        [MSHU(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow);
+        [MSHC(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow);
     end
 
 end % End of male
@@ -113,15 +113,15 @@ if in(ff).sexy == 2 % This is a female
     if ~isempty(fduetsyls{sylstrdx})    
     Fwhichduet = Fwhichduet + 1;
     if ~isempty(in(ff).Aspikes)
-    [FAHU(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseCut(in(ff).Aspikes, currF2Msyltim, widow);
-    [FHAU(Fwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Aspikes, currM2Fsyltim, widow);
+    [FAHU(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow);
+    [FHAU(Fwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow);
     end
     if ~isempty(in(ff).Cspikes)
     if ~isempty(currF2Msyltim)
-        [FAHC(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseCut(in(ff).Cspikes, currF2Msyltim, widow);
+        [FAHC(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow);
     end
     if ~isempty(currM2Fsyltim)
-        [FHAC(Fwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currM2Fsyltim, widow);
+        [FHAC(Fwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow);
     end
     end
     
@@ -132,13 +132,13 @@ if in(ff).sexy == 2 % This is a female
     % U=Urethane, C=Chronic
     if ~isempty(msolosyls{sylstrdx})
         Fwhichmalesolosyl = Fwhichmalesolosyl +1; % Again, we are using a different indexing for solo data
-        [FSHU(Fwhichmalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Aspikes, currMsolosyltims, widow);
-        [FSHC(Fwhichmalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currMsolosyltims, widow);
+        [FSHU(Fwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow);
+        [FSHC(Fwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow);
     end
     if ~isempty(fsolosyls{sylstrdx})
         Fwhichfemalesolosyl = Fwhichfemalesolosyl +1;
-        [FSAU(Fwhichfemalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Aspikes, currFsolosyltims, widow);
-        [FSAC(Fwhichfemalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currFsolosyltims, widow);
+        [FSAU(Fwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow);
+        [FSAC(Fwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow);
     end
     
 end % End of female
@@ -159,45 +159,46 @@ end % End of cycling for every bird
     msMAHU = concatHist(MAHU, length(MAHU(1).spkcnt(:,1)));
 
 
-figure(3); clf; % PLOT M2F DATA
-ax(1) = subplot(211); hold on; title('M2F Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
-% Female
-fill([bins4plot bins4plot(end:-1:1)], [msFHAC.mean - msFHAC.std/2, msFHAC.mean(end:-1:1) + msFHAC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFHAC.mean, 'm-o', 'LineWidth', 2);
+figure(1); clf; set(gcf, 'Color', [1,1,1]);
+% PLOT M2F DATA 
+ax(1) = subplot(221); hold on; title('M2F Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 % Male
 fill([bins4plot bins4plot(end:-1:1)], [msMAHC.mean - msMAHC.std/2, msMAHC.mean(end:-1:1) + msMAHC.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMAHC.mean, 'b-o', 'LineWidth', 2);
-
-ax(2) = subplot(212); hold on; title('M2F Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+plot(bins4plot, msMAHC.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Female
-fill([bins4plot bins4plot(end:-1:1)], [msFHAU.mean - msFHAU.std/2, msFHAU.mean(end:-1:1) + msFHAU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFHAU.mean, 'm-o', 'LineWidth', 2);
+fill([bins4plot bins4plot(end:-1:1)], [msFHAC.mean - msFHAC.std/2, msFHAC.mean(end:-1:1) + msFHAC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFHAC.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+
+ax(2) = subplot(223); hold on; title('M2F Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+set(ax(2),'Color', [0.9, 0.9, 0.9]);
 % Male
 fill([bins4plot bins4plot(end:-1:1)], [msMAHU.mean - msMAHU.std/2, msMAHU.mean(end:-1:1) + msMAHU.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMAHU.mean, 'b-o', 'LineWidth', 2);
-
-linkaxes(ax, 'xy'); ylim([0 1]);
+plot(bins4plot, msMAHU.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% Female
+fill([bins4plot bins4plot(end:-1:1)], [msFHAU.mean - msFHAU.std/2, msFHAU.mean(end:-1:1) + msFHAU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFHAU.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
     
-figure(4); clf; % PLOT F2M DATA
-axx(1) = subplot(211); hold on; title('F2M Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+% PLOT F2M DATA
+ax(3) = subplot(222); hold on; title('F2M Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 % Female
 fill([bins4plot bins4plot(end:-1:1)], [msFAHC.mean - msFAHC.std/2, msFAHC.mean(end:-1:1) + msFAHC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFAHC.mean, 'm-o', 'LineWidth', 2);
+plot(bins4plot, msFAHC.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Male
 fill([bins4plot bins4plot(end:-1:1)], [msMHAC.mean - msMHAC.std/2, msMHAC.mean(end:-1:1) + msMHAC.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMHAC.mean, 'b-o', 'LineWidth', 2);
+plot(bins4plot, msMHAC.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-axx(2) = subplot(212); hold on; title('F2M Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+ax(4) = subplot(224); hold on; title('F2M Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+set(ax(4),'Color', [0.9, 0.9, 0.9]);
 % Female
 fill([bins4plot bins4plot(end:-1:1)], [msFAHU.mean - msFAHU.std/2, msFAHU.mean(end:-1:1) + msFAHU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFAHU.mean, 'm-o', 'LineWidth', 2);
+plot(bins4plot, msFAHU.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Male
 fill([bins4plot bins4plot(end:-1:1)], [msMHAU.mean - msMHAU.std/2, msMHAU.mean(end:-1:1) + msMHAU.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMHAU.mean, 'b-o', 'LineWidth', 2);
+plot(bins4plot, msMHAU.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-linkaxes(axx, 'xy'); ylim([0 1]);
+linkaxes(ax, 'xy'); figure(1); subplot(222); ylim([0 1]);
 
-%% Do the solo syllable stuff
+%% Do the solo syllable calculations
 
     msFSAC = concatHist(FSAC, length(FSAC(1).spkcnt(:,1)));                        
     msFSAU = concatHist(FSAU, length(FSAC(1).spkcnt(:,1)));                        
@@ -209,48 +210,70 @@ linkaxes(axx, 'xy'); ylim([0 1]);
     msMSHC = concatHist(MSHC, length(MSHC(1).spkcnt(:,1)));                        
     msMSHU = concatHist(MSHU, length(MSHC(1).spkcnt(:,1)));                        
 
-figure(5); clf; % PLOT M Solo DATA
+figure(2); clf; set(gcf, 'Color', [1,1,1]);
 
-hxx(1) = subplot(211); hold on; title('M Solo Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
-% Female
-fill([bins4plot bins4plot(end:-1:1)], [msFSHC.mean - msFSHC.std/2, msFSHC.mean(end:-1:1) + msFSHC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSHC.mean, 'm-o', 'LineWidth', 2);
+% PLOT M Solo DATA
+axx(1) = subplot(221); hold on; title('M Solo Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 % Male
 fill([bins4plot bins4plot(end:-1:1)], [msMSAC.mean - msMSAC.std/2, msMSAC.mean(end:-1:1) + msMSAC.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSAC.mean, 'b-o', 'LineWidth', 2);
-
-hxx(2) = subplot(212); hold on; title('M Solo Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+plot(bins4plot, msMSAC.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Female
-fill([bins4plot bins4plot(end:-1:1)], [msFSHU.mean - msFSHU.std/2, msFSHU.mean(end:-1:1) + msFSHU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSHU.mean, 'm-o', 'LineWidth', 2);
+fill([bins4plot bins4plot(end:-1:1)], [msFSHC.mean - msFSHC.std/2, msFSHC.mean(end:-1:1) + msFSHC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFSHC.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+
+axx(2) = subplot(223); hold on; title('M Solo Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+set(axx(2),'Color', [0.9, 0.9, 0.9]);
 % Male
 fill([bins4plot bins4plot(end:-1:1)], [msMSAU.mean - msMSAU.std/2, msMSAU.mean(end:-1:1) + msMSAU.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSAU.mean, 'b-o', 'LineWidth', 2);
+plot(bins4plot, msMSAU.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% Female
+fill([bins4plot bins4plot(end:-1:1)], [msFSHU.mean - msFSHU.std/2, msFSHU.mean(end:-1:1) + msFSHU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFSHU.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-linkaxes(hxx, 'xy'); ylim([0 1]);
-    
-figure(6); clf; % PLOT F Solo DATA
-
-hyx(1) = subplot(211); hold on; title('F Solo Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+% PLOT F Solo DATA
+axx(3) = subplot(222); hold on; title('F Solo Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 % Female
 fill([bins4plot bins4plot(end:-1:1)], [msFSAC.mean - msFSAC.std/2, msFSAC.mean(end:-1:1) + msFSAC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSAC.mean, 'm-o', 'LineWidth', 2);
+plot(bins4plot, msFSAC.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Male
 fill([bins4plot bins4plot(end:-1:1)], [msMSHC.mean - msMSHC.std/2, msMSHC.mean(end:-1:1) + msMSHC.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSHC.mean, 'b-o', 'LineWidth', 2);
+plot(bins4plot, msMSHC.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-hyx(2) = subplot(212); hold on; title('F Solo Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+axx(4) = subplot(224); hold on; title('F Solo Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+set(axx(4),'Color', [0.9, 0.9, 0.9]);
 % Female
 fill([bins4plot bins4plot(end:-1:1)], [msFSAU.mean - msFSAU.std/2, msFSAU.mean(end:-1:1) + msFSAU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSAU.mean, 'm-o', 'LineWidth', 2);
+plot(bins4plot, msFSAU.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Male
 fill([bins4plot bins4plot(end:-1:1)], [msMSHU.mean - msMSHU.std/2, msMSHU.mean(end:-1:1) + msMSHU.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSHU.mean, 'b-o', 'LineWidth', 2);
+plot(bins4plot, msMSHU.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-linkaxes(hyx, 'xy'); ylim([0 1]);
-    
-    
+linkaxes(axx, 'xy'); figure(2); subplot(222); ylim([0 1]);
 
+
+%% Put everything into the output structures
+
+M(1).MAHC = MAHC; M(1).MAHC = MAHU;
+M(1).MHAC = MHAC; M(1).MHAC = MHAU;
+M(1).MSAC = MSAC; M(1).MSAU = MSAU;
+M(1).MSHC = MSHC; M(1).MSHU = MSHU;
+M(1).msMAHC = msMAHC; M(1).msMAHC = msMAHU;
+M(1).msMHAC = msMHAC; M(1).msMHAC = msMHAU;
+M(1).msMSAC = msMSAC; M(1).msMSAU = msMSAU;
+M(1).msMSHC = msMSHC; M(1).msMSHU = msMSHU;
+
+F(1).FAHC = FAHC; F(1).FAHC = FAHU;
+F(1).FHAC = FHAC; F(1).FHAC = FHAU;
+F(1).FSAC = FSAC; F(1).FSAU = FSAU;
+F(1).FSHC = FSHC; F(1).FSHU = FSHU;
+F(1).msFAHC = msFAHC; F(1).msFAHC = msFAHU;
+F(1).msFHAC = msFHAC; F(1).msFHAC = msFHAU;
+F(1).msFSAC = msFSAC; F(1).msFSAU = msFSAU;
+F(1).msFSHC = msFSHC; F(1).msFSHU = msFSHU;
+
+
+%% Statistics, if you please.
+    
 fprintf('The mean and std for Male syllable duration is  %1.3f %1.3f \n', mean(Msyldur), std(Msyldur));
 fprintf('The mean and std for Female syllable duration is  %1.3f %1.3f \n', mean(Fsyldur), std(Fsyldur));
 fprintf('The mean and std for M2F ISI is  %1.3f %1.3f \n', mean(M2FISI), std(M2FISI));
@@ -279,7 +302,7 @@ end
 
 
 %% Embedded histogram function
-function [spikearray, bintims] = wPhaseCut(spiketimes, tims, wid)
+function [spikearray, bintims] = wPhaseHist(spiketimes, tims, wid)
 
         % wid is window in msec before and after start of the syllable at the end of the focal ISI.
         numbins = 5; % How many bins before and after the onset of our focal syllable?

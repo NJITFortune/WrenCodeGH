@@ -16,7 +16,7 @@ plt_type = 1;
 % Do you want to plot the raster plot for the acute data?  Usually this
 % should be no, which is Arasplot = 0;  This can take A LONG TIME.
 
-Arasplot = 1;
+Arasplot = 0;
 
 % The duration, in seconds, of the bins used for the PSTH. binwidth = 0.050 is a good value.
 binwidth = 0.50; % Usually 0.050
@@ -25,7 +25,7 @@ binwidth = 0.50; % Usually 0.050
 % Use 'Widx = [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16];' for all duets in the structure
 % Widx = [11 12 13 14 15 16];
 % Widx = [3 4 5 6 7 8 9 10 11 12 13 14 15 16];
-Widx = [5 9 11];
+Widx = [30 32 34 36 38 40 42];
 % These are the time window around the start of the duet that will be
 % plotted. [-2 8] plots 2 seconds prior and 8 seconds after the onset of
 % the duet song. These can be adjusted to zoom in and zoom out.
@@ -61,7 +61,11 @@ Widx = [5 9 11];
     % January 2017, 17:33. 2 motifs with overlap syllable and gap
         win(:,15) = [-2 10]; % Male [-2 10]
         win(:,16) = [-2 10]; % Female [-2 10]
- 
+
+for jjj = 17:length(data)        
+    win(:,jjj) = [0 6];  
+end
+        
 prt = 0; % Print to file? 0 for no, 1 for PNG, 2 for PDF. 
 
 
