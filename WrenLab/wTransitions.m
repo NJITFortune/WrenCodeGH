@@ -199,6 +199,7 @@ linkaxes(axx, 'xy'); ylim([0 1]);
     msMSHU = concatHist(MSHU, length(MSHC(1).spkcnt(:,1)));                        
 
 figure(5); clf; % PLOT M Solo DATA
+
 hxx(1) = subplot(211); hold on; title('M Solo Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 % Female
 fill([bins4plot bins4plot(end:-1:1)], [msFSHC.mean - msFSHC.std/2, msFSHC.mean(end:-1:1) + msFSHC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
@@ -218,6 +219,7 @@ plot(bins4plot, msMSAU.mean, 'b-o', 'LineWidth', 2);
 linkaxes(hxx, 'xy'); ylim([0 1]);
     
 figure(6); clf; % PLOT F Solo DATA
+
 hyx(1) = subplot(211); hold on; title('F Solo Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 % Female
 fill([bins4plot bins4plot(end:-1:1)], [msFSAC.mean - msFSAC.std/2, msFSAC.mean(end:-1:1) + msFSAC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
