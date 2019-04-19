@@ -6,287 +6,292 @@ function [M, F] = wTransitions(in, widow)
 % window is the time before and after the start of the 2nd syllable in 
 % pair for plotting.
 
+%% Preparations
 % Default window width for histogram if user didn't specify window
-if nargin < 2; widow = 0.250; end
+if nargin < 2; widow = 0.500; end % 500 msec looks pretty good with numbins 10 and overlap 50
 
-figure(1); clf; subplot(121); hold on; title('M2F Chronic'); subplot(122); hold on; title('M2F Urethane'); 
-figure(2); clf; subplot(121); hold on;  title('F2M Chronic'); subplot(122); hold on;  title('F2M Urethane'); 
 
-figure(3); clf; subplot(121); hold on; title('M2F Chronic'); subplot(122); hold on; title('M2F Urethane'); 
-figure(4); clf; subplot(121); hold on;  title('F2M Chronic'); subplot(122); hold on;  title('F2M Urethane'); 
 
-%% List of Chronic singing data with syllable indices and locations for spontaneous activity
+%% Load the list of Chronic singing data with syllable indices and locations for spontaneous activity
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, ~, ~] = wData;
 
-% Choose which data to analyze
-    birdlist = 14:-1:1; % All compleat data with both ACUTE (urethane) AND CHRONIC (awake)
-
-    Fsyldur = []; Msyldur = [];
-    M2FISI = []; F2MISI = [];
-    Mwhichmalesolosyl = 0; Mwhichfemalesolosyl = 0;
+% Some variables because I am not a talented coder.
+    Fsyldur = []; Msyldur = [];  % A side calculation - durations of syllables
+    M2FISI = []; F2MISI = []; % Another side calculation - durations of InterSyllable Intervals
+    
+    % Keeping track of how many solo syllables that have produced data
+    Mwhichmalesolosyl = 0; Mwhichfemalesolosyl = 0; 
     Fwhichmalesolosyl = 0; Fwhichfemalesolosyl = 0;
-%% For each bird
+    Mwhichduet = 0; Fwhichduet = 0;
+
+% Choose which data to analyze
+    birdlist = 16:-1:1; % All compleat data with both ACUTE (urethane) AND CHRONIC (awake)
+
+    
+%% For each bird in our list
+
 for ff = birdlist
         
-%% Get all male-female and female-male duet syllable transitions
-    M2Fsyltim = []; F2Msyltim = []; Msolosyltims = []; Fsolosyltims = [];
+% Get all male-female and female-male duet syllable transitions
+
+    % These will have the list of sylable start times for the current song
+    currM2Fsyltim = []; currF2Msyltim = []; currMsolosyltims = []; currFsolosyltims = [];
     
-    % Male to female transitions
-    for t = 1:length(mduetsyls{ceil(ff/2)}) % For every male syllable
-       if ~isempty(find(fduetsyls{ceil(ff/2)} == mduetsyls{ceil(ff/2)}(t)+1, 1)) % If the next syllable is female
-           currentFemaleIndex = mduetsyls{ceil(ff/2)}(t)+1;
-           M2Fsyltim(end+1) = in(ff).syl(currentFemaleIndex).tim(1); % Time of the start of the female syllable
-           Fsyldur(end+1) = in(ff).syl(currentFemaleIndex).tim(2) - in(ff).syl(currentFemaleIndex).tim(1);
-           M2FISI(end+1) = in(ff).syl(currentFemaleIndex).tim(1) - in(ff).syl(currentFemaleIndex-1).tim(2);
+    sylstrdx = ceil(ff/2); % Apologies, but the syllable indices from wData.m 
+                               % each refer to two entries in w. This
+                               % just resolves that indexing issue.
+    
+    % Find male to female syllable transitions
+    for t = 1:length(mduetsyls{sylstrdx}) % For every male syllable
+       if ~isempty(find(fduetsyls{sylstrdx} == mduetsyls{sylstrdx}(t)+1, 1)) % If the next syllable is female
+           
+           currentFemaleIndex = mduetsyls{sylstrdx}(t)+1; % Not a necessary step
+           currM2Fsyltim(end+1) = in(ff).syl(currentFemaleIndex).tim(1); % Time of the start of the female syllable
+           
+           Fsyldur(end+1) = in(ff).syl(currentFemaleIndex).tim(2) - in(ff).syl(currentFemaleIndex).tim(1); % Female syllable duration
+           M2FISI(end+1) = in(ff).syl(currentFemaleIndex).tim(1) - in(ff).syl(currentFemaleIndex-1).tim(2); % Duration of ISI
        end
     end
-    % Female to male transitions
-    for t = 1:length(fduetsyls{ceil(ff/2)}) % For every female syllable
-       if ~isempty(find(mduetsyls{ceil(ff/2)} == fduetsyls{ceil(ff/2)}(t)+1, 1)) % If the next syllable is male
-           currentMaleIndex = fduetsyls{ceil(ff/2)}(t)+1;
-           F2Msyltim(end+1) = in(ff).syl(currentMaleIndex).tim(1); % Time of the start of the male syllable
-           Msyldur(end+1) = in(ff).syl(currentMaleIndex).tim(2) -in(ff).syl(currentMaleIndex).tim(1);
-           F2MISI(end+1) = in(ff).syl(currentMaleIndex).tim(1) - in(ff).syl(currentMaleIndex-1).tim(2);           
+    
+    % Find female to male syllable transitions
+    for t = 1:length(fduetsyls{sylstrdx}) % For every female syllable
+       if ~isempty(find(mduetsyls{sylstrdx} == fduetsyls{sylstrdx}(t)+1, 1)) % If the next syllable is male
+           
+           currentMaleIndex = fduetsyls{ceil(ff/2)}(t)+1; % Not a necessary stp
+           currF2Msyltim(end+1) = in(ff).syl(currentMaleIndex).tim(1); % Time of the start of the male syllable
+
+           Msyldur(end+1) = in(ff).syl(currentMaleIndex).tim(2) -in(ff).syl(currentMaleIndex).tim(1); % Male syllable duration
+           F2MISI(end+1) = in(ff).syl(currentMaleIndex).tim(1) - in(ff).syl(currentMaleIndex-1).tim(2); % Duration of ISI
        end
     end
 
-    % All Solo Male syllables
-    for t = 1:length(msolosyls{ceil(ff/2)}) % For every male syllable
-         Msolosyltims(end+1) = in(ff).syl(msolosyls{ceil(ff/2)}(t)).tim(1); % Time of the start of the male syllable
+    % Find Solo Male syllables
+    for t = 1:length(msolosyls{sylstrdx}) % For every male syllable
+         currMsolosyltims(end+1) = in(ff).syl(msolosyls{sylstrdx}(t)).tim(1); % Time of the start of the male syllable
     end
     
-    % All Solo Female syllables
-    for t = 1:length(fsolosyls{ceil(ff/2)}) % For every female syllable
-         Fsolosyltims(end+1) = in(ff).syl(fsolosyls{ceil(ff/2)}(t)).tim(1); % Time of the start of the female syllable
+    % Find Solo Female syllables
+    for t = 1:length(fsolosyls{sylstrdx}) % For every female syllable
+         currFsolosyltims(end+1) = in(ff).syl(fsolosyls{sylstrdx}(t)).tim(1); % Time of the start of the female syllable
     end
     
 %% Fetch the histograms
 
 if in(ff).sexy == 1 % This is a male
-    [M(ff).AHU.spkcnt, M(ff).bintims] = wPhaseCut(in(ff).Aspikes, M2Fsyltim, widow);
-    [M(ff).AHC.spkcnt, ~] = wPhaseCut(in(ff).Cspikes, M2Fsyltim, widow);
-    [M(ff).HAU.spkcnt, ~] = wPhaseCut(in(ff).Aspikes, F2Msyltim, widow);
-    [M(ff).HAC.spkcnt, ~] = wPhaseCut(in(ff).Cspikes, F2Msyltim, widow);
     
-    bins4plot = (M(ff).bintims(2:end) + M(ff).bintims(1:end-1)) /2;
+    % Use the PhaseCut embedded function to create the histogram for Duet
+    % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
+    Mwhichduet = Mwhichduet + 1;
+    [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseCut(in(ff).Aspikes, currM2Fsyltim, widow);
+    [MAHC(Mwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currM2Fsyltim, widow);
+    [MHAU(Mwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Aspikes, currF2Msyltim, widow);
+    [MHAC(Mwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currF2Msyltim, widow);
     
-    if ~isempty(msolosyls{ceil(ff/2)})
-        Mwhichmalesolosyl = Mwhichmalesolosyl +1;
-        [MSAU(:,Mwhichmalesolosyl), ~] = wPhaseCut(in(ff).Aspikes, Msolosyltims, widow);
-        [MSAC(:,Mwhichmalesolosyl), ~] = wPhaseCut(in(ff).Cspikes, Msolosyltims, widow);
+    bins4plot = (M(Mwhichduet).bintims(2:end) + M(Mwhichduet).bintims(1:end-1))/2; % Time bins adjusted for proper plotting
+    
+    % Solo data S=Solo, F=Female, M=Male, A=Autogenous, H=Heterogenous,
+    % U=Urethane, C=Chronic
+    if ~isempty(msolosyls{sylstrdx})
+        Mwhichmalesolosyl = Mwhichmalesolosyl+1; % We are using a different indexing here
+        [MSAU(Mwhichmalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Aspikes, currMsolosyltims, widow);
+        [MSAC(Mwhichmalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currMsolosyltims, widow);
     end
-    if ~isempty(fsolosyls{ceil(ff/2)})
+    if ~isempty(fsolosyls{sylstrdx})
         Mwhichfemalesolosyl = Mwhichfemalesolosyl +1;
-        [MSHU(:,Mwhichfemalesolosyl), ~] = wPhaseCut(in(ff).Aspikes, Fsolosyltims, widow);
-        [MSHC(:,Mwhichfemalesolosyl), ~] = wPhaseCut(in(ff).Cspikes, Fsolosyltims, widow);
+        [MSHU(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Aspikes, currFsolosyltims, widow);
+        [MSHC(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currFsolosyltims, widow);
     end
 
-% RAW    
-%     figure(1); subplot(121); plot(M(ff).bintims(1:end-1), M(ff).AHC.spkcnt, 'b');
-%     figure(1); subplot(122); plot(M(ff).bintims(1:end-1), M(ff).AHU.spkcnt, 'b');
-%     figure(2); subplot(121); plot(M(ff).bintims(1:end-1), M(ff).HAC.spkcnt, 'b');
-%     figure(2); subplot(122); plot(M(ff).bintims(1:end-1), M(ff).HAU.spkcnt, 'b');
-% NORMALIZED    
-    figure(1); subplot(121); plot(bins4plot, M(ff).AHC.spkcnt/max(M(ff).AHC.spkcnt), 'b*-');
-    figure(1); subplot(122); plot(bins4plot, M(ff).AHU.spkcnt/max(M(ff).AHU.spkcnt), 'b*-');
-    figure(2); subplot(121); plot(bins4plot, M(ff).HAC.spkcnt/max(M(ff).HAC.spkcnt), 'b*-');
-    figure(2); subplot(122); plot(bins4plot, M(ff).HAU.spkcnt/max(M(ff).HAU.spkcnt), 'b*-');
-end
+end % End of male
 
 if in(ff).sexy == 2 % This is a female
-    [F(ff).AHU.spkcnt, F(ff).bintims] = wPhaseCut(in(ff).Aspikes, F2Msyltim, widow);
-    [F(ff).AHC.spkcnt, ~] = wPhaseCut(in(ff).Cspikes, F2Msyltim, widow);
-    [F(ff).HAU.spkcnt, ~] = wPhaseCut(in(ff).Aspikes, M2Fsyltim, widow);
-    [F(ff).HAC.spkcnt, ~] = wPhaseCut(in(ff).Cspikes, M2Fsyltim, widow);
+    
+    % Use the PhaseCut embedded function to create the histogram for Duet
+    % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
+    Fwhichduet = Fwhichduet + 1;
+    [FAHU(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseCut(in(ff).Aspikes, currF2Msyltim, widow);
+    [FAHC(Fwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currF2Msyltim, widow);
+    [FHAU(Fwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Aspikes, currM2Fsyltim, widow);
+    [FHAC(Fwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currM2Fsyltim, widow);
 
-    bins4plot = (F(ff).bintims(2:end) + F(ff).bintims(1:end-1)) /2;
+    bins4plot = (F(Fwhichduet).bintims(2:end) + F(Fwhichduet).bintims(1:end-1)) /2; % Time bins adjusted for proper plotting
 
-    if ~isempty(msolosyls{ceil(ff/2)})
-        Fwhichmalesolosyl = Fwhichmalesolosyl +1;
-        [FSHU(:,Fwhichmalesolosyl), ~] = wPhaseCut(in(ff).Aspikes, Msolosyltims, widow);
-        [FSHC(:,Fwhichmalesolosyl), ~] = wPhaseCut(in(ff).Cspikes, Msolosyltims, widow);
+    % Solo data S=Solo, F=Female, M=Male, A=Autogenous, H=Heterogenous,
+    % U=Urethane, C=Chronic
+    if ~isempty(msolosyls{sylstrdx})
+        Fwhichmalesolosyl = Fwhichmalesolosyl +1; % Again, we are using a different indexing for solo data
+        [FSHU(Fwhichmalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Aspikes, currMsolosyltims, widow);
+        [FSHC(Fwhichmalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currMsolosyltims, widow);
     end
-    if ~isempty(fsolosyls{ceil(ff/2)})
+    if ~isempty(fsolosyls{sylstrdx})
         Fwhichfemalesolosyl = Fwhichfemalesolosyl +1;
-        [FSAU(:,Fwhichfemalesolosyl), ~] = wPhaseCut(in(ff).Aspikes, Fsolosyltims, widow);
-        [FSAC(:,Fwhichfemalesolosyl), ~] = wPhaseCut(in(ff).Cspikes, Fsolosyltims, widow);
+        [FSAU(Fwhichfemalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Aspikes, currFsolosyltims, widow);
+        [FSAC(Fwhichfemalesolosyl).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currFsolosyltims, widow);
     end
     
-% RAW
-%     figure(1); subplot(121); plot(F(ff).bintims(1:end-1), F(ff).HAC.spkcnt, 'm');
-%     figure(1); subplot(122); plot(F(ff).bintims(1:end-1), F(ff).HAU.spkcnt, 'm');
-%     figure(2); subplot(121); plot(F(ff).bintims(1:end-1), F(ff).AHC.spkcnt, 'm');
-%     figure(2); subplot(122); plot(F(ff).bintims(1:end-1), F(ff).AHU.spkcnt, 'm');
-% NORMALIZED    
-    figure(1); subplot(121); plot(bins4plot, F(ff).HAC.spkcnt/max(F(ff).HAC.spkcnt), 'm*-');
-    figure(1); subplot(122); plot(bins4plot, F(ff).HAU.spkcnt/max(F(ff).HAU.spkcnt), 'm*-');
-    figure(2); subplot(121); plot(bins4plot, F(ff).AHC.spkcnt/max(F(ff).AHC.spkcnt), 'm*-');
-    figure(2); subplot(122); plot(bins4plot, F(ff).AHU.spkcnt/max(F(ff).AHU.spkcnt), 'm*-');
-end
+end % End of female
 
-end % Cycle for every bird
+end % End of cycling for every bird
 
-%% Build the Cool fill plots
 
-for kk = length(F):-2:2
-    FHAC(:,kk) = F(kk).HAC.spkcnt/max(F(kk).HAC.spkcnt);
-    FHAU(:,kk) = F(kk).HAU.spkcnt/max(F(kk).HAU.spkcnt);
-    FAHC(:,kk) = F(kk).AHC.spkcnt/max(F(kk).AHC.spkcnt);
-    FAHU(:,kk) = F(kk).AHU.spkcnt/max(F(kk).AHU.spkcnt);
-end
-for kk = length(M):-2:1
-    MHAC(:,kk) = M(kk).HAC.spkcnt/max(M(kk).HAC.spkcnt);
-    MHAU(:,kk) = M(kk).HAU.spkcnt/max(M(kk).HAU.spkcnt);
-    MAHC(:,kk) = M(kk).AHC.spkcnt/max(M(kk).AHC.spkcnt);
-    MAHU(:,kk) = M(kk).AHU.spkcnt/max(M(kk).AHU.spkcnt);
-end
+%% Build the Cool fill plots for the DUET data
 
-for jj = length(FHAC(:,1)):-1:1
-    mFHAC(jj) = mean(FHAC(jj,:)); vFHAC(jj) = std(FHAC(jj,:));
-    mFHAU(jj) = mean(FHAU(jj,:)); vFHAU(jj) = std(FHAU(jj,:));
-    mFAHC(jj) = mean(FAHC(jj,:)); vFAHC(jj) = std(FAHC(jj,:));
-    mFAHU(jj) = mean(FAHU(jj,:)); vFAHU(jj) = std(FAHU(jj,:));
-end    
-for jj = length(MHAC(:,1)):-1:1
-    mMHAC(jj) = mean(MHAC(jj,:)); vMHAC(jj) = std(MHAC(jj,:));
-    mMHAU(jj) = mean(MHAU(jj,:)); vMHAU(jj) = std(MHAU(jj,:));
-    mMAHC(jj) = mean(MAHC(jj,:)); vMAHC(jj) = std(MAHC(jj,:));
-    mMAHU(jj) = mean(MAHU(jj,:)); vMAHU(jj) = std(MAHU(jj,:));
-end
+    msFHAC = concatHist(FHAC, length(FHAC(1).spkcnt(:,1)));                        
+    msFHAU = concatHist(FHAU, length(FHAU(1).spkcnt(:,1)));
+    msFAHC = concatHist(FAHC, length(FAHC(1).spkcnt(:,1)));
+    msFAHU = concatHist(FAHU, length(FAHU(1).spkcnt(:,1)));
+
+    msMHAC = concatHist(MHAC, length(MHAC(1).spkcnt(:,1)));                        
+    msMHAU = concatHist(MHAU, length(MHAU(1).spkcnt(:,1)));
+    msMAHC = concatHist(MAHC, length(MAHC(1).spkcnt(:,1)));
+    msMAHU = concatHist(MAHU, length(MAHU(1).spkcnt(:,1)));
+
+
+figure(3); clf; % PLOT M2F DATA
+ax(1) = subplot(211); hold on; title('M2F Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+% Female
+fill([bins4plot bins4plot(end:-1:1)], [msFHAC.mean - msFHAC.std/2, msFHAC.mean(end:-1:1) + msFHAC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFHAC.mean, 'm-o', 'LineWidth', 2);
+% Male
+fill([bins4plot bins4plot(end:-1:1)], [msMAHC.mean - msMAHC.std/2, msMAHC.mean(end:-1:1) + msMAHC.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMAHC.mean, 'b-o', 'LineWidth', 2);
+
+ax(2) = subplot(212); hold on; title('M2F Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+% Female
+fill([bins4plot bins4plot(end:-1:1)], [msFHAU.mean - msFHAU.std/2, msFHAU.mean(end:-1:1) + msFHAU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFHAU.mean, 'm-o', 'LineWidth', 2);
+% Male
+fill([bins4plot bins4plot(end:-1:1)], [msMAHU.mean - msMAHU.std/2, msMAHU.mean(end:-1:1) + msMAHU.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMAHU.mean, 'b-o', 'LineWidth', 2);
+
+linkaxes(ax, 'xy'); ylim([0 1]);
+    
+figure(4); clf; % PLOT F2M DATA
+axx(1) = subplot(211); hold on; title('F2M Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+% Female
+fill([bins4plot bins4plot(end:-1:1)], [msFAHC.mean - msFAHC.std/2, msFAHC.mean(end:-1:1) + msFAHC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFAHC.mean, 'm-o', 'LineWidth', 2);
+% Male
+fill([bins4plot bins4plot(end:-1:1)], [msMHAC.mean - msMHAC.std/2, msMHAC.mean(end:-1:1) + msMHAC.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMHAC.mean, 'b-o', 'LineWidth', 2);
+
+axx(2) = subplot(212); hold on; title('F2M Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+% Female
+fill([bins4plot bins4plot(end:-1:1)], [msFAHU.mean - msFAHU.std/2, msFAHU.mean(end:-1:1) + msFAHU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFAHU.mean, 'm-o', 'LineWidth', 2);
+% Male
+fill([bins4plot bins4plot(end:-1:1)], [msMHAU.mean - msMHAU.std/2, msMHAU.mean(end:-1:1) + msMHAU.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMHAU.mean, 'b-o', 'LineWidth', 2);
+
+linkaxes(axx, 'xy'); ylim([0 1]);
 
 %% Do the solo syllable stuff
 
-% NORMALIZE
-for jj = 1:length(FSAU(1,:))
-    FSAU(:,jj) = FSAU(:,jj) / max(FSAU(:,jj));
-end
-for jj = 1:length(FSAC(1,:))
-    FSAC(:,jj) = FSAC(:,jj) / max(FSAC(:,jj));
-end
-for jj = 1:length(FSHU(1,:))
-    FSHU(:,jj) = FSHU(:,jj) / max(FSHU(:,jj));
-end
-for jj = 1:length(FSHC(1,:))
-    FSHC(:,jj) = FSHC(:,jj) / max(FSHC(:,jj));
-end
-for jj = 1:length(FSAU(1,:))
-    FSAU(:,jj) = FSAU(:,jj) / max(FSAU(:,jj));
-end
+    msFSAC = concatHist(FSAC, length(FSAC(1).spkcnt(:,1)));                        
+    msFSAU = concatHist(FSAU, length(FSAC(1).spkcnt(:,1)));                        
+    msFSHC = concatHist(FSHC, length(FSHC(1).spkcnt(:,1)));                        
+    msFSHU = concatHist(FSHU, length(FSHC(1).spkcnt(:,1)));                        
 
-for jj = 1:length(MSAU(1,:))
-    MSAU(:,jj) = MSAU(:,jj) / max(MSAU(:,jj));
-end
-for jj = 1:length(MSAC(1,:))
-    MSAC(:,jj) = MSAC(:,jj) / max(MSAC(:,jj));
-end
-for jj = 1:length(MSHU(1,:))
-    MSHU(:,jj) = MSHU(:,jj) / max(MSHU(:,jj));
-end
-for jj = 1:length(MSHC(1,:))
-    MSHC(:,jj) = MSHC(:,jj) / max(MSHC(:,jj));
-end
+    msMSAC = concatHist(MSAC, length(MSAC(1).spkcnt(:,1)));                        
+    msMSAU = concatHist(MSAU, length(MSAC(1).spkcnt(:,1)));                        
+    msMSHC = concatHist(MSHC, length(MSHC(1).spkcnt(:,1)));                        
+    msMSHU = concatHist(MSHU, length(MSHC(1).spkcnt(:,1)));                        
 
-% AVERAGE
-for jj = 1:length(FSAU(:,1))
-    mFSAU(jj) = mean(FSAU(jj,:)); vFSAU(jj) = std(FSAU(jj,:));
-end
-for jj = 1:length(FSHU(:,1))
-    mFSHU(jj) = mean(FSHU(jj,:)); vFSHU(jj) = std(FSHU(jj,:));
-end
-for jj = 1:length(FSAC(:,1))
-    mFSAC(jj) = mean(FSAC(jj,:)); vFSAC(jj) = std(FSAC(jj,:));
-end
-for jj = 1:length(FSHC(:,1))
-    mFSHC(jj) = mean(FSHC(jj,:)); vFSHC(jj) = std(FSHC(jj,:));
-end
-for jj = 1:length(MSAU(:,1))
-    mMSAU(jj) = mean(MSAU(jj,:)); vMSAU(jj) = std(MSAU(jj,:));
-end
-for jj = 1:length(MSHU(:,1))
-    mMSHU(jj) = mean(MSHU(jj,:)); vMSHU(jj) = std(MSHU(jj,:));
-end
-for jj = 1:length(MSAC(:,1))
-    mMSAC(jj) = mean(MSAC(jj,:)); vMSAC(jj) = std(MSAC(jj,:));
-end
-for jj = 1:length(MSHC(:,1))
-    mMSHC(jj) = mean(MSHC(jj,:)); vMSHC(jj) = std(MSHC(jj,:));
-end
+figure(5); clf; % PLOT M Solo DATA
+hxx(1) = subplot(211); hold on; title('M Solo Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+% Female
+fill([bins4plot bins4plot(end:-1:1)], [msFSHC.mean - msFSHC.std/2, msFSHC.mean(end:-1:1) + msFSHC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFSHC.mean, 'm-o', 'LineWidth', 2);
+% Male
+fill([bins4plot bins4plot(end:-1:1)], [msMSAC.mean - msMSAC.std/2, msMSAC.mean(end:-1:1) + msMSAC.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMSAC.mean, 'b-o', 'LineWidth', 2);
 
-figure(127); clf; 
-    subplot(121); hold on; title('FemaleSolo Chronic'); plot(mFSAC, 'm'); plot(mMSHC, 'b') 
-    subplot(122); hold on; title('FemaleSolo Urethane'); plot(mFSAU, 'm'); plot(mMSHU, 'b') 
-figure(128); clf; 
-    subplot(121); hold on; title('MaleSolo Chronic'); plot(mFSHC, 'm'); plot(mMSAC, 'b') 
-    subplot(122); hold on; title('MaleSolo Urethane'); plot(mFSHU, 'm'); plot(mMSAU, 'b') 
+hxx(2) = subplot(212); hold on; title('M Solo Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+% Female
+fill([bins4plot bins4plot(end:-1:1)], [msFSHU.mean - msFSHU.std/2, msFSHU.mean(end:-1:1) + msFSHU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFSHU.mean, 'm-o', 'LineWidth', 2);
+% Male
+fill([bins4plot bins4plot(end:-1:1)], [msMSAU.mean - msMSAU.std/2, msMSAU.mean(end:-1:1) + msMSAU.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMSAU.mean, 'b-o', 'LineWidth', 2);
 
-vMAHC = vMAHC/2; vMAHU = vMAHU/2; vMHAC = vMHAC/2; vMHAU = vMHAU/2;
-vFAHC = vFAHC/2; vFAHU = vFAHU/2; vFHAC = vFHAC/2; vFHAU = vFHAU/2;
+linkaxes(hxx, 'xy'); ylim([0 1]);
+    
+figure(6); clf; % PLOT F Solo DATA
+hyx(1) = subplot(211); hold on; title('F Solo Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+% Female
+fill([bins4plot bins4plot(end:-1:1)], [msFSAC.mean - msFSAC.std/2, msFSAC.mean(end:-1:1) + msFSAC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFSAC.mean, 'm-o', 'LineWidth', 2);
+% Male
+fill([bins4plot bins4plot(end:-1:1)], [msMSHC.mean - msMSHC.std/2, msMSHC.mean(end:-1:1) + msMSHC.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMSHC.mean, 'b-o', 'LineWidth', 2);
 
-figure(3); subplot(121); plot([0 0], [0 0.8], 'k-', 'LineWidth', 2);
-fill([bins4plot bins4plot(end:-1:1)], [mMAHC - vMAHC, mMAHC(end:-1:1) + vMAHC(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, mMAHC, 'b-o', 'LineWidth', 2);
-figure(3); subplot(121);
-fill([bins4plot bins4plot(end:-1:1)], [mFHAC - vFHAC, mFHAC(end:-1:1) + vFHAC(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, mFHAC, 'm-o', 'LineWidth', 2);
+hyx(2) = subplot(212); hold on; title('F Solo Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+% Female
+fill([bins4plot bins4plot(end:-1:1)], [msFSAU.mean - msFSAU.std/2, msFSAU.mean(end:-1:1) + msFSAU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFSAU.mean, 'm-o', 'LineWidth', 2);
+% Male
+fill([bins4plot bins4plot(end:-1:1)], [msMSHU.mean - msMSHU.std/2, msMSHU.mean(end:-1:1) + msMSHU.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMSHU.mean, 'b-o', 'LineWidth', 2);
 
-figure(3); subplot(122); plot([0 0], [0 0.8], 'k-', 'LineWidth', 2);
-fill([bins4plot bins4plot(end:-1:1)], [mMAHU - vMAHU, mMAHU(end:-1:1) + vMAHU(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, mMAHU, 'b-o', 'LineWidth', 2);
-figure(3); subplot(122);
-fill([bins4plot bins4plot(end:-1:1)], [mFHAU - vFHAU, mFHAU(end:-1:1) + vFHAU(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, mFHAU, 'm-o', 'LineWidth', 2);
-
-
-figure(4); subplot(121); plot([0 0], [0 0.8], 'k-', 'LineWidth', 2);
-fill([bins4plot bins4plot(end:-1:1)], [mMHAC - vMHAC, mMHAC(end:-1:1) + vMHAC(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, mMHAC, 'b-o', 'LineWidth', 2);
-figure(4); subplot(121);
-fill([bins4plot bins4plot(end:-1:1)], [mFAHC - vFAHC, mFAHC(end:-1:1) + vFAHC(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, mFAHC, 'm-o', 'LineWidth', 2);
-
-figure(4); subplot(122);
-fill([bins4plot bins4plot(end:-1:1)], [mFAHU - vFAHU, mFAHU(end:-1:1) + vFAHU(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, mFAHU, 'm-o', 'LineWidth', 2);
-figure(4); subplot(122); plot([0 0], [0 0.8], 'k-', 'LineWidth', 2);
-fill([bins4plot bins4plot(end:-1:1)], [mMHAU - vMHAU, mMHAU(end:-1:1) + vMHAU(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, mMHAU, 'b-o', 'LineWidth', 2);
+linkaxes(hyx, 'xy'); ylim([0 1]);
+    
+    
 
 fprintf('The mean and std for Male syllable duration is  %1.3f %1.3f \n', mean(Msyldur), std(Msyldur));
 fprintf('The mean and std for Female syllable duration is  %1.3f %1.3f \n', mean(Fsyldur), std(Fsyldur));
 fprintf('The mean and std for M2F ISI is  %1.3f %1.3f \n', mean(M2FISI), std(M2FISI));
 fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2MISI));
 
+%% Embedded Concatonation function
+function out = concatHist(in, len)
 
+    dat(1,:) = zeros(1,len);
+    
+    for qq = 1:length(in)
+        
+        for ww = 1:length(in(qq).spkcnt(1,:))
+            if sum(in(qq).spkcnt(:,ww)) > 1
+            dat(end+1,:) = in(qq).spkcnt(:,ww) / max(in(qq).spkcnt(:,ww));
+            end
+        end
+    end
+    
+    out.mean = sum(dat) / (length(dat(:,1))-1); % Mean normalized data
+    out.std = std(dat);
+    out.N = length(dat(:,1));
+    clear dat;
+    
+end
 
 
 %% Embedded histogram function
-function [spkcnts, bintims] = wPhaseCut(spiketimes, tims, wid)
+function [spikearray, bintims] = wPhaseCut(spiketimes, tims, wid)
 
         % wid is window in msec before and after start of the syllable at the end of the focal ISI.
         numbins = 10; % How many bins before and after the onset of our focal syllable?
         binwid = wid / numbins; % Width of each bin
         
         % Specify the OVERLAP percentage here
-        overlap = 75; % Overlap is 80% of previous window
+        overlap = 50; % Overlap is 80% of previous window
         
         overlap = 1-(overlap/100); % Converts to step size for advancing the window
         
         bintims = -wid:binwid*overlap:wid; % List of bin times centered on zero
-
-        spkcnts = zeros(1, length(-wid:binwid*overlap:wid-(binwid*overlap)));
-
     
     for j = length(tims):-1:1 % For each syllable
         
         bintimstarts = tims(j)-wid:binwid*overlap:tims(j)+wid-(binwid*overlap); % Start and end times for current syllable
+        spkcnts = zeros(1, length(-wid:binwid*overlap:wid-(binwid*overlap)));
                 
         for k = 1:length(spiketimes) % For each row of spikes
             
             for m = 1:length(bintimstarts) % For each bin of our PSTH
                 spkcnts(m) = spkcnts(m) + length(find(spiketimes{k} > bintimstarts(m) & spiketimes{k} < bintimstarts(m)+binwid));
             end
-         end
+        end
+         
+        spikearray(:,j) = spkcnts;
  
     end
 

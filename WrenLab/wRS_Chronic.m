@@ -308,20 +308,26 @@ subplot(133); hold on; title('Hetero Spikes/Second');
 [stts.f.SvsDNHetero.H, stts.f.SvsDNHetero.P, stts.f.SvsDNHetero.CI, stts.f.SvsDNHetero.stats]  = ttest2(sumdat.fSoloHetero.rsNorm, sumdat.fDuetHetero.rsNorm);
 [stts.f.SvsDRHetero.H, stts.f.SvsDRHetero.P, stts.f.SvsDRHetero.CI, stts.f.SvsDRHetero.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.fDuetHetero.rsRaw);
 
-    fprintf('Male Auto Duet vs Solo? p = %1.2e \n', stts.m.SvsDRAuto.P);
-    fprintf('Female Auto Duet vs Solo? p = %1.2e \n', stts.f.SvsDRAuto.P);
+[MvFHS.H, MvFHS.P, MvFHS.CI, MvFHS.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.mSoloHetero.rsRaw, 'vartype', 'unequal');
+
+
+
+    fprintf('Male Auto Duet vs Solo? p = %1.5f \n', stts.m.SvsDRAuto.P);
+    fprintf('Female Auto Duet vs Solo? p = %1.5f \n', stts.f.SvsDRAuto.P);
     
     fprintf(' \n');
 
-    fprintf('Male Hetero Duet Raw RS different from zero? p = %1.2e \n', stts.m.dRHetero.P);
-    fprintf('Male Hetero Solo Raw RS different from zero? p = %1.2e \n', stts.m.sRHetero.P);
-    fprintf('Female Hetero Duet Raw RS different from zero? p = %1.2e \n', stts.f.dRHetero.P);
-    fprintf('Female Hetero Solo Raw RS different from zero? p = %1.2e \n', stts.f.sRHetero.P);
+    fprintf('Male Hetero Duet Raw RS different from zero? p = %1.5f \n', stts.m.dRHetero.P);
+    fprintf('Male Hetero Solo Raw RS different from zero? p = %1.5f \n', stts.m.sRHetero.P);
+    fprintf('Female Hetero Duet Raw RS different from zero? p = %1.5f \n', stts.f.dRHetero.P);
+    fprintf('Female Hetero Solo Raw RS different from zero? p = %1.5f \n', stts.f.sRHetero.P);
     
     fprintf(' \n');
 
-    fprintf('Male Hetero Duet vs Solo? p = %1.2e \n', stts.m.SvsDRHetero.P);
-    fprintf('Female Hetero Duet vs Solo? p = %1.2e \n', stts.f.SvsDRHetero.P);
+    fprintf('Male Hetero Duet vs Solo? p = %1.5f \n', stts.m.SvsDRHetero.P);
+    fprintf('Female Hetero Duet vs Solo? p = %1.5f \n', stts.f.SvsDRHetero.P);
+    
+    fprintf('Male versus Female Solo Hetero different? p = %1.5f \n', MvFHS.P);
     
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
