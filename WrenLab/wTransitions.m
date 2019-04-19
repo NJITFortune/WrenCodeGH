@@ -26,8 +26,8 @@ if nargin < 2; widow = 0.500; end % 500 msec looks pretty good with numbins 10 a
     Mwhichduet = 0; Fwhichduet = 0;
 
 % Choose which data to analyze
-    birdlist = 16:-1:1; % All compleat data with both ACUTE (urethane) AND CHRONIC (awake)
-
+%    birdlist = 16:-1:1; % All compleat data with both ACUTE (urethane) AND CHRONIC (awake)
+birdlist = 1:length(in);
     
 %% For each bird in our list
 
@@ -82,6 +82,7 @@ if in(ff).sexy == 1 % This is a male
     
     % Use the PhaseCut embedded function to create the histogram for Duet
     % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
+    if ~isempty(mduetsyls{sylstrdx})    
     Mwhichduet = Mwhichduet + 1;
     [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseCut(in(ff).Aspikes, currM2Fsyltim, widow);
     [MAHC(Mwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currM2Fsyltim, widow);
@@ -89,7 +90,7 @@ if in(ff).sexy == 1 % This is a male
     [MHAC(Mwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currF2Msyltim, widow);
     
     bins4plot = (M(Mwhichduet).bintims(2:end) + M(Mwhichduet).bintims(1:end-1))/2; % Time bins adjusted for proper plotting
-    
+    end
     % Solo data S=Solo, F=Female, M=Male, A=Autogenous, H=Heterogenous,
     % U=Urethane, C=Chronic
     if ~isempty(msolosyls{sylstrdx})
@@ -109,14 +110,24 @@ if in(ff).sexy == 2 % This is a female
     
     % Use the PhaseCut embedded function to create the histogram for Duet
     % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
+    if ~isempty(fduetsyls{sylstrdx})    
     Fwhichduet = Fwhichduet + 1;
+    if ~isempty(in(ff).Aspikes)
     [FAHU(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseCut(in(ff).Aspikes, currF2Msyltim, widow);
-    [FAHC(Fwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currF2Msyltim, widow);
     [FHAU(Fwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Aspikes, currM2Fsyltim, widow);
-    [FHAC(Fwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currM2Fsyltim, widow);
-
-    bins4plot = (F(Fwhichduet).bintims(2:end) + F(Fwhichduet).bintims(1:end-1)) /2; % Time bins adjusted for proper plotting
-
+    end
+    if ~isempty(in(ff).Cspikes)
+    if ~isempty(currF2Msyltim)
+        [FAHC(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseCut(in(ff).Cspikes, currF2Msyltim, widow);
+    end
+    if ~isempty(currM2Fsyltim)
+        [FHAC(Fwhichduet).spkcnt, ~] = wPhaseCut(in(ff).Cspikes, currM2Fsyltim, widow);
+    end
+    end
+    
+    bins4plot = (F(1).bintims(2:end) + F(1).bintims(1:end-1)) /2; % Time bins adjusted for proper plotting
+    
+    end
     % Solo data S=Solo, F=Female, M=Male, A=Autogenous, H=Heterogenous,
     % U=Urethane, C=Chronic
     if ~isempty(msolosyls{sylstrdx})
@@ -271,11 +282,11 @@ end
 function [spikearray, bintims] = wPhaseCut(spiketimes, tims, wid)
 
         % wid is window in msec before and after start of the syllable at the end of the focal ISI.
-        numbins = 10; % How many bins before and after the onset of our focal syllable?
+        numbins = 5; % How many bins before and after the onset of our focal syllable?
         binwid = wid / numbins; % Width of each bin
         
         % Specify the OVERLAP percentage here
-        overlap = 50; % Overlap is 80% of previous window
+        overlap = 75; % Overlap is 80% of previous window
         
         overlap = 1-(overlap/100); % Converts to step size for advancing the window
         

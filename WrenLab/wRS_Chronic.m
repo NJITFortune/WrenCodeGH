@@ -47,7 +47,7 @@ for curpair = 1:length(Cspon)
         
         % Calculate RS values
         out(curpair).fSoloHetero = rs(in(curpair*2), msolosyls{curpair}, Cspon(:,curpair), pad);
-        out(curpair).mSoloAuto = rs(in((curpair*2)-1), msolosyls{curpair}, Cspon(:,curpair), pad);
+        out(curpair).mSoloAuto = rs(in((curpair*2)-1), msolosyls{curpair}, Cspon(:,curpair), -pad);
         
         for kk = 1:length(msolosyls{curpair})
             sumdat.fSoloHetero.rsNorm(end+1) = out(curpair).fSoloHetero(kk).rsNorm;
@@ -63,7 +63,7 @@ for curpair = 1:length(Cspon)
     if ~isempty(fsolosyls{curpair}) % Female sang solo syllables
         
         out(curpair).mSoloHetero = rs(in((curpair*2)-1), fsolosyls{curpair}, Cspon(:,curpair), pad);
-        out(curpair).fSoloAuto = rs(in(curpair*2), fsolosyls{curpair}, Cspon(:,curpair), pad);
+        out(curpair).fSoloAuto = rs(in(curpair*2), fsolosyls{curpair}, Cspon(:,curpair), -pad);
         
         for kk = 1:length(fsolosyls{curpair})
             sumdat.mSoloHetero.rsNorm(end+1) = out(curpair).mSoloHetero(kk).rsNorm;
@@ -78,7 +78,7 @@ for curpair = 1:length(Cspon)
     %% Duet syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(mduetsyls{curpair}) % Male sang duet syllables
         
-        out(curpair).mDuetAuto = rs(in((curpair*2)-1), mduetsyls{curpair}, Cspon(:,curpair), pad);
+        out(curpair).mDuetAuto = rs(in((curpair*2)-1), mduetsyls{curpair}, Cspon(:,curpair), -pad);
         out(curpair).fDuetHetero = rs(in(curpair*2), mduetsyls{curpair}, Cspon(:,curpair), pad);
 
         for kk = 1:length(mduetsyls{curpair})
@@ -95,7 +95,7 @@ for curpair = 1:length(Cspon)
     if ~isempty(fduetsyls{curpair}) % Female sang solo syllables
         
         out(curpair).mDuetHetero = rs(in((curpair*2)-1), fduetsyls{curpair}, Cspon(:,curpair), pad);
-        out(curpair).fDuetAuto = rs(in(curpair*2), fduetsyls{curpair}, Cspon(:,curpair), pad);
+        out(curpair).fDuetAuto = rs(in(curpair*2), fduetsyls{curpair}, Cspon(:,curpair), -pad);
 
         for kk = 1:length(fduetsyls{curpair})
             sumdat.mDuetHetero.rsNorm(end+1) = out(curpair).mDuetHetero(kk).rsNorm;
@@ -272,10 +272,10 @@ subplot(133); hold on; title('Hetero Spikes/Second');
 
 % Difference between Autogenous Duet and Solo RS motor?
 
-[stts.m.SvsDNAuto.H, stts.m.SvsDNAuto.P, stts.m.SvsDNAuto.CI, stts.m.SvsDNAuto.stats]  = ttest2(sumdat.mSoloAuto.rsNorm, sumdat.mDuetAuto.rsNorm);
-[stts.m.SvsDRAuto.H, stts.m.SvsDRAuto.P, stts.m.SvsDRAuto.CI, stts.m.SvsDRAuto.stats]  = ttest2(sumdat.mSoloAuto.rsRaw, sumdat.mDuetAuto.rsRaw);
-[stts.f.SvsDNAuto.H, stts.f.SvsDNAuto.P, stts.f.SvsDNAuto.CI, stts.f.SvsDNAuto.stats]  = ttest2(sumdat.fSoloAuto.rsNorm, sumdat.fDuetAuto.rsNorm);
-[stts.f.SvsDRAuto.H, stts.f.SvsDRAuto.P, stts.f.SvsDRAuto.CI, stts.f.SvsDRAuto.stats]  = ttest2(sumdat.fSoloAuto.rsRaw, sumdat.fDuetAuto.rsRaw);
+[stts.m.SvsDNAuto.H, stts.m.SvsDNAuto.P, stts.m.SvsDNAuto.CI, stts.m.SvsDNAuto.stats]  = ttest2(sumdat.mSoloAuto.rsNorm, sumdat.mDuetAuto.rsNorm, 'vartype', 'unequal');
+[stts.m.SvsDRAuto.H, stts.m.SvsDRAuto.P, stts.m.SvsDRAuto.CI, stts.m.SvsDRAuto.stats]  = ttest2(sumdat.mSoloAuto.rsRaw, sumdat.mDuetAuto.rsRaw, 'vartype', 'unequal');
+[stts.f.SvsDNAuto.H, stts.f.SvsDNAuto.P, stts.f.SvsDNAuto.CI, stts.f.SvsDNAuto.stats]  = ttest2(sumdat.fSoloAuto.rsNorm, sumdat.fDuetAuto.rsNorm, 'vartype', 'unequal');
+[stts.f.SvsDRAuto.H, stts.f.SvsDRAuto.P, stts.f.SvsDRAuto.CI, stts.f.SvsDRAuto.stats]  = ttest2(sumdat.fSoloAuto.rsRaw, sumdat.fDuetAuto.rsRaw, 'vartype', 'unequal');
 
 % Heterogenous duet RS significant from 0?
 
@@ -303,10 +303,10 @@ subplot(133); hold on; title('Hetero Spikes/Second');
 
 % Difference between Heterogenous Duet and Solo RS motor?
 
-[stts.m.SvsDNHetero.H, stts.m.SvsDNHetero.P, stts.m.SvsDNHetero.CI, stts.m.SvsDNHetero.stats]  = ttest2(sumdat.mSoloHetero.rsNorm, sumdat.mDuetHetero.rsNorm);
-[stts.m.SvsDRHetero.H, stts.m.SvsDRHetero.P, stts.m.SvsDRHetero.CI, stts.m.SvsDRHetero.stats]  = ttest2(sumdat.mSoloHetero.rsRaw, sumdat.mDuetHetero.rsRaw);
-[stts.f.SvsDNHetero.H, stts.f.SvsDNHetero.P, stts.f.SvsDNHetero.CI, stts.f.SvsDNHetero.stats]  = ttest2(sumdat.fSoloHetero.rsNorm, sumdat.fDuetHetero.rsNorm);
-[stts.f.SvsDRHetero.H, stts.f.SvsDRHetero.P, stts.f.SvsDRHetero.CI, stts.f.SvsDRHetero.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.fDuetHetero.rsRaw);
+[stts.m.SvsDNHetero.H, stts.m.SvsDNHetero.P, stts.m.SvsDNHetero.CI, stts.m.SvsDNHetero.stats]  = ttest2(sumdat.mSoloHetero.rsNorm, sumdat.mDuetHetero.rsNorm, 'vartype', 'unequal');
+[stts.m.SvsDRHetero.H, stts.m.SvsDRHetero.P, stts.m.SvsDRHetero.CI, stts.m.SvsDRHetero.stats]  = ttest2(sumdat.mSoloHetero.rsRaw, sumdat.mDuetHetero.rsRaw, 'vartype', 'unequal');
+[stts.f.SvsDNHetero.H, stts.f.SvsDNHetero.P, stts.f.SvsDNHetero.CI, stts.f.SvsDNHetero.stats]  = ttest2(sumdat.fSoloHetero.rsNorm, sumdat.fDuetHetero.rsNorm, 'vartype', 'unequal');
+[stts.f.SvsDRHetero.H, stts.f.SvsDRHetero.P, stts.f.SvsDRHetero.CI, stts.f.SvsDRHetero.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.fDuetHetero.rsRaw, 'vartype', 'unequal');
 
 [MvFHS.H, MvFHS.P, MvFHS.CI, MvFHS.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.mSoloHetero.rsRaw, 'vartype', 'unequal');
 
