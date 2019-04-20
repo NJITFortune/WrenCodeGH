@@ -67,9 +67,9 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
 
 % 13-14: j17060848
     
-    msolosyls{7} = [1 2 3 4 5]; % Orig
-    %    msolosyls{7} = [1 2 3 4]; % Solitary
-    mduetsyls{7} = [7 9 11 13 15 17];
+%    msolosyls{7} = [1 2 3 4 5]; % Orig
+     msolosyls{7} = [1 2 3 4]; % Solitary
+    mduetsyls{7} = [5 7 9 11 13 15 17];
     fsolosyls{7} = []; 
     fduetsyls{7} = [6 8 10 12 14 16];
     Cspon(:,7) = [10.0, 15.0];
@@ -93,7 +93,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
 
 % This a sequence with just one male syllable and varying female amplitudes.
 
-    msolosyls{9} = []; % Male sang syllable 2 but I don't think that they were quite duetting yet
+    msolosyls{9} = [2]; % Male sang syllable 2 but I don't think that they were quite duetting yet
     mduetsyls{9} = []; % Very low amplitude
     fsolosyls{9} = 1; 
     fduetsyls{9} = [3 4]; % Female sang loudly after male, syllables 3 and 4

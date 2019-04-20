@@ -11,7 +11,7 @@ function wPhysPlot(data)
 % Alter the parameters below to customize the plotting.
 
 % How to plot the duet audio recording.  Plot type: 0 for oscillogram, 1 for spectrogram
-plt_type = 1; 
+plt_type = 0; 
 
 % Do you want to plot the raster plot for the acute data?  Usually this
 % should be no, which is Arasplot = 0;  This can take A LONG TIME.
@@ -25,7 +25,7 @@ binwidth = 0.50; % Usually 0.050
 % Use 'Widx = [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16];' for all duets in the structure
 % Widx = [11 12 13 14 15 16];
 % Widx = [3 4 5 6 7 8 9 10 11 12 13 14 15 16];
-Widx = [30 32 34 36 38 40 42];
+Widx = [1 3 5 13 17];
 % These are the time window around the start of the duet that will be
 % plotted. [-2 8] plots 2 seconds prior and 8 seconds after the onset of
 % the duet song. These can be adjusted to zoom in and zoom out.
