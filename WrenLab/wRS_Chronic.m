@@ -322,6 +322,10 @@ FeMaleDuetSoloC = [sumdat.fDuetAuto.rsRaw, sumdat.fSoloAuto.rsRaw];
 FeMaleDuetSoloCIDX = [ones(1,length(sumdat.fDuetAuto.rsRaw)), 2*ones(1,length(sumdat.fSoloAuto.rsRaw))];
 [FeMaleVarAutoChronP,FeMaleVarAutoChronstats] = vartestn(FeMaleDuetSoloC', FeMaleDuetSoloCIDX','TestType','LeveneAbsolute');
 
+FvsMAutoSoloC = [sumdat.fSoloAuto.rsRaw, sumdat.mSoloAuto.rsRaw];
+FvsMAutoSoloCIDX = [ones(1,length(sumdat.mSoloAuto.rsRaw)), 2*ones(1,length(sumdat.fSoloAuto.rsRaw))];
+[FeMaleVarAutoChronP,FeMaleVarAutoChronstats] = vartestn(FvsMAutoSoloC', FvsMAutoSoloCIDX','TestType','LeveneAbsolute');
+
 
     fprintf('Male Auto Duet vs Solo? p = %1.5f \n', stts.m.SvsDRAuto.P);
     fprintf('Female Auto Duet vs Solo? p = %1.5f \n', stts.f.SvsDRAuto.P);
