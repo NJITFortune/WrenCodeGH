@@ -144,8 +144,8 @@ figure(21); clf;
 %         for p=1:length(sumdat.fSoloAuto.rsNorm); plot(4.1, sumdat.fSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
 %     ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
-% subplot(132); hold on; 
-title('Auto Raw RS');
+% subplot(132); 
+hold on; title('Auto Raw RS');
     plot([1 2], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
     errorbar([1 2], meanRaw(1:2), sraw(1:2), 'b');
         for p=1:length(sumdat.mDuetAuto.rsRaw); plot(1.1, sumdat.mDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
