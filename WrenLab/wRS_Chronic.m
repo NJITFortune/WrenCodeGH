@@ -312,7 +312,11 @@ hold on; title('Hetero Raw RS');
 
 [MvFHS.H, MvFHS.P, MvFHS.CI, MvFHS.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.mSoloHetero.rsRaw, 'vartype', 'unequal');
 
+% Test for equal variance
 
+MaleDuetSolo = [sumdat.mDuetAuto.rsRaw, sumdat.mSoloAuto.rsRaw];
+MaleDuetSoloIDX = [ones(1,length(sumdat.mDuetAuto.rsRaw)), 2*ones(1,length(sumdat.mSoloAuto.rsRaw))];
+[
 
 [h,p,ci,stats] = vartest2(sumdat.mDuetAuto.rsRaw, sumdat.mSoloAuto.rsRaw)
 
