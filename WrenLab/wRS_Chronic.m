@@ -314,11 +314,10 @@ hold on; title('Hetero Raw RS');
 
 % Test for equal variance
 
-MaleDuetSolo = [sumdat.mDuetAuto.rsRaw, sumdat.mSoloAuto.rsRaw];
-MaleDuetSoloIDX = [ones(1,length(sumdat.mDuetAuto.rsRaw)), 2*ones(1,length(sumdat.mSoloAuto.rsRaw))];
-[MaleVarAutoChronP,MaleVarAutoChronstats] = vartestn(MaleDuetSolo, MaleDuetSoloIDX, 
+MaleDuetSoloC = [sumdat.mDuetAuto.rsRaw, sumdat.mSoloAuto.rsRaw];
+MaleDuetSoloCIDX = [ones(1,length(sumdat.mDuetAuto.rsRaw)), 2*ones(1,length(sumdat.mSoloAuto.rsRaw))];
+[MaleVarAutoChronP,MaleVarAutoChronstats] = vartestn(MaleDuetSoloC, MaleDuetSoloCIDX,'TestType','LeveneAbsolute');
 
-[h,p,ci,stats] = vartest2(sumdat.mDuetAuto.rsRaw, sumdat.mSoloAuto.rsRaw)
 
     fprintf('Male Auto Duet vs Solo? p = %1.5f \n', stts.m.SvsDRAuto.P);
     fprintf('Female Auto Duet vs Solo? p = %1.5f \n', stts.f.SvsDRAuto.P);
@@ -337,7 +336,10 @@ MaleDuetSoloIDX = [ones(1,length(sumdat.mDuetAuto.rsRaw)), 2*ones(1,length(sumda
     
     fprintf('Male versus Female Solo Hetero different? p = %1.5f \n', MvFHS.P);
     
+    fprintf(' \n');
 
+    fprintf('Male Chronic Auto: Variance difference between Duet and Solo? p = %1.5f \n', MaleVarAutoChronP);
+    
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     
 %% Response Strength nested function
