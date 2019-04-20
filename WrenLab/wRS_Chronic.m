@@ -203,7 +203,8 @@ figure(22); clf;
 %         for p=1:length(sumdat.fSoloHetero.rsNorm); plot(4.1, sumdat.fSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
 %     ylim([-5 35]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
 
-subplot(132); hold on; title('Hetero Raw RS');
+% subplot(132); 
+hold on; title('Hetero Raw RS');
     plot([1 2], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
     errorbar([1 2], meanRaw(1:2), sraw(1:2), 'b' );
         for p=1:length(sumdat.mDuetHetero.rsRaw); plot(1.1, sumdat.mDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
