@@ -318,6 +318,10 @@ MaleDuetSoloC = [sumdat.mDuetAuto.rsRaw, sumdat.mSoloAuto.rsRaw];
 MaleDuetSoloCIDX = [ones(1,length(sumdat.mDuetAuto.rsRaw)), 2*ones(1,length(sumdat.mSoloAuto.rsRaw))];
 [MaleVarAutoChronP,MaleVarAutoChronstats] = vartestn(MaleDuetSoloC', MaleDuetSoloCIDX','TestType','LeveneAbsolute');
 
+FeMaleDuetSoloC = [sumdat.fDuetAuto.rsRaw, sumdat.fSoloAuto.rsRaw];
+FeMaleDuetSoloCIDX = [ones(1,length(sumdat.fDuetAuto.rsRaw)), 2*ones(1,length(sumdat.fSoloAuto.rsRaw))];
+[FeMaleVarAutoChronP,FeMaleVarAutoChronstats] = vartestn(FeMaleDuetSoloC', FeMaleDuetSoloCIDX','TestType','LeveneAbsolute');
+
 
     fprintf('Male Auto Duet vs Solo? p = %1.5f \n', stts.m.SvsDRAuto.P);
     fprintf('Female Auto Duet vs Solo? p = %1.5f \n', stts.f.SvsDRAuto.P);
@@ -339,6 +343,7 @@ MaleDuetSoloCIDX = [ones(1,length(sumdat.mDuetAuto.rsRaw)), 2*ones(1,length(sumd
     fprintf(' \n');
 
     fprintf('Male Chronic Auto: Variance difference between Duet and Solo? p = %1.5f \n', MaleVarAutoChronP);
+    fprintf('FeMale Chronic Auto: Variance difference between Duet and Solo? p = %1.5f \n', FeMaleVarAutoChronP);
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     
