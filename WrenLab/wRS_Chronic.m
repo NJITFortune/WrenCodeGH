@@ -312,7 +312,7 @@ hold on; title('Hetero Raw RS');
 
 [MvFHS.H, MvFHS.P, MvFHS.CI, MvFHS.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.mSoloHetero.rsRaw, 'vartype', 'unequal');
 
-
+[h,p,ci,stats] = vartest2(sumdat.mDuetAuto.rsRaw, sumdat.mSoloAuto.rsRaw)
 
     fprintf('Male Auto Duet vs Solo? p = %1.5f \n', stts.m.SvsDRAuto.P);
     fprintf('Female Auto Duet vs Solo? p = %1.5f \n', stts.f.SvsDRAuto.P);
