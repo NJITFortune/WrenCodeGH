@@ -315,7 +315,7 @@ hold on; title('Hetero Raw RS');
 % Test for equal variance
 
 MaleDuetSoloC = [sumdat.mDuetAuto.rsRaw, sumdat.mSoloAuto.rsRaw];
-MaleDuetSoloCIDX = [ones(1,length(sumdat.mDuetAuto.rsRaw)), 2*ones(1,length(sumdat.mSoloAuto.rsRaw))];
+MaleDuetSoloCIDX = [ones(length(sumdat.mDuetAuto.rsRaw),1), 2*ones(length(sumdat.mSoloAuto.rsRaw),1)];
 [MaleVarAutoChronP,MaleVarAutoChronstats] = vartestn(MaleDuetSoloC, MaleDuetSoloCIDX,'TestType','LeveneAbsolute');
 
 
