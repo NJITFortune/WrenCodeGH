@@ -316,7 +316,7 @@ hold on; title('Hetero Raw RS');
 
 MaleDuetSolo = [sumdat.mDuetAuto.rsRaw, sumdat.mSoloAuto.rsRaw];
 MaleDuetSoloIDX = [ones(1,length(sumdat.mDuetAuto.rsRaw)), 2*ones(1,length(sumdat.mSoloAuto.rsRaw))];
-[
+[MaleVarAutoChronP,MaleVarAutoChronstats] = vartestn(MaleDuetSolo, MaleDuetSoloIDX, 
 
 [h,p,ci,stats] = vartest2(sumdat.mDuetAuto.rsRaw, sumdat.mSoloAuto.rsRaw)
 
