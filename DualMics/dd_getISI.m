@@ -125,12 +125,26 @@ axxx(2) = subplot(212);
 
 linkaxes(axxx, 'xy'); xlim([-1 12]); ylim([-0.02 0.18]);
 
-fprintf('Mean male AH 1 and 7 meters: %f2.5 %2.5 \n', Mmf(1), Mmf(2));
-fprintf('Mean male HA 1 and 7 meters: %f2.5 %2.5 \n', Mfm(1), Mfm(2));
-fprintf('Mean female AH 1 and 7 meters: %f2.5 %2.5 \n', Ffm(1), Fff(2));
-fprintf('Mean female HA 1 and 7 meters: %f2.5 %2.5 \n', Fmf(1), Fmf(2));
+fprintf('Mean male AH 1 and 7 meters: %1.5f %1.5f \n', Mmf(1), Mmf(2));
+fprintf('Mean male HA 1 and 7 meters: %1.5f %1.5f \n', Mfm(1), Mfm(2));
+fprintf('Mean female AH 1 and 7 meters: %1.5f %1.5f \n', Ffm(1), Ffm(2));
+fprintf('Mean female HA 1 and 7 meters: %1.5f %1.5f \n', Fmf(1), Fmf(2));
 
+% Male HA 1 to 7 meters
+[aa,bb,cc,dd] = ttest2(out.Mfm([out.Mfmd] == 1),  out.Mfm([out.Mfmd] == 7), 'vartype', 'unequal');
+fprintf('Male HA 1 vs 7 meters, p = %1.5f, tstat = %1.5f, df = %1.5f. \n', bb, dd.tstat, dd.df);
 
+% Male AH 1 to 7 meters
+[aa,bb,cc,dd] = ttest2(out.Mmf([out.Mmfd] == 1),  out.Mmf([out.Mmfd] == 7), 'vartype', 'unequal');
+fprintf('Male AH 1 vs 7 meters, p = %1.5f, tstat = %1.5f, df = %1.5f. \n', bb, dd.tstat, dd.df);
+
+% FeMale AH 1 to 7 meters
+[aa,bb,cc,dd] = ttest2(out.Ffm([out.Ffmd] == 1),  out.Ffm([out.Ffmd] == 7), 'vartype', 'unequal');
+fprintf('Female AH 1 vs 7 meters, p = %1.5f, tstat = %1.5f, df = %1.5f. \n', bb, dd.tstat, dd.df);
+
+% FeMale HA 1 to 7 meters
+[aa,bb,cc,dd] = ttest2(out.Fmf([out.Fmfd] == 1),  out.Fmf([out.Fmfd] == 7), 'vartype', 'unequal');
+fprintf('Female HA 1 vs 7 meters, p = %1.5f, tstat = %1.5f, df = %1.5f. \n', bb, dd.tstat, dd.df);
 
     
 %    subplot(211); errorbar(jj, mean(out.Ffm([out.Ffmd] == jj)) , std(out.Ffm([out.Ffmd] == jj)), 'om');
