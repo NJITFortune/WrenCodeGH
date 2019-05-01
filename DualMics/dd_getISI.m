@@ -125,10 +125,10 @@ axxx(2) = subplot(212);
 
 linkaxes(axxx, 'xy'); xlim([-1 12]); ylim([-0.02 0.18]);
 
-fprintf('Mean male AH 1 and 7 meters: %f2.5 %2.5 \n, Mmf(1), Mmf(2));
-fprintf('Mean male HA 1 and 7 meters: %f2.5 %2.5 \n, Mfm(1), Mfm(2));
-fprintf('Mean female AH 1 and 7 meters: %f2.5 %2.5 \n, Ffm(1), Fff(2));
-fprintf('Mean female HA 1 and 7 meters: %f2.5 %2.5 \n, Fmf(1), Fmf(2));
+fprintf('Mean male AH 1 and 7 meters: %f2.5 %2.5 \n', Mmf(1), Mmf(2));
+fprintf('Mean male HA 1 and 7 meters: %f2.5 %2.5 \n', Mfm(1), Mfm(2));
+fprintf('Mean female AH 1 and 7 meters: %f2.5 %2.5 \n', Ffm(1), Fff(2));
+fprintf('Mean female HA 1 and 7 meters: %f2.5 %2.5 \n', Fmf(1), Fmf(2));
 
 
 
