@@ -162,7 +162,7 @@ fprintf('Male HA vs Female HA, 1 meter, p = %1.5f, tstat = %1.5f, df = %1.5f. \n
 fprintf('Male HA vs Female HA, 7 meter, p = %1.5f, tstat = %1.5f, df = %1.5f. \n', bb, dd.tstat, dd.df);
 
 % Female versus male Both distances
-[~,bb,~,dd] = ttest2(out.Mfm,  out.Fmf, 'vartype', 'unequal');
+[~,bb,~,dd] = ttest2(out.Fmf, out.Mfm, 'vartype', 'unequal');
 fprintf('Male HA vs Female HA, all distances, p = %1.8f, tstat = %1.5f, df = %1.5f. \n', bb, dd.tstat, dd.df);
 
     
