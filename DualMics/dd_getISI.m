@@ -153,6 +153,15 @@ fprintf('Female AH 1 vs 7 meters, p = %1.5f, tstat = %1.5f, df = %1.5f. \n', bb,
 [~,bb,~,dd] = ttest2(out.Fmf([out.Fmfd] == 1),  out.Fmf([out.Fmfd] == 7), 'vartype', 'unequal');
 fprintf('Female HA 1 vs 7 meters, p = %1.5f, tstat = %1.5f, df = %1.5f. \n', bb, dd.tstat, dd.df);
 
+% Female versus male 1 meter
+[~,bb,~,dd] = ttest2(out.Mfm([out.Mfmd] == 1),  out.Fmf([out.Fmfd] == 1), 'vartype', 'unequal');
+fprintf('Male HA vs Female HA, 1 meter, p = %1.5f, tstat = %1.5f, df = %1.5f. \n', bb, dd.tstat, dd.df);
+
+% Female versus male 7 meter
+[~,bb,~,dd] = ttest2(out.Mfm([out.Mfmd] == 7),  out.Fmf([out.Fmfd] == 7), 'vartype', 'unequal');
+fprintf('Male HA vs Female HA, 7 meter, p = %1.5f, tstat = %1.5f, df = %1.5f. \n', bb, dd.tstat, dd.df);
+
+
     
 %    subplot(211); errorbar(jj, mean(out.Ffm([out.Ffmd] == jj)) , std(out.Ffm([out.Ffmd] == jj)), 'om');
 %    subplot(212); errorbar(jj, mean(out.Fmf([out.Fmfd] == jj)) , std(out.Fmf([out.Fmfd] == jj)), '*m');
