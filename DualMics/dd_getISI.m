@@ -161,6 +161,9 @@ fprintf('Male HA vs Female HA, 1 meter, p = %1.5f, tstat = %1.5f, df = %1.5f. \n
 [~,bb,~,dd] = ttest2(out.Mfm([out.Mfmd] == 7),  out.Fmf([out.Fmfd] == 7), 'vartype', 'unequal');
 fprintf('Male HA vs Female HA, 7 meter, p = %1.5f, tstat = %1.5f, df = %1.5f. \n', bb, dd.tstat, dd.df);
 
+% Female versus male Both distances
+[~,bb,~,dd] = ttest2(out.Mfm,  out.Fmf, 'vartype', 'unequal');
+fprintf('Male HA vs Female HA, all distances, p = %1.5f, tstat = %1.5f, df = %1.5f. \n', bb, dd.tstat, dd.df);
 
     
 %    subplot(211); errorbar(jj, mean(out.Ffm([out.Ffmd] == jj)) , std(out.Ffm([out.Ffmd] == jj)), 'om');
