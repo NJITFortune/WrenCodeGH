@@ -25,7 +25,8 @@ binwidth = 0.50; % Usually 0.050
 % Use 'Widx = [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16];' for all duets in the structure
 % Widx = [11 12 13 14 15 16];
 % Widx = [3 4 5 6 7 8 9 10 11 12 13 14 15 16];
-Widx = [1 3 5 13 17];
+% Widx = [1 3 5 13 17];
+Widx = [8];
 % These are the time window around the start of the duet that will be
 % plotted. [-2 8] plots 2 seconds prior and 8 seconds after the onset of
 % the duet song. These can be adjusted to zoom in and zoom out.
@@ -44,7 +45,8 @@ Widx = [1 3 5 13 17];
         
     % January 2016, 08:15. 2 motifs with female solo prior to duet
         win(:,7) = [-0.3 7]; % Male [-2 6]
-        win(:,8) = [-0.3 7]; % Female [-2 6]
+%        win(:,8) = [-0.3 7]; % Female [-2 6]
+        win(:,8) = [-0.5 3]; % Female [-2 6]
         
     % January 2016, 10:09. 4 motifs with female change (motifs 1,2 and 3,4 are similar). Female solo prior to duet.
         win(:,9) = [-1 11]; % Male  [-1 11]
