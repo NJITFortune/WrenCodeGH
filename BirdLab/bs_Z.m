@@ -18,7 +18,7 @@ StimDur=(endstim-startstim);
 SponDur=(endspon-startspon);
 
 %% Loop through each trial and count spikes
-for i=1:length(spiketimes)
+for i=length(spiketimes):-1:1
 
    StimPass(i) = length( find( spiketimes{i} > startstim & spiketimes{i} < endstim ) );
    SponPass(i) = length( find( spiketimes{i} > startspon & spiketimes{i} < endspon ) );
