@@ -67,7 +67,8 @@ function zf = bs_converter(spiketimes, kbd, stim, limits)
 
 % Get the samplerate of the stimulus
 
-	Fs =  1/stim.interval;
+	Fs =  round(1/stim.interval);
+	%Fs =  1/stim.interval;
 
 % Set the pre- and post- trigger values (this step is just to make the code
 % easier to read).
