@@ -82,7 +82,7 @@ disp(stimulist)
 clf
 
 %% Pre-Allocations for speed
-    for i = stimnum:-1:1;
+    for i = stimnum:-1:1
         zf(i).stim = zeros(1,(pretrig+posttrig)*Fs);
         zf(i).tim = 1/Fs:1/Fs:length(zf(i).stim)/Fs; % a time vector 
         zf(i).tim = zf(i).tim - pretrig; % adjust so that zero is the start of the stimulus.
