@@ -59,11 +59,14 @@ yyaxis right; plot(msoloDur);
 subplot(212); hold on; yyaxis left; plot(mduetAmp, '-*b'); ylim([0 0.3]);
 yyaxis right; plot(mduetDur);
 
+ttest2(msoloAmp, mduetAmp)
+
 figure(2); clf; 
 subplot(211); hold on; yyaxis left; plot(fsoloAmp, '-*m'); ylim([0 0.3]);
 yyaxis right; plot(fsoloDur);
 subplot(212); hold on; yyaxis left; plot(fduetAmp, '-*m'); ylim([0 0.3]);
 yyaxis right; plot(fduetDur);
 
+ttest2(fsoloAmp(1:end-2), fduetAmp)
 
 end
