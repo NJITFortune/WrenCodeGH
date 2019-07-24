@@ -67,6 +67,6 @@ yyaxis right; plot(fsoloDur);
 subplot(212); hold on; yyaxis left; plot(fduetAmp, '-*m'); ylim([0 0.3]);
 yyaxis right; plot(fduetDur);
 
-ttest2(fsoloAmp(1:end-2), fduetAmp)
+ttest2(fsoloAmp(1:end-1), fduetAmp)
 
 end
