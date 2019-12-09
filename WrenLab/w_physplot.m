@@ -92,7 +92,7 @@ axs(3)=subplot(4,1,4);
 
 % Option to plot an spectrogram
     if plt_type == 1;
-        specgram(signal(tt),2048,w.stim(widx).Fs,[],2000);
+        specgram(signal(tt),2048,s(sidx).Fs,[],2000);
         xx = [abs(win(1)), abs(win(1))]; yy = [600, 4900];
         text(1, 4000, w(widx).StimName, 'BackgroundColor',[.7 .9 .7]);
         hold on; plot(xx, yy, 'b', 'LineWidth', 1); hold off;
