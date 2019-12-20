@@ -129,7 +129,7 @@ if in(ff).sexy == 1 % This is a male
         [MSHU(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins);
             MSHU(Mwhichfemalesolosyl).spon = (MSHU(Mwhichfemalesolosyl).spkcnt * 0) + (AcuteSpon(ff) * windur);
         [MSHC(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins);
-            MSHC(Mwhichmalesolosyl).spon = (MSHC(Mwhichmalesolosyl).spkcnt * 0) + (ChronSpon(ff) * windur);
+            MSHC(Mwhichfemalesolosyl).spon = (MSHC(Mwhichfemalesolosyl).spkcnt * 0) + (ChronSpon(ff) * windur);
     end
 
 end % End of male
