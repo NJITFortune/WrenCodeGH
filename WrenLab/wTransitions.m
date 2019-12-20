@@ -305,7 +305,7 @@ end
 function [spikearray, bintims] = wPhaseHist(spiketimes, tims, wid)
 
         % wid is window in msec before and after start of the syllable at the end of the focal ISI.
-        numbins = 10; % How many bins before and after the onset of our focal syllable?
+        numbins = 5; % How many bins before and after the onset of our focal syllable?
         binwid = wid / numbins; % Width of each bin
         
         % Specify the OVERLAP percentage here
