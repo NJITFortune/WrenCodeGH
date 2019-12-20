@@ -102,7 +102,7 @@ if in(ff).sexy == 1 % This is a male
     if ~isempty(mduetsyls{sylstrdx})    
     Mwhichduet = Mwhichduet + 1;
     [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins);
-        if AcuteSpon(ff) ~= 0
+        if AcuteSpon(ff) != 0
         MAHU(Mwhichduet).RS = (MAHU(Mwhichduet).spkcnt - (AcuteSpon(ff) * windur)) / (AcuteSpon(ff) * windur)
         end        
     [MAHC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins);
