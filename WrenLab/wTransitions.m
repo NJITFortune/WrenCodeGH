@@ -50,11 +50,14 @@ sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m
     for z = 1:length(in(ff).Cspikes)
         ChronSpon(ff) = ChronSpon(ff) + length(in(ff).Cspikes{z} > Cspon(1,sylstrdx) & in(ff).Cspikes{z} < Cspon(2,sylstrdx));
     end
+        ChronSpon(ff) = ChronSpon(ff)/length(in(ff).Cspikes); 
+        
     AcuteSpon(ff) = 0;
     if sylstrdx < 7
         for z = 1:length(in(ff).Aspikes)
             AcuteSpon(ff) = AcuteSpon(ff) + length(in(ff).Aspikes{z} > Aspon(1,sylstrdx) & in(ff).Aspikes{z} < Aspon(2,sylstrdx));
         end
+            AcuteSpon(ff) = AcuteSpon(ff)/length(in(ff).Aspikes); 
     end
 
 % Get all male-female and female-male duet syllable transitions
