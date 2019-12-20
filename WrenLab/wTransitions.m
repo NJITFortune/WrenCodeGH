@@ -245,7 +245,7 @@ set(xax(2),'Color', [0.9, 0.9, 0.9]);
 plot(bins4plot, msMAHU.RSN, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 plot(bins4plot, msFHAU.RSN, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-linkaxes(xax, 'xy');
+linkaxes(xax, 'x');
 
 
 %% Do the solo syllable calculations
