@@ -47,8 +47,8 @@ sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m
 % Calculate spontaneous rate
 
     ChronSpon(ff) = 0;
-    for z = 1:length(w(in).
-        
+    for z = 1:length(in(ff).Cspikes)
+        ChronSpon(ff) = ChronSpon(ff) + length(in(ff).Cspikes{z} > Cspon( 
     end
     
     
