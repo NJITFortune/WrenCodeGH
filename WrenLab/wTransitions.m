@@ -14,7 +14,7 @@ if nargin < 2; widow = 0.500; end % 500 msec looks pretty good with numbins 10 a
 
 %% Load the list of Chronic singing data with syllable indices and locations for spontaneous activity
 
-[msolosyls, mduetsyls, fsolosyls, fduetsyls, ~, ~] = wData;
+[msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData;
 
 % Some variables because I am not a talented coder.
     Fsyldur = []; Msyldur = [];  % A side calculation - durations of syllables
@@ -84,10 +84,10 @@ if in(ff).sexy == 1 % This is a male
     % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
     if ~isempty(mduetsyls{sylstrdx})    
     Mwhichduet = Mwhichduet + 1;
-    [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, sylstrdx);
-    [MAHC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow);
-    [MHAU(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow);
-    [MHAC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow);
+    [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, Aspon(:,sylstrdx));
+    [MAHC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, Cspon(:,sylstrdx));
+    [MHAU(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, Aspon(:,sylstrdx));
+    [MHAC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, Cspon(:,sylstrdx));
     
     bins4plot = (M(Mwhichduet).bintims(2:end) + M(Mwhichduet).bintims(1:end-1))/2; % Time bins adjusted for proper plotting
     end
