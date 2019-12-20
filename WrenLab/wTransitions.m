@@ -234,6 +234,14 @@ plot(bins4plot, msMHAU.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 
 
 linkaxes(ax, 'xy'); figure(1); subplot(222); ylim([0 1]);
 
+
+figure(3); clf; set(gcf, 'Color', [1,1,1]);
+xax(1) = subplot(221); hold on; title('M2F Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+plot(bins4plot, msMAHC.RSN, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+plot(bins4plot, msFHAC.RSN, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+linkaxes(xax, 'xy');
+
+
 %% Do the solo syllable calculations
 
     msFSAC = concatHist(FSAC, length(FSAC(1).spkcnt(:,1)));                        
@@ -334,8 +342,8 @@ function out = concatHist(xin, len)
     end
     
     out.mean = sum(dat) / (length(dat(:,1))-1); % Mean normalized data normalized (original plots)
-%    out.std = std(dat); % The standard deviations of the data (but that should be also divided by length, no?)
-    out.std = std(dat) / (length(dat(:,1))-1); % The standard deviations of the data
+    out.std = std(dat); % The standard deviations of the data (but that should be also divided by length, no?)
+%    out.std = std(dat) / (length(dat(:,1))-1); % The standard deviations of the data
     out.N = length(dat(:,1));
     
     out.respsum = sum(rw);
