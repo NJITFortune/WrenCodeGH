@@ -1,4 +1,4 @@
-function [M, F] = wTransitions(in, widow)
+function [M, F] = wTransitions(in)
 % Usage out = wTransitions(in, window)
 % This generates plots that focus on the transitions between
 % female and male syllables. 
@@ -8,8 +8,10 @@ function [M, F] = wTransitions(in, widow)
 
 %% Preparations
 % Default window width for histogram if user didn't specify window
-if nargin < 2; widow = 0.500; end % 500 msec looks pretty good with numbins 10 and overlap 50
-
+    widow = 0.300; % 300 msec looks pretty good with numbins 10 and overlap 50
+    numbins = 5; % How many bins before and after the onset of our focal syllable?
+    
+    windur = widow / numbins;
 
 
 %% Load the list of Chronic singing data with syllable indices and locations for spontaneous activity
@@ -32,6 +34,12 @@ birdlist = 1:length(in);
 %% For each bird in our list
 
 for ff = birdlist
+    
+    
+    
+% Get the Chronic and Acute spontaneous firing rate in spikes per second
+    spon(ff)
+    
         
 % Get all male-female and female-male duet syllable transitions
 
@@ -84,10 +92,10 @@ if in(ff).sexy == 1 % This is a male
     % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
     if ~isempty(mduetsyls{sylstrdx})    
     Mwhichduet = Mwhichduet + 1;
-    [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, Aspon(:,sylstrdx));
-    [MAHC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, Cspon(:,sylstrdx));
-    [MHAU(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, Aspon(:,sylstrdx));
-    [MHAC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, Cspon(:,sylstrdx));
+    [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins);
+    [MAHC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins);
+    [MHAU(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins);
+    [MHAC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins);
     
     bins4plot = (M(Mwhichduet).bintims(2:end) + M(Mwhichduet).bintims(1:end-1))/2; % Time bins adjusted for proper plotting
     end
@@ -95,13 +103,13 @@ if in(ff).sexy == 1 % This is a male
     % U=Urethane, C=Chronic
     if ~isempty(msolosyls{sylstrdx})
         Mwhichmalesolosyl = Mwhichmalesolosyl+1; % We are using a different indexing here
-        [MSAU(Mwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, Aspon(:,sylstrdx));
-        [MSAC(Mwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, Cspon(:,sylstrdx));
+        [MSAU(Mwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins);
+        [MSAC(Mwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins);
     end
     if ~isempty(fsolosyls{sylstrdx})
         Mwhichfemalesolosyl = Mwhichfemalesolosyl +1;
-        [MSHU(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, Aspon(:,sylstrdx));
-        [MSHC(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, Cspon(:,sylstrdx));
+        [MSHU(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins);
+        [MSHC(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins);
     end
 
 end % End of male
@@ -113,15 +121,15 @@ if in(ff).sexy == 2 % This is a female
     if ~isempty(fduetsyls{sylstrdx})    
     Fwhichduet = Fwhichduet + 1;
     if ~isempty(in(ff).Aspikes)
-    [FAHU(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, Aspon(:,sylstrdx));
-    [FHAU(Fwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, Aspon(:,sylstrdx));
+    [FAHU(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins);
+    [FHAU(Fwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins);
     end
     if ~isempty(in(ff).Cspikes)
     if ~isempty(currF2Msyltim)
-        [FAHC(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, Cspon(:,sylstrdx));
+        [FAHC(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins);
     end
     if ~isempty(currM2Fsyltim)
-        [FHAC(Fwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, Cspon(:,sylstrdx));
+        [FHAC(Fwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins);
     end
     end
     
@@ -132,13 +140,13 @@ if in(ff).sexy == 2 % This is a female
     % U=Urethane, C=Chronic
     if ~isempty(msolosyls{sylstrdx})
         Fwhichmalesolosyl = Fwhichmalesolosyl +1; % Again, we are using a different indexing for solo data
-        [FSHU(Fwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, Aspon(:,sylstrdx));
-        [FSHC(Fwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, Cspon(:,sylstrdx));
+        [FSHU(Fwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins);
+        [FSHC(Fwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins);
     end
     if ~isempty(fsolosyls{sylstrdx})
         Fwhichfemalesolosyl = Fwhichfemalesolosyl +1;
-        [FSAU(Fwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, Aspon(:,sylstrdx));
-        [FSAC(Fwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, Cspon(:,sylstrdx));
+        [FSAU(Fwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins);
+        [FSAC(Fwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins);
     end
     
 end % End of female
@@ -280,15 +288,15 @@ fprintf('The mean and std for M2F ISI is  %1.3f %1.3f \n', mean(M2FISI), std(M2F
 fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2MISI));
 
 %% Embedded Concatonation function
-function out = concatHist(in, len)
+function out = concatHist(xin, len)
 
     dat(1,:) = zeros(1,len);
     
-    for qq = 1:length(in)
+    for qq = 1:length(xin)
         
-        for ww = 1:length(in(qq).spkcnt(1,:))
-            if sum(in(qq).spkcnt(:,ww)) > 1
-            dat(end+1,:) = in(qq).spkcnt(:,ww) / max(in(qq).spkcnt(:,ww));
+        for ww = 1:length(xin(qq).spkcnt(1,:))
+            if sum(xin(qq).spkcnt(:,ww)) > 1
+            dat(end+1,:) = xin(qq).spkcnt(:,ww) / max(xin(qq).spkcnt(:,ww));
             end
         end
     end
@@ -302,11 +310,10 @@ end
 
 
 %% Embedded histogram function
-function [spikearray, bintims] = wPhaseHist(spiketimes, tims, wid, SPON)
+function [spikearray, bintims] = wPhaseHist(spiketimes, tims, wid, numbin)
 
         % wid is window in msec before and after start of the syllable at the end of the focal ISI.
-        numbins = 5; % How many bins before and after the onset of our focal syllable?
-        binwid = wid / numbins; % Width of each bin
+        binwid = wid / numbin; % Width of each bin
         
         % Specify the OVERLAP percentage here
         overlap = 75; % Overlap is 80% of previous window
