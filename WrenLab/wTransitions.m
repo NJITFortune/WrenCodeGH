@@ -324,7 +324,7 @@ function out = concatHist(xin, len)
         
         for ww = 1:length(xin(qq).spkcnt(1,:))
             if sum(xin(qq).spkcnt(:,ww)) > 1
-            dat(end+1,:) = xin(qq).spkcnt(:,ww) / max(xin(qq).spkcnt(:,ww));
+                dat(end+1,:) = xin(qq).spkcnt(:,ww) / max(xin(qq).spkcnt(:,ww));
             end
         end
     end
