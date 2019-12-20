@@ -309,7 +309,7 @@ function [spikearray, bintims] = wPhaseHist(spiketimes, tims, wid)
         binwid = wid / numbins; % Width of each bin
         
         % Specify the OVERLAP percentage here
-        overlap = 75; % Overlap is 80% of previous window
+        overlap = 50; % Overlap is 80% of previous window
         
         overlap = 1-(overlap/100); % Converts to step size for advancing the window
         
