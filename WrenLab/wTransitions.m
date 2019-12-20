@@ -142,14 +142,18 @@ if in(ff).sexy == 2 % This is a female
     Fwhichduet = Fwhichduet + 1;
     if ~isempty(in(ff).Aspikes)
     [FAHU(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins);
+        FAHU(Fwhichduet).spon = (FAHU(Fwhichduet).spkcnt * 0) + (AcuteSpon(ff) * windur);
     [FHAU(Fwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins);
+        FHAU(Fwhichduet).spon = (FHAU(Fwhichduet).spkcnt * 0) + (AcuteSpon(ff) * windur);
     end
     if ~isempty(in(ff).Cspikes)
     if ~isempty(currF2Msyltim)
         [FAHC(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins);
+        FAHC(Fwhichduet).spon = (FAHC(Fwhichduet).spkcnt * 0) + (ChronSpon(ff) * windur);
     end
     if ~isempty(currM2Fsyltim)
         [FHAC(Fwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins);
+        FHAC(Fwhichduet).spon = (FHAC(Fwhichduet).spkcnt * 0) + (ChronSpon(ff) * windur);
     end
     end
     
@@ -161,12 +165,16 @@ if in(ff).sexy == 2 % This is a female
     if ~isempty(msolosyls{sylstrdx})
         Fwhichmalesolosyl = Fwhichmalesolosyl +1; % Again, we are using a different indexing for solo data
         [FSHU(Fwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins);
+            FSHU(Fwhichmalesolosyl).spon = (FSHU(Fwhichmalesolosyl).spkcnt * 0) + (AcuteSpon(ff) * windur);
         [FSHC(Fwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins);
+            FSHC(Fwhichmalesolosyl).spon = (FSHC(Fwhichmalesolosyl).spkcnt * 0) + (ChronSpon(ff) * windur);
     end
     if ~isempty(fsolosyls{sylstrdx})
         Fwhichfemalesolosyl = Fwhichfemalesolosyl +1;
         [FSAU(Fwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins);
+            FSAU(Fwhichfemalesolosyl).spon = (FSAU(Fwhichfemalesolosyl).spkcnt * 0) + (AcuteSpon(ff) * windur);
         [FSAC(Fwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins);
+            FSAC(Fwhichfemalesolosyl).spon = (FSAC(Fwhichfemalesolosyl).spkcnt * 0) + (ChronSpon(ff) * windur);
     end
     
 end % End of female
