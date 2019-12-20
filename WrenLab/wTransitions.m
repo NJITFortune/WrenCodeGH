@@ -18,7 +18,7 @@ if nargin < 2; widow = 0.500; end % 500 msec looks pretty good with numbins 10 a
 
 % Some variables because I am not a talented coder.
     Fsyldur = []; Msyldur = [];  % A side calculation - durations of syllables
-    M2FISI = []; F2MISI = []; % Another side calculation - durations of InterSyllable Intervals
+    M2FISI = []; F2MISI = [];    % Another side calculation - durations of InterSyllable Intervals
     
     % Keeping track of how many solo syllables that have produced data
     Mwhichmalesolosyl = 0; Mwhichfemalesolosyl = 0; 
@@ -38,9 +38,9 @@ for ff = birdlist
     % These will have the list of sylable start times for the current song
     currM2Fsyltim = []; currF2Msyltim = []; currMsolosyltims = []; currFsolosyltims = [];
     
-    sylstrdx = ceil(ff/2); % Apologies, but the syllable indices from wData.m 
-                               % each refer to two entries in w. This
-                               % just resolves that indexing issue.
+    sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m 
+                           % each refer to two entries in w. This
+                           % just resolves that indexing issue.
     
     % Find male to female syllable transitions
     for t = 1:length(mduetsyls{sylstrdx}) % For every male syllable
@@ -84,7 +84,7 @@ if in(ff).sexy == 1 % This is a male
     % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
     if ~isempty(mduetsyls{sylstrdx})    
     Mwhichduet = Mwhichduet + 1;
-    [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow);
+    [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, sylstrdx);
     [MAHC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow);
     [MHAU(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow);
     [MHAC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow);
