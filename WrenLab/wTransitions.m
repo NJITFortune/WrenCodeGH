@@ -273,21 +273,21 @@ linkaxes(axx, 'xy'); figure(2); subplot(222); ylim([0 1]);
 
 %% Put everything into the output structures
 
-M(1).MAHC = MAHC; M(1).MAHC = MAHU;
-M(1).MHAC = MHAC; M(1).MHAC = MHAU;
+M(1).MAHC = MAHC; M(1).MAHU = MAHU;
+M(1).MHAC = MHAC; M(1).MHAU = MHAU;
 M(1).MSAC = MSAC; M(1).MSAU = MSAU;
 M(1).MSHC = MSHC; M(1).MSHU = MSHU;
-M(1).msMAHC = msMAHC; M(1).msMAHC = msMAHU;
-M(1).msMHAC = msMHAC; M(1).msMHAC = msMHAU;
+M(1).msMAHC = msMAHC; M(1).msMAHU = msMAHU;
+M(1).msMHAC = msMHAC; M(1).msMHAU = msMHAU;
 M(1).msMSAC = msMSAC; M(1).msMSAU = msMSAU;
 M(1).msMSHC = msMSHC; M(1).msMSHU = msMSHU;
 
-F(1).FAHC = FAHC; F(1).FAHC = FAHU;
-F(1).FHAC = FHAC; F(1).FHAC = FHAU;
+F(1).FAHC = FAHC; F(1).FAHU = FAHU;
+F(1).FHAC = FHAC; F(1).FHAU = FHAU;
 F(1).FSAC = FSAC; F(1).FSAU = FSAU;
 F(1).FSHC = FSHC; F(1).FSHU = FSHU;
-F(1).msFAHC = msFAHC; F(1).msFAHC = msFAHU;
-F(1).msFHAC = msFHAC; F(1).msFHAC = msFHAU;
+F(1).msFAHC = msFAHC; F(1).msFAHU = msFAHU;
+F(1).msFHAC = msFHAC; F(1).msFHAU = msFHAU;
 F(1).msFSAC = msFSAC; F(1).msFSAU = msFSAU;
 F(1).msFSHC = msFSHC; F(1).msFSHU = msFSHU;
 
