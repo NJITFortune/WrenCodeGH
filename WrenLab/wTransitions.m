@@ -44,14 +44,17 @@ sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m
     currM2Fsyltim = []; currF2Msyltim = []; currMsolosyltims = []; currFsolosyltims = [];
 
     
-% Calculate spontaneous rate
+% Calculate spontaneous rates
 
     ChronSpon(ff) = 0;
     for z = 1:length(in(ff).Cspikes)
-        ChronSpon(ff) = ChronSpon(ff) + length(in(ff).Cspikes{z} > Cspon( 
+        ChronSpon(ff) = ChronSpon(ff) + length(in(ff).Cspikes{z} > Cspon(1,sylstrdx) & in(ff).Cspikes{z} < Cspon(2,sylstrdx));
     end
-    
-    
+    AcuteSpon(ff) = 0;
+    for z = 1:length(in(ff).Cspikes)
+        AcuteSpon(ff) = AcuteSpon(ff) + length(in(ff).Aspikes{z} > Aspon(1,sylstrdx) & in(ff).Aspikes{z} < Aspon(2,sylstrdx));
+    end
+        
 
 % Get all male-female and female-male duet syllable transitions
         
@@ -98,6 +101,7 @@ if in(ff).sexy == 1 % This is a male
     if ~isempty(mduetsyls{sylstrdx})    
     Mwhichduet = Mwhichduet + 1;
     [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins);
+        MAHU(Mwhichduet).RS = (MAHU(Mwhichduet).spkcnt - (AcuteSpon(ff) * windur)) / (AcuteSpon(ff) * windur)
     [MAHC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins);
     [MHAU(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins);
     [MHAC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins);
