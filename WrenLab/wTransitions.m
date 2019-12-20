@@ -120,12 +120,16 @@ if in(ff).sexy == 1 % This is a male
     if ~isempty(msolosyls{sylstrdx})
         Mwhichmalesolosyl = Mwhichmalesolosyl+1; % We are using a different indexing here
         [MSAU(Mwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins);
+            MSAU(Mwhichmalesolosyl).spon = (MSAU(Mwhichmalesolosyl).spkcnt * 0) + (AcuteSpon(ff) * windur);
         [MSAC(Mwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins);
+            MSAC(Mwhichmalesolosyl).spon = (MSAC(Mwhichmalesolosyl).spkcnt * 0) + (ChronSpon(ff) * windur);
     end
     if ~isempty(fsolosyls{sylstrdx})
         Mwhichfemalesolosyl = Mwhichfemalesolosyl +1;
         [MSHU(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins);
+            MSHU(Mwhichfemalesolosyl).spon = (MSHU(Mwhichfemalesolosyl).spkcnt * 0) + (AcuteSpon(ff) * windur);
         [MSHC(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins);
+            MSHC(Mwhichmalesolosyl).spon = (MSHC(Mwhichmalesolosyl).spkcnt * 0) + (ChronSpon(ff) * windur);
     end
 
 end % End of male
