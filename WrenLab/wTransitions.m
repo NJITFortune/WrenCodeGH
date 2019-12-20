@@ -318,20 +318,31 @@ fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2M
 %% Embedded Concatonation function
 function out = concatHist(xin, len)
 
+    rw(1,:) = zeros(1,len);
     dat(1,:) = zeros(1,len);
+    spont(1,:) = zeros(1,len);
     
     for qq = 1:length(xin)
         
         for ww = 1:length(xin(qq).spkcnt(1,:))
             if sum(xin(qq).spkcnt(:,ww)) > 1
-                dat(end+1,:) = xin(qq).spkcnt(:,ww) / max(xin(qq).spkcnt(:,ww));
+                dat(end+1,:) = xin(qq).spkcnt(:,ww) / max(xin(qq).spkcnt(:,ww)); % Each normalized (yuck)
+                rw(end+1,:) = xin(qq).spkcnt(:,ww); % Just the raw counts, please.
+                spont(end+1,:) = xin(qq).spon(:,ww); % The spontaneous rate - should be flat every time!
             end
         end
     end
     
-    out.mean = sum(dat) / (length(dat(:,1))-1); % Mean normalized data
-    out.std = std(dat);
+    out.mean = sum(dat) / (length(dat(:,1))-1); % Mean normalized data normalized (original plots)
+%    out.std = std(dat); % The standard deviations of the data (but that should be also divided by length, no?)
+    out.std = std(dat) / (length(dat(:,1))-1); % The standard deviations of the data
     out.N = length(dat(:,1));
+    
+    out.respsum = sum(rw);
+    out.sponsum = sum(spont);
+    out.RSN = (out.respsum - out.sponsum) ./ out.sponsum;
+    out.RS = out.respsum - out.sponsum; 
+    
     clear dat;
     
 end
