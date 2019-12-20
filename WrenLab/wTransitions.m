@@ -95,13 +95,13 @@ if in(ff).sexy == 1 % This is a male
     % U=Urethane, C=Chronic
     if ~isempty(msolosyls{sylstrdx})
         Mwhichmalesolosyl = Mwhichmalesolosyl+1; % We are using a different indexing here
-        [MSAU(Mwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow);
-        [MSAC(Mwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow);
+        [MSAU(Mwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, Aspon(:,sylstrdx));
+        [MSAC(Mwhichmalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, Cspon(:,sylstrdx));
     end
     if ~isempty(fsolosyls{sylstrdx})
         Mwhichfemalesolosyl = Mwhichfemalesolosyl +1;
-        [MSHU(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow);
-        [MSHC(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow);
+        [MSHU(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, Aspon(:,sylstrdx));
+        [MSHC(Mwhichfemalesolosyl).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, Cspon(:,sylstrdx));
     end
 
 end % End of male
@@ -113,8 +113,8 @@ if in(ff).sexy == 2 % This is a female
     if ~isempty(fduetsyls{sylstrdx})    
     Fwhichduet = Fwhichduet + 1;
     if ~isempty(in(ff).Aspikes)
-    [FAHU(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow);
-    [FHAU(Fwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow);
+    [FAHU(Fwhichduet).spkcnt, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, Aspon(:,sylstrdx));
+    [FHAU(Fwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, Aspon(:,sylstrdx));
     end
     if ~isempty(in(ff).Cspikes)
     if ~isempty(currF2Msyltim)
