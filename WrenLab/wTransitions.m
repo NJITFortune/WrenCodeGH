@@ -38,7 +38,7 @@ for ff = birdlist
     
     
 % Get the Chronic and Acute spontaneous firing rate in spikes per second
-    spon(ff)
+%    spon(ff)
     
         
 % Get all male-female and female-male duet syllable transitions
