@@ -36,20 +36,25 @@ birdlist = 1:length(in);
 for ff = birdlist
     
     
-    
-% Get the Chronic and Acute spontaneous firing rate in spikes per second
-%    spon(ff)
-    
-        
-% Get all male-female and female-male duet syllable transitions
-
-    % These will have the list of sylable start times for the current song
-    currM2Fsyltim = []; currF2Msyltim = []; currMsolosyltims = []; currFsolosyltims = [];
-    
-    sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m 
+sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m 
                            % each refer to two entries in w. This
                            % just resolves that indexing issue.
     
+% These will have the list of sylable start times for the current song
+    currM2Fsyltim = []; currF2Msyltim = []; currMsolosyltims = []; currFsolosyltims = [];
+
+    
+% Calculate spontaneous rate
+
+    ChronSpon(ff) = 0;
+    for z = 1:length(w(in).
+        
+    end
+    
+    
+
+% Get all male-female and female-male duet syllable transitions
+        
     % Find male to female syllable transitions
     for t = 1:length(mduetsyls{sylstrdx}) % For every male syllable
        if ~isempty(find(fduetsyls{sylstrdx} == mduetsyls{sylstrdx}(t)+1, 1)) % If the next syllable is female
