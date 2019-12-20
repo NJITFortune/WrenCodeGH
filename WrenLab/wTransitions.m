@@ -51,7 +51,7 @@ sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m
         ChronSpon(ff) = ChronSpon(ff) + length(in(ff).Cspikes{z} > Cspon(1,sylstrdx) & in(ff).Cspikes{z} < Cspon(2,sylstrdx));
     end
     AcuteSpon(ff) = 0;
-    for z = 1:length(in(ff).Cspikes)
+    for z = 1:length(in(ff).Aspikes)
         AcuteSpon(ff) = AcuteSpon(ff) + length(in(ff).Aspikes{z} > Aspon(1,sylstrdx) & in(ff).Aspikes{z} < Aspon(2,sylstrdx));
     end
         
