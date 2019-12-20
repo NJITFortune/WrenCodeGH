@@ -103,11 +103,16 @@ if in(ff).sexy == 1 % This is a male
     Mwhichduet = Mwhichduet + 1;
     [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins);
         if AcuteSpon(ff) ~= 0
-        MAHU(Mwhichduet).RS = ((MAHU(Mwhichduet).spkcnt/windur) - (AcuteSpon(ff) * windur)) / (AcuteSpon(ff) * windur)
+        MAHU(Mwhichduet).RS = ((MAHU(Mwhichduet).spkcnt/windur) - (AcuteSpon(ff) * windur)) / (AcuteSpon(ff) * windur);
         end        
     [MAHC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins);
+        MAHC(Mwhichduet).RS = ((MAHC(Mwhichduet).spkcnt/windur) - (ChronSpon(ff) * windur)) / (ChronSpon(ff) * windur);
     [MHAU(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins);
+        if AcuteSpon(ff) ~= 0
+        MHAU(Mwhichduet).RS = ((MHAU(Mwhichduet).spkcnt/windur) - (AcuteSpon(ff) * windur)) / (AcuteSpon(ff) * windur);
+        end        
     [MHAC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins);
+        MHAC(Mwhichduet).RS = ((MHAC(Mwhichduet).spkcnt/windur) - (ChronSpon(ff) * windur)) / (ChronSpon(ff) * windur);
     
     bins4plot = (M(Mwhichduet).bintims(2:end) + M(Mwhichduet).bintims(1:end-1))/2; % Time bins adjusted for proper plotting
     end
