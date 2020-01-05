@@ -8,11 +8,10 @@ function [M, F] = wTransitions(in)
 
 %% Preparations
 % Default window width for histogram if user didn't specify window
-    widow = 0.800; % 300 msec looks pretty good with numbins 10 and overlap 50
+    widow = 0.250; % 300 msec looks pretty good with numbins 10 and overlap 50
     numbins = 5; % How many bins before and after the onset of our focal syllable?
     
     windur = widow / numbins;
-
 
 %% Load the list of Chronic singing data with syllable indices and locations for spontaneous activity
 
@@ -34,23 +33,25 @@ birdlist = 1:length(in);
 %% For each bird in our list
 
 for ff = birdlist
-    
-    
-sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m 
+        
+    sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m 
                            % each refer to two entries in w. This
-                           % just resolves that indexing issue.
+                           % just resolves that indexing issue. This is the
+                           % current cut data.
     
 % These will have the list of sylable start times for the current song
-    currM2Fsyltim = []; currF2Msyltim = []; currMsolosyltims = []; currFsolosyltims = [];
+    currM2Fsyltim = []; 
+    currF2Msyltim = []; 
+    currMsolosyltims = []; 
+    currFsolosyltims = [];
 
-    
 % Calculate spontaneous rates
 
     ChronSpon(ff) = 0;
     for z = 1:length(in(ff).Cspikes)
         ChronSpon(ff) = ChronSpon(ff) + length(in(ff).Cspikes{z} > Cspon(1,sylstrdx) & in(ff).Cspikes{z} < Cspon(2,sylstrdx));
     end
-        ChronSpon(ff) = ChronSpon(ff) / length(in(ff).Cspikes); % Divide by number of reps
+        ChronSpon(ff) = ChronSpon(ff) / length(in(ff).Cspikes); % Divide by number of reps (always 4 for Chronic)
         ChronSpon(ff) = ChronSpon(ff) / (Cspon(2,sylstrdx) - Cspon(1,sylstrdx)); % Divide by duration 
         
     AcuteSpon(ff) = 0;
@@ -375,7 +376,6 @@ function out = concatHist(xin, len)
     clear dat;
     
 end
-
 
 %% Embedded histogram function
 function [spikearray, bintims] = wPhaseHist(spiketimes, tims, wid, numbin)
