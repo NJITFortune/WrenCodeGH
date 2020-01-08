@@ -249,6 +249,12 @@ hold on; title('Hetero Norm RS');
 [stts.f.SvsDNAuto.H, stts.f.SvsDNAuto.P, stts.f.SvsDNAuto.CI, stts.f.SvsDNAuto.stats]  = ttest2(sumdat.fSoloAuto.rsNorm, sumdat.fDuetAuto.rsNorm, 'vartype', 'unequal');
 [stts.f.SvsDRAuto.H, stts.f.SvsDRAuto.P, stts.f.SvsDRAuto.CI, stts.f.SvsDRAuto.stats]  = ttest2(sumdat.fSoloAuto.rsRaw, sumdat.fDuetAuto.rsRaw, 'vartype', 'unequal');
 
+[stts.m.SvsDNAuto.H, stts.m.SvsDNAuto.P, stts.m.SvsDNAuto.CI, stts.m.SvsDNAuto.stats]  = ttest2(sumdat.mSoloAuto.rsNorm, sumdat.mDuetAuto.rsNorm, 'vartype', 'unequal');
+[stts.m.SvsDRAuto.H, stts.m.SvsDRAuto.P, stts.m.SvsDRAuto.CI, stts.m.SvsDRAuto.stats]  = ttest2(sumdat.mSoloAuto.rsRaw, sumdat.mDuetAuto.rsRaw, 'vartype', 'unequal');
+[stts.f.SvsDNAuto.H, stts.f.SvsDNAuto.P, stts.f.SvsDNAuto.CI, stts.f.SvsDNAuto.stats]  = ttest2(sumdat.fSoloAuto.rsNorm, sumdat.fDuetAuto.rsNorm, 'vartype', 'unequal');
+[stts.f.SvsDRAuto.H, stts.f.SvsDRAuto.P, stts.f.SvsDRAuto.CI, stts.f.SvsDRAuto.stats]  = ttest2(sumdat.fSoloAuto.rsRaw, sumdat.fDuetAuto.rsRaw, 'vartype', 'unequal');
+
+
 % Heterogenous duet RS significant from 0?
 
     stts.m.dNHetero.mean = mean(sumdat.mDuetHetero.rsNorm);
