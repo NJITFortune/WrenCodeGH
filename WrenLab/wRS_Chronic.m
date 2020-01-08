@@ -1,34 +1,42 @@
 function [out, sumdat, stts] = wRS_Chronic(in, padding)
-% Usage: [out, sumdat, stts] = wRS_Chronic(in, padding)
+% Usage: [out, sumdat, stts] = wRS_Chronic(w, padding)
 % Calculates response strength to solo and duet syllables.
 % Load the Chronic data structure first:
-% load ChronicCompleat2018d.mat (Current as of 4-Jan-2019)
-
-% 'pad' is a critical variable - it is the shift in the window around the
+% load ChronicCompleat2019f.mat (Current as of 8-Jan-2020)
+% w is the structure from that file with all of the data
+%
+% 'padding' is a critical variable - it is the shift in the window around the
 % clicked boundaries of the syllables for the calculation of RS. 
 % The boundaries of each syllable are used for this analysis. This is
-% inherently problematic as we expect pre-motor activity in awake animals to occur PRIOR to
-% the sound and auditory activity in urethane-anesthetized animals to occur AFTER the sound.
-% We are comfortable with using a value of '0' it is a rather unbiased. Change
-% the value of padding in seconds (e.g. 0.020 or -0.030) to look at the effects on the results.
+% inherently problematic as we expect pre-motor activity in awake animals 
+% to occur PRIOR to the sound and auditory feedback to occur AFTER the sound.
+% We are comfortable with using a value of '0' it is a rather unbiased, which
+% is the default. Change the value of padding in seconds (e.g. 0.020 or 0.150) 
+% to move the premotor earlier and the auditory feedback windows later. 
+%
+% This relies on the function wData.m. 
 
 pad = 0.000; 
-trunc = 0.000;
 
 % The user can specify the padding via an argin for convenience.
-if nargin == 2; pad = padding(1); trunc = padding(2); end
+if nargin == 2; pad = padding; end
 
 
 % Initializing variables
+
+% Normalized and Raw response strengths for DUET syllables: Female and Male, Autogenous and Heterogenous 
 sumdat.fDuetAuto.rsNorm = []; sumdat.fDuetAuto.rsRaw = [];
 sumdat.mDuetAuto.rsNorm = []; sumdat.mDuetAuto.rsRaw = [];
 sumdat.fDuetHetero.rsNorm = []; sumdat.fDuetHetero.rsRaw = [];
 sumdat.mDuetHetero.rsNorm = []; sumdat.mDuetHetero.rsRaw = [];
+
+% Normalized and Raw response strengths for SOLO syllables: Female and Male, Autogenous and Heterogenous 
 sumdat.fSoloAuto.rsNorm = []; sumdat.fSoloAuto.rsRaw = [];
 sumdat.mSoloAuto.rsNorm = []; sumdat.mSoloAuto.rsRaw = [];
 sumdat.fSoloHetero.rsNorm = []; sumdat.fSoloHetero.rsRaw = [];
 sumdat.mSoloHetero.rsNorm = []; sumdat.mSoloHetero.rsRaw = [];
 
+% Spike rates (spikes per second) for solo and duet syllables, Female and Male, Autogenous and Heterogenous 
 sumdat.mSoloHetero.SPS = []; sumdat.fSoloHetero.SPS = [];
 sumdat.mDuetHetero.SPS = []; sumdat.fDuetHetero.SPS = [];
 sumdat.mSoloAuto.SPS = []; sumdat.fSoloAuto.SPS = [];
