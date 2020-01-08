@@ -165,7 +165,7 @@ hold on; title('Auto Norm RS');
     errorbar([3 4], meanNorm(3:4), s(3:4), 'm' );
         for p=1:length(sumdat.fDuetAuto.rsNorm); plot(3.1, sumdat.fDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloAuto.rsNorm); plot(4.1, sumdat.fSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-    ylim([-10 100]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    ylim([-1 100]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','D',' ','S',' ','D',' ','S',' '})
     
 % subplot(133); hold on; title('Auto Spikes/Second');
