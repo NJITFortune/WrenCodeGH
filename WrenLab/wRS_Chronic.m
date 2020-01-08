@@ -13,7 +13,7 @@ function [out, sumdat, stts] = wRS_Chronic(in, padding)
 % We are comfortable with using a value of '0' it is a rather unbiased. Change
 % the value of padding in seconds (e.g. 0.020 or -0.030) to look at the effects on the results.
 
-pad = -0.040; 
+pad = -0.060; 
 
 % The user can specify the padding via an argin for convenience.
 if nargin == 2; pad = padding; end
