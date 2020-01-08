@@ -143,27 +143,27 @@ end % End of calculations
     
 figure(1); clf; % RAW AUTOGENOUS PLOTS 
 hold on; title('Auto Raw RS'); 
-    plot([1 2], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
-    errorbar([1 2], meanRaw(1:2), sraw(1:2), 'b');
-        for p=1:length(sumdat.mDuetAuto.rsRaw); plot(1.1, sumdat.mDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.mSoloAuto.rsRaw); plot(2.1, sumdat.mSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-    plot([3 4], meanRaw(3:4), 'm.', 'MarkerSize', 16); 
-    errorbar([3 4], meanRaw(3:4), sraw(3:4), 'm' );
-        for p=1:length(sumdat.fDuetAuto.rsRaw); plot(3.1, sumdat.fDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.fSoloAuto.rsRaw); plot(4.1, sumdat.fSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+    plot([2 1], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
+    errorbar([2 1], meanRaw(1:2), sraw(1:2), 'b');
+        for p=1:length(sumdat.mDuetAuto.rsRaw); plot(2.1, sumdat.mDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloAuto.rsRaw); plot(1.1, sumdat.mSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+    plot([4 3], meanRaw(3:4), 'm.', 'MarkerSize', 16); 
+    errorbar([4 3], meanRaw(3:4), sraw(3:4), 'm' );
+        for p=1:length(sumdat.fDuetAuto.rsRaw); plot(4.1, sumdat.fDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.fSoloAuto.rsRaw); plot(3.1, sumdat.fSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
     ylim([-10 100]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','D',' ','S',' ','D',' ','S',' '})
     
 figure(2); clf; % NORM AUTOGENOUS PLOTS    
 hold on; title('Auto Norm RS'); 
-    plot([1 2], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
-    errorbar([1 2], meanNorm(1:2), s(1:2), 'b');
-        for p=1:length(sumdat.mDuetAuto.rsNorm); plot(1.1, sumdat.mDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.mSoloAuto.rsNorm); plot(2.1, sumdat.mSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-    plot([3 4], meanNorm(3:4), 'm.', 'MarkerSize', 16); 
-    errorbar([3 4], meanNorm(3:4), s(3:4), 'm' );
-        for p=1:length(sumdat.fDuetAuto.rsNorm); plot(3.1, sumdat.fDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.fSoloAuto.rsNorm); plot(4.1, sumdat.fSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
+    plot([2 1], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
+    errorbar([2 1], meanNorm(1:2), s(1:2), 'b');
+        for p=1:length(sumdat.mDuetAuto.rsNorm); plot(2.1, sumdat.mDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloAuto.rsNorm); plot(1.1, sumdat.mSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
+    plot([4 3], meanNorm(3:4), 'm.', 'MarkerSize', 16); 
+    errorbar([4 3], meanNorm(3:4), s(3:4), 'm' );
+        for p=1:length(sumdat.fDuetAuto.rsNorm); plot(4.1, sumdat.fDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.fSoloAuto.rsNorm); plot(3.1, sumdat.fSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
     ylim([-2 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','D',' ','S',' ','D',' ','S',' '})
     
@@ -192,29 +192,29 @@ hold on; title('Auto Norm RS');
     
 figure(3); clf; % RAW HETEROGENOUS PLOTS
 hold on; title('Hetero Raw RS');
-    plot([1 2], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
-    errorbar([1 2], meanRaw(1:2), sraw(1:2), 'b' );
-        for p=1:length(sumdat.mDuetHetero.rsRaw); plot(1.1, sumdat.mDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.mSoloHetero.rsRaw); plot(2.1, sumdat.mSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
-    plot([3 4], meanRaw(3:4), 'm.', 'MarkerSize', 16); 
-    errorbar([3 4], meanRaw(3:4), sraw(3:4), 'm' );
-        for p=1:length(sumdat.fDuetHetero.rsRaw); plot(3.1, sumdat.fDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.fSoloHetero.rsRaw); plot(4.1, sumdat.fSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+    plot([2 1], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
+    errorbar([2 1], meanRaw(1:2), sraw(1:2), 'b' );
+        for p=1:length(sumdat.mDuetHetero.rsRaw); plot(2.1, sumdat.mDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloHetero.rsRaw); plot(1.1, sumdat.mSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+    plot([4 3], meanRaw(3:4), 'm.', 'MarkerSize', 16); 
+    errorbar([4 3], meanRaw(3:4), sraw(3:4), 'm' );
+        for p=1:length(sumdat.fDuetHetero.rsRaw); plot(4.1, sumdat.fDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.fSoloHetero.rsRaw); plot(3.1, sumdat.fSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
     ylim([-10 30]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
-    xticklabels({' ','D',' ','S',' ','D',' ','S',' '})
+    xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
 
 figure(4); clf; % NORM HETEROGENOUS PLOTS
 hold on; title('Hetero Norm RS');
-    plot([1 2], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
-    errorbar([1 2], meanNorm(1:2), s(1:2), 'b' );
-        for p=1:length(sumdat.mDuetHetero.rsNorm); plot(1.1, sumdat.mDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.mSoloHetero.rsNorm); plot(2.1, sumdat.mSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
-    plot([3 4], meanNorm(3:4), 'm.', 'MarkerSize', 16); 
-    errorbar([3 4], meanNorm(3:4), s(3:4), 'm' );
-        for p=1:length(sumdat.fDuetHetero.rsNorm); plot(3.1, sumdat.fDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.fSoloHetero.rsNorm); plot(4.1, sumdat.fSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
+    plot([2 1], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
+    errorbar([2 1], meanNorm(1:2), s(1:2), 'b' );
+        for p=1:length(sumdat.mDuetHetero.rsNorm); plot(2.1, sumdat.mDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloHetero.rsNorm); plot(1.1, sumdat.mSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
+    plot([4 3], meanNorm(3:4), 'm.', 'MarkerSize', 16); 
+    errorbar([4 3], meanNorm(3:4), s(3:4), 'm' );
+        for p=1:length(sumdat.fDuetHetero.rsNorm); plot(4.1, sumdat.fDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.fSoloHetero.rsNorm); plot(3.1, sumdat.fSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
     ylim([-5 10]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
-    xticklabels({' ','D',' ','S',' ','D',' ','S',' '})
+    xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
     
     
 %% Compute stats     
