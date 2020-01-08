@@ -221,7 +221,7 @@ hold on; title('Hetero Norm RS');
         for p=1:length(sumdat.mDuetHetero.rsNorm); plot(1.1, sumdat.mDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.mSoloHetero.rsNorm); plot(2.1, sumdat.mSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
     plot([3 4], meanNorm(3:4), 'm.', 'MarkerSize', 16); 
-    errorbar([3 4], meanNorm(3:4), sraw(3:4), 'm' );
+    errorbar([3 4], meanNorm(3:4), s(3:4), 'm' );
         for p=1:length(sumdat.fDuetHetero.rsNorm); plot(3.1, sumdat.fDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloHetero.rsNorm); plot(4.1, sumdat.fSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
     ylim([-2 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
