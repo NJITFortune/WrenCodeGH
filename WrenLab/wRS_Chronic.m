@@ -249,10 +249,10 @@ hold on; title('Hetero Norm RS');
 % [stts.f.SvsDNAuto.H, stts.f.SvsDNAuto.P, stts.f.SvsDNAuto.CI, stts.f.SvsDNAuto.stats]  = ttest2(sumdat.fSoloAuto.rsNorm, sumdat.fDuetAuto.rsNorm, 'vartype', 'unequal');
 % [stts.f.SvsDRAuto.H, stts.f.SvsDRAuto.P, stts.f.SvsDRAuto.CI, stts.f.SvsDRAuto.stats]  = ttest2(sumdat.fSoloAuto.rsRaw, sumdat.fDuetAuto.rsRaw, 'vartype', 'unequal');
 
-[stts.m.SvsDNAuto.P, stts.m.SvsDNAuto.H, stts.m.SvsDNAuto.stats]  = ranksum(sumdat.mSoloAuto.rsNorm, sumdat.mDuetAuto.rsNorm, 'vartype', 'unequal');
-[stts.m.SvsDRAuto.P, stts.m.SvsDRAuto.H, stts.m.SvsDRAuto.stats]  = ranksum(sumdat.mSoloAuto.rsRaw, sumdat.mDuetAuto.rsRaw, 'vartype', 'unequal');
-[stts.f.SvsDNAuto.P, stts.f.SvsDNAuto.H, stts.f.SvsDNAuto.stats]  = ranksum(sumdat.fSoloAuto.rsNorm, sumdat.fDuetAuto.rsNorm, 'vartype', 'unequal');
-[stts.f.SvsDRAuto.P, stts.f.SvsDRAuto.H, stts.f.SvsDRAuto.stats]  = ranksum(sumdat.fSoloAuto.rsRaw, sumdat.fDuetAuto.rsRaw, 'vartype', 'unequal');
+[stts.m.SvsDNAuto.P, stts.m.SvsDNAuto.H, stts.m.SvsDNAuto.stats]  = ranksum(sumdat.mSoloAuto.rsNorm, sumdat.mDuetAuto.rsNorm);
+[stts.m.SvsDRAuto.P, stts.m.SvsDRAuto.H, stts.m.SvsDRAuto.stats]  = ranksum(sumdat.mSoloAuto.rsRaw, sumdat.mDuetAuto.rsRaw);
+[stts.f.SvsDNAuto.P, stts.f.SvsDNAuto.H, stts.f.SvsDNAuto.stats]  = ranksum(sumdat.fSoloAuto.rsNorm, sumdat.fDuetAuto.rsNorm);
+[stts.f.SvsDRAuto.P, stts.f.SvsDRAuto.H, stts.f.SvsDRAuto.stats]  = ranksum(sumdat.fSoloAuto.rsRaw, sumdat.fDuetAuto.rsRaw);
 
 
 % Heterogenous duet RS significant from 0?
@@ -286,10 +286,10 @@ hold on; title('Hetero Norm RS');
 % [stts.f.SvsDNHetero.H, stts.f.SvsDNHetero.P, stts.f.SvsDNHetero.CI, stts.f.SvsDNHetero.stats]  = ttest2(sumdat.fSoloHetero.rsNorm, sumdat.fDuetHetero.rsNorm, 'vartype', 'unequal');
 % [stts.f.SvsDRHetero.H, stts.f.SvsDRHetero.P, stts.f.SvsDRHetero.CI, stts.f.SvsDRHetero.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.fDuetHetero.rsRaw, 'vartype', 'unequal');
 
-[stts.m.SvsDNHetero.P, stts.m.SvsDNHetero.H, stts.m.SvsDNHetero.stats]  = ranksum(sumdat.mSoloHetero.rsNorm, sumdat.mDuetHetero.rsNorm, 'vartype', 'unequal');
-[stts.m.SvsDRHetero.P, stts.m.SvsDRHetero.H, stts.m.SvsDRHetero.stats]  = ranksum(sumdat.mSoloHetero.rsRaw, sumdat.mDuetHetero.rsRaw, 'vartype', 'unequal');
-[stts.f.SvsDNHetero.P, stts.f.SvsDNHetero.H, stts.f.SvsDNHetero.stats]  = ranksum(sumdat.fSoloHetero.rsNorm, sumdat.fDuetHetero.rsNorm, 'vartype', 'unequal');
-[stts.f.SvsDRHetero.P, stts.f.SvsDRHetero.H, stts.f.SvsDRHetero.stats]  = ranksum(sumdat.fSoloHetero.rsRaw, sumdat.fDuetHetero.rsRaw, 'vartype', 'unequal');
+[stts.m.SvsDNHetero.P, stts.m.SvsDNHetero.H, stts.m.SvsDNHetero.stats]  = ranksum(sumdat.mSoloHetero.rsNorm, sumdat.mDuetHetero.rsNorm);
+[stts.m.SvsDRHetero.P, stts.m.SvsDRHetero.H, stts.m.SvsDRHetero.stats]  = ranksum(sumdat.mSoloHetero.rsRaw, sumdat.mDuetHetero.rsRaw);
+[stts.f.SvsDNHetero.P, stts.f.SvsDNHetero.H, stts.f.SvsDNHetero.stats]  = ranksum(sumdat.fSoloHetero.rsNorm, sumdat.fDuetHetero.rsNorm);
+[stts.f.SvsDRHetero.P, stts.f.SvsDRHetero.H, stts.f.SvsDRHetero.stats]  = ranksum(sumdat.fSoloHetero.rsRaw, sumdat.fDuetHetero.rsRaw);
 
 [MvFHS.H, MvFHS.P, MvFHS.CI, MvFHS.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.mSoloHetero.rsRaw, 'vartype', 'unequal');
 
