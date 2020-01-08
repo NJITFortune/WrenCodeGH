@@ -399,7 +399,7 @@ function qwe = rs(struc, syllabl, spontan, padme)
         sponSPS = sponSpikeCount / (spontan(2) - spontan(1)); % This is spikes per second
         sponSPS = sponSPS/4; % Divide by 4 because we have 4 electrodes
 
-        skinny = 0.000; % This should be set to ZERO!!!  It "skinnies" the trailing edge of the analysis window by the value.
+        skinny = 0.050; % This should be set to ZERO!!!  It "skinnies" the trailing edge of the analysis window by the value.
         %%%%%%%% For "syllable-autogenous" change this to 0.050
     % Loop for each syllable
     
