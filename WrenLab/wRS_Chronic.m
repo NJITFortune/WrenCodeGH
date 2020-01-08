@@ -164,7 +164,7 @@ hold on; title('Auto Norm RS');
     errorbar([4 3], meanNorm(3:4), s(3:4), 'm' );
         for p=1:length(sumdat.fDuetAuto.rsNorm); plot(4.1, sumdat.fDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloAuto.rsNorm); plot(3.1, sumdat.fSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-    ylim([-2 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
     
 %% Plot SENSORY
@@ -213,7 +213,7 @@ hold on; title('Hetero Norm RS');
     errorbar([4 3], meanNorm(3:4), s(3:4), 'm' );
         for p=1:length(sumdat.fDuetHetero.rsNorm); plot(4.1, sumdat.fDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloHetero.rsNorm); plot(3.1, sumdat.fSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
-    ylim([-7 8]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
     
     
