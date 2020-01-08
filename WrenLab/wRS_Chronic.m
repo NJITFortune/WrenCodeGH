@@ -120,6 +120,8 @@ end % End of calculations
 
 %% Plot MOTOR
 
+% For Normalized RS data
+
     meanNorm(1) = mean(sumdat.mDuetAuto.rsNorm); s(1) = std(sumdat.mDuetAuto.rsNorm);
     meanNorm(2) = mean(sumdat.mSoloAuto.rsNorm); s(2) = std(sumdat.mSoloAuto.rsNorm);
     meanNorm(3) = mean(sumdat.fDuetAuto.rsNorm); s(3) = std(sumdat.fDuetAuto.rsNorm);
@@ -132,24 +134,14 @@ end % End of calculations
     meanRaw(3) = mean(sumdat.fDuetAuto.rsRaw); sraw(3) = std(sumdat.fDuetAuto.rsRaw);
     meanRaw(4) = mean(sumdat.fSoloAuto.rsRaw); sraw(4) = std(sumdat.fSoloAuto.rsRaw);
 
-% For raw SPS data
+% For SPS data
     
     meanSPS(1) = mean(sumdat.mDuetAuto.SPS); sps(1) = std(sumdat.mDuetAuto.SPS);
     meanSPS(2) = mean(sumdat.mSoloAuto.SPS); sps(2) = std(sumdat.mSoloAuto.SPS);
     meanSPS(3) = mean(sumdat.fDuetAuto.SPS); sps(3) = std(sumdat.fDuetAuto.SPS);
     meanSPS(4) = mean(sumdat.fSoloAuto.SPS); sps(4) = std(sumdat.fSoloAuto.SPS);
     
-figure(51); clf; % RAW AUTOGENOUS PLOTS 
-%     plot([1 2], meanNorm(1:2), 'bo'); 
-%     errorbar([1 2], meanNorm(1:2), s(1:2), 'b' );
-%         for p=1:length(sumdat.mDuetAuto.rsNorm); plot(1.1, sumdat.mDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.mSoloAuto.rsNorm); plot(2.1, sumdat.mSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-%     plot([3 4], meanNorm(3:4), 'mo'); 
-%     errorbar([3 4], meanNorm(3:4), s(3:4), 'm' );
-%         for p=1:length(sumdat.fDuetAuto.rsNorm); plot(3.1, sumdat.fDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.fSoloAuto.rsNorm); plot(4.1, sumdat.fSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-%     ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
-
+figure(1); clf; % RAW AUTOGENOUS PLOTS 
 hold on; title('Auto Raw RS'); 
     plot([1 2], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
     errorbar([1 2], meanRaw(1:2), sraw(1:2), 'b');
@@ -162,7 +154,7 @@ hold on; title('Auto Raw RS');
     ylim([-10 100]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','D',' ','S',' ','D',' ','S',' '})
     
-figure(52); clf; % NORM AUTOGENOUS PLOTS    
+figure(2); clf; % NORM AUTOGENOUS PLOTS    
 hold on; title('Auto Norm RS'); 
     plot([1 2], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
     errorbar([1 2], meanNorm(1:2), s(1:2), 'b');
@@ -175,19 +167,9 @@ hold on; title('Auto Norm RS');
     ylim([-2 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','D',' ','S',' ','D',' ','S',' '})
     
-% subplot(133); hold on; title('Auto Spikes/Second');
-%     plot([1 2], meanSPS(1:2), 'bo'); 
-%     errorbar([1 2], meanSPS(1:2), sps(1:2), 'b' );
-%         for p=1:length(sumdat.mDuetAuto.SPS); plot(1.1, sumdat.mDuetAuto.SPS(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.mSoloAuto.SPS); plot(2.1, sumdat.mSoloAuto.SPS(p), 'k.', 'MarkerSize', 8); end
-%     plot([3 4], meanSPS(3:4), 'mo'); 
-%     errorbar([3 4], meanSPS(3:4), sps(3:4), 'm' );
-%         for p=1:length(sumdat.fDuetAuto.SPS); plot(3.1, sumdat.fDuetAuto.SPS(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.fSoloAuto.SPS); plot(4.1, sumdat.fSoloAuto.SPS(p), 'k.', 'MarkerSize', 8); end
-%     ylim([0 100]); xlim([0.5 4.5]); 
-
-    
 %% Plot SENSORY
+
+% For Normalized RS data
 
     meanNorm(1) = mean(sumdat.mDuetHetero.rsNorm); s(1) = std(sumdat.mDuetHetero.rsNorm);
     meanNorm(2) = mean(sumdat.mSoloHetero.rsNorm); s(2) = std(sumdat.mSoloHetero.rsNorm);
@@ -201,15 +183,14 @@ hold on; title('Auto Norm RS');
     meanRaw(3) = mean(sumdat.fDuetHetero.rsRaw); sraw(3) = std(sumdat.fDuetHetero.rsRaw);
     meanRaw(4) = mean(sumdat.fSoloHetero.rsRaw); sraw(4) = std(sumdat.fSoloHetero.rsRaw);
 
-% For raw SPS data
+% For SPS data
     
     meanSPS(1) = mean(sumdat.mDuetHetero.SPS); sps(1) = std(sumdat.mDuetHetero.SPS);
     meanSPS(2) = mean(sumdat.mSoloHetero.SPS); sps(2) = std(sumdat.mSoloHetero.SPS);
     meanSPS(3) = mean(sumdat.fDuetHetero.SPS); sps(3) = std(sumdat.fDuetHetero.SPS);
     meanSPS(4) = mean(sumdat.fSoloHetero.SPS); sps(4) = std(sumdat.fSoloHetero.SPS);
     
- 
-figure(53); clf; % RAW HETEROGENOUS PLOTS
+figure(3); clf; % RAW HETEROGENOUS PLOTS
 hold on; title('Hetero Raw RS');
     plot([1 2], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
     errorbar([1 2], meanRaw(1:2), sraw(1:2), 'b' );
@@ -222,7 +203,7 @@ hold on; title('Hetero Raw RS');
     ylim([-10 50]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','D',' ','S',' ','D',' ','S',' '})
 
-figure(54); clf; % NORM HETEROGENOUS PLOTS
+figure(4); clf; % NORM HETEROGENOUS PLOTS
 hold on; title('Hetero Norm RS');
     plot([1 2], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
     errorbar([1 2], meanNorm(1:2), s(1:2), 'b' );
@@ -236,38 +217,7 @@ hold on; title('Hetero Norm RS');
     xticklabels({' ','D',' ','S',' ','D',' ','S',' '})
     
     
-% subplot(133); hold on; title('Hetero Spikes/Second');
-%     plot([1 2], meanSPS(1:2), 'bo'); 
-%     errorbar([1 2], meanSPS(1:2), sps(1:2), 'b' );
-%         for p=1:length(sumdat.mDuetHetero.SPS); plot(1.1, sumdat.mDuetHetero.SPS(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.mSoloHetero.SPS); plot(2.1, sumdat.mSoloHetero.SPS(p), 'k.', 'MarkerSize', 8); end
-%     plot([3 4], meanSPS(3:4), 'mo'); 
-%     errorbar([3 4], meanSPS(3:4), sps(3:4), 'm' );
-%         for p=1:length(sumdat.fDuetHetero.SPS); plot(3.1, sumdat.fDuetHetero.SPS(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.fSoloHetero.SPS); plot(4.1, sumdat.fSoloHetero.SPS(p), 'k.', 'MarkerSize', 8); end
-%     ylim([-1 55]); xlim([0.5 4.5]); 
-    
-% subplot(132); hold on;
-%     plot([1 2], mraw(1:2), 'b*'); 
-%     errorbar([1 2], mraw(1:2), sraw(1:2), 'b' );% /sqrt(length(fChron)));
-%     plot([3 4], mraw(3:4), 'm*'); hold on;
-%     errorbar([3 4], mraw(3:4), sraw(3:4), 'm' );% /sqrt(length(mChron)));
-
-%%%% SENSORY
-
-% figure(2); clf; 
-% subplot(122); hold on;
-%     plot(2, mean(sumdat.mAud.rsNorm), 'bo');
-%         errorbar(2, mean(sumdat.mAud.rsNorm), std(sumdat.mAud.rsNorm), 'b');
-%     plot(1, mean(sumdat.mduetHeterogenous.rsNorm), 'bo');
-%         errorbar(1, mean(sumdat.mduetHeterogenous.rsNorm), std(sumdat.mduetHeterogenous.rsNorm), 'b');
-%     plot(4, mean(sumdat.fAud.rsNorm), 'mo');
-%         errorbar(4, mean(sumdat.fAud.rsNorm), std(sumdat.mAud.rsNorm), 'm');
-%     plot(3, mean(sumdat.fduetHeterogenous.rsNorm), 'mo');
-%         errorbar(3, mean(sumdat.fduetHeterogenous.rsNorm), std(sumdat.fduetHeterogenous.rsNorm), 'm');
-%     ylim([-5 20]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
-% 
-% %% Compute stats     
+%% Compute stats     
     
 % Autogenous duet RS significant from 0?
     stts.m.dNAuto.mean = mean(sumdat.mDuetAuto.rsNorm);
@@ -407,8 +357,14 @@ function qwe = rs(struc, syllabl, spontan, padme)
         sponSPS = sponSpikeCount / (spontan(2) - spontan(1)); % This is spikes per second
         sponSPS = sponSPS/4; % Divide by 4 because we have 4 electrodes
 
-        skinny = 0.050; % This should be set to ZERO!!!  It "skinnies" the trailing edge of the analysis window by the value.
-        %%%%%%%% For "syllable-autogenous" change this to 0.050
+        skinny = 0; 
+        if padme > 0 % We have a heterogenous syllable. Because premotor is advanced and auditory feedback 
+                     % is delayed, we need to truncate the window to avoid
+                     % counting premotor spikes.  We are also truncating
+                     % the solo heterogenous for a fair comparison.
+            skinny = 2 * padme; % IMPORTANT, try 1.5 instead of 2 for a more conservative truncation.
+        end
+                     
     % Loop for each syllable
     
     for j = 1:length(syllabl)    
@@ -420,7 +376,7 @@ function qwe = rs(struc, syllabl, spontan, padme)
             stimSpikeCount = stimSpikeCount + length(find(struc.Cspikes{i} >= struc.syl(syllabl(j)).tim(1)+padme & struc.Cspikes{i} < struc.syl(syllabl(j)).tim(2)+padme-skinny));
         end
         
-        stimSPS = stimSpikeCount / ((struc.syl(syllabl(j)).tim(2) - struc.syl(syllabl(j)).tim(1))-skinny); % This is spikes per second
+        stimSPS = stimSpikeCount / ((struc.syl(syllabl(j)).tim(2) - struc.syl(syllabl(j)).tim(1)) - skinny); % This is spikes per second
         stimSPS = stimSPS/4; % Divide by 4 because we have 4 electrodes
         
         
