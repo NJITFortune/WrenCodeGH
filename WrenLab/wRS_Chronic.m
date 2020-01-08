@@ -379,7 +379,7 @@ function qwe = rs(struc, syllabl, spontan, padme)
             stimSpikeCount = stimSpikeCount + length(find(struc.Cspikes{i} >= struc.syl(syllabl(j)).tim(1)+padme & struc.Cspikes{i} < struc.syl(syllabl(j)).tim(2)+padme-skinny));
         end
         
-        stimSPS = stimSpikeCount / (struc.syl(syllabl(j)).tim(2) - struc.syl(syllabl(j)).tim(1)); % This is spikes per second
+        stimSPS = stimSpikeCount / ((struc.syl(syllabl(j)).tim(2) - struc.syl(syllabl(j)).tim(1))-skinny); % This is spikes per second
         stimSPS = stimSPS/4; % Divide by 4 because we have 4 electrodes
         
         
