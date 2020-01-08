@@ -1,8 +1,7 @@
 function [out, sumdat, stts] = wRS_Chronic(in, padding)
-% Usage: Calculates response strength to solo and duet syllables.
-% Relies on rs, a nested function below, to calculate Response Strength.
+% Usage: [out, sumdat, stts] = wRS_Chronic(in, padding)
+% Calculates response strength to solo and duet syllables.
 % Load the Chronic data structure first:
-% load ChronicCompleat2017p.mat (OLD)
 % load ChronicCompleat2018d.mat (Current as of 4-Jan-2019)
 
 % 'pad' is a critical variable - it is the shift in the window around the
@@ -13,10 +12,11 @@ function [out, sumdat, stts] = wRS_Chronic(in, padding)
 % We are comfortable with using a value of '0' it is a rather unbiased. Change
 % the value of padding in seconds (e.g. 0.020 or -0.030) to look at the effects on the results.
 
-pad = -0.000; 
+pad = 0.000; 
+trunc = 0.000;
 
 % The user can specify the padding via an argin for convenience.
-if nargin == 2; pad = padding; end
+if nargin == 2; pad = padding(1); trunc = padding(2); end
 
 
 % Initializing variables
