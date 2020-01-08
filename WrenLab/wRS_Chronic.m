@@ -200,7 +200,7 @@ hold on; title('Hetero Raw RS');
     errorbar([3 4], meanRaw(3:4), sraw(3:4), 'm' );
         for p=1:length(sumdat.fDuetHetero.rsRaw); plot(3.1, sumdat.fDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloHetero.rsRaw); plot(4.1, sumdat.fSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
-    ylim([-10 50]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    ylim([-10 30]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','D',' ','S',' ','D',' ','S',' '})
 
 figure(4); clf; % NORM HETEROGENOUS PLOTS
