@@ -373,7 +373,7 @@ function qwe = rs(struc, syllabl, spontan, padme)
                      % is delayed, we need to truncate the window to avoid
                      % counting premotor spikes.  We are also truncating
                      % the solo heterogenous for a fair comparison.
-            skinny = 1.5 * padme; % IMPORTANT, try 1.5 instead of 2 for a more conservative truncation.
+            skinny = 2.5 * padme; % IMPORTANT, try 1.5 instead of 2 for a more conservative truncation.
         end
                      
     % Loop for each syllable
