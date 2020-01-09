@@ -157,13 +157,12 @@ if in(ff).sexy == 2 % This is a female
     
     if ~isempty(mduetsyls{sylstrdx}) % For songs with male duet syllables...   
     
+    % Acute
     if ~isempty(in(ff).Aspikes)
         [tmp, F.bintims] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);
-         for kk = length(tmp); FAHU(end+1) = tmp(kk); end
-         clear tmp;
+            for kk = length(tmp); FAHU(end+1) = tmp(kk); end; clear tmp;
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
-         for kk = length(tmp); FHAU(end+1) = tmp(kk); end
-         clear tmp;
+            for kk = length(tmp); FHAU(end+1) = tmp(kk); end; clear tmp;
     end
     
     if ~isempty(in(ff).Cspikes)
