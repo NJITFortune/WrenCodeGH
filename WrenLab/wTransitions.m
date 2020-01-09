@@ -111,7 +111,7 @@ for ff = birdlist
     end
 
 %% Generate the transition histograms
-currF2Msyltim
+currMsolosyltims
 if in(ff).sexy == 1 % This is a male
     
     % Use the PhaseCut embedded function to create the histogram for Duet
