@@ -170,15 +170,18 @@ if in(ff).sexy == 2 % This is a female
             [tmp, F.bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
              for kk = length(tmp)
                  FAHC(end+1).SPS = tmp(kk).SPS; 
-                 FAHC(end+1).RSraw = tmp(kk).RSraw; 
-                    isempty(tmp(kk).RSraw)
-                 FAHC(end+1).RSnorm = tmp(kk).RSnorm; 
+                 FAHC(end).RSraw = tmp(kk).RSraw; 
+                 FAHC(end).RSnorm = tmp(kk).RSnorm; 
              end
-             clear tmp; length(FAHC)
+             clear tmp; 
         end
         if ~isempty(currM2Fsyltim)
             [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);
-             for kk = length(tmp); FHAC(end+1) = tmp(kk); end
+             for kk = length(tmp) 
+                 FHAC(end+1).SPS = tmp(kk).SPS; 
+                 FHAC(end).RSraw = tmp(kk).RSraw; 
+                 FHAC(end).RSnorm = tmp(kk).RSnorm; 
+             end
              clear tmp;
         end
     
