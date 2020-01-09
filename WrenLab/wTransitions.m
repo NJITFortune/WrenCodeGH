@@ -372,10 +372,10 @@ fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2M
 
 %% Embedded Concatonation function
 function tuo = concatHist(xin)
-        cSPS = []; cRSnrm = []; cRSrw = [];
         
     for qq = length(xin):-1:1
             for rr = 1:length(xin(qq).SPS)
+                if ~isdef(cSPS)
                 cSPS(:,end+1) = xin(qq).SPS(rr);
                 cRSnrm(:,end+1) = xin(qq).RSnorm(rr);
                 cRSrw(:,end+1) = xin(qq).RSraw(rr);
