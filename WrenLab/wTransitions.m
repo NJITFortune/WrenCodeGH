@@ -363,7 +363,7 @@ plot(bins4plot, msMSHU.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSi
 
 linkaxes(axx, 'xy'); 
 
-figure(2); subplot(222); ylim([-10 65]);
+figure(2); subplot(222); ylim([-10 45]);
 
 
 %% Put everything into the output structures
