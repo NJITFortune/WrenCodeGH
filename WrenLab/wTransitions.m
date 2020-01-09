@@ -353,7 +353,9 @@ function tuo = concatHist(xin)
         meanRSnorm(j) = mean(RSnrm(j,:)); stdRSnorm(j) = std(RSnrm(j,:));
         meanRSraw(j) = mean(SPS(j,:)); stdRSraw(j) = std(RSrw(j,:));
     end
+    
     figure(3); hold on; plot(meanRSnorm); pause(0.1);
+    
     tuo.meanSPS = meanSPS;
     tuo.meanRSnorm = meanRSnorm;
     tuo.meanRSraw = meanRSraw;
@@ -411,7 +413,7 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
         out.RSraw = RSrawhist;
         out.RSnorm = RSnorm;
         
-        figure(2); hold on; plot(RSrawhist); pause(0.1);
+        %figure(2); hold on; plot(RSrawhist); pause(0.1);
 
 end
 
