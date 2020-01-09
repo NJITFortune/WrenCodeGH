@@ -116,36 +116,39 @@ if in(ff).sexy == 1 % This is a male
         
     if ~isempty(mduetsyls{sylstrdx}) % For songs with male duet syllables...   
         %  Acute
-        if ~isempty
-        [tmp, M.bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
-            for kk = length(tmp); MAHU(end+1) = tmp(kk); end; clear tmp;
-        [tmp, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);        
-            for kk = length(tmp); MHAU(end+1) = tmp(kk); end; clear tmp;
+        if ~isempty(in(ff).Aspikes)
+            [tmp, M.bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
+                for kk = length(tmp); MAHU(end+1) = tmp(kk); end; clear tmp;
+            [tmp, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);        
+                for kk = length(tmp); MHAU(end+1) = tmp(kk); end; clear tmp;
+        end
         % Chronic    
-        [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);        
-            for kk = length(tmp); MAHC(end+1) = tmp(kk); end; clear tmp;   
-        [tmp, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
-            for kk = length(tmp); MHAC(end+1) = tmp(kk); end; clear tmp;
+            [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);        
+                for kk = length(tmp); MAHC(end+1) = tmp(kk); end; clear tmp;   
+            [tmp, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
+                for kk = length(tmp); MHAC(end+1) = tmp(kk); end; clear tmp;
     end
     
-    if ~isempty(msolosyls{sylstrdx}) % For songs with male solo syllable                
+    if ~isempty(msolosyls{sylstrdx}) % For songs with male solo syllable
+        % Acute
+        if ~isempty(in(ff).Aspikes)
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins, AcuteSpon);
-            if ~isempty(tmp) % If there is no output.. WHY????  
-                for kk = length(tmp); MSAU(end+1) = tmp(kk); end; clear tmp; 
-            end
+            for kk = length(tmp); MSAU(end+1) = tmp(kk); end; clear tmp; 
+        end
+        % Chronic
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon);
             for kk = length(tmp); MSAC(end+1) = tmp(kk); end; clear tmp;
     end
     
     if ~isempty(fsolosyls{sylstrdx}) % % For songs with female solo syllable
-
-        Mwhichfemalesolosyl = Mwhichfemalesolosyl +1;
-        
+        % Acute
+        if ~isempty(in(ff).Aspikes)        
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins, AcuteSpon);
-            if ~isempty(tmp); for kk = length(tmp); MSHU(end+1) = tmp(kk); end; clear tmp; end    
+            for kk = length(tmp); MSHU(end+1) = tmp(kk); end; clear tmp; 
+        end
+        % Chronic
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
-            for kk = length(tmp); MSHC(end+1) = tmp(kk); end; clear tmp;
-            
+            for kk = length(tmp); MSHC(end+1) = tmp(kk); end; clear tmp;           
     end
 
 end % End of male
