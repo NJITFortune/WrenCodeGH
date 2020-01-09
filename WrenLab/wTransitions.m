@@ -386,7 +386,7 @@ function tuo = concatHist(xin)
     end
     
     SPS = []; RSnrm = SPS; RSrw = SPS;
-    xin
+    
     for qq = length(xin):-1:1
         if ~isempty(xin(qq).RSnorm)
             for rr = 1:length(xin(qq).SPS)
