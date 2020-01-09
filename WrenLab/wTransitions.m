@@ -348,7 +348,8 @@ function tuo = concatHist(xin)
             RSrw(:,qq) = xin(qq).RSraw;
     end
     
-    SPS
+    length(SPS(:,1))
+    length(SPS(1,:))
     
     for j = length(SPS(:,1))
         meanSPS(j) = mean(SPS(j,:)); stdSPS(j) = std(SPS(j,:));
