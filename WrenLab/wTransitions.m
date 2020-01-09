@@ -426,8 +426,8 @@ fmu(2) = subplot(223); hold on; title('Solo Autogenous Acute');
     plot([0 0], [0 55], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     set(fmu(2),'Color', [0.9, 0.9, 0.9]);
 % Male
-fill([bins4plot bins4plot(end:-1:1)], [msMSAU.meanSPS - msMSAU.steSPS, msMSAU.meanSPS(end:-1:1) + msMSAU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msMSHU.meanSPS - msMSHU.steSPS, msMSHU.meanSPS(end:-1:1) + msMSHU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMSHU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Female
 fill([bins4plot bins4plot(end:-1:1)], [msFSAU.meanSPS - msFSAU.steSPS, msFSAU.meanSPS(end:-1:1) + msFSAU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msFSAU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
@@ -436,8 +436,8 @@ fmu(3) = subplot(224); hold on; title('Solo Autogenous Acute');
     plot([0 0], [0 55], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     set(fmu(3),'Color', [0.9, 0.9, 0.9]);
 % Male
-fill([bins4plot bins4plot(end:-1:1)], [msMSHU.meanSPS - msMSHU.steSPS, msMSHU.meanSPS(end:-1:1) + msMSHU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSHU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msMSAU.meanSPS - msMSAU.steSPS, msMSAU.meanSPS(end:-1:1) + msMSAU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMSAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Female
 fill([bins4plot bins4plot(end:-1:1)], [msFSHU.meanSPS - msFSHU.steSPS, msFSHU.meanSPS(end:-1:1) + msFSHU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msFSHU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
