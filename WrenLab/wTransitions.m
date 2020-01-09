@@ -50,14 +50,14 @@ for ff = birdlist
     ChronSpon = 0; % CHRONIC DATA
     
     for z = 1:length(in(ff).Cspikes)
-        ChronSpon = ChronSpon(ff) + length(in(ff).Cspikes{z} > Cspon(1,sylstrdx) & in(ff).Cspikes{z} < Cspon(2,sylstrdx));
+        ChronSpon = ChronSpon + length(in(ff).Cspikes{z} > Cspon(1,sylstrdx) & in(ff).Cspikes{z} < Cspon(2,sylstrdx));
     end
         ChronSpon = ChronSpon / (Cspon(2,sylstrdx) - Cspon(1,sylstrdx)); % Divide by duration, SPIKES PER SECOND 
         ChronSpon = ChronSpon / length(in(ff).Cspikes); % Divide by number of reps (always 4 for Chronic)
     
         ChronSpon
         
-        ChronSpon(ff) = CronSpon;
+        ChronSpon(ff) = ChronSpon;
         
     AcuteSpon(ff) = 0; % ACUTE DATA
     
