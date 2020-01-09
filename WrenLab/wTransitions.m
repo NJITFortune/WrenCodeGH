@@ -398,8 +398,9 @@ fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2M
 function tuo = concatHist(xin)
         
     for qq = length(xin):-1:1
-        xin(qq).SPS
-        xin(qq).RSraw
+        
+        save xin.mat xin
+        
             for rr = 1:length(xin(qq).SPS)
                 if ~exist('cSPS', 'var')
                     cSPS(:,1) = xin(qq).SPS(rr);
