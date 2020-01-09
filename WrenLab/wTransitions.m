@@ -204,58 +204,59 @@ plot(bins4plot, msFHAC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSi
 
 ax(2) = subplot(223); hold on; title('M2F Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 set(ax(2),'Color', [0.9, 0.9, 0.9]);
-% Male
-fill([bins4plot bins4plot(end:-1:1)], [msMAHU.mean - msMAHU.std/2, msMAHU.mean(end:-1:1) + msMAHU.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMAHU.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-% Female
-fill([bins4plot bins4plot(end:-1:1)], [msFHAU.mean - msFHAU.std/2, msFHAU.mean(end:-1:1) + msFHAU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFHAU.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-    
-% PLOT F2M DATA
-ax(3) = subplot(222); hold on; title('F2M Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
-% Female
-fill([bins4plot bins4plot(end:-1:1)], [msFAHC.mean - msFAHC.std/2, msFAHC.mean(end:-1:1) + msFAHC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFAHC.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-% Male
-fill([bins4plot bins4plot(end:-1:1)], [msMHAC.mean - msMHAC.std/2, msMHAC.mean(end:-1:1) + msMHAC.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMHAC.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-ax(4) = subplot(224); hold on; title('F2M Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
-set(ax(4),'Color', [0.9, 0.9, 0.9]);
-% Female
-fill([bins4plot bins4plot(end:-1:1)], [msFAHU.mean - msFAHU.std/2, msFAHU.mean(end:-1:1) + msFAHU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFAHU.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-% Male
-fill([bins4plot bins4plot(end:-1:1)], [msMHAU.mean - msMHAU.std/2, msMHAU.mean(end:-1:1) + msMHAU.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMHAU.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-
-linkaxes(ax, 'xy'); figure(1); subplot(222); ylim([0 1]);
-
-
-figure(3); clf; set(gcf, 'Color', [1,1,1]);
-xax(1) = subplot(221); hold on; title('M2F Chronic'); 
-    plot([0 0], [-1 5], 'k-', 'LineWidth', 1); plot([min(bins4plot), max(bins4plot)], [0, 0], 'k-', 'LineWidth', 1);
-plot(bins4plot, msMAHC.RSN, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-plot(bins4plot, msFHAC.RSN, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-
-xax(2) = subplot(223); hold on; title('M2F Urethane'); 
-set(xax(2),'Color', [0.9, 0.9, 0.9]);
-    plot([0 0], [-1 50], 'k-', 'LineWidth', 1); ylim([-1 50]);
-plot(bins4plot, msMAHU.RSN, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-plot(bins4plot, msFHAU.RSN, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-
-xax(3) = subplot(222); hold on; title('F2M Chronic'); 
-    plot([0 0], [-1 5], 'k-', 'LineWidth', 1); plot([min(bins4plot), max(bins4plot)], [0, 0], 'k-', 'LineWidth', 1);
-plot(bins4plot, msFAHC.RSN, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-plot(bins4plot, msMHAC.RSN, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-
-xax(4) = subplot(224); hold on; title('F2M Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
-set(xax(4),'Color', [0.9, 0.9, 0.9]);
-    plot([0 0], [-1 50], 'k-', 'LineWidth', 1); ylim([-1 50]);
-plot(bins4plot, msFAHU.RSN, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-plot(bins4plot, msMHAU.RSN, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-
-linkaxes(xax, 'x');
+% % % Male
+% % fill([bins4plot bins4plot(end:-1:1)], [msMAHU.mean - msMAHU.std/2, msMAHU.mean(end:-1:1) + msMAHU.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% % plot(bins4plot, msMAHU.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % % Female
+% % fill([bins4plot bins4plot(end:-1:1)], [msFHAU.mean - msFHAU.std/2, msFHAU.mean(end:-1:1) + msFHAU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% % plot(bins4plot, msFHAU.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% %     
+% % % PLOT F2M DATA
+% % ax(3) = subplot(222); hold on; title('F2M Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+% % % Female
+% % fill([bins4plot bins4plot(end:-1:1)], [msFAHC.mean - msFAHC.std/2, msFAHC.mean(end:-1:1) + msFAHC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% % plot(bins4plot, msFAHC.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % % Male
+% % fill([bins4plot bins4plot(end:-1:1)], [msMHAC.mean - msMHAC.std/2, msMHAC.mean(end:-1:1) + msMHAC.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% % plot(bins4plot, msMHAC.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % 
+% % ax(4) = subplot(224); hold on; title('F2M Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+% % set(ax(4),'Color', [0.9, 0.9, 0.9]);
+% % % Female
+% % fill([bins4plot bins4plot(end:-1:1)], [msFAHU.mean - msFAHU.std/2, msFAHU.mean(end:-1:1) + msFAHU.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% % plot(bins4plot, msFAHU.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % % Male
+% % fill([bins4plot bins4plot(end:-1:1)], [msMHAU.mean - msMHAU.std/2, msMHAU.mean(end:-1:1) + msMHAU.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% % plot(bins4plot, msMHAU.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % 
+% % linkaxes(ax, 'xy'); figure(1); subplot(222); ylim([0 1]);
+% % 
+% % 
+% % figure(3); clf; set(gcf, 'Color', [1,1,1]);
+% % xax(1) = subplot(221); hold on; title('M2F Chronic'); 
+% %     plot([0 0], [-1 5], 'k-', 'LineWidth', 1); plot([min(bins4plot), max(bins4plot)], [0, 0], 'k-', 'LineWidth', 1);
+% % plot(bins4plot, msMAHC.RSN, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % plot(bins4plot, msFHAC.RSN, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % 
+% % xax(2) = subplot(223); hold on; title('M2F Urethane'); 
+% % set(xax(2),'Color', [0.9, 0.9, 0.9]);
+% %     plot([0 0], [-1 50], 'k-', 'LineWidth', 1); ylim([-1 50]);
+% % plot(bins4plot, msMAHU.RSN, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % plot(bins4plot, msFHAU.RSN, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % 
+% % xax(3) = subplot(222); hold on; title('F2M Chronic'); 
+% %     plot([0 0], [-1 5], 'k-', 'LineWidth', 1); plot([min(bins4plot), max(bins4plot)], [0, 0], 'k-', 'LineWidth', 1);
+% % plot(bins4plot, msFAHC.RSN, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % plot(bins4plot, msMHAC.RSN, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % 
+% % xax(4) = subplot(224); hold on; title('F2M Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+% % set(xax(4),'Color', [0.9, 0.9, 0.9]);
+% %     plot([0 0], [-1 50], 'k-', 'LineWidth', 1); ylim([-1 50]);
+% % plot(bins4plot, msFAHU.RSN, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % plot(bins4plot, msMHAU.RSN, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % 
+% % linkaxes(xax, 'x');
 
 
 %% Do the solo syllable calculations
