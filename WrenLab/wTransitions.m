@@ -297,8 +297,8 @@ plot(bins4plot, msFSHU.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSi
 % PLOT F Solo DATA
 axx(3) = subplot(222); hold on; title('F Solo Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 % Female
-fill([bins4plot bins4plot(end:-1:1)], [msFSAC.meanRSnorm - msFSAC.steRSnorm, msFSAC.meanRSnorm(end:-1:1) + msFSAC.steRSnorm(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSAC.meanRSnorm, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msFSAC.meanRSraw - msFSAC.steRSraw, msFSAC.meanRSraw(end:-1:1) + msFSAC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFSAC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Male
 fill([bins4plot bins4plot(end:-1:1)], [msMSHC.meanRSnorm - msMSHC.steRSnorm, msMSHC.meanRSnorm(end:-1:1) + msMSHC.steRSnorm(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msMSHC.meanRSnorm, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
