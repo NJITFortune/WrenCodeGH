@@ -7,9 +7,9 @@ function [M, F] = wTransitions(in)
 
 %% Preparations
 % Default window width for histogram if user didn't specify window
-    widow = 1.00; % 300 msec looks pretty good with numbins 10 and overlap 50
+
+    widow = 1.00; % Time before and after transition. 300 msec looks pretty good
     numbins = 4; % How many bins before and after the onset of our focal syllable?
-    
     windur = widow / numbins;
 
 %% Load the list of Chronic singing data with syllable indices and locations for spontaneous activity
@@ -24,18 +24,20 @@ function [M, F] = wTransitions(in)
     Mwhichmalesolosyl = 0; Mwhichfemalesolosyl = 0; 
     Fwhichmalesolosyl = 0; Fwhichfemalesolosyl = 0;
 
+    % More variables that we need
+    MAHU(1).SPS = []; MAHU(1).RSraw = []; MAHU(1).RSnorm = [];
+
+    MAHC = MAHU; MHAU = MAHU; MHAC = MAHU; 
+    MSAU = MAHU; MSAC = MAHU; MSHU = MAHU; MSHC = MAHU;
+
+    FAHU = MAHU; FAHC = MAHU; FHAU = MAHU; FHAC = MAHU; 
+    FSAU = MAHU; FSAC = MAHU; FSHU = MAHU; FSHC = MAHU;
+
+%% Cycle for each bird in our list
+
 % Choose which data to analyze
 %    birdlist = 16:-1:1; % All compleat data with both ACUTE (urethane) AND CHRONIC (awake)
 birdlist = 1:length(in);
-    
-%% For each bird in our list
-
-MAHU(1).SPS = []; MAHU(1).RSraw = []; MAHU(1).RSnorm = [];
-MAHC = MAHU; MHAU = MAHU; MHAC = MAHU; 
-MSAU = MAHU; MSAC = MAHU; MSHU = MAHU; MSHC = MAHU;
-
-FAHU = MAHU; FAHC = MAHU; FHAU = MAHU; FHAC = MAHU; 
-FSAU = MAHU; FSAC = MAHU; FSHU = MAHU; FSHC = MAHU;
 
 for ff = birdlist
         
@@ -107,9 +109,9 @@ for ff = birdlist
     for t = 1:length(fsolosyls{sylstrdx}) % For every female syllable
          currFsolosyltims(end+1) = in(ff).syl(fsolosyls{sylstrdx}(t)).tim(1); % Time of the start of the female syllable
     end
-    
-%% Generate the transition histograms
 
+%% Generate the transition histograms
+currM2Fsyltim
 if in(ff).sexy == 1 % This is a male
     
     % Use the PhaseCut embedded function to create the histogram for Duet
