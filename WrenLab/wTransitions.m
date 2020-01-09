@@ -213,7 +213,7 @@ end % End of cycling for every bird
 
 
 %% Build the Cool fill plots for the DUET data
-ff
+length(FHAC)
     msFHAC = concatHist(FHAC);                        
     msFHAU = concatHist(FHAU);
     msFAHC = concatHist(FAHC);
