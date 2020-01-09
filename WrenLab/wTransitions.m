@@ -165,25 +165,22 @@ if in(ff).sexy == 2 % This is a female
             for kk = length(tmp); FHAU(end+1) = tmp(kk); end; clear tmp;
     end
     
-    if ~isempty(in(ff).Cspikes)
-    if ~isempty(currF2Msyltim)
-        [tmp, F.bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
-         for kk = length(tmp); FAHC(end+1) = tmp(kk); end
-         clear tmp;
-    end
-    if ~isempty(currM2Fsyltim)
-        [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);
-         for kk = length(tmp); FHAC(end+1) = tmp(kk); end
-         clear tmp;
-    end
-    end
+    % Chronic
+        if ~isempty(currF2Msyltim)
+            [tmp, F.bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
+             for kk = length(tmp); FAHC(end+1) = tmp(kk); end
+             clear tmp;
+        end
+        if ~isempty(currM2Fsyltim)
+            [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);
+             for kk = length(tmp); FHAC(end+1) = tmp(kk); end
+             clear tmp;
+        end
     
     bins4plot = (F(1).bintims(2:end) + F(1).bintims(1:end-1)) /2; % Time bins adjusted for proper plotting
     
     end
     
-    % Solo data S=Solo, F=Female, M=Male, A=Autogenous, H=Heterogenous,
-    % U=Urethane, C=Chronic
     if ~isempty(msolosyls{sylstrdx})
         Fwhichmalesolosyl = Fwhichmalesolosyl +1; % Again, we are using a different indexing for solo data
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins, AcuteSpon);
