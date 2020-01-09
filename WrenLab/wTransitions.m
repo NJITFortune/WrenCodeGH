@@ -120,9 +120,7 @@ if in(ff).sexy == 1 % This is a male
     Mwhichduet = Mwhichduet + 1;
     
     [tmp, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
-        for kk = length(tmp) 
-            MAHU(end+1).SPS = tmp(kk).SPS; MAHU(end+1).RSnorm = tmp(kk).RSnorm; MAHU(end+1).RSraw = tmp(kk).RSraw;
-        end
+        for kk = length(tmp); MAHU(end+1) = tmp(kk); end
         clear tmp;
     [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);        
         for kk = length(tmp); MAHC(end+1) = tmp(kk); end
