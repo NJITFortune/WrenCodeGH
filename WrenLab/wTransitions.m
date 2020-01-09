@@ -459,7 +459,7 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
         end
 
         for j=1:length(goodlist)
-            out(j).SPS = spikearray(:,j) / binwid;
+            out(j).SPS = spikearray(:, goodlist(j)) / binwid;
             out(j).RSraw = out(j).SPS - sponSPS;
             out(j).RSnorm = out(j).RSraw / sponSPS;
         end
