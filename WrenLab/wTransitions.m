@@ -173,7 +173,7 @@ if in(ff).sexy == 2 % This is a female
                  FAHC(end+1).RSraw = tmp(kk).RSraw; 
                  FAHC(end+1).RSnorm = tmp(kk).RSnorm; 
              end
-             clear tmp;
+             clear tmp; length(FAHC)
         end
         if ~isempty(currM2Fsyltim)
             [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);
