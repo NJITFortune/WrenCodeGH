@@ -1,4 +1,4 @@
-function [M, F] = wTransitions(in)
+function [M, F] = wTransitions(in, wwindow)
 % Usage out = wTransitions(w, window)
 % This generates plots that focus on the transitions between female and male syllables. 
 % w is the data structure 'w' from ChronicCompleat2019f.mat (Current as of 8-Jan-2020)
@@ -8,7 +8,12 @@ function [M, F] = wTransitions(in)
 %% Preparations
 % Default window width for histogram if user didn't specify window
 
+
     widow = 0.800; % Time before and after transition. 300 msec looks pretty good
+    
+    % If user specified a different window length, use that.
+    if nargin>1; widow = wwindow; end   
+    
     numbins = 5; % How many bins before and after the onset of our focal syllable?
     windur = widow / numbins;
 
