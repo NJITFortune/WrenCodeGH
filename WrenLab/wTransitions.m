@@ -9,7 +9,7 @@ function [M, F] = wTransitions(in, wwindow)
 % Default window width for histogram if user didn't specify window
 
 
-    widow = 0.800; % Time before and after transition. 300 msec looks pretty good
+    widow = 0.400; % Time before and after transition. 300 msec looks pretty good
     
     % If user specified a different window length, use that.
     if nargin>1; widow = wwindow; end   
