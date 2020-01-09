@@ -377,9 +377,12 @@ function tuo = concatHist(xin)
     
     maxlen = 0;
     for pp = 1:length(xin)
+        if ~isempty(xin(pp).SPS)
         for ll = 1:length(xin(pp).SPS(1,:))
             maxlen = max([maxlen, max(length(xin(pp).SPS(:,ll)))]);
         end
+        end
+        
     end
     
     SPS(maxlen,1) = []; RSnrm = SPS; RSrw = SPS;
