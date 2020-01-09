@@ -124,13 +124,17 @@ if in(ff).sexy == 1 % This is a male
         for kk = length(tmp) 
             MAHU(end+1).SPS = tmp(kk).SPS; MAHU(end+1).RSnorm = tmp(kk).RSnorm; MAHU(end+1).RSraw = tmp(kk).RSraw;
         end
+        clear tmp;
     [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);        
         for kk = length(tmp); MAHC(end+1) = tmp(kk); end
+        clear tmp;   
     [tmp, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);        
         for kk = length(tmp); MHAU(end+1) = tmp(kk); end
+        clear tmp;
     [tmp, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
         for kk = length(tmp); MHAC(end+1) = tmp(kk); end
-    
+        clear tmp;
+        
     bins4plot = (M(Mwhichduet).bintims(2:end) + M(Mwhichduet).bintims(1:end-1))/2; % Time bins adjusted for proper plotting
     end
     
@@ -142,8 +146,10 @@ if in(ff).sexy == 1 % This is a male
         if ~isempty(tmp)
          for kk = length(tmp); MSAU(end+1) = tmp(kk); end
         end
-       [tmp, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon);
+        clear tmp;
+        [tmp, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon);
         for kk = length(tmp); MSAC(end+1) = tmp(kk); end
+        clear tmp;
     end
     if ~isempty(fsolosyls{sylstrdx})
         Mwhichfemalesolosyl = Mwhichfemalesolosyl +1;
@@ -151,8 +157,10 @@ if in(ff).sexy == 1 % This is a male
         if ~isempty(tmp)
          for kk = length(tmp); MSHU(end+1) = tmp(kk); end
         end
+        clear tmp;
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
          for kk = length(tmp); MSHC(end+1) = tmp(kk); end
+         clear tmp;
     end
 
 end % End of male
@@ -167,18 +175,22 @@ if in(ff).sexy == 2 % This is a female
     if ~isempty(in(ff).Aspikes)
         [tmp, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);
          for kk = length(tmp); FAHU(end+1) = tmp(kk); end
+         clear tmp;
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
          for kk = length(tmp); FHAU(end+1) = tmp(kk); end
+         clear tmp;
     end
     
     if ~isempty(in(ff).Cspikes)
     if ~isempty(currF2Msyltim)
         [tmp, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
          for kk = length(tmp); FAHC(end+1) = tmp(kk); end
+         clear tmp;
     end
     if ~isempty(currM2Fsyltim)
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);
          for kk = length(tmp); FHAC(end+1) = tmp(kk); end
+         clear tmp;
     end
     end
     
@@ -194,8 +206,10 @@ if in(ff).sexy == 2 % This is a female
         if ~isempty(tmp)
          for kk = length(tmp); FSHU(end+1) = tmp(kk); end
         end
+        clear tmp;
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon);
          for kk = length(tmp); FSHC(end+1) = tmp(kk); end
+         clear tmp;
     end
     if ~isempty(fsolosyls{sylstrdx})
         Fwhichfemalesolosyl = Fwhichfemalesolosyl +1;
@@ -203,8 +217,10 @@ if in(ff).sexy == 2 % This is a female
         if ~isempty(tmp)
          for kk = length(tmp); FSAU(end+1) = tmp(kk); end
         end
+        clear tmp;
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
          for kk = length(tmp); FSAC(end+1) = tmp(kk); end
+         clear tmp;
     end
     
 end % End of female
