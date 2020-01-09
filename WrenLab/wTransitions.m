@@ -113,16 +113,16 @@ if in(ff).sexy == 1 % This is a male
     if ~isempty(mduetsyls{sylstrdx}) % For every male duet syllable...   
     Mwhichduet = Mwhichduet + 1;
     
-    [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins);
+    [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon(ff));
         MAHU(Mwhichduet).spon = (MAHU(Mwhichduet).spkcnt * 0) + (AcuteSpon(ff) * windur);
         
-    [MAHC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins);
+    [MAHC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon(ff));
         MAHC(Mwhichduet).spon = (MAHC(Mwhichduet).spkcnt * 0) + (ChronSpon(ff) * windur);
         
-    [MHAU(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins);
+    [MHAU(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon(ff));
         MHAU(Mwhichduet).spon = (MHAU(Mwhichduet).spkcnt * 0) + (AcuteSpon(ff) * windur);
         
-    [MHAC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins);
+    [MHAC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon(ff));
         MHAC(Mwhichduet).spon = (MHAC(Mwhichduet).spkcnt * 0) + (ChronSpon(ff) * windur);
     
     bins4plot = (M(Mwhichduet).bintims(2:end) + M(Mwhichduet).bintims(1:end-1))/2; % Time bins adjusted for proper plotting
@@ -417,15 +417,26 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin)
         spikearray(:,j) = spkcnts;
  
     end
+
+    % Get Spontaneous rate
+
+    sponSpikeCount = 0;  
     
-        % Convert raw spike counts useful measures
+        for i=1:length(spiketimes) % 4 electrodes in a tetrode always
+            sponSpikeCount = sponSpikeCount + length(find(spiketimes{i} > spontan(1) & spiketimes{i} < spontan(2)));
+        end
+
+        sponSPS = sponSpikeCount / (spontan(2) - spontan(1)); % Divide by duration
+        sponSPS = sponSPS/length(spiketimes); % Divide by number of reps to get spikes per second    
+    
+    % Convert raw spike counts useful measures
         
         for k = 1:length(spikearray(:,1))
             SPShist(k) = sum(spikearray(k,:)) / length(spikearray(k,:)); % Divide by number of 'reps'
             SPShist(k) = SPShist(k) / binwid; % Divide by length of bin
 
-            RSrawhist(k) = SPShist(k) - currsponSPS; % Subtract Spontaneous rate
-            RSnorm(k) = RSrawhist(k) / currsponSPS; % Divide by Spontaneous rate
+            RSrawhist(k) = SPShist(k) - sponSPS; % Subtract Spontaneous rate
+            RSnorm(k) = RSrawhist(k) / sponSPS; % Divide by Spontaneous rate
         end
 
         out.SPS = SPShist;
