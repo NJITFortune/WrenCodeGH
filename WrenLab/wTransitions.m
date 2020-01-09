@@ -47,16 +47,18 @@ for ff = birdlist
 
 % Calculate spontaneous rates for current entry
 
-    ChronSpon(ff) = 0; % CHRONIC DATA
+    ChronSpon = 0; % CHRONIC DATA
     
     for z = 1:length(in(ff).Cspikes)
-        ChronSpon(ff) = ChronSpon(ff) + length(in(ff).Cspikes{z} > Cspon(1,sylstrdx) & in(ff).Cspikes{z} < Cspon(2,sylstrdx));
+        ChronSpon = ChronSpon(ff) + length(in(ff).Cspikes{z} > Cspon(1,sylstrdx) & in(ff).Cspikes{z} < Cspon(2,sylstrdx));
     end
-        ChronSpon(ff) = ChronSpon(ff) / (Cspon(2,sylstrdx) - Cspon(1,sylstrdx)); % Divide by duration, SPIKES PER SECOND 
-        ChronSpon(ff) = ChronSpon(ff) / length(in(ff).Cspikes); % Divide by number of reps (always 4 for Chronic)
-        
-    ChronSpon(ff)
+        ChronSpon = ChronSpon / (Cspon(2,sylstrdx) - Cspon(1,sylstrdx)); % Divide by duration, SPIKES PER SECOND 
+        ChronSpon = ChronSpon / length(in(ff).Cspikes); % Divide by number of reps (always 4 for Chronic)
     
+        ChronSpon
+        
+        ChronSpon(ff) = CronSpon;
+        
     AcuteSpon(ff) = 0; % ACUTE DATA
     
     if sylstrdx < 7 % We only have complete Urethane data for the first 3 pairs of birds
