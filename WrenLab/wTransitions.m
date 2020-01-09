@@ -104,7 +104,9 @@ for ff = birdlist
     
 %% Generate the transition histograms
 
-MAHU.SPS = []; MAHU.RSraw = []; MAHU.RSnorm = [];
+MAHU.SPS = []; 
+MAHU.RSraw = []; 
+MAHU.RSnorm = [];
 MAHC = MAHU; MHAU = MAHU; MHAC = MAHU; 
 MSAU = MAHU; MSAC = MAHU; MSHU = MAHU; MSHC = MAHU;
 
