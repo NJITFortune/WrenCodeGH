@@ -376,6 +376,8 @@ function tuo = concatHist(xin)
     xin(2).SPS(:,1)
     
     for qq = length(xin):-1:1
+        if ~isempty(xin(qq).SPS)
+            for rr = length(xin(qq).SPS):-1:1
             SPS(:,qq) = xin(qq).SPS;
             RSnrm(:,qq) = xin(qq).RSnorm;
             RSrw(:,qq) = xin(qq).RSraw;
