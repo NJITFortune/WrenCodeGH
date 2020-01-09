@@ -340,21 +340,17 @@ fprintf('The mean and std for M2F ISI is  %1.3f %1.3f \n', mean(M2FISI), std(M2F
 fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2MISI));
 
 %% Embedded Concatonation function
-function tuo = concatHist(xin, len)
+function tuo = concatHist(xin)
 
-    rw(1,:) = zeros(1,len);
-    dat(1,:) = zeros(1,len);
-    spont(1,:) = zeros(1,len);
+    RSraw = zeros(1,length(xin(1).SPS));
+    RSnorm = RSraw;
+    SPS = RSraw;
     
     for qq = 1:length(xin)
         
-        for ww = 1:length(xin(qq).spkcnt(1,:))
-            if sum(xin(qq).spkcnt(:,ww)) > 1
-                dat(end+1,:) = xin(qq).spkcnt(:,ww) / max(xin(qq).spkcnt(:,ww)); % Each normalized (yuck)
-                rw(end+1,:) = xin(qq).spkcnt(:,ww); % Just the raw counts, please.
-                spont(end+1,:) = xin(qq).spon(:,ww); % The spontaneous rate - should be flat every time!
-            end
-        end
+            SPS(:,qq) = xin(qq).SPS;
+            RSnorm(:,qq) = xin(qq).RSnorm;
+            RSraw(:,qq) = xin(qq).RSraw;
     end
     
     tuo.mean = sum(dat) / (length(dat(:,1))-1); % Mean normalized data normalized (original plots)
