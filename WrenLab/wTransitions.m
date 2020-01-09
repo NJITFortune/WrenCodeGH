@@ -111,6 +111,7 @@ MSAU = MAHU; MSAC = MAHU; MSHU = MAHU; MSHC = MAHU;
 FAHU = MAHU; FAHC = MAHU; FHAU = MAHU; FHAC = MAHU; 
 FSAU = MAHU; FSAC = MAHU; FSHU = MAHU; FSHC = MAHU;
 
+FHAC
 
 if in(ff).sexy == 1 % This is a male
     
