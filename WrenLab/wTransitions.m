@@ -54,19 +54,15 @@ for ff = birdlist
     end
         ChronSpon = ChronSpon / (Cspon(2,sylstrdx) - Cspon(1,sylstrdx)); % Divide by duration, SPIKES PER SECOND 
         ChronSpon = ChronSpon / length(in(ff).Cspikes); % Divide by number of reps (always 4 for Chronic)
-    
-        ChronSpon
-        
-        ChronSpon(ff) = ChronSpon;
-        
-    AcuteSpon(ff) = 0; % ACUTE DATA
+            
+    AcuteSpon = 0; % ACUTE DATA
     
     if sylstrdx < 7 % We only have complete Urethane data for the first 3 pairs of birds
         for z = 1:length(in(ff).Aspikes)
-            AcuteSpon(ff) = AcuteSpon(ff) + length(find(in(ff).Aspikes{z} > Aspon(1,sylstrdx) & in(ff).Aspikes{z} < Aspon(2,sylstrdx)));
+            AcuteSpon = AcuteSpon + length(find(in(ff).Aspikes{z} > Aspon(1,sylstrdx) & in(ff).Aspikes{z} < Aspon(2,sylstrdx)));
         end
-            AcuteSpon(ff) = AcuteSpon(ff) / length(in(ff).Aspikes); % Divide by number of reps 
-            AcuteSpon(ff) = AcuteSpon(ff) / (Aspon(2,sylstrdx) - Aspon(1,sylstrdx)); % Divide by duration, SPIKES PER SECOND
+            AcuteSpon = AcuteSpon / length(in(ff).Aspikes); % Divide by number of reps 
+            AcuteSpon = AcuteSpon / (Aspon(2,sylstrdx) - Aspon(1,sylstrdx)); % Divide by duration, SPIKES PER SECOND
     end
 
 % Find all Male-female and female-male duet syllable transitions
@@ -116,10 +112,10 @@ if in(ff).sexy == 1 % This is a male
     if ~isempty(mduetsyls{sylstrdx}) % For every male duet syllable...   
     Mwhichduet = Mwhichduet + 1;
     
-    [MAHU(Mwhichduet), M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon(ff));        
-    [MAHC(Mwhichduet), ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon(ff));        
-    [MHAU(Mwhichduet), ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon(ff));        
-    [MHAC(Mwhichduet), ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon(ff));
+    [MAHU(Mwhichduet), M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);        
+    [MAHC(Mwhichduet), ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);        
+    [MHAU(Mwhichduet), ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);        
+    [MHAC(Mwhichduet), ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
     
     bins4plot = (M(Mwhichduet).bintims(2:end) + M(Mwhichduet).bintims(1:end-1))/2; % Time bins adjusted for proper plotting
     end
@@ -128,13 +124,13 @@ if in(ff).sexy == 1 % This is a male
     % U=Urethane, C=Chronic
     if ~isempty(msolosyls{sylstrdx})
         Mwhichmalesolosyl = Mwhichmalesolosyl+1; % We are using a different indexing here
-        [MSAU(Mwhichmalesolosyl), ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins, AcuteSpon(ff));
-        [MSAC(Mwhichmalesolosyl), ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon(ff));
+        [MSAU(Mwhichmalesolosyl), ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins, AcuteSpon);
+        [MSAC(Mwhichmalesolosyl), ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon);
     end
     if ~isempty(fsolosyls{sylstrdx})
         Mwhichfemalesolosyl = Mwhichfemalesolosyl +1;
-        [MSHU(Mwhichfemalesolosyl), ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins, AcuteSpon(ff));
-        [MSHC(Mwhichfemalesolosyl), ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon(ff));
+        [MSHU(Mwhichfemalesolosyl), ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins, AcuteSpon);
+        [MSHC(Mwhichfemalesolosyl), ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
     end
 
 end % End of male
@@ -147,16 +143,16 @@ if in(ff).sexy == 2 % This is a female
     Fwhichduet = Fwhichduet + 1;
     
     if ~isempty(in(ff).Aspikes)
-        [FAHU(Fwhichduet), F(Fwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon(ff));
-        [FHAU(Fwhichduet), ~] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon(ff));
+        [FAHU(Fwhichduet), F(Fwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);
+        [FHAU(Fwhichduet), ~] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
     end
     
     if ~isempty(in(ff).Cspikes)
     if ~isempty(currF2Msyltim)
-        [FAHC(Fwhichduet), F(Fwhichduet).bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon(ff));
+        [FAHC(Fwhichduet), F(Fwhichduet).bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
     end
     if ~isempty(currM2Fsyltim)
-        [FHAC(Fwhichduet), ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon(ff));
+        [FHAC(Fwhichduet), ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);
     end
     end
     
@@ -168,13 +164,13 @@ if in(ff).sexy == 2 % This is a female
     % U=Urethane, C=Chronic
     if ~isempty(msolosyls{sylstrdx})
         Fwhichmalesolosyl = Fwhichmalesolosyl +1; % Again, we are using a different indexing for solo data
-        [FSHU(Fwhichmalesolosyl), ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins, AcuteSpon(ff));
-        [FSHC(Fwhichmalesolosyl), ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon(ff));
+        [FSHU(Fwhichmalesolosyl), ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins, AcuteSpon);
+        [FSHC(Fwhichmalesolosyl), ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon);
     end
     if ~isempty(fsolosyls{sylstrdx})
         Fwhichfemalesolosyl = Fwhichfemalesolosyl +1;
-        [FSAU(Fwhichfemalesolosyl), ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins, AcuteSpon(ff));
-        [FSAC(Fwhichfemalesolosyl), ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon(ff));
+        [FSAU(Fwhichfemalesolosyl), ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins, AcuteSpon);
+        [FSAC(Fwhichfemalesolosyl), ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
     end
     
 end % End of female
