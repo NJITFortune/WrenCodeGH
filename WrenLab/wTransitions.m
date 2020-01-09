@@ -115,7 +115,10 @@ for ff = birdlist
 if in(ff).sexy == 1 % This is a male
         
     if ~isempty(mduetsyls{sylstrdx}) % For songs with male duet syllables...   
-    
+
+        length(currM2Fsyltim)
+        length(currF2Msyltim)
+        
     [tmp, M.bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
         for kk = length(tmp); MAHU(end+1) = tmp(kk); end; clear tmp;
     [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);        
