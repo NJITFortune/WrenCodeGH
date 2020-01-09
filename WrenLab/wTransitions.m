@@ -171,6 +171,7 @@ if in(ff).sexy == 2 % This is a female
              for kk = length(tmp)
                  FAHC(end+1).SPS = tmp(kk).SPS; 
                  FAHC(end+1).RSraw = tmp(kk).RSraw; 
+                    isempty(tmp(kk).RSraw)
                  FAHC(end+1).RSnorm = tmp(kk).RSnorm; 
              end
              clear tmp; length(FAHC)
