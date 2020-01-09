@@ -413,6 +413,8 @@ end
 %% Embedded histogram function
 function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
 
+    out = [];
+    
         % wid is window in msec before and after start of the syllable at the end of the focal ISI.
         binwid = wid / numbin; % Width of each bin
         
