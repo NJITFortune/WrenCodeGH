@@ -260,15 +260,15 @@ linkaxes(xax, 'x');
 
 %% Do the solo syllable calculations
 
-    msFSAC = concatHist(FSAC, length(FSAC(1).spkcnt(:,1)));                        
-    msFSAU = concatHist(FSAU, length(FSAC(1).spkcnt(:,1)));                        
-    msFSHC = concatHist(FSHC, length(FSHC(1).spkcnt(:,1)));                        
-    msFSHU = concatHist(FSHU, length(FSHC(1).spkcnt(:,1)));                        
+    msFSAC = concatHist(FSAC);                        
+    msFSAU = concatHist(FSAU);                        
+    msFSHC = concatHist(FSHC);                        
+    msFSHU = concatHist(FSHU);                        
 
-    msMSAC = concatHist(MSAC, length(MSAC(1).spkcnt(:,1)));                        
-    msMSAU = concatHist(MSAU, length(MSAC(1).spkcnt(:,1)));                        
-    msMSHC = concatHist(MSHC, length(MSHC(1).spkcnt(:,1)));                        
-    msMSHU = concatHist(MSHU, length(MSHC(1).spkcnt(:,1)));                        
+    msMSAC = concatHist(MSAC);                        
+    msMSAU = concatHist(MSAU);                        
+    msMSHC = concatHist(MSHC);                        
+    msMSHU = concatHist(MSHU);                        
 
 figure(2); clf; set(gcf, 'Color', [1,1,1]);
 
