@@ -396,7 +396,7 @@ function tuo = concatHist(xin)
             end
         end
     end
-        SPS
+        
     for j = maxlen:-1:1
         meanSPS(j) = mean(SPS(j,:)); stdSPS(j) = std(SPS(j,:)); 
             steSPS(j) = stdSPS(j) / sqrt(length(xin));
