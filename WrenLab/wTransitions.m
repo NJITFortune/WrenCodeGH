@@ -363,7 +363,7 @@ function tuo = concatHist(xin)
         meanRSnorm(j) = nanmean(RSnrm(j,:)); stdRSnorm(j) = nanstd(RSnrm(j,:));
             steRSnorm(j) = stdRSnorm(j) / sqrt(~isnan(RSnrm(j,:)));
         meanRSraw(j) = nanmean(SPS(j,:)); stdRSraw(j) = nanstd(RSrw(j,:));
-            steRSraw(j) = stdRSraw(j) / sqrt(~isnan(RSraw(j,:)));
+            steRSraw(j) = stdRSraw(j) / sqrt(~isnan(RSrw(j,:)));
     end
         
     tuo.meanSPS = meanSPS;
