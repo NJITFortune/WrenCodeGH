@@ -115,14 +115,15 @@ for ff = birdlist
 if in(ff).sexy == 1 % This is a male
         
     if ~isempty(mduetsyls{sylstrdx}) % For songs with male duet syllables...   
-        % M2F Acute then Chronic    
+        %  Acute
+        if ~isempty
         [tmp, M.bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
             for kk = length(tmp); MAHU(end+1) = tmp(kk); end; clear tmp;
-        [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);        
-            for kk = length(tmp); MAHC(end+1) = tmp(kk); end; clear tmp;   
-        % F2M Acute then Chronic            
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);        
             for kk = length(tmp); MHAU(end+1) = tmp(kk); end; clear tmp;
+        % Chronic    
+        [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);        
+            for kk = length(tmp); MAHC(end+1) = tmp(kk); end; clear tmp;   
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
             for kk = length(tmp); MHAC(end+1) = tmp(kk); end; clear tmp;
     end
