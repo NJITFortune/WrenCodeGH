@@ -424,6 +424,7 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
         
 end
 
+mean(ChronSpon)
 
 end
 
