@@ -410,7 +410,6 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
     
     % Convert raw spike counts useful measures
         
-        
         for k = 1:length(spikearray(:,1))
             SPShist(k) = sum(spikearray(k,:)); 
             SPShist(k) = SPShist(k) / totalreps; % Divide by number of 'reps'
@@ -420,6 +419,11 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
             RSnorm(k) = RSrawhist(k) / (sponSPS + 0.0000000000001); % Divide by Spontaneous rate
         end
 
+        figure(27); 
+            subplot(311); hold on; plot(SPShist)
+            subplot(312); hold on; plot(RSrawhist)
+            subplot(313); hold on; plot(RSnorm)
+        
         out.SPS = SPShist;
         out.RSraw = RSrawhist;
         out.RSnorm = RSnorm;
