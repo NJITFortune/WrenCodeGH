@@ -230,7 +230,7 @@ plot(bins4plot, msFAHU.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSi
 fill([bins4plot bins4plot(end:-1:1)], [msMHAU.meanRSraw - msMHAU.stdRSraw/2, msMHAU.meanRSraw(end:-1:1) + msMHAU.stdRSraw(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msMHAU.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-linkaxes(ax, 'xy'); figure(1); subplot(222); ylim([0 1]);
+linkaxes(ax, 'xy'); figure(1); subplot(222); % ylim([0 1]);
 
 % figure(3); clf; set(gcf, 'Color', [1,1,1]);
 % xax(1) = subplot(221); hold on; title('M2F Chronic'); 
@@ -308,7 +308,7 @@ plot(bins4plot, msFSAU.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSi
 fill([bins4plot bins4plot(end:-1:1)], [msMSHU.meanRSraw - msMSHU.stdRSraw/2, msMSHU.meanRSraw(end:-1:1) + msMSHU.stdRSraw(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msMSHU.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-linkaxes(axx, 'xy'); figure(2); subplot(222); ylim([0 1]);
+linkaxes(axx, 'xy'); figure(2); subplot(222); % ylim([0 1]);
 
 
 %% Put everything into the output structures
