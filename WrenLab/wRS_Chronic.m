@@ -392,7 +392,7 @@ function qwe = rs(struc, syllabl, spontan, padme)
         
         
         qwe(j).sylnum = syllabl(j);
-        qwe(j).rsNorm = (stimSPS - sponSPS) / sponSPS + 0.0000000000001; % Avoid divide by zero
+        qwe(j).rsNorm = (stimSPS - sponSPS) / (sponSPS + 0.0000000000001); % Avoid divide by zero
         qwe(j).rsRaw = stimSPS - sponSPS;
         qwe(j).sponrate = sponSPS;
         qwe(j).spikerate = stimSPS;
