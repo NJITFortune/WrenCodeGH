@@ -31,6 +31,13 @@ birdlist = 1:length(in);
     
 %% For each bird in our list
 
+MAHU(1).SPS = []; MAHU(1).RSraw = []; MAHU(1).RSnorm = [];
+MAHC = MAHU; MHAU = MAHU; MHAC = MAHU; 
+MSAU = MAHU; MSAC = MAHU; MSHU = MAHU; MSHC = MAHU;
+
+FAHU = MAHU; FAHC = MAHU; FHAU = MAHU; FHAC = MAHU; 
+FSAU = MAHU; FSAC = MAHU; FSHU = MAHU; FSHC = MAHU;
+
 for ff = birdlist
         
     sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m 
@@ -103,15 +110,6 @@ for ff = birdlist
     end
     
 %% Generate the transition histograms
-
-MAHU(1).SPS = []; MAHU(1).RSraw = []; MAHU(1).RSnorm = [];
-MAHC = MAHU; MHAU = MAHU; MHAC = MAHU; 
-MSAU = MAHU; MSAC = MAHU; MSHU = MAHU; MSHC = MAHU;
-
-FAHU = MAHU; FAHC = MAHU; FHAU = MAHU; FHAC = MAHU; 
-FSAU = MAHU; FSAC = MAHU; FSHU = MAHU; FSHC = MAHU;
-
-FHAC
 
 if in(ff).sexy == 1 % This is a male
     
