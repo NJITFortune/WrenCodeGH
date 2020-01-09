@@ -380,9 +380,9 @@ function tuo = concatHist(xin)
                     cRSnrm(:,1) = xin(qq).RSnorm(rr);
                     cRSrw(:,1) = xin(qq).RSraw(rr);
                 else
-                cSPS(:,end+1) = xin(qq).SPS(rr);
-                cRSnrm(:,end+1) = xin(qq).RSnorm(rr);
-                cRSrw(:,end+1) = xin(qq).RSraw(rr);
+                    cSPS(:,end+1) = xin(qq).SPS(rr);
+                    cRSnrm(:,end+1) = xin(qq).RSnorm(rr);
+                    cRSrw(:,end+1) = xin(qq).RSraw(rr);
                 end
             end
     end
