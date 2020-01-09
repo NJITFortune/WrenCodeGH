@@ -460,10 +460,11 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
 %             RSrawhist(k) = SPShist(k) - sponSPS; % Subtract Spontaneous rate
 %             RSnorm(k) = RSrawhist(k) / (sponSPS + 0.0001); % Divide by Spontaneous rate
 %         end
-        
-        out.SPS = spikearray / binwid;
-        out.RSraw = out.SPS - sponSPS;
-        out.RSnorm = out.RSraw / sponSPS;
+        for j=length(spikearray):-1:1
+            out(j).SPS = spikearray / binwid;
+            out(j).RSraw = out.SPS - sponSPS;
+            out(j).RSnorm = out.RSraw / sponSPS;
+        end
         
         
 end
