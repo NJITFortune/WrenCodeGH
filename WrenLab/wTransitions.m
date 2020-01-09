@@ -1,10 +1,9 @@
 function [M, F] = wTransitions(in)
-% Usage out = wTransitions(in, window)
-% This generates plots that focus on the transitions between
-% female and male syllables. 
-% in is the data structure w
+% Usage out = wTransitions(w, window)
+% This generates plots that focus on the transitions between female and male syllables. 
+% w is the data structure 'w' from ChronicCompleat2019f.mat (Current as of 8-Jan-2020)
 % window is the time before and after the start of the 2nd syllable in 
-% pair for plotting.
+% pair for plotting. Default is 0.250 (250msec).  300 looks good too.
 
 %% Preparations
 % Default window width for histogram if user didn't specify window
@@ -35,7 +34,7 @@ birdlist = 1:length(in);
 for ff = birdlist
         
     sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m 
-                           % each refer to two entries in w. This
+                           % each refer to two entries in w, one for male data . This
                            % just resolves that indexing issue. This is the
                            % current cut data.
     
