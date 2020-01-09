@@ -390,7 +390,6 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
 
         totalreps = 0;
 
-        
     for j = length(tims):-1:1 % For each syllable in the list
         
         bintimstarts = tims(j)-wid:binwid*overlap:tims(j)+wid-(binwid*overlap); % Start and end times for current syllable
