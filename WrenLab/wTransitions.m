@@ -240,8 +240,6 @@ figure(1); clf; set(gcf, 'Color', [1,1,1]);
 ax(1) = subplot(221); hold on; title('M2F Chronic'); 
     plot([0 0], [-10 65], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
 % Male
-length(bins4plot)
-length(msMAHC.meanRSraw)
 fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanRSraw - msMAHC.steRSraw, msMAHC.meanRSraw(end:-1:1) + msMAHC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msMAHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Female
@@ -417,11 +415,14 @@ function tuo = concatHist(xin)
     end
         
     for j = 1:length(cSPS(:,1))
-        meanSPS(j) = mean(cSPS(j,:)); stdSPS(j) = std(cSPS(j,:)); 
+        meanSPS(j) = mean(cSPS(j,:)); 
+        stdSPS(j) = std(cSPS(j,:)); 
             steSPS(j) = stdSPS(j) / sqrt(length(xin));
-        meanRSnorm(j) = mean(cRSnrm(j,:)); stdRSnorm(j) = std(cRSnrm(j,:));
+        meanRSnorm(j) = mean(cRSnrm(j,:)); 
+        stdRSnorm(j) = std(cRSnrm(j,:));
             steRSnorm(j) = stdRSnorm(j) / sqrt(length(xin));
-        meanRSraw(j) = mean(cRSrw(j,:)); stdRSraw(j) = std(cRSrw(j,:));
+        meanRSraw(j) = mean(cRSrw(j,:)); 
+        stdRSraw(j) = std(cRSrw(j,:));
             steRSraw(j) = stdRSraw(j) / sqrt(length(xin));
     end
         
