@@ -372,37 +372,21 @@ fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2M
 
 %% Embedded Concatonation function
 function tuo = concatHist(xin)
-    
-    xin(2).SPS(:,1)
-    
-    maxlen = 0;
-    for pp = 1:length(xin)
-        if ~isempty(xin(pp).SPS)
-        for ll = 1:length(xin(pp).SPS(1,:))
-            maxlen = max([maxlen, max(length(xin(pp).SPS(:,ll)))]);
-        end
-        end
         
-    end
-    
-    SPS = []; RSnrm = SPS; RSrw = SPS;
-    
     for qq = length(xin):-1:1
-        if ~isempty(xin(qq).RSnorm)
             for rr = 1:length(xin(qq).SPS)
-                SPS(:,end+1) = xin(qq).SPS(rr);
-                RSnrm(:,end+1) = xin(qq).RSnorm(rr);
-                RSrw(:,end+1) = xin(qq).RSraw(rr);
+                cSPS(:,end+1) = xin(qq).SPS(rr);
+                cRSnrm(:,end+1) = xin(qq).RSnorm(rr);
+                cRSrw(:,end+1) = xin(qq).RSraw(rr);
             end
-        end
     end
         
     for j = maxlen:-1:1
-        meanSPS(j) = mean(SPS(j,:)); stdSPS(j) = std(SPS(j,:)); 
+        meanSPS(j) = mean(cSPS(j,:)); stdSPS(j) = std(cSPS(j,:)); 
             steSPS(j) = stdSPS(j) / sqrt(length(xin));
-        meanRSnorm(j) = mean(RSnrm(j,:)); stdRSnorm(j) = std(RSnrm(j,:));
+        meanRSnorm(j) = mean(cRSnrm(j,:)); stdRSnorm(j) = std(cRSnrm(j,:));
             steRSnorm(j) = stdRSnorm(j) / sqrt(length(xin));
-        meanRSraw(j) = mean(SPS(j,:)); stdRSraw(j) = std(RSrw(j,:));
+        meanRSraw(j) = mean(cRSrw(j,:)); stdRSraw(j) = std(cRSrw(j,:));
             steRSraw(j) = stdRSraw(j) / sqrt(length(xin));
     end
         
