@@ -47,7 +47,8 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
 % Happiness and Joy.
 
 %% List of Chronic and Acute duet singing with syllable indices 
-[~, mduetsyls, ~, fduetsyls, ~, ~] = wData;
+% [~, mduetsyls, ~, fduetsyls, ~, ~] = wData;
+[msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData;
 
 
 % For each of the duets we calculate the DSI separately for the female and
