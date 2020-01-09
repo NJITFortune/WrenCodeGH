@@ -14,7 +14,7 @@ function [M, F] = wTransitions(in, wwindow)
     % If user specified a different window length, use that.
     if nargin>1; widow = wwindow; end   
     
-    numbins = 5; % How many bins before and after the onset of our focal syllable?
+    numbins = 6; % How many bins before and after the onset of our focal syllable?
     windur = widow / numbins;
 
 %% Load the list of Chronic singing data with syllable indices and locations for spontaneous activity
@@ -442,7 +442,7 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
         binwid = wid / numbin; % Width of each bin
         
         % Specify the OVERLAP percentage here
-        overlap = 80; % Overlap is XX% of previous window
+        overlap = 50; % Overlap is XX% of previous window
         
         overlap = 1-(overlap/100); % Converts to step size for advancing the window
         
