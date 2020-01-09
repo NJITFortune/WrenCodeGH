@@ -168,8 +168,10 @@ if in(ff).sexy == 2 % This is a female
     % Chronic
         if ~isempty(currF2Msyltim)
             [tmp, F.bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
-            length(tmp)
-             for kk = length(tmp); FAHC(end+1) = tmp(kk); 
+             for kk = length(tmp)
+                 FAHC(end+1).SPS = tmp(kk).SPS; 
+                 FAHC(end+1).RSraw = tmp(kk).RSraw; 
+                 FAHC(end+1).RSnorm = tmp(kk).RSnorm; 
              end
              clear tmp;
         end
