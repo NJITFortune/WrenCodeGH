@@ -8,7 +8,7 @@ function [M, F] = wTransitions(in)
 %% Preparations
 % Default window width for histogram if user didn't specify window
     widow = 0.300; % 300 msec looks pretty good with numbins 10 and overlap 50
-    numbins = 3; % How many bins before and after the onset of our focal syllable?
+    numbins = 2; % How many bins before and after the onset of our focal syllable?
     
     windur = widow / numbins;
 
