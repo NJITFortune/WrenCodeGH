@@ -15,7 +15,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     fduetsyls{1} = [6 8 10 12 14];
 %    Cspon(:,1) = [-5.5, -0.5]; % This is a mess. 
     Cspon(:,1) = [-5, -1]; % This is a mess. 
-    Aspon(:,1) = [7, 10.0];
+    Aspon(:,1) = [-5, -1];
     
 % 3-4: j160806
 
@@ -25,7 +25,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     fsolosyls{2} = 1; 
     fduetsyls{2} = [3 5 7 9 11 13];    
     Cspon(:,2) = [-5.0, -1]; 
-    Aspon(:,2) = [-5.0, 0.0];
+    Aspon(:,2) = [-5.0, -1];
     
 % 5-6: j160807
     
@@ -34,7 +34,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     fsolosyls{3} = 1; % Solitary
     fduetsyls{3} = [3 5 7 9 11 13 15 17 19];
     Cspon(:,3) = [-5.0, -1];
-    Aspon(:,3) = [-5.0, 0.0];
+    Aspon(:,3) = [-5.0, -1];
     
 % 7-8: j160815
     
