@@ -88,7 +88,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     mduetsyls{8} = [3 8];
     fsolosyls{8} = 1; 
     fduetsyls{8} = [2 4 5 7 9 10];
-    Cspon(:,8) = [-5, 0];
+    Cspon(:,8) = [-5, -1];
     
 % 17-18: j160734 
 
