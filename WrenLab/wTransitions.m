@@ -214,7 +214,7 @@ if in(ff).sexy == 2 % This is a female
         clear tmp;
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
          for kk = length(tmp); FSAC(end+1) = tmp(kk); end
-         clear tmp;
+        clear tmp;
     end
     
 end % End of female
