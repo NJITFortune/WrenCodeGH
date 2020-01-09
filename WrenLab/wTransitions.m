@@ -349,7 +349,7 @@ function tuo = concatHist(xin)
             RSrw(:,qq) = xin(qq).RSraw;
     end
         
-    for j = length(xin(1).SPS)
+    for j = length(xin(1).SPS):-1:1
         meanSPS(j) = mean(SPS(j,:)); stdSPS(j) = std(SPS(j,:));
         meanRSnorm(j) = mean(RSnrm(j,:)); stdRSnorm(j) = std(RSnrm(j,:));
         meanRSraw(j) = mean(SPS(j,:)); stdRSraw(j) = std(RSrw(j,:));
