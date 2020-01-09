@@ -129,9 +129,9 @@ if in(ff).sexy == 1 % This is a male
     
     if ~isempty(msolosyls{sylstrdx}) % For songs with male solo syllable                
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins, AcuteSpon);
-            %if ~isempty(tmp)  
+            if ~isempty(tmp) % If there is no output.. WHY????  
                 for kk = length(tmp); MSAU(end+1) = tmp(kk); end; clear tmp; 
-            %end
+            end
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon);
             for kk = length(tmp); MSAC(end+1) = tmp(kk); end; clear tmp;
     end
