@@ -243,6 +243,8 @@ figure(1); clf; set(gcf, 'Color', [1,1,1]);
 ax(1) = subplot(221); hold on; title('M2F Chronic'); 
     plot([0 0], [-10 80], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
 % Male
+length(bins4plot)
+length(msMAHC.meanRSraw)
 fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanRSraw - msMAHC.steRSraw, msMAHC.meanRSraw(end:-1:1) + msMAHC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msMAHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Female
@@ -398,17 +400,15 @@ function tuo = concatHist(xin)
         
         save xin.mat xin
         
-            for rr = 1:length(xin(qq).SPS)
                 if ~exist('cSPS', 'var')
-                    cSPS(:,1) = xin(qq).SPS(rr);
-                    cRSrw(:,1) = xin(qq).RSraw(rr);
-                    cRSnrm(:,1) = xin(qq).RSnorm(rr);
+                    cSPS(:,1) = xin(qq).SPS;
+                    cRSrw(:,1) = xin(qq).RSraw;
+                    cRSnrm(:,1) = xin(qq).RSnorm;
                 else
-                    cSPS(:,end+1) = xin(qq).SPS(rr);
-                    cRSnrm(:,end+1) = xin(qq).RSnorm(rr);
-                    cRSrw(:,end+1) = xin(qq).RSraw(rr);
+                    cSPS(:,end+1) = xin(qq).SPS;
+                    cRSnrm(:,end+1) = xin(qq).RSnorm;
+                    cRSrw(:,end+1) = xin(qq).RSraw;
                 end
-            end
     end
         
     for j = 1:length(cSPS(:,1))
