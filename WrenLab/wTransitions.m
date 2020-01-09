@@ -9,7 +9,7 @@ function [M, F] = wTransitions(in)
 % Default window width for histogram if user didn't specify window
 
     widow = 0.400; % Time before and after transition. 300 msec looks pretty good
-    numbins = 3; % How many bins before and after the onset of our focal syllable?
+    numbins = 5; % How many bins before and after the onset of our focal syllable?
     windur = widow / numbins;
 
 %% Load the list of Chronic singing data with syllable indices and locations for spontaneous activity
