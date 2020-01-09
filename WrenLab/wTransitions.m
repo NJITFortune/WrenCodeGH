@@ -196,8 +196,8 @@ figure(1); clf; set(gcf, 'Color', [1,1,1]);
 % PLOT M2F DATA 
 ax(1) = subplot(221); hold on; title('M2F Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 % Male
-fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanRSraw - msMAHC.stdRSraw/2, msMAHC.meanRSraw(end:-1:1) + msMAHC.stdRSraw(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMAHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanSPS - msMAHC.stdSPS/2, msMAHC.meanSPS(end:-1:1) + msMAHC.stdSPS(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMAHC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Female
 fill([bins4plot bins4plot(end:-1:1)], [msFHAC.meanRSraw - msFHAC.stdRSraw/2, msFHAC.meanRSraw(end:-1:1) + msFHAC.stdRSraw(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msFHAC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
@@ -342,15 +342,12 @@ fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2M
 %% Embedded Concatonation function
 function tuo = concatHist(xin)
     
-    for qq = 1:length(xin)
+    for qq = length(xin):-1:1
             SPS(:,qq) = xin(qq).SPS;
             RSnrm(:,qq) = xin(qq).RSnorm;
             RSrw(:,qq) = xin(qq).RSraw;
     end
-    
-    length(SPS(:,1))
-    length(SPS(1,:))
-    
+        
     for j = length(SPS(:,1))
         meanSPS(j) = mean(SPS(j,:)); stdSPS(j) = std(SPS(j,:));
         meanRSnorm(j) = mean(RSnrm(j,:)); stdRSnorm(j) = std(RSnrm(j,:));
