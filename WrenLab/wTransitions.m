@@ -167,6 +167,7 @@ if in(ff).sexy == 2 % This is a female
     
     % Chronic
         if ~isempty(currF2Msyltim)
+            length(currF2Msyltim)
             [tmp, F.bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
              for kk = length(tmp); FAHC(end+1) = tmp(kk); end
              clear tmp;
@@ -202,7 +203,7 @@ if in(ff).sexy == 2 % This is a female
 end % End of female
 
 end % End of cycling for every bird
-length(FAHC)
+
 
 %% Build the Cool fill plots for the DUET data
 
