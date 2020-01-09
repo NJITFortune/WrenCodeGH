@@ -388,22 +388,24 @@ function out = concatHist(xin, len)
 end
 
 %% Embedded histogram function
-function [spikearray, bintims] = wPhaseHist(spiketimes, tims, wid, numbin)
+function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin)
 
         % wid is window in msec before and after start of the syllable at the end of the focal ISI.
         binwid = wid / numbin; % Width of each bin
         
         % Specify the OVERLAP percentage here
-        overlap = 75; % Overlap is 80% of previous window
+        overlap = 75; % Overlap is XX% of previous window
         
         overlap = 1-(overlap/100); % Converts to step size for advancing the window
         
         bintims = -wid:binwid*overlap:wid; % List of bin times centered on zero
     
-    for j = length(tims):-1:1 % For each syllable
+    for j = length(tims):-1:1 % For each syllable in the list
         
         bintimstarts = tims(j)-wid:binwid*overlap:tims(j)+wid-(binwid*overlap); % Start and end times for current syllable
+        
         spkcnts = zeros(1, length(-wid:binwid*overlap:wid-(binwid*overlap)));
+        
                 
         for k = 1:length(spiketimes) % For each row of spikes
             
@@ -415,6 +417,20 @@ function [spikearray, bintims] = wPhaseHist(spiketimes, tims, wid, numbin)
         spikearray(:,j) = spkcnts;
  
     end
+    
+        % Convert raw spike counts useful measures
+        
+        for k = 1:length(spikearray(:,1))
+            SPShist(k) = sum(spikearray(k,:)) / length(spikearray(k,:)); % Divide by number of 'reps'
+            SPShist(k) = SPShist(k) / binwid; % Divide by length of bin
+
+            RSrawhist(k) = SPShist(k) - currsponSPS; % Subtract Spontaneous rate
+            RSnorm(k) = RSrawhist(k) / currsponSPS; % Divide by Spontaneous rate
+        end
+
+        out.SPS = SPShist;
+        out.RSraw = RSrawhist;
+        out.RSnorm = RSnorm;
 
 end
 
