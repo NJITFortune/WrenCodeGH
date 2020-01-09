@@ -279,11 +279,11 @@ figure(2); clf; set(gcf, 'Color', [1,1,1]);
 % PLOT M Solo DATA
 axx(1) = subplot(221); hold on; title('M Solo Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 % Male
-fill([bins4plot bins4plot(end:-1:1)], [msMSAC.meanRSraw - msMSAC.steRSraw, msMSAC.meanRSraw(end:-1:1) + msMSAC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSAC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msMSAC.meanRSnorm - msMSAC.steRSnorm, msMSAC.meanRSnorm(end:-1:1) + msMSAC.steRSnorm(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMSAC.meanRSnorm, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Female
-fill([bins4plot bins4plot(end:-1:1)], [msFSHC.meanRSraw - msFSHC.steRSraw, msFSHC.meanRSraw(end:-1:1) + msFSHC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSHC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msFSHC.meanRSnorm - msFSHC.steRSnorm, msFSHC.meanRSnorm(end:-1:1) + msFSHC.steRSnorm(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFSHC.meanRSnorm, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 axx(2) = subplot(223); hold on; title('M Solo Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 set(axx(2),'Color', [0.9, 0.9, 0.9]);
@@ -297,11 +297,11 @@ plot(bins4plot, msFSHU.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSi
 % PLOT F Solo DATA
 axx(3) = subplot(222); hold on; title('F Solo Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 % Female
-fill([bins4plot bins4plot(end:-1:1)], [msFSAC.meanRSraw - msFSAC.steRSraw, msFSAC.meanRSraw(end:-1:1) + msFSAC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSAC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msFSAC.meanRSnorm - msFSAC.steRSnorm, msFSAC.meanRSnorm(end:-1:1) + msFSAC.steRSnorm(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFSAC.meanRSnorm, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Male
-fill([bins4plot bins4plot(end:-1:1)], [msMSHC.meanRSraw - msMSHC.steRSraw, msMSHC.meanRSraw(end:-1:1) + msMSHC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msMSHC.meanRSnorm - msMSHC.steRSnorm, msMSHC.meanRSnorm(end:-1:1) + msMSHC.steRSnorm(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMSHC.meanRSnorm, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 axx(4) = subplot(224); hold on; title('F Solo Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 set(axx(4),'Color', [0.9, 0.9, 0.9]);
