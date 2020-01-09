@@ -34,38 +34,42 @@ birdlist = 1:length(in);
 for ff = birdlist
         
     sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m 
-                           % each refer to two entries in w, one for male data . This
-                           % just resolves that indexing issue. This is the
-                           % current cut data.
+                           % each refer to two entries in w, one for each male datum (odd entries)
+                           % and one for each female datum (even entries). This
+                           % just resolves that indexing issue. 
     
-% These will have the list of sylable start times for the current song
-    currM2Fsyltim = []; 
-    currF2Msyltim = []; 
-    currMsolosyltims = []; 
-    currFsolosyltims = [];
+% Variables to hold sylable start times for the current entry
 
-% Calculate spontaneous rates
+    currM2Fsyltim = []; % Male to Female transition
+    currF2Msyltim = []; % Female to Male transition
+    currMsolosyltims = []; % Male Solo syllable
+    currFsolosyltims = []; % Female Solo syllable
 
-    ChronSpon(ff) = 0;
+% Calculate spontaneous rates for current entry
+
+    ChronSpon(ff) = 0; % CHRONIC DATA
+    
     for z = 1:length(in(ff).Cspikes)
         ChronSpon(ff) = ChronSpon(ff) + length(in(ff).Cspikes{z} > Cspon(1,sylstrdx) & in(ff).Cspikes{z} < Cspon(2,sylstrdx));
     end
         ChronSpon(ff) = ChronSpon(ff) / length(in(ff).Cspikes); % Divide by number of reps (always 4 for Chronic)
-        ChronSpon(ff) = ChronSpon(ff) / (Cspon(2,sylstrdx) - Cspon(1,sylstrdx)); % Divide by duration 
+        ChronSpon(ff) = ChronSpon(ff) / (Cspon(2,sylstrdx) - Cspon(1,sylstrdx)); % Divide by duration, SPIKES PER SECOND 
         
-    AcuteSpon(ff) = 0;
-    if sylstrdx < 7
+    
+    AcuteSpon(ff) = 0; % ACUTE DATA
+    
+    if sylstrdx < 7 % We only have complete Urethane data for the first 3 pairs of birds
         for z = 1:length(in(ff).Aspikes)
             AcuteSpon(ff) = AcuteSpon(ff) + length(in(ff).Aspikes{z} > Aspon(1,sylstrdx) & in(ff).Aspikes{z} < Aspon(2,sylstrdx));
         end
-            AcuteSpon(ff) = AcuteSpon(ff) / length(in(ff).Aspikes); 
-            AcuteSpon(ff) = AcuteSpon(ff) / (Aspon(2,sylstrdx) - Aspon(1,sylstrdx)); 
+            AcuteSpon(ff) = AcuteSpon(ff) / length(in(ff).Aspikes); % Divide by number of reps 
+            AcuteSpon(ff) = AcuteSpon(ff) / (Aspon(2,sylstrdx) - Aspon(1,sylstrdx)); % Divide by duration, SPIKES PER SECOND
     end
 
-% Get all male-female and female-male duet syllable transitions
+% Find all Male-female and female-male duet syllable transitions
         
-    % Find male to female syllable transitions
-    for t = 1:length(mduetsyls{sylstrdx}) % For every male syllable
+    % Find male to female syllable transitions M2F
+    for t = 1:length(mduetsyls{sylstrdx}) % For every male syllable in the entry...
        if ~isempty(find(fduetsyls{sylstrdx} == mduetsyls{sylstrdx}(t)+1, 1)) % If the next syllable is female
            
            currentFemaleIndex = mduetsyls{sylstrdx}(t)+1; % Not a necessary step
@@ -73,11 +77,12 @@ for ff = birdlist
            
            Fsyldur(end+1) = in(ff).syl(currentFemaleIndex).tim(2) - in(ff).syl(currentFemaleIndex).tim(1); % Female syllable duration
            M2FISI(end+1) = in(ff).syl(currentFemaleIndex).tim(1) - in(ff).syl(currentFemaleIndex-1).tim(2); % Duration of ISI
+           
        end
     end
     
-    % Find female to male syllable transitions
-    for t = 1:length(fduetsyls{sylstrdx}) % For every female syllable
+    % Find female to male syllable transitions F2M
+    for t = 1:length(fduetsyls{sylstrdx}) % For every female syllable in the entry...
        if ~isempty(find(mduetsyls{sylstrdx} == fduetsyls{sylstrdx}(t)+1, 1)) % If the next syllable is male
            
            currentMaleIndex = fduetsyls{ceil(ff/2)}(t)+1; % Not a necessary stp
@@ -98,25 +103,31 @@ for ff = birdlist
          currFsolosyltims(end+1) = in(ff).syl(fsolosyls{sylstrdx}(t)).tim(1); % Time of the start of the female syllable
     end
     
-%% Fetch the histograms
+%% Generate the transition histograms
 
 if in(ff).sexy == 1 % This is a male
     
     % Use the PhaseCut embedded function to create the histogram for Duet
     % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
-    if ~isempty(mduetsyls{sylstrdx})    
+    
+    if ~isempty(mduetsyls{sylstrdx}) % For every male duet syllable...   
     Mwhichduet = Mwhichduet + 1;
+    
     [MAHU(Mwhichduet).spkcnt, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins);
         MAHU(Mwhichduet).spon = (MAHU(Mwhichduet).spkcnt * 0) + (AcuteSpon(ff) * windur);
+        
     [MAHC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins);
         MAHC(Mwhichduet).spon = (MAHC(Mwhichduet).spkcnt * 0) + (ChronSpon(ff) * windur);
+        
     [MHAU(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins);
         MHAU(Mwhichduet).spon = (MHAU(Mwhichduet).spkcnt * 0) + (AcuteSpon(ff) * windur);
+        
     [MHAC(Mwhichduet).spkcnt, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins);
         MHAC(Mwhichduet).spon = (MHAC(Mwhichduet).spkcnt * 0) + (ChronSpon(ff) * windur);
     
     bins4plot = (M(Mwhichduet).bintims(2:end) + M(Mwhichduet).bintims(1:end-1))/2; % Time bins adjusted for proper plotting
     end
+    
     % Solo data S=Solo, F=Female, M=Male, A=Autogenous, H=Heterogenous,
     % U=Urethane, C=Chronic
     if ~isempty(msolosyls{sylstrdx})
