@@ -378,6 +378,7 @@ function tuo = concatHist(xin)
     maxlen = 0;
     for pp = 1:length(xin)
         for ll = 1:length(xin(pp).SPS)
+            max(length(xin(pp).SPS(:,ll)))
             maxlen = max([maxlen, max(length(xin(pp).SPS(:,ll)))]);
         end
     end
