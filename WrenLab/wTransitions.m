@@ -417,15 +417,12 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
             RSrawhist(k) = SPShist(k) - sponSPS; % Subtract Spontaneous rate
             RSnorm(k) = RSrawhist(k) / sponSPS; % Divide by Spontaneous rate
         end
-
+sponSPS
         out.SPS = SPShist;
         out.RSraw = RSrawhist;
         out.RSnorm = RSnorm;
         
 end
-
-mean(ChronSpon)
-mean(AcuteSpon)
 
 end
 
