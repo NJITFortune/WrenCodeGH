@@ -155,9 +155,7 @@ end % End of male
 
 if in(ff).sexy == 2 % This is a female
     
-    % Use the PhaseCut embedded function to create the histogram for Duet
-    % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
-    if ~isempty(fduetsyls{sylstrdx})    
+    if ~isempty(mduetsyls{sylstrdx}) % For songs with male duet syllables...   
     
     if ~isempty(in(ff).Aspikes)
         [tmp, F.bintims] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);
