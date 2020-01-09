@@ -408,7 +408,7 @@ fmc(4) = subplot(224); hold on; title('Hetero Duet Chronic');
     fill([bins4plot bins4plot(end:-1:1)], [msFAHC.meanRSraw - msFAHC.steRSraw, msFAHC.meanRSraw(end:-1:1) + msFAHC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
     plot(bins4plot, msFAHC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-
+linkaxes(fmc, 'xy'); figure(3); subplot(221); ylim([-8 60]);
 
 %% Put everything into the output structures
 
