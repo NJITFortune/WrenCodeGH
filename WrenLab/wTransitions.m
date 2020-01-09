@@ -148,7 +148,9 @@ if in(ff).sexy == 1 % This is a male
     if ~isempty(fsolosyls{sylstrdx})
         Mwhichfemalesolosyl = Mwhichfemalesolosyl +1;
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins, AcuteSpon);
+        if ~isempty(tmp)
          for kk = length(tmp); MSHU(end+1) = tmp(kk); end
+        end
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
          for kk = length(tmp); MSHC(end+1) = tmp(kk); end
     end
