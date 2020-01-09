@@ -23,7 +23,6 @@ function [M, F] = wTransitions(in)
     % Keeping track of how many solo syllables that have produced data
     Mwhichmalesolosyl = 0; Mwhichfemalesolosyl = 0; 
     Fwhichmalesolosyl = 0; Fwhichfemalesolosyl = 0;
-    Mwhichduet = 0; Fwhichduet = 0;
 
 % Choose which data to analyze
 %    birdlist = 16:-1:1; % All compleat data with both ACUTE (urethane) AND CHRONIC (awake)
@@ -117,9 +116,8 @@ if in(ff).sexy == 1 % This is a male
     % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
     
     if ~isempty(mduetsyls{sylstrdx}) % For every male duet syllable...   
-    Mwhichduet = Mwhichduet + 1;
     
-    [tmp, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
+    [tmp, M.bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
         for kk = length(tmp); MAHU(end+1) = tmp(kk); end
         clear tmp;
     [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);        
@@ -132,7 +130,7 @@ if in(ff).sexy == 1 % This is a male
         for kk = length(tmp); MHAC(end+1) = tmp(kk); end
         clear tmp;
         
-    bins4plot = (M(Mwhichduet).bintims(2:end) + M(Mwhichduet).bintims(1:end-1))/2; % Time bins adjusted for proper plotting
+    bins4plot = (M.bintims(2:end) + M.bintims(1:end-1))/2; % Time bins adjusted for proper plotting
     end
     
     % Solo data S=Solo, F=Female, M=Male, A=Autogenous, H=Heterogenous,
@@ -167,10 +165,9 @@ if in(ff).sexy == 2 % This is a female
     % Use the PhaseCut embedded function to create the histogram for Duet
     % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
     if ~isempty(fduetsyls{sylstrdx})    
-    Fwhichduet = Fwhichduet + 1;
     
     if ~isempty(in(ff).Aspikes)
-        [tmp, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);
+        [tmp, F.bintims] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);
          for kk = length(tmp); FAHU(end+1) = tmp(kk); end
          clear tmp;
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
@@ -180,7 +177,7 @@ if in(ff).sexy == 2 % This is a female
     
     if ~isempty(in(ff).Cspikes)
     if ~isempty(currF2Msyltim)
-        [tmp, F(Fwhichduet).bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
+        [tmp, F.bintims] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
          for kk = length(tmp); FAHC(end+1) = tmp(kk); end
          clear tmp;
     end
