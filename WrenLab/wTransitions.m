@@ -118,6 +118,7 @@ if in(ff).sexy == 1 % This is a male
     % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
     
     if ~isempty(mduetsyls{sylstrdx}) % For every male duet syllable...   
+    Mwhichduet = Mwhichduet + 1;
     
     [tmp, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
         for kk = length(tmp); MAHU(end+1) = tmp(kk); end
