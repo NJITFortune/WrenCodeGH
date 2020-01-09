@@ -194,7 +194,8 @@ end % End of cycling for every bird
 
 figure(1); clf; set(gcf, 'Color', [1,1,1]);
 % PLOT M2F DATA 
-ax(1) = subplot(221); hold on; title('M2F Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+ax(1) = subplot(221); hold on; title('M2F Chronic'); 
+    plot([0 0], [-10 80], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
 % Male
 fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanRSraw - msMAHC.stdRSraw/2, msMAHC.meanRSraw(end:-1:1) + msMAHC.stdRSraw(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msMAHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
@@ -202,7 +203,8 @@ plot(bins4plot, msMAHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSi
 fill([bins4plot bins4plot(end:-1:1)], [msFHAC.meanRSraw - msFHAC.stdRSraw/2, msFHAC.meanRSraw(end:-1:1) + msFHAC.stdRSraw(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msFHAC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-ax(2) = subplot(223); hold on; title('M2F Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+ax(2) = subplot(223); hold on; title('M2F Urethane'); 
+    plot([0 0], [-10 80], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
 set(ax(2),'Color', [0.9, 0.9, 0.9]);
 
 % Male
@@ -213,7 +215,8 @@ fill([bins4plot bins4plot(end:-1:1)], [msFHAU.meanRSraw - msFHAU.stdRSraw/2, msF
 plot(bins4plot, msFHAU.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
     
 % PLOT F2M DATA
-ax(3) = subplot(222); hold on; title('F2M Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+ax(3) = subplot(222); hold on; title('F2M Chronic'); 
+    plot([0 0], [-10 80], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
 % Female
 fill([bins4plot bins4plot(end:-1:1)], [msFAHC.meanRSraw - msFAHC.stdRSraw/2, msFAHC.meanRSraw(end:-1:1) + msFAHC.stdRSraw(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msFAHC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
@@ -221,7 +224,8 @@ plot(bins4plot, msFAHC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSi
 fill([bins4plot bins4plot(end:-1:1)], [msMHAC.meanRSraw - msMHAC.stdRSraw/2, msMHAC.meanRSraw(end:-1:1) + msMHAC.stdRSraw(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msMHAC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-ax(4) = subplot(224); hold on; title('F2M Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
+ax(4) = subplot(224); hold on; title('F2M Urethane'); 
+    plot([0 0], [-10 80], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
 set(ax(4),'Color', [0.9, 0.9, 0.9]);
 % Female
 fill([bins4plot bins4plot(end:-1:1)], [msFAHU.meanRSraw - msFAHU.stdRSraw/2, msFAHU.meanRSraw(end:-1:1) + msFAHU.stdRSraw(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
