@@ -422,7 +422,7 @@ plot(bins4plot, msMHAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize
 fill([bins4plot bins4plot(end:-1:1)], [msFHAU.meanSPS - msFHAU.steSPS, msFHAU.meanSPS(end:-1:1) + msFHAU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msFHAU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-fmu(2) = subplot(223); hold on; title('Solo Autogenous Acute');
+fmu(2) = subplot(223); hold on; title('Solo Female Syllable Acute');
     plot([0 0], [0 55], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     set(fmu(2),'Color', [0.9, 0.9, 0.9]);
 % Male
@@ -432,7 +432,7 @@ plot(bins4plot, msMSHU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize
 fill([bins4plot bins4plot(end:-1:1)], [msFSAU.meanSPS - msFSAU.steSPS, msFSAU.meanSPS(end:-1:1) + msFSAU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msFSAU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-fmu(3) = subplot(224); hold on; title('Solo Autogenous Acute');
+fmu(3) = subplot(224); hold on; title('Solo Male Syllable Acute');
     plot([0 0], [0 55], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     set(fmu(3),'Color', [0.9, 0.9, 0.9]);
 % Male
