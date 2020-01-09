@@ -413,6 +413,7 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
             SPShist(k) = sum(spikearray(k,:)); 
             SPShist(k) = SPShist(k) / totalreps; % Divide by number of 'reps'
             SPShist(k) = SPShist(k) / binwid; % Divide by length of bin
+            SPShist(k) = SPShist(k) / length(spikearray(1,:)); %Divide by number of transitions
 
             RSrawhist(k) = SPShist(k) - sponSPS; % Subtract Spontaneous rate
             RSnorm(k) = RSrawhist(k) / (sponSPS + 0.0001); % Divide by Spontaneous rate
