@@ -377,8 +377,8 @@ function tuo = concatHist(xin)
             for rr = 1:length(xin(qq).SPS)
                 if ~exist('cSPS', 'var')
                     cSPS(:,1) = xin(qq).SPS(rr);
-                    cRSnrm(:,1) = xin(qq).RSnorm(rr);
                     cRSrw(:,1) = xin(qq).RSraw(rr);
+                    cRSnrm(:,1) = xin(qq).RSnorm(rr);
                 else
                     cSPS(:,end+1) = xin(qq).SPS(rr);
                     cRSnrm(:,end+1) = xin(qq).RSnorm(rr);
