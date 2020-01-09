@@ -104,15 +104,23 @@ for ff = birdlist
     
 %% Generate the transition histograms
 
+MAHU.SPS = []; MAHU.RSraw = []; MAHU.RSnorm = [];
+MAHC = MAHU; MHAU = MAHU; MHAC = MAHU; 
+MSAU = MAHU; MSAC = MAHU; MSHU = MAHU; MSHC = MAHU;
+
+FAHU = MAHU; FAHC = MAHU; FHAU = MAHU; FHAC = MAHU; 
+FSAU = MAHU; FSAC = MAHU; FSHU = MAHU; FSHC = MAHU;
+
+
 if in(ff).sexy == 1 % This is a male
     
     % Use the PhaseCut embedded function to create the histogram for Duet
     % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
     
     if ~isempty(mduetsyls{sylstrdx}) % For every male duet syllable...   
-    Mwhichduet = Mwhichduet + 1;
     
-    [MAHU(Mwhichduet), M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);        
+    [tmp, M(Mwhichduet).bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
+        for kk = length(tmp); MAHU(end+1) = tmp(kk); end
     [MAHC(Mwhichduet), ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);        
     [MHAU(Mwhichduet), ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);        
     [MHAC(Mwhichduet), ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
@@ -387,15 +395,13 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
         
         bintims = -wid:binwid*overlap:wid; % List of bin times centered on zero
 
-        totalreps = 0;
+        
 
     for j = length(tims):-1:1 % For each syllable in the list
         
         bintimstarts = tims(j)-wid:binwid*overlap:tims(j)+wid-(binwid*overlap); % Start and end times for current syllable
         
         spkcnts = zeros(1, length(-wid:binwid*overlap:wid-(binwid*overlap)));
-        
-        totalreps = totalreps + length(spiketimes);
                 
         for k = 1:length(spiketimes) % For each row of spikes
             for m = 1:length(bintimstarts) % For each bin of our PSTH
@@ -403,25 +409,25 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
             end
         end
          
-        spikearray(:,j) = spkcnts;
+        spikearray(:,j) = spkcnts / length(spiketimes); % mean spikes per rep in each bin
  
     end
     
     % Convert raw spike counts useful measures
         
-        for k = 1:length(spikearray(:,1))
-            SPShist(k) = sum(spikearray(k,:)); 
-            SPShist(k) = SPShist(k) / totalreps; % Divide by number of 'reps'
-            SPShist(k) = SPShist(k) / binwid; % Divide by length of bin
-            SPShist(k) = SPShist(k) / length(spikearray(1,:)); %Divide by number of transitions
-
-            RSrawhist(k) = SPShist(k) - sponSPS; % Subtract Spontaneous rate
-            RSnorm(k) = RSrawhist(k) / (sponSPS + 0.0001); % Divide by Spontaneous rate
-        end
+%         for k = 1:length(spikearray(:,1))
+%             SPShist(k) = sum(spikearray(k,:)); 
+%             SPShist(k) = SPShist(k) / totalreps; % Divide by number of 'reps'
+%             SPShist(k) = SPShist(k) / binwid; % Divide by length of bin
+%             SPShist(k) = SPShist(k) / length(spikearray(1,:)); %Divide by number of transitions
+% 
+%             RSrawhist(k) = SPShist(k) - sponSPS; % Subtract Spontaneous rate
+%             RSnorm(k) = RSrawhist(k) / (sponSPS + 0.0001); % Divide by Spontaneous rate
+%         end
         
-        out.SPS = SPShist;
-        out.RSraw = RSrawhist;
-        out.RSnorm = RSnorm;
+        out.SPS = spikearray / binwid;
+        out.RSraw = out.SPS - sponSPS;
+        out.RSnorm = out.RSraw / sponSPS;
         
         
 end
