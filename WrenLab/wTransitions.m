@@ -415,7 +415,7 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
             SPShist(k) = SPShist(k) / binwid; % Divide by length of bin
 
             RSrawhist(k) = SPShist(k) - sponSPS; % Subtract Spontaneous rate
-            RSnorm(k) = RSrawhist(k) / (sponSPS + 0.0000000000001_; % Divide by Spontaneous rate
+            RSnorm(k) = RSrawhist(k) / (sponSPS + 0.0000000000001); % Divide by Spontaneous rate
         end
 
         out.SPS = SPShist;
