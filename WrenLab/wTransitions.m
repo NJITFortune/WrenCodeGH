@@ -104,9 +104,7 @@ for ff = birdlist
     
 %% Generate the transition histograms
 
-MAHU(1).SPS = []; 
-MAHU(1).RSraw = []; 
-MAHU(1).RSnorm = [];
+MAHU.SPS = []; MAHU.RSraw = []; MAHU.RSnorm = [];
 MAHC = MAHU; MHAU = MAHU; MHAC = MAHU; 
 MSAU = MAHU; MSAC = MAHU; MSHU = MAHU; MSHC = MAHU;
 
@@ -374,6 +372,8 @@ fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2M
 
 %% Embedded Concatonation function
 function tuo = concatHist(xin)
+    
+    length(xin)
     
     for qq = length(xin):-1:1
             SPS(:,qq) = xin(qq).SPS;
