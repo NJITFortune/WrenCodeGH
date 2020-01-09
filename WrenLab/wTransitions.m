@@ -275,11 +275,11 @@ figure(2); clf; set(gcf, 'Color', [1,1,1]);
 % PLOT M Solo DATA
 axx(1) = subplot(221); hold on; title('M Solo Chronic'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 % Male
-fill([bins4plot bins4plot(end:-1:1)], [msMSAC.mean - msMSAC.std/2, msMSAC.mean(end:-1:1) + msMSAC.std(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSAC.mean, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msMSAC.meanRSraw - msMSAC.stdRSraw/2, msMSAC.meanRSraw(end:-1:1) + msMSAC.stdRSraw(end:-1:1)/2], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMSAC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Female
-fill([bins4plot bins4plot(end:-1:1)], [msFSHC.mean - msFSHC.std/2, msFSHC.mean(end:-1:1) + msFSHC.std(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSHC.mean, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msFSHC.meanRSraw - msFSHC.stdRSraw/2, msFSHC.meanRSraw(end:-1:1) + msFSHC.stdRSraw(end:-1:1)/2], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFSHC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 axx(2) = subplot(223); hold on; title('M Solo Urethane'); plot([0 0], [0 1], 'k-', 'LineWidth', 2);
 set(axx(2),'Color', [0.9, 0.9, 0.9]);
@@ -347,7 +347,6 @@ function tuo = concatHist(xin)
     SPS = RSrw;
     
     for qq = 1:length(xin)
-        
             SPS(:,qq) = xin(qq).SPS;
             RSnrm(:,qq) = xin(qq).RSnorm;
             RSrw(:,qq) = xin(qq).RSraw;
