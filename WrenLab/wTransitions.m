@@ -341,10 +341,6 @@ fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2M
 
 %% Embedded Concatonation function
 function tuo = concatHist(xin)
-
-    RSrw = zeros(1,length(xin(1).SPS));
-    RSnrm = RSrw;
-    SPS = RSrw;
     
     for qq = 1:length(xin)
             SPS(:,qq) = xin(qq).SPS;
