@@ -181,27 +181,22 @@ if in(ff).sexy == 2 % This is a female
     
     end
     
-    if ~isempty(msolosyls{sylstrdx})
-        Fwhichmalesolosyl = Fwhichmalesolosyl +1; % Again, we are using a different indexing for solo data
-        [tmp, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins, AcuteSpon);
-        if ~isempty(tmp)
-         for kk = length(tmp); FSHU(end+1) = tmp(kk); end
+    if ~isempty(msolosyls{sylstrdx}) % For songs with male solo syllable
+        if ~isempty(in(ff).Aspikes)
+            [tmp, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins, AcuteSpon);
+            for kk = length(tmp); FSHU(end+1) = tmp(kk); end; clear tmp;
         end
-        clear tmp;
-        [tmp, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon);
-         for kk = length(tmp); FSHC(end+1) = tmp(kk); end
-         clear tmp;
+            [tmp, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon);
+             for kk = length(tmp); FSHC(end+1) = tmp(kk); end; clear tmp;
     end
-    if ~isempty(fsolosyls{sylstrdx})
-        Fwhichfemalesolosyl = Fwhichfemalesolosyl +1;
+    
+    if ~isempty(fsolosyls{sylstrdx}) % For songs with female solo syllable
+        if ~isempty(in(ff).Aspikes)
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins, AcuteSpon);
-        if ~isempty(tmp)
-         for kk = length(tmp); FSAU(end+1) = tmp(kk); end
+            for kk = length(tmp); FSAU(end+1) = tmp(kk); end; clear tmp;
         end
-        clear tmp;
-        [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
-         for kk = length(tmp); FSAC(end+1) = tmp(kk); end
-        clear tmp;
+         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
+            for kk = length(tmp); FSAC(end+1) = tmp(kk); end; clear tmp;
     end
     
 end % End of female
