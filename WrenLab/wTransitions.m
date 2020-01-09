@@ -380,7 +380,7 @@ fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2M
 
 %% Embedded Concatonation function
 function tuo = concatHist(xin)
-        length(xin)
+        
     for qq = length(xin):-1:1
             for rr = 1:length(xin(qq).SPS)
                 if ~exist('cSPS', 'var')
@@ -470,7 +470,7 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
 
         for j=1:length(goodlist)
             out(j).SPS = spikearray(:, goodlist(j)) / binwid;
-            out(j).RSraw = out(j).SPS - sponSPS;
+            out(j).RSraw = out(j).SPS - sponSPS
             out(j).RSnorm = out(j).RSraw / sponSPS;
         end
         
