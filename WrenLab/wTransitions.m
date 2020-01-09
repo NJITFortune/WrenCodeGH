@@ -213,7 +213,7 @@ end % End of cycling for every bird
 
 
 %% Build the Cool fill plots for the DUET data
-length(FHAC)
+
     msFHAC = concatHist(FHAC);                        
     msFHAU = concatHist(FHAU);
     msFAHC = concatHist(FAHC);
@@ -382,6 +382,7 @@ fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2M
 function tuo = concatHist(xin)
         
     for qq = length(xin):-1:1
+        qq
             for rr = 1:length(xin(qq).SPS)
                 if ~exist('cSPS', 'var')
                     cSPS(:,1) = xin(qq).SPS(rr);
