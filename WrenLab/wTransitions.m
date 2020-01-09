@@ -8,7 +8,7 @@ function [M, F] = wTransitions(in)
 %% Preparations
 % Default window width for histogram if user didn't specify window
 
-    widow = 0.400; % Time before and after transition. 300 msec looks pretty good
+    widow = 0.800; % Time before and after transition. 300 msec looks pretty good
     numbins = 5; % How many bins before and after the onset of our focal syllable?
     windur = widow / numbins;
 
