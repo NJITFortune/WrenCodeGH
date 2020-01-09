@@ -407,6 +407,8 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
         out.SPS = SPShist;
         out.RSraw = RSrawhist;
         out.RSnorm = RSnorm;
+        
+        figure(1); plot(RSnorm); pause(1);
 
 end
 
