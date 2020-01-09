@@ -111,53 +111,43 @@ for ff = birdlist
     end
 
 %% Generate the transition histograms
-currFsolosyltims
+
 if in(ff).sexy == 1 % This is a male
-    
-    % Use the PhaseCut embedded function to create the histogram for Duet
-    % data.  A=Autogenous, H=Heterogenous, U=Urethane, C=Chronic
-    
-    if ~isempty(mduetsyls{sylstrdx}) % For every male duet syllable...   
+        
+    if ~isempty(mduetsyls{sylstrdx}) % For songs with male duet syllables...   
     
     [tmp, M.bintims] = wPhaseHist(in(ff).Aspikes, currM2Fsyltim, widow, numbins, AcuteSpon);
-        for kk = length(tmp); MAHU(end+1) = tmp(kk); end
-        clear tmp;
+        for kk = length(tmp); MAHU(end+1) = tmp(kk); end; clear tmp;
     [tmp, ~] = wPhaseHist(in(ff).Cspikes, currM2Fsyltim, widow, numbins, ChronSpon);        
-        for kk = length(tmp); MAHC(end+1) = tmp(kk); end
-        clear tmp;   
-    [tmp, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);        
-        for kk = length(tmp); MHAU(end+1) = tmp(kk); end
-        clear tmp;
-    [tmp, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
-        for kk = length(tmp); MHAC(end+1) = tmp(kk); end
-        clear tmp;
+        for kk = length(tmp); MAHC(end+1) = tmp(kk); end; clear tmp;   
         
-    bins4plot = (M.bintims(2:end) + M.bintims(1:end-1))/2; % Time bins adjusted for proper plotting
+    [tmp, ~] = wPhaseHist(in(ff).Aspikes, currF2Msyltim, widow, numbins, AcuteSpon);        
+        for kk = length(tmp); MHAU(end+1) = tmp(kk); end; clear tmp;
+    [tmp, ~] = wPhaseHist(in(ff).Cspikes, currF2Msyltim, widow, numbins, ChronSpon);
+        for kk = length(tmp); MHAC(end+1) = tmp(kk); end; clear tmp;
+    
     end
     
-    % Solo data S=Solo, F=Female, M=Male, A=Autogenous, H=Heterogenous,
-    % U=Urethane, C=Chronic
-    if ~isempty(msolosyls{sylstrdx})
+    if ~isempty(msolosyls{sylstrdx}) % For songs with male solo syllable
+        
         Mwhichmalesolosyl = Mwhichmalesolosyl+1; % We are using a different indexing here
+        
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins, AcuteSpon);
-        if ~isempty(tmp)
-         for kk = length(tmp); MSAU(end+1) = tmp(kk); end
-        end
-        clear tmp;
+            if ~isempty(tmp); for kk = length(tmp); MSAU(end+1) = tmp(kk); end; clear tmp; end
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon);
-        for kk = length(tmp); MSAC(end+1) = tmp(kk); end
-        clear tmp;
+            for kk = length(tmp); MSAC(end+1) = tmp(kk); end; clear tmp;
+            
     end
-    if ~isempty(fsolosyls{sylstrdx})
+    
+    if ~isempty(fsolosyls{sylstrdx}) % % For songs with female solo syllable
+
         Mwhichfemalesolosyl = Mwhichfemalesolosyl +1;
+        
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins, AcuteSpon);
-        if ~isempty(tmp)
-         for kk = length(tmp); MSHU(end+1) = tmp(kk); end
-        end
-        clear tmp;
+            if ~isempty(tmp); for kk = length(tmp); MSHU(end+1) = tmp(kk); end; clear tmp; end    
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
-         for kk = length(tmp); MSHC(end+1) = tmp(kk); end
-         clear tmp;
+            for kk = length(tmp); MSHC(end+1) = tmp(kk); end; clear tmp;
+            
     end
 
 end % End of male
