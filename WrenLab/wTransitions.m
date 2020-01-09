@@ -181,15 +181,15 @@ end % End of cycling for every bird
 
 %% Build the Cool fill plots for the DUET data
 
-    msFHAC = concatHist(FHAC, length(FHAC(1).spkcnt(:,1)));                        
-    msFHAU = concatHist(FHAU, length(FHAU(1).spkcnt(:,1)));
-    msFAHC = concatHist(FAHC, length(FAHC(1).spkcnt(:,1)));
-    msFAHU = concatHist(FAHU, length(FAHU(1).spkcnt(:,1)));
+    msFHAC = concatHist(FHAC);                        
+    msFHAU = concatHist(FHAU);
+    msFAHC = concatHist(FAHC);
+    msFAHU = concatHist(FAHU);
 
-    msMHAC = concatHist(MHAC, length(MHAC(1).spkcnt(:,1)));                        
-    msMHAU = concatHist(MHAU, length(MHAU(1).spkcnt(:,1)));
-    msMAHC = concatHist(MAHC, length(MAHC(1).spkcnt(:,1)));
-    msMAHU = concatHist(MAHU, length(MAHU(1).spkcnt(:,1)));
+    msMHAC = concatHist(MHAC);                        
+    msMHAU = concatHist(MHAU);
+    msMAHC = concatHist(MAHC);
+    msMAHU = concatHist(MAHU);
 
 
 figure(1); clf; set(gcf, 'Color', [1,1,1]);
