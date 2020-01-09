@@ -375,15 +375,26 @@ function tuo = concatHist(xin)
     
     xin(2).SPS(:,1)
     
+    maxlen = 0;
+    for pp = 1:length(xin)
+        for ll = 1:length(xin(pp).SPS)
+            maxlen = max([maxlen length(xin(pp).SPS(:,ll))]);
+        end
+    end
+    
+    SPS(maxlen,1) = []; RSnrm = SPS; RSrw = SPS;
+    
     for qq = length(xin):-1:1
         if ~isempty(xin(qq).SPS)
-            for rr = length(xin(qq).SPS):-1:1
-            SPS(:,qq) = xin(qq).SPS;
-            RSnrm(:,qq) = xin(qq).RSnorm;
-            RSrw(:,qq) = xin(qq).RSraw;
+            for rr = 1:length(xin(qq).SPS)
+                SPS(:,end+1) = xin(qq).SPS(rr);
+                RSnrm(:,end+1) = xin(qq).RSnorm(rr);
+                RSrw(:,end+1) = xin(qq).RSraw(rr);
+            end
+        end
     end
         
-    for j = length(xin(1).SPS):-1:1
+    for j = maxlen:-1:1
         meanSPS(j) = mean(SPS(j,:)); stdSPS(j) = std(SPS(j,:)); 
             steSPS(j) = stdSPS(j) / sqrt(length(xin));
         meanRSnorm(j) = mean(RSnrm(j,:)); stdRSnorm(j) = std(RSnrm(j,:));
