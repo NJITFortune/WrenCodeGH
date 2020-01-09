@@ -266,11 +266,11 @@ ax(4) = subplot(224); hold on; title('F2M Urethane');
     plot([0 0], [-10 55], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
 set(ax(4),'Color', [0.9, 0.9, 0.9]);
 % Female
-fill([bins4plot bins4plot(end:-1:1)], [msFAHU.meanRSraw - msFAHU.steRSraw, msFAHU.meanRSraw(end:-1:1) + msFAHU.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFAHU.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msFAHU.meanSPS - msFAHU.steSPS, msFAHU.meanSPS(end:-1:1) + msFAHU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFAHU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Male
-fill([bins4plot bins4plot(end:-1:1)], [msMHAU.meanRSraw - msMHAU.steRSraw, msMHAU.meanRSraw(end:-1:1) + msMHAU.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMHAU.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msMHAU.meanSPS - msMHAU.steSPS, msMHAU.meanSPS(end:-1:1) + msMHAU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMHAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 linkaxes(ax, 'xy'); figure(1); subplot(222);  ylim([-8 55]);
 
