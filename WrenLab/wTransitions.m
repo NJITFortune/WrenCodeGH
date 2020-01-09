@@ -8,7 +8,7 @@ function [M, F] = wTransitions(in)
 %% Preparations
 % Default window width for histogram if user didn't specify window
     widow = 0.300; % 300 msec looks pretty good with numbins 10 and overlap 50
-    numbins = 5; % How many bins before and after the onset of our focal syllable?
+    numbins = 4; % How many bins before and after the onset of our focal syllable?
     
     windur = widow / numbins;
 
@@ -442,7 +442,7 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
         binwid = wid / numbin; % Width of each bin
         
         % Specify the OVERLAP percentage here
-        overlap = 75; % Overlap is XX% of previous window
+        overlap = 80; % Overlap is XX% of previous window
         
         overlap = 1-(overlap/100); % Converts to step size for advancing the window
         
