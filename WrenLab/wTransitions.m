@@ -186,10 +186,12 @@ if in(ff).sexy == 2 % This is a female
     % U=Urethane, C=Chronic
     if ~isempty(msolosyls{sylstrdx})
         Fwhichmalesolosyl = Fwhichmalesolosyl +1; % Again, we are using a different indexing for solo data
-    if ~isempty(currMsolosyltims)
+        if ~isempty(currMsolosyltims)
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currMsolosyltims, widow, numbins, AcuteSpon);
+        if ~isempty(tmp)
          for kk = length(tmp); FSHU(end+1) = tmp(kk); end
-    end
+        end
+        end
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon);
          for kk = length(tmp); FSHC(end+1) = tmp(kk); end
     end
