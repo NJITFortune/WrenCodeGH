@@ -202,7 +202,7 @@ if in(ff).sexy == 2 % This is a female
 end % End of female
 
 end % End of cycling for every bird
-
+length(FAHC)
 
 %% Build the Cool fill plots for the DUET data
 
