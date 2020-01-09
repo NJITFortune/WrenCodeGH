@@ -401,13 +401,17 @@ function tuo = concatHist(xin)
         save xin.mat xin
         
                 if ~exist('cSPS', 'var')
+                    if ~isempty(xin(qq).SPS)
                     cSPS(:,1) = xin(qq).SPS;
                     cRSrw(:,1) = xin(qq).RSraw;
                     cRSnrm(:,1) = xin(qq).RSnorm;
+                    end
                 else
+                    if ~isempty(xin(qq).SPS)
                     cSPS(:,end+1) = xin(qq).SPS;
                     cRSnrm(:,end+1) = xin(qq).RSnorm;
                     cRSrw(:,end+1) = xin(qq).RSraw;
+                    end
                 end
     end
         
