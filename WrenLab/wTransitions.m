@@ -50,7 +50,7 @@ for ff = birdlist
     ChronSpon = 0; % CHRONIC DATA
     
     for z = 1:length(in(ff).Cspikes)
-        ChronSpon = ChronSpon + length(in(ff).Cspikes{z} > Cspon(1,sylstrdx) & in(ff).Cspikes{z} < Cspon(2,sylstrdx));
+        ChronSpon = ChronSpon + length(find(in(ff).Cspikes{z} > Cspon(1,sylstrdx) & in(ff).Cspikes{z} < Cspon(2,sylstrdx)));
     end
         ChronSpon = ChronSpon / (Cspon(2,sylstrdx) - Cspon(1,sylstrdx)); % Divide by duration, SPIKES PER SECOND 
         ChronSpon = ChronSpon / length(in(ff).Cspikes); % Divide by number of reps (always 4 for Chronic)
@@ -63,7 +63,7 @@ for ff = birdlist
     
     if sylstrdx < 7 % We only have complete Urethane data for the first 3 pairs of birds
         for z = 1:length(in(ff).Aspikes)
-            AcuteSpon(ff) = AcuteSpon(ff) + length(in(ff).Aspikes{z} > Aspon(1,sylstrdx) & in(ff).Aspikes{z} < Aspon(2,sylstrdx));
+            AcuteSpon(ff) = AcuteSpon(ff) + length(find(in(ff).Aspikes{z} > Aspon(1,sylstrdx) & in(ff).Aspikes{z} < Aspon(2,sylstrdx)));
         end
             AcuteSpon(ff) = AcuteSpon(ff) / length(in(ff).Aspikes); % Divide by number of reps 
             AcuteSpon(ff) = AcuteSpon(ff) / (Aspon(2,sylstrdx) - Aspon(1,sylstrdx)); % Divide by duration, SPIKES PER SECOND
