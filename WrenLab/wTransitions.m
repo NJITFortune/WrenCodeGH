@@ -423,6 +423,13 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
         out.RSraw = RSrawhist;
         out.RSnorm = RSnorm;
         end
+        if totalreps == 0
+            out.SPS = [];
+            out.RSraw = [];
+            out.RSnorm = [];
+        end
+
+        
         
 end
 
