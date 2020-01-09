@@ -1,6 +1,6 @@
 function w_Aphysplot(in, win, binwidth, plt_type)
 % w_gphysplot(in, win, binwidth, plt_type)
-% For plotting the Chronic data.
+% For plotting the Acute data.
 % in is the data structure for a single Chronic event (e.g. w(2))
 % win: [start stop] in Seconds (pre-onset times are negative!!!!)
 % binwidth: The histogram bindwidth in milliseconds
