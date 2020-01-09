@@ -410,6 +410,7 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
     
     % Convert raw spike counts useful measures
         
+        if totalreps > 0
         for k = 1:length(spikearray(:,1))
             SPShist(k) = sum(spikearray(k,:)) / totalreps; % Divide by number of 'reps'
             SPShist(k) = SPShist(k) / binwid; % Divide by length of bin
@@ -421,6 +422,7 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
         out.SPS = SPShist;
         out.RSraw = RSrawhist;
         out.RSnorm = RSnorm;
+        end
         
 end
 
