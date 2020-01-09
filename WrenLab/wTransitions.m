@@ -342,28 +342,29 @@ fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2M
 %% Embedded Concatonation function
 function tuo = concatHist(xin)
 
-    RSraw = zeros(1,length(xin(1).SPS));
-    RSnorm = RSraw;
-    SPS = RSraw;
+    RSrw = zeros(1,length(xin(1).SPS));
+    RSnrm = RSrw;
+    SPS = RSrw;
     
     for qq = 1:length(xin)
         
             SPS(:,qq) = xin(qq).SPS;
-            RSnorm(:,qq) = xin(qq).RSnorm;
-            RSraw(:,qq) = xin(qq).RSraw;
+            RSnrm(:,qq) = xin(qq).RSnorm;
+            RSrw(:,qq) = xin(qq).RSraw;
     end
     
-    tuo.mean = sum(dat) / (length(dat(:,1))-1); % Mean normalized data normalized (original plots)
-    tuo.std = std(dat); % The standard deviations of the data (but that should be also divided by length, no?)
-%    out.std = std(dat) / (length(dat(:,1))-1); % The standard deviations of the data
-    tuo.N = length(dat(:,1));
+    for j = length(SPS(:,1))
+        meanSPS(j) = mean(SPS(j,:)); stdSPS(j) = std(SPS(j,:));
+        meanRSnorm(j) = mean(RSnrm(j,:)); stdRSnorm(j) = std(RSnrm(j,:));
+        meanRSraw(j) = mean(SPS(j,:)); stdRSraw(j) = std(RSrw(j,:));
+    end
     
-    tuo.respsum = sum(rw);
-    tuo.sponsum = sum(spont);
-    tuo.RSN = (tuo.respsum - tuo.sponsum) ./ tuo.sponsum;
-    tuo.RS = tuo.respsum - tuo.sponsum; 
-    
-    clear dat;
+    tuo.meanSPS = meanSPS;
+    tuo.meanRSnorm = meanRSnorm;
+    tuo.meanRSraw = meanRSraw;
+    tuo.stdSPS = stdSPS;
+    tuo.stdRSnorm = stdRSnorm;
+    tuo.stdRSraw = stdRSraw;
     
 end
 
