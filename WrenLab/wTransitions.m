@@ -366,7 +366,7 @@ figure(7); % For luck
 clf;
 % SOLO AUTOGENOUS CHRONIC PANEL
 fmc(1) = subplot(221); hold on; title('Auto Solo Chronic'); 
-    plot([0 0], [-10 55], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
+    plot([0 0], [-10 60], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     
     % Male
     fill([bins4plot bins4plot(end:-1:1)], [msMSAC.meanRSraw - msMSAC.steRSraw, msMSAC.meanRSraw(end:-1:1) + msMSAC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
@@ -377,7 +377,7 @@ fmc(1) = subplot(221); hold on; title('Auto Solo Chronic');
 
 % DUET AUTOGENOUS CHRONIC PANEL
 fmc(2) = subplot(222); hold on; title('Auto Duet Chronic'); 
-    plot([0 0], [-10 55], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
+    plot([0 0], [-10 60], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     
     % Male
     fill([bins4plot bins4plot(end:-1:1)], [msMHAC.meanRSraw - msMHAC.steRSraw, msMHAC.meanRSraw(end:-1:1) + msMHAC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
@@ -388,7 +388,7 @@ fmc(2) = subplot(222); hold on; title('Auto Duet Chronic');
     
 % SOLO HETEROGENOUS CHRONIC PANEL
 fmc(3) = subplot(223); hold on; title('Hetero Solo Chronic'); 
-    plot([0 0], [-10 55], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
+    plot([0 0], [-10 60], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     
     % Male
     fill([bins4plot bins4plot(end:-1:1)], [msMSHC.meanRSraw - msMSHC.steRSraw, msMSHC.meanRSraw(end:-1:1) + msMSHC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
@@ -399,7 +399,7 @@ fmc(3) = subplot(223); hold on; title('Hetero Solo Chronic');
 
 % DUET HETEROGENOUS CHRONIC PANEL
 fmc(4) = subplot(224); hold on; title('Hetero Duet Chronic'); 
-    plot([0 0], [-10 55], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
+    plot([0 0], [-10 60], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     
     % Male
     fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanRSraw - msMAHC.steRSraw, msMAHC.meanRSraw(end:-1:1) + msMAHC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
