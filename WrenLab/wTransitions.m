@@ -355,9 +355,12 @@ function tuo = concatHist(xin)
     end
         
     for j = length(xin(1).SPS):-1:1
-        meanSPS(j) = mean(SPS(j,:)); stdSPS(j) = std(SPS(j,:));
+        meanSPS(j) = mean(SPS(j,:)); stdSPS(j) = std(SPS(j,:)); 
+            steSPS(j) = stdSPS(j) / sqrt(length(xin));
         meanRSnorm(j) = mean(RSnrm(j,:)); stdRSnorm(j) = std(RSnrm(j,:));
+            steRSnorm(j) = stdRSnorm(j) / sqrt(length(xin));
         meanRSraw(j) = mean(SPS(j,:)); stdRSraw(j) = std(RSrw(j,:));
+            steRSraw(j) = stdRSraw(j) / sqrt(length(xin));
     end
         
     tuo.meanSPS = meanSPS;
@@ -366,6 +369,9 @@ function tuo = concatHist(xin)
     tuo.stdSPS = stdSPS;
     tuo.stdRSnorm = stdRSnorm;
     tuo.stdRSraw = stdRSraw;
+    tuo.steSPS = steSPS;
+    tuo.steRSnorm = steRSnorm;
+    tuo.steRSraw = steRSraw;
     
 end
 
