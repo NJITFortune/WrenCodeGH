@@ -413,7 +413,7 @@ function tuo = concatHist(xin)
             end
     end
         
-    for j = maxlen:-1:1
+    for j = 1:length(cSPS(:,1))
         meanSPS(j) = mean(cSPS(j,:)); stdSPS(j) = std(cSPS(j,:)); 
             steSPS(j) = stdSPS(j) / sqrt(length(xin));
         meanRSnorm(j) = mean(cRSnrm(j,:)); stdRSnorm(j) = std(cRSnrm(j,:));
