@@ -355,11 +355,11 @@ function tuo = concatHist(xin)
     end
         
     for j = length(xin(1).SPS):-1:1
-        meanSPS(j) = mean(SPS(j,:)); stdSPS(j) = std(SPS(j,:)); 
+        meanSPS(j) = nanmean(SPS(j,:)); stdSPS(j) = nanstd(SPS(j,:)); 
             steSPS(j) = stdSPS(j) / sqrt(length(xin));
-        meanRSnorm(j) = mean(RSnrm(j,:)); stdRSnorm(j) = std(RSnrm(j,:));
+        meanRSnorm(j) = nanmean(RSnrm(j,:)); stdRSnorm(j) = nanstd(RSnrm(j,:));
             steRSnorm(j) = stdRSnorm(j) / sqrt(length(xin));
-        meanRSraw(j) = mean(SPS(j,:)); stdRSraw(j) = std(RSrw(j,:));
+        meanRSraw(j) = nanmean(SPS(j,:)); stdRSraw(j) = nanstd(RSrw(j,:));
             steRSraw(j) = stdRSraw(j) / sqrt(length(xin));
     end
         
@@ -422,13 +422,6 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
         out.SPS = SPShist;
         out.RSraw = RSrawhist;
         out.RSnorm = RSnorm;
-        end
-        if totalreps == 0
-            out.SPS = [];
-            out.RSraw = [];
-            out.RSnorm = [];
-        end
-
         
         
 end
