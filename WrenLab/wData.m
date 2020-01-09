@@ -24,7 +24,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     mduetsyls{2} = [4 6 8 10 12];
     fsolosyls{2} = 1; 
     fduetsyls{2} = [3 5 7 9 11 13];    
-    Cspon(:,2) = [-5.0, -0.5]; 
+    Cspon(:,2) = [-5.0, -1]; 
     Aspon(:,2) = [-5.0, 0.0];
     
 % 5-6: j160807
