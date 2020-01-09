@@ -328,11 +328,11 @@ axx(2) = subplot(223); hold on; title('M Solo Urethane');
     plot([0 0], [-10 55], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
 set(axx(2),'Color', [0.9, 0.9, 0.9]);
 % Male
-fill([bins4plot bins4plot(end:-1:1)], [msMSAU.meanRSraw - msMSAU.steRSraw, msMSAU.meanRSraw(end:-1:1) + msMSAU.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSAU.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msMSAU.meanSPS - msMSAU.steSPS, msMSAU.meanSPS(end:-1:1) + msMSAU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMSAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Female
-fill([bins4plot bins4plot(end:-1:1)], [msFSHU.meanRSraw - msFSHU.steRSraw, msFSHU.meanRSraw(end:-1:1) + msFSHU.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSHU.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msFSHU.meanSPS - msFSHU.steSPS, msFSHU.meanSPS(end:-1:1) + msFSHU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFSHU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 % PLOT F Solo DATA
 axx(3) = subplot(222); hold on; title('F Solo Chronic'); 
@@ -348,11 +348,11 @@ axx(4) = subplot(224); hold on; title('F Solo Urethane');
     plot([0 0], [-10 55], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
 set(axx(4),'Color', [0.9, 0.9, 0.9]);
 % Female
-fill([bins4plot bins4plot(end:-1:1)], [msFSAU.meanRSraw - msFSAU.steRSraw, msFSAU.meanRSraw(end:-1:1) + msFSAU.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSAU.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msFSAU.meanSPS - msFSAU.steSPS, msFSAU.meanSPS(end:-1:1) + msFSAU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFSAU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Male
-fill([bins4plot bins4plot(end:-1:1)], [msMSHU.meanRSraw - msMSHU.steRSraw, msMSHU.meanRSraw(end:-1:1) + msMSHU.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSHU.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins4plot bins4plot(end:-1:1)], [msMSHU.meanSPS - msMSHU.steSPS, msMSHU.meanSPS(end:-1:1) + msMSHU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMSHU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 linkaxes(axx, 'xy'); 
 
