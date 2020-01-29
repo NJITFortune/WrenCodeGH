@@ -1,6 +1,6 @@
 % load DistanceData-V10.mat
 
-idx = 1;
+idx = 1; % each idx of the structure dd is a duet song.
 
 %% Make the primary plot (4 windows)
 
@@ -30,7 +30,7 @@ linkaxes(ax, 'x');
 
 % Female Microphone first
 
-for j = 1:length(dd(idx).fsyl)
+for j = 1:length(dd(idx).fsyl) % data for each syllable in that duet (idx) for the female microphone
     
     ax(1) = subplot(411); 
         plot([dd(idx).fsyl(j).syltim(1), dd(idx).fsyl(j).syltim(1)], [0 8000], '-g', 'LineWidth', 2);
@@ -47,7 +47,7 @@ end
 
 % Now the male Microphone 
 
-for j = 1:length(dd(idx).msyl)
+for j = 1:length(dd(idx).msyl)  % data for each syllable in that duet (idx) for the male microphone
     
     ax(3) = subplot(413); 
         plot([dd(idx).msyl(j).syltim(1), dd(idx).msyl(j).syltim(1)], [0 8000], '-g', 'LineWidth', 2);
