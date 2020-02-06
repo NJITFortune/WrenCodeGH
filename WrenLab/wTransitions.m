@@ -442,6 +442,18 @@ plot(bins4plot, msMSAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize
 fill([bins4plot bins4plot(end:-1:1)], [msFSHU.meanSPS - msFSHU.steSPS, msFSHU.meanSPS(end:-1:1) + msFSHU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msFSHU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
+
+fmu(4) = subplot(222); hold on; title('AH Duet Acute');
+    plot([0 0], [0 55], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
+    set(fmu(1),'Color', [0.9, 0.9, 0.9]);
+% Male
+fill([bins4plot bins4plot(end:-1:1)], [msMAHU.meanSPS - msMAHU.steSPS, msMAHU.meanSPS(end:-1:1) + msMAHU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msMHAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% Female
+fill([bins4plot bins4plot(end:-1:1)], [msFAHU.meanSPS - msFAHU.steSPS, msFAHU.meanSPS(end:-1:1) + msFAHU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+plot(bins4plot, msFHAU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+
+
 linkaxes(fmu, 'xy'); figure(8); subplot(223);  ylim([0 55]);
 
 %% Put everything into the output structures
