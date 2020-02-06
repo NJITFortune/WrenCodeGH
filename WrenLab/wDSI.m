@@ -144,9 +144,9 @@ mChron = []; mAcute = []; fChron = []; fAcute = [];
     [foo.fa_diffzero.sig, foo.fa_diffzero.p, foo.fa_diffzero.ci, foo.fa_diffzero.stats] = ttest(fAcute);
 
     fprintf('Male Chronic DSI diff from zero? p = %1.6f \n', foo.mc_diffzero.p);
-    fprintf('Female Chronic DSI diff from zero? p = %1.6f \n', foo.mc_diffzero.p);
-    fprintf('Male Acute DSI diff from zero? p = %1.6f \n', foo.mc_diffzero.p);
-    fprintf('Female Acute DSI diff from zero? p = %1.6f \n \n', foo.mc_diffzero.p);
+    fprintf('Female Chronic DSI diff from zero? p = %1.6f \n', foo.fc_diffzero.p);
+    fprintf('Male Acute DSI diff from zero? p = %1.6f \n', foo.ma_diffzero.p);
+    fprintf('Female Acute DSI diff from zero? p = %1.6f \n \n', foo.fa_diffzero.p);
 
 % Statistics - Two sample t-test: do Chronic and Acute differ?
 
