@@ -448,10 +448,10 @@ fmu(4) = subplot(222); hold on; title('AH Duet Acute');
     set(fmu(1),'Color', [0.9, 0.9, 0.9]);
 % Male
 fill([bins4plot bins4plot(end:-1:1)], [msMAHU.meanSPS - msMAHU.steSPS, msMAHU.meanSPS(end:-1:1) + msMAHU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMHAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+plot(bins4plot, msMAHU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % Female
 fill([bins4plot bins4plot(end:-1:1)], [msFAHU.meanSPS - msFAHU.steSPS, msFAHU.meanSPS(end:-1:1) + msFAHU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFHAU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+plot(bins4plot, msFAHU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 
 linkaxes(fmu, 'xy'); figure(8); subplot(223);  ylim([0 55]);
