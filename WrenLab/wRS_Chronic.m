@@ -312,6 +312,13 @@ FvsMAutoSoloCIDX = [ones(1,length(sumdat.mSoloAuto.rsRaw)), 2*ones(1,length(sumd
     fprintf('Female Auto Duet Raw RS vs Solo? p = %1.5f \n', stts.f.SvsDRAuto.P);
     
     fprintf(' \n');
+    
+    fprintf('Male Auto Duet Raw RS different from zero? p = %1.5f \n', stts.m.dRAuto.P);
+    fprintf('Male Auto Solo Raw RS different from zero? p = %1.5f \n', stts.m.sRAuto.P);
+    fprintf('Female Auto Duet Raw RS different from zero? p = %1.5f \n', stts.f.dRAuto.P);
+    fprintf('Female Auto Solo Raw RS different from zero? p = %1.5f \n', stts.f.sRAuto.P);
+    
+    fprintf(' \n');
 
     fprintf('Male Hetero Duet Raw RS different from zero? p = %1.5f \n', stts.m.dRHetero.P);
     fprintf('Male Hetero Solo Raw RS different from zero? p = %1.5f \n', stts.m.sRHetero.P);
