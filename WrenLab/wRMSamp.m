@@ -76,7 +76,7 @@ subplot(212); hold on;
     yyaxis right; plot(fduetDur); ylabel('Duet Duration');
 
 f.amp = 20*log(mean(fduetAmp(1:end-2))/mean(fsoloAmp(1:end-1)));
-    fprintf('Mean dB amplitude increase in Females: %2.4f \n', m.amp);
+    fprintf('Mean dB amplitude increase in Females: %2.4f \n', f.amp);
 [f.H,f.P,f.CI,f.Stats] = ttest2(fsoloAmp(1:end-1), fduetAmp(1:end-2));
     fprintf('ttest difference Female solo vs duet P = %2.8f \n', f.P);
 
