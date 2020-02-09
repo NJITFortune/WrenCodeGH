@@ -62,7 +62,7 @@ subplot(212); hold on;
     yyaxis left; plot(mduetAmp, '-*b'); ylim([0 0.3]); ylabel('Duet Amp');
     yyaxis right; plot(mduetDur); ylabel('Duet Duration');
 
-m.amp = 20*log(mean(mduetAmp)/mean(msoloAmp));
+m.amp = 20*log(mean(msoloAmp)/mean(mduetAmp));
     fprintf('Mean dB amplitude increase in Males: %2.4f \n', m.amp);
 [m.H,m.P,m.CI,m.Stats] = ttest2(msoloAmp, mduetAmp);
     fprintf('ttest difference Male solo vs duet P = %2.8f \n', m.P);
