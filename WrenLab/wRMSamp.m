@@ -1,4 +1,4 @@
-function [m f] = wRMSamp(in)
+function [m, f] = wRMSamp(in)
 % Compares solo and duet syllable amplitudes.
 % Use only recordings in which both solo and duet syllables are present
 % as a form of internal control.
