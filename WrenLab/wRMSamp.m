@@ -54,7 +54,7 @@ end
 
 %% Plot and such
 
-figure(1); clf; 
+figure(1); clf; title('Male');
 subplot(211); hold on; 
     yyaxis left; plot(msoloAmp, '-*b'); ylim([0 0.3]); ylabel('Solo Amp');
     yyaxis right; plot(msoloDur); ylabel('Solo Duration');
@@ -67,7 +67,7 @@ m.amp = 20*log(mean(mduetAmp)/mean(msoloAmp));
 [m.H,m.P,m.CI,m.Stats] = ttest2(msoloAmp, mduetAmp);
     fprintf('ttest difference Male solo vs duet P = %2.8f \n', m.P);
 
-figure(2); clf; 
+figure(2); clf; title('Female');
 subplot(211); hold on; 
     yyaxis left; plot(fsoloAmp, '-*m'); ylim([0 0.3]); ylabel('Solo Amp');
     yyaxis right; plot(fsoloDur); ylabel('Solo Duration');
