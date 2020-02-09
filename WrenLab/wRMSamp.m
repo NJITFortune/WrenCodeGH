@@ -64,7 +64,8 @@ subplot(212); hold on;
 
 m.amp = 20*log(mean(mduetAmp)/mean(msoloAmp));
     fprintf('Mean amplitude increase in Males: %f2.4 \n', m.amp);
-[m.H,m.P,m.CI,m.Stats] = ttest2(msoloAmp, mduetAmp)
+[m.H,m.P,m.CI,m.Stats] = ttest2(msoloAmp, mduetAmp);
+    fprintf('ttest difference Male solo vs duet P = %f2.8 \n', m.P);
 
 figure(2); clf; 
 subplot(211); hold on; 
