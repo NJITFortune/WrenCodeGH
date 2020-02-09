@@ -8,8 +8,8 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
 
 % 1-2: m17
 
-    msolosyls{1} = [1 2 3 4]; % Orig
-    %    msolosyls{1} = [1 2 3]; % Solitary
+    %msolosyls{1} = [1 2 3 4]; % Orig
+        msolosyls{1} = [1 2 3]; % Solitary
     mduetsyls{1} = [5 7 9 11 13];
     fsolosyls{1} = []; 
     fduetsyls{1} = [6 8 10 12 14];
