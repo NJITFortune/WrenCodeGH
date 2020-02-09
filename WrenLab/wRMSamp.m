@@ -54,10 +54,12 @@ end
 
 
 figure(1); clf; 
-subplot(211); hold on; yyaxis left; plot(msoloAmp, '-*b'); ylim([0 0.3]);
-yyaxis right; plot(msoloDur);
-subplot(212); hold on; yyaxis left; plot(mduetAmp, '-*b'); ylim([0 0.3]);
-yyaxis right; plot(mduetDur);
+subplot(211); hold on; 
+    yyaxis left; plot(msoloAmp, '-*b'); ylim([0 0.3]); ylabel('Solo Amp');
+    yyaxis right; plot(msoloDur); ylabel('Solo Duration');
+subplot(212); hold on; 
+    yyaxis left; plot(mduetAmp, '-*b'); ylim([0 0.3]); ylabel('Duet Amp');
+    yyaxis right; plot(mduetDur); ylabel('Duet Duration');
 
 m.amp = 20*log(mean(mduetAmp)/mean(msoloAmp))
 [m.H,m.P,m.CI,m.Stats] = ttest2(msoloAmp, mduetAmp)
