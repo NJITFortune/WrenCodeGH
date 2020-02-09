@@ -52,6 +52,7 @@ for j=1:length(fsolosyls)
     
 end
 
+%% Plot and such
 
 figure(1); clf; 
 subplot(211); hold on; 
@@ -61,7 +62,8 @@ subplot(212); hold on;
     yyaxis left; plot(mduetAmp, '-*b'); ylim([0 0.3]); ylabel('Duet Amp');
     yyaxis right; plot(mduetDur); ylabel('Duet Duration');
 
-m.amp = 20*log(mean(mduetAmp)/mean(msoloAmp))
+m.amp = 20*log(mean(mduetAmp)/mean(msoloAmp));
+    fprintf('Mean amplitude increase in Males: %f2.4 \n', m.amp);
 [m.H,m.P,m.CI,m.Stats] = ttest2(msoloAmp, mduetAmp)
 
 figure(2); clf; 
