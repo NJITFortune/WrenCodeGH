@@ -10,11 +10,11 @@ function [M, F] = wTransitions(in, wwindow)
 
 
     widow = 0.250; % Time before and after transition. 300 msec looks pretty good
+    numbins = 6; % How many bins before and after the onset of our focal syllable?
     
     % If user specified a different window length, use that.
-    if nargin>1; widow = wwindow; end   
+    if nargin > 1; widow = wwindow(1); numbins = wwindow(2); end   
     
-    numbins = 6; % How many bins before and after the onset of our focal syllable?
     windur = widow / numbins;
 
 %% Load the list of Chronic singing data with syllable indices and locations for spontaneous activity
