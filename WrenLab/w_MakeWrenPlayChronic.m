@@ -4,6 +4,7 @@ rango = [0.2, 6.2];
 
     specpos = 0;
     if rango(1) < 0; specpos = abs(rango(1)); end
+    if rango(1) > 0; specpos = -rango(1); end
 
 Fs = w(idx).Fs;
 
@@ -87,7 +88,7 @@ for vtim = outim(1):1:outim(end)
            femalespkidx = find(w(idx(2)).Cspikes{j} > rango(1) & w(idx(2)).Cspikes{j} < vtim);
            
            for k = 1:length(malespkidx)
-               plot([specpos+w(idx(1)).Cspikes{j}(malespkidx(k)), specpos+w(idx(1)).Cspikes{j}(malespkidx(k))], [150+(j*100), 150+(j*100)+90], 'c-', 'LineWidth', 1);
+               plot([specpos+w(idx(1)).Cspikes{j}(malespkidx(k)), specpos+w(idx(1)).Cspikes{j}(malespkidx(k))], [200+(j*100), 200+(j*100)+90], 'c-', 'LineWidth', 1);
            end
            for k = 1:length(femalespkidx)
                plot([specpos+w(idx(2)).Cspikes{j}(femalespkidx(k)), specpos+w(idx(2)).Cspikes{j}(femalespkidx(k))], [4000+(j*100), 4000+(j*100)+90], 'm-', 'LineWidth', 1);
