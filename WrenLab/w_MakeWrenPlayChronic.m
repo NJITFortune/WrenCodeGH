@@ -125,3 +125,5 @@ end
 
 
  close(writerObj);
+ 
+ % ffmpeg -i mymovie.avi -i combo.wav -c:v copy output.avi
