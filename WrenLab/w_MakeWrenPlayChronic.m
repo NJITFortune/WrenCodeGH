@@ -87,9 +87,6 @@ for vtim = outim(1):outim/30:outim(end)
            end
         end
     
-    
-    plot(data.x(vtim), data.y(vtim), 'm*', data.x(vtim-90:vtim), data.y(vtim-90:vtim), 'm-'); 
-    hold off;
 %    frame = getframe(gcf);
 %    writeVideo(writerObj, frame);
 end
