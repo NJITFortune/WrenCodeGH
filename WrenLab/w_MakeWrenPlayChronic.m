@@ -49,20 +49,21 @@ audiowrite('combo.wav', combo, 10000);
 
 %% Make the video
 
-figure(1); clf; hold on;
+    vFs = 30; % frames per second
+
+figure(1); clf; 
     specgram(outduet, 512, Fs);
     colormap('HOT');
-    truesize([640 480]);
-
+    truesize([960 1280]); % truesize([480 640]);
+    specgram(outduet, 512, Fs);
+    hold on;
     
 % Initialize the "object" that will be the final movie
-writerObj = VideoWriter('mymovie.avi');
-writerObj.FrameRate = 20;
+    writerObj = VideoWriter('mymovie.avi');
+    writerObj.FrameRate = 30;
 %writerObj.VideoFormat = 'RGB24';
-writerObj.Quality = 90;
-open(writerObj);
-
-
+    writerObj.Quality = 90;
+    open(writerObj);
 
 for i = 100:1000
     figure(2); clf;
