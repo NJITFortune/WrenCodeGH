@@ -92,7 +92,7 @@ for vtim = outim(1):1/30:outim(end)
     
     % Plot transparent color boxes
     
-    for f = 1:length(~isempty(w(idx(1)).syl))
+    for f = 1:length(w(idx(1)).syl)
 %    for f = 1:13
         
         if w(idx(1)).syl(f).tim(1) >= rango(1) && w(idx(1)).syl(f).tim(1) < vtim
