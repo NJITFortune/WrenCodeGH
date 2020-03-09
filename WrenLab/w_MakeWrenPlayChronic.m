@@ -50,9 +50,9 @@ audiowrite('combo.wav', combo, 10000);
 %% Make the video
 
 figure(1); clf; hold on;
-    truesize([640 480]);
     specgram(outduet, 512, Fs);
     colormap('HOT');
+    truesize([640 480]);
 
     
 % Initialize the "object" that will be the final movie
