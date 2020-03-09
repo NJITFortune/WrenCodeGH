@@ -47,6 +47,8 @@ spks = fem' + mal';
 combo = spks + (outduet*0.8);
 audiowrite('combo.wav', combo, 10000);
 
-figure(1); clf;
+%% Make the video
 
+figure(1); clf;
+specgram(outduet, 512, Fs);
     
