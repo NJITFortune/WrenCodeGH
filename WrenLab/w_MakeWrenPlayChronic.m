@@ -1,5 +1,5 @@
 
-idx = 1; % This is the Male (odd)
+idx = [1, 2] ; % This is the Male (odd)
 rango = [-2, 7];
 Fs = w(idx).Fs;
 
@@ -19,9 +19,9 @@ Fs = w(idx).Fs;
     mal = zeros(1,length(outim));
 
 for k = 1:4
-    spkidx = find(w(idx).Cspikes{k} > rango(1) & w(idx).Cspikes{k} < rango(2));
+    spkidx = find(w(idx(1)).Cspikes{k} > rango(1) & w(idx(1)).Cspikes{k} < rango(2));
     for j = 1:length(spkidx)   
-        curidx = find(outim >= w(idx).Cspikes{k}(spkidx(j)), 1, 'first');    
+        curidx = find(outim >= w(idx(1)).Cspikes{k}(spkidx(j)), 1, 'first');    
     if curidx+len-1 < length(outim)  % Need the if not to go over the end.   
         mal(curidx:curidx+len-1) = mspike;
     end
@@ -29,12 +29,12 @@ for k = 1:4
     end
 end
 
-idx = 2; % This is the female (even)
+% idx = 2; % This is the female (even)
 
 for k = 1:4
-    spkidx = find(w(idx).Cspikes{k} > rango(1) & w(idx).Cspikes{k} < rango(2));
+    spkidx = find(w(idx(2)).Cspikes{k} > rango(1) & w(idx(2)).Cspikes{k} < rango(2));
     for j = 1:length(spkidx)   
-        curidx = find(outim >= w(idx).Cspikes{k}(spkidx(j)), 1, 'first');    
+        curidx = find(outim >= w(idx(2)).Cspikes{k}(spkidx(j)), 1, 'first');    
     if curidx+len-1 < length(outim)  % Need the if not to go over the end.   
         fem(curidx:curidx+len-1) = fspike;
     end
@@ -59,7 +59,7 @@ figure(1); clf;
     % specgram(outduet, 512, Fs);
     caxis([-25 25])
     cmp = flipud(gray);
-    colormap(cmp);
+    %colormap(cmp);
     hold on;
     
 % Initialize the "object" that will be the final movie
@@ -69,10 +69,25 @@ figure(1); clf;
     writerObj.Quality = 90;
     open(writerObj);
 
-for i = outim(1):outim/30:outtim(end)
-    plot(
-    hold on; 
-    plot(data.x(i), data.y(i), 'm*', data.x(i-90:i), data.y(i-90:i), 'm-'); 
+for vtim = outim(1):outim/30:outtim(end)
+    clf; 
+    specgram(outduet, 512, Fs, [], round(512*0.95));
+    colormap('HOT');
+    hold on;
+    plot([vtim,vtim], [0, 5000], 'r-', 'LineWidth', 5);
+    
+        for j = 1:4
+           malespkidx = find(w(idx(1)).Cspikes{j} > rango(1) & w(idx(1)).Cspikes{j} < vtim);
+           femalespkidx = find(w(idx(2)).Cspikes{j} > rango(1) & w(idx(2)).Cspikes{j} < vtim);
+           for k = 1:length(malespkidx)
+               plot([w(idx(1)).Cspikes{j}(k), w(idx(1)).Cspikes{j}(k)], [4000+(j*100), 4000+(j*100)+((j-1)*100)], 'b-', 'LineWidth', 1);
+           end
+           for k = 1:length(femalespkidx)
+               plot([w(idx).Cspikes{j}(k), w(idx).Cspikes{j}(k)], [4000+(j*100), 4000+(j*100)+((j-1)*100)], 'b-', 'LineWidth', 1);
+           end
+    
+    
+    plot(data.x(vtim), data.y(vtim), 'm*', data.x(vtim-90:vtim), data.y(vtim-90:vtim), 'm-'); 
     hold off;
 %    frame = getframe(gcf);
 %    writeVideo(writerObj, frame);
