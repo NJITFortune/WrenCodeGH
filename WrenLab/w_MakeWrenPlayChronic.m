@@ -69,7 +69,7 @@ figure(1); clf;
 %     writerObj.Quality = 90;
 %     open(writerObj);
 
-for vtim = outim(1):outim/30:outtim(end)
+for vtim = outim(1):outim/30:outim(end)
     clf; 
     specgram(outduet, 512, Fs, [], round(512*0.95));
     colormap('HOT');
