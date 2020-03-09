@@ -85,6 +85,7 @@ for vtim = outim(1):1:outim(end)
         for j = 1:4
            malespkidx = find(w(idx(1)).Cspikes{j} > rango(1) & w(idx(1)).Cspikes{j} < vtim);
            femalespkidx = find(w(idx(2)).Cspikes{j} > rango(1) & w(idx(2)).Cspikes{j} < vtim);
+           
            for k = 1:length(malespkidx)
                plot([specpos+w(idx(1)).Cspikes{j}(k), specpos+w(idx(1)).Cspikes{j}(k)], [4000+(j*100), 4000+(j*100)+((j-1)*100)], 'b-', 'LineWidth', 1);
            end
