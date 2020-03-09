@@ -1,5 +1,5 @@
 %% Make the audio file
-idx = [1, 2] ; % This is the Male (odd)
+idx = [3, 4] ; % This is the Male (odd)
 rango = [0.1, 6];
 
     specpos = 0;
@@ -56,7 +56,7 @@ audiowrite('combo.wav', combo, 10000);
 audiowrite('malonly.wav', malonly, 10000);
 audiowrite('femonly.wav', femonly, 10000);
 
-%% Make the video
+%% Quick plot in prep for the video
 
     vFs = 30; % frames per second
 
@@ -71,6 +71,8 @@ figure(1); clf;
     cmp = flipud(gray);
     %colormap(cmp);
     hold on;
+
+    %% Generate the video
     
 % Initialize the "object" that will be the final movie
     writerObj = VideoWriter('mymovie.avi', 'Uncompressed AVI');
