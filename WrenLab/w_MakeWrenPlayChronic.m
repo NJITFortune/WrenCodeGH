@@ -71,7 +71,7 @@ figure(1); clf;
     writerObj = VideoWriter('mymovie.avi', 'Uncompressed AVI');
     writerObj.FrameRate = 30;
 %writerObj.VideoFormat = 'RGB24';
-    writerObj.Quality = 100;
+    %writerObj.Quality = 100;
     open(writerObj);
 
 for vtim = outim(1):1/30:outim(end)
