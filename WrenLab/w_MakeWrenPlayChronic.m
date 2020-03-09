@@ -54,8 +54,8 @@ audiowrite('combo.wav', combo, 10000);
 figure(1); clf; 
     specgram(outduet, 512, Fs);
     colormap('HOT');
-    truesize([960 1280]); 
-    % truesize([480 640]);
+    % truesize([960 1280]); 
+    truesize([480 640]);
     specgram(outduet, 512, Fs);
     caxis([-25 25])
     colormap('HOT');
