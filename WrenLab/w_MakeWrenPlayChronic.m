@@ -95,4 +95,4 @@ for vtim = outim(1):outim/30:outim(end)
 end
 
 
-close(writerObj);
+% close(writerObj);
