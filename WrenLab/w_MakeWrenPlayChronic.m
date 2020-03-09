@@ -1,6 +1,10 @@
 %% Make the audio file
 idx = [1, 2] ; % This is the Male (odd)
 rango = [-2, 7];
+
+    specpos = 0;
+    if rango(1) < 0; specpos = abs(rango(1)); end
+
 Fs = w(idx).Fs;
 
 % Make the Fake Spikes
@@ -73,17 +77,19 @@ for vtim = outim(1):1:outim(end)
     clf; 
     specgram(outduet, 512, Fs, [], round(512*0.95));
     colormap('HOT');
+    caxis([-25 25])
     hold on;
-    plot([vtim,vtim], [0, 5000], 'r-', 'LineWidth', 5);
+    
+    plot([specpos+vtim,specpos+vtim], [0, 5000], 'r-', 'LineWidth', 5); % Red progress line
     
         for j = 1:4
            malespkidx = find(w(idx(1)).Cspikes{j} > rango(1) & w(idx(1)).Cspikes{j} < vtim);
            femalespkidx = find(w(idx(2)).Cspikes{j} > rango(1) & w(idx(2)).Cspikes{j} < vtim);
            for k = 1:length(malespkidx)
-               plot([w(idx(1)).Cspikes{j}(k), w(idx(1)).Cspikes{j}(k)], [4000+(j*100), 4000+(j*100)+((j-1)*100)], 'b-', 'LineWidth', 1);
+               plot([specpos+w(idx(1)).Cspikes{j}(k), specpos+w(idx(1)).Cspikes{j}(k)], [4000+(j*100), 4000+(j*100)+((j-1)*100)], 'b-', 'LineWidth', 1);
            end
            for k = 1:length(femalespkidx)
-               plot([w(idx(2)).Cspikes{j}(k), w(idx(2)).Cspikes{j}(k)], [200+(j*100), 200+(j*100)+((j-1)*100)], 'm-', 'LineWidth', 1);
+               plot([specpos+w(idx(2)).Cspikes{j}(k), specpos+w(idx(2)).Cspikes{j}(k)], [200+(j*100), 200+(j*100)+((j-1)*100)], 'm-', 'LineWidth', 1);
            end
         end
     
