@@ -73,7 +73,7 @@ figure(1); clf;
 %     writerObj.Quality = 90;
 %     open(writerObj);
 
-for vtim = outim(1):0.5:outim(end)
+for vtim = outim(1):1:outim(end)
     clf; 
     specgram(outduet, 512, Fs, [], round(512*0.95));
     colormap('HOT');
@@ -87,10 +87,10 @@ for vtim = outim(1):0.5:outim(end)
            femalespkidx = find(w(idx(2)).Cspikes{j} > rango(1) & w(idx(2)).Cspikes{j} < vtim);
            
            for k = 1:length(malespkidx)
-               plot([specpos+w(idx(1)).Cspikes{j}(malespkidx(k)), specpos+w(idx(1)).Cspikes{j}(malespkidx(k))], [4000+(j*100), 4000+(j*100)+((j-1)*100)], 'b-', 'LineWidth', 1);
+               plot([specpos+w(idx(1)).Cspikes{j}(malespkidx(k)), specpos+w(idx(1)).Cspikes{j}(malespkidx(k))], [4000+(j*100), 4000+(j*100)+((j-1)*110)], 'b-', 'LineWidth', 1);
            end
            for k = 1:length(femalespkidx)
-               plot([specpos+w(idx(2)).Cspikes{j}(femalespkidx(k)), specpos+w(idx(2)).Cspikes{j}(femalespkidx(k))], [200+(j*100), 200+(j*100)+((j-1)*100)], 'm-', 'LineWidth', 1);
+               plot([specpos+w(idx(2)).Cspikes{j}(femalespkidx(k)), specpos+w(idx(2)).Cspikes{j}(femalespkidx(k))], [100+(j*100), 100+(j*100)+((j-1)*110)], 'm-', 'LineWidth', 1);
            end
         end
     
