@@ -85,7 +85,19 @@ for vtim = outim(1):1:outim(end)
     
     % Plot transparent color boxes
     
+    for f = 1:length(w(idx(1)).syl)
+        
+        if w(idx(1).syl(f).tim(1) >= rango(1) && w(idx(1).syl(f).tim(1) < vtim
+           maxX = min([w(idx(1).syl(f).tim(2), vtim]);
+           if idx(1).sylsex(f) == 1 % Male
+           fill([idx(1).syl(f).tim(1), maxX, maxX, idx(1).syl(f).tim(1)], [750, 750, 4000, 4000], 'c');
+           end
+           if idx(1).sylsex(f) == 2 % Female
+           fill([idx(1).syl(f).tim(1), maxX, maxX, idx(1).syl(f).tim(1)], [750, 750, 4000, 4000], 'm');
+           end
     
+        end
+    end
     
         for j = 1:4
            malespkidx = find(w(idx(1)).Cspikes{j} > rango(1) & w(idx(1)).Cspikes{j} < vtim);
