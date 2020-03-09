@@ -56,9 +56,10 @@ figure(1); clf;
     colormap('HOT');
     % truesize([960 1280]); 
     truesize([480 640]);
-    specgram(outduet, 512, Fs);
+    % specgram(outduet, 512, Fs);
     caxis([-25 25])
-    colormap('HOT');
+    cmp = flipud(gray);
+    colormap(cmp);
     hold on;
     
 % Initialize the "object" that will be the final movie
