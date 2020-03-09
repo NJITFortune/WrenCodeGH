@@ -1,4 +1,4 @@
-
+%% Make the audio file
 idx = [1, 2] ; % This is the Male (odd)
 rango = [-2, 7];
 Fs = w(idx).Fs;
@@ -83,8 +83,9 @@ for vtim = outim(1):outim/30:outtim(end)
                plot([w(idx(1)).Cspikes{j}(k), w(idx(1)).Cspikes{j}(k)], [4000+(j*100), 4000+(j*100)+((j-1)*100)], 'b-', 'LineWidth', 1);
            end
            for k = 1:length(femalespkidx)
-               plot([w(idx).Cspikes{j}(k), w(idx).Cspikes{j}(k)], [4000+(j*100), 4000+(j*100)+((j-1)*100)], 'b-', 'LineWidth', 1);
+               plot([w(idx(2)).Cspikes{j}(k), w(idx(2)).Cspikes{j}(k)], [200+(j*100), 200+(j*100)+((j-1)*100)], 'm-', 'LineWidth', 1);
            end
+        end
     
     
     plot(data.x(vtim), data.y(vtim), 'm*', data.x(vtim-90:vtim), data.y(vtim-90:vtim), 'm-'); 
