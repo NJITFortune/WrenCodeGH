@@ -68,10 +68,10 @@ figure(1); clf;
     hold on;
     
 % Initialize the "object" that will be the final movie
-    writerObj = VideoWriter('mymovie.avi');
+    writerObj = VideoWriter('mymovie.avi', 'Uncompressed AVI');
     writerObj.FrameRate = 30;
 %writerObj.VideoFormat = 'RGB24';
-    writerObj.Quality = 90;
+    writerObj.Quality = 100;
     open(writerObj);
 
 for vtim = outim(1):1/30:outim(end)
