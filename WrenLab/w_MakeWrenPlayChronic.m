@@ -1,5 +1,5 @@
 %% Make the audio file
-idx = [3, 4] ; % This is the Male (odd)
+idx = [5, 6] ; % This is the Male (odd)
 rango = [0, 7.5];
 
     specpos = 0;
@@ -92,7 +92,8 @@ for vtim = outim(1):1/30:outim(end)
     
     % Plot transparent color boxes
     
-    for f = 1:length(~isempty(w(idx(1)).syl))
+%    for f = 1:length(~isempty(w(idx(1)).syl))
+    for f = 1:13
         
         if w(idx(1)).syl(f).tim(1) >= rango(1) && w(idx(1)).syl(f).tim(1) < vtim
            maxX = min([w(idx(1)).syl(f).tim(2), vtim]);
