@@ -44,7 +44,7 @@ end
 
 spks = fem' + mal';
 
-combo = spks + (w(idx).duet*0.8);
+combo = spks + (outduet*0.8);
 audiowrite('combo.wav', combo, 10000);
 
 figure(1); clf;
