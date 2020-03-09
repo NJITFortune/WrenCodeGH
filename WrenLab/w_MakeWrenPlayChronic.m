@@ -77,11 +77,15 @@ figure(1); clf;
 for vtim = outim(1):1:outim(end)
     clf; 
     specgram(outduet, 512, Fs, [], round(512*0.95));
-    colormap('HOT');
+    colormap(cmp);
     caxis([-25 25])
     hold on;
     
     plot([specpos+vtim,specpos+vtim], [0, 5000], 'r-', 'LineWidth', 5); % Red progress line
+    
+    % Plot transparent color boxes
+    
+    
     
         for j = 1:4
            malespkidx = find(w(idx(1)).Cspikes{j} > rango(1) & w(idx(1)).Cspikes{j} < vtim);
