@@ -1,6 +1,6 @@
 %% Make the audio file
 idx = [1, 2] ; % This is the Male (odd)
-rango = [0.1, 5.7];
+rango = [0.1, 5.8];
 %idx = [5, 6] ; % This is the Male (odd)
 %rango = [0, 9];
 
