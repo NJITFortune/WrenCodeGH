@@ -87,15 +87,14 @@ for vtim = outim(1):1:outim(end)
     
     for f = 1:length(w(idx(1)).syl)
         
-        if w(idx(1).syl(f).tim(1) >= rango(1) && w(idx(1).syl(f).tim(1) < vtim
-           maxX = min([w(idx(1).syl(f).tim(2), vtim]);
+        if w(idx(1)).syl(f).tim(1) >= rango(1) && w(idx(1)).syl(f).tim(1) < vtim
+           maxX = min([w(idx(1)).syl(f).tim(2), vtim]);
            if idx(1).sylsex(f) == 1 % Male
-           bcol = fill([idx(1).syl(f).tim(1), maxX, maxX, idx(1).syl(f).tim(1)], [750, 750, 4000, 4000], 'c');
+           fill([w(idx(1)).syl(f).tim(1), maxX, maxX, w(idx(1)).syl(f).tim(1)], [750, 750, 4000, 4000], 'c', 'FaceAlpha', 0.3);
            end
            if idx(1).sylsex(f) == 2 % Female
-           bcol = fill([idx(1).syl(f).tim(1), maxX, maxX, idx(1).syl(f).tim(1)], [750, 750, 4000, 4000], 'm');
+           fill([w(idx(1)).syl(f).tim(1), maxX, maxX, w(idx(1)).syl(f).tim(1)], [750, 750, 4000, 4000], 'm', 'FaceAlpha', 0.3);
            end
-        bcol.FaceAlpha = 0.3;
         
         end
     end
