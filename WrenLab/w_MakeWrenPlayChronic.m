@@ -90,10 +90,10 @@ for vtim = outim(1):1:outim(end)
         if w(idx(1)).syl(f).tim(1) >= rango(1) && w(idx(1)).syl(f).tim(1) < vtim
            maxX = min([w(idx(1)).syl(f).tim(2), vtim]);
            if w(idx(1)).sylsex(f) == 1 % Male
-           fill([w(idx(1)).syl(f).tim(1), maxX, maxX, w(idx(1)).syl(f).tim(1)], [750, 750, 4000, 4000], 'c', 'FaceAlpha', 0.3);
+           fill([specpos+w(idx(1)).syl(f).tim(1), specpos+maxX, specpos+maxX, specpos+w(idx(1)).syl(f).tim(1)], [750, 750, 4000, 4000], 'c', 'FaceAlpha', 0.3);
            end
            if w(idx(1)).sylsex(f) == 2 % Female
-           fill([w(idx(1)).syl(f).tim(1), maxX, maxX, w(idx(1)).syl(f).tim(1)], [750, 750, 4000, 4000], 'm', 'FaceAlpha', 0.3);
+           fill([specpos+w(idx(1)).syl(f).tim(1), specpos+maxX, specpos+maxX, specpos+w(idx(1)).syl(f).tim(1)], [750, 750, 4000, 4000], 'm', 'FaceAlpha', 0.3);
            end
         
         end
