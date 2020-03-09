@@ -74,7 +74,7 @@ figure(1); clf;
 %     writerObj.Quality = 90;
 %     open(writerObj);
 
-for vtim = outim(1):1:outim(end)
+for vtim = outim(1):1/30:outim(end)
     clf; 
     specgram(outduet, 512, Fs, [], round(512*0.95));
     colormap(cmp);
@@ -110,10 +110,10 @@ for vtim = outim(1):1:outim(end)
                plot([specpos+w(idx(2)).Cspikes{j}(femalespkidx(k)), specpos+w(idx(2)).Cspikes{j}(femalespkidx(k))], [4000+(j*100), 4000+(j*100)+90], 'm-', 'LineWidth', 1);
            end
         end
-    
-%    frame = getframe(gcf);
-%    writeVideo(writerObj, frame);
+    pause(0.1);
+    frame = getframe(gcf);
+    writeVideo(writerObj, frame);
 end
 
 
-% close(writerObj);
+ close(writerObj);
