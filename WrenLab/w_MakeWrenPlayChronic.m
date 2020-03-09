@@ -1,5 +1,5 @@
 %% Make the audio file
-idx = [5, 6] ; % This is the Male (odd)
+idx = [1, 2] ; % This is the Male (odd)
 rango = [0, 9];
 
     specpos = 0;
@@ -10,10 +10,10 @@ Fs = w(idx).Fs;
 
 % Make the Fake Spikes
 
-    spiketim = 1/Fs:1/Fs:0.005; % 5 msec duration for our fake spikes
+    spiketim = 1/Fs:1/Fs:0.004; % 5 msec duration for our fake spikes
     len = length(spiketim);
 
-    fspike = sin(2*pi*3000*spiketim) * 0.2 ; % 4 kHz for females
+    fspike = sin(2*pi*2000*spiketim) * 0.2 ; % 4 kHz for females
     mspike = sin(2*pi*1000*spiketim) * 0.2 ; % 3 kHz for males
     
     outim = w(idx(1)).tim(w(idx(1)).tim > rango(1) & w(idx(1)).tim < rango(2));
