@@ -1,12 +1,13 @@
 
-Fs = 10000;
+idx = 1; % This is the Male (odd)
+
+Fs = w(idx).Fs;
 
 spiketim = 1/Fs:1/Fs:0.005; % 5 msec duration for our fake spikes
 
 fspike = sin(2*pi*4000*spiketim) * 0.2 ; % 4 kHz for females
 mspike = sin(2*pi*3000*spiketim) * 0.2 ; % 3 kHz for males
 
-idx = 1; % This is the Male
 
 fem = zeros(1,length(w(idx).tim));
 mal = zeros(1,length(w(idx).tim));
