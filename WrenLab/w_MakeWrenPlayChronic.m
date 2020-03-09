@@ -49,6 +49,6 @@ audiowrite('combo.wav', combo, 10000);
 
 %% Make the video
 
-figure(1); clf;
-specgram(outduet, 512, Fs);
+figure(1); clf; hold on;
+    specgram(outduet, 512, Fs);
     
