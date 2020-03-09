@@ -11,8 +11,8 @@ Fs = w(idx).Fs;
     fspike = sin(2*pi*4000*spiketim) * 0.2 ; % 4 kHz for females
     mspike = sin(2*pi*3000*spiketim) * 0.2 ; % 3 kHz for males
     
-    outim = w(idx).tim(w(idx).tim > rango(1) & w(idx).tim < rango(2));
-    outduet = w(idx).duet(w(idx).tim > rango(1) & w(idx).tim < rango(2));
+    outim = w(idx(1)).tim(w(idx(1)).tim > rango(1) & w(idx(1)).tim < rango(2));
+    outduet = w(idx(1)).duet(w(idx(1)).tim > rango(1) & w(idx(1)).tim < rango(2));
     
 % Make the spike sound trains
     fem = zeros(1,length(outim));
@@ -62,12 +62,12 @@ figure(1); clf;
     %colormap(cmp);
     hold on;
     
-% Initialize the "object" that will be the final movie
-    writerObj = VideoWriter('mymovie.avi');
-    writerObj.FrameRate = 30;
-%writerObj.VideoFormat = 'RGB24';
-    writerObj.Quality = 90;
-    open(writerObj);
+% % Initialize the "object" that will be the final movie
+%     writerObj = VideoWriter('mymovie.avi');
+%     writerObj.FrameRate = 30;
+% %writerObj.VideoFormat = 'RGB24';
+%     writerObj.Quality = 90;
+%     open(writerObj);
 
 for vtim = outim(1):outim/30:outtim(end)
     clf; 
