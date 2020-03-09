@@ -50,7 +50,11 @@ end
 spks = fem' + mal';
 
 combo = spks + (outduet*0.8);
+femonly = (outduet*0.8) + fem';
+malonly = (outduet*0.8) + mal';
 audiowrite('combo.wav', combo, 10000);
+audiowrite('malonly.wav', malonly, 10000);
+audiowrite('femonly.wav', femonly, 10000);
 
 %% Make the video
 
