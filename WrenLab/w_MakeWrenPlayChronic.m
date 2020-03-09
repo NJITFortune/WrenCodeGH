@@ -1,6 +1,6 @@
 %% Make the audio file
 idx = [3, 4] ; % This is the Male (odd)
-rango = [0.1, 6];
+rango = [-1, 8];
 
     specpos = 0;
     if rango(1) < 0; specpos = abs(rango(1)); end
