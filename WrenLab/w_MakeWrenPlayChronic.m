@@ -77,7 +77,7 @@ for i = 100:1000
     frame = getframe(gcf);
     writeVideo(writerObj, frame);
 
-end;
+end
 
 
 close(writerObj);
