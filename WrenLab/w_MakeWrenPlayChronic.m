@@ -75,7 +75,7 @@ figure(1); clf;
     %% Generate the video
     
 % Initialize the "object" that will be the final movie
-    writerObj = VideoWriter('mymovie.avi', 'Uncompressed AVI');
+    writerObj = VideoWriter('mymovie2.avi', 'Uncompressed AVI');
     writerObj.FrameRate = 30;
 %writerObj.VideoFormat = 'RGB24';
     %writerObj.Quality = 100;
