@@ -51,4 +51,4 @@ audiowrite('combo.wav', combo, 10000);
 
 figure(1); clf; hold on;
     specgram(outduet, 512, Fs);
-    
+    colormap('HOT');
