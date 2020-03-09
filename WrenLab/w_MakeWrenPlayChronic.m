@@ -29,14 +29,14 @@ for k = 1:4
     end
 end
 
-idx = 2;
+idx = 2; % This is the female (even)
 
 for k = 1:4
     spkidx = find(w(idx).Cspikes{k} > rango(1) & w(idx).Cspikes{k} < rango(2));
     for j = 1:length(spkidx)   
         curidx = find(outim >= w(idx).Cspikes{k}(spkidx(j)), 1, 'first');    
     if curidx+len-1 < length(outim)  % Need the if not to go over the end.   
-        fem(curidx:curidx+len-1) = mspike;
+        fem(curidx:curidx+len-1) = fspike;
     end
     
     end
