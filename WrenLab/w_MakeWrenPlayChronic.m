@@ -129,3 +129,6 @@ end
  close(writerObj);
  
  % ffmpeg -i mymovie.avi -i combo.wav -c:v copy output.avi
+ % ffmpeg -f concat -i mylist.txt -c copy combination.mp4
+ % ffmpeg -i combination.mp4 -filter:v "setpts=2.0*PTS" -filter:a "atempo=0.5" slow.mp4
+ % ffmpeg -i output2.avi -strict -2 -pix_fmt yuv420p m17spikes.mp4
