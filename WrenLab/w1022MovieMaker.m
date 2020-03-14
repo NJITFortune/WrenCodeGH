@@ -28,6 +28,11 @@ hFig = figure('MenuBar','none', 'Units','pixels', 'InnerPosition',[100 100 1920 
 hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[10 40 1980 1100]);
 
 image(flipud(im));
+hold on;
+plot([10 1430], [150 150], 'b-', 'LineWidth', 2)
+plot([10 1430], [10 10], 'b-', 'LineWidth', 2)
+plot([10 10], [10 150], 'b-', 'LineWidth', 2)
+plot([1430 1430], [10 150], 'b-', 'LineWidth', 2)
 
 %% Make the video
 
