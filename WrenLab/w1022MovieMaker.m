@@ -29,7 +29,6 @@ hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
 
 image(flipud(im));
 
-
 %% Make the video
 
 f = readFrame(v);
