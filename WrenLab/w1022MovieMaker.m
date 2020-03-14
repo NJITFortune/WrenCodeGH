@@ -15,14 +15,15 @@ figure(1); clf; hold on;
     tt = find(w(11).tim > rango(1) & w(11).tim <= rango(2));
     plot(w(11).tim(tt) - w(11).tim(tt(1)), w(11).duet(tt));
 
-%%
+%% 
 v = VideoReader('~/Sync/Wren/cVideo/ChronicDuet_long_maybe.mov');    % 391 frames
 % 1920 x 1080, fps = 29.82, H.264, AC3 48000 Hz
-nFrames = ceil(v.FrameRate*v.Duration);
+
+nFrames = ceil(v.FrameRate*v.Duration); 
 s(nFrames) = struct('cdata',[],'colormap',[]);
-hFig = figure('MenuBar','none',...
-    'Units','pixels',...
-    'Position',[100 100 1920 1080]);
+
+hFig = figure('MenuBar','none', 'Units','pixels', 'Position',[100 100 1920 1080]);
+
 hAx = axes('Parent',hFig,...
     'Units','pixels',...
     'Position',[0 0 1920 1080],...
