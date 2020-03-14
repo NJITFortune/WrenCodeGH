@@ -28,7 +28,7 @@ hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
 
 % im = readFrame(v);
 %hIm.CData = im; 
-image = flipud(im);
+image(flipud(im));
 
 
 %% Make the video
