@@ -17,7 +17,7 @@ figure(1); clf; hold on;
 
 %% 
 v = VideoReader('~/Sync/Wren/cVideo/ChronicDuet_long_maybe.mov');    % 391 frames
-% 1920 x 1080, fps = 29.82, H.264, AC3 48000 Hz
+% 1920 x 1080, fps = 29.82, H.264, AC3 48000 Hz (REAL width 1440)
 
 nFrames = ceil(v.FrameRate*v.Duration); 
 s(nFrames) = struct('cdata',[],'colormap',[]);
