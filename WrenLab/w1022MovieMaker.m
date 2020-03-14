@@ -1,6 +1,6 @@
 %% Load the data and plot an initial confirmation
 
-%load /Users/eric/Sync/Wren/ChronicCompleat2019f.mat
+load /Users/eric/Sync/Wren/ChronicCompleat2019f.mat
 [cvideo, Fs] = audioread('~/Sync/Wren/cVideo/ChronicDuet_long_maybe.wav');
 
 rango = [-3.0248, 9.9904]; % Range from the w(11).tim that matches the video file
@@ -13,6 +13,7 @@ figure(1); clf; hold on;
     tt = find(w(11).tim > rango(1) & w(11).tim <= rango(2));
     plot(w(11).tim(tt) - w(11).tim(tt(1)), w(11).duet(tt));
 
+%%
 v = VideoReader('~/Sync/Wren/cVideo/ChronicDuet_long_maybe.mov');    % 391 frames
 % 1920 x 1080, fps = 29.82, H.264, AC3 48000 Hz
 nFrames = ceil(v.FrameRate*v.Duration);
