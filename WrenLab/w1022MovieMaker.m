@@ -29,10 +29,10 @@ hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
 
 image(flipud(im));
 hold on;
-plot([10 1430], [150 150], 'b-', 'LineWidth', 2)
-plot([10 1430], [10 10], 'b-', 'LineWidth', 2)
-plot([10 10], [10 150], 'b-', 'LineWidth', 2)
-plot([1430 1430], [10 150], 'b-', 'LineWidth', 2)
+plot([10 1430], [150 150], 'k-', 'LineWidth', 2)
+plot([10 1430], [10 10], 'k-', 'LineWidth', 2)
+plot([10 10], [10 150], 'k-', 'LineWidth', 2)
+plot([1430 1430], [10 150], 'k-', 'LineWidth', 2)
 
 %% Make the video
 
