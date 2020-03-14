@@ -39,7 +39,8 @@ hIm = image(uint8(ones(1080,1920,3)),'Parent',hAx);
     hLine(3) = plot(hAx,1,3,'ob','MarkerSize',10,'MarkerFaceColor','b');
 
 im = readFrame(v);
-hIm.CData = im; hIm.CData = flipud(im);
+%hIm.CData = im; 
+hIm.CData = flipud(im);
 
 
 %% Make the video
