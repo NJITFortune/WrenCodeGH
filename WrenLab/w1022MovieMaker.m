@@ -31,11 +31,13 @@ hAx = axes('Parent',hFig,...
     'Visible','off',...
     'XTick',[],...
     'YTick',[]);
-hIm = image(uint8(zeros(1080,1920,3)),...
-    'Parent',hAx);
-hLine(1) = plot(hAx,[1 v.Width],[3 3],'-b','LineWidth',2);
-hLine(2) = plot(hAx,[1 1],[3 3],'-b','LineWidth',4);
-hLine(3) = plot(hAx,1,3,'ob','MarkerSize',10,'MarkerFaceColor','b');
+
+hIm = image(uint8(ones(1080,1920,3)),'Parent',hAx);
+
+    hLine(1) = plot(hAx,[1 v.Width],[3 3],'-b','LineWidth',2);
+    hLine(2) = plot(hAx,[1 1],[3 3],'-b','LineWidth',4);
+    hLine(3) = plot(hAx,1,3,'ob','MarkerSize',10,'MarkerFaceColor','b');
+
 im = readFrame(v);
 hIm.CData = im; hIm.CData = flipud(im);
 
