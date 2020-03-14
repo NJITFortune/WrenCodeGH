@@ -1,14 +1,16 @@
 %% Load the data and plot an initial confirmation
 
 load /Users/eric/Sync/Wren/ChronicCompleat2019f.mat
-[cvideo, Fs] = audioread('~/Sync/Wren/cVideo/ChronicDuet_long_maybe.wav');
+
+[Svideo, Fs] = audioread('~/Sync/Wren/cVideo/ChronicDuet_long_maybe.wav');
+    Avideo = Svideo(:,1); % Use only one channel of the audio
 
 rango = [-3.0248, 9.9904]; % Range from the w(11).tim that matches the video file
 
 figure(1); clf; hold on;
 
-    tim = 1/Fs:1/Fs:length(cvideo)/Fs;
-    plot(tim, cvideo);
+    tim = 1/Fs:1/Fs:length(Avideo)/Fs;
+    plot(tim, Avideo);
     
     tt = find(w(11).tim > rango(1) & w(11).tim <= rango(2));
     plot(w(11).tim(tt) - w(11).tim(tt(1)), w(11).duet(tt));
