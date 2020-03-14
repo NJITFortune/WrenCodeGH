@@ -24,17 +24,11 @@ s(nFrames) = struct('cdata',[],'colormap',[]);
 
 hFig = figure('MenuBar','none', 'Units','pixels', 'Position',[100 100 1920 1080]);
 
-hAx = axes('Parent',hFig,'Units','pixels','Position',[40 40 1920 1080],'NextPlot','add','Visible','off','XTick',[],'YTick',[]);
+hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[]);
 
-hIm = image(uint8(ones(1080,1920,3)),'Parent',hAx);
-
-    hLine(1) = plot(hAx,[1 v.Width],[3 3],'-b','LineWidth',2);
-    hLine(2) = plot(hAx,[1 1],[3 3],'-b','LineWidth',4);
-    hLine(3) = plot(hAx,1,3,'ob','MarkerSize',10,'MarkerFaceColor','b');
-
-im = readFrame(v);
+% im = readFrame(v);
 %hIm.CData = im; 
-hIm.CData = flipud(im);
+image = flipud(im);
 
 
 %% Make the video
