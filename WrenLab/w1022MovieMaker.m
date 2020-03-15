@@ -42,7 +42,6 @@ hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
     image(flipud(im));
     hold on;
     plot([1430 8 8 1430 1430], [10 10 157 157 10], 'k-', 'LineWidth', 6)
-    pause(1);
     
 hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[20 50 1930 160]);
 
@@ -50,8 +49,6 @@ hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
     ug = flipud(gray); colormap(ug); caxis ([-20 33]);
     hold on;
     curtim = v.CurrentTime;
-    drawnow
-    pause(1) 
     plot([curtim curtim], [0, 5000], 'r-', 'LineWidth', 5); % Red progress line
 
     % Plot transparent color boxes
