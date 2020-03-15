@@ -25,8 +25,8 @@ hFig = figure('MenuBar','none', 'Units','pixels', 'InnerPosition', [100 100 1920
 
 %% Loop
 
-% for jjj = 1:5
-while hasFrame(v) 
+for jjj = 1:5
+% while hasFrame(v) 
 
     im = readFrame(v);
 
@@ -36,7 +36,7 @@ hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
     plot([1430 8 8 1430 1430], [10 10 157 157 10], 'k-', 'LineWidth', 6)
     
 % hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[20 50 1930 160]);
-hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[20 50 2020 160]);
+hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[20 50 2020 220]);
 
     specgram(w(11).duet(tt), 512, w(11).Fs, [], round(0.95*512));
     ug = flipud(gray); colormap(ug); caxis ([-20 33]);
