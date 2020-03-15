@@ -109,10 +109,13 @@ close(writerObj);
 
     spiketim = 1/Fs:1/Fs:0.005; % 4 msec duration for our fake spikes
     len = length(spiketim);
+    rmp = 0:1/floor(len/2):floor(len/2);
 
     for kk = 1:4
-        fspike(:,kk) = sin(2*pi*(5000+(100*kk))*spiketim) * 0.2 ; % 4 kHz for females
-        mspike(:,kk) = sin(2*pi*(1000+(100*kk))*spiketim) * 0.2 ; % 3 kHz for males
+        fspike(:,kk) = sin(2*pi*(2000+(100*kk))*spiketim) * 0.2 ; % 4 kHz for females
+            fspike(:,kk) = fspike(1:floor(len/2),kk) .* rmp;
+            fspike(:,kk) = fspike(end-floor(len/2):end,kk) .* rmp(end:-1:1);
+        mspike(:,kk) = sin(2*pi*(500+(100*kk))*spiketim) * 0.2 ; % 3 kHz for males
     end
         
 % Make the spike sound trains
