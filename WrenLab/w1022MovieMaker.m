@@ -122,9 +122,7 @@ for k = 1:4
     for j = 1:length(spkidx)   
         curidx = find(tim >= w(11).Cspikes{k}(spkidx(j)), 1, 'first');    
     if curidx+len-1 < length(tim)  % Need the if not to go over the end.  
-        length(mal(curidx:curidx+len-1))
-        length(mspike(:,k))
-        mal(curidx:curidx+len-1) = mal(curidx:curidx+len-1) + mspike(:,k);
+        mal(curidx:curidx+len-1) = mal(curidx:curidx+len-1) + mspike(:,k)';
     end
     
     end
@@ -137,7 +135,7 @@ for k = 1:4
     for j = 1:length(spkidx)   
         curidx = find(tim >= w(12).Cspikes{k}(spkidx(j)), 1, 'first');    
     if curidx+len-1 < length(tim)  % Need the if not to go over the end.   
-        fem(curidx:curidx+len-1) = fem(curidx:curidx+len-1) + fspike(:,k);
+        fem(curidx:curidx+len-1) = fem(curidx:curidx+len-1) + fspike(:,k)';
     end
     
     end
