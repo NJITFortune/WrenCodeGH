@@ -30,7 +30,7 @@ hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
 im = readFrame(v);
 image(flipud(im));
 hold on;
-plot([8 1430 1430 8 8], [157 157 10 10 157], 'k-', 'LineWidth', 6)
+plot([1430 8 8 1430 1430], [10 10 157 157 10], 'k-', 'LineWidth', 6)
 % plot([8 1430], [10 10], 'k-', 'LineWidth', 6)
 % plot([8 8], [10 157], 'k-', 'LineWidth', 6)
 % plot([1430 1430], [10 157], 'k-', 'LineWidth', 6)
