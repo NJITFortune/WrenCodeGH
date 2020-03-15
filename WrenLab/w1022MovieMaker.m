@@ -25,9 +25,9 @@ s(nFrames) = struct('cdata',[],'colormap',[]);
 
 hFig = figure('MenuBar','none', 'Units','pixels', 'InnerPosition', [100 100 1920 1080]);
 
-%    writerObj = VideoWriter('mymovie2.avi', 'Uncompressed AVI');
-%    writerObj.FrameRate = v.FrameRate;
-%    open(writerObj);
+   writerObj = VideoWriter('mymovie2.avi', 'Uncompressed AVI');
+   writerObj.FrameRate = v.FrameRate;
+   open(writerObj);
 
 
 %% Loop
