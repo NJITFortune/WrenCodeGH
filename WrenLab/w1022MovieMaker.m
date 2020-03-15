@@ -112,10 +112,10 @@ close(writerObj);
     rmp = 1/floor(len/2):1/floor(len/2):1;
 
     for kk = 1:4
-        fspike(:,kk) = sin(2*pi*(800+(100*kk))*spiketim) * 0.4 ; % 800 Hz for females
+        fspike(:,kk) = sin(2*pi*(4000+(50*kk))*spiketim) * 0.4 ; % 800 Hz for females
             fspike(1:length(rmp),kk) = fspike(1:length(rmp),kk)' .* rmp;
             fspike(end+1-length(rmp):end,kk) = fspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
-        mspike(:,kk) = sin(2*pi*(300+(100*kk))*spiketim) * 0.3 ; % 300 Hz for males
+        mspike(:,kk) = sin(2*pi*(1000+(80*kk))*spiketim) * 0.3 ; % 300 Hz for males
             mspike(1:length(rmp),kk) = mspike(1:length(rmp),kk)' .* rmp;
             mspike(end+1-length(rmp):end,kk) = mspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
     end
