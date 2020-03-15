@@ -109,6 +109,8 @@ for vtim = outim(1):1/30:outim(end)
         end
     end
     
+    % Plot spikes
+    
         for j = 1:4
            malespkidx = find(w(idx(1)).Cspikes{j} > rango(1) & w(idx(1)).Cspikes{j} < vtim);
            femalespkidx = find(w(idx(2)).Cspikes{j} > rango(1) & w(idx(2)).Cspikes{j} < vtim);
