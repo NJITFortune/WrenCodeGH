@@ -30,7 +30,6 @@ while hasFrame(v)
 
     im = readFrame(v);
 
-
 hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[10 40 1980 1100]);
     image(flipud(im));
     hold on;
