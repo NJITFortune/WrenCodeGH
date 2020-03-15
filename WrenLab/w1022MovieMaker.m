@@ -48,7 +48,7 @@ hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
     specgram(w(11).duet(tt), 512, w(11).Fs, [], round(0.95*512));
     ug = flipud(gray); colormap(ug); caxis ([-20 33]);
     hold on;
-    curtim = v.CurrentTime + specpos;
+    curtim = v.CurrentTime;
     
     plot([curtim curtim], [0, 5000], 'r-', 'LineWidth', 5); % Red progress line
 
