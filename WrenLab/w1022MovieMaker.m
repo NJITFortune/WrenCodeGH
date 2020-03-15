@@ -8,7 +8,7 @@ load /Users/eric/Sync/Wren/ChronicCompleat2019f.mat
 rango = [-3.0248, 9.9904]; % Range from the w(11).tim that matches the video file
 specpos = -rango(1);
 
-figure(1); clf; hold on;
+% figure(1); clf; hold on;
 
 %     tim = 1/Fs:1/Fs:length(Avideo)/Fs;
 %     plot(tim, Avideo);
