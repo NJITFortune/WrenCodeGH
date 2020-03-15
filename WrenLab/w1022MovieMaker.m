@@ -99,7 +99,7 @@ close(writerObj);
 
 % Truncate 
     tim = 1/Fs:1/Fs:length(Avideo)/Fs;
-    tt = find(tim > rango(1) & tim <= rango(2);
+    tt = find(tim > rango(1) & tim <= rango(2));
     Avideo = Avideo(tt);
     tim = tim(tt);
 
