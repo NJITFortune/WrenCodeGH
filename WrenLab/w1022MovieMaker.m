@@ -22,10 +22,9 @@ v = VideoReader('~/Sync/Wren/cVideo/ChronicDuet_long_maybe.mov');    % 391 frame
 nFrames = ceil(v.FrameRate*v.Duration); 
 s(nFrames) = struct('cdata',[],'colormap',[]);
 
+hFig = figure('MenuBar','none', 'Units','pixels', 'InnerPosition',[100 100 1920 1080]);
 
 %% Loop
-
-hFig = figure('MenuBar','none', 'Units','pixels', 'InnerPosition',[100 100 1920 1080]);
 
 hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[10 40 1980 1100]);
     im = readFrame(v);
@@ -41,3 +40,7 @@ hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
     
     plot([4 4], [0 5000], 'r-', 'Linewidth', 3);
 
+
+ pause(0.1);
+ clf;
+ 
