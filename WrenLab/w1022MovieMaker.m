@@ -112,10 +112,12 @@ close(writerObj);
     rmp = 1/floor(len/2):1/floor(len/2):1;
 
     for kk = 1:4
-        fspike(:,kk) = sin(2*pi*(2000+(100*kk))*spiketim) * 0.2 ; % 4 kHz for females
+        fspike(:,kk) = sin(2*pi*(800+(100*kk))*spiketim) * 0.2 ; % 4 kHz for females
             fspike(1:length(rmp),kk) = fspike(1:length(rmp),kk)' .* rmp;
             fspike(end+1-length(rmp):end,kk) = fspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
-        mspike(:,kk) = sin(2*pi*(500+(100*kk))*spiketim) * 0.2 ; % 3 kHz for males
+        mspike(:,kk) = sin(2*pi*(300+(100*kk))*spiketim) * 0.2 ; % 3 kHz for males
+            mspike(1:length(rmp),kk) = mspike(1:length(rmp),kk)' .* rmp;
+            mspike(end+1-length(rmp):end,kk) = mspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
     end
         
 % Make the spike sound trains
