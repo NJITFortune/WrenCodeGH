@@ -30,9 +30,9 @@ hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
 im = readFrame(v);
 image(flipud(im));
 hold on;
-plot([10 1430], [155 155], 'k-', 'LineWidth', 6)
+plot([10 1430], [155 155], 'k-', 'LineWidth', 8)
 plot([10 1430], [10 10], 'k-', 'LineWidth', 6)
-plot([10 10], [10 155], 'k-', 'LineWidth', 6)
+plot([10 10], [10 155], 'k-', 'LineWidth', 7)
 plot([1430 1430], [10 155], 'k-', 'LineWidth', 6)
 
 hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[20 50 1930 160]);
