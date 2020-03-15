@@ -6,6 +6,7 @@ load /Users/eric/Sync/Wren/ChronicCompleat2019f.mat
 %     Avideo = Svideo(:,1); % Use only one channel of the audio
 
 rango = [-3.0248, 9.9904]; % Range from the w(11).tim that matches the video file
+specpos = rango(1);
 
 figure(1); clf; hold on;
 
@@ -56,11 +57,11 @@ hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
         
         if w(11).syl(f).tim(1) < curtim
            if w(11).sylsex(f) == 1 % Male
-fill([specpos+w(idx(11)).syl(f).tim(1), specpos+w(idx(11)).syl(f).tim(2), specpos+w(idx(11)).syl(f).tim(2), specpos+w(idx(1)).syl(f).tim(1)], ...
+fill([specpos+w(11).syl(f).tim(1), specpos+w(11).syl(f).tim(2), specpos+w(11).syl(f).tim(2), specpos+w(idx(1)).syl(f).tim(1)], ...
     [750, 750, 4000, 4000], 'c', 'FaceAlpha', 0.1, 'LineStyle', 'none');
            end
-           if w(idx(11)).sylsex(f) == 2 % Female
-fill([specpos+w(idx(11)).syl(f).tim(1), specpos+w(idx(11)).syl(f).tim(2), specpos+w(idx(11)).syl(f).tim(2), specpos+w(idx(1)).syl(f).tim(1)], ...
+           if w(11).sylsex(f) == 2 % Female
+fill([specpos+w(11).syl(f).tim(1), specpos+w(11).syl(f).tim(2), specpos+w(11).syl(f).tim(2), specpos+w(idx(1)).syl(f).tim(1)], ...
     [750, 750, 4000, 4000], 'm', 'FaceAlpha', 0.1, 'LineStyle', 'none');
            end
         
@@ -71,14 +72,14 @@ fill([specpos+w(idx(11)).syl(f).tim(1), specpos+w(idx(11)).syl(f).tim(2), specpo
     
         for j = 1:4
             
-           malespkidx = find(w(idx(1)).Cspikes{j} < curtim);
-           femalespkidx = find(w(idx(2)).Cspikes{j} < curtim);
+           malespkidx = find(w(11).Cspikes{j} < curtim);
+           femalespkidx = find(w(12).Cspikes{j} < curtim);
            
            for k = 1:length(malespkidx)
-               plot([specpos+w(idx(1)).Cspikes{j}(malespkidx(k)), specpos+w(idx(1)).Cspikes{j}(malespkidx(k))], [200+(j*100), 200+(j*100)+90], 'b-', 'LineWidth', 1);
+               plot([specpos+w(11).Cspikes{j}(malespkidx(k)), specpos+w(11).Cspikes{j}(malespkidx(k))], [200+(j*100), 200+(j*100)+90], 'b-', 'LineWidth', 1);
            end
            for k = 1:length(femalespkidx)
-               plot([specpos+w(idx(2)).Cspikes{j}(femalespkidx(k)), specpos+w(idx(2)).Cspikes{j}(femalespkidx(k))], [4000+(j*100), 4000+(j*100)+90], 'm-', 'LineWidth', 1);
+               plot([specpos+w(12).Cspikes{j}(femalespkidx(k)), specpos+w(12).Cspikes{j}(femalespkidx(k))], [4000+(j*100), 4000+(j*100)+90], 'm-', 'LineWidth', 1);
            end
         end
         
