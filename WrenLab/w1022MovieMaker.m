@@ -24,15 +24,19 @@ s(nFrames) = struct('cdata',[],'colormap',[]);
 
 hFig = figure('MenuBar','none', 'Units','pixels', 'InnerPosition', [100 100 1920 1080]);
 
-    writerObj = VideoWriter('mymovie2.avi', 'Uncompressed AVI');
-    writerObj.FrameRate = v.FrameRate;
-    open(writerObj);
+%    writerObj = VideoWriter('mymovie2.avi', 'Uncompressed AVI');
+%    writerObj.FrameRate = v.FrameRate;
+%    open(writerObj);
 
 
 %% Loop
 
-hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[10 40 1980 1100]);
+while 
+
     im = readFrame(v);
+
+
+hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[10 40 1980 1100]);
     image(flipud(im));
     hold on;
     plot([1430 8 8 1430 1430], [10 10 157 157 10], 'k-', 'LineWidth', 6)
@@ -77,12 +81,17 @@ fill([specpos+w(idx(11)).syl(f).tim(1), specpos+w(idx(11)).syl(f).tim(2), specpo
            end
         end
         
-    pause(0.1);
+pause(0.1);
     
-    frame = getframe(gcf);
-    writeVideo(writerObj, frame);
+%    frame = getframe(gcf);
+%    writeVideo(writerObj, frame);
     
 
  pause(0.1);
  clf;
+
+ 
+ 
+close(writerObj);
+
  
