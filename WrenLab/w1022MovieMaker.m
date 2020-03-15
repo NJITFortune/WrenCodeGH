@@ -43,7 +43,7 @@ hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
     hold on;
     curtim = v.CurrentTime;
     
-    plot([4 4], [0 5000], 'r-', 'Linewidth', 3);
+    plot(curtim, [0, 5000], 'r-', 'LineWidth', 5); % Red progress line
 
 
  pause(0.1);
