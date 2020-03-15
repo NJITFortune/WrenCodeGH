@@ -112,10 +112,10 @@ close(writerObj);
     rmp = 1/floor(len/2):1/floor(len/2):1;
 
     for kk = 1:4
-        fspike(:,kk) = sin(2*pi*(800+(100*kk))*spiketim) * 0.2 ; % 4 kHz for females
+        fspike(:,kk) = sin(2*pi*(800+(100*kk))*spiketim) * 0.3 ; % 4 kHz for females
             fspike(1:length(rmp),kk) = fspike(1:length(rmp),kk)' .* rmp;
             fspike(end+1-length(rmp):end,kk) = fspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
-        mspike(:,kk) = sin(2*pi*(300+(100*kk))*spiketim) * 0.2 ; % 3 kHz for males
+        mspike(:,kk) = sin(2*pi*(300+(100*kk))*spiketim) * 0.3 ; % 3 kHz for males
             mspike(1:length(rmp),kk) = mspike(1:length(rmp),kk)' .* rmp;
             mspike(end+1-length(rmp):end,kk) = mspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
     end
@@ -150,9 +150,9 @@ end
 
 spks = fem' + mal';
 
-combo = spks + (Avideo*0.6);
-femonly = (Avideo*0.6) + fem';
-malonly = (Avideo*0.6) + mal';
+combo = spks + (Avideo*0.5);
+femonly = (Avideo*0.5) + fem';
+malonly = (Avideo*0.5) + mal';
 audiowrite('combo.wav', combo, Fs);
 audiowrite('malonly.wav', malonly, Fs);
 audiowrite('femonly.wav', femonly, Fs);
