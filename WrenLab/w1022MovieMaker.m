@@ -23,26 +23,17 @@ nFrames = ceil(v.FrameRate*v.Duration);
 s(nFrames) = struct('cdata',[],'colormap',[]);
 
 hFig = figure('MenuBar','none', 'Units','pixels', 'InnerPosition',[100 100 1920 1080]);
-
-% hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[0 0 1920 1080]);
 hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[10 40 1980 1100]);
-
-im = readFrame(v);
-image(flipud(im));
-hold on;
-plot([1430 8 8 1430 1430], [10 10 157 157 10], 'k-', 'LineWidth', 6)
-% plot([8 1430], [10 10], 'k-', 'LineWidth', 6)
-% plot([8 8], [10 157], 'k-', 'LineWidth', 6)
-% plot([1430 1430], [10 157], 'k-', 'LineWidth', 6)
+    im = readFrame(v);
+    image(flipud(im));
+    hold on;
+    plot([1430 8 8 1430 1430], [10 10 157 157 10], 'k-', 'LineWidth', 6)
 
 hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[20 50 1930 160]);
-specgram(w(11).duet, 512, w(11).Fs, [], round(0.95*512));
-ug = flipud(gray); colormap(ug); caxis ([-20 33]);
-hold on;
-plot([4 4], [0 5000], 'r-', 'Linewidth', 3);
+    specgram(w(11).duet, 512, w(11).Fs, [], round(0.95*512));
+    ug = flipud(gray); colormap(ug); caxis ([-20 33]);
+    hold on;
+    curtim = v.CurrentTime;
+    
+    plot([4 4], [0 5000], 'r-', 'Linewidth', 3);
 
-%% Make the video
-
-f = readFrame(v);
-fp = figure(1); clf; set(fp,'position',[150 150 1920 1080]);
-imshow(f,'InitialMagnification','fit');
