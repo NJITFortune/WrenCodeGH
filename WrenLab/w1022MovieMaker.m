@@ -94,6 +94,6 @@ pause(0.1);
 
 end
  
-close(writerObj);
+% close(writerObj);
 
  
