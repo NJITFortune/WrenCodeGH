@@ -105,12 +105,12 @@ close(writerObj);
 
 % Make the Fake Spikes
 
-    spiketim = 1/Fs:1/Fs:0.002; % 2 msec duration for our fake spikes
+    spiketim = 1/Fs:1/Fs:0.004; % 4 msec duration for our fake spikes
     len = length(spiketim);
 
     for kk = 1:4
         fspike(:,kk) = sin(2*pi*(4000+(100*kk))*spiketim) * 0.2 ; % 4 kHz for females
-        mspike(:,kk) = sin(2*pi*(4000+(100*kk))*spiketim) * 0.2 ; % 3 kHz for males
+        mspike(:,kk) = sin(2*pi*(2000+(100*kk))*spiketim) * 0.2 ; % 3 kHz for males
     end
         
 % Make the spike sound trains
@@ -143,9 +143,9 @@ end
 
 spks = fem' + mal';
 
-combo = spks + (Avideo*0.8);
-femonly = (Avideo*0.8) + fem';
-malonly = (Avideo*0.8) + mal';
+combo = spks + (Avideo*0.6);
+femonly = (Avideo*0.6) + fem';
+malonly = (Avideo*0.6) + mal';
 audiowrite('combo.wav', combo, Fs);
 audiowrite('malonly.wav', malonly, Fs);
 audiowrite('femonly.wav', femonly, Fs);
