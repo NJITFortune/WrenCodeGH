@@ -57,8 +57,7 @@ hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
     for f = 1:length(w(11).syl)
         
         if w(11).syl(f).tim(1) < curtim - specpos
-           if w(11).sylsex(f) == 1 % Male
-               
+           if w(11).sylsex(f) == 1 % Male               
 fill([specpos+w(11).syl(f).tim(1), specpos+w(11).syl(f).tim(2), specpos+w(11).syl(f).tim(2), specpos+w(11).syl(f).tim(1)], ...
     [750, 750, 4000, 4000], 'c', 'FaceAlpha', 0.1, 'LineStyle', 'none');
            end
@@ -74,8 +73,8 @@ fill([specpos+w(12).syl(f).tim(1), specpos+w(12).syl(f).tim(2), specpos+w(12).sy
     
         for j = 1:4
             
-           malespkidx = find(w(11).Cspikes{j} < curtim);
-           femalespkidx = find(w(12).Cspikes{j} < curtim);
+           malespkidx = find(w(11).Cspikes{j} < curtim - specpos);
+           femalespkidx = find(w(12).Cspikes{j} < curtim - specpos);
            
            for k = 1:length(malespkidx)
                plot([specpos+w(11).Cspikes{j}(malespkidx(k)), specpos+w(11).Cspikes{j}(malespkidx(k))], [200+(j*100), 200+(j*100)+90], 'b-', 'LineWidth', 1);
