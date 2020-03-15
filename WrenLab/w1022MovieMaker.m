@@ -25,7 +25,7 @@ s(nFrames) = struct('cdata',[],'colormap',[]);
 
 %% Loop
 
-hFig = figure(1, 'MenuBar','none', 'Units','pixels', 'InnerPosition',[100 100 1920 1080]);
+hFig = figure('Name', 'Vidisplay', 'MenuBar','none', 'Units','pixels', 'InnerPosition',[100 100 1920 1080]);
 hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[10 40 1980 1100]);
     im = readFrame(v);
     image(flipud(im));
