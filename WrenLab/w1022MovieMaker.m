@@ -42,14 +42,16 @@ hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
     image(flipud(im));
     hold on;
     plot([1430 8 8 1430 1430], [10 10 157 157 10], 'k-', 'LineWidth', 6)
-
+    pause(1);
+    
 hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[20 50 1930 160]);
 
     specgram(w(11).duet(tt), 512, w(11).Fs, [], round(0.95*512));
     ug = flipud(gray); colormap(ug); caxis ([-20 33]);
     hold on;
     curtim = v.CurrentTime;
-    
+    drawnow
+    pause(1) 
     plot([curtim curtim], [0, 5000], 'r-', 'LineWidth', 5); % Red progress line
 
     % Plot transparent color boxes
@@ -73,8 +75,8 @@ fill([specpos+w(12).syl(f).tim(1), specpos+w(12).syl(f).tim(2), specpos+w(12).sy
     
         for j = 1:4
             
-           malespkidx = find(w(11).Cspikes{j} < curtim - specpos);
-           femalespkidx = find(w(12).Cspikes{j} < curtim - specpos);
+           malespkidx = find(w(11).Cspikes{j} < curtim - specpos & w(11).Cspikes{j} > -specpos);
+           femalespkidx = find(w(12).Cspikes{j} < curtim - specpos & w(12).Cspikes{j} > -specpos);
            
            for k = 1:length(malespkidx)
                plot([specpos+w(11).Cspikes{j}(malespkidx(k)), specpos+w(11).Cspikes{j}(malespkidx(k))], [200+(j*100), 200+(j*100)+90], 'b-', 'LineWidth', 1);
