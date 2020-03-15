@@ -72,7 +72,7 @@ fill([specpos+w(12).syl(f).tim(1), maxX, maxX, specpos+w(12).syl(f).tim(1)], ...
            femalespkidx = find(w(12).Cspikes{j} < curtim - specpos & w(12).Cspikes{j} > -specpos);
            
            for k = 1:length(malespkidx)
-               plot([specpos+w(11).Cspikes{j}(malespkidx(k)), specpos+w(11).Cspikes{j}(malespkidx(k))], [100+(j*200), 100+(j*200)+180], 'b-', 'LineWidth', 1);
+               plot([specpos+w(11).Cspikes{j}(malespkidx(k)), specpos+w(11).Cspikes{j}(malespkidx(k))], [10+(j*200), 10+(j*200)+180], 'b-', 'LineWidth', 1);
            end
            for k = 1:length(femalespkidx)
                plot([specpos+w(12).Cspikes{j}(femalespkidx(k)), specpos+w(12).Cspikes{j}(femalespkidx(k))], [3900+(j*200), 3900+(j*200)+180], 'm-', 'LineWidth', 1);
@@ -112,10 +112,10 @@ close(writerObj);
     rmp = 1/floor(len/2):1/floor(len/2):1;
 
     for kk = 1:4
-        fspike(:,kk) = sin(2*pi*(800+(100*kk))*spiketim) * 0.3 ; % 4 kHz for females
+        fspike(:,kk) = sin(2*pi*(800+(100*kk))*spiketim) * 0.4 ; % 800 Hz for females
             fspike(1:length(rmp),kk) = fspike(1:length(rmp),kk)' .* rmp;
             fspike(end+1-length(rmp):end,kk) = fspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
-        mspike(:,kk) = sin(2*pi*(300+(100*kk))*spiketim) * 0.3 ; % 3 kHz for males
+        mspike(:,kk) = sin(2*pi*(300+(100*kk))*spiketim) * 0.3 ; % 300 Hz for males
             mspike(1:length(rmp),kk) = mspike(1:length(rmp),kk)' .* rmp;
             mspike(end+1-length(rmp):end,kk) = mspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
     end
