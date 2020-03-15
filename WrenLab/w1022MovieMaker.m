@@ -52,10 +52,10 @@ hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
 
     % Plot transparent color boxes
     
-    for f = 1:length(w(idx(11)).syl)
+    for f = 1:length(w(11).syl)
         
-        if w(idx(11)).syl(f).tim(1) < curtim
-           if w(idx(11)).sylsex(f) == 1 % Male
+        if w(11).syl(f).tim(1) < curtim
+           if w(11).sylsex(f) == 1 % Male
 fill([specpos+w(idx(11)).syl(f).tim(1), specpos+w(idx(11)).syl(f).tim(2), specpos+w(idx(11)).syl(f).tim(2), specpos+w(idx(1)).syl(f).tim(1)], ...
     [750, 750, 4000, 4000], 'c', 'FaceAlpha', 0.1, 'LineStyle', 'none');
            end
