@@ -2,8 +2,8 @@
 
 load /Users/eric/Sync/Wren/ChronicCompleat2019f.mat
 
-[Svideo, Fs] = audioread('~/Sync/Wren/cVideo/ChronicDuet_long_maybe.wav');
-    Avideo = Svideo(:,1); % Use only one channel of the audio
+% [Svideo, Fs] = audioread('~/Sync/Wren/cVideo/ChronicDuet_long_maybe.wav');
+%     Avideo = Svideo(:,1); % Use only one channel of the audio
 
 rango = [-3.0248, 9.9904]; % Range from the w(11).tim that matches the video file
 
