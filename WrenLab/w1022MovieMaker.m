@@ -2,16 +2,9 @@
 
 load /Users/eric/Sync/Wren/ChronicCompleat2019f.mat
 
-% [Svideo, Fs] = audioread('~/Sync/Wren/cVideo/ChronicDuet_long_maybe.wav');
-%     Avideo = Svideo(:,1); % Use only one channel of the audio
 
 rango = [-3.0248, 9.9904]; % Range from the w(11).tim that matches the video file
 specpos = -rango(1);
-
-% figure(1); clf; hold on;
-
-%     tim = 1/Fs:1/Fs:length(Avideo)/Fs;
-%     plot(tim, Avideo);
     
     tt = find(w(11).tim > rango(1) & w(11).tim <= rango(2));
 %     plot(w(11).tim(tt) - w(11).tim(tt(1)), w(11).duet(tt));
@@ -97,4 +90,63 @@ end
  
 close(writerObj);
 
+
+%% Make the audio track
+
+% Read the audio file
+[Svideo, Fs] = audioread('~/Sync/Wren/cVideo/ChronicDuet_long_maybe.wav');
+     Avideo = Svideo(:,1); % Use only one channel of the audio
+
+% Truncate 
+    tim = 1/Fs:1/Fs:length(Avideo)/Fs;
+    tt = find(tim > rango(1) & tim <= rango(2);
+    Avideo = Avideo(tt);
+    tim = tim(tt);
+
+% Make the Fake Spikes
+
+    spiketim = 1/Fs:1/Fs:0.002; % 2 msec duration for our fake spikes
+    len = length(spiketim);
+
+    for kk = 1:4
+        fspike(:,kk) = sin(2*pi*(4000+(100*kk))*spiketim) * 0.2 ; % 4 kHz for females
+        mspike(:,kk) = sin(2*pi*(4000+(100*kk))*spiketim) * 0.2 ; % 3 kHz for males
+    end
+        
+% Make the spike sound trains
+    fem = zeros(1,length(tim));
+    mal = zeros(1,length(tim));
+
+for k = 1:4
+    spkidx = find(w(idx(1)).Cspikes{k} > rango(1) & w(idx(1)).Cspikes{k} < rango(2));
+    for j = 1:length(spkidx)   
+        curidx = find(tim >= w(idx(1)).Cspikes{k}(spkidx(j)), 1, 'first');    
+    if curidx+len-1 < length(tim)  % Need the if not to go over the end.   
+        mal(curidx:curidx+len-1) = mal(curidx:curidx+len-1) + mspike(:,k);
+    end
+    
+    end
+end
+
+% idx = 2; % This is the female (even)
+
+for k = 1:4
+    spkidx = find(w(idx(2)).Cspikes{k} > rango(1) & w(idx(2)).Cspikes{k} < rango(2));
+    for j = 1:length(spkidx)   
+        curidx = find(tim >= w(idx(2)).Cspikes{k}(spkidx(j)), 1, 'first');    
+    if curidx+len-1 < length(tim)  % Need the if not to go over the end.   
+        fem(curidx:curidx+len-1) = fem(curidx:curidx+len-1) + fspike(:,k);
+    end
+    
+    end
+end
+
+spks = fem' + mal';
+
+combo = spks + (Avideo*0.8);
+femonly = (Avideo*0.8) + fem';
+malonly = (Avideo*0.8) + mal';
+audiowrite('combo.wav', combo, Fs);
+audiowrite('malonly.wav', malonly, Fs);
+audiowrite('femonly.wav', femonly, Fs);
  
