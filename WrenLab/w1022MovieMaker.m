@@ -109,7 +109,7 @@ close(writerObj);
 
     spiketim = 1/Fs:1/Fs:0.005; % 4 msec duration for our fake spikes
     len = length(spiketim);
-    rmp = 0:1/floor(len/2):floor(len/2);
+    rmp = 0:1/floor(len/2):1;
 
     for kk = 1:4
         fspike(:,kk) = sin(2*pi*(2000+(100*kk))*spiketim) * 0.2 ; % 4 kHz for females
