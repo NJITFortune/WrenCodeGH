@@ -84,7 +84,7 @@ fill([specpos+w(12).syl(f).tim(1), specpos+w(12).syl(f).tim(2), specpos+w(12).sy
         end
         
 pause(0.1);
-    
+    drawnow
 %    frame = getframe(gcf);
 %    writeVideo(writerObj, frame);
     
