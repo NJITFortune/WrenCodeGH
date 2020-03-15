@@ -37,7 +37,8 @@ plot([1430 1430], [10 150], 'k-', 'LineWidth', 6)
 
 hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[20 50 1930 160]);
 specgram(w(11).duet, 512, w(11).Fs, [], round(0.95*512));
-ug = flipud(gray); colormap(ug);
+ug = flipud(gray); colormap(ug); caxis ([-20 33]);
+
 
 %% Make the video
 
