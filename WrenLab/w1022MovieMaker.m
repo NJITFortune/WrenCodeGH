@@ -31,7 +31,8 @@ hFig = figure('MenuBar','none', 'Units','pixels', 'InnerPosition', [100 100 1920
 
 %% Loop
 
-while 
+for jjj = 1:5
+% while hasFrame(v) 
 
     im = readFrame(v);
 
@@ -90,7 +91,7 @@ pause(0.1);
  pause(0.1);
  clf;
 
- 
+end
  
 close(writerObj);
 
