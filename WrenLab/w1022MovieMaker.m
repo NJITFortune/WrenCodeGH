@@ -32,8 +32,8 @@ hFig = figure('MenuBar','none', 'Units','pixels', 'InnerPosition', [100 100 1920
 
 %% Loop
 
-for jjj = 1:5
-% while hasFrame(v) 
+% for jjj = 1:5
+while hasFrame(v) 
 
     im = readFrame(v);
 
@@ -84,17 +84,15 @@ fill([specpos+w(12).syl(f).tim(1), specpos+w(12).syl(f).tim(2), specpos+w(12).sy
            end
         end
         
-pause(0.1);
     drawnow
-%    frame = getframe(gcf);
-%    writeVideo(writerObj, frame);
-    
-
- pause(2);
+    pause(0.1);
+    frame = getframe(gcf);
+    writeVideo(writerObj, frame);
+    pause(0.1);
  clf;
 
 end
  
-% close(writerObj);
+close(writerObj);
 
  
