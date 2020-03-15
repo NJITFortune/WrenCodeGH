@@ -57,11 +57,11 @@ hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
         
         if w(11).syl(f).tim(1) < curtim
            if w(11).sylsex(f) == 1 % Male
-fill([specpos+w(11).syl(f).tim(1), specpos+w(11).syl(f).tim(2), specpos+w(11).syl(f).tim(2), specpos+w(idx(1)).syl(f).tim(1)], ...
+fill([specpos+w(11).syl(f).tim(1), specpos+w(11).syl(f).tim(2), specpos+w(11).syl(f).tim(2), specpos+w(11).syl(f).tim(1)], ...
     [750, 750, 4000, 4000], 'c', 'FaceAlpha', 0.1, 'LineStyle', 'none');
            end
            if w(11).sylsex(f) == 2 % Female
-fill([specpos+w(11).syl(f).tim(1), specpos+w(11).syl(f).tim(2), specpos+w(11).syl(f).tim(2), specpos+w(idx(1)).syl(f).tim(1)], ...
+fill([specpos+w(12).syl(f).tim(1), specpos+w(12).syl(f).tim(2), specpos+w(12).syl(f).tim(2), specpos+w(12).syl(f).tim(1)], ...
     [750, 750, 4000, 4000], 'm', 'FaceAlpha', 0.1, 'LineStyle', 'none');
            end
         
@@ -89,7 +89,7 @@ pause(0.1);
 %    writeVideo(writerObj, frame);
     
 
- pause(0.5);
+ pause(2);
  clf;
 
 end
