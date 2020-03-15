@@ -45,6 +45,24 @@ hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
     
     plot(curtim, [0, 5000], 'r-', 'LineWidth', 5); % Red progress line
 
+    % Plot transparent color boxes
+    
+    for f = 1:length(w(idx(11)).syl)
+        
+        if w(idx(11)).syl(f).tim(1) < curtim
+           if w(idx(11)).sylsex(f) == 1 % Male
+fill([specpos+w(idx(11)).syl(f).tim(1), specpos+w(idx(11)).syl(f).tim(2), specpos+w(idx(11)).syl(f).tim(2), specpos+w(idx(1)).syl(f).tim(1)], ...
+    [750, 750, 4000, 4000], 'c', 'FaceAlpha', 0.1, 'LineStyle', 'none');
+           end
+           if w(idx(11)).sylsex(f) == 2 % Female
+fill([specpos+w(idx(11)).syl(f).tim(1), specpos+w(idx(11)).syl(f).tim(2), specpos+w(idx(11)).syl(f).tim(2), specpos+w(idx(1)).syl(f).tim(1)], ...
+    [750, 750, 4000, 4000], 'm', 'FaceAlpha', 0.1, 'LineStyle', 'none');
+           end
+        
+        end
+    end
+    
+    
 
  pause(0.1);
  clf;
