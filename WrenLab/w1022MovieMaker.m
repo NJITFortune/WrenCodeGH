@@ -62,6 +62,25 @@ fill([specpos+w(idx(11)).syl(f).tim(1), specpos+w(idx(11)).syl(f).tim(2), specpo
         end
     end
     
+    % Plot spikes
+    
+        for j = 1:4
+            
+           malespkidx = find(w(idx(1)).Cspikes{j} < curtim);
+           femalespkidx = find(w(idx(2)).Cspikes{j} < curtim);
+           
+           for k = 1:length(malespkidx)
+               plot([specpos+w(idx(1)).Cspikes{j}(malespkidx(k)), specpos+w(idx(1)).Cspikes{j}(malespkidx(k))], [200+(j*100), 200+(j*100)+90], 'b-', 'LineWidth', 1);
+           end
+           for k = 1:length(femalespkidx)
+               plot([specpos+w(idx(2)).Cspikes{j}(femalespkidx(k)), specpos+w(idx(2)).Cspikes{j}(femalespkidx(k))], [4000+(j*100), 4000+(j*100)+90], 'm-', 'LineWidth', 1);
+           end
+        end
+        
+    pause(0.1);
+    
+    frame = getframe(gcf);
+    writeVideo(writerObj, frame);
     
 
  pause(0.1);
