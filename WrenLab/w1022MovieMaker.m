@@ -109,12 +109,12 @@ close(writerObj);
 
     spiketim = 1/Fs:1/Fs:0.005; % 4 msec duration for our fake spikes
     len = length(spiketim);
-    rmp = floor(len/2):1/floor(len/2):1;
+    rmp = 1/floor(len/2):1/floor(len/2):1;
 
     for kk = 1:4
         fspike(:,kk) = sin(2*pi*(2000+(100*kk))*spiketim) * 0.2 ; % 4 kHz for females
-            fspike(:,kk) = fspike(1:floor(len/2),kk) .* rmp;
-            fspike(:,kk) = fspike(end-floor(len/2):end,kk) .* rmp(end:-1:1);
+            fspike(1:floor(len/2),kk) = fspike(1:floor(len/2),kk) .* rmp;
+            fspike(end-floor(len/2):end,kk) = fspike(end-floor(len/2):end,kk) .* rmp(end:-1:1);
         mspike(:,kk) = sin(2*pi*(500+(100*kk))*spiketim) * 0.2 ; % 3 kHz for males
     end
         
