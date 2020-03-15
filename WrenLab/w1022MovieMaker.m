@@ -13,7 +13,7 @@ figure(1); clf; hold on;
 %     plot(tim, Avideo);
     
     tt = find(w(11).tim > rango(1) & w(11).tim <= rango(2));
-    plot(w(11).tim(tt) - w(11).tim(tt(1)), w(11).duet(tt));
+%     plot(w(11).tim(tt) - w(11).tim(tt(1)), w(11).duet(tt));
 
 %% Setup the video read and the video output
 v = VideoReader('~/Sync/Wren/cVideo/ChronicDuet_long_maybe.mov');    % 391 frames
