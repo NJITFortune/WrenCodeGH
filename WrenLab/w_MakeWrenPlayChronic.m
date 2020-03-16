@@ -37,7 +37,8 @@ for k = 1:4
     for j = 1:length(spkidx)   
         curidx = find(outim >= w(idx(1)).Cspikes{k}(spkidx(j)), 1, 'first');    
     if curidx+len-1 < length(outim)  % Need the if not to go over the end.   
-        mal(curidx:curidx+len-1) = mspike;
+        mal(curidx:curidx+len-1) = mal(curidx:curidx+len-1) + mspike(:,k)';
+        % mal(curidx:curidx+len-1) = mspike;
     end
     
     end
