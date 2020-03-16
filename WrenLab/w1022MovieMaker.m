@@ -33,7 +33,7 @@ for jjj = 1:5
 hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[10 40 1980 1100]);
     image(flipud(im));
     hold on;
-    plot([1430 8 8 1430 1430], [10 10 157 157 10], 'k-', 'LineWidth', 6)
+    plot([1430 8 8 1430 1430], [10 10 220 220 10], 'k-', 'LineWidth', 6)
     
 % hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[20 50 1930 160]);
 hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[20 20 2020 220]);
