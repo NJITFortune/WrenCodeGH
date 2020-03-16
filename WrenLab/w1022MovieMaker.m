@@ -123,7 +123,7 @@ close(writerObj);
         fspike(:,kk) = sin(2*pi*(4000+(50*kk))*spiketim) * 0.5 ; % 800 Hz for females
             fspike(1:length(rmp),kk) = fspike(1:length(rmp),kk)' .* rmp;
             fspike(end+1-length(rmp):end,kk) = fspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
-        mspike(:,kk) = sin(2*pi*(1000+(80*kk))*spiketim) * 0.3 ; % 300 Hz for males
+        mspike(:,kk) = sin(2*pi*(1000+(80*kk))*spiketim) * 0.25 ; % 300 Hz for males
             mspike(1:length(rmp),kk) = mspike(1:length(rmp),kk)' .* rmp;
             mspike(end+1-length(rmp):end,kk) = mspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
     end
