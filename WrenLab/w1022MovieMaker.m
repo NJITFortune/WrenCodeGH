@@ -25,8 +25,8 @@ hFig = figure('MenuBar','none', 'Units','pixels', 'InnerPosition', [100 100 1920
 
 %% Loop
 
-for jjj = 1:5
-% while hasFrame(v) 
+% for jjj = 1:5
+while hasFrame(v) 
 
     im = readFrame(v);
 
