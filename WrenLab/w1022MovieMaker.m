@@ -59,7 +59,7 @@ hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
            if w(11).sylsex(f) == 1 % Male
            maxX = min([w(11).syl(f).tim(2)+specpos, curtim]);    
 fill([specpos+w(11).syl(f).tim(1), maxX, maxX, specpos+w(11).syl(f).tim(1)], ...
-    [750, 750, 4000, 4000], 'c', 'FaceAlpha', 0.1, 'LineStyle', 'none');
+    [750, 750, 4000, 4000], 'c', 'FaceAlpha', 0.2, 'LineStyle', 'none');
            end
            if w(11).sylsex(f) == 2 % Female
            maxX = min([w(12).syl(f).tim(2)+specpos, curtim]);    
