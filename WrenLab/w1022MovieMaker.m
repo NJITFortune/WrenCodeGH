@@ -73,10 +73,12 @@ fill([specpos+w(12).syl(f).tim(1), maxX, maxX, specpos+w(12).syl(f).tim(1)], ...
            femalespkidx = find(w(12).Cspikes{j} < curtim - specpos & w(12).Cspikes{j} > -specpos);
            
            for k = 1:length(malespkidx)
-               plot([specpos+w(11).Cspikes{j}(malespkidx(k)), specpos+w(11).Cspikes{j}(malespkidx(k))], [2+(j*200), 2+(j*200)+180], 'b-', 'LineWidth', 1);
+               plot([specpos+w(11).Cspikes{j}(malespkidx(k)), specpos+w(11).Cspikes{j}(malespkidx(k))], ...
+                   [(j*200)-100, (j*200)+80], 'b-', 'LineWidth', 1);
            end
            for k = 1:length(femalespkidx)
-               plot([specpos+w(12).Cspikes{j}(femalespkidx(k)), specpos+w(12).Cspikes{j}(femalespkidx(k))], [3900+(j*200), 3900+(j*200)+180], 'm-', 'LineWidth', 1);
+               plot([specpos+w(12).Cspikes{j}(femalespkidx(k)), specpos+w(12).Cspikes{j}(femalespkidx(k))], ...
+                   [3900+(j*200), 3900+(j*200)+180], 'm-', 'LineWidth', 1);
            end
         end
         
