@@ -44,8 +44,10 @@ hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
     ug = flipud(gray); colormap(ug); caxis ([-20 33]);
     hold on;
     curtim = v.CurrentTime;
-    fff = (w(11).syl(4).tim(1)-w(11).syl(3).tim(2))/2;
     
+    fff = (w(11).syl(4).tim(1)-w(11).syl(3).tim(2))/2;
+    plot([w(11).syl(3).tim(2)+specpos+fff w(11).syl(3).tim(2)+specpos+fff], [0, 5000], 'k--', 'LineWidth', 1);
+
     
     plot([curtim curtim], [0, 5000], 'r-', 'LineWidth', 5); % Red progress line
 
