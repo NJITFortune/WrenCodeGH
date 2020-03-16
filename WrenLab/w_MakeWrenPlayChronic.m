@@ -12,11 +12,18 @@ Fs = w(idx).Fs;
 
 % Make the Fake Spikes
 
-    spiketim = 1/Fs:1/Fs:0.004; % 4 msec duration for our fake spikes
+    spiketim = 1/Fs:1/Fs:0.005; % 4 msec duration for our fake spikes
     len = length(spiketim);
+    rmp = 1/floor(len/2):1/floor(len/2):1;
 
-    fspike = sin(2*pi*4000*spiketim) * 0.2 ; % 4 kHz for females
-    mspike = sin(2*pi*2000*spiketim) * 0.2 ; % 2 kHz for males
+    for kk = 1:4
+        fspike(:,kk) = sin(2*pi*(1200+(50*kk))*spiketim) * 0.5 ; % 800 Hz for females
+            fspike(1:length(rmp),kk) = fspike(1:length(rmp),kk)' .* rmp;
+            fspike(end+1-length(rmp):end,kk) = fspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
+        mspike(:,kk) = sin(2*pi*(800+(80*kk))*spiketim) * 0.25 ; % 300 Hz for males
+            mspike(1:length(rmp),kk) = mspike(1:length(rmp),kk)' .* rmp;
+            mspike(end+1-length(rmp):end,kk) = mspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
+    end
     
     outim = w(idx(1)).tim(w(idx(1)).tim > rango(1) & w(idx(1)).tim < rango(2));
     outduet = w(idx(1)).duet(w(idx(1)).tim > rango(1) & w(idx(1)).tim < rango(2));
