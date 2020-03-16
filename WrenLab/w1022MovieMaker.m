@@ -159,11 +159,11 @@ end
 spks = fem' + mal';
 
 combo = spks + (Avideo*0.4); 
-    combo = combo / (0.95*max(abs(combo)));
+    combo = 0.95 * (combo / max(abs(combo)));
 femonly = (Avideo*0.4) + fem';
-    femonly = femonly / (0.95*max(abs(femonly)));
+    femonly = 0.95 * (femonly / max(abs(femonly)));
 malonly = (Avideo*0.4) + mal';
-    malonly = malonly / (0.95*max(abs(malonly)));
+    malonly = 0.95 * (malonly / max(abs(malonly)));
 audiowrite('combo.wav', combo, Fs);
 audiowrite('malonly.wav', malonly, Fs);
 audiowrite('femonly.wav', femonly, Fs);
