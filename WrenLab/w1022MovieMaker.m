@@ -34,6 +34,7 @@ hAx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTic
     image(flipud(im));
     hold on;
     plot([1430 8 8 1430 1430], [10 10 188 188 10], 'k-', 'LineWidth', 6);
+    text(150, 1020, 'Female', 'Color', 'm', 'FontSize', 64);
     text(750, 1020, 'Male', 'Color', 'b', 'FontSize', 64);
     
 % hBx = axes('Parent',hFig,'Units','pixels','NextPlot','add','Visible','off','XTick',[],'YTick',[],'Position',[20 50 1930 160]);
