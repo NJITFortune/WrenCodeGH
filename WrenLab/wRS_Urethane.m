@@ -281,7 +281,7 @@ subplot(133); hold on; title('Female Spikes/Second');
     
     stts.f.sNAuto.mean = mean(sumdat.fSoloAuto.rsNorm);
     [stts.f.sNAuto.H, stts.f.sNAuto.P, stts.f.sNAuto.CI, stts.f.sNAuto.stats]  = ttest(sumdat.fSoloAuto.rsNorm);
-    stts.m.sRAuto.mean = mean(sumdat.fSoloAuto.rsRaw);
+    stts.f.sRAuto.mean = mean(sumdat.fSoloAuto.rsRaw);
     [stts.f.sRAuto.H, stts.f.sRAuto.P, stts.f.sRAuto.CI, stts.f.sRAuto.stats]  = ttest(sumdat.fSoloAuto.rsRaw);
 
 % Difference between Autogenous Duet and Solo RS motor?
