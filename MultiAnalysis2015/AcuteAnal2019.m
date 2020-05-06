@@ -238,7 +238,7 @@ sig3 = w(64).hst.spers / max(w(64).hst.spers); sig3 = sig3-mean(sig3);
 [pxy,f] = cpsd(w(10).hst.spers,w(64).hst.spers,[],[],[],w(64).hst.Fs);
 figure(5); clf; plot(f, real(pxy), 'o-'); xlim([0 8]);
 
-figure(2); clf; plot(xcorr(sig1, sig2), 'm');
+figure(6); clf; plot(xcorr(sig1, sig2), 'm');
 hold on; plot(xcorr(sig1, sig3), 'b');
 
 % 127M 149F
@@ -246,5 +246,5 @@ sig1 = w(127).hst.spers / max(w(127).hst.spers); sig1 = sig1-mean(sig1);
 sig2 = w(149).hst.spers / max(w(149).hst.spers); sig2 = sig2-mean(sig2);
 hold on; plot(xcorr(sig1, sig2), 'k');
 
-figure(3); clf; plot(w(127).hst.tim, w(127).hst.spers, 'b');
+figure(7); clf; plot(w(127).hst.tim, w(127).hst.spers, 'b');
 hold on; plot(w(149).hst.tim, w(149).hst.spers, 'm')
