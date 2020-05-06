@@ -185,10 +185,10 @@ for j=1:length(Mii)
     end
 end
 
-length(Ftmp1spikes)
-length(Ftmp2spikes)
-length(Mtmp1spikes)
-length(Mtmp2spikes)
+% length(Ftmp1spikes)
+% length(Ftmp2spikes)
+% length(Mtmp1spikes)
+% length(Mtmp2spikes)
 
 FdPrime(end+1) = bs_DP( Ftmp1spikes, [0 Fistimend], Ftmp2spikes, [0 Fiistimend]);
 MdPrime(end+1) = bs_DP( Mtmp1spikes, [0 Mistimend], Mtmp2spikes, [0 Miistimend]);
@@ -223,9 +223,9 @@ end
 
 %% Plot duet switch that occurs in the 'fieldduet' stimulus
 
-figure(1); clf; subplot(211); % Saved as fielduet-switch-sfn2019poster.eps
+figure(4); clf; subplot(211); % Saved as fielduet-switch-sfn2019poster.eps
     specgram(s(13).stim, 2048, s(13).Fs, [], 2024); ylim([500 4000]);
-    caxis([18 45]); xlim([19 26]); colormap(flipud(a));
+    caxis([18 45]); xlim([19 26]); colormap(flipud(gray));
     
 
 %% XCORR Business
