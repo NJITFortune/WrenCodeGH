@@ -235,8 +235,8 @@ sig2 = w(16).hst.spers / max(w(16).hst.spers); sig2 = sig2-mean(sig2);
 sig3 = w(64).hst.spers / max(w(64).hst.spers); sig3 = sig3-mean(sig3);
 
 %pxy = cpsd(w(10).hst.spers, w(64).hst.spers); 
-[pxy,f] = cpsd(w(10).hst.spers,w(64).hst.spers,[],[],[],w(64).hst.Fs);
-figure(5); clf; plot(f, real(pxy), 'o-'); xlim([0 8]);
+[pxy,f] = cpsd(w(10).hst.spers, w(64).hst.spers,[],[],[],w(64).hst.Fs);
+figure(5); clf; plot(f, real(pxy), 'o-'); xlim([0 8]); %% Peak at 2 Hz for alternation of syllables
 
 figure(6); clf; plot(xcorr(sig1, sig2), 'm');
 hold on; plot(xcorr(sig1, sig3), 'b');
