@@ -239,7 +239,7 @@ sig3 = w(64).hst.spers / max(w(64).hst.spers); sig3 = sig3-mean(sig3);
 figure(5); clf; plot(f, real(pxy), 'o-'); xlim([0 8]); %% Peak at 2 Hz for alternation of syllables
 
 figure(6); clf; plot(xcorr(sig1, sig2), 'm');
-hold on; plot(xcorr(sig1, sig3), 'b');
+hold on; plot(xcorr(sig1, sig3), 'b'); % 
 
 % 127M 149F
 sig1 = w(127).hst.spers / max(w(127).hst.spers); sig1 = sig1-mean(sig1);
