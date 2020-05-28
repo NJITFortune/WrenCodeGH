@@ -32,8 +32,9 @@ function struct = hagaclics2020(sng, Fs, startim)
     bsx = 0; sylnum = 1; preclick = 0;
 
 %% Make initial PROGRESS plot
-figure(2); clf; hold on;
-    plot(tim,sng,'b');
+figure(2); clf; 
+    subplot(211); oscson(sng, 
+    subplot(212); plot(tim,sng,'b');
     xlim([0 tim(end)]);
 
 %% Get clicks: Loop until user tells us that this is the end of sng
