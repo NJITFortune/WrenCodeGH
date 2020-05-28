@@ -217,7 +217,7 @@ function [ clicktimes ] = clickplotter( data, Fs, preCLK )
 
     % Get clicks for the starts and ends of the syllables
     
-        [clicktimes, ~] = ginputc('Color','w','ShowPoints',true,'ConnectPoints',false);        
+        [clicktimes, ~] = ginputc('Color','g','ShowPoints',true,'ConnectPoints',false);        
         
 end
 
