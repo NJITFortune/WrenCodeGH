@@ -44,12 +44,12 @@ while cntu < 10
 % Get clicks
 
     tt = find(tim >= bsx & tim < bsx + windwid); % The time window for clicking
-
+figure(27); plot(sng(tt));
     figure(2); % Update our current position by plotting a vertical magenta line
         plot([tim(tt(end)) tim(tt(end))], [-0.8 0.8], 'm', 'LineWidth', 2);        
    
      % Get clicks with the embedded function clickplotter   
-     cts = clickplotter(sng(tt), Fs, preclick);
+     cts = clickplotter(sng(tt), Fs, preclick); 
 
 % We loop to analyze each syllable
 
