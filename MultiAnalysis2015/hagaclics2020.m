@@ -147,10 +147,6 @@ while cntu < 10
             struct(sylnum).syltim = [tim(stt(1)) tim(stt(end))];
             struct(sylnum).sylind = [stt(1) stt(end)];
 
-            struct(sylnum).year = nfo.year; struct(sylnum).month = nfo.month;
-            struct(sylnum).day = nfo.day; struct(sylnum).location = nfo.location;
-            struct(sylnum).note = nfo.note; struct(sylnum).wavname = nfo.wavname;
-
             % PLOT ONTO OUR WINDOW
             
             figure(1); hold on;
