@@ -1,4 +1,4 @@
-function struct = hagaclics2020(sng, Fs)
+function struct = hagaclics2020(sng, Fs, startim)
 % out = hagaclics(sng, Fs);
 % sng is the sample data - straight from the wav file
 % Fs is the sample rate in Hz
@@ -13,6 +13,7 @@ function struct = hagaclics2020(sng, Fs)
 
 % Make and time sequence and get the length of the signal.
     tim = 1/Fs:1/Fs:length(sng)/Fs;
+    tim = tim - startim;
 
 % This is the width of the clicking window in seconds. 
     windwid = 2.5;
