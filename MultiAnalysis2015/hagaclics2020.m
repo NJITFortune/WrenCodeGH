@@ -35,7 +35,7 @@ maxamp = max(abs(sng));
 
 %% Make initial PROGRESS plot
 figure(2); clf; 
-    subplot(211); oscson(sng, Fs);
+    subplot(211); oscson(sng, Fs); hold on;
     xlim([startim-1, tim(end)]);
     subplot(212); plot(tim,sng,'b'); hold on;
     xlim([-1, tim(end)]);
