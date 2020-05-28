@@ -18,62 +18,41 @@ function struct = hagaclics2020(sng, Fs)
     windwid = 2.5;
 
 % This is the overlap in seconds between previous and next windows.
-ovrlp = 0.2;
+    ovrlp = 0.2;
 
 % High-pass filter the sng
 
-[b,a] = butter(2,200/(Fs*2), 'high');
-sng = filtfilt(b,a,sng);
+    [b,a] = butter(2,200/(Fs*2), 'high');
+    sng = filtfilt(b,a,sng);
 
-%% Initialize BSX and SYLNUM
+%% Initialize BSX and SYLNUM and PRECLICK
 
-% For the new analysis we start at time 0 (base X or bsx) and syllable #1.
-if newanal == 1; bsx = 0; sylnum = 1; preclick = 0; end;
+% For analysis we start at time 0 (base X or bsx) and syllable #1.
+    bsx = 0; sylnum = 1; preclick = 0;
 
-% To add to the old structure, we need to start where we left off.
-% Complicated - I hope that we can avoid using this. NEEDS EDITING
-if newanal == 2; 
-    sylnum = length(old) + 1; % Next syllable is one more than Last syllable
-    bsx = old(end).syltim(2) - ovrlp; % End of last syllable - our overlap
-    preclick = ovrlp; % Our preclick is plotted on top of the OSCSON, which always starts at zero
-    
-    nfo.year = old(1).year; nfo.month = old(1).month; nfo.day = old(1).day;
-    nfo.location = old(1).location; nfo.note = old(1).note;
-end;
-
-%% Make initial plot
-figure(2);
+%% Make initial PROGRESS plot
+figure(2); clf; hold on;
     plot(tim,sng,'b');
     xlim([0 tim(end)]);
 
-%% Loop through windows until user tells us that this is the end of sng
+%% Get clicks: Loop until user tells us that this is the end of sng
 cntu = 1;
 
-while cntu < 10;
+while cntu < 10
        
 % Get clicks
 
-        tt = find(tim >= bsx & tim < bsx + windwid);
+    tt = find(tim >= bsx & tim < bsx + windwid); % The time window for clicking
 
- figure(2);
-    hold on;
-    plot([tim(tt(end)) tim(tt(end))], [-0.8 0.8], 'm', 'LineWidth', 2);        
-    hold off;
-    
- figure(1);
- 
-        if preclick == 0; 
-            cts = clickplotter(sng(tt), Fs);
-        else
-            cts = clickplotter(sng(tt), Fs, preclick);
-        end;
+    figure(2); % Update our current position by plotting a vertical magenta line
+        plot([tim(tt(end)) tim(tt(end))], [-0.8 0.8], 'm', 'LineWidth', 2);        
    
-        if mod(length(cts),2) == 1; % TRY AGAIN LOSER
-        end;
+     % Get clicks with the embedded function clickplotter   
+     cts = clickplotter(sng(tt), Fs, preclick);
 
 % We loop to analyze each syllable
 
-        for ss = 1:2:length(cts)-1;
+        for ss = 1:2:length(cts)-1
 
             % Get the region of data for the current click from the data
             stt = find(tim >= bsx + cts(ss) & tim < bsx + cts(ss+1));
@@ -81,11 +60,11 @@ while cntu < 10;
             % Send the data to our analysis and tracing function
             tmp = syldata(sng(stt),Fs);
             
-            %% CLEANUP THE DATA
+            % CLEANUP THE DATA
             
             % 1) Find and eliminate zero frequency
             
-            if ismember(0,[tmp.trace_freq]) == 1;
+            if ismember(0,[tmp.trace_freq]) == 1
 
             % Get the indices where these zeros happened
                 zips = find([tmp.trace_freq] == 0);
@@ -93,21 +72,21 @@ while cntu < 10;
             % Most of the time there is only one zero value, usually at the
             % end - so we can easily fix that.
 
-                if length(zips) == 1; 
+                if length(zips) == 1 
                     % If the zero is anywhere but the first value, we'll simply
                     % copy the previous value
-                    if zips ~= 1; 
+                    if zips ~= 1 
                         tmp.trace_freq(zips) = tmp.trace_freq(zips-1);
                     else
                         tmp.trace_freq(zips) = tmp.trace_freq(zips+1);
-                    end;
+                    end
                 else
                     % But if we have more than a single zero value, we'll need
                     % to get user to help. Here we have the user click each zero.
-                    sprintf('Multiple Zeros - click each to fix')
                     NumberofUserClicks = length(zips);
+                    fprintf('Multiple Zeros: N=%i - click each to fix\n', NumberofUserClicks)
             
-                    figure(1); clf;
+                    figure(3); clf;
                     %wrengram(sng(tmp.sylind(1):tmp.sylind(2)), Fs);
                     specgram(sng(stt),1024,Fs,[],1000); ylim([-10 5000]);
                     lliimmss = xlim;
@@ -118,16 +97,11 @@ while cntu < 10;
             
                     clks = ginput(NumberofUserClicks);
                     tmp.trace_freq(zips) = clks(:,2);            
-                end;    
+                end    
 
-            end;    
-
+            end
             
-            
-            
-            
-            
- % Place into the output structure.
+% Place into the output structure.
  
                 struct(sylnum).sylen = tmp.sylen;
                 struct(sylnum).loud = tmp.loud;
@@ -167,7 +141,7 @@ while cntu < 10;
                 struct(sylnum).ofer_PW = mean(p);
                 struct(sylnum).ofer_GC = mean(y);
                 
-            % add the fundamental components of the syllable
+         % add the fundamental components of the syllable
 
             struct(sylnum).syltim = [tim(stt(1)) tim(stt(end))];
             struct(sylnum).sylind = [stt(1) stt(end)];
@@ -177,6 +151,7 @@ while cntu < 10;
             struct(sylnum).note = nfo.note; struct(sylnum).wavname = nfo.wavname;
 
             % PLOT ONTO OUR WINDOW
+            
             figure(1); hold on;
             timstr = struct(sylnum).trace_tim + struct(sylnum).syltim(1);
             plot(timstr - bsx, struct(sylnum).trace_freq, 'g');
@@ -186,32 +161,62 @@ while cntu < 10;
 
             sylnum = sylnum + 1;
             
-        end;
+        end
         
         
         % We are done clicking through the window, so let's save temp data
         % and reset bsx
         
         %!% save temporary.mat struct;
-        
-       
+               
         bsx = struct(sylnum-1).syltim(2) - ovrlp;
         preclick = ovrlp;
         
         % Ask if we are done
         cntu = inputdlg('Done? 99=yes, 0 or [return] to continue: ');
         cntu = str2num(cntu{:});
-        if isempty(cntu) == 1; cntu = 1; end;
+        if isempty(cntu) == 1; cntu = 1; end
         
-end;
+end
 
 %%%%%%%%%%%%%%%%%%% END OF CLICKING
 
 
 %% After all is said and done, get inter-syllable-intervals
 
-for j = 2:length(struct);
+for j = 2:length(struct)
     struct(j).ISI = struct(j).syltim(1) - struct(j-1).syltim(2);
-end;
+end
+
+
+function [ clicktimes ] = clickplotter( data, Fs, preCLK )
+% clicktimes = clickplotter(data, Fs);
+% data is a chunk of raw wren wrecorded data
+% Fs is the sample rate in Hz
+% This function plots the chunk of song and has the user click all of the
+% syllable starts and ends in order. 
+% requires OSCSON
+
+    yvals = [100 4500];
+    
+%% Plot and get clicks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        figure(1); clf; hold on;
+        
+        figprop = get(gcf,'Position'); 
+        set(gcf,'Position',[figprop(1) figprop(2) 1000 400]);
+
+        oscson(data,Fs);
+
+        % Plot prior click in the main window
+
+        plot([preCLK preCLK], yvals, 'm'); 
+
+    % Get clicks for the starts and ends of the syllables
+    
+        [clicktimes, ~] = ginputc('Color','w','ShowPoints',true,'ConnectPoints',false);        
+        
+end
+
 
 
