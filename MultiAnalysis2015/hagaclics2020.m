@@ -50,7 +50,7 @@ while cntu < 10
     tt = find(tim >= bsx & tim < bsx + windwid); % The time window for clicking
     
     figure(2); % Update our current position by plotting a vertical magenta line
-        subplot(211); plot([tim(tt(end)) tim(tt(end))], [0, 4500], 'm', 'LineWidth', 2);
+        subplot(211); plot([tim(tt(end))+startim tim(tt(end))+startim], [0, 4500], 'm', 'LineWidth', 2);
         subplot(212); plot([tim(tt(end)) tim(tt(end))], [-maxamp, maxamp], 'm', 'LineWidth', 2);        
    
      % Get clicks with the embedded function clickplotter   
