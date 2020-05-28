@@ -36,8 +36,9 @@ maxamp = max(abs(sng));
 %% Make initial PROGRESS plot
 figure(2); clf; 
     subplot(211); oscson(sng, Fs);
+    xlim([startim-1, tim(end)]);
     subplot(212); plot(tim,sng,'b'); hold on;
-    xlim([-1 tim(end)]);
+    xlim([-1, tim(end)]);
 
 %% Get clicks: Loop until user tells us that this is the end of sng
 cntu = 1;
@@ -48,8 +49,9 @@ while cntu < 10
 
     tt = find(tim >= bsx & tim < bsx + windwid); % The time window for clicking
     
-    figure(2); subplot(212)% Update our current position by plotting a vertical magenta line
-        plot([tim(tt(end)) tim(tt(end))], [-maxamp, maxamp], 'm', 'LineWidth', 2);        
+    figure(2); % Update our current position by plotting a vertical magenta line
+        subplot(211); plot([tim(tt(end)) tim(tt(end))], [0, 4500], 'm', 'LineWidth', 2);
+        subplot(212); plot([tim(tt(end)) tim(tt(end))], [-maxamp, maxamp], 'm', 'LineWidth', 2);        
    
      % Get clicks with the embedded function clickplotter   
      cts = clickplotter(sng(tt), Fs, preclick); 
