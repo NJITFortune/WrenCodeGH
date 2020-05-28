@@ -29,13 +29,13 @@ colormap('HOT'); % Use for Matlab
 
 % If user doesn't tell us what to do, we adjust automagically to ensure
 % that you can see the signal
-if nargin == 2;
+if nargin == 2
     lo = hi - (hi-lo)*0.25; caxis([lo hi]);
-end;
+end
 
-if nargin ==3;
+if nargin ==3
     lo = opt(1); hi = opt(2); caxis([lo hi]);
-end;
+end
 
 %% Now that we've adjusted the colors, plot the oscillogram on top.
 hold on;
