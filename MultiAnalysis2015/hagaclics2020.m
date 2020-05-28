@@ -1,46 +1,21 @@
-function struct = hagaclics(sng, Fs, ~, old)
-% out = hagaclics(sng, Fs, [old]);
+function struct = hagaclics2020(sng, Fs)
+% out = hagaclics(sng, Fs);
 % sng is the sample data - straight from the wav file
 % Fs is the sample rate in Hz
-% old is the "in process" structure
 %
 % This function depends on oscson for plotting.
 % This function depends on syldata for analysis.
 % This function depends on the SAMIII tree via syldata.
 % This function works with slicer for selecting syllable types.
 % This function depends on ginputc for clicking (can be reverted to ginput easily).
-%
-
-%% Test to see if we are starting Fresh or Building on old file.
-
-% Test to see if we are starting with a new file, or restarting an old file.
-if nargin == 2 
-    newanal = 1;
-% Get some basic information before we start
-    nfo.year = input('Enter the year, e.g. 2011: ');
-    nfo.month = input('Enter the month, e.g. 09: ');
-    nfo.day = input('Enter the day of the month, e.g. 07: ');
-    nfo.location{:} = input('Enter the location in single quotes: ');
-    nfo.note{:} = input('Enter a note in single quotes: ');
-    nfo.wavname{:} = input('Enter the filename of the wav file in single quotes: ');
-%     nfo.year=2011;nfo.month=12;nfo.day=25;nfo.location={'Yanayacu'}; nfo.note={'Fabulous'}; nfo.wavname = {'foobar.wav'}; % Placeholder
-end;
-if nargin == 3
-    newanal = 1;
-    nfo.year=1967;nfo.month=01;nfo.day=01;nfo.location={'Yanayacu'}; nfo.note={'Fabulous'}; nfo.wavname = {'foobar.wav'}; % Placeholder
-end;
-if nargin == 4
-    newanal = 2;
-    struct = old; % copy old data into our output structure
-end;
 
 %% Housekeeping
 
 % Make and time sequence and get the length of the signal.
-tim = 1/Fs:1/Fs:length(sng)/Fs;
+    tim = 1/Fs:1/Fs:length(sng)/Fs;
 
 % This is the width of the clicking window in seconds. 
-windwid = 2.5;
+    windwid = 2.5;
 
 % This is the overlap in seconds between previous and next windows.
 ovrlp = 0.2;
