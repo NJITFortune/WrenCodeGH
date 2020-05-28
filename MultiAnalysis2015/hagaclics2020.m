@@ -219,4 +219,4 @@ function [ clicktimes ] = clickplotter( data, Fs, preCLK )
 end
 
 
-
+end
