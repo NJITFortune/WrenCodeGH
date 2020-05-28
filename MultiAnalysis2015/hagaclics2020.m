@@ -11,6 +11,8 @@ function struct = hagaclics2020(sng, Fs, startim)
 
 %% Housekeeping
 
+maxamp = max(abs(sng));
+
 % Make and time sequence and get the length of the signal.
     tim = 1/Fs:1/Fs:length(sng)/Fs;
     tim = tim - startim;
@@ -33,9 +35,9 @@ function struct = hagaclics2020(sng, Fs, startim)
 
 %% Make initial PROGRESS plot
 figure(2); clf; 
-    subplot(211); oscson(sng, 
-    subplot(212); plot(tim,sng,'b');
-    xlim([0 tim(end)]);
+    subplot(211); oscson(sng, Fs);
+    subplot(212); plot(tim,sng,'b'); hold on;
+    xlim([-1 tim(end)]);
 
 %% Get clicks: Loop until user tells us that this is the end of sng
 cntu = 1;
@@ -46,8 +48,8 @@ while cntu < 10
 
     tt = find(tim >= bsx & tim < bsx + windwid); % The time window for clicking
     
-    figure(2); % Update our current position by plotting a vertical magenta line
-        plot([tim(tt(end)) tim(tt(end))], [-0.8 0.8], 'm', 'LineWidth', 2);        
+    figure(2); subplot(212)% Update our current position by plotting a vertical magenta line
+        plot([tim(tt(end)) tim(tt(end))], [-maxamp, maxamp], 'm', 'LineWidth', 2);        
    
      % Get clicks with the embedded function clickplotter   
      cts = clickplotter(sng(tt), Fs, preclick); 
