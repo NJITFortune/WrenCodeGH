@@ -66,7 +66,7 @@ function out = syldata(data, Fs)
 %	nfft = 2048; % old
     nfft = 512; % Testing new
     
-	while startwin < max(tinytim) + stp;
+	while startwin < max(tinytim) + stp
             % Matlab removed the find command here
         	ttdata = nodcdata(tinytim > startwin & tinytim < startwin + stp);
         	L = length(ttdata);
