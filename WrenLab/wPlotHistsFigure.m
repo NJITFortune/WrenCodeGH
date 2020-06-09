@@ -34,9 +34,9 @@ figure(4); clf; title('Female M17 idx=2');
 
 figure(27); 
     subplot(211); 
-    specgram(in(idx).duet(in(idx).tim > limits(1) & in(idx).tim < limits(2)), 1024, in(idx).Fs, [], 1000);
+    specgram(in(idx).duet(in(idx).tim > limits(1) & in(idx).tim < limits(2)), 512, in(idx).Fs, [], 500);
     colormap(flipud(gray));
-    ylim([500 4500]); caxis([-30 20]);
+    ylim([500 4500]); caxis([-35 30]);
     
 %% j160815
 
@@ -61,12 +61,12 @@ figure(8); clf; title('Female j160815 idx=8');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
 
-figure(27); 
+figure(27); clf;
     subplot(212); 
-    specgram(in(idx).duet(in(idx).tim > limits(1) & in(idx).tim < limits(2)), 1024, in(idx).Fs, [], 1000);
+    specgram(in(idx).duet(in(idx).tim > limits(1) & in(idx).tim < limits(2)), 512, in(idx).Fs, [], 500);
     colormap(flipud(gray));
-    ylim([500 4500]); caxis([-30 20]);
-
+    ylim([500 4500]); caxis([-20 30]);
+    drawnow;
 
 %% Plotting Functions
 
