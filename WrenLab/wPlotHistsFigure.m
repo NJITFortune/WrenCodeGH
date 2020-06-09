@@ -12,7 +12,7 @@ function wPlotHistsFigure(in)
 
 %% M17
 
-limits = [0.2 6.2];
+limits = [0.2 5.7];
 sWIN = 50;
 
 % repnum = min([length(in(1).Aspikes), length(in(2).Aspikes)] );
@@ -40,7 +40,7 @@ figure(27);
     
 %% j160815
 
-limits = [0 5];
+limits = [0 4.5];
 sWIN = 50;
 
 % repnum = min([length(in(7).Aspikes), length(in(8).Aspikes)] );
@@ -61,8 +61,11 @@ figure(8); clf; title('Female j160815 idx=8');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
 
-
-
+figure(27); 
+    subplot(212); 
+    specgram(in(idx).duet(in(idx).tim > limits(1) & in(idx).tim < limits(2)), 1024, in(idx).Fs, [], 1000);
+    colormap(flipud(gray));
+    ylim([500 4500]); caxis([-30 20]);
 
 
 %% Plotting Functions
