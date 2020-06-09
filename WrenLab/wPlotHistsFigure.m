@@ -83,7 +83,6 @@ figure(27);
         
         % Raster Plot
         axs(1)=subplot(3,1,1);
-        ss = spikes{1:r};
         PLOTraster(spikes, r);
         xlim([w(1) w(2)]);
         h = gca; set(h, 'XTickLabel', [], 'Ydir', 'reverse', 'YAxisLocation', 'left');
@@ -127,6 +126,8 @@ figure(27);
             end
         end
 
+        drawnow; pause(0.5);
+        
     end % End of plot function
 
 function PLOTraster(spiketimes, reps)
