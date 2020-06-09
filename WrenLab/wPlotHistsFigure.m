@@ -36,8 +36,7 @@ figure(27);
     subplot(211); 
     specgram(in(idx).duet(in(idx).tim > limits(1) & in(idx).tim < limits(2)), 1024, in(idx).Fs, [], 1000);
     colormap(flipud(gray));
-    ylim([200 5200]); caxis([0 5500]);
-
+    ylim([500 4500]); caxis([-30 20]);
     
 %% j160815
 
