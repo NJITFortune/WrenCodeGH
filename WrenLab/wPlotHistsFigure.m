@@ -16,7 +16,7 @@ limits = [0.2 5.7];
 sWIN = 50;
 
 % repnum = min([length(in(1).Aspikes), length(in(2).Aspikes)] );
-repnum = 25;
+repnum = 30;
 
 idx = 1; % Male M17
 
@@ -44,7 +44,7 @@ limits = [0 4.5];
 sWIN = 50;
 
 % repnum = min([length(in(7).Aspikes), length(in(8).Aspikes)] );
-repnum = 25;
+repnum = 30;
 
 idx = 7; % Male j160815
 
