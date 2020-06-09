@@ -32,7 +32,11 @@ figure(3); clf; title('Female M17 idx=2');
 figure(4); clf; title('Female M17 idx=2');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
-figure(27); subplot(211); 
+figure(27); 
+    subplot(211); 
+    specgram(in(idx).duet(in(idx).tim > limits(1) & in(idx).tim < limits(2)), 1024, in(idx).Fs, [], 1000);
+    colormap(flipud(gray));
+    ylim([200 5200]); caxis([0 5500]);
 
     
 %% j160815
