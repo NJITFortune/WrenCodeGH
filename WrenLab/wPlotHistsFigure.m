@@ -20,16 +20,16 @@ repnum = 30;
 
 idx = 1; % Male M17
 
-figure(1); clf; title('Male M17 idx=1');
+figure(1); clf; title('Male M17 idx=1'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, 4, 1);
-figure(2); clf; title('Male M17 idx=1');
+figure(2); clf; title('Male M17 idx=1'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
 idx = 2; % Female M17
 
-figure(3); clf; title('Female M17 idx=2');
+figure(3); clf; title('Female M17 idx=2'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, 4, 1);
-figure(4); clf; title('Female M17 idx=2');
+figure(4); clf; title('Female M17 idx=2'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
 figure(27); clf;
@@ -48,20 +48,20 @@ repnum = 30;
 
 idx = 7; % Male j160815
 
-figure(5); clf; title('Male j160815 idx=7');
+figure(5); clf; title('Male j160815 idx=7'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, 4, 1);
-figure(6); clf; title('Male j160815 idx=7');
+figure(6); clf; title('Male j160815 idx=7'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
 idx = 8; % Female j160815
 
-figure(7); clf; title('Female j160815 idx=8');
+figure(7); clf; title('Female j160815 idx=8'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, 4, 1);
-figure(8); clf; title('Female j160815 idx=8');
+figure(8); clf; title('Female j160815 idx=8'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
 
-figure(27); 
+figure(27); set(gcf,'renderer','Painters');
     subplot(212); 
     specgram(in(idx).duet(in(idx).tim > limits(1) & in(idx).tim < limits(2)), 512, in(idx).Fs, [], 500);
     colormap(flipud(gray));
