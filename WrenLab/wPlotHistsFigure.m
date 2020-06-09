@@ -32,6 +32,9 @@ figure(3); clf; title('Female M17 idx=2');
 figure(4); clf; title('Female M17 idx=2');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
+figure(27); subplot(211); 
+
+    
 %% j160815
 
 limits = [0 5];
