@@ -12,7 +12,7 @@ function wPlotHistsFigure(in)
 
 %% M17
 
-limits = [0.2 6.2];
+limits = [0.2 6.0];
 sWIN = 50;
 
 % repnum = min([length(in(1).Aspikes), length(in(2).Aspikes)] );
