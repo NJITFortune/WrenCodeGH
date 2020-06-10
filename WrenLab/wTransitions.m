@@ -213,7 +213,7 @@ if in(ff).sexy == 2 % This is a female
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
             for kk = 1:length(tmp) 
                 FSAC(end+1) = tmp(kk); 
-                figure(27); axr(2) = subplot(122); title('Female Autogenous Solo'); hold on; plot(tmp(kk).SPS, 'm');
+                figure(27); axr(2) = subplot(122); title('Autogenous Solo'); hold on; plot(tmp(kk).SPS, 'm');
                 linkaxes(axr, 'y');
             end; clear tmp;
     end
