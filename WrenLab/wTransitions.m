@@ -41,8 +41,8 @@ function [M, F] = wTransitions(in, wwindow)
 
 % Choose which data to analyze
 %    birdlist = 16:-1:1; % All compleat data with both ACUTE (urethane) AND CHRONIC (awake)
-birdlist = 1:length(in);
-
+% birdlist = 1:length(in);
+birdlist = [
 for ff = birdlist
         
     sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m 
