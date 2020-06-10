@@ -152,7 +152,9 @@ if in(ff).sexy == 1 % This is a male
         end
         % Chronic
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
-            for kk = 1:length(tmp); MSHC(end+1) = tmp(kk); end; clear tmp;           
+            for kk = 1:length(tmp); MSHC(end+1) = tmp(kk); 
+                            figure(27); axr(2) = subplot(122); title('Autogenous Solo'); hold on; plot(tmp(kk).SPS, 'b');
+            end; clear tmp;           
     end
 
 end % End of male
@@ -208,10 +210,10 @@ if in(ff).sexy == 2 % This is a female
         [tmp, ~] = wPhaseHist(in(ff).Aspikes, currFsolosyltims, widow, numbins, AcuteSpon);
             for kk = 1:length(tmp); FSAU(end+1) = tmp(kk); end; clear tmp;
         end
-         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
+        [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
             for kk = 1:length(tmp) 
                 FSAC(end+1) = tmp(kk); 
-                figure(27); axr(2) = subplot(122); title('Female Autogenous Solo');hold on; plot(tmp(kk).SPS);
+                figure(27); axr(2) = subplot(122); title('Female Autogenous Solo'); hold on; plot(tmp(kk).SPS, 'm');
                 linkaxes(axr, 'y');
             end; clear tmp;
     end
