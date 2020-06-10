@@ -335,7 +335,7 @@ plot(bins4plot, msMSAC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize
 % Female
 %fill([bins4plot bins4plot(end:-1:1)], [msFSHC.meanRSraw - msFSHC.steRSraw, msFSHC.meanRSraw(end:-1:1) + msFSHC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
 %plot(bins4plot, msFSHC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-fill([bins4plot bins4plot(end:-1:1)], [msFSHC.meanSPS - msFSHC.steSPS, msFSHC.meanSPS(end:-1:1) + msFSHC.steSPSw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+fill([bins4plot bins4plot(end:-1:1)], [msFSHC.meanSPS - msFSHC.steSPS, msFSHC.meanSPS(end:-1:1) + msFSHC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msFSHC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 axxu(1) = subplot(223); hold on; title('M Solo Urethane'); 
