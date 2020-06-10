@@ -212,11 +212,12 @@ if in(ff).sexy == 2 % This is a female
             for kk = 1:length(tmp) 
                 FSAC(end+1) = tmp(kk); 
                 figure(27); axr(2) = subplot(122); title('Female Autogenous Solo');hold on; plot(tmp(kk).SPS);
+                linkaxes(axr, 'y');
             end; clear tmp;
     end
     
 end % End of female
-                figure(27); linkaxes(axr, 'y');
+                
 end % End of cycling for every bird
 
 
