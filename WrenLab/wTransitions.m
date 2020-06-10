@@ -176,6 +176,7 @@ if in(ff).sexy == 2 % This is a female
                  FAHC(end+1).SPS = tmp(kk).SPS; 
                  FAHC(end).RSraw = tmp(kk).RSraw; 
                  FAHC(end).RSnorm = tmp(kk).RSnorm; 
+                    figure(27); subplot(121); hold on; plot(tmp(kk).SPS);
              end
              clear tmp; 
         end
@@ -208,7 +209,10 @@ if in(ff).sexy == 2 % This is a female
             for kk = 1:length(tmp); FSAU(end+1) = tmp(kk); end; clear tmp;
         end
          [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
-            for kk = 1:length(tmp); FSAC(end+1) = tmp(kk); end; clear tmp;
+            for kk = 1:length(tmp) 
+                FSAC(end+1) = tmp(kk); 
+                figure(27); subplot(122); hold on; plot(tmp(kk).SPS);
+            end; clear tmp;
     end
     
 end % End of female
