@@ -141,7 +141,9 @@ if in(ff).sexy == 1 % This is a male
         end
         % Chronic
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon);
-            for kk = 1:length(tmp); MSAC(end+1) = tmp(kk); end; clear tmp;
+            for kk = 1:length(tmp); MSAC(end+1) = tmp(kk); 
+                figure(27); axr(2) = subplot(122); title('Autogenous Solo'); hold on; plot(tmp(kk).SPS, 'b');
+            end; clear tmp;
     end
     
     if ~isempty(fsolosyls{sylstrdx}) % % For songs with female solo syllable
@@ -152,9 +154,7 @@ if in(ff).sexy == 1 % This is a male
         end
         % Chronic
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
-            for kk = 1:length(tmp); MSHC(end+1) = tmp(kk); 
-                            figure(27); axr(2) = subplot(122); title('Autogenous Solo'); hold on; plot(tmp(kk).SPS, 'b');
-            end; clear tmp;           
+            for kk = 1:length(tmp); MSHC(end+1) = tmp(kk); end; clear tmp;           
     end
 
 end % End of male
