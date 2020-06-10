@@ -176,7 +176,6 @@ if in(ff).sexy == 2 % This is a female
                  FAHC(end+1).SPS = tmp(kk).SPS; 
                  FAHC(end).RSraw = tmp(kk).RSraw; 
                  FAHC(end).RSnorm = tmp(kk).RSnorm; 
-                    figure(27); subplot(121); hold on; plot(tmp(kk).SPS);
              end
              clear tmp; 
         end
@@ -186,6 +185,7 @@ if in(ff).sexy == 2 % This is a female
                  FHAC(end+1).SPS = tmp(kk).SPS; 
                  FHAC(end).RSraw = tmp(kk).RSraw; 
                  FHAC(end).RSnorm = tmp(kk).RSnorm; 
+                    figure(27); axr(1) = subplot(121); title('Female Autogenous Duet'); hold on; plot(tmp(kk).SPS);
              end
              clear tmp;
         end
@@ -211,12 +211,12 @@ if in(ff).sexy == 2 % This is a female
          [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
             for kk = 1:length(tmp) 
                 FSAC(end+1) = tmp(kk); 
-                figure(27); subplot(122); hold on; plot(tmp(kk).SPS);
+                figure(27); axr(2) = subplot(122); title('Female Autogenous Solo');hold on; plot(tmp(kk).SPS);
             end; clear tmp;
     end
     
 end % End of female
-
+                figure(27); linkaxes(axr, 'y');
 end % End of cycling for every bird
 
 
