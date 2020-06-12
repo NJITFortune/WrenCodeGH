@@ -48,7 +48,7 @@ sumdat.mDuetAuto.SPS = []; sumdat.fDuetAuto.SPS = [];
 
 %% Loop to calculate RS values for each pair of wrens   
     
-for 1:length(Cspon)  %%%% BUMMER %%%% curpair = 2:6 % 
+for curpair = 1:length(Cspon) % 2:6 %   %%%% BUMMER %%%%
     
     % Solo syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(msolosyls{curpair}) % Male sang solo syllables
