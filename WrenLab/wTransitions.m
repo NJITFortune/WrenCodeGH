@@ -501,7 +501,7 @@ fill([bins4plot bins4plot(end:-1:1)], [msFAHU.meanSPS - msFAHU.steSPS, msFAHU.me
 plot(bins4plot, msFAHU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 
-linkaxes(fmu, 'xy'); figure(8); subplot(223);  ylim([0 50]); xlim([-widow-0.0001, widow+0.0001]);
+linkaxes(fmu, 'xy'); figure(8+((jj-1)*10)); subplot(223);  ylim([0 50]); xlim([-widow-0.0001, widow+0.0001]);
 
 %% Put everything into the output structures
 
