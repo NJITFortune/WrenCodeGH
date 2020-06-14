@@ -388,8 +388,8 @@ plot(bins4plot, msFSAU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize
 fill([bins4plot bins4plot(end:-1:1)], [msMSHU.meanSPS - msMSHU.steSPS, msMSHU.meanSPS(end:-1:1) + msMSHU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msMSHU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-linkaxes(axxc, 'xy'); figure(2); subplot(221); ylim([-8 60]);
-linkaxes(axxu, 'xy'); figure(2); subplot(223);  ylim([0 55]);
+linkaxes(axxc, 'xy'); figure(2+((jj-1)*10)); subplot(221); ylim([-8 60]);
+linkaxes(axxu, 'xy'); figure(2+((jj-1)*10)); subplot(223);  ylim([0 55]);
 
 %% PLOTS FOR MANUSCRIPTS
 
