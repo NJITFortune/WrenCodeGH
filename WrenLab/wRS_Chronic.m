@@ -48,13 +48,13 @@ sumdat.mDuetAuto.SPS = []; sumdat.fDuetAuto.SPS = [];
 
 %% Loop to calculate RS values for each pair of wrens   
 
-% birdlist{1} = 1:length(Cspon); % All compleat data with both ACUTE (urethane) AND CHRONIC (awake)
-% birdlist{2} = 2:6;  % Only DUETS with Female Solo Syllables 
-% birdlist{3} = [2 3 4 5 6 10 11 12 13 14 15 16 17 18 19 20 21]; % Everything with Female Solo Syllables
-% birdlist{4} = [1 2 3 7 9]; % Only DUETS with Male Solo Syllables
+birdlist{1} = 1:length(Cspon); % All compleat data with both ACUTE (urethane) AND CHRONIC (awake)
+birdlist{2} = 2:6;  % Only DUETS with Female Solo Syllables 
+birdlist{3} = [2 3 4 5 6 10 11 12 13 14 15 16 17 18 19 20 21]; % Everything with Female Solo Syllables
+birdlist{4} = [1 2 3 7 9]; % Only DUETS with Male Solo Syllables
  
     
-for curpair = 1:length(Cspon) % 2:6 %   %%%% BUMMER %%%%
+for curpair = birdlist{1} 
     
     % Solo syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(msolosyls{curpair}) % Male sang solo syllables
