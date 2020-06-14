@@ -230,8 +230,6 @@ end % End of female
                 
     end % End of cycling for every bird
 
-end % End of cycling groups jj
-
 %% Build the Cool fill plots for the DUET data
 
     msFHAC = concatHist(FHAC);                        
@@ -245,7 +243,7 @@ end % End of cycling groups jj
     msMAHU = concatHist(MAHU);
 
 
-figure(1+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]); drawnow; jj
+figure(1+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]); 
 
 % PLOT M2F DATA 
 
@@ -530,6 +528,9 @@ fprintf('The mean and std for Male syllable duration is  %1.3f %1.3f \n', mean(M
 fprintf('The mean and std for Female syllable duration is  %1.3f %1.3f \n', mean(Fsyldur), std(Fsyldur));
 fprintf('The mean and std for M2F ISI is  %1.3f %1.3f \n', mean(M2FISI), std(M2FISI));
 fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2MISI));
+
+end % End of cycling groups jj
+
 
 %% Embedded Concatonation function
 function tuo = concatHist(xin)
