@@ -20,6 +20,14 @@ function [M, F] = wTransitions(in, wwindow)
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData;
 
+
+birdlist{1} = 16:-1:1; % All compleat data with both ACUTE (urethane) AND CHRONIC (awake)
+birdlist{2} = 3:12;  % Only DUETS with Female Solo Syllables
+birdlist{3} = [3 4 5 6 7 8 9 10 11 12 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42]; % Everything with Female Solo Syllables
+birdlist{4} = [1 2 3 4 5 6 13 14 17 18]; % Only DUETS with Male Solo Syllables
+
+for jj = 1:length(birdlist)
+
 % Some variables because I am not a talented coder.
     Fsyldur = []; Msyldur = [];  % A side calculation - durations of syllables
     M2FISI = []; F2MISI = [];    % Another side calculation - durations of InterSyllable Intervals
@@ -44,12 +52,7 @@ function [M, F] = wTransitions(in, wwindow)
 % birdlist = 1:length(in);
 % birdlist = 3:12;  Only DUETS with Female Solo Syllables
 
-birdlist{1} = 16:-1:1; % All compleat data with both ACUTE (urethane) AND CHRONIC (awake)
-birdlist{2} = 3:12;  % Only DUETS with Female Solo Syllables
-birdlist{3} = [3 4 5 6 7 8 9 10 11 12 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42]; % Everything with Female Solo Syllables
-birdlist{4} = [1 2 3 4 5 6 13 14 17 18]; % Only DUETS with Male Solo Syllables
 
-for jj = 1:length(birdlist)
 
     for ff = birdlist{jj}
         
