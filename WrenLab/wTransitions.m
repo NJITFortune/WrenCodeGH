@@ -222,7 +222,7 @@ if in(ff).sexy == 2 % This is a female
             for kk = 1:length(tmp) 
                 FSAC(end+1) = tmp(kk); 
                 %figure(27); axr(2) = subplot(122); title('Autogenous Solo'); hold on; plot(tmp(kk).SPS, 'm');
-                linkaxes(axr, 'y');
+                %linkaxes(axr, 'y');
             end; clear tmp;
     end
     
