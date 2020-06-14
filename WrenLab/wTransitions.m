@@ -150,7 +150,7 @@ if in(ff).sexy == 1 % This is a male
         % Chronic
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currMsolosyltims, widow, numbins, ChronSpon);
             for kk = 1:length(tmp); MSAC(end+1) = tmp(kk); 
-                figure(27); axr(2) = subplot(122); title('Autogenous Solo'); hold on; plot(tmp(kk).SPS, 'b');
+                % figure(27); axr(2) = subplot(122); title('Autogenous Solo'); hold on; plot(tmp(kk).SPS, 'b');
             end; clear tmp;
     end
     
