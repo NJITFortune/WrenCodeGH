@@ -338,7 +338,7 @@ linkaxes(axu, 'xy'); figure(1+((jj-1)*10)); subplot(223);  ylim([0 55]);  xlim([
     msMSHC = concatHist(MSHC);                        
     msMSHU = concatHist(MSHU);                        
 
-figure(2); clf; set(gcf, 'Color', [1,1,1]);
+figure(2+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]);
 
 % PLOT M Solo DATA
 axxc(1) = subplot(221); hold on; title('M Solo Chronic'); 
