@@ -393,7 +393,7 @@ linkaxes(axxu, 'xy'); figure(2+((jj-1)*10)); subplot(223);  ylim([0 55]);
 
 %% PLOTS FOR MANUSCRIPTS
 
-figure(7); % For luck
+figure(7+((jj-1)*10)); % For luck
 clf;
 % SOLO AUTOGENOUS CHRONIC PANEL
 fmc(1) = subplot(221); hold on; title('Auto Solo Chronic'); 
