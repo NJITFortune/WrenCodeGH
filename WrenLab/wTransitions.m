@@ -32,10 +32,8 @@ for jj = 1:length(birdlist)
     Fsyldur = []; Msyldur = [];  % A side calculation - durations of syllables
     M2FISI = []; F2MISI = [];    % Another side calculation - durations of InterSyllable Intervals
     
-    % Keeping track of how many solo syllables that have produced data
-    Mwhichmalesolosyl = 0; Mwhichfemalesolosyl = 0; 
-    Fwhichmalesolosyl = 0; Fwhichfemalesolosyl = 0;
-
+    clear MAHU;
+    
     % More variables that we need
     MAHU(1).SPS = []; MAHU(1).RSraw = []; MAHU(1).RSnorm = [];
 
