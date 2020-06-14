@@ -455,9 +455,9 @@ fmc(4) = subplot(224); hold on; title('Hetero Duet Chronic');
     fill([bins4plot bins4plot(end:-1:1)], [msFAHC.meanSPS - msFAHC.steSPS, msFAHC.meanSPS(end:-1:1) + msFAHC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
     plot(bins4plot, msFAHC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-linkaxes(fmc, 'xy'); figure(7); subplot(221); ylim([-8 63]); xlim([-widow-0.0001, widow+0.0001]);
+linkaxes(fmc, 'xy'); figure(7+((jj-1)*10)); subplot(221); ylim([-8 63]); xlim([-widow-0.0001, widow+0.0001]);
 
-figure(8); clf;
+figure(8+((jj-1)*10)); clf;
 
 fmu(1) = subplot(221); hold on; title('HA Duet Acute');
     plot([0 0], [0 55], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
