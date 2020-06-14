@@ -195,7 +195,7 @@ if in(ff).sexy == 2 % This is a female
                  FHAC(end+1).SPS = tmp(kk).SPS; 
                  FHAC(end).RSraw = tmp(kk).RSraw; 
                  FHAC(end).RSnorm = tmp(kk).RSnorm; 
-                    figure(27); axr(1) = subplot(121); title('Female Autogenous Duet'); hold on; plot(tmp(kk).SPS);
+                    %figure(27); axr(1) = subplot(121); title('Female Autogenous Duet'); hold on; plot(tmp(kk).SPS);
              end
              clear tmp;
         end
@@ -221,7 +221,7 @@ if in(ff).sexy == 2 % This is a female
         [tmp, ~] = wPhaseHist(in(ff).Cspikes, currFsolosyltims, widow, numbins, ChronSpon);
             for kk = 1:length(tmp) 
                 FSAC(end+1) = tmp(kk); 
-                figure(27); axr(2) = subplot(122); title('Autogenous Solo'); hold on; plot(tmp(kk).SPS, 'm');
+                %figure(27); axr(2) = subplot(122); title('Autogenous Solo'); hold on; plot(tmp(kk).SPS, 'm');
                 linkaxes(axr, 'y');
             end; clear tmp;
     end
