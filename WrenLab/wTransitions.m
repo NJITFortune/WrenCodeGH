@@ -297,8 +297,8 @@ plot(bins4plot, msFAHU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize
 fill([bins4plot bins4plot(end:-1:1)], [msMHAU.meanSPS - msMHAU.steSPS, msMHAU.meanSPS(end:-1:1) + msMHAU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 plot(bins4plot, msMHAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
-linkaxes(axc, 'xy'); figure(1); subplot(221);  ylim([-8 60]);  xlim([-widow-0.0001, widow+0.0001]);
-linkaxes(axu, 'xy'); figure(1); subplot(223);  ylim([0 55]);  xlim([-widow-0.0001, widow+0.0001]);
+linkaxes(axc, 'xy'); figure(1+((jj-1)*10)); subplot(221);  ylim([-8 60]);  xlim([-widow-0.0001, widow+0.0001]);
+linkaxes(axu, 'xy'); figure(1+((jj-1)*10)); subplot(223);  ylim([0 55]);  xlim([-widow-0.0001, widow+0.0001]);
 
 % figure(3); clf; set(gcf, 'Color', [1,1,1]);
 % xax(1) = subplot(221); hold on; title('M2F Chronic'); 
