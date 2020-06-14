@@ -245,7 +245,7 @@ end % End of cycling groups jj
     msMAHU = concatHist(MAHU);
 
 
-figure(1+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]);
+figure(1+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]); drawnow; jj
 
 % PLOT M2F DATA 
 
