@@ -628,7 +628,6 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
         overlap = 1-(overlap/100); % Converts to step size for advancing the window
         
         bintims = -wid:binwid*overlap:wid; % List of bin times centered on zero
-
         
 
     for j = length(tims):-1:1 % For each syllable in the list
@@ -666,6 +665,8 @@ function [out, bintims] = wPhaseHist(spiketimes, tims, wid, numbin, sponSPS)
             end
         end
 
+        if sponSPS == 0; sponSPS = 1; end
+        
         for j=1:length(goodlist)
             out(j).SPS = spikearray(:, goodlist(j)) / binwid; 
             out(j).RSraw = (spikearray(:, goodlist(j)) / binwid) - sponSPS;
