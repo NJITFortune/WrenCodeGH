@@ -546,7 +546,7 @@ plot(bins, data.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 fill([bins bins(end:-1:1)], [data.meanRSraw - data.steRSraw, data.meanRSraw(end:-1:1) + data.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 plot(bins, data.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
         end
-        if typ == 1 % Normalized Response Strength
+        if typ == 3 % Normalized Response Strength
 fill([bins bins(end:-1:1)], [data.meanRSnorm - data.steRSnorm, data.meanRSnorm(end:-1:1) + data.steRSnorm(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 plot(bins, data.meanRSnorm, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
         end
