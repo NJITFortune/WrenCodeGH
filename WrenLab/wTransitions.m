@@ -20,7 +20,6 @@ function [M, F] = wTransitions(in, wwindow)
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData;
 
-
 birdlist{1} = 16:-1:1; % All compleat data with both ACUTE (urethane) AND CHRONIC (awake)
 birdlist{2} = 3:12;  % Only DUETS with Female Solo Syllables
 birdlist{3} = [3 4 5 6 7 8 9 10 11 12 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42]; % Everything with Female Solo Syllables
@@ -251,15 +250,18 @@ figure(1+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]);
 axc(1) = subplot(221); hold on; title('M2F Chronic'); 
     plot([0 0], [-10 55], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
 % Male
+plotmasteryoda(msMAHC, bins4plot, 3);
 %fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanRSraw - msMAHC.steRSraw, msMAHC.meanRSraw(end:-1:1) + msMAHC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 %plot(bins4plot, msMAHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanSPS - msMAHC.steSPS, msMAHC.meanSPS(end:-1:1) + msMAHC.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMAHC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanSPS - msMAHC.steSPS, msMAHC.meanSPS(end:-1:1) + msMAHC.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msMAHC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+
 % Female
+plotmasteryoda(msFHAC, bins4plot, 3);
 %fill([bins4plot bins4plot(end:-1:1)], [msFHAC.meanRSraw - msFHAC.steRSraw, msFHAC.meanRSraw(end:-1:1) + msFHAC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
 %plot(bins4plot, msFHAC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-fill([bins4plot bins4plot(end:-1:1)], [msFHAC.meanSPS - msFHAC.steSPS, msFHAC.meanSPS(end:-1:1) + msFHAC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFHAC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% fill([bins4plot bins4plot(end:-1:1)], [msFHAC.meanSPS - msFHAC.steSPS, msFHAC.meanSPS(end:-1:1) + msFHAC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msFHAC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 axu(1) = subplot(223); hold on; title('M2F Urethane'); 
     plot([0 0], [-10 55], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
@@ -532,6 +534,24 @@ fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(F2MISI), std(F2M
 
 end % End of cycling groups jj
 
+%% Embedded plotting function
+
+    function plotmasteryoda(data, bins, typ)
+
+        if typ == 1 % spikes per second
+fill([bins bins(end:-1:1)], [data.meanSPS - data.steSPS, data.meanSPS(end:-1:1) + data.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins, data.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+        end
+        if typ == 2 % Raw Response Strength
+fill([bins bins(end:-1:1)], [data.meanRSraw - data.steRSraw, data.meanRSraw(end:-1:1) + data.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins, data.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+        end
+        if typ == 1 % Normalized Response Strength
+fill([bins bins(end:-1:1)], [data.meanRSnorm - data.steRSnorm, data.meanRSnorm(end:-1:1) + data.steRSnorm(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+plot(bins, data.meanRSnorm, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+        end
+
+    end
 
 %% Embedded Concatonation function
 function tuo = concatHist(xin)
