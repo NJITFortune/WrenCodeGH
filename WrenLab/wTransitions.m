@@ -262,7 +262,7 @@ axu(1) = subplot(223); hold on; title('M2F Urethane');
     % Male
         plotmasteryoda(msMAHU, bins4plot, typeofplot, 1);
     % Female
-        plotmasteryoda(msFHAU, bins4plot, typeofplot, 2);
+        %plotmasteryoda(msFHAU, bins4plot, typeofplot, 2);
 
 % % Male
 % fill([bins4plot bins4plot(end:-1:1)], [msMAHU.meanSPS - msMAHU.steSPS, msMAHU.meanSPS(end:-1:1) + msMAHU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
