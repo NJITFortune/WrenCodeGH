@@ -365,36 +365,48 @@ plot(bins4plot, msFSHC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize
 axxu(1) = subplot(223); hold on; title('M Solo Urethane'); 
     plot([0 0], [-10 55], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     set(axxu(1),'Color', [0.9, 0.9, 0.9]);
-% Male
-fill([bins4plot bins4plot(end:-1:1)], [msMSAU.meanSPS - msMSAU.steSPS, msMSAU.meanSPS(end:-1:1) + msMSAU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-% Female
-fill([bins4plot bins4plot(end:-1:1)], [msFSHU.meanSPS - msFSHU.steSPS, msFSHU.meanSPS(end:-1:1) + msFSHU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSHU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+    % Male
+        plotmasteryoda(msMSAU, bins4plot, typeofplot, 1);
+    % Female
+        plotmasteryoda(msFSHU, bins4plot, typeofplot, 2);
+% % Male
+% fill([bins4plot bins4plot(end:-1:1)], [msMSAU.meanSPS - msMSAU.steSPS, msMSAU.meanSPS(end:-1:1) + msMSAU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msMSAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % Female
+% fill([bins4plot bins4plot(end:-1:1)], [msFSHU.meanSPS - msFSHU.steSPS, msFSHU.meanSPS(end:-1:1) + msFSHU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msFSHU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 % PLOT F Solo DATA
 axxc(2) = subplot(222); hold on; title('F Solo Chronic'); 
     plot([0 0], [-10 55], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
-% Female
-%fill([bins4plot bins4plot(end:-1:1)], [msFSAC.meanRSraw - msFSAC.steRSraw, msFSAC.meanRSraw(end:-1:1) + msFSAC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-%plot(bins4plot, msFSAC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-fill([bins4plot bins4plot(end:-1:1)], [msFSAC.meanSPS - msFSAC.steSPS, msFSAC.meanSPS(end:-1:1) + msFSAC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSAC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-% Male
-%fill([bins4plot bins4plot(end:-1:1)], [msMSHC.meanRSraw - msMSHC.steRSraw, msMSHC.meanRSraw(end:-1:1) + msMSHC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-%plot(bins4plot, msMSHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-fill([bins4plot bins4plot(end:-1:1)], [msMSHC.meanSPS - msMSHC.steSPS, msMSHC.meanSPS(end:-1:1) + msMSHC.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSHC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+    % Female
+        plotmasteryoda(msFSAC, bins4plot, typeofplot, 2);
+    % Male
+        plotmasteryoda(msMSHC, bins4plot, typeofplot, 1);
+% % Female
+% %fill([bins4plot bins4plot(end:-1:1)], [msFSAC.meanRSraw - msFSAC.steRSraw, msFSAC.meanRSraw(end:-1:1) + msFSAC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% %plot(bins4plot, msFSAC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% fill([bins4plot bins4plot(end:-1:1)], [msFSAC.meanSPS - msFSAC.steSPS, msFSAC.meanSPS(end:-1:1) + msFSAC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msFSAC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % Male
+% %fill([bins4plot bins4plot(end:-1:1)], [msMSHC.meanRSraw - msMSHC.steRSraw, msMSHC.meanRSraw(end:-1:1) + msMSHC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% %plot(bins4plot, msMSHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% fill([bins4plot bins4plot(end:-1:1)], [msMSHC.meanSPS - msMSHC.steSPS, msMSHC.meanSPS(end:-1:1) + msMSHC.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msMSHC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 axxu(2) = subplot(224); hold on; title('F Solo Urethane'); 
     plot([0 0], [-10 55], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     set(axxu(2),'Color', [0.9, 0.9, 0.9]);
-% Female
-fill([bins4plot bins4plot(end:-1:1)], [msFSAU.meanSPS - msFSAU.steSPS, msFSAU.meanSPS(end:-1:1) + msFSAU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSAU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-% Male
-fill([bins4plot bins4plot(end:-1:1)], [msMSHU.meanSPS - msMSHU.steSPS, msMSHU.meanSPS(end:-1:1) + msMSHU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSHU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+    % Female
+        plotmasteryoda(msFSAU, bins4plot, typeofplot, 2);
+    % Male
+        plotmasteryoda(msMSHU, bins4plot, typeofplot, 1);
+% % Female
+% fill([bins4plot bins4plot(end:-1:1)], [msFSAU.meanSPS - msFSAU.steSPS, msFSAU.meanSPS(end:-1:1) + msFSAU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msFSAU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % Male
+% fill([bins4plot bins4plot(end:-1:1)], [msMSHU.meanSPS - msMSHU.steSPS, msMSHU.meanSPS(end:-1:1) + msMSHU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msMSHU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 linkaxes(axxc, 'xy'); figure(2+((jj-1)*10)); subplot(221); ylim([-8 60]);
 linkaxes(axxu, 'xy'); figure(2+((jj-1)*10)); subplot(223);  ylim([0 55]);
@@ -408,60 +420,80 @@ fmc(1) = subplot(221); hold on; title('Auto Solo Chronic');
     plot([0 0], [-10 70], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     
     % Male
-%    fill([bins4plot bins4plot(end:-1:1)], [msMSAC.meanRSraw - msMSAC.steRSraw, msMSAC.meanRSraw(end:-1:1) + msMSAC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-%    plot(bins4plot, msMSAC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-    fill([bins4plot bins4plot(end:-1:1)], [msMSAC.meanSPS - msMSAC.steSPS, msMSAC.meanSPS(end:-1:1) + msMSAC.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-    plot(bins4plot, msMSAC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+        plotmasteryoda(msMSAC, bins4plot, typeofplot, 1);
     % Female
-%    fill([bins4plot bins4plot(end:-1:1)], [msFSAC.meanRSraw - msFSAC.steRSraw, msFSAC.meanRSraw(end:-1:1) + msFSAC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-%    plot(bins4plot, msFSAC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-    fill([bins4plot bins4plot(end:-1:1)], [msFSAC.meanSPS - msFSAC.steSPS, msFSAC.meanSPS(end:-1:1) + msFSAC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-    plot(bins4plot, msFSAC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+        plotmasteryoda(msFSAC, bins4plot, typeofplot, 2);
+
+% % Male
+% %    fill([bins4plot bins4plot(end:-1:1)], [msMSAC.meanRSraw - msMSAC.steRSraw, msMSAC.meanRSraw(end:-1:1) + msMSAC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% %    plot(bins4plot, msMSAC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+%     fill([bins4plot bins4plot(end:-1:1)], [msMSAC.meanSPS - msMSAC.steSPS, msMSAC.meanSPS(end:-1:1) + msMSAC.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+%     plot(bins4plot, msMSAC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+%     % Female
+% %    fill([bins4plot bins4plot(end:-1:1)], [msFSAC.meanRSraw - msFSAC.steRSraw, msFSAC.meanRSraw(end:-1:1) + msFSAC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% %    plot(bins4plot, msFSAC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+%     fill([bins4plot bins4plot(end:-1:1)], [msFSAC.meanSPS - msFSAC.steSPS, msFSAC.meanSPS(end:-1:1) + msFSAC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+%     plot(bins4plot, msFSAC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 % DUET AUTOGENOUS CHRONIC PANEL
 fmc(2) = subplot(222); hold on; title('Auto Duet Chronic'); 
     plot([0 0], [-10 70], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     
     % Male
-%    fill([bins4plot bins4plot(end:-1:1)], [msMHAC.meanRSraw - msMHAC.steRSraw, msMHAC.meanRSraw(end:-1:1) + msMHAC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-%    plot(bins4plot, msMHAC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-    fill([bins4plot bins4plot(end:-1:1)], [msMHAC.meanSPS - msMHAC.steSPS, msMHAC.meanSPS(end:-1:1) + msMHAC.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-    plot(bins4plot, msMHAC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+        plotmasteryoda(msMHAC, bins4plot, typeofplot, 1);
     % Female
-%    fill([bins4plot bins4plot(end:-1:1)], [msFHAC.meanRSraw - msFHAC.steRSraw, msFHAC.meanRSraw(end:-1:1) + msFHAC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-%    plot(bins4plot, msFHAC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-    fill([bins4plot bins4plot(end:-1:1)], [msFHAC.meanSPS - msFHAC.steSPS, msFHAC.meanSPS(end:-1:1) + msFHAC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-    plot(bins4plot, msFHAC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+        plotmasteryoda(msFHAC, bins4plot, typeofplot, 2);
+
+%     % Male
+% %    fill([bins4plot bins4plot(end:-1:1)], [msMHAC.meanRSraw - msMHAC.steRSraw, msMHAC.meanRSraw(end:-1:1) + msMHAC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% %    plot(bins4plot, msMHAC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+%     fill([bins4plot bins4plot(end:-1:1)], [msMHAC.meanSPS - msMHAC.steSPS, msMHAC.meanSPS(end:-1:1) + msMHAC.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+%     plot(bins4plot, msMHAC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+%     % Female
+% %    fill([bins4plot bins4plot(end:-1:1)], [msFHAC.meanRSraw - msFHAC.steRSraw, msFHAC.meanRSraw(end:-1:1) + msFHAC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% %    plot(bins4plot, msFHAC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+%     fill([bins4plot bins4plot(end:-1:1)], [msFHAC.meanSPS - msFHAC.steSPS, msFHAC.meanSPS(end:-1:1) + msFHAC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+%     plot(bins4plot, msFHAC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
     
 % SOLO HETEROGENOUS CHRONIC PANEL
 fmc(3) = subplot(223); hold on; title('Hetero Solo Chronic'); 
     plot([0 0], [-10 70], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     
     % Male
-%    fill([bins4plot bins4plot(end:-1:1)], [msMSHC.meanRSraw - msMSHC.steRSraw, msMSHC.meanRSraw(end:-1:1) + msMSHC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-%    plot(bins4plot, msMSHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-    fill([bins4plot bins4plot(end:-1:1)], [msMSHC.meanSPS - msMSHC.steSPS, msMSHC.meanSPS(end:-1:1) + msMSHC.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-    plot(bins4plot, msMSHC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+        plotmasteryoda(msMSHC, bins4plot, typeofplot, 1);
     % Female
-%    fill([bins4plot bins4plot(end:-1:1)], [msFSHC.meanRSraw - msFSHC.steRSraw, msFSHC.meanRSraw(end:-1:1) + msFSHC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-%    plot(bins4plot, msFSHC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-    fill([bins4plot bins4plot(end:-1:1)], [msFSHC.meanSPS - msFSHC.steSPS, msFSHC.meanSPS(end:-1:1) + msFSHC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-    plot(bins4plot, msFSHC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+        plotmasteryoda(msFSHC, bins4plot, typeofplot, 2);
+        
+%     % Male
+% %    fill([bins4plot bins4plot(end:-1:1)], [msMSHC.meanRSraw - msMSHC.steRSraw, msMSHC.meanRSraw(end:-1:1) + msMSHC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% %    plot(bins4plot, msMSHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+%     fill([bins4plot bins4plot(end:-1:1)], [msMSHC.meanSPS - msMSHC.steSPS, msMSHC.meanSPS(end:-1:1) + msMSHC.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+%     plot(bins4plot, msMSHC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+%     % Female
+% %    fill([bins4plot bins4plot(end:-1:1)], [msFSHC.meanRSraw - msFSHC.steRSraw, msFSHC.meanRSraw(end:-1:1) + msFSHC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% %    plot(bins4plot, msFSHC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+%     fill([bins4plot bins4plot(end:-1:1)], [msFSHC.meanSPS - msFSHC.steSPS, msFSHC.meanSPS(end:-1:1) + msFSHC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+%     plot(bins4plot, msFSHC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 % DUET HETEROGENOUS CHRONIC PANEL
 fmc(4) = subplot(224); hold on; title('Hetero Duet Chronic'); 
     plot([0 0], [-10 70], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     
     % Male
-%    fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanRSraw - msMAHC.steRSraw, msMAHC.meanRSraw(end:-1:1) + msMAHC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-%    plot(bins4plot, msMAHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-    fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanSPS - msMAHC.steSPS, msMAHC.meanSPS(end:-1:1) + msMAHC.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-    plot(bins4plot, msMAHC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+        plotmasteryoda(msMAHC, bins4plot, typeofplot, 1);
     % Female
-%    fill([bins4plot bins4plot(end:-1:1)], [msFAHC.meanRSraw - msFAHC.steRSraw, msFAHC.meanRSraw(end:-1:1) + msFAHC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-%    plot(bins4plot, msFAHC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-    fill([bins4plot bins4plot(end:-1:1)], [msFAHC.meanSPS - msFAHC.steSPS, msFAHC.meanSPS(end:-1:1) + msFAHC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-    plot(bins4plot, msFAHC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+        plotmasteryoda(msFAHC, bins4plot, typeofplot, 2);
+        
+%     % Male
+% %    fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanRSraw - msMAHC.steRSraw, msMAHC.meanRSraw(end:-1:1) + msMAHC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% %    plot(bins4plot, msMAHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+%     fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanSPS - msMAHC.steSPS, msMAHC.meanSPS(end:-1:1) + msMAHC.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+%     plot(bins4plot, msMAHC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+%     % Female
+% %    fill([bins4plot bins4plot(end:-1:1)], [msFAHC.meanRSraw - msFAHC.steRSraw, msFAHC.meanRSraw(end:-1:1) + msFAHC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% %    plot(bins4plot, msFAHC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+%     fill([bins4plot bins4plot(end:-1:1)], [msFAHC.meanSPS - msFAHC.steSPS, msFAHC.meanSPS(end:-1:1) + msFAHC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+%     plot(bins4plot, msFAHC.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 linkaxes(fmc, 'xy'); figure(7+((jj-1)*10)); subplot(221); ylim([-8 63]); xlim([-widow-0.0001, widow+0.0001]);
 
@@ -470,44 +502,63 @@ figure(8+((jj-1)*10)); clf;
 fmu(1) = subplot(221); hold on; title('HA Duet Acute');
     plot([0 0], [0 55], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     set(fmu(1),'Color', [0.9, 0.9, 0.9]);
-% Male
-fill([bins4plot bins4plot(end:-1:1)], [msMHAU.meanSPS - msMHAU.steSPS, msMHAU.meanSPS(end:-1:1) + msMHAU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMHAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-% Female
-fill([bins4plot bins4plot(end:-1:1)], [msFHAU.meanSPS - msFHAU.steSPS, msFHAU.meanSPS(end:-1:1) + msFHAU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFHAU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+    % Male
+        plotmasteryoda(msMHAU, bins4plot, typeofplot, 1);
+    % Female
+        plotmasteryoda(msFHAU, bins4plot, typeofplot, 2);
+        
+% % Male
+% fill([bins4plot bins4plot(end:-1:1)], [msMHAU.meanSPS - msMHAU.steSPS, msMHAU.meanSPS(end:-1:1) + msMHAU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msMHAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % Female
+% fill([bins4plot bins4plot(end:-1:1)], [msFHAU.meanSPS - msFHAU.steSPS, msFHAU.meanSPS(end:-1:1) + msFHAU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msFHAU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 fmu(2) = subplot(223); hold on; title('Solo Female Syllable Acute');
     plot([0 0], [0 55], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     set(fmu(2),'Color', [0.9, 0.9, 0.9]);
-% Male
-fill([bins4plot bins4plot(end:-1:1)], [msMSHU.meanSPS - msMSHU.steSPS, msMSHU.meanSPS(end:-1:1) + msMSHU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSHU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-% Female
-fill([bins4plot bins4plot(end:-1:1)], [msFSAU.meanSPS - msFSAU.steSPS, msFSAU.meanSPS(end:-1:1) + msFSAU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSAU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+    % Male
+        plotmasteryoda(msMSHU, bins4plot, typeofplot, 1);
+    % Female
+        plotmasteryoda(msFSAU, bins4plot, typeofplot, 2);
+        
+% % Male
+% fill([bins4plot bins4plot(end:-1:1)], [msMSHU.meanSPS - msMSHU.steSPS, msMSHU.meanSPS(end:-1:1) + msMSHU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msMSHU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % Female
+% fill([bins4plot bins4plot(end:-1:1)], [msFSAU.meanSPS - msFSAU.steSPS, msFSAU.meanSPS(end:-1:1) + msFSAU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msFSAU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 fmu(3) = subplot(224); hold on; title('Solo Male Syllable Acute');
     plot([0 0], [0 55], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     set(fmu(3),'Color', [0.9, 0.9, 0.9]);
-% Male
-fill([bins4plot bins4plot(end:-1:1)], [msMSAU.meanSPS - msMSAU.steSPS, msMSAU.meanSPS(end:-1:1) + msMSAU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMSAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-% Female
-fill([bins4plot bins4plot(end:-1:1)], [msFSHU.meanSPS - msFSHU.steSPS, msFSHU.meanSPS(end:-1:1) + msFSHU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFSHU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+    % Male
+        plotmasteryoda(msMSAU, bins4plot, typeofplot, 1);
+    % Female
+        plotmasteryoda(msFSHU, bins4plot, typeofplot, 2);
+        
+% % Male
+% fill([bins4plot bins4plot(end:-1:1)], [msMSAU.meanSPS - msMSAU.steSPS, msMSAU.meanSPS(end:-1:1) + msMSAU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msMSAU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % Female
+% fill([bins4plot bins4plot(end:-1:1)], [msFSHU.meanSPS - msFSHU.steSPS, msFSHU.meanSPS(end:-1:1) + msFSHU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msFSHU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 
 fmu(4) = subplot(222); hold on; title('AH Duet Acute');
     plot([0 0], [0 55], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
     set(fmu(4),'Color', [0.9, 0.9, 0.9]);
-% Male
-fill([bins4plot bins4plot(end:-1:1)], [msMAHU.meanSPS - msMAHU.steSPS, msMAHU.meanSPS(end:-1:1) + msMAHU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msMAHU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-% Female
-fill([bins4plot bins4plot(end:-1:1)], [msFAHU.meanSPS - msFAHU.steSPS, msFAHU.meanSPS(end:-1:1) + msFAHU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
-plot(bins4plot, msFAHU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
-
+    % Male
+        plotmasteryoda(msMAHU, bins4plot, typeofplot, 1);
+    % Female
+        plotmasteryoda(msFAHU, bins4plot, typeofplot, 2);
+        
+% % Male
+% fill([bins4plot bins4plot(end:-1:1)], [msMAHU.meanSPS - msMAHU.steSPS, msMAHU.meanSPS(end:-1:1) + msMAHU.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msMAHU.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+% % Female
+% fill([bins4plot bins4plot(end:-1:1)], [msFAHU.meanSPS - msFAHU.steSPS, msFAHU.meanSPS(end:-1:1) + msFAHU.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
+% plot(bins4plot, msFAHU.meanSPS, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 linkaxes(fmu, 'xy'); figure(8+((jj-1)*10)); subplot(223);  ylim([0 50]); xlim([-widow-0.0001, widow+0.0001]);
 
