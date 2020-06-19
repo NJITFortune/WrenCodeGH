@@ -250,14 +250,14 @@ figure(1+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]);
 axc(1) = subplot(221); hold on; title('M2F Chronic'); 
     plot([0 0], [-10 55], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
 % Male
-plotmasteryoda(msMAHC, bins4plot, 3);
+plotmasteryoda(msMAHC, bins4plot, 3, 1);
 %fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanRSraw - msMAHC.steRSraw, msMAHC.meanRSraw(end:-1:1) + msMAHC.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 %plot(bins4plot, msMAHC.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % fill([bins4plot bins4plot(end:-1:1)], [msMAHC.meanSPS - msMAHC.steSPS, msMAHC.meanSPS(end:-1:1) + msMAHC.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
 % plot(bins4plot, msMAHC.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 
 % Female
-plotmasteryoda(msFHAC, bins4plot, 3);
+plotmasteryoda(msFHAC, bins4plot, 3, 2);
 %fill([bins4plot bins4plot(end:-1:1)], [msFHAC.meanRSraw - msFHAC.steRSraw, msFHAC.meanRSraw(end:-1:1) + msFHAC.steRSraw(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
 %plot(bins4plot, msFHAC.meanRSraw, 'm-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
 % fill([bins4plot bins4plot(end:-1:1)], [msFHAC.meanSPS - msFHAC.steSPS, msFHAC.meanSPS(end:-1:1) + msFHAC.steSPS(end:-1:1)], [0.9, 0.7, 0.9], 'LineStyle', 'none');
@@ -536,19 +536,27 @@ end % End of cycling groups jj
 
 %% Embedded plotting function
 
-    function plotmasteryoda(data, bins, typ)
+    function plotmasteryoda(data, bins, typ, sx)
 
+        if sx == 2 % This is a female
+            col = [0.9, 0.7, 0.9];
+            mrkr = 'm-';
+        elseif sx == 1 % This is a male
+            col = [0.6, 0.9, 0.9];
+            mrkr = 'b-';
+        end
+        
         if typ == 1 % spikes per second
-fill([bins bins(end:-1:1)], [data.meanSPS - data.steSPS, data.meanSPS(end:-1:1) + data.steSPS(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins, data.meanSPS, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins bins(end:-1:1)], [data.meanSPS - data.steSPS, data.meanSPS(end:-1:1) + data.steSPS(end:-1:1)], col, 'LineStyle', 'none');
+plot(bins, data.meanSPS, mrkr, 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
         end
         if typ == 2 % Raw Response Strength
-fill([bins bins(end:-1:1)], [data.meanRSraw - data.steRSraw, data.meanRSraw(end:-1:1) + data.steRSraw(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins, data.meanRSraw, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins bins(end:-1:1)], [data.meanRSraw - data.steRSraw, data.meanRSraw(end:-1:1) + data.steRSraw(end:-1:1)], col, 'LineStyle', 'none');
+plot(bins, data.meanRSraw, mrkr, 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
         end
         if typ == 3 % Normalized Response Strength
-fill([bins bins(end:-1:1)], [data.meanRSnorm - data.steRSnorm, data.meanRSnorm(end:-1:1) + data.steRSnorm(end:-1:1)], [0.6, 0.9, 0.9], 'LineStyle', 'none');
-plot(bins, data.meanRSnorm, 'b-', 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
+fill([bins bins(end:-1:1)], [data.meanRSnorm - data.steRSnorm, data.meanRSnorm(end:-1:1) + data.steRSnorm(end:-1:1)], col, 'LineStyle', 'none');
+plot(bins, data.meanRSnorm, mrkr, 'LineWidth', 2, 'Marker', '.', 'MarkerSize', 10);
         end
 
     end
