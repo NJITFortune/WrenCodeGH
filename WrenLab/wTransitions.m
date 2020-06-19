@@ -247,7 +247,7 @@ figure(1+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]);
 
 % PLOT M2F DATA 
 
-typeofplot = 3; % 1 is SPS, 2 is rawRS, 3 is normRS
+typeofplot = 1; % 1 is SPS, 2 is rawRS, 3 is normRS
 
 axc(1) = subplot(221); hold on; title('M2F Chronic'); 
     plot([0 0], [-10 55], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
