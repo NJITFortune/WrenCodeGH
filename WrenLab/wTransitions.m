@@ -327,7 +327,7 @@ linkaxes(axu, 'xy'); figure(1+((jj-1)*10)); subplot(223);  ylim([0 55]);  xlim([
 if jj == 2 % 1 is all duets, 2 is female solo & duet, 3 is all female solo, 4 is all male solo
 figure(127); clf; hold on; title('Female Solo and Duet Chronic');
     plotmasteryoda(msFHAC, bins4plot, typeofplot, 2);
-    plotmasteryoda(msFASC, bins4plot, typeofplot, 2);
+    plotmasteryoda(msFSAC, bins4plot, typeofplot, 2);
 end
 
 figure(2+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]);
