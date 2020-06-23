@@ -248,7 +248,7 @@ end % End of female
 
 typeofplot = 3; % 1 is SPS, 2 is rawRS, 3 is normRS
 
-if jj == 3
+if jj == 2
 figure(127); hold on; title('Female Solo and Duet Chronic');
     plotmasteryoda(msFHAC, bins4plot, typeofplot, 2);
     plotmasteryoda(msFSAC, bins4plot, typeofplot, 2);
