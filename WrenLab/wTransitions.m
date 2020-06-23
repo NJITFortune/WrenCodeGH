@@ -249,9 +249,11 @@ figure(1+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]);
 
 typeofplot = 3; % 1 is SPS, 2 is rawRS, 3 is normRS
 
+if jj == 3
 figure(127); hold on; title('Female Solo and Duet Chronic');
     plotmasteryoda(msFHAC, bins4plot, typeofplot, 2);
     plotmasteryoda(msFSAC, bins4plot, typeofplot, 2);
+end
 
 axc(1) = subplot(221); hold on; title('M2F Chronic'); 
     plot([0 0], [-10 55], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
