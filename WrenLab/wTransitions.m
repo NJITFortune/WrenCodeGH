@@ -328,6 +328,7 @@ if jj == 2 % 1 is all duets, 2 is female solo & duet, 3 is all female solo, 4 is
 figure(127); clf; hold on; title('Female Solo and Duet Chronic');
     plotmasteryoda(msFHAC, bins4plot, typeofplot, 2);
     plotmasteryoda(msFSAC, bins4plot, typeofplot, 2);
+    plot([-0.5 0.5], [0 0], 'k-');
 end
 
 figure(2+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]);
