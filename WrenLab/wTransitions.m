@@ -24,6 +24,7 @@ birdlist{1} = 16:-1:1; % All compleat data with both ACUTE (urethane) AND CHRONI
 birdlist{2} = 3:12;  % Only DUETS with Female Solo Syllables
 birdlist{3} = [3 4 5 6 7 8 9 10 11 12 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42]; % Everything with Female Solo Syllables
 birdlist{4} = [1 2 3 4 5 6 13 14 17 18]; % Only DUETS with Male Solo Syllables
+birdlist{5} = length(in):-1:1;
 
 for jj = 1:length(birdlist)
 
