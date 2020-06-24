@@ -246,7 +246,7 @@ end % End of female
 
 % PLOT M2F DATA 
 
-typeofplot = 2; % 1 is SPS, 2 is rawRS, 3 is normRS
+typeofplot = 3; % 1 is SPS, 2 is rawRS, 3 is normRS
 
 figure(1+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]); 
 
