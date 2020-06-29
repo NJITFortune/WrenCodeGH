@@ -54,7 +54,7 @@ birdlist{3} = [3 4 5 6 7 8 9 10 11 12 19 20 21 22 23 24 25 26 27 28 29 30 31 32 
 birdlist{4} = [1 2 3 4 5 6 13 14 17 18]; % Only DUETS with Male Solo Syllables
 birdlist{5} = length(in):-1:1;
     
-for curpair = birdlist{4} 
+for curpair = birdlist{2} 
     
     % Solo syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(msolosyls{curpair}) % Male sang solo syllables
