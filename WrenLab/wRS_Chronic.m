@@ -157,7 +157,8 @@ hold on; title('Auto Spikes/Second');
     errorbar([4 3], meanSPS(3:4), sps(3:4), 'm' );
         for p=1:length(sumdat.fDuetAuto.SPS); plot(4.1, sumdat.fDuetAuto.SPS(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloAuto.SPS); plot(3.1, sumdat.fSoloAuto.SPS(p), 'k.', 'MarkerSize', 8); end
-    ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    %ylim([-5 40]); 
+    xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
 
 figure(2); clf; % RAW AUTOGENOUS PLOTS 
@@ -219,7 +220,8 @@ hold on; title('Hetero SPS');
     errorbar([4 3], meanSPS(3:4), sps(3:4), 'm' );
         for p=1:length(sumdat.fDuetHetero.SPS); plot(4.1, sumdat.fDuetHetero.SPS(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloHetero.SPS); plot(3.1, sumdat.fSoloHetero.SPS(p), 'k.', 'MarkerSize', 8); end
-    ylim([-10 65]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    % ylim([-10 65]); 
+    xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
 
 figure(5); clf; % RAW HETEROGENOUS PLOTS
