@@ -94,7 +94,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
 
 % This a sequence with just one male syllable and varying female amplitudes.
 
-    msolosyls{9} = [2]; % Male sang syllable 2 but I don't think that they were quite duetting yet
+    msolosyls{9} = 2; % Male sang syllable 2 but I don't think that they were quite duetting yet
     mduetsyls{9} = []; % Very low amplitude
     fsolosyls{9} = 1; 
     fduetsyls{9} = [3 4]; % Female sang loudly after male, syllables 3 and 4
