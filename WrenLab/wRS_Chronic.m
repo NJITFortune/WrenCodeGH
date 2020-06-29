@@ -16,7 +16,7 @@ function [out, sumdat, stts] = wRS_Chronic(in, padding)
 %
 % This relies on the function wData.m. 
 
-pad = 0.000; 
+pad = 0.050; 
 
 % The user can specify the padding via an argin for convenience.
 if nargin == 2; pad = padding; end
