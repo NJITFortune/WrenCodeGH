@@ -147,7 +147,20 @@ end % End of calculations
     meanSPS(3) = mean(sumdat.fDuetAuto.SPS); sps(3) = std(sumdat.fDuetAuto.SPS);
     meanSPS(4) = mean(sumdat.fSoloAuto.SPS); sps(4) = std(sumdat.fSoloAuto.SPS);
     
-figure(1); clf; % RAW AUTOGENOUS PLOTS 
+figure(1); clf; % Spikes Per Second PLOTS    
+hold on; title('Auto Spikes/Second'); 
+    plot([2 1], meanSPS(1:2), 'b.', 'MarkerSize', 16); 
+    errorbar([2 1], meanSPS(1:2), sps(1:2), 'b');
+        for p=1:length(sumdat.mDuetAuto.SPS); plot(2.1, sumdat.mDuetAuto.SPS(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloAuto.SPS); plot(1.1, sumdat.mSoloAuto.SPS(p), 'k.', 'MarkerSize', 8); end
+    plot([4 3], meanSPS(3:4), 'm.', 'MarkerSize', 16); 
+    errorbar([4 3], meanSPS(3:4), sps(3:4), 'm' );
+        for p=1:length(sumdat.fDuetAuto.SPS); plot(4.1, sumdat.fDuetAuto.SPS(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.fSoloAuto.SPS); plot(3.1, sumdat.fSoloAuto.SPS(p), 'k.', 'MarkerSize', 8); end
+    ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
+
+figure(2); clf; % RAW AUTOGENOUS PLOTS 
 hold on; title('Auto Raw RS'); 
     plot([2 1], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
     errorbar([2 1], meanRaw(1:2), sraw(1:2), 'b');
@@ -160,7 +173,7 @@ hold on; title('Auto Raw RS');
     ylim([-10 65]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
     
-figure(2); clf; % NORM AUTOGENOUS PLOTS    
+figure(3); clf; % NORM AUTOGENOUS PLOTS    
 hold on; title('Auto Norm RS'); 
     plot([2 1], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
     errorbar([2 1], meanNorm(1:2), s(1:2), 'b');
@@ -196,7 +209,20 @@ hold on; title('Auto Norm RS');
     meanSPS(3) = mean(sumdat.fDuetHetero.SPS); sps(3) = std(sumdat.fDuetHetero.SPS);
     meanSPS(4) = mean(sumdat.fSoloHetero.SPS); sps(4) = std(sumdat.fSoloHetero.SPS);
     
-figure(3); clf; % RAW HETEROGENOUS PLOTS
+figure(4); clf; % RAW HETEROGENOUS PLOTS
+hold on; title('Hetero SPS');
+    plot([2 1], meanSPS(1:2), 'b.', 'MarkerSize', 16); 
+    errorbar([2 1], meanSPS(1:2), sps(1:2), 'b' );
+        for p=1:length(sumdat.mDuetHetero.SPS); plot(2.1, sumdat.mDuetHetero.SPS(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloHetero.SPS); plot(1.1, sumdat.mSoloHetero.SPS(p), 'k.', 'MarkerSize', 8); end
+    plot([4 3], meanSPS(3:4), 'm.', 'MarkerSize', 16); 
+    errorbar([4 3], meanSPS(3:4), sps(3:4), 'm' );
+        for p=1:length(sumdat.fDuetHetero.SPS); plot(4.1, sumdat.fDuetHetero.SPS(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.fSoloHetero.SPS); plot(3.1, sumdat.fSoloHetero.SPS(p), 'k.', 'MarkerSize', 8); end
+    ylim([-10 65]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
+
+figure(5); clf; % RAW HETEROGENOUS PLOTS
 hold on; title('Hetero Raw RS');
     plot([2 1], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
     errorbar([2 1], meanRaw(1:2), sraw(1:2), 'b' );
@@ -209,7 +235,7 @@ hold on; title('Hetero Raw RS');
     ylim([-10 65]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
 
-figure(4); clf; % NORM HETEROGENOUS PLOTS
+figure(6); clf; % NORM HETEROGENOUS PLOTS
 hold on; title('Hetero Norm RS');
     plot([2 1], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
     errorbar([2 1], meanNorm(1:2), s(1:2), 'b' );
