@@ -40,8 +40,8 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     
     msolosyls{4} = []; 
     mduetsyls{4} = [3 5 7];
-    % fsolosyls{4} = [1 2]; % Orig
-    fsolosyls{4} = 1; % Solitary
+    fsolosyls{4} = [1 2]; % Orig
+    % fsolosyls{4} = 1; % Solitary
     fduetsyls{4} = [4 6 8];
     Cspon(:,4) = [4.5, 7.0];
     Aspon(:,4) = [-3.0, 0.0];
