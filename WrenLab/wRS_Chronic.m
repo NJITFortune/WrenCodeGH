@@ -258,11 +258,15 @@ hold on; title('Hetero Norm RS');
     [stts.m.dNAuto.H, stts.m.dNAuto.P, stts.m.dNAuto.CI, stts.m.dNAuto.stats]  = ttest(sumdat.mDuetAuto.rsNorm);
     stts.m.dRAuto.mean = mean(sumdat.mDuetAuto.rsRaw);
     [stts.m.dRAuto.H, stts.m.dRAuto.P, stts.m.dRAuto.CI, stts.m.dRAuto.stats]  = ttest(sumdat.mDuetAuto.rsRaw);
+%    stts.m.dSAuto.mean = mean(sumdat.mDuetAuto.SPS);
+%    [stts.m.dSAuto.H, stts.m.dSAuto.P, stts.m.dSAuto.CI, stts.m.dSAuto.stats]  = ttest(sumdat.mDuetAuto.SPS);
     
     stts.f.dNAuto.mean = mean(sumdat.fDuetAuto.rsNorm);
     [stts.f.dNAuto.H, stts.f.dNAuto.P, stts.f.dNAuto.CI, stts.f.dNAuto.stats]  = ttest(sumdat.fDuetAuto.rsNorm);
     stts.f.dRAuto.mean = mean(sumdat.fDuetAuto.rsRaw);
     [stts.f.dRAuto.H, stts.f.dRAuto.P, stts.f.dRAuto.CI, stts.f.dRAuto.stats]  = ttest(sumdat.fDuetAuto.rsRaw);
+%    stts.f.dSAuto.mean = mean(sumdat.fDuetAuto.SPS);
+%    [stts.f.dSAuto.H, stts.f.dSAuto.P, stts.f.dSAuto.CI, stts.f.dSAuto.stats]  = ttest(sumdat.mDuetAuto.SPS);
     
 % Autogenous Solo RS significant from 0?
 
@@ -276,7 +280,7 @@ hold on; title('Hetero Norm RS');
     stts.m.sRAuto.mean = mean(sumdat.fSoloAuto.rsRaw);
     [stts.f.sRAuto.H, stts.f.sRAuto.P, stts.f.sRAuto.CI, stts.f.sRAuto.stats]  = ttest(sumdat.fSoloAuto.rsRaw);
 
-% Difference between Autogenous Duet and Solo RS motor?
+% Difference between Autogenous Duet and Solo ?
 
 % [stts.m.SvsDNAuto.H, stts.m.SvsDNAuto.P, stts.m.SvsDNAuto.CI, stts.m.SvsDNAuto.stats]  = ttest2(sumdat.mSoloAuto.rsNorm, sumdat.mDuetAuto.rsNorm, 'vartype', 'unequal');
 % [stts.m.SvsDRAuto.H, stts.m.SvsDRAuto.P, stts.m.SvsDRAuto.CI, stts.m.SvsDRAuto.stats]  = ttest2(sumdat.mSoloAuto.rsRaw, sumdat.mDuetAuto.rsRaw, 'vartype', 'unequal');
@@ -285,8 +289,11 @@ hold on; title('Hetero Norm RS');
 
 [stts.m.SvsDNAuto.P, stts.m.SvsDNAuto.H, stts.m.SvsDNAuto.stats]  = ranksum(sumdat.mSoloAuto.rsNorm, sumdat.mDuetAuto.rsNorm);
 [stts.m.SvsDRAuto.P, stts.m.SvsDRAuto.H, stts.m.SvsDRAuto.stats]  = ranksum(sumdat.mSoloAuto.rsRaw, sumdat.mDuetAuto.rsRaw);
+[stts.m.SvsDSAuto.P, stts.m.SvsDSAuto.H, stts.m.SvsDSAuto.stats]  = ranksum(sumdat.mSoloAuto.SPS, sumdat.mDuetAuto.SPS);
+
 [stts.f.SvsDNAuto.P, stts.f.SvsDNAuto.H, stts.f.SvsDNAuto.stats]  = ranksum(sumdat.fSoloAuto.rsNorm, sumdat.fDuetAuto.rsNorm);
 [stts.f.SvsDRAuto.P, stts.f.SvsDRAuto.H, stts.f.SvsDRAuto.stats]  = ranksum(sumdat.fSoloAuto.rsRaw, sumdat.fDuetAuto.rsRaw);
+[stts.f.SvsDSAuto.P, stts.f.SvsDSAuto.H, stts.f.SvsDSAuto.stats]  = ranksum(sumdat.fSoloAuto.SPS, sumdat.fDuetAuto.SPS);
 
 
 % Heterogenous duet RS significant from 0?
@@ -322,8 +329,11 @@ hold on; title('Hetero Norm RS');
 
 [stts.m.SvsDNHetero.P, stts.m.SvsDNHetero.H, stts.m.SvsDNHetero.stats]  = ranksum(sumdat.mSoloHetero.rsNorm, sumdat.mDuetHetero.rsNorm);
 [stts.m.SvsDRHetero.P, stts.m.SvsDRHetero.H, stts.m.SvsDRHetero.stats]  = ranksum(sumdat.mSoloHetero.rsRaw, sumdat.mDuetHetero.rsRaw);
+[stts.m.SvsDSHetero.P, stts.m.SvsDSHetero.H, stts.m.SvsDSHetero.stats]  = ranksum(sumdat.mSoloHetero.SPS, sumdat.mDuetHetero.SPS);
+
 [stts.f.SvsDNHetero.P, stts.f.SvsDNHetero.H, stts.f.SvsDNHetero.stats]  = ranksum(sumdat.fSoloHetero.rsNorm, sumdat.fDuetHetero.rsNorm);
 [stts.f.SvsDRHetero.P, stts.f.SvsDRHetero.H, stts.f.SvsDRHetero.stats]  = ranksum(sumdat.fSoloHetero.rsRaw, sumdat.fDuetHetero.rsRaw);
+[stts.f.SvsDSHetero.P, stts.f.SvsDSHetero.H, stts.f.SvsDSHetero.stats]  = ranksum(sumdat.fSoloHetero.SPS, sumdat.fDuetHetero.SPS);
 
 [MvFHS.H, MvFHS.P, MvFHS.CI, MvFHS.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.mSoloHetero.rsRaw, 'vartype', 'unequal');
 
@@ -344,6 +354,8 @@ FvsMAutoSoloCIDX = [ones(1,length(sumdat.mSoloAuto.rsRaw)), 2*ones(1,length(sumd
 
     fprintf('Male Auto Duet Raw RS vs Solo? p = %1.5f \n', stts.m.SvsDRAuto.P);
     fprintf('Female Auto Duet Raw RS vs Solo? p = %1.5f \n', stts.f.SvsDRAuto.P);
+    fprintf('Male Auto SPS Duet vs Solo? p = %1.5f \n', stts.m.SvsDSAuto.P);
+    fprintf('Female Auto SPS Duet vs Solo? p = %1.5f \n', stts.f.SvsDSAuto.P);
     
     fprintf(' \n');
     
@@ -363,6 +375,8 @@ FvsMAutoSoloCIDX = [ones(1,length(sumdat.mSoloAuto.rsRaw)), 2*ones(1,length(sumd
 
     fprintf('Male Hetero Duet Raw RS vs Solo? p = %1.5f \n', stts.m.SvsDRHetero.P);
     fprintf('Female Hetero Duet Raw RS vs Solo? p = %1.5f \n', stts.f.SvsDRHetero.P);
+    fprintf('Male Hetero Duet SPS vs Solo? p = %1.5f \n', stts.m.SvsDSHetero.P);
+    fprintf('Female Hetero Duet SPS vs Solo? p = %1.5f \n', stts.f.SvsDSHetero.P);
     
     fprintf('Male versus Female Solo Hetero Raw RS different? p = %1.5f \n', MvFHS.P);
     
