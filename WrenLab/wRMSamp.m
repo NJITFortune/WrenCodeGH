@@ -9,7 +9,7 @@ fsoloAmp = []; fduetAmp = []; fsoloDur = []; fduetDur = [];
 
 % Get our list of data
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, ~] = wData;
-
+length(fsolosyls)
 %% Male syllables
 for j=1:length(msolosyls)
     
