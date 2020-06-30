@@ -34,7 +34,7 @@ end
 %% Female syllables
 for j=1:length(fsolosyls)
     
-  if ~isempty(fsolosyls{j}) && ~isempty(fduetsyls{j})
+  if ~isempty(fsolosyls{j}) && ~isempty(fduetsyls{j}) % Take only cases where we have BOTH duet and solo syllables
       
     % Get amplitudes and durations of each solo syllable
     for k=1:length(fsolosyls{j})
@@ -69,8 +69,6 @@ m.allduet = mduetAmp;
     fprintf('Mean dB amplitude increase solo -> duet in Males: %2.4f \n', m.amp);
 [m.H,m.P,m.CI,m.Stats] = ttest2(msoloAmp, mduetAmp);
     fprintf('ttest difference Male solo vs duet P = %2.8f \n', m.P);
-
-    length(fsoloamp)
 
 figure(2); clf; 
 subplot(211); title('Female'); hold on; 
