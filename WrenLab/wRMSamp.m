@@ -70,6 +70,8 @@ m.allduet = mduetAmp;
 [m.H,m.P,m.CI,m.Stats] = ttest2(msoloAmp, mduetAmp);
     fprintf('ttest difference Male solo vs duet P = %2.8f \n', m.P);
 
+    length(fsoloamp)
+
 figure(2); clf; 
 subplot(211); title('Female'); hold on; 
     yyaxis left; plot(fsoloAmp, '-*m'); ylim([0 0.3]); ylabel('Solo Amp');
