@@ -13,7 +13,7 @@ length(fsolosyls)
 %% Male syllables
 for j=1:length(msolosyls)
     
-  if ~isempty(msolosyls{j}) && ~isempty(mduetsyls{j})
+  if ~isempty(msolosyls{j}) && ~isempty(mduetsyls{j}) % Take only cases where we have BOTH duet and solo syllables
       
     % Get amplitudes and durations of each solo syllable
     for k=1:length(msolosyls{j})
