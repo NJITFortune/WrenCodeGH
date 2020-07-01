@@ -70,7 +70,7 @@ subplot(211); title('Male'); hold on;
 %    yyaxis right; plot(msoloDur); ylabel('Solo Duration');
 subplot(212); hold on; 
     yyaxis left; plot(mduetAmp, '-*b'); ylim([0 0.3]); ylabel('Duet RMS Amp');
-    yyaxis right; plot(mduetFFTAmp,p); ylabel('Duet FFT Amp');
+    yyaxis right; plot(mduetFFTAmp); ylabel('Duet FFT Amp');
 %    yyaxis right; plot(mduetDur); ylabel('Duet Duration');
 
 m.amp = 20*log(mean(mduetAmp)/mean(msoloAmp));
