@@ -65,11 +65,11 @@ end
 
 figure(1); clf; 
 subplot(211); title('Male'); hold on; 
-    yyaxis left; plot(msoloAmp, '-*b'); ylim([0 0.3]); ylabel('Solo RMS Amp');
+    yyaxis left; plot(msoloAmp); ylim([0 0.3]); ylabel('Solo RMS Amp');
     yyaxis right; plot(msoloFFTAmp); ylabel('Solo FFT Amp');
 %    yyaxis right; plot(msoloDur); ylabel('Solo Duration');
 subplot(212); hold on; 
-    yyaxis left; plot(mduetAmp, '-*b'); ylim([0 0.3]); ylabel('Duet RMS Amp');
+    yyaxis left; plot(mduetAmp); ylim([0 0.3]); ylabel('Duet RMS Amp');
     yyaxis right; plot(mduetFFTAmp); ylabel('Duet FFT Amp');
 %    yyaxis right; plot(mduetDur); ylabel('Duet Duration');
 
@@ -83,11 +83,11 @@ m.allduet = mduetAmp;
 
 figure(2); clf; 
 subplot(211); title('Female'); hold on; 
-    yyaxis left; plot(fsoloAmp, '-*m'); ylim([0 0.3]); ylabel('Solo RMS Amp');
+    yyaxis left; plot(fsoloAmp); ylim([0 0.3]); ylabel('Solo RMS Amp');
     yyaxis right; plot(fsoloFFTAmp); ylabel('Solo FFT Amp');
 %    yyaxis right; plot(fsoloDur); ylabel('Solo Duration');
 subplot(212); hold on; 
-    yyaxis left; plot(fduetAmp, '-*m'); ylim([0 0.3]); ylabel('Duet RMS Amp');
+    yyaxis left; plot(fduetAmp); ylim([0 0.3]); ylabel('Duet RMS Amp');
     yyaxis right; plot(fduetFFTAmp); ylabel('Duet FTT Amp');
 %    yyaxis right; plot(fduetDur); ylabel('Duet Duration');
 
