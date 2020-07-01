@@ -6,6 +6,7 @@ function [m, f] = wRMSamp(in)
 
 msoloAmp = []; mduetAmp = []; msoloDur = []; mduetDur = [];
 fsoloAmp = []; fduetAmp = []; fsoloDur = []; fduetDur = [];
+fsoloFFTAmp = []; msoloFFTAmp = []; fduetFFTAmp = []; mduetFFTAmp = [];
 
 % Get our list of data
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, ~] = wData;
@@ -18,12 +19,16 @@ for j=1:length(msolosyls)
     % Get amplitudes and durations of each solo syllable
     for k=1:length(msolosyls{j})
         msoloAmp(end+1) = rms(in(j*2).duet(in(j*2).tim > in(j*2).syl(msolosyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(msolosyls{j}(k)).tim(2)));
+        tmp = fftmachine(in(j*2).duet(in(j*2).tim > in(j*2).syl(msolosyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(msolosyls{j}(k)).tim(2)), in(j*2).Fs);
+        msoloFFTAmp(end+1) = sum(tmp.fftdata);
         msoloDur(end+1) = abs(in(j*2).syl(msolosyls{j}(k)).tim(2) - in(j*2).syl(msolosyls{j}(k)).tim(1));
     end
     
     % Get amplitudes and duration of each duet syllable
     for k=1:length(mduetsyls{j})
         mduetAmp(end+1) = rms(in(j*2).duet(in(j*2).tim > in(j*2).syl(mduetsyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(mduetsyls{j}(k)).tim(2)));
+        tmp = fftmachine(in(j*2).duet(in(j*2).tim > in(j*2).syl(mduetsyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(mduetsyls{j}(k)).tim(2)), in(j*2).Fs);
+        mduetAmp(end+1) = sum(tmp.fftdata);
         mduetDur(end+1) = abs(in(j*2).syl(mduetsyls{j}(k)).tim(2) - in(j*2).syl(mduetsyls{j}(k)).tim(1));
     end
             
@@ -39,12 +44,16 @@ for j=1:length(fsolosyls)
     % Get amplitudes and durations of each solo syllable
     for k=1:length(fsolosyls{j})
         fsoloAmp(end+1) = rms(in(j*2).duet(in(j*2).tim > in(j*2).syl(fsolosyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(fsolosyls{j}(k)).tim(2)));
+        tmp = fftmachine(in(j*2).duet(in(j*2).tim > in(j*2).syl(fsolosyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(fsolosyls{j}(k)).tim(2)), in(j*2).Fs);
+        fsoloFFTAmp(end+1) = sum(tmp.fftdata);
         fsoloDur(end+1) = abs(in(j*2).syl(fsolosyls{j}(k)).tim(2) - in(j*2).syl(fsolosyls{j}(k)).tim(1));
     end
     
     % Get amplitudes and duration of each duet syllable
     for k=1:length(fduetsyls{j})
         fduetAmp(end+1) = rms(in(j*2).duet(in(j*2).tim > in(j*2).syl(fduetsyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(fduetsyls{j}(k)).tim(2)));
+        tmp = fftmachine(in(j*2).duet(in(j*2).tim > in(j*2).syl(fduetsyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(fduetsyls{j}(k)).tim(2)), in(j*2).Fs);
+        fduetFFTAmp(end+1) = sum(tmp.fftdata);
         fduetDur(end+1) = abs(in(j*2).syl(fduetsyls{j}(k)).tim(2) - in(j*2).syl(fduetsyls{j}(k)).tim(1));
     end
             
@@ -56,11 +65,13 @@ end
 
 figure(1); clf; 
 subplot(211); title('Male'); hold on; 
-    yyaxis left; plot(msoloAmp, '-*b'); ylim([0 0.3]); ylabel('Solo Amp');
-    yyaxis right; plot(msoloDur); ylabel('Solo Duration');
+    yyaxis left; plot(msoloAmp, '-*b'); ylim([0 0.3]); ylabel('Solo RMS Amp');
+    yyaxis right; plot(msoloFFTAmp); ylabel('Solo FFT Amp');
+%    yyaxis right; plot(msoloDur); ylabel('Solo Duration');
 subplot(212); hold on; 
-    yyaxis left; plot(mduetAmp, '-*b'); ylim([0 0.3]); ylabel('Duet Amp');
-    yyaxis right; plot(mduetDur); ylabel('Duet Duration');
+    yyaxis left; plot(mduetAmp, '-*b'); ylim([0 0.3]); ylabel('Duet RMS Amp');
+    yyaxis right; plot(mduetFFTA,p); ylabel('Duet FFT Amp');
+%    yyaxis right; plot(mduetDur); ylabel('Duet Duration');
 
 m.amp = 20*log(mean(mduetAmp)/mean(msoloAmp));
 m.allsolo = msoloAmp;
@@ -72,11 +83,13 @@ m.allduet = mduetAmp;
 
 figure(2); clf; 
 subplot(211); title('Female'); hold on; 
-    yyaxis left; plot(fsoloAmp, '-*m'); ylim([0 0.3]); ylabel('Solo Amp');
-    yyaxis right; plot(fsoloDur); ylabel('Solo Duration');
+    yyaxis left; plot(fsoloAmp, '-*m'); ylim([0 0.3]); ylabel('Solo RMS Amp');
+    yyaxis right; plot(fsoloFFTAmp); ylabel('Solo FFT Amp');
+%    yyaxis right; plot(fsoloDur); ylabel('Solo Duration');
 subplot(212); hold on; 
-    yyaxis left; plot(fduetAmp, '-*m'); ylim([0 0.3]); ylabel('Duet Amp');
-    yyaxis right; plot(fduetDur); ylabel('Duet Duration');
+    yyaxis left; plot(fduetAmp, '-*m'); ylim([0 0.3]); ylabel('Duet RMS Amp');
+    yyaxis right; plot(fduetFFTAmp); ylabel('Duet FTT Amp');
+%    yyaxis right; plot(fduetDur); ylabel('Duet Duration');
 
 f.amp = 20*log(mean(fduetAmp(1:end-2))/mean(fsoloAmp(1:end-1)));
 f.allsolo = fsoloAmp;
