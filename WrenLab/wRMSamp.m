@@ -28,7 +28,7 @@ for j=1:length(msolosyls)
     for k=1:length(mduetsyls{j})
         mduetAmp(end+1) = rms(in(j*2).duet(in(j*2).tim > in(j*2).syl(mduetsyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(mduetsyls{j}(k)).tim(2)));
         tmp = fftmachine(in(j*2).duet(in(j*2).tim > in(j*2).syl(mduetsyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(mduetsyls{j}(k)).tim(2)), in(j*2).Fs);
-        mduetAmp(end+1) = sum(tmp.fftdata);
+        mduetFFTAmp(end+1) = sum(tmp.fftdata);
         mduetDur(end+1) = abs(in(j*2).syl(mduetsyls{j}(k)).tim(2) - in(j*2).syl(mduetsyls{j}(k)).tim(1));
     end
             
