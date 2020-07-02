@@ -43,15 +43,6 @@ for jj = 1:length(birdlist)
     FAHU = MAHU; FAHC = MAHU; FHAU = MAHU; FHAC = MAHU; 
     FSAU = MAHU; FSAC = MAHU; FSHU = MAHU; FSHC = MAHU;
 
-%% Cycle for each bird in our list
-
-% Choose which data to analyze
-%    birdlist = 16:-1:1; % All compleat data with both ACUTE (urethane) AND CHRONIC (awake)
-% birdlist = 1:length(in);
-% birdlist = 3:12;  Only DUETS with Female Solo Syllables
-
-
-
     for ff = birdlist{jj}
         
     sylstrdx = ceil(ff/2); % Apologies. The syllable indices from wData.m 
@@ -229,7 +220,7 @@ if in(ff).sexy == 2 % This is a female
     
 end % End of female
                 
-    end % End of cycling for every bird
+end % End of cycling for every bird
 
 %% Build the Cool fill plots for the DUET data
 
