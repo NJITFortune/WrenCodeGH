@@ -64,9 +64,10 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     
     msolosyls{6} = []; 
     mduetsyls{6} = [4 6 8 10 12 14];
-    fsolosyls{6} = [1 2 3]; % Orig
-    %    fsolosyls{6} = [1 2]; % Solitary
-    fduetsyls{6} = [5 7 9 11 13];
+    %   fsolosyls{6} = [1 2 3]; % Orig
+    %   fduetsyls{6} = [5 7 9 11 13];
+    fsolosyls{6} = [1 2]; % Solitary
+    fduetsyls{6} = [3 5 7 9 11 13];
     Cspon(:,6) = [8, 12.0];
     Aspon(:,6) = [-4.0, 0.0];
 
