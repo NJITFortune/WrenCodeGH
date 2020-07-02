@@ -234,8 +234,6 @@ end % End of cycling for every bird
     msMAHC = concatHist(MAHC);
     msMAHU = concatHist(MAHU);
 
-
-
 % PLOT M2F DATA 
 
 typeofplot = 1; % 1 is SPS, 2 is rawRS, 3 is normRS
