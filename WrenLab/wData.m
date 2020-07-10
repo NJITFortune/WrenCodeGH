@@ -6,7 +6,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
 
 %% List of Chronic singing data with syllable indices and locations for spontaneous activity
 
-% 1-2: m17
+% 1-2: m17 SLOPE
 
     msolosyls{1} = [1 2 3 4 5]; % Low Amplitude
     mduetsyls{1} = [7 9 11 13];
