@@ -18,7 +18,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     Cspon(:,1) = [-5, -1]; % This is a mess. 
     Aspon(:,1) = [-5, -1];
     
-% 3-4: j160806
+% 3-4: j160806 TRIO
 
     msolosyls{2} = 2; % Low Amplitude
     mduetsyls{2} = [4 6 8 10 12];
@@ -30,7 +30,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     Cspon(:,2) = [-5.0, -1]; 
     Aspon(:,2) = [-5.0, -1];
     
-% 5-6: j160807
+% 5-6: j160807 TRIO
     
     msolosyls{3} = 2; 
     mduetsyls{3} = [4 6 8 10 12 14 16 18];
@@ -39,7 +39,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     Cspon(:,3) = [-5.0, -1];
     Aspon(:,3) = [-5.0, -1];
     
-% 7-8: j160815
+% 7-8: j160815 TRIO
     
     msolosyls{4} = []; 
     mduetsyls{4} = [3 5 7];
@@ -50,7 +50,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     Cspon(:,4) = [4.5, 7.0];
     Aspon(:,4) = [-3.0, 0.0];
 
-% 9-10: j161009
+% 9-10: j161009 TRIO
     
     msolosyls{5} = []; 
     mduetsyls{5} = [3 5 7 9 11 13 15 17 19];
@@ -60,7 +60,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     Cspon(:,5) = [-4.0, 0.0];
     Aspon(:,5) = [-4.0, 0.0];
 
-% 11-12: j161022
+% 11-12: j161022 TRIO
     
     msolosyls{6} = []; 
     mduetsyls{6} = [4 6 8 10 12 14];
