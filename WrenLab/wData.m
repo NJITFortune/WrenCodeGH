@@ -71,7 +71,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     Cspon(:,6) = [8, 12.0];
     Aspon(:,6) = [-4.0, 0.0];
 
-% 13-14: j17060848
+% 13-14: j17060848 MUTE January 2017
     
     %   msolosyls{7} = [1 2 3 4 5]; % Orig
     %   mduetsyls{7} = [7 9 11 13 15 17];
@@ -81,7 +81,7 @@ function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
     fduetsyls{7} = [6 8 10 12 14 16];
     Cspon(:,7) = [11.0, 15.0];
 
-% 15-16: j170081733 
+% 15-16: j170081733 MUTE January 2017
 
 % This is a special case as the birds sang at the same time for two
 % syllables. Syllables 6 and 11 are overlapping.  They are omitted
