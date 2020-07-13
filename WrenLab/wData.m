@@ -1,7 +1,7 @@
 function [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon, birdlist] = wData
 % Usage [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData
 % This function only returns the identities of syllables for use in the
-% analysis of the wren chronic data.  Data ChronicCompleat2018d.mat
+% analysis of the wren chronic data.  Data ChronicCompleat2019f.mat
 
 %% List of groups of birds
 
