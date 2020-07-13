@@ -29,28 +29,28 @@ if nargin == 2; pad = padding; end
 % Initializing variables
 
 % Normalized and Raw response strengths for DUET syllables: Female and Male, Autogenous and Heterogenous 
-sumdat.fDuetAuto.rsNorm = []; sumdat.fDuetAuto.rsRaw = [];
-sumdat.mDuetAuto.rsNorm = []; sumdat.mDuetAuto.rsRaw = [];
-sumdat.fDuetHetero.rsNorm = []; sumdat.fDuetHetero.rsRaw = [];
-sumdat.mDuetHetero.rsNorm = []; sumdat.mDuetHetero.rsRaw = [];
+    sumdat.fDuetAuto.rsNorm = []; sumdat.fDuetAuto.rsRaw = [];
+    sumdat.mDuetAuto.rsNorm = []; sumdat.mDuetAuto.rsRaw = [];
+    sumdat.fDuetHetero.rsNorm = []; sumdat.fDuetHetero.rsRaw = [];
+    sumdat.mDuetHetero.rsNorm = []; sumdat.mDuetHetero.rsRaw = [];
 
 % Normalized and Raw response strengths for SOLO syllables: Female and Male, Autogenous and Heterogenous 
-sumdat.fSoloAuto.rsNorm = []; sumdat.fSoloAuto.rsRaw = [];
-sumdat.mSoloAuto.rsNorm = []; sumdat.mSoloAuto.rsRaw = [];
-sumdat.fSoloHetero.rsNorm = []; sumdat.fSoloHetero.rsRaw = [];
-sumdat.mSoloHetero.rsNorm = []; sumdat.mSoloHetero.rsRaw = [];
+    sumdat.fSoloAuto.rsNorm = []; sumdat.fSoloAuto.rsRaw = [];
+    sumdat.mSoloAuto.rsNorm = []; sumdat.mSoloAuto.rsRaw = [];
+    sumdat.fSoloHetero.rsNorm = []; sumdat.fSoloHetero.rsRaw = [];
+    sumdat.mSoloHetero.rsNorm = []; sumdat.mSoloHetero.rsRaw = [];
 
 % Spike rates (spikes per second) for solo and duet syllables, Female and Male, Autogenous and Heterogenous 
-sumdat.mSoloHetero.SPS = []; sumdat.fSoloHetero.SPS = [];
-sumdat.mDuetHetero.SPS = []; sumdat.fDuetHetero.SPS = [];
-sumdat.mSoloAuto.SPS = []; sumdat.fSoloAuto.SPS = [];
-sumdat.mDuetAuto.SPS = []; sumdat.fDuetAuto.SPS = [];
+    sumdat.mSoloHetero.SPS = []; sumdat.fSoloHetero.SPS = [];
+    sumdat.mDuetHetero.SPS = []; sumdat.fDuetHetero.SPS = [];
+    sumdat.mSoloAuto.SPS = []; sumdat.fSoloAuto.SPS = [];
+    sumdat.mDuetAuto.SPS = []; sumdat.fDuetAuto.SPS = [];
 
 %% List of Chronic singing data with syllable indices and locations for spontaneous activity
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, ~, birdlist] = wData;
 
-%% Loop to calculate RS values for each pair of wrens   
+%% Loop to calculate data values for each pair of wrens   
 
 for curpair = birdlist{pp} 
     
@@ -122,7 +122,7 @@ for curpair = birdlist{pp}
 end % End of calculations
 
 
-%% Plot MOTOR
+%% Get means and std for MOTOR plots
 
 % For Normalized RS data
 
@@ -145,7 +145,7 @@ end % End of calculations
     meanSPS(3) = mean(sumdat.fDuetAuto.SPS); sps(3) = std(sumdat.fDuetAuto.SPS);
     meanSPS(4) = mean(sumdat.fSoloAuto.SPS); sps(4) = std(sumdat.fSoloAuto.SPS);
     
-figure(1); clf; % Spikes Per Second PLOTS    
+figure(pp); clf; % Spikes Per Second PLOTS    
 hold on; title('Auto Spikes/Second'); 
     plot([2 1], meanSPS(1:2), 'b.', 'MarkerSize', 16); 
     errorbar([2 1], meanSPS(1:2), sps(1:2), 'b');
@@ -159,33 +159,33 @@ hold on; title('Auto Spikes/Second');
     xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
 
-figure(2); clf; % RAW AUTOGENOUS PLOTS 
-hold on; title('Auto Raw RS'); 
-    plot([2 1], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
-    errorbar([2 1], meanRaw(1:2), sraw(1:2), 'b');
-        for p=1:length(sumdat.mDuetAuto.rsRaw); plot(2.1, sumdat.mDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.mSoloAuto.rsRaw); plot(1.1, sumdat.mSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-    plot([4 3], meanRaw(3:4), 'm.', 'MarkerSize', 16); 
-    errorbar([4 3], meanRaw(3:4), sraw(3:4), 'm' );
-        for p=1:length(sumdat.fDuetAuto.rsRaw); plot(4.1, sumdat.fDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.fSoloAuto.rsRaw); plot(3.1, sumdat.fSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-    ylim([-10 65]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
-    xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
+% figure(pp); clf; % RAW AUTOGENOUS PLOTS 
+% hold on; title('Auto Raw RS'); 
+%     plot([2 1], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
+%     errorbar([2 1], meanRaw(1:2), sraw(1:2), 'b');
+%         for p=1:length(sumdat.mDuetAuto.rsRaw); plot(2.1, sumdat.mDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+%         for p=1:length(sumdat.mSoloAuto.rsRaw); plot(1.1, sumdat.mSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+%     plot([4 3], meanRaw(3:4), 'm.', 'MarkerSize', 16); 
+%     errorbar([4 3], meanRaw(3:4), sraw(3:4), 'm' );
+%         for p=1:length(sumdat.fDuetAuto.rsRaw); plot(4.1, sumdat.fDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+%         for p=1:length(sumdat.fSoloAuto.rsRaw); plot(3.1, sumdat.fSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+%     ylim([-10 65]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+%     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
+%     
+% figure(pp); clf; % NORM AUTOGENOUS PLOTS    
+% hold on; title('Auto Norm RS'); 
+%     plot([2 1], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
+%     errorbar([2 1], meanNorm(1:2), s(1:2), 'b');
+%         for p=1:length(sumdat.mDuetAuto.rsNorm); plot(2.1, sumdat.mDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
+%         for p=1:length(sumdat.mSoloAuto.rsNorm); plot(1.1, sumdat.mSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
+%     plot([4 3], meanNorm(3:4), 'm.', 'MarkerSize', 16); 
+%     errorbar([4 3], meanNorm(3:4), s(3:4), 'm' );
+%         for p=1:length(sumdat.fDuetAuto.rsNorm); plot(4.1, sumdat.fDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
+%         for p=1:length(sumdat.fSoloAuto.rsNorm); plot(3.1, sumdat.fSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
+%     ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+%     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
     
-figure(3); clf; % NORM AUTOGENOUS PLOTS    
-hold on; title('Auto Norm RS'); 
-    plot([2 1], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
-    errorbar([2 1], meanNorm(1:2), s(1:2), 'b');
-        for p=1:length(sumdat.mDuetAuto.rsNorm); plot(2.1, sumdat.mDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.mSoloAuto.rsNorm); plot(1.1, sumdat.mSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-    plot([4 3], meanNorm(3:4), 'm.', 'MarkerSize', 16); 
-    errorbar([4 3], meanNorm(3:4), s(3:4), 'm' );
-        for p=1:length(sumdat.fDuetAuto.rsNorm); plot(4.1, sumdat.fDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.fSoloAuto.rsNorm); plot(3.1, sumdat.fSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-    ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
-    xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
-    
-%% Plot SENSORY
+%% Get means and std for SENSORY plots
 
 % For Normalized RS data
 
@@ -208,7 +208,7 @@ hold on; title('Auto Norm RS');
     meanSPS(3) = mean(sumdat.fDuetHetero.SPS); sps(3) = std(sumdat.fDuetHetero.SPS);
     meanSPS(4) = mean(sumdat.fSoloHetero.SPS); sps(4) = std(sumdat.fSoloHetero.SPS);
     
-figure(4); clf; % RAW HETEROGENOUS PLOTS
+figure(pp+1); clf; % RAW HETEROGENOUS PLOTS
 hold on; title('Hetero SPS');
     plot([2 1], meanSPS(1:2), 'b.', 'MarkerSize', 16); 
     errorbar([2 1], meanSPS(1:2), sps(1:2), 'b' );
@@ -222,40 +222,40 @@ hold on; title('Hetero SPS');
     xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
 
-figure(5); clf; % RAW HETEROGENOUS PLOTS
-hold on; title('Hetero Raw RS');
-    plot([2 1], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
-    errorbar([2 1], meanRaw(1:2), sraw(1:2), 'b' );
-        for p=1:length(sumdat.mDuetHetero.rsRaw); plot(2.1, sumdat.mDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.mSoloHetero.rsRaw); plot(1.1, sumdat.mSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
-    plot([4 3], meanRaw(3:4), 'm.', 'MarkerSize', 16); 
-    errorbar([4 3], meanRaw(3:4), sraw(3:4), 'm' );
-        for p=1:length(sumdat.fDuetHetero.rsRaw); plot(4.1, sumdat.fDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.fSoloHetero.rsRaw); plot(3.1, sumdat.fSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
-    ylim([-10 65]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
-    xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
-
-figure(6); clf; % NORM HETEROGENOUS PLOTS
-hold on; title('Hetero Norm RS');
-    plot([2 1], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
-    errorbar([2 1], meanNorm(1:2), s(1:2), 'b' );
-        for p=1:length(sumdat.mDuetHetero.rsNorm); plot(2.1, sumdat.mDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.mSoloHetero.rsNorm); plot(1.1, sumdat.mSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
-    plot([4 3], meanNorm(3:4), 'm.', 'MarkerSize', 16); 
-    errorbar([4 3], meanNorm(3:4), s(3:4), 'm' );
-        for p=1:length(sumdat.fDuetHetero.rsNorm); plot(4.1, sumdat.fDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.fSoloHetero.rsNorm); plot(3.1, sumdat.fSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
-    ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
-    xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
-    
+% figure(5); clf; % RAW HETEROGENOUS PLOTS
+% hold on; title('Hetero Raw RS');
+%     plot([2 1], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
+%     errorbar([2 1], meanRaw(1:2), sraw(1:2), 'b' );
+%         for p=1:length(sumdat.mDuetHetero.rsRaw); plot(2.1, sumdat.mDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+%         for p=1:length(sumdat.mSoloHetero.rsRaw); plot(1.1, sumdat.mSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+%     plot([4 3], meanRaw(3:4), 'm.', 'MarkerSize', 16); 
+%     errorbar([4 3], meanRaw(3:4), sraw(3:4), 'm' );
+%         for p=1:length(sumdat.fDuetHetero.rsRaw); plot(4.1, sumdat.fDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+%         for p=1:length(sumdat.fSoloHetero.rsRaw); plot(3.1, sumdat.fSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+%     ylim([-10 65]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+%     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
+% 
+% figure(6); clf; % NORM HETEROGENOUS PLOTS
+% hold on; title('Hetero Norm RS');
+%     plot([2 1], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
+%     errorbar([2 1], meanNorm(1:2), s(1:2), 'b' );
+%         for p=1:length(sumdat.mDuetHetero.rsNorm); plot(2.1, sumdat.mDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
+%         for p=1:length(sumdat.mSoloHetero.rsNorm); plot(1.1, sumdat.mSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
+%     plot([4 3], meanNorm(3:4), 'm.', 'MarkerSize', 16); 
+%     errorbar([4 3], meanNorm(3:4), s(3:4), 'm' );
+%         for p=1:length(sumdat.fDuetHetero.rsNorm); plot(4.1, sumdat.fDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
+%         for p=1:length(sumdat.fSoloHetero.rsNorm); plot(3.1, sumdat.fSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
+%     ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+%     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
+%     
     
 %% Compute stats     
     
 % Autogenous duet RS significant from 0?
-    stts.m.dNAuto.mean = mean(sumdat.mDuetAuto.rsNorm);
-    [stts.m.dNAuto.H, stts.m.dNAuto.P, stts.m.dNAuto.CI, stts.m.dNAuto.stats]  = ttest(sumdat.mDuetAuto.rsNorm);
-    stts.m.dRAuto.mean = mean(sumdat.mDuetAuto.rsRaw);
-    [stts.m.dRAuto.H, stts.m.dRAuto.P, stts.m.dRAuto.CI, stts.m.dRAuto.stats]  = ttest(sumdat.mDuetAuto.rsRaw);
+    stts.m(p).dNAuto.mean = mean(sumdat.mDuetAuto.rsNorm);
+    [stts.m(p).dNAuto.H, stts.m.dNAuto.P, stts.m.dNAuto.CI, stts.m.dNAuto.stats]  = ttest(sumdat.mDuetAuto.rsNorm);
+    stts.m(p).dRAuto.mean = mean(sumdat.mDuetAuto.rsRaw);
+    [stts.m(p).dRAuto.H, stts.m.dRAuto.P, stts.m.dRAuto.CI, stts.m.dRAuto.stats]  = ttest(sumdat.mDuetAuto.rsRaw);
 %    stts.m.dSAuto.mean = mean(sumdat.mDuetAuto.SPS);
 %    [stts.m.dSAuto.H, stts.m.dSAuto.P, stts.m.dSAuto.CI, stts.m.dSAuto.stats]  = ttest(sumdat.mDuetAuto.SPS);
     
