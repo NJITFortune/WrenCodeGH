@@ -16,6 +16,10 @@ function [out, sumdat, stts] = wPNASstatplots(in, padding)
 %
 % This relies on the function wData.m. 
 
+analyzethis = [2, 4]; % The birdlist groups to analyze
+
+for pp = analyzethis
+    
 pad = 0.050; 
 
 % The user can specify the padding via an argin for convenience.
@@ -48,7 +52,7 @@ sumdat.mDuetAuto.SPS = []; sumdat.fDuetAuto.SPS = [];
 
 %% Loop to calculate RS values for each pair of wrens   
 
-for curpair = birdlist{2} 
+for curpair = birdlist{pp} 
     
     % Solo syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(msolosyls{curpair}) % Male sang solo syllables
@@ -399,7 +403,7 @@ fprintf('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ \n');
         
     fprintf(' \n');
 
-    
+end
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     
