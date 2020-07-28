@@ -9,11 +9,11 @@ Fs = 10000;
 
 % Time stamps for each recording
 ftim = 1/Fs:1/Fs:Mute_Female_2017_01_06T08_48_55_export_Ch5.length/Fs;
-mtim = 1/Fs:1/Fs:Mute_Male_2017_01_06T08_48_55_32_bit__A_1.length/Fs;
+mtim = 1/Fs:1/Fs:Mute_Male_2017_01_06T08_48_55_export_Ch5.length/Fs;
 
 % Each recording
-fsig = Mute_FEMALE_2017_01_06T08_48_57_2_32_bit__A_2.values / max(abs(Mute_FEMALE_2017_01_06T08_48_57_2_32_bit__A_2.values));
-msig = Mute_Male_2017_01_06T08_48_55_32_bit__A_1.values / max(abs(Mute_Male_2017_01_06T08_48_55_32_bit__A_1.values));
+fsig = Mute_Female_2017_01_06T08_48_55_export_Ch5.values / max(abs(Mute_Female_2017_01_06T08_48_55_export_Ch5.values));
+msig = Mute_Male_2017_01_06T08_48_55_export_Ch5.values / max(abs(Mute_Male_2017_01_06T08_48_55_export_Ch5.values));
 
 % These 'offsets' are to synchronize to the previous time base 
 % The female is set to match the duet signal in our structure.
