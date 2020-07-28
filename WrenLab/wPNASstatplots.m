@@ -48,8 +48,8 @@ sumdat.mDuetAuto.SPS = []; sumdat.fDuetAuto.SPS = [];
 
 %% Loop to calculate RS values for each pair of wrens   
     
-for curpair = [1 2 3 7 9] % The male matched pairs
-% for curpair = [1 2 3 7 9] % The male matched pairs
+for curpair = [1 2 3 7 9] % The male matched pairs (corresponds to birdlist 4)
+% for curpair = [2 3 4 5 6 8] % The male matched pairs (corresponds to birdlist 2)
     
     %birdlist{4}   % 2 is matched female data (only duets that also had female solo syllables)
                             % 4 is matched male data (only duets that also had male solo syllables)
