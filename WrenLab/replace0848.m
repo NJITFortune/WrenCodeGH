@@ -64,10 +64,10 @@ end
 
 % Update the spike times
 
-    fCh1 = Mute_FEMALE_2017_01_06T08_48_57_2_32_bit__nw_7.times;
-    fCh2 = Mute_FEMALE_2017_01_06T08_48_57_2_32_bit__nw_8.times;
-    fCh3 = Mute_FEMALE_2017_01_06T08_48_57_2_32_bit__nw_9.times;
-    fCh4 = Mute_FEMALE_2017_01_06T08_48_57_2_32_bit__nw_10.times;
+    fCh1 = Mute_Female_2017_01_06T08_48_55_export_Ch11.times;
+    fCh2 = Mute_Female_2017_01_06T08_48_55_export_Ch12.times;
+    fCh3 = Mute_Female_2017_01_06T08_48_55_export_Ch13.times;
+    fCh4 = Mute_Female_2017_01_06T08_48_55_export_Ch14.times;
 
     mCh1 = Mute_Male_2017_01_06T08_48_55_export_Ch11.times;
     mCh2 = Mute_Male_2017_01_06T08_48_55_export_Ch12.times;
