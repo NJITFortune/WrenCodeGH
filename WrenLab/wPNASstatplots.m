@@ -380,8 +380,8 @@ FeMaleDuetSoloCIDX = [ones(1,length(sumdat.fDuetAuto.rsRaw)), 2*ones(1,length(su
     
     fprintf(' \n');
 
-    fprintf('Male Chronic Auto: Variance difference between Duet and Solo Raw RS? p = %1.5f \n', MaleVarAutoChronP);
-    fprintf('FeMale Chronic Auto: Variance difference between Duet and Solo Raw RS? p = %1.5f \n', FemaleVarAutoChronP);
+%     fprintf('Male Chronic Auto: Variance difference between Duet and Solo Raw RS? p = %1.5f \n', MaleVarAutoChronP);
+%     fprintf('FeMale Chronic Auto: Variance difference between Duet and Solo Raw RS? p = %1.5f \n', FemaleVarAutoChronP);
     
 fprintf('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ \n');
 
