@@ -88,8 +88,7 @@ birdlist{5} = 42:-1:1; % Get this via "length(w)"
 %     fsolosyls{7} = []; 
 %     fduetsyls{7} = [6 8 10 12 14 16];   
 %     Cspon(:,7) = [11.0, 15.0];
-    %   msolosyls{7} = [1 2 3 4 5]; % Orig
-    %   mduetsyls{7} = [7 9 11 13 15 17];
+
     msolosyls{7} = [1 2 3 4 5 6 7]; % Solitary
     mduetsyls{7} = [8 10 12 14 16 18 20];
     fsolosyls{7} = []; 
