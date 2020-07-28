@@ -8,7 +8,7 @@ load ~/Sync/Wren/Mute_Female_2017-01-06T08-48-55_newExport.mat
 Fs = 10000;
 
 % Time stamps for each recording
-ftim = 1/Fs:1/Fs:Mute_FEMALE_2017_01_06T08_48_57_2_32_bit__A_2.length/Fs;
+ftim = 1/Fs:1/Fs:Mute_Female_2017_01_06T08_48_55_export_Ch5.length/Fs;
 mtim = 1/Fs:1/Fs:Mute_Male_2017_01_06T08_48_55_32_bit__A_1.length/Fs;
 
 % Each recording
