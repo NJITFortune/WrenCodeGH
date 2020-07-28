@@ -75,12 +75,12 @@ end
     mCh4 = Mute_Male_2017_01_06T08_48_55_export_Ch14.times - maleoffset;
 
 w(13).Cspikes{1} = mCh1(mCh1 > -30 & mCh1 < 10);
-w(13).Cspikes{2} = mCh1(mCh2 > -30 & mCh2 < 10);
-w(13).Cspikes{3} = mCh1(mCh3 > -30 & mCh3 < 10);
-w(13).Cspikes{4} = mCh1(mCh4 > -30 & mCh4 < 10);
+w(13).Cspikes{2} = mCh2(mCh2 > -30 & mCh2 < 10);
+w(13).Cspikes{3} = mCh3(mCh3 > -30 & mCh3 < 10);
+w(13).Cspikes{4} = mCh4(mCh4 > -30 & mCh4 < 10);
 
 w(14).Cspikes{1} = fCh1(fCh1 > -30 & fCh1 < 10);
-w(14).Cspikes{2} = fCh1(fCh2 > -30 & fCh2 < 10);
-w(14).Cspikes{3} = fCh1(fCh3 > -30 & fCh3 < 10);
-w(14).Cspikes{4} = fCh1(fCh4 > -30 & fCh4 < 10);
+w(14).Cspikes{2} = fCh2(fCh2 > -30 & fCh2 < 10);
+w(14).Cspikes{3} = fCh3(fCh3 > -30 & fCh3 < 10);
+w(14).Cspikes{4} = fCh4(fCh4 > -30 & fCh4 < 10);
 
