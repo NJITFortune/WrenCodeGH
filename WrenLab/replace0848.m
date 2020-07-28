@@ -1,8 +1,8 @@
 % Load old data
 load /Users/eric/Sync/Wren/ChronicCompleat2019f.mat
 % Load the new data from Spike2 for entry 0848 2017 MUTE birds
-load ~/Downloads/mute_male_2017-01-06T08-48-57_new.mat
-load ~/Downloads/mute_female_2017-01-06T08-48-57_new.mat
+load ~/Sync/Wren/mute_male_2017-01-06T08-48-57_new.mat
+load ~/Sync/Wren/mute_female_2017-01-06T08-48-57_new.mat
 
 % Sample rate
 Fs = 10000;
