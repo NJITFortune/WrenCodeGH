@@ -69,10 +69,10 @@ end
     fCh3 = Mute_FEMALE_2017_01_06T08_48_57_2_32_bit__nw_9.times;
     fCh4 = Mute_FEMALE_2017_01_06T08_48_57_2_32_bit__nw_10.times;
 
-    mCh1 = Mute_Male_2017_01_06T08_48_55_32_bit__nw_7.times;
-    mCh2 = Mute_Male_2017_01_06T08_48_55_32_bit__nw_8.times;
-    mCh3 = Mute_Male_2017_01_06T08_48_55_32_bit__nw_9.times;
-    mCh4 = Mute_Male_2017_01_06T08_48_55_32_bit__nw_10.times;
+    mCh1 = Mute_Male_2017_01_06T08_48_55_export_Ch11.times;
+    mCh2 = Mute_Male_2017_01_06T08_48_55_export_Ch12.times;
+    mCh3 = Mute_Male_2017_01_06T08_48_55_export_Ch13.times;
+    mCh4 = Mute_Male_2017_01_06T08_48_55_export_Ch14.times;
 
 w(13).Cspikes{1} = mCh1(mCh1 > -30 & mCh1 < 10);
 w(13).Cspikes{2} = mCh1(mCh2 > -30 & mCh2 < 10);
