@@ -64,15 +64,15 @@ end
 
 % Update the spike times
 
-    fCh1 = Mute_Female_2017_01_06T08_48_55_export_Ch11.times;
-    fCh2 = Mute_Female_2017_01_06T08_48_55_export_Ch12.times;
-    fCh3 = Mute_Female_2017_01_06T08_48_55_export_Ch13.times;
-    fCh4 = Mute_Female_2017_01_06T08_48_55_export_Ch14.times;
+    fCh1 = Mute_Female_2017_01_06T08_48_55_export_Ch11.times - femaleoffset;
+    fCh2 = Mute_Female_2017_01_06T08_48_55_export_Ch12.times - femaleoffset;
+    fCh3 = Mute_Female_2017_01_06T08_48_55_export_Ch13.times - femaleoffset;
+    fCh4 = Mute_Female_2017_01_06T08_48_55_export_Ch14.times - femaleoffset;
 
-    mCh1 = Mute_Male_2017_01_06T08_48_55_export_Ch11.times;
-    mCh2 = Mute_Male_2017_01_06T08_48_55_export_Ch12.times;
-    mCh3 = Mute_Male_2017_01_06T08_48_55_export_Ch13.times;
-    mCh4 = Mute_Male_2017_01_06T08_48_55_export_Ch14.times;
+    mCh1 = Mute_Male_2017_01_06T08_48_55_export_Ch11.times - maleoffset;
+    mCh2 = Mute_Male_2017_01_06T08_48_55_export_Ch12.times - maleoffset;
+    mCh3 = Mute_Male_2017_01_06T08_48_55_export_Ch13.times - maleoffset;
+    mCh4 = Mute_Male_2017_01_06T08_48_55_export_Ch14.times - maleoffset;
 
 w(13).Cspikes{1} = mCh1(mCh1 > -30 & mCh1 < 10);
 w(13).Cspikes{2} = mCh1(mCh2 > -30 & mCh2 < 10);
