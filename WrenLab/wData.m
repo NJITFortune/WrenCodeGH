@@ -94,7 +94,7 @@ birdlist{5} = 42:-1:1; % Get this via "length(w)"
     mduetsyls{7} = [8 10 12 14 16 18 20];
     fsolosyls{7} = []; 
     fduetsyls{7} = [9 11 13 15 17 19];   
-    Cspon(:,7) = [-23, 15.0];
+    Cspon(:,7) = [-23, -15.0];
 
 % 15-16: j170081733 MUTE January 2017
 
