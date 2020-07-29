@@ -21,7 +21,7 @@ function [out, sumdat, stts] = wPNASstatplots(in, whichlist, padding)
 pad = 0.050; 
 
 % The user can specify the padding via an argin for convenience.
-if nargin == 2; pad = padding; end
+if nargin == 3; pad = padding; end
 
 %% List of Chronic singing data with syllable indices and locations for spontaneous activity
 
