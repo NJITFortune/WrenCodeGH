@@ -227,13 +227,13 @@ hold on; title('Auto Spikes/Second');
     
 figure(4); % RAW HETEROGENOUS PLOTS
 hold on; title('Hetero SPS');
-    if whichlist == 4 % MALE SOLO/DUET DATA
+    if whichlist == 2 % MALE SOLO/DUET DATA (hetero requires we plot OTHER bird)
     plot([2 1], meanSPS(1:2), 'b.', 'MarkerSize', 16); 
     errorbar([2 1], meanSPS(1:2), sps(1:2), 'b' );
         for p=1:length(sumdat.mDuetHetero.SPS); plot(2.1, sumdat.mDuetHetero.SPS(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.mSoloHetero.SPS); plot(1.1, sumdat.mSoloHetero.SPS(p), 'k.', 'MarkerSize', 8); end
     end
-    if whichlist == 2 % FEMALE SOLO/DUET DATA
+    if whichlist == 4 % FEMALE SOLO/DUET DATA (hetero requires we plot OTHER bird)
     plot([4 3], meanSPS(3:4), 'm.', 'MarkerSize', 16); 
     errorbar([4 3], meanSPS(3:4), sps(3:4), 'm' );
         for p=1:length(sumdat.fDuetHetero.SPS); plot(4.1, sumdat.fDuetHetero.SPS(p), 'k.', 'MarkerSize', 8); end
