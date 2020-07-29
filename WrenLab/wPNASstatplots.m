@@ -192,8 +192,6 @@ hold on; title('Auto Norm RS');
 % Recall that PairList{1} = birdlist{2}(2:2:end)/2; % Index 1 is the FEMALE SOLO/DUET data
 % Recall that PairList{2} = birdlist{4}(2:2:end)/2; % Index 2 is the MALE SOLO/DUET data
 
-for 
-
 % Calculate
 
 % For Normalized RS data
