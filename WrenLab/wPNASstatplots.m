@@ -25,22 +25,22 @@ if nargin == 2; pad = padding; end
 % Initializing variables
 
 % Normalized and Raw response strengths for DUET syllables: Female and Male, Autogenous and Heterogenous 
-sumdat.fDuetAuto.rsNorm = []; sumdat.fDuetAuto.rsRaw = [];
-sumdat.mDuetAuto.rsNorm = []; sumdat.mDuetAuto.rsRaw = [];
-sumdat.fDuetHetero.rsNorm = []; sumdat.fDuetHetero.rsRaw = [];
-sumdat.mDuetHetero.rsNorm = []; sumdat.mDuetHetero.rsRaw = [];
+    sumdat.fDuetAuto.rsNorm = []; sumdat.fDuetAuto.rsRaw = [];
+    sumdat.mDuetAuto.rsNorm = []; sumdat.mDuetAuto.rsRaw = [];
+    sumdat.fDuetHetero.rsNorm = []; sumdat.fDuetHetero.rsRaw = [];
+    sumdat.mDuetHetero.rsNorm = []; sumdat.mDuetHetero.rsRaw = [];
 
 % Normalized and Raw response strengths for SOLO syllables: Female and Male, Autogenous and Heterogenous 
-sumdat.fSoloAuto.rsNorm = []; sumdat.fSoloAuto.rsRaw = [];
-sumdat.mSoloAuto.rsNorm = []; sumdat.mSoloAuto.rsRaw = [];
-sumdat.fSoloHetero.rsNorm = []; sumdat.fSoloHetero.rsRaw = [];
-sumdat.mSoloHetero.rsNorm = []; sumdat.mSoloHetero.rsRaw = [];
+    sumdat.fSoloAuto.rsNorm = []; sumdat.fSoloAuto.rsRaw = [];
+    sumdat.mSoloAuto.rsNorm = []; sumdat.mSoloAuto.rsRaw = [];
+    sumdat.fSoloHetero.rsNorm = []; sumdat.fSoloHetero.rsRaw = [];
+    sumdat.mSoloHetero.rsNorm = []; sumdat.mSoloHetero.rsRaw = [];
 
 % Spike rates (spikes per second) for solo and duet syllables, Female and Male, Autogenous and Heterogenous 
-sumdat.mSoloHetero.SPS = []; sumdat.fSoloHetero.SPS = [];
-sumdat.mDuetHetero.SPS = []; sumdat.fDuetHetero.SPS = [];
-sumdat.mSoloAuto.SPS = []; sumdat.fSoloAuto.SPS = [];
-sumdat.mDuetAuto.SPS = []; sumdat.fDuetAuto.SPS = [];
+    sumdat.mSoloHetero.SPS = []; sumdat.fSoloHetero.SPS = [];
+    sumdat.mDuetHetero.SPS = []; sumdat.fDuetHetero.SPS = [];
+    sumdat.mSoloAuto.SPS = []; sumdat.fSoloAuto.SPS = [];
+    sumdat.mDuetAuto.SPS = []; sumdat.fDuetAuto.SPS = [];
 
 %% List of Chronic singing data with syllable indices and locations for spontaneous activity
 
