@@ -122,8 +122,6 @@ if nargin == 2; pad = padding; end
 
     end % End of calculations
 
-end
-
 %% Plot MOTOR
 
 % For Normalized RS data
