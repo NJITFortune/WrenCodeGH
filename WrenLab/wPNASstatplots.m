@@ -16,6 +16,8 @@ function [out, sumdat, stts] = wPNASstatplots(in, whichlist, padding)
 %
 % This relies on the function wData.m. 
 
+%% Preparations
+
 pad = 0.050; 
 
 % The user can specify the padding via an argin for convenience.
@@ -123,11 +125,6 @@ if nargin == 2; pad = padding; end
 end
 
 %% Plot MOTOR
-
-% Recall that PairList{1} = birdlist{2}(2:2:end)/2; % Index 1 is the FEMALE SOLO/DUET data
-% Recall that PairList{2} = birdlist{4}(2:2:end)/2; % Index 2 is the MALE SOLO/DUET data
-
-for 
 
 % For Normalized RS data
 
