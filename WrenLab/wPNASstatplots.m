@@ -29,22 +29,22 @@ if nargin == 2; pad = padding; end
 % Initializing variables
 
 % Normalized and Raw response strengths for DUET syllables: Female and Male, Autogenous and Heterogenous 
-    sumdat(numLists).fDuetAuto.rsNorm = []; sumdat(numLists).fDuetAuto.rsRaw = [];
-    sumdat(numLists).mDuetAuto.rsNorm = []; sumdat(numLists).mDuetAuto.rsRaw = [];
-    sumdat(numLists).fDuetHetero.rsNorm = []; sumdat(numLists).fDuetHetero.rsRaw = [];
-    sumdat(numLists).mDuetHetero.rsNorm = []; sumdat(numLists).mDuetHetero.rsRaw = [];
+    sumdat.fDuetAuto.rsNorm = []; sumdat.fDuetAuto.rsRaw = [];
+    sumdat.mDuetAuto.rsNorm = []; sumdat.mDuetAuto.rsRaw = [];
+    sumdat.fDuetHetero.rsNorm = []; sumdat.fDuetHetero.rsRaw = [];
+    sumdat.mDuetHetero.rsNorm = []; sumdat.mDuetHetero.rsRaw = [];
 
 % Normalized and Raw response strengths for SOLO syllables: Female and Male, Autogenous and Heterogenous 
-    sumdat(numLists).fSoloAuto.rsNorm = []; sumdat(numLists).fSoloAuto.rsRaw = [];
-    sumdat(numLists).mSoloAuto.rsNorm = []; sumdat(numLists).mSoloAuto.rsRaw = [];
-    sumdat(numLists).fSoloHetero.rsNorm = []; sumdat(numLists).fSoloHetero.rsRaw = [];
-    sumdat(numLists).mSoloHetero.rsNorm = []; sumdat(numLists).mSoloHetero.rsRaw = [];
+    sumdat.fSoloAuto.rsNorm = []; sumdat.fSoloAuto.rsRaw = [];
+    sumdat.mSoloAuto.rsNorm = []; sumdat.mSoloAuto.rsRaw = [];
+    sumdat.fSoloHetero.rsNorm = []; sumdat.fSoloHetero.rsRaw = [];
+    sumdat.mSoloHetero.rsNorm = []; sumdat.mSoloHetero.rsRaw = [];
 
 % Spike rates (spikes per second) for solo and duet syllables, Female and Male, Autogenous and Heterogenous 
-    sumdat(numLists).mSoloHetero.SPS = []; sumdat(numLists).fSoloHetero.SPS = [];
-    sumdat(numLists).mDuetHetero.SPS = []; sumdat(numLists).fDuetHetero.SPS = [];
-    sumdat(numLists).mSoloAuto.SPS = []; sumdat(numLists).fSoloAuto.SPS = [];
-    sumdat(numLists).mDuetAuto.SPS = []; sumdat(numLists).fDuetAuto.SPS = [];
+    sumdat.mSoloHetero.SPS = []; sumdat.fSoloHetero.SPS = [];
+    sumdat.mDuetHetero.SPS = []; sumdat.fDuetHetero.SPS = [];
+    sumdat.mSoloAuto.SPS = []; sumdat.fSoloAuto.SPS = [];
+    sumdat.mDuetAuto.SPS = []; sumdat.fDuetAuto.SPS = [];
 
 % LEGACY: Extract appropriate wData references from birdlist
 
@@ -53,9 +53,7 @@ if nargin == 2; pad = padding; end
 
 %% Loop to calculate SPS and RS values for each pair of wrens   
 
-    for curpair = PairList{comparo}
-% for curpair = [1 2 3 7 9] % The male matched pairs (corresponds to birdlist 4)
-% for curpair = [2 3 4 5 6 8] % The female matched pairs (corresponds to birdlist 2)
+    for curpair = PairList
         
     % Solo syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(msolosyls{curpair}) % Male sang solo syllables
