@@ -395,10 +395,10 @@ end
 %     fprintf('Male Hetero Duet Raw RS vs Solo? p = %1.5f \n', stts.m.SvsDRHetero.P);
 %     fprintf('Female Hetero Duet Raw RS vs Solo? p = %1.5f \n', stts.f.SvsDRHetero.P);
 if whichlist == 4
-    fprintf('Male Hetero Duet SPS vs Solo? p = %1.5f \n', stts.m.SvsDSHetero.P);
+    fprintf('Female Hetero Duet SPS vs Solo? p = %1.5f \n', stts.f.SvsDSHetero.P);
 end
 if whichlist == 2
-    fprintf('Female Hetero Duet SPS vs Solo? p = %1.5f \n', stts.f.SvsDSHetero.P);
+    fprintf('Male Hetero Duet SPS vs Solo? p = %1.5f \n', stts.m.SvsDSHetero.P);
 end
 %
 %     fprintf('Male versus Female Solo Hetero Raw RS different? p = %1.5f \n', MvFHS.P);
