@@ -23,7 +23,7 @@ pad = 0.050;
 % The user can specify the padding via an argin for convenience.
 if nargin == 3; pad = padding; end
 
-%% List of Chronic singing data with syllable indices and locations for spontaneous activity
+% List of Chronic singing data with syllable indices and locations for spontaneous activity
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, ~, birdlist] = wData;
 
