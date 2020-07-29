@@ -1,4 +1,4 @@
-function [out, sumdat, stts] = wPNASstatplots(in, , padding)
+function [out, sumdat, stts] = wPNASstatplots(in, whichlist, padding)
 % Usage: [out, sumdat, stts] = wRS_Chronic(w, padding)
 % Calculates response strength to solo and duet syllables.
 % Load the Chronic data structure first:
