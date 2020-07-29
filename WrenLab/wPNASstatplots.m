@@ -370,9 +370,12 @@ end
 %     fprintf('Male Auto Duet Raw RS vs Solo? p = %1.5f \n', stts.m.SvsDRAuto.P);
 %     fprintf('Female Auto Duet Raw RS vs Solo? p = %1.5f \n', stts.f.SvsDRAuto.P);
 
+if whichlist == 4
     fprintf('Male Auto SPS Duet vs Solo? p = %1.5f \n', stts.m.SvsDSAuto.P);
+end
+if whichlist == 2
     fprintf('Female Auto SPS Duet vs Solo? p = %1.5f \n', stts.f.SvsDSAuto.P);
-    
+end
     fprintf(' \n');
     
 %     fprintf('Male Auto Duet Raw RS different from zero? p = %1.5f \n', stts.m.dRAuto.P);
@@ -391,9 +394,13 @@ end
 
 %     fprintf('Male Hetero Duet Raw RS vs Solo? p = %1.5f \n', stts.m.SvsDRHetero.P);
 %     fprintf('Female Hetero Duet Raw RS vs Solo? p = %1.5f \n', stts.f.SvsDRHetero.P);
+if whichlist == 4
     fprintf('Male Hetero Duet SPS vs Solo? p = %1.5f \n', stts.m.SvsDSHetero.P);
+end
+if whichlist == 2
     fprintf('Female Hetero Duet SPS vs Solo? p = %1.5f \n', stts.f.SvsDSHetero.P);
-%     
+end
+%
 %     fprintf('Male versus Female Solo Hetero Raw RS different? p = %1.5f \n', MvFHS.P);
 %     
      fprintf(' \n');
