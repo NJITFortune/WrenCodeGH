@@ -301,11 +301,6 @@ hold on; title('Hetero SPS');
 
 % Difference between Autogenous Duet and Solo ?
 
-% [stts.m.SvsDNAuto.H, stts.m.SvsDNAuto.P, stts.m.SvsDNAuto.CI, stts.m.SvsDNAuto.stats]  = ttest2(sumdat.mSoloAuto.rsNorm, sumdat.mDuetAuto.rsNorm, 'vartype', 'unequal');
-% [stts.m.SvsDRAuto.H, stts.m.SvsDRAuto.P, stts.m.SvsDRAuto.CI, stts.m.SvsDRAuto.stats]  = ttest2(sumdat.mSoloAuto.rsRaw, sumdat.mDuetAuto.rsRaw, 'vartype', 'unequal');
-% [stts.f.SvsDNAuto.H, stts.f.SvsDNAuto.P, stts.f.SvsDNAuto.CI, stts.f.SvsDNAuto.stats]  = ttest2(sumdat.fSoloAuto.rsNorm, sumdat.fDuetAuto.rsNorm, 'vartype', 'unequal');
-% [stts.f.SvsDRAuto.H, stts.f.SvsDRAuto.P, stts.f.SvsDRAuto.CI, stts.f.SvsDRAuto.stats]  = ttest2(sumdat.fSoloAuto.rsRaw, sumdat.fDuetAuto.rsRaw, 'vartype', 'unequal');
-
 [stts.m.SvsDNAuto.P, stts.m.SvsDNAuto.H, stts.m.SvsDNAuto.stats]  = ranksum(sumdat.mSoloAuto.rsNorm, sumdat.mDuetAuto.rsNorm);
 [stts.m.SvsDRAuto.P, stts.m.SvsDRAuto.H, stts.m.SvsDRAuto.stats]  = ranksum(sumdat.mSoloAuto.rsRaw, sumdat.mDuetAuto.rsRaw);
 [stts.m.SvsDSAuto.P, stts.m.SvsDSAuto.H, stts.m.SvsDSAuto.stats]  = ranksum(sumdat.mSoloAuto.SPS, sumdat.mDuetAuto.SPS);
@@ -313,7 +308,6 @@ hold on; title('Hetero SPS');
 [stts.f.SvsDNAuto.P, stts.f.SvsDNAuto.H, stts.f.SvsDNAuto.stats]  = ranksum(sumdat.fSoloAuto.rsNorm, sumdat.fDuetAuto.rsNorm);
 [stts.f.SvsDRAuto.P, stts.f.SvsDRAuto.H, stts.f.SvsDRAuto.stats]  = ranksum(sumdat.fSoloAuto.rsRaw, sumdat.fDuetAuto.rsRaw);
 [stts.f.SvsDSAuto.P, stts.f.SvsDSAuto.H, stts.f.SvsDSAuto.stats]  = ranksum(sumdat.fSoloAuto.SPS, sumdat.fDuetAuto.SPS);
-
 
 % Heterogenous duet RS significant from 0?
 
@@ -341,11 +335,6 @@ hold on; title('Hetero SPS');
 
 % Difference between Heterogenous Duet and Solo RS motor?
 
-% [stts.m.SvsDNHetero.H, stts.m.SvsDNHetero.P, stts.m.SvsDNHetero.CI, stts.m.SvsDNHetero.stats]  = ttest2(sumdat.mSoloHetero.rsNorm, sumdat.mDuetHetero.rsNorm, 'vartype', 'unequal');
-% [stts.m.SvsDRHetero.H, stts.m.SvsDRHetero.P, stts.m.SvsDRHetero.CI, stts.m.SvsDRHetero.stats]  = ttest2(sumdat.mSoloHetero.rsRaw, sumdat.mDuetHetero.rsRaw, 'vartype', 'unequal');
-% [stts.f.SvsDNHetero.H, stts.f.SvsDNHetero.P, stts.f.SvsDNHetero.CI, stts.f.SvsDNHetero.stats]  = ttest2(sumdat.fSoloHetero.rsNorm, sumdat.fDuetHetero.rsNorm, 'vartype', 'unequal');
-% [stts.f.SvsDRHetero.H, stts.f.SvsDRHetero.P, stts.f.SvsDRHetero.CI, stts.f.SvsDRHetero.stats]  = ttest2(sumdat.fSoloHetero.rsRaw, sumdat.fDuetHetero.rsRaw, 'vartype', 'unequal');
-
 [stts.m.SvsDNHetero.P, stts.m.SvsDNHetero.H, stts.m.SvsDNHetero.stats]  = ranksum(sumdat.mSoloHetero.rsNorm, sumdat.mDuetHetero.rsNorm);
 [stts.m.SvsDRHetero.P, stts.m.SvsDRHetero.H, stts.m.SvsDRHetero.stats]  = ranksum(sumdat.mSoloHetero.rsRaw, sumdat.mDuetHetero.rsRaw);
 [stts.m.SvsDSHetero.P, stts.m.SvsDSHetero.H, stts.m.SvsDSHetero.stats]  = ranksum(sumdat.mSoloHetero.SPS, sumdat.mDuetHetero.SPS);
@@ -358,71 +347,78 @@ hold on; title('Hetero SPS');
 
 % Test for equal variance
 
-% MaleDuetSoloC = [sumdat.mDuetAuto.rsRaw, sumdat.mSoloAuto.rsRaw];
-% MaleDuetSoloCIDX = [ones(1,length(sumdat.mDuetAuto.rsRaw)), 2*ones(1,length(sumdat.mSoloAuto.rsRaw))];
-% [MaleVarAutoChronP,MaleVarAutoChronstats] = vartestn(MaleDuetSoloC', MaleDuetSoloCIDX','TestType','LeveneAbsolute');
-% 
-FeMaleDuetSoloC = [sumdat.fDuetAuto.rsRaw, sumdat.fSoloAuto.rsRaw];
-FeMaleDuetSoloCIDX = [ones(1,length(sumdat.fDuetAuto.rsRaw)), 2*ones(1,length(sumdat.fSoloAuto.rsRaw))];
-[FemaleVarAutoChronP,FemaleVarAutoChronstats] = vartestn(FeMaleDuetSoloC', FeMaleDuetSoloCIDX','TestType','LeveneAbsolute');
+if whichlist == 4
+    MaleDuetSoloC = [sumdat.mDuetAuto.rsRaw, sumdat.mSoloAuto.rsRaw];
+    MaleDuetSoloCIDX = [ones(1,length(sumdat.mDuetAuto.rsRaw)), 2*ones(1,length(sumdat.mSoloAuto.rsRaw))];
+    [MaleVarAutoChronP, MaleVarAutoChronstats] = vartestn(MaleDuetSoloC', MaleDuetSoloCIDX','TestType','LeveneAbsolute');
+    fprintf('Male Chronic Auto: Variance difference between Duet and Solo SPS? p = %1.5f \n', MaleVarAutoChronP);
+end
+
+if whichlist == 2
+    FeMaleDuetSoloC = [sumdat.fDuetAuto.rsRaw, sumdat.fSoloAuto.rsRaw];
+    FeMaleDuetSoloCIDX = [ones(1,length(sumdat.fDuetAuto.rsRaw)), 2*ones(1,length(sumdat.fSoloAuto.rsRaw))];
+    [FemaleVarAutoChronP,FemaleVarAutoChronstats] = vartestn(FeMaleDuetSoloC', FeMaleDuetSoloCIDX','TestType','LeveneAbsolute');
+    fprintf('Female Chronic Auto: Variance difference between Duet and Solo SPS? p = %1.5f \n', FemaleVarAutoChronP);
+end
 
 % FvsMAutoSoloC = [sumdat.fSoloAuto.rsRaw, sumdat.mSoloAuto.rsRaw];
 % FvsMAutoSoloCIDX = [ones(1,length(sumdat.mSoloAuto.rsRaw)), 2*ones(1,length(sumdat.fSoloAuto.rsRaw))];
 % [FvsMVarAutoChronP,FvsMVarAutoChronstats] = vartestn(FvsMAutoSoloC', FvsMAutoSoloCIDX','TestType','LeveneAbsolute');
 
 
-    fprintf('Male Auto Duet Raw RS vs Solo? p = %1.5f \n', stts.m.SvsDRAuto.P);
-    fprintf('Female Auto Duet Raw RS vs Solo? p = %1.5f \n', stts.f.SvsDRAuto.P);
+% REPORT THE STATS FOR THE PAPER
+%     fprintf('Male Auto Duet Raw RS vs Solo? p = %1.5f \n', stts.m.SvsDRAuto.P);
+%     fprintf('Female Auto Duet Raw RS vs Solo? p = %1.5f \n', stts.f.SvsDRAuto.P);
+
     fprintf('Male Auto SPS Duet vs Solo? p = %1.5f \n', stts.m.SvsDSAuto.P);
     fprintf('Female Auto SPS Duet vs Solo? p = %1.5f \n', stts.f.SvsDSAuto.P);
     
     fprintf(' \n');
     
-    fprintf('Male Auto Duet Raw RS different from zero? p = %1.5f \n', stts.m.dRAuto.P);
-    fprintf('Male Auto Solo Raw RS different from zero? p = %1.5f \n', stts.m.sRAuto.P);
-    fprintf('Female Auto Duet Raw RS different from zero? p = %1.5f \n', stts.f.dRAuto.P);
-    fprintf('Female Auto Solo Raw RS different from zero? p = %1.5f \n', stts.f.sRAuto.P);
-    
-    fprintf(' \n');
+%     fprintf('Male Auto Duet Raw RS different from zero? p = %1.5f \n', stts.m.dRAuto.P);
+%     fprintf('Male Auto Solo Raw RS different from zero? p = %1.5f \n', stts.m.sRAuto.P);
+%     fprintf('Female Auto Duet Raw RS different from zero? p = %1.5f \n', stts.f.dRAuto.P);
+%     fprintf('Female Auto Solo Raw RS different from zero? p = %1.5f \n', stts.f.sRAuto.P);
+%     
+%     fprintf(' \n');
 
-    fprintf('Male Hetero Duet Raw RS different from zero? p = %1.5f \n', stts.m.dRHetero.P);
-    fprintf('Male Hetero Solo Raw RS different from zero? p = %1.5f \n', stts.m.sRHetero.P);
-    fprintf('Female Hetero Duet Raw RS different from zero? p = %1.5f \n', stts.f.dRHetero.P);
-    fprintf('Female Hetero Solo Raw RS different from zero? p = %1.5f \n', stts.f.sRHetero.P);
-    
-    fprintf(' \n');
+%     fprintf('Male Hetero Duet Raw RS different from zero? p = %1.5f \n', stts.m.dRHetero.P);
+%     fprintf('Male Hetero Solo Raw RS different from zero? p = %1.5f \n', stts.m.sRHetero.P);
+%     fprintf('Female Hetero Duet Raw RS different from zero? p = %1.5f \n', stts.f.dRHetero.P);
+%     fprintf('Female Hetero Solo Raw RS different from zero? p = %1.5f \n', stts.f.sRHetero.P);
+%     
+%     fprintf(' \n');
 
-    fprintf('Male Hetero Duet Raw RS vs Solo? p = %1.5f \n', stts.m.SvsDRHetero.P);
-    fprintf('Female Hetero Duet Raw RS vs Solo? p = %1.5f \n', stts.f.SvsDRHetero.P);
+%     fprintf('Male Hetero Duet Raw RS vs Solo? p = %1.5f \n', stts.m.SvsDRHetero.P);
+%     fprintf('Female Hetero Duet Raw RS vs Solo? p = %1.5f \n', stts.f.SvsDRHetero.P);
     fprintf('Male Hetero Duet SPS vs Solo? p = %1.5f \n', stts.m.SvsDSHetero.P);
     fprintf('Female Hetero Duet SPS vs Solo? p = %1.5f \n', stts.f.SvsDSHetero.P);
-    
-    fprintf('Male versus Female Solo Hetero Raw RS different? p = %1.5f \n', MvFHS.P);
-    
-    fprintf(' \n');
+%     
+%     fprintf('Male versus Female Solo Hetero Raw RS different? p = %1.5f \n', MvFHS.P);
+%     
+     fprintf(' \n');
 
-%     fprintf('Male Chronic Auto: Variance difference between Duet and Solo Raw RS? p = %1.5f \n', MaleVarAutoChronP);
 %     fprintf('FeMale Chronic Auto: Variance difference between Duet and Solo Raw RS? p = %1.5f \n', FemaleVarAutoChronP);
     
 fprintf('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ \n');
 
 
-    fprintf('Male Auto Duet Norm RS vs Solo? p = %1.5f \n', stts.m.SvsDNAuto.P);
-    fprintf('Female Auto Duet Norm RS vs Solo? p = %1.5f \n', stts.f.SvsDNAuto.P);
-    
-    fprintf(' \n');
+%     fprintf('Male Auto Duet Norm RS vs Solo? p = %1.5f \n', stts.m.SvsDNAuto.P);
+%     fprintf('Female Auto Duet Norm RS vs Solo? p = %1.5f \n', stts.f.SvsDNAuto.P);
+%     
+%     fprintf(' \n');
 
-    fprintf('Male Hetero Duet Norm RS different from zero? p = %1.5f \n', stts.m.dNHetero.P);
-    fprintf('Male Hetero Solo Norm RS different from zero? p = %1.5f \n', stts.m.sNHetero.P);
-    fprintf('Female Hetero Duet Norm RS different from zero? p = %1.5f \n', stts.f.dNHetero.P);
-    fprintf('Female Hetero Solo Norm RS different from zero? p = %1.5f \n', stts.f.sNHetero.P);
-    
-    fprintf(' \n');
+%     fprintf('Male Hetero Duet Norm RS different from zero? p = %1.5f \n', stts.m.dNHetero.P);
+%     fprintf('Male Hetero Solo Norm RS different from zero? p = %1.5f \n', stts.m.sNHetero.P);
+%     fprintf('Female Hetero Duet Norm RS different from zero? p = %1.5f \n', stts.f.dNHetero.P);
+%     fprintf('Female Hetero Solo Norm RS different from zero? p = %1.5f \n', stts.f.sNHetero.P);
+%     
+%     fprintf(' \n');
 
-    fprintf('Male Hetero Duet Norm RS vs Solo? p = %1.5f \n', stts.m.SvsDNHetero.P);
-    fprintf('Female Hetero Duet Norm RS vs Solo? p = %1.5f \n', stts.f.SvsDNHetero.P);
-        
-    fprintf(' \n');
+%     fprintf('Male Hetero Duet Norm RS vs Solo? p = %1.5f \n', stts.m.SvsDNHetero.P);
+%     fprintf('Female Hetero Duet Norm RS vs Solo? p = %1.5f \n', stts.f.SvsDNHetero.P);
+%         
+%     fprintf(' \n');
 
     
     
