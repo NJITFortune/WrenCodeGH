@@ -46,6 +46,12 @@ if nargin == 2; pad = padding; end
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, ~, birdlist] = wData;
 
+
+% LEGACY: Extract appropriate wData references from birdlist
+
+    PairList{1} = birdlist{2}(2:2:end)/2;
+    PairList{2} = birdlist{4}(2:2:end)/2;
+
 %% Loop to calculate RS values for each pair of wrens   
     
 % for curpair = [1 2 3 7 9] % The male matched pairs (corresponds to birdlist 4)
