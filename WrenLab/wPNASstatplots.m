@@ -1,4 +1,4 @@
-function [out, sumdat, stts] = wPNASstatplots(in, padding)
+function [out, sumdat, stts] = wPNASstatplots(in, whichlist, padding)
 % Usage: [out, sumdat, stts] = wRS_Chronic(w, padding)
 % Calculates response strength to solo and duet syllables.
 % Load the Chronic data structure first:
@@ -22,44 +22,41 @@ pad = 0.050;
 if nargin == 2; pad = padding; end
 
 
-% Initializing variables
-
-% Normalized and Raw response strengths for DUET syllables: Female and Male, Autogenous and Heterogenous 
-    sumdat.fDuetAuto.rsNorm = []; sumdat.fDuetAuto.rsRaw = [];
-    sumdat.mDuetAuto.rsNorm = []; sumdat.mDuetAuto.rsRaw = [];
-    sumdat.fDuetHetero.rsNorm = []; sumdat.fDuetHetero.rsRaw = [];
-    sumdat.mDuetHetero.rsNorm = []; sumdat.mDuetHetero.rsRaw = [];
-
-% Normalized and Raw response strengths for SOLO syllables: Female and Male, Autogenous and Heterogenous 
-    sumdat.fSoloAuto.rsNorm = []; sumdat.fSoloAuto.rsRaw = [];
-    sumdat.mSoloAuto.rsNorm = []; sumdat.mSoloAuto.rsRaw = [];
-    sumdat.fSoloHetero.rsNorm = []; sumdat.fSoloHetero.rsRaw = [];
-    sumdat.mSoloHetero.rsNorm = []; sumdat.mSoloHetero.rsRaw = [];
-
-% Spike rates (spikes per second) for solo and duet syllables, Female and Male, Autogenous and Heterogenous 
-    sumdat.mSoloHetero.SPS = []; sumdat.fSoloHetero.SPS = [];
-    sumdat.mDuetHetero.SPS = []; sumdat.fDuetHetero.SPS = [];
-    sumdat.mSoloAuto.SPS = []; sumdat.fSoloAuto.SPS = [];
-    sumdat.mDuetAuto.SPS = []; sumdat.fDuetAuto.SPS = [];
-
 %% List of Chronic singing data with syllable indices and locations for spontaneous activity
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, ~, birdlist] = wData;
 
+% Initializing variables
+
+% Normalized and Raw response strengths for DUET syllables: Female and Male, Autogenous and Heterogenous 
+    sumdat(numLists).fDuetAuto.rsNorm = []; sumdat(numLists).fDuetAuto.rsRaw = [];
+    sumdat(numLists).mDuetAuto.rsNorm = []; sumdat(numLists).mDuetAuto.rsRaw = [];
+    sumdat(numLists).fDuetHetero.rsNorm = []; sumdat(numLists).fDuetHetero.rsRaw = [];
+    sumdat(numLists).mDuetHetero.rsNorm = []; sumdat(numLists).mDuetHetero.rsRaw = [];
+
+% Normalized and Raw response strengths for SOLO syllables: Female and Male, Autogenous and Heterogenous 
+    sumdat(numLists).fSoloAuto.rsNorm = []; sumdat(numLists).fSoloAuto.rsRaw = [];
+    sumdat(numLists).mSoloAuto.rsNorm = []; sumdat(numLists).mSoloAuto.rsRaw = [];
+    sumdat(numLists).fSoloHetero.rsNorm = []; sumdat(numLists).fSoloHetero.rsRaw = [];
+    sumdat(numLists).mSoloHetero.rsNorm = []; sumdat(numLists).mSoloHetero.rsRaw = [];
+
+% Spike rates (spikes per second) for solo and duet syllables, Female and Male, Autogenous and Heterogenous 
+    sumdat(numLists).mSoloHetero.SPS = []; sumdat(numLists).fSoloHetero.SPS = [];
+    sumdat(numLists).mDuetHetero.SPS = []; sumdat(numLists).fDuetHetero.SPS = [];
+    sumdat(numLists).mSoloAuto.SPS = []; sumdat(numLists).fSoloAuto.SPS = [];
+    sumdat(numLists).mDuetAuto.SPS = []; sumdat(numLists).fDuetAuto.SPS = [];
 
 % LEGACY: Extract appropriate wData references from birdlist
 
-    PairList{1} = birdlist{2}(2:2:end)/2;
-    PairList{2} = birdlist{4}(2:2:end)/2;
+    PairList = birdlist{whichlist}(2:2:end)/2; % Index 1 is the FEMALE SOLO/DUET data
 
-%% Loop to calculate RS values for each pair of wrens   
-    
+
+%% Loop to calculate SPS and RS values for each pair of wrens   
+
+    for curpair = PairList{comparo}
 % for curpair = [1 2 3 7 9] % The male matched pairs (corresponds to birdlist 4)
-for curpair = [2 3 4 5 6 8] % The male matched pairs (corresponds to birdlist 2)
-    
-    %birdlist{4}   % 2 is matched female data (only duets that also had female solo syllables)
-                            % 4 is matched male data (only duets that also had male solo syllables)
-    
+% for curpair = [2 3 4 5 6 8] % The female matched pairs (corresponds to birdlist 2)
+        
     % Solo syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(msolosyls{curpair}) % Male sang solo syllables
         
@@ -68,12 +65,12 @@ for curpair = [2 3 4 5 6 8] % The male matched pairs (corresponds to birdlist 2)
         out(curpair).mSoloAuto = rs(in((curpair*2)-1), msolosyls{curpair}, Cspon(:,curpair), -pad);
         
         for kk = 1:length(msolosyls{curpair})
-            sumdat.fSoloHetero.rsNorm(end+1) = out(curpair).fSoloHetero(kk).rsNorm;
-            sumdat.fSoloHetero.rsRaw(end+1) = out(curpair).fSoloHetero(kk).rsRaw;
-            sumdat.fSoloHetero.SPS(end+1) = out(curpair).fSoloHetero(kk).spikerate;
-            sumdat.mSoloAuto.rsNorm(end+1) = out(curpair).mSoloAuto(kk).rsNorm;
-            sumdat.mSoloAuto.rsRaw(end+1) = out(curpair).mSoloAuto(kk).rsRaw;
-            sumdat.mSoloAuto.SPS(end+1) = out(curpair).mSoloAuto(kk).spikerate;
+            sumdat(comparo).fSoloHetero.rsNorm(end+1) = out(curpair).fSoloHetero(kk).rsNorm;
+            sumdat(comparo).fSoloHetero.rsRaw(end+1) = out(curpair).fSoloHetero(kk).rsRaw;
+            sumdat(comparo).fSoloHetero.SPS(end+1) = out(curpair).fSoloHetero(kk).spikerate;
+            sumdat(comparo).mSoloAuto.rsNorm(end+1) = out(curpair).mSoloAuto(kk).rsNorm;
+            sumdat(comparo).mSoloAuto.rsRaw(end+1) = out(curpair).mSoloAuto(kk).rsRaw;
+            sumdat(comparo).mSoloAuto.SPS(end+1) = out(curpair).mSoloAuto(kk).spikerate;
         end
     end
     
@@ -84,12 +81,12 @@ for curpair = [2 3 4 5 6 8] % The male matched pairs (corresponds to birdlist 2)
         out(curpair).fSoloAuto = rs(in(curpair*2), fsolosyls{curpair}, Cspon(:,curpair), -pad);
         
         for kk = 1:length(fsolosyls{curpair})
-            sumdat.mSoloHetero.rsNorm(end+1) = out(curpair).mSoloHetero(kk).rsNorm;
-            sumdat.mSoloHetero.rsRaw(end+1) = out(curpair).mSoloHetero(kk).rsRaw;
-            sumdat.mSoloHetero.SPS(end+1) = out(curpair).mSoloHetero(kk).spikerate;
-            sumdat.fSoloAuto.rsNorm(end+1) = out(curpair).fSoloAuto(kk).rsNorm;
-            sumdat.fSoloAuto.rsRaw(end+1) = out(curpair).fSoloAuto(kk).rsRaw;
-            sumdat.fSoloAuto.SPS(end+1) = out(curpair).fSoloAuto(kk).spikerate;
+            sumdat(comparo).mSoloHetero.rsNorm(end+1) = out(curpair).mSoloHetero(kk).rsNorm;
+            sumdat(comparo).mSoloHetero.rsRaw(end+1) = out(curpair).mSoloHetero(kk).rsRaw;
+            sumdat(comparo).mSoloHetero.SPS(end+1) = out(curpair).mSoloHetero(kk).spikerate;
+            sumdat(comparo).fSoloAuto.rsNorm(end+1) = out(curpair).fSoloAuto(kk).rsNorm;
+            sumdat(comparo).fSoloAuto.rsRaw(end+1) = out(curpair).fSoloAuto(kk).rsRaw;
+            sumdat(comparo).fSoloAuto.SPS(end+1) = out(curpair).fSoloAuto(kk).spikerate;
         end
     end
     
@@ -100,12 +97,12 @@ for curpair = [2 3 4 5 6 8] % The male matched pairs (corresponds to birdlist 2)
         out(curpair).fDuetHetero = rs(in(curpair*2), mduetsyls{curpair}, Cspon(:,curpair), pad);
 
         for kk = 1:length(mduetsyls{curpair})
-            sumdat.mDuetAuto.rsNorm(end+1) = out(curpair).mDuetAuto(kk).rsNorm; 
-            sumdat.mDuetAuto.rsRaw(end+1) = out(curpair).mDuetAuto(kk).rsRaw;
-            sumdat.mDuetAuto.SPS(end+1) = out(curpair).mDuetAuto(kk).spikerate;
-            sumdat.fDuetHetero.rsNorm(end+1) = out(curpair).fDuetHetero(kk).rsNorm;
-            sumdat.fDuetHetero.rsRaw(end+1) = out(curpair).fDuetHetero(kk).rsRaw;
-            sumdat.fDuetHetero.SPS(end+1) = out(curpair).fDuetHetero(kk).spikerate;
+            sumdat(comparo).mDuetAuto.rsNorm(end+1) = out(curpair).mDuetAuto(kk).rsNorm; 
+            sumdat(comparo).mDuetAuto.rsRaw(end+1) = out(curpair).mDuetAuto(kk).rsRaw;
+            sumdat(comparo).mDuetAuto.SPS(end+1) = out(curpair).mDuetAuto(kk).spikerate;
+            sumdat(comparo).fDuetHetero.rsNorm(end+1) = out(curpair).fDuetHetero(kk).rsNorm;
+            sumdat(comparo).fDuetHetero.rsRaw(end+1) = out(curpair).fDuetHetero(kk).rsRaw;
+            sumdat(comparo).fDuetHetero.SPS(end+1) = out(curpair).fDuetHetero(kk).spikerate;
         end
     end 
     
@@ -116,19 +113,25 @@ for curpair = [2 3 4 5 6 8] % The male matched pairs (corresponds to birdlist 2)
         out(curpair).fDuetAuto = rs(in(curpair*2), fduetsyls{curpair}, Cspon(:,curpair), -pad);
 
         for kk = 1:length(fduetsyls{curpair})
-            sumdat.mDuetHetero.rsNorm(end+1) = out(curpair).mDuetHetero(kk).rsNorm;
-            sumdat.mDuetHetero.rsRaw(end+1) = out(curpair).mDuetHetero(kk).rsRaw;
-            sumdat.mDuetHetero.SPS(end+1) = out(curpair).mDuetHetero(kk).spikerate;
-            sumdat.fDuetAuto.rsNorm(end+1) = out(curpair).fDuetAuto(kk).rsNorm;
-            sumdat.fDuetAuto.rsRaw(end+1) = out(curpair).fDuetAuto(kk).rsRaw;
-            sumdat.fDuetAuto.SPS(end+1) = out(curpair).fDuetAuto(kk).spikerate;
+            sumdat(comparo).mDuetHetero.rsNorm(end+1) = out(curpair).mDuetHetero(kk).rsNorm;
+            sumdat(comparo).mDuetHetero.rsRaw(end+1) = out(curpair).mDuetHetero(kk).rsRaw;
+            sumdat(comparo).mDuetHetero.SPS(end+1) = out(curpair).mDuetHetero(kk).spikerate;
+            sumdat(comparo).fDuetAuto.rsNorm(end+1) = out(curpair).fDuetAuto(kk).rsNorm;
+            sumdat(comparo).fDuetAuto.rsRaw(end+1) = out(curpair).fDuetAuto(kk).rsRaw;
+            sumdat(comparo).fDuetAuto.SPS(end+1) = out(curpair).fDuetAuto(kk).spikerate;
         end
     end
 
-end % End of calculations
+    end % End of calculations
 
+end
 
 %% Plot MOTOR
+
+% Recall that PairList{1} = birdlist{2}(2:2:end)/2; % Index 1 is the FEMALE SOLO/DUET data
+% Recall that PairList{2} = birdlist{4}(2:2:end)/2; % Index 2 is the MALE SOLO/DUET data
+
+for 
 
 % For Normalized RS data
 
@@ -191,7 +194,16 @@ hold on; title('Auto Norm RS');
     ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
     
-%% Plot SENSORY
+
+    
+%% Plot Sensory
+
+% Recall that PairList{1} = birdlist{2}(2:2:end)/2; % Index 1 is the FEMALE SOLO/DUET data
+% Recall that PairList{2} = birdlist{4}(2:2:end)/2; % Index 2 is the MALE SOLO/DUET data
+
+for 
+
+% Calculate
 
 % For Normalized RS data
 
@@ -463,6 +475,8 @@ function qwe = rs(struc, syllabl, spontan, padme)
 end
 
 end
+
+
 
 
 
