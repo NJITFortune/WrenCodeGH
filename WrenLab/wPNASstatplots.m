@@ -63,12 +63,12 @@ if nargin == 2; pad = padding; end
         out(curpair).mSoloAuto = rs(in((curpair*2)-1), msolosyls{curpair}, Cspon(:,curpair), -pad);
         
         for kk = 1:length(msolosyls{curpair})
-            sumdat(comparo).fSoloHetero.rsNorm(end+1) = out(curpair).fSoloHetero(kk).rsNorm;
-            sumdat(comparo).fSoloHetero.rsRaw(end+1) = out(curpair).fSoloHetero(kk).rsRaw;
-            sumdat(comparo).fSoloHetero.SPS(end+1) = out(curpair).fSoloHetero(kk).spikerate;
-            sumdat(comparo).mSoloAuto.rsNorm(end+1) = out(curpair).mSoloAuto(kk).rsNorm;
-            sumdat(comparo).mSoloAuto.rsRaw(end+1) = out(curpair).mSoloAuto(kk).rsRaw;
-            sumdat(comparo).mSoloAuto.SPS(end+1) = out(curpair).mSoloAuto(kk).spikerate;
+            sumdat.fSoloHetero.rsNorm(end+1) = out(curpair).fSoloHetero(kk).rsNorm;
+            sumdat.fSoloHetero.rsRaw(end+1) = out(curpair).fSoloHetero(kk).rsRaw;
+            sumdat.fSoloHetero.SPS(end+1) = out(curpair).fSoloHetero(kk).spikerate;
+            sumdat.mSoloAuto.rsNorm(end+1) = out(curpair).mSoloAuto(kk).rsNorm;
+            sumdat.mSoloAuto.rsRaw(end+1) = out(curpair).mSoloAuto(kk).rsRaw;
+            sumdat.mSoloAuto.SPS(end+1) = out(curpair).mSoloAuto(kk).spikerate;
         end
     end
     
@@ -79,12 +79,12 @@ if nargin == 2; pad = padding; end
         out(curpair).fSoloAuto = rs(in(curpair*2), fsolosyls{curpair}, Cspon(:,curpair), -pad);
         
         for kk = 1:length(fsolosyls{curpair})
-            sumdat(comparo).mSoloHetero.rsNorm(end+1) = out(curpair).mSoloHetero(kk).rsNorm;
-            sumdat(comparo).mSoloHetero.rsRaw(end+1) = out(curpair).mSoloHetero(kk).rsRaw;
-            sumdat(comparo).mSoloHetero.SPS(end+1) = out(curpair).mSoloHetero(kk).spikerate;
-            sumdat(comparo).fSoloAuto.rsNorm(end+1) = out(curpair).fSoloAuto(kk).rsNorm;
-            sumdat(comparo).fSoloAuto.rsRaw(end+1) = out(curpair).fSoloAuto(kk).rsRaw;
-            sumdat(comparo).fSoloAuto.SPS(end+1) = out(curpair).fSoloAuto(kk).spikerate;
+            sumdat.mSoloHetero.rsNorm(end+1) = out(curpair).mSoloHetero(kk).rsNorm;
+            sumdat.mSoloHetero.rsRaw(end+1) = out(curpair).mSoloHetero(kk).rsRaw;
+            sumdat.mSoloHetero.SPS(end+1) = out(curpair).mSoloHetero(kk).spikerate;
+            sumdat.fSoloAuto.rsNorm(end+1) = out(curpair).fSoloAuto(kk).rsNorm;
+            sumdat.fSoloAuto.rsRaw(end+1) = out(curpair).fSoloAuto(kk).rsRaw;
+            sumdat.fSoloAuto.SPS(end+1) = out(curpair).fSoloAuto(kk).spikerate;
         end
     end
     
@@ -95,12 +95,12 @@ if nargin == 2; pad = padding; end
         out(curpair).fDuetHetero = rs(in(curpair*2), mduetsyls{curpair}, Cspon(:,curpair), pad);
 
         for kk = 1:length(mduetsyls{curpair})
-            sumdat(comparo).mDuetAuto.rsNorm(end+1) = out(curpair).mDuetAuto(kk).rsNorm; 
-            sumdat(comparo).mDuetAuto.rsRaw(end+1) = out(curpair).mDuetAuto(kk).rsRaw;
-            sumdat(comparo).mDuetAuto.SPS(end+1) = out(curpair).mDuetAuto(kk).spikerate;
-            sumdat(comparo).fDuetHetero.rsNorm(end+1) = out(curpair).fDuetHetero(kk).rsNorm;
-            sumdat(comparo).fDuetHetero.rsRaw(end+1) = out(curpair).fDuetHetero(kk).rsRaw;
-            sumdat(comparo).fDuetHetero.SPS(end+1) = out(curpair).fDuetHetero(kk).spikerate;
+            sumdat.mDuetAuto.rsNorm(end+1) = out(curpair).mDuetAuto(kk).rsNorm; 
+            sumdat.mDuetAuto.rsRaw(end+1) = out(curpair).mDuetAuto(kk).rsRaw;
+            sumdat.mDuetAuto.SPS(end+1) = out(curpair).mDuetAuto(kk).spikerate;
+            sumdat.fDuetHetero.rsNorm(end+1) = out(curpair).fDuetHetero(kk).rsNorm;
+            sumdat.fDuetHetero.rsRaw(end+1) = out(curpair).fDuetHetero(kk).rsRaw;
+            sumdat.fDuetHetero.SPS(end+1) = out(curpair).fDuetHetero(kk).spikerate;
         end
     end 
     
@@ -111,12 +111,12 @@ if nargin == 2; pad = padding; end
         out(curpair).fDuetAuto = rs(in(curpair*2), fduetsyls{curpair}, Cspon(:,curpair), -pad);
 
         for kk = 1:length(fduetsyls{curpair})
-            sumdat(comparo).mDuetHetero.rsNorm(end+1) = out(curpair).mDuetHetero(kk).rsNorm;
-            sumdat(comparo).mDuetHetero.rsRaw(end+1) = out(curpair).mDuetHetero(kk).rsRaw;
-            sumdat(comparo).mDuetHetero.SPS(end+1) = out(curpair).mDuetHetero(kk).spikerate;
-            sumdat(comparo).fDuetAuto.rsNorm(end+1) = out(curpair).fDuetAuto(kk).rsNorm;
-            sumdat(comparo).fDuetAuto.rsRaw(end+1) = out(curpair).fDuetAuto(kk).rsRaw;
-            sumdat(comparo).fDuetAuto.SPS(end+1) = out(curpair).fDuetAuto(kk).spikerate;
+            sumdat.mDuetHetero.rsNorm(end+1) = out(curpair).mDuetHetero(kk).rsNorm;
+            sumdat.mDuetHetero.rsRaw(end+1) = out(curpair).mDuetHetero(kk).rsRaw;
+            sumdat.mDuetHetero.SPS(end+1) = out(curpair).mDuetHetero(kk).spikerate;
+            sumdat.fDuetAuto.rsNorm(end+1) = out(curpair).fDuetAuto(kk).rsNorm;
+            sumdat.fDuetAuto.rsRaw(end+1) = out(curpair).fDuetAuto(kk).rsRaw;
+            sumdat.fDuetAuto.SPS(end+1) = out(curpair).fDuetAuto(kk).spikerate;
         end
     end
 
