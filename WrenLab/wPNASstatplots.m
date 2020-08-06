@@ -467,7 +467,7 @@ end
         % Get the spikes for that syllable
         stimSpikeCount = 0; 
     
-        for i=1:4 % 4 electrodes in a tetrode always (padme shifts the window in seconds, negative earlier, positive later)
+        for i=1:length(spikeys) % 4 electrodes in a tetrode always (padme shifts the window in seconds, negative earlier, positive later)
             stimSpikeCount = stimSpikeCount + length(find(spikeys{i} >= struc.syl(syllabl(j)).tim(1)+padme & spikeys{i} < struc.syl(syllabl(j)).tim(2)+padme-skinny));
         end
         
