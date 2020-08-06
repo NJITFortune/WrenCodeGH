@@ -473,6 +473,9 @@ end
                 if padme > 0 % We have a heterogenous syllable and need to truncate the analysis. 
                     skinny = 2.0 * padme; % IMPORTANT, try 2 for a more conservative truncation.
                 end
+                if padme < 0 % We have an autogenous syllable, no truncation necessary.
+                    skinny = 0;
+                end
             end
         
         
