@@ -1,9 +1,11 @@
-function [out, sumdat, stts] = wPNASstatplots(in, whichlist, padding)
+function [out, sumdat, stts] = wPNASstatplots(in, whichlist, uc, padding)
 % Usage: [out, sumdat, stts] = wRS_Chronic(w, padding)
 % Calculates response strength to solo and duet syllables.
 % Load the Chronic data structure first:
 % load ChronicCompleat2019f.mat (Current as of 8-Jan-2020)
-% w is the structure from that file with all of the data
+% in is the structure from that file with all of the data (w)
+%
+% uc is 1 for urethane and 2 for chronic
 %
 % 'padding' is a critical variable - it is the shift in the window around the
 % clicked boundaries of the syllables for the calculation of RS. 
@@ -21,7 +23,7 @@ function [out, sumdat, stts] = wPNASstatplots(in, whichlist, padding)
 pad = 0.050; 
 
 % The user can specify the padding via an argin for convenience.
-if nargin == 3; pad = padding; end
+if nargin == 4; pad = padding; end
 
 % List of Chronic singing data with syllable indices and locations for spontaneous activity
 
@@ -59,8 +61,8 @@ if nargin == 3; pad = padding; end
     if ~isempty(msolosyls{curpair}) % Male sang solo syllables
         
         % Calculate RS values
-        out(curpair).fSoloHetero = rs(in(curpair*2), msolosyls{curpair}, Cspon(:,curpair), pad);
-        out(curpair).mSoloAuto = rs(in((curpair*2)-1), msolosyls{curpair}, Cspon(:,curpair), -pad);
+        out(curpair).fSoloHetero = rs(in(curpair*2), msolosyls{curpair}, Cspon(:,curpair), pad, uc);
+        out(curpair).mSoloAuto = rs(in((curpair*2)-1), msolosyls{curpair}, Cspon(:,curpair), -pad, uc);
         
         for kk = 1:length(msolosyls{curpair})
             sumdat.fSoloHetero.rsNorm(end+1) = out(curpair).fSoloHetero(kk).rsNorm;
@@ -75,8 +77,8 @@ if nargin == 3; pad = padding; end
     % Solo syllables FEMALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(fsolosyls{curpair}) % Female sang solo syllables
         
-        out(curpair).mSoloHetero = rs(in((curpair*2)-1), fsolosyls{curpair}, Cspon(:,curpair), pad);
-        out(curpair).fSoloAuto = rs(in(curpair*2), fsolosyls{curpair}, Cspon(:,curpair), -pad);
+        out(curpair).mSoloHetero = rs(in((curpair*2)-1), fsolosyls{curpair}, Cspon(:,curpair), pad, uc);
+        out(curpair).fSoloAuto = rs(in(curpair*2), fsolosyls{curpair}, Cspon(:,curpair), -pad, uc);
         
         for kk = 1:length(fsolosyls{curpair})
             sumdat.mSoloHetero.rsNorm(end+1) = out(curpair).mSoloHetero(kk).rsNorm;
@@ -91,8 +93,8 @@ if nargin == 3; pad = padding; end
     %% Duet syllables MALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(mduetsyls{curpair}) % Male sang duet syllables
         
-        out(curpair).mDuetAuto = rs(in((curpair*2)-1), mduetsyls{curpair}, Cspon(:,curpair), -pad);
-        out(curpair).fDuetHetero = rs(in(curpair*2), mduetsyls{curpair}, Cspon(:,curpair), pad);
+        out(curpair).mDuetAuto = rs(in((curpair*2)-1), mduetsyls{curpair}, Cspon(:,curpair), -pad, uc);
+        out(curpair).fDuetHetero = rs(in(curpair*2), mduetsyls{curpair}, Cspon(:,curpair), pad, uc);
 
         for kk = 1:length(mduetsyls{curpair})
             sumdat.mDuetAuto.rsNorm(end+1) = out(curpair).mDuetAuto(kk).rsNorm; 
@@ -107,8 +109,8 @@ if nargin == 3; pad = padding; end
     %% Duet syllables FEMALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(fduetsyls{curpair}) % Female sang solo syllables
         
-        out(curpair).mDuetHetero = rs(in((curpair*2)-1), fduetsyls{curpair}, Cspon(:,curpair), pad);
-        out(curpair).fDuetAuto = rs(in(curpair*2), fduetsyls{curpair}, Cspon(:,curpair), -pad);
+        out(curpair).mDuetHetero = rs(in((curpair*2)-1), fduetsyls{curpair}, Cspon(:,curpair), pad, uc);
+        out(curpair).fDuetAuto = rs(in(curpair*2), fduetsyls{curpair}, Cspon(:,curpair), -pad, uc);
 
         for kk = 1:length(fduetsyls{curpair})
             sumdat.mDuetHetero.rsNorm(end+1) = out(curpair).mDuetHetero(kk).rsNorm;
@@ -433,18 +435,23 @@ fprintf('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ \n');
     
 %% Response Strength nested function
 
-function qwe = rs(struc, syllabl, spontan, padme)
+function qwe = rs(struc, syllabl, spontan, padme, ccuu)
  
    % Get spontaneous rate 
         sponSpikeCount = 0;  
-    
-        for i=1:4 % 4 electrodes in a tetrode always
-            sponSpikeCount = sponSpikeCount + length(find(struc.Cspikes{i} > spontan(1) & struc.Cspikes{i} < spontan(2)));
+
+if ccuu = 2 % CHRONIC
+    spikeys = struc.Cspikes;
+end
+if ccuu == 1 % URETHANE
+    spikeys = struc.Aspikes;
+end
+        for i=1:length(spikeys) % For each rep in acute, or each electrode in chronic
+            sponSpikeCount = sponSpikeCount + length(find(spikeys{i} > spontan(1) & spikeys{i} < spontan(2)));
         end
 
         sponSPS = sponSpikeCount / (spontan(2) - spontan(1)); % This is spikes per second
-        sponSPS = sponSPS/4; % Divide by 4 because we have 4 electrodes
-
+        sponSPS = sponSPS/length(spikeys); % Divide by number of reps or number of electrodes
         skinny = 0; 
         if padme > 0 % We have a heterogenous syllable. Because premotor is advanced and auditory feedback 
                      % is delayed, we need to truncate the window to avoid
@@ -461,11 +468,11 @@ function qwe = rs(struc, syllabl, spontan, padme)
         stimSpikeCount = 0; 
     
         for i=1:4 % 4 electrodes in a tetrode always (padme shifts the window in seconds, negative earlier, positive later)
-            stimSpikeCount = stimSpikeCount + length(find(struc.Cspikes{i} >= struc.syl(syllabl(j)).tim(1)+padme & struc.Cspikes{i} < struc.syl(syllabl(j)).tim(2)+padme-skinny));
+            stimSpikeCount = stimSpikeCount + length(find(spikeys{i} >= struc.syl(syllabl(j)).tim(1)+padme & spikeys{i} < struc.syl(syllabl(j)).tim(2)+padme-skinny));
         end
         
         stimSPS = stimSpikeCount / ((struc.syl(syllabl(j)).tim(2) - struc.syl(syllabl(j)).tim(1)) - skinny); % This is spikes per second
-        stimSPS = stimSPS/4; % Divide by 4 because we have 4 electrodes
+        stimSPS = stimSPS/length(spikeys); % Divide by number of reps or number of electrodes
         
         
         qwe(j).sylnum = syllabl(j);
