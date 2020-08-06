@@ -471,7 +471,7 @@ end
             end
             if ccuu == 2 % CHRONIC
                 if padme > 0 % We have a heterogenous syllable and need to truncate the analysis. 
-                    skinny = 2.5 * padme; % IMPORTANT, try 1.5 instead of 2 for a more conservative truncation.
+                    skinny = 2.5 * padme; % IMPORTANT, try 2 for a more conservative truncation.
                 end
             end
         
