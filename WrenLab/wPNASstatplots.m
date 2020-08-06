@@ -440,7 +440,7 @@ function qwe = rs(struc, syllabl, spontan, padme, ccuu)
    % Get spontaneous rate 
         sponSpikeCount = 0;  
 
-if ccuu = 2 % CHRONIC
+if ccuu == 2 % CHRONIC
     spikeys = struc.Cspikes;
 end
 if ccuu == 1 % URETHANE
