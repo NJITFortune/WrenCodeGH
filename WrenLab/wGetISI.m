@@ -32,13 +32,13 @@ end
 fprintf('The mean and std for M2F ISI is  %1.3f %1.3f \n', mean(out.MF), std(out.MF));
 fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(out.FM), std(out.FM));
 [~, pVal, ~, ~] =  ttest2(out.FM, out.MF, 'vartype', 'unequal');
-fprintf('Are these different or not %1.5f \n', pVal);
+fprintf('Are these different or not p = %1.5f \n', pVal);
 
 fprintf('************\n');
 
-fprintf('The mean and std for Male Syllable Duration is  %1.3f %1.3f \n', mean(out.Mdur), std(out.Mdur));
-fprintf('The mean and std for Female Syllable Duration is  %1.3f %1.3f \n', mean(out.Fdur), std(out.Fdur));
+fprintf('Male Syllable Duration: mean %1.3f, std %1.3f, n %i. \n', mean(out.Mdur), std(out.Mdur), length(out.Mdur));
+fprintf('Female Syllable Duration: mean %1.3f, std %1.3f, n %i. \n', mean(out.Fdur), std(out.Fdur), length(out.Fdur));
 [~, pVal, ~, ~] =  ttest2(out.Mdur, out.Fdur, 'vartype', 'unequal');
-fprintf('Are these different or not %1.5f \n', pVal);
+fprintf('Are these different or not p = %1.5f \n', pVal);
 
 
