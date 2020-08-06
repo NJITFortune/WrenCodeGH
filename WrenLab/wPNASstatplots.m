@@ -452,14 +452,30 @@ end
 
         sponSPS = sponSpikeCount / (spontan(2) - spontan(1)); % This is spikes per second
         sponSPS = sponSPS/length(spikeys); % Divide by number of reps or number of electrodes
-        skinny = 0; 
-        if padme > 0 % We have a heterogenous syllable. Because premotor is advanced and auditory feedback 
-                     % is delayed, we need to truncate the window to avoid
-                     % counting premotor spikes.  We are also truncating
-                     % the solo heterogenous for a fair comparison.
-            skinny = 2.5 * padme; % IMPORTANT, try 1.5 instead of 2 for a more conservative truncation.
-        end
-                     
+        
+        
+        % padme is positive for heterogenous and negative for autogenous
+        
+        % In CHRONIC, for PREMOTOR ACTIVITY, we want to shift the window
+        % earlier (subtract time) and shift later (add time) for SENSORY.
+        % When we shift the window later for heterogenous (SENSORY) in CHRONIC, the window will start
+        % to overlap with the premotor from the next syllable, so we use
+        % the variable skinny to solve that issue.
+        
+        % In ACUTE, we always want to shift the window later (add time).
+        
+ 
+            if ccuu == 1 % URETHANE
+                padme = abs(padme); % ALWAYS add time to shift window later
+                skinny = 0; % No special truncations
+            end
+            if ccuu == 2 % CHRONIC
+                if padme > 0 % We have a heterogenous syllable and need to truncate the analysis. 
+                    skinny = 2.5 * padme; % IMPORTANT, try 1.5 instead of 2 for a more conservative truncation.
+                end
+            end
+        
+        
     % Loop for each syllable
     
     for j = 1:length(syllabl)    
@@ -467,8 +483,8 @@ end
         % Get the spikes for that syllable
         stimSpikeCount = 0; 
     
-        for i=1:length(spikeys) % 4 electrodes in a tetrode always (padme shifts the window in seconds, negative earlier, positive later)
-            stimSpikeCount = stimSpikeCount + length(find(spikeys{i} >= struc.syl(syllabl(j)).tim(1)+padme & spikeys{i} < struc.syl(syllabl(j)).tim(2)+padme-skinny));
+        for i=1:length(spikeys) % For each electrode or repetition (padme shifts the window in seconds, negative earlier, positive later)
+            stimSpikeCount = stimSpikeCount + length(find(spikeys{i} >= struc.syl(syllabl(j)).tim(1) + padme & spikeys{i} < struc.syl(syllabl(j)).tim(2) + padme - skinny));
         end
         
         stimSPS = stimSpikeCount / ((struc.syl(syllabl(j)).tim(2) - struc.syl(syllabl(j)).tim(1)) - skinny); % This is spikes per second
