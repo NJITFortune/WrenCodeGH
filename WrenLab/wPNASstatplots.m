@@ -17,6 +17,7 @@ function [out, sumdat, stts] = wPNASstatplots(in, whichlist, uc, padding)
 % to move the premotor earlier and the auditory feedback windows later. 
 %
 % This relies on the function wData.m. 
+% 
 
 %% Preparations
 
