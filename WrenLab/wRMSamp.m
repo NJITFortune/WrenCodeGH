@@ -20,7 +20,7 @@ for j=1:length(msolosyls)
     for k=1:length(msolosyls{j})
         msoloAmp(end+1) = rms(in(j*2).duet(in(j*2).tim > in(j*2).syl(msolosyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(msolosyls{j}(k)).tim(2)));
         tmp = fftmachine(in(j*2).duet(in(j*2).tim > in(j*2).syl(msolosyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(msolosyls{j}(k)).tim(2)), in(j*2).Fs);
-        msoloFFTAmp(end+1) = sum(tmp.fftdata);
+        msoloFFTAmp(end+1) = sum(tmp.fftdata(tmp.fftfreq > 500 & tmp.fftfreq < 5000));
         msoloDur(end+1) = abs(in(j*2).syl(msolosyls{j}(k)).tim(2) - in(j*2).syl(msolosyls{j}(k)).tim(1));
     end
     
@@ -28,7 +28,7 @@ for j=1:length(msolosyls)
     for k=1:length(mduetsyls{j})
         mduetAmp(end+1) = rms(in(j*2).duet(in(j*2).tim > in(j*2).syl(mduetsyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(mduetsyls{j}(k)).tim(2)));
         tmp = fftmachine(in(j*2).duet(in(j*2).tim > in(j*2).syl(mduetsyls{j}(k)).tim(1) & in(j*2).tim < in(j*2).syl(mduetsyls{j}(k)).tim(2)), in(j*2).Fs);
-        mduetFFTAmp(end+1) = sum(tmp.fftdata);
+        mduetFFTAmp(end+1) = sum(tmp.fftdata(tmp.fftfreq > 500 & tmp.fftfreq < 5000));
         mduetDur(end+1) = abs(in(j*2).syl(mduetsyls{j}(k)).tim(2) - in(j*2).syl(mduetsyls{j}(k)).tim(1));
     end
             
