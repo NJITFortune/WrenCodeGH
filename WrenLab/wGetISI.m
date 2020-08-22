@@ -29,8 +29,8 @@ for j=1:length(fduetsyls)
 end
 
 
-fprintf('The mean and std for M2F ISI is  %1.3f %1.3f \n', mean(out.MF), std(out.MF));
-fprintf('The mean and std for F2M ISI is  %1.3f %1.3f \n', mean(out.FM), std(out.FM));
+fprintf('The mean and std for M2F ISI is  %1.5f %1.5f \n', mean(out.MF), std(out.MF));
+fprintf('The mean and std for F2M ISI is  %1.5f %1.5f \n', mean(out.FM), std(out.FM));
 [~, pVal, ~, ~] =  ttest2(out.FM, out.MF, 'vartype', 'unequal');
 fprintf('Are these different or not p = %1.5f \n', pVal);
 
