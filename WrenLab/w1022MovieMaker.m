@@ -123,7 +123,7 @@ specpos = -rango(1);
     rmp = 1/floor(len/2):1/floor(len/2):1;
 
     for kk = 1:4
-        fspike(:,kk) = sin(2*pi*(2500)*spiketim) * 0.4 ; % 1000 Hz for females
+        fspike(:,kk) = sin(2*pi*(2500)*spiketim) * 0.3 ; % 1000 Hz for females
             fspike(1:length(rmp),kk) = fspike(1:length(rmp),kk)' .* rmp;
             fspike(end+1-length(rmp):end,kk) = fspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
         mspike(:,kk) = sin(2*pi*(800)*spiketim) * 0.5 ; % 200 Hz for males
