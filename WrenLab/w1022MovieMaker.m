@@ -118,7 +118,7 @@ specpos = -rango(1);
 
 % Make the Fake Spikes
 
-    spiketim = 1/Fs:1/Fs:0.005; % 4 msec duration for our fake spikes
+    spiketim = 1/Fs:1/Fs:0.004; % 4 msec duration for our fake spikes
     len = length(spiketim);
     rmp = 1/floor(len/2):1/floor(len/2):1;
 
