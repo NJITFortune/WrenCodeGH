@@ -118,7 +118,7 @@ specpos = -rango(1);
 
 % Make the Fake Spikes
 
-    spiketim = 1/Fs:1/Fs:0.004; % 4 msec duration for our fake spikes
+    spiketim = 1/Fs:1/Fs:0.005; % 4 msec duration for our fake spikes
     len = length(spiketim);
     rmp = 1/floor(len/2):1/floor(len/2):1;
 
@@ -126,7 +126,7 @@ specpos = -rango(1);
         fspike(:,kk) = sin(2*pi*(3000)*spiketim) * 0.5 ; % 1000 Hz for females
             fspike(1:length(rmp),kk) = fspike(1:length(rmp),kk)' .* rmp;
             fspike(end+1-length(rmp):end,kk) = fspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
-        mspike(:,kk) = sin(2*pi*(1000)*spiketim) * 0.5 ; % 200 Hz for males
+        mspike(:,kk) = sin(2*pi*(800)*spiketim) * 0.5 ; % 200 Hz for males
             mspike(1:length(rmp),kk) = mspike(1:length(rmp),kk)' .* rmp;
             mspike(end+1-length(rmp):end,kk) = mspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
     end
