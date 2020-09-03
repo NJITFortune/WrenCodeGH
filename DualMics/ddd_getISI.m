@@ -1,4 +1,4 @@
-function out = dd_getISI(in)
+function out = ddd_getISI(in)
 % out = dd_getISI(in)
 % Where in is a structure for two-microphone recordings of wrens
 % This is not a general tool.
