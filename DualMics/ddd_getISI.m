@@ -21,7 +21,7 @@ out.Mfm = []; out.Mfmd = [];
 
 mm = []; ff = [];
 
-figure(1); clf; subplot(211); hold on; subplot(212); hold on;
+% figure(1); clf; subplot(211); hold on; subplot(212); hold on;
 
 %% Cycle through every duet in the structure
 for d = 1:length(in)
@@ -46,21 +46,21 @@ for d = 1:length(in)
             end
         end
             
-        figure(1);
+        % figure(1);
         
         if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49; % Male to Female
-            subplot(211); plot(in(d).distance+0.1, currFisi, 'k*');
+            %subplot(211); plot(in(d).distance+0.1, currFisi, 'k*');
                 out.Fmf(end+1) = currFisi;
                 out.Fmfd(end+1) = in(d).distance;
-            subplot(212); plot(in(d).distance, currMisi, 'bo');
+            %subplot(212); plot(in(d).distance, currMisi, 'bo');
                 out.Mmf(end+1) = currMisi;
                 out.Mmfd(end+1) = in(d).distance;
         end
         if in(d).fsyl(s).sexsyltype > 49 && in(d).fsyl(s+1).sexsyltype < 49; % Female to Male
-            subplot(211); plot(in(d).distance, currFisi, 'mo');
+            %subplot(211); plot(in(d).distance, currFisi, 'mo');
                 out.Ffm(end+1) = currFisi;
                 out.Ffmd(end+1) = in(d).distance;
-            subplot(212); plot(in(d).distance+0.1, currMisi, 'k*');
+            %subplot(212); plot(in(d).distance+0.1, currMisi, 'k*');
                 out.Mfm(end+1) = currMisi;
                 out.Mfmd(end+1) = in(d).distance;
         end        
