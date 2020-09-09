@@ -27,43 +27,43 @@ mm = []; ff = [];
 
 for d = 1:length(idx)
 
-    numsyls = length(in(d).fsyl);
+    numsyls = length(in(idx(d)).fsyl);
     
     % Cycle through every syllable except the last
     for s=1:numsyls-1
         
         % Get the ISI for the current syllable on each microphone
-        currFisi = in(d).fsyl(s+1).syltim(1) - in(d).fsyl(s).syltim(2);
-        currMisi = in(d).msyl(s+1).syltim(1) - in(d).msyl(s).syltim(2);
+        currFisi = in(idx(d)).fsyl(s+1).syltim(1) - in(idx(d)).fsyl(s).syltim(2);
+        currMisi = in(idx(d)).msyl(s+1).syltim(1) - in(idx(d)).msyl(s).syltim(2);
 
         if currFisi > 0.22; 
-            if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49;
+            if in(idx(d)).fsyl(s).sexsyltype < 49 && in(idx(d)).fsyl(s+1).sexsyltype > 49;
             ff(end+1) = d;
             end
         end
         if currMisi > 0.22; 
-            if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49;
+            if in(idx(d)).fsyl(s).sexsyltype < 49 && in(idx(d)).fsyl(s+1).sexsyltype > 49;
             mm(end+1) = d;
             end
         end
             
         % figure(1);
         
-        if in(d).fsyl(s).sexsyltype < 49 && in(d).fsyl(s+1).sexsyltype > 49; % Male to Female
-            %subplot(211); plot(in(d).distance+0.1, currFisi, 'k*');
+        if in(idx(d)).fsyl(s).sexsyltype < 49 && in(idx(d)).fsyl(s+1).sexsyltype > 49; % Male to Female
+            %subplot(211); plot(in(idx(d)).distance+0.1, currFisi, 'k*');
                 out.Fmf(end+1) = currFisi;
-                out.Fmfd(end+1) = in(d).distance;
-            %subplot(212); plot(in(d).distance, currMisi, 'bo');
+                out.Fmfd(end+1) = in(idx(d)).distance;
+            %subplot(212); plot(in(idx(d)).distance, currMisi, 'bo');
                 out.Mmf(end+1) = currMisi;
-                out.Mmfd(end+1) = in(d).distance;
+                out.Mmfd(end+1) = in(idx(d)).distance;
         end
-        if in(d).fsyl(s).sexsyltype > 49 && in(d).fsyl(s+1).sexsyltype < 49; % Female to Male
-            %subplot(211); plot(in(d).distance, currFisi, 'mo');
+        if in(idx(d)).fsyl(s).sexsyltype > 49 && in(idx(d)).fsyl(s+1).sexsyltype < 49; % Female to Male
+            %subplot(211); plot(in(idx(d)).distance, currFisi, 'mo');
                 out.Ffm(end+1) = currFisi;
-                out.Ffmd(end+1) = in(d).distance;
-            %subplot(212); plot(in(d).distance+0.1, currMisi, 'k*');
+                out.Ffmd(end+1) = in(idx(d)).distance;
+            %subplot(212); plot(in(idx(d)).distance+0.1, currMisi, 'k*');
                 out.Mfm(end+1) = currMisi;
-                out.Mfmd(end+1) = in(d).distance;
+                out.Mfmd(end+1) = in(idx(d)).distance;
         end        
                         
     end
@@ -120,29 +120,29 @@ M2M = []; M2Md = []; M2Mf = [];
 % Cycle through every duet in the structure
 for d = 1:length(in)
     
-    numsyls = length(in(d).fsyl);
+    numsyls = length(in(idx(d)).fsyl);
     
     % Cycle through every syllable except the last 2
     for s=1:numsyls-2
        
-        if in(d).fsyl(s).sexsyltype > 49 % We have a female syllable
-            if in(d).fsyl(s+1).sexsyltype < 49 % Next syllable is a male
-%                 nextfemsylidx = find(find(in(d).fsy(s).sexsyltype > 49) > s+1, 1); % Find next female syllable, if it exists
+        if in(idx(d)).fsyl(s).sexsyltype > 49 % We have a female syllable
+            if in(idx(d)).fsyl(s+1).sexsyltype < 49 % Next syllable is a male
+%                 nextfemsylidx = find(find(in(idx(d)).fsy(s).sexsyltype > 49) > s+1, 1); % Find next female syllable, if it exists
 %                 if nextfemsylidx > 1 % We found one
-                if in(d).fsyl(s+2).sexsyltype > 49 % The subsequent syllable is also a female
-                    F2F(end+1) = in(d).fsyl(s+2).syltim(1) - in(d).fsyl(s).syltim(2); 
-                    F2Fm(end+1) = in(d).fsyl(s+2).syltim(1) - in(d).fsyl(s).syltim(2) - in(d).fsyl(s+1).sylen;
-                    F2Fd(end+1) = in(d).distance;
+                if in(idx(d)).fsyl(s+2).sexsyltype > 49 % The subsequent syllable is also a female
+                    F2F(end+1) = in(idx(d)).fsyl(s+2).syltim(1) - in(idx(d)).fsyl(s).syltim(2); 
+                    F2Fm(end+1) = in(idx(d)).fsyl(s+2).syltim(1) - in(idx(d)).fsyl(s).syltim(2) - in(idx(d)).fsyl(s+1).sylen;
+                    F2Fd(end+1) = in(idx(d)).distance;
                 end
             end
         end
 
-        if in(d).msyl(s).sexsyltype < 49 % We have a male syllable
-            if in(d).msyl(s+1).sexsyltype > 49 % Next syllable is a female
-                if in(d).msyl(s+2).sexsyltype < 49 % The subsequent syllable is also a male syllable
-                    M2M(end+1) = in(d).msyl(s+2).syltim(1) - in(d).msyl(s).syltim(2); 
-                    M2Mf(end+1) = in(d).msyl(s+2).syltim(1) - in(d).msyl(s).syltim(2) - in(d).msyl(s+1).sylen; 
-                    M2Md(end+1) = in(d).distance;
+        if in(idx(d)).msyl(s).sexsyltype < 49 % We have a male syllable
+            if in(idx(d)).msyl(s+1).sexsyltype > 49 % Next syllable is a female
+                if in(idx(d)).msyl(s+2).sexsyltype < 49 % The subsequent syllable is also a male syllable
+                    M2M(end+1) = in(idx(d)).msyl(s+2).syltim(1) - in(idx(d)).msyl(s).syltim(2); 
+                    M2Mf(end+1) = in(idx(d)).msyl(s+2).syltim(1) - in(idx(d)).msyl(s).syltim(2) - in(idx(d)).msyl(s+1).sylen; 
+                    M2Md(end+1) = in(idx(d)).distance;
                 end
             end
         end  
