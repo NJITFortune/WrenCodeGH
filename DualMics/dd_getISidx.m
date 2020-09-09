@@ -118,7 +118,7 @@ F2F = []; F2Fd = []; F2Fm = [];
 M2M = []; M2Md = []; M2Mf = [];
 
 % Cycle through every duet in the structure
-for d = 1:length(in)
+for d = 1:length(idx)
     
     numsyls = length(in(idx(d)).fsyl);
     
