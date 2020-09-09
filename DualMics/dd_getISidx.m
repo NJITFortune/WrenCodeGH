@@ -1,4 +1,4 @@
-function out = ddd_getISI(in, idx)
+function out = dd_getISidx(in, idx)
 % out = dd_getISI(in)
 % Where in is a structure for two-microphone recordings of wrens
 % This is not a general tool.
@@ -25,7 +25,7 @@ mm = []; ff = [];
 
 %% Cycle through every duet in the structure
 
-for d = 1:length(in)
+for d = 1:length(idx)
 
     numsyls = length(in(d).fsyl);
     
