@@ -7,3 +7,7 @@ subplot(211);
     yarg = flipud(gray);
     colormap(yarg);
     ylim([0 5000]);
+    xlim([0.6 5.6]);
+    caxis([-30 35]);
+    
+ for j=1:length(dd(12).sy
