@@ -18,15 +18,15 @@ midx = find([dd(12).fsyl.sexsyltype] < 50);
  for j=1:length(fidx)
     
      plot([dd(12).fsyl(fidx(j)).syltim(1), dd(12).fsyl(fidx(j)).syltim(2)], [200, 200], 'm-', 'LineWidth', 4);
-     plot([dd(12).fsyl(fidx(j)).syltim(1), dd(12).fsyl(fidx(j)).syltim(1)], [200, 4300], 'm-', 'LineWidth', 0.5);
-     plot([dd(12).fsyl(fidx(j)).syltim(2), dd(12).fsyl(fidx(j)).syltim(2)], [200, 4300], 'm-', 'LineWidth', 0.5);
+     %plot([dd(12).fsyl(fidx(j)).syltim(1), dd(12).fsyl(fidx(j)).syltim(1)], [200, 4300], 'm-', 'LineWidth', 0.5);
+     %plot([dd(12).fsyl(fidx(j)).syltim(2), dd(12).fsyl(fidx(j)).syltim(2)], [200, 4300], 'm-', 'LineWidth', 0.5);
      
  end
  
   for j=1:length(midx)
     
      plot([dd(12).fsyl(midx(j)).syltim(1), dd(12).fsyl(midx(j)).syltim(2)], [200, 200], 'b-', 'LineWidth', 4);
-     plot([dd(12).fsyl(midx(j)).syltim(1), dd(12).fsyl(midx(j)).syltim(1)], [200, 4300], 'b-', 'LineWidth', 0.5);
-     plot([dd(12).fsyl(midx(j)).syltim(2), dd(12).fsyl(midx(j)).syltim(2)], [200, 4300], 'b-', 'LineWidth', 0.5);
+     %plot([dd(12).fsyl(midx(j)).syltim(1), dd(12).fsyl(midx(j)).syltim(1)], [200, 4300], 'b-', 'LineWidth', 0.5);
+     %plot([dd(12).fsyl(midx(j)).syltim(2), dd(12).fsyl(midx(j)).syltim(2)], [200, 4300], 'b-', 'LineWidth', 0.5);
      
  end
