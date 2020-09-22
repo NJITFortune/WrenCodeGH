@@ -4,5 +4,6 @@
 figure(1); clf
 subplot(211); 
     specgram(dd(12).femMic, 1024, dd(12).Fs, [], 1000);
-    colormap('gray');
+    yarg = flipud(gray);
+    colormap(yarg);
     
