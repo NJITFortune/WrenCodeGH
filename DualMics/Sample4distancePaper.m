@@ -10,4 +10,10 @@ subplot(211);
     xlim([0.6 5.6]);
     caxis([-30 35]);
     
- for j=1:length(dd(12).sy
+hold on;
+    
+ for j=1:length(dd(12).fsyl)
+    
+     plot([dd(12).fsyl(j).syltim(1), dd(12).fsyl(j).syltim(2)], [100, 100], 'm-', 'LineWidth', 8);
+     
+ end
