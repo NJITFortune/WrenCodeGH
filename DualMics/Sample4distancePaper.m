@@ -12,7 +12,7 @@ subplot(211);
     
 hold on;
     
-fidx = find(dd(12).fsylsexsyltype
+fidx = find([dd(12).fsyl.sexsyltype] > 50)
 
  for j=1:length(dd(12).fsyl)
     
