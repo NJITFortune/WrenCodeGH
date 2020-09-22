@@ -12,10 +12,16 @@ subplot(211);
     
 hold on;
     
-fidx = find([dd(12).fsyl.sexsyltype] > 50)
+fidx = find([dd(12).fsyl.sexsyltype] > 50);
+midx = find([dd(12).fsyl.sexsyltype] < 50);
 
- for j=1:length(dd(12).fsyl)
+ for j=1:length(fidx)
     
-     plot([dd(12).fsyl(j).syltim(1), dd(12).fsyl(j).syltim(2)], [100, 100], 'm-', 'LineWidth', 4);
+     plot([dd(12).fsyl(fidx(j)).syltim(1), dd(12).fsyl(fidx(j)).syltim(2)], [100, 100], 'm-', 'LineWidth', 4);
+     
+ end
+  for j=1:length(midx)
+    
+     plot([dd(12).fsyl(midx(j)).syltim(1), dd(12).fsyl(midx(j)).syltim(2)], [100, 100], 'm-', 'LineWidth', 4);
      
  end
