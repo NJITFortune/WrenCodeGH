@@ -6,7 +6,7 @@ subplot(211);
     specgram(filtfilt(b,a,dd(12).femMic), 1024, dd(12).Fs, [], 1000);
     yarg = flipud(gray);
     colormap(yarg);
-    ylim([250 4500]);
+    ylim([0 4500]);
     xlim([0.6 5.6]);
     caxis([-30 35]);
     
