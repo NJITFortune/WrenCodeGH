@@ -14,10 +14,10 @@ function out = dd_getISidx(in, idx)
 
 mmfcnt = 0; mfmcnt = 0; fmfcnt = 0; ffmcnt = 0;
 
-out.Fmf = []; out.Fmfd = [];
-out.Ffm = []; out.Ffmd = [];
-out.Mmf = []; out.Mmfd = [];
-out.Mfm = []; out.Mfmd = [];
+out.Fmf = []; out.Fmfd = []; out.Fmfpredur = [];
+out.Ffm = []; out.Ffmd = []; out.Ffmpredur = [];
+out.Mmf = []; out.Mmfd = []; out.Mmfpredur = [];
+out.Mfm = []; out.Mfmd = []; out.Mfmpredur = [];
 
 mm = []; ff = [];
 
