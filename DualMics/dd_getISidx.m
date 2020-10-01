@@ -53,19 +53,21 @@ for d = 1:length(idx)
             %subplot(211); plot(in(idx(d)).distance+0.1, currFisi, 'k*');
                 out.Fmf(end+1) = currFisi;
                 out.Fmfd(end+1) = in(idx(d)).distance;
-                out.Fmfpredur(end+1) = in(idx(d)).sylen(s);
+                out.Fmfpredur(end+1) = in(idx(d)).msyl(s).sylen;
             %subplot(212); plot(in(idx(d)).distance, currMisi, 'bo');
                 out.Mmf(end+1) = currMisi;
                 out.Mmfd(end+1) = in(idx(d)).distance;
-                out.Mmfpredur(end+1) = in(idx(d)).sylen(s);
+                out.Mmfpredur(end+1) = in(idx(d)).msyl(s).sylen;
         end
         if in(idx(d)).fsyl(s).sexsyltype > 49 && in(idx(d)).fsyl(s+1).sexsyltype < 49 % Female to Male
             %subplot(211); plot(in(idx(d)).distance, currFisi, 'mo');
                 out.Ffm(end+1) = currFisi;
                 out.Ffmd(end+1) = in(idx(d)).distance;
+                out.Ffmpredur(end+1) = in(idx(d)).fsyl(s).sylen;
             %subplot(212); plot(in(idx(d)).distance+0.1, currMisi, 'k*');
                 out.Mfm(end+1) = currMisi;
                 out.Mfmd(end+1) = in(idx(d)).distance;
+                out.Mfmpredur(end+1) = in(idx(d)).fsyl(s).sylen;
         end        
                         
     end
