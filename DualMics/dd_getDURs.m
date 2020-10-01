@@ -5,7 +5,7 @@ function out = dd_getDURs(in)
 fsyldurs = [];
 msyldurs = [];
 
-for d = 1:length(idx)
+for d = 1:length(in)
     
     numsyls = length(in(idx(d)).fsyl);
     
