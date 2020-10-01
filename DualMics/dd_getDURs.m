@@ -15,8 +15,8 @@ for d = 1:length(in)
         if in(d).fsyl(s).sexsyltype < 49 
             fsyldurs(end+1) = in(d).fsyl(s).sylen;
         end
-        if in(d).msyl(s).sexsyltype > 49 
-            msyldurs(end+1) = in(d).msyl(s).sylen;
+        if in(d).fsyl(s).sexsyltype > 49 
+            msyldurs(end+1) = in(d).fsyl(s).sylen;
         end
         
     end
