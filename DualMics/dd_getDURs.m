@@ -16,7 +16,7 @@ for d = 1:length(in)
             fsyldurs(end+1) = in(d).msyl(s).sylen;
         end
   
-        if in(d).fsyl(s).sexsyltype > 49 
+        if in(d).fsyl(s).sexsyltype > 49 % Female syllable
             msyldurs(end+1) = in(d).msyl(s).sylen;
         end
         
