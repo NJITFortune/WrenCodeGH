@@ -37,12 +37,12 @@ for d = 1:length(idx)
         currMisi = in(idx(d)).msyl(s+1).syltim(1) - in(idx(d)).msyl(s).syltim(2);
 
         if currFisi > 0.22 
-            if in(idx(d)).fsyl(s).sexsyltype < 49 && in(idx(d)).fsyl(s+1).sexsyltype > 49
+            if in(idx(d)).fsyl(s).sexsyltype < 49 && in(idx(d)).fsyl(s+1).sexsyltype > 49 % MF
             ff(end+1) = d;
             end
         end
         if currMisi > 0.22 
-            if in(idx(d)).fsyl(s).sexsyltype < 49 && in(idx(d)).fsyl(s+1).sexsyltype > 49
+            if in(idx(d)).fsyl(s).sexsyltype < 49 && in(idx(d)).fsyl(s+1).sexsyltype > 49 % MF
             mm(end+1) = d;
             end
         end
