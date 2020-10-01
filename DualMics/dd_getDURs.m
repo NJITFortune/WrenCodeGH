@@ -12,12 +12,12 @@ for d = 1:length(in)
     % Cycle through every syllable except the last
     for s=1:numsyls
 
-        if in(d).msyl(s).sexsyltype < 49 
-            fsyldurs(end+1) = in(d).msyl(s).sylen;
+        if in(d).msyl(s).sexsyltype < 49 % Male Syllable
+            msyldurs(end+1) = in(d).msyl(s).sylen;
         end
   
         if in(d).fsyl(s).sexsyltype > 49 % Female syllable
-            msyldurs(end+1) = in(d).msyl(s).sylen;
+            fsyldurs(end+1) = in(d).fsyl(s).sylen;
         end
         
     end
