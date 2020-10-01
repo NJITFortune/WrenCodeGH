@@ -7,16 +7,16 @@ msyldurs = [];
 
 for d = 1:length(in)
     
-    numsyls = length(in(idx(d)).fsyl);
+    numsyls = length(in(d).fsyl);
     
     % Cycle through every syllable except the last
     for s=1:numsyls
 
-        if in(idx(d)).fsyl(s).sexsyltype < 49 
-            fsyldurs(end+1) = in(idx(d)).fsyl(s).sylen;
+        if in(d).fsyl(s).sexsyltype < 49 
+            fsyldurs(end+1) = in(d).fsyl(s).sylen;
         end
-        if in(idx(d)).msyl(s).sexsyltype > 49 
-            msyldurs(end+1) = in(idx(d)).msyl(s).sylen;
+        if in(d).msyl(s).sexsyltype > 49 
+            msyldurs(end+1) = in(d).msyl(s).sylen;
         end
         
     end
