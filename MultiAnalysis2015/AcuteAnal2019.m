@@ -12,12 +12,13 @@
 % intersect(intersect([idx.Road], [idx.F]), find([idx.stimidx] == 1))
 
 %% Get max Z for each neuron
-fstd(1125).Zs = []; 
-mstd(1125).Zs = [];
+    fstd(length(idx.Funit)).Zs = []; % Preallocation for speed
+    mstd(length(idx.Munit)).Zs = []; % Preallocation for speed
 
 % Females
 fneuronmaxZ = zeros(1,length(idx.Funit));
 fneuronminZ = ones(1,length(idx.Funit))*10;
+
     for j=1:length(idx.Funit) 
         for k=1:length(idx.Funit{j})
            fneuronmaxZ(j) = max([fneuronmaxZ(j), w(idx.Funit{j}(k)).Z]);
@@ -29,6 +30,7 @@ fneuronminZ = ones(1,length(idx.Funit))*10;
     % Males
 mneuronmaxZ = zeros(1,length(idx.Munit));
 mneuronminZ = ones(1,length(idx.Munit))*10;
+
     for j=1:length(idx.Munit)
         for k=1:length(idx.Munit{j})
            mneuronmaxZ(j) = max([mneuronmaxZ(j), w(idx.Munit{j}(k)).Z]);
@@ -42,6 +44,7 @@ mneuronminZ = ones(1,length(idx.Munit))*10;
 % value across stimuli.  Let's eliminate those as non-responders. What is
 % cool is that the stronger the max Z, the wider the range of Zs to
 % different stimuli, suggesting selectivity!
+
 goodMaleneurons = find(mneuronmaxZ-mneuronminZ > 0.1);
 goodFemaleneurons = find(fneuronmaxZ-fneuronminZ > 0.1);
 
