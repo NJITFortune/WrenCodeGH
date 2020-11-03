@@ -12,7 +12,8 @@
 % intersect(intersect([idx.Road], [idx.F]), find([idx.stimidx] == 1))
 
 %% Get max Z for each neuron
-fstd(1000).Zs = []; mstd(1000).Zs = [];
+fstd(1125).Zs = []; 
+mstd(1125).Zs = [];
 
 % Females
 fneuronmaxZ = zeros(1,length(idx.Funit));
@@ -24,6 +25,8 @@ fneuronminZ = ones(1,length(idx.Funit))*10;
            fstd(j).Zs(end+1) = w(idx.Funit{j}(k)).Z;
         end
     end
+    
+    % Males
 mneuronmaxZ = zeros(1,length(idx.Munit));
 mneuronminZ = ones(1,length(idx.Munit))*10;
     for j=1:length(idx.Munit)
