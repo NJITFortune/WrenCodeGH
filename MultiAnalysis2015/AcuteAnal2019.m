@@ -48,7 +48,7 @@ mneuronminZ = ones(1,length(idx.Munit))*10;
 goodMaleneurons = find(mneuronmaxZ-mneuronminZ > 0.1);
 goodFemaleneurons = find(fneuronmaxZ-fneuronminZ > 0.1);
 
-figure(1); clf; hold on;
+figure(1); clf; title('Max versus STD Zs'); hold on;
 for j=1:length(goodFemaleneurons)
     dotsize = 1*length(idx.Funit{goodFemaleneurons(j)});
 %    plot(fneuronmaxZ(goodFemaleneurons(j)), fneuronmaxZ(goodFemaleneurons(j))-fneuronminZ(goodFemaleneurons(j)), 'mo', 'MarkerSize', dotsize); 
