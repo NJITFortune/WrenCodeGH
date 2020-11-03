@@ -253,5 +253,6 @@ sig1 = w(127).hst.spers / max(w(127).hst.spers); sig1 = sig1-mean(sig1);
 sig2 = w(149).hst.spers / max(w(149).hst.spers); sig2 = sig2-mean(sig2);
 hold on; plot(xcorr(sig1, sig2), 'k');
 
-figure(7); clf; plot(w(127).hst.tim, w(127).hst.spers, 'b');
-hold on; plot(w(149).hst.tim, w(149).hst.spers, 'm')
+figure(7); clf; hold on; 
+    plot(w(127).hst.tim, w(127).hst.spers, 'b');
+    plot(w(149).hst.tim, w(149).hst.spers, 'm')
