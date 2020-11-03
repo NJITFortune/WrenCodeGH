@@ -124,8 +124,8 @@ xlim([-0.5, 3]); ylim([-0.5 3]);
 plot([-0.5, 3], [-0.5, 3], 'k-');
 % SfN2019-Zcorrelation.eps
 
-figure(3); clf; hold on;
-for j=1:length(allZs); plot(allZs(j,1), allZs(j,2), 'k*'); end
+figure(3); clf; hold on; title('Correlation between Female and Male Zs');
+for j=1:length(allZs); plot(allZs(j,1), allZs(j,2), 'ko'); end
 xlim([-0.5, 3]); ylim([-0.5 3]);
 
 mdl = fitlm(allZs(:,1), allZs(:,2))
