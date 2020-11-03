@@ -103,7 +103,7 @@ for j = idx.Lucky % For every Lucky entry
     end    
 end
 
-figure(2); clf; 
+figure(2); clf; title('Correlation between Female and Male Zs');
 xlabel('Male Z');
 ylabel('Female Z')
 hold on;
