@@ -50,12 +50,12 @@ goodFemaleneurons = find(fneuronmaxZ-fneuronminZ > 0.1);
 
 figure(1); clf; title('Max versus STD Zs'); hold on;
 for j=1:length(goodFemaleneurons)
-    dotsize = 1*length(idx.Funit{goodFemaleneurons(j)});
+    dotsize = 2*length(idx.Funit{goodFemaleneurons(j)});
 %    plot(fneuronmaxZ(goodFemaleneurons(j)), fneuronmaxZ(goodFemaleneurons(j))-fneuronminZ(goodFemaleneurons(j)), 'mo', 'MarkerSize', dotsize); 
     plot(fneuronmaxZ(goodFemaleneurons(j)), std(fstd(goodFemaleneurons(j)).Zs), 'mo', 'MarkerSize', dotsize); 
 end
 for j=1:length(goodMaleneurons)
-    dotsize = 1*length(idx.Funit{goodMaleneurons(j)});
+    dotsize = 2*length(idx.Funit{goodMaleneurons(j)});
 %    plot(mneuronmaxZ(goodMaleneurons(j)), mneuronmaxZ(goodMaleneurons(j))-mneuronminZ(goodMaleneurons(j)), 'bd', 'MarkerSize', dotsize);
     plot(mneuronmaxZ(goodMaleneurons(j)), std(mstd(goodMaleneurons(j)).Zs), 'bd', 'MarkerSize', dotsize); 
 end
