@@ -255,8 +255,8 @@ hold on; plot(xcorr(sig1, sig2), 'k');
 
 figure(7); clf; 
     subplot(211); hold on; 
-    plot(w(10).hst.tim, w(10).hst.spers, 'b');
-    plot(w(64).hst.tim, w(64).hst.spers, 'm')
+    plot(w(10).hst.tim, w(10).hst.spers/max(w(10).hst.spers), 'b');
+    plot(w(64).hst.tim, w(64).hst.spers/max(w(64).hst.spers), 'm')
     subplot(212); hold on; 
     plot(w(127).hst.tim, w(127).hst.spers, 'b');
     plot(w(149).hst.tim, w(149).hst.spers, 'm')
