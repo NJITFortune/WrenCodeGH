@@ -50,10 +50,22 @@ if nargin == 4; pad = padding; end
     sumdat.mSoloAuto.SPS = []; sumdat.fSoloAuto.SPS = [];
     sumdat.mDuetAuto.SPS = []; sumdat.fDuetAuto.SPS = [];
 
+% Keep bird indices
+sumdat.fSoloHetero.pairidx = [];    sumdat.mSoloHetero.pairidx = [];    
+sumdat.fDuetHetero.pairidx = [];    sumdat.mDuetHetero.pairidx = [];    
+sumdat.fSoloAuto.pairidx = [];      sumdat.mSoloAuto.pairidx = [];    
+sumdat.fDuetAuto.pairidx = [];      sumdat.mDuetAuto.pairidx = [];    
+    
 % LEGACY: Extract appropriate wData references from birdlist
 
     PairList = birdlist{whichlist}(2:2:end)/2; % User chooses which data to analyze
 
+    % For the paper, we used: 
+    % birdlist{2} Only DUETS with Female Solo Syllables
+        % femaleSoloAuto and maleSoloHetero and femaleDuetAuto and maleDuetHetero
+    % birdlist{4} Only DUETS with Male Solo Syllables
+        % maleSoloAuto and femaleSoloHetero and maleDuetAuto and femaleDuetHetero
+        
 %% Loop to calculate SPS and RS values for each pair of wrens   
 
     for curpair = PairList
@@ -69,10 +81,12 @@ if nargin == 4; pad = padding; end
             sumdat.fSoloHetero.rsNorm(end+1) = out(curpair).fSoloHetero(kk).rsNorm;
             sumdat.fSoloHetero.rsRaw(end+1) = out(curpair).fSoloHetero(kk).rsRaw;
             sumdat.fSoloHetero.SPS(end+1) = out(curpair).fSoloHetero(kk).spikerate;
+                sumdat.fSoloHetero.pairidx(end+1) = curpair;            
             sumdat.mSoloAuto.rsNorm(end+1) = out(curpair).mSoloAuto(kk).rsNorm;
             sumdat.mSoloAuto.rsRaw(end+1) = out(curpair).mSoloAuto(kk).rsRaw;
             sumdat.mSoloAuto.SPS(end+1) = out(curpair).mSoloAuto(kk).spikerate;
-        end
+                 sumdat.mSoloAuto.pairidx(end+1) = curpair;            
+       end
     end
     
     % Solo syllables FEMALE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -85,9 +99,11 @@ if nargin == 4; pad = padding; end
             sumdat.mSoloHetero.rsNorm(end+1) = out(curpair).mSoloHetero(kk).rsNorm;
             sumdat.mSoloHetero.rsRaw(end+1) = out(curpair).mSoloHetero(kk).rsRaw;
             sumdat.mSoloHetero.SPS(end+1) = out(curpair).mSoloHetero(kk).spikerate;
+                sumdat.mSoloHetero.pairidx(end+1) = curpair;            
             sumdat.fSoloAuto.rsNorm(end+1) = out(curpair).fSoloAuto(kk).rsNorm;
             sumdat.fSoloAuto.rsRaw(end+1) = out(curpair).fSoloAuto(kk).rsRaw;
             sumdat.fSoloAuto.SPS(end+1) = out(curpair).fSoloAuto(kk).spikerate;
+                sumdat.fSoloAuto.pairidx(end+1) = curpair;            
         end
     end
     
@@ -101,9 +117,11 @@ if nargin == 4; pad = padding; end
             sumdat.mDuetAuto.rsNorm(end+1) = out(curpair).mDuetAuto(kk).rsNorm; 
             sumdat.mDuetAuto.rsRaw(end+1) = out(curpair).mDuetAuto(kk).rsRaw;
             sumdat.mDuetAuto.SPS(end+1) = out(curpair).mDuetAuto(kk).spikerate;
+                sumdat.mDuetAuto.pairidx(end+1) = curpair;
             sumdat.fDuetHetero.rsNorm(end+1) = out(curpair).fDuetHetero(kk).rsNorm;
             sumdat.fDuetHetero.rsRaw(end+1) = out(curpair).fDuetHetero(kk).rsRaw;
             sumdat.fDuetHetero.SPS(end+1) = out(curpair).fDuetHetero(kk).spikerate;
+                sumdat.fDuetHetero.pairidx(end+1) = curpair;
         end
     end 
     
@@ -117,9 +135,11 @@ if nargin == 4; pad = padding; end
             sumdat.mDuetHetero.rsNorm(end+1) = out(curpair).mDuetHetero(kk).rsNorm;
             sumdat.mDuetHetero.rsRaw(end+1) = out(curpair).mDuetHetero(kk).rsRaw;
             sumdat.mDuetHetero.SPS(end+1) = out(curpair).mDuetHetero(kk).spikerate;
+                sumdat.mDuetHetero.pairidx(end+1) = curpair;
             sumdat.fDuetAuto.rsNorm(end+1) = out(curpair).fDuetAuto(kk).rsNorm;
             sumdat.fDuetAuto.rsRaw(end+1) = out(curpair).fDuetAuto(kk).rsRaw;
             sumdat.fDuetAuto.SPS(end+1) = out(curpair).fDuetAuto(kk).spikerate;
+                sumdat.fDuetAuto.pairidx(end+1) = curpair;
         end
     end
 
