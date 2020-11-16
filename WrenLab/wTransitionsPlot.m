@@ -285,7 +285,7 @@ typeofplot = 2; % 1 is SPS, 2 is rawRS, 3 is normRS
 if analyzethis(jj) == 2 % Female data
     
 %% AWAKE PLOTS 
-figure(1); clf; figure('Name', 'Transition plot, AWAKE');
+figure(1); clf; 
     
 axf(1) = subplot(222); hold on; title('Solo Female Chronic'); 
     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
@@ -301,11 +301,11 @@ axf(2) = subplot(224); hold on; title('M2F Chronic');
     % Female
         plotmasteryoda(msFHAC, bins4plot, typeofplot, 2);
 
-linkaxes(axf, 'xy'); subplot(222); ylim([-5 38]);  xlim([-widow, widow]);
+linkaxes(axf, 'xy'); figure(1); subplot(222); ylim([-5 38]);  xlim([-widow, widow]);
 
 
 %% URETHANE PLOTS (not used in manuscript)
-figure('Name', 'Transition plot, URETHANE'); clf;
+figure(2); clf;
     
 axxf(1) = subplot(222); hold on; title('Solo Female Acute'); 
     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
@@ -321,13 +321,13 @@ axxf(2) = subplot(224); hold on; title('M2F Acute');
     % Female
         plotmasteryoda(msFHAU, bins4plot, typeofplot, 2);
 
-linkaxes(axxf, 'xy'); subplot(222); ylim([-10 50]); xlim([-widow, widow]);
+linkaxes(axxf, 'xy'); figure(2); subplot(222); ylim([-10 50]); xlim([-widow, widow]);
 
 end
 
 if analyzethis(jj) == 4 % Male data
     
-figure('Name', 'Transition plot, AWAKE');
+figure(1);
 
 axm(1) = subplot(221); hold on; title('Solo Male Chronic'); 
     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
@@ -343,9 +343,9 @@ axm(2) = subplot(223); hold on; title('F2M Chronic');
     % Male
         plotmasteryoda(msMHAC, bins4plot, typeofplot, 1);
         
-linkaxes(axm, 'xy'); subplot(223); ylim([-10 78]);  xlim([-widow, widow]);
+linkaxes(axm, 'xy'); figure(1); subplot(223); ylim([-10 78]);  xlim([-widow, widow]);
 
-figure('Name', 'Transition plot, URETHANE');
+figure(2);
 
 axxm(1) = subplot(221); hold on; title('Solo Male Acute'); 
     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
@@ -361,7 +361,7 @@ axxm(2) = subplot(223); hold on; title('F2M Acute');
     % Male
         plotmasteryoda(msMHAU, bins4plot, typeofplot, 1);
         
-linkaxes(axxm, 'xy'); subplot(223); ylim([0 50]);  xlim([-widow, widow]);
+linkaxes(axxm, 'xy'); figure(2); subplot(223); ylim([0 50]);  xlim([-widow, widow]);
 
 end
 
