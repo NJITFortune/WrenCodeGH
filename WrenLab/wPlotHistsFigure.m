@@ -52,16 +52,16 @@ repnum = 30;
 
 idx = 7; % Male j160815  %% IDX values for males are ODD
 
-figure(5); clf; title('Male j160815 idx=7'); set(gcf,'renderer','Painters');
+figure('Name', 'Male j160815 idx=7 AWAKE'); clf; set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, 4, 1);
-figure(6); clf; title('Male j160815 idx=7'); set(gcf,'renderer','Painters');
+figure('Name', 'Male j160815 idx=7 URETHANE'); clf; set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
 idx = 8; % Female j160815 %% IDX values for females are EVEN, follow male idx
 
-figure(7); clf; title('Female j160815 idx=8'); set(gcf,'renderer','Painters');
+figure('Name', 'Female j160815 idx=8 AWAKE'); clf; set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, 4, 1);
-figure(8); clf; title('Female j160815 idx=8'); set(gcf,'renderer','Painters');
+figure('Name', 'Female j160815 idx=8 URETHANE'); clf; set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
 
