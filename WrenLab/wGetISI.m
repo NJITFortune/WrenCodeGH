@@ -1,6 +1,7 @@
 function out = wGetISI(in)
 % Usage out = wGetISI(in)
-
+% load 
+% This provid
 % Get the list of duet syllables
 [~, mduetsyls, ~, fduetsyls, ~, ~] = wData;
 
