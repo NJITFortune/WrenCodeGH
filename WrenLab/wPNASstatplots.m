@@ -205,24 +205,24 @@ hold on; title('RS Spikes/Second');
 
 % For Normalized RS data
 
-    medianNorm(1) = mean(sumdat.mDuetHetero.rsNorm); s(1) = std(sumdat.mDuetHetero.rsNorm);
-    medianNorm(2) = mean(sumdat.mSoloHetero.rsNorm); s(2) = std(sumdat.mSoloHetero.rsNorm);
-    medianNorm(3) = mean(sumdat.fDuetHetero.rsNorm); s(3) = std(sumdat.fDuetHetero.rsNorm);
-    medianNorm(4) = mean(sumdat.fSoloHetero.rsNorm); s(4) = std(sumdat.fSoloHetero.rsNorm);
+    medianNorm(1) = median(sumdat.mDuetHetero.rsNorm); s(1) = std(sumdat.mDuetHetero.rsNorm);
+    medianNorm(2) = median(sumdat.mSoloHetero.rsNorm); s(2) = std(sumdat.mSoloHetero.rsNorm);
+    medianNorm(3) = median(sumdat.fDuetHetero.rsNorm); s(3) = std(sumdat.fDuetHetero.rsNorm);
+    medianNorm(4) = median(sumdat.fSoloHetero.rsNorm); s(4) = std(sumdat.fSoloHetero.rsNorm);
 
 % For raw RS data
 
-    medianRaw(1) = mean(sumdat.mDuetHetero.rsRaw); sraw(1) = std(sumdat.mDuetHetero.rsRaw);
-    medianRaw(2) = mean(sumdat.mSoloHetero.rsRaw); sraw(2) = std(sumdat.mSoloHetero.rsRaw);
-    medianRaw(3) = mean(sumdat.fDuetHetero.rsRaw); sraw(3) = std(sumdat.fDuetHetero.rsRaw);
-    medianRaw(4) = mean(sumdat.fSoloHetero.rsRaw); sraw(4) = std(sumdat.fSoloHetero.rsRaw);
+    medianRaw(1) = median(sumdat.mDuetHetero.rsRaw); sraw(1) = std(sumdat.mDuetHetero.rsRaw);
+    medianRaw(2) = median(sumdat.mSoloHetero.rsRaw); sraw(2) = std(sumdat.mSoloHetero.rsRaw);
+    medianRaw(3) = median(sumdat.fDuetHetero.rsRaw); sraw(3) = std(sumdat.fDuetHetero.rsRaw);
+    medianRaw(4) = median(sumdat.fSoloHetero.rsRaw); sraw(4) = std(sumdat.fSoloHetero.rsRaw);
 
 % For SPS data
     
-    medianSPS(1) = mean(sumdat.mDuetHetero.SPS); sps(1) = std(sumdat.mDuetHetero.SPS);
-    medianSPS(2) = mean(sumdat.mSoloHetero.SPS); sps(2) = std(sumdat.mSoloHetero.SPS);
+    medianSPS(1) = median(sumdat.mDuetHetero.SPS); sps(1) = std(sumdat.mDuetHetero.SPS);
+    medianSPS(2) = median(sumdat.mSoloHetero.SPS); sps(2) = std(sumdat.mSoloHetero.SPS);
     medianSPS(3) = mean(sumdat.fDuetHetero.SPS); sps(3) = std(sumdat.fDuetHetero.SPS);
-    medianSPS(4) = mean(sumdat.fSoloHetero.SPS); sps(4) = std(sumdat.fSoloHetero.SPS);
+    medianSPS(4) = median(sumdat.fSoloHetero.SPS); sps(4) = std(sumdat.fSoloHetero.SPS);
     
 figure('name', 'Heterogenous'); % RAW RS HETEROGENOUS PLOTS
 hold on; title('Hetero RS');
