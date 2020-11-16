@@ -67,7 +67,7 @@ figure(27); set(gcf,'renderer','Painters');
     ylim([500 4500]); caxis([-20 30]);
     drawnow;
 
-%% Plotting Functions
+%% Plotting Function
 
     function MakePlot(d, w, b, r, cORa) 
         
