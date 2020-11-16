@@ -18,10 +18,11 @@ function [out, sumdat, stts] = wPNASstatplots(in, whichlist, uc, padding)
 %
 % This relies on the function wData.m. 
 % 
-% URETHANE COMMANDS:
+% URETHANE COMMANDS: (Generate figure 4 data)
 % [out, sumdat, stts] = wPNASstatplots(w, 2, 1, 0)
 % [out, sumdat, stts] = wPNASstatplots(w, 4, 1, 0)
-% AWAKE COMMANDS:
+%
+% AWAKE COMMANDS: (Generate figure 3E and 3F data)
 % [out, sumdat, stts] = wPNASstatplots(w, 2, 2)
 % [out, sumdat, stts] = wPNASstatplots(w, 4, 2)
 
