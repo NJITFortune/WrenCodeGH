@@ -4,7 +4,8 @@ function wPlotHistsFigure(in)
 % publication.
 
 % We are using the examples M17 (indices 1-2) and j160815 (indices 7-8).
-% These are the prettiest examples!
+% These are the prettiest examples! 
+% Figure 27 has the two spectrograms
 
 % You can modify this script to plot any of the data by changing the
 % idx values below.
@@ -24,17 +25,18 @@ idx = 1; % Male M17  %% IDX values for males are ODD
 
 figure('Name', 'Male M17 idx=1 AWAKE'); clf; set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, 4, 1);
-figure(2); clf; title('Male M17 idx=1'); set(gcf,'renderer','Painters');
+figure('Name', 'Male M17 idx=1 URETHANE' ); clf; set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
 idx = 2; % Female M17 %% IDX values for females are EVEN, follow male idx
 
-figure(3); clf; title('Female M17 idx=2'); set(gcf,'renderer','Painters');
+figure('Name', 'Female M17 idx=2 AWAKE'); clf; set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, 4, 1);
-figure(4); clf; title('Female M17 idx=2'); set(gcf,'renderer','Painters');
+figure('Name', 'Female M17 idx=2 URETHANE'); clf; set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
-figure(27); clf;
+    
+figure(27); clf; 
     subplot(211); 
     specgram(in(idx).duet(in(idx).tim > limits(1) & in(idx).tim < limits(2)), 512, in(idx).Fs, [], 500);
     colormap(flipud(gray));
