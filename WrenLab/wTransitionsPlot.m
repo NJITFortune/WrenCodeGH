@@ -20,7 +20,7 @@ function [M, F] = wTransitionsPlot(in, wwindow)
 
 [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon, birdlist] = wData;
 
-analyzethis = [2, 4]; % The birdlist groups to analyze
+analyzethis = [2, 4]; % The birdlist groups to analyze (2 is duets with female solo syllables and 4 with male solo syllables)
 
 %% Cycle for each bird group for transition plots
 for jj=1:length(analyzethis)
