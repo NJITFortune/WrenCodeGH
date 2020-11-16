@@ -193,40 +193,6 @@ hold on; title('RS Spikes/Second');
     xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
     end
-
-% figure(2); % RAW RS AUTOGENOUS PLOTS 
-% hold on; title('Auto Raw RS'); 
-%    if whichlist == 4 % MALE SOLO/DUET DATA
-%     plot([2 1], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
-%     errorbar([2 1], meanRaw(1:2), sraw(1:2), 'b');
-%         for p=1:length(sumdat.mDuetAuto.rsRaw); plot(2.1, sumdat.mDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.mSoloAuto.rsRaw); plot(1.1, sumdat.mSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-%    end
-%    if whichlist == 2 % FEMALE SOLO/DUET DATA
-%     plot([4 3], meanRaw(3:4), 'm.', 'MarkerSize', 16); 
-%     errorbar([4 3], meanRaw(3:4), sraw(3:4), 'm' );
-%         for p=1:length(sumdat.fDuetAuto.rsRaw); plot(4.1, sumdat.fDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.fSoloAuto.rsRaw); plot(3.1, sumdat.fSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
-%     ylim([-10 65]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
-%     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
-%    end
-
-% figure(3); % NORM AUTOGENOUS PLOTS    
-% hold on; title('Auto Norm RS'); 
-%    if whichlist == 4 % MALE SOLO/DUET DATA
-%     plot([2 1], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
-%     errorbar([2 1], meanNorm(1:2), s(1:2), 'b');
-%         for p=1:length(sumdat.mDuetAuto.rsNorm); plot(2.1, sumdat.mDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.mSoloAuto.rsNorm); plot(1.1, sumdat.mSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-%    end
-%    if whichlist == 2 % FEMALE SOLO/DUET DATA
-%     plot([4 3], meanNorm(3:4), 'm.', 'MarkerSize', 16); 
-%     errorbar([4 3], meanNorm(3:4), s(3:4), 'm' );
-%         for p=1:length(sumdat.fDuetAuto.rsNorm); plot(4.1, sumdat.fDuetAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.fSoloAuto.rsNorm); plot(3.1, sumdat.fSoloAuto.rsNorm(p), 'k.', 'MarkerSize', 8); end
-%     ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
-%     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
-%    end
     
 %% Plot Sensory
 
@@ -256,50 +222,24 @@ hold on; title('RS Spikes/Second');
     medianSPS(3) = mean(sumdat.fDuetHetero.SPS); sps(3) = std(sumdat.fDuetHetero.SPS);
     medianSPS(4) = mean(sumdat.fSoloHetero.SPS); sps(4) = std(sumdat.fSoloHetero.SPS);
     
-figure(4); % RAW HETEROGENOUS PLOTS
-hold on; title('Hetero SPS');
+figure(2); % RAW RS HETEROGENOUS PLOTS
+hold on; title('Hetero RS');
     if whichlist == 2 % FEMALE SOLO/DUET DATA (hetero requires we plot OTHER bird)
-    plot([2 1], medianSPS(1:2), 'b.', 'MarkerSize', 16); 
-    errorbar([2 1], medianSPS(1:2), sps(1:2), 'b' );
-        for p=1:length(sumdat.mDuetHetero.SPS); plot(2.1, sumdat.mDuetHetero.SPS(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.mSoloHetero.SPS); plot(1.1, sumdat.mSoloHetero.SPS(p), 'k.', 'MarkerSize', 8); end
+    plot([2 1], medianRaw(1:2), 'b.', 'MarkerSize', 16); 
+    errorbar([2 1], medianRaw(1:2), sps(1:2), 'b' );
+        for p=1:length(sumdat.mDuetHetero.rsRaw); plot(2.1, sumdat.mDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloHetero.rsRaw); plot(1.1, sumdat.mSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
     end
     if whichlist == 4 % MALE SOLO/DUET DATA (hetero requires we plot OTHER bird)
-    plot([4 3], medianSPS(3:4), 'm.', 'MarkerSize', 16); 
-    errorbar([4 3], medianSPS(3:4), sps(3:4), 'm' );
-        for p=1:length(sumdat.fDuetHetero.SPS); plot(4.1, sumdat.fDuetHetero.SPS(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.fSoloHetero.SPS); plot(3.1, sumdat.fSoloHetero.SPS(p), 'k.', 'MarkerSize', 8); end
+    plot([4 3], medianRaw(3:4), 'm.', 'MarkerSize', 16); 
+    errorbar([4 3], medianRaw(3:4), sps(3:4), 'm' );
+        for p=1:length(sumdat.fDuetHetero.rsRaw); plot(4.1, sumdat.fDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.fSoloHetero.rsRaw); plot(3.1, sumdat.fSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
     % ylim([-10 65]); 
     xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
     end
-    
-% figure(5); clf; % RAW HETEROGENOUS PLOTS
-% hold on; title('Hetero Raw RS');
-%     plot([2 1], meanRaw(1:2), 'b.', 'MarkerSize', 16); 
-%     errorbar([2 1], meanRaw(1:2), sraw(1:2), 'b' );
-%         for p=1:length(sumdat.mDuetHetero.rsRaw); plot(2.1, sumdat.mDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.mSoloHetero.rsRaw); plot(1.1, sumdat.mSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
-%     plot([4 3], meanRaw(3:4), 'm.', 'MarkerSize', 16); 
-%     errorbar([4 3], meanRaw(3:4), sraw(3:4), 'm' );
-%         for p=1:length(sumdat.fDuetHetero.rsRaw); plot(4.1, sumdat.fDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.fSoloHetero.rsRaw); plot(3.1, sumdat.fSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
-%     ylim([-10 65]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
-%     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
-% 
-% figure(6); clf; % NORM HETEROGENOUS PLOTS
-% hold on; title('Hetero Norm RS');
-%     plot([2 1], meanNorm(1:2), 'b.', 'MarkerSize', 16); 
-%     errorbar([2 1], meanNorm(1:2), s(1:2), 'b' );
-%         for p=1:length(sumdat.mDuetHetero.rsNorm); plot(2.1, sumdat.mDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.mSoloHetero.rsNorm); plot(1.1, sumdat.mSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
-%     plot([4 3], meanNorm(3:4), 'm.', 'MarkerSize', 16); 
-%     errorbar([4 3], meanNorm(3:4), s(3:4), 'm' );
-%         for p=1:length(sumdat.fDuetHetero.rsNorm); plot(4.1, sumdat.fDuetHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
-%         for p=1:length(sumdat.fSoloHetero.rsNorm); plot(3.1, sumdat.fSoloHetero.rsNorm(p), 'k.', 'MarkerSize', 8); end
-%     ylim([-5 40]); xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
-%     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
-    
+        
     
 %% Compute stats     
     
