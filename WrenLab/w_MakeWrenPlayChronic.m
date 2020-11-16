@@ -1,3 +1,6 @@
+% Make the video that plays spikes along with a rolling line on 
+% a plot of the spectrogram for our best case, M17.
+
 %% Make the audio file
 idx = [1, 2] ; % This is the Male (odd)
 rango = [0.1, 5.8];
