@@ -343,7 +343,7 @@ axm(2) = subplot(223); hold on; title('F2M Chronic');
     % Male
         plotmasteryoda(msMHAC, bins4plot, typeofplot, 1);
         
-linkaxes(axm, 'xy'); figure(27); subplot(223); ylim([-10 78]);  xlim([-widow, widow]);
+linkaxes(axm, 'xy'); subplot(223); ylim([-10 78]);  xlim([-widow, widow]);
 
 figure('Name', 'Transition plot, URETHANE');
 
@@ -361,7 +361,7 @@ axxm(2) = subplot(223); hold on; title('F2M Acute');
     % Male
         plotmasteryoda(msMHAU, bins4plot, typeofplot, 1);
         
-linkaxes(axxm, 'xy'); figure(28); subplot(223); ylim([0 50]);  xlim([-widow, widow]);
+linkaxes(axxm, 'xy'); subplot(223); ylim([0 50]);  xlim([-widow, widow]);
 
 end
 
