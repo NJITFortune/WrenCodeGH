@@ -182,6 +182,8 @@ hold on; title('RS Spikes/Second');
     errorbar([2 1], medianRaw(1:2), sraw(1:2), 'b');
         for p=1:length(sumdat.mDuetAuto.rsRaw); plot(2.1, sumdat.mDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.mSoloAuto.rsRaw); plot(1.1, sumdat.mSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+    xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
     end
     
     if whichlist == 2 % FEMALE SOLO/DUET DATA
@@ -229,6 +231,8 @@ hold on; title('Hetero RS');
     errorbar([2 1], medianRaw(1:2), sps(1:2), 'b' );
         for p=1:length(sumdat.mDuetHetero.rsRaw); plot(2.1, sumdat.mDuetHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.mSoloHetero.rsRaw); plot(1.1, sumdat.mSoloHetero.rsRaw(p), 'k.', 'MarkerSize', 8); end
+    xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
+    xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
     end
     if whichlist == 4 % MALE SOLO/DUET DATA (hetero requires we plot OTHER bird)
     plot([4 3], medianRaw(3:4), 'm.', 'MarkerSize', 16); 
