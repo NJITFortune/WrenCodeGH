@@ -365,11 +365,11 @@ linkaxes(axxm, 'xy'); figure(28); subplot(223); ylim([0 50]);  xlim([-widow, wid
 
 end
 
-linkaxes(axc, 'xy'); figure(1+((jj-1)*10)); subplot(221); xlim([-widow-0.0001, widow+0.0001]);
-    
-    if analyzethis(jj)==2; ylim([0 40]); end
-    if analyzethis(jj)==3; ylim([0 40]); end
-    if analyzethis(jj)==4; ylim([0 75]); end
+% linkaxes(axc, 'xy'); figure(1+((jj-1)*10)); subplot(221); xlim([-widow-0.0001, widow+0.0001]);
+%     
+%     if analyzethis(jj)==2; ylim([0 40]); end
+%     if analyzethis(jj)==3; ylim([0 40]); end
+%     if analyzethis(jj)==4; ylim([0 75]); end
     
 
 
