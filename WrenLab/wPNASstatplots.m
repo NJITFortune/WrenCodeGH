@@ -176,6 +176,7 @@ hold on; title('Auto Spikes/Second');
         for p=1:length(sumdat.mDuetAuto.SPS); plot(2.1, sumdat.mDuetAuto.SPS(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.mSoloAuto.SPS); plot(1.1, sumdat.mSoloAuto.SPS(p), 'k.', 'MarkerSize', 8); end
     end
+    
     if whichlist == 2 % FEMALE SOLO/DUET DATA
     plot([4 3], meanSPS(3:4), 'm.', 'MarkerSize', 16); 
     errorbar([4 3], meanSPS(3:4), sps(3:4), 'm' );
