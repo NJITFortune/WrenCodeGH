@@ -1,3 +1,7 @@
+% Assemble a video that combines the video we took of 
+% a duetting pair, "1022" (index 11-12), and add spikes along with 
+% a rolling line on  a plot of the spectrogram.
+
 %% Load the data and plot an initial confirmation
 
 load ChronicCompleat2020c.mat
