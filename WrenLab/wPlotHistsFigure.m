@@ -1,5 +1,6 @@
 function wPlotHistsFigure(in)
-% Usage: load 
+% Usage: load ChronicCompleat2020c.mat
+% Usage: wPlotHistsFigure(w);
 % This script makes the "raw" physiology plots for the manuscript.
 % The plots were combined and cleaned up in Illustrator / Designer for
 % publication.
@@ -11,10 +12,7 @@ function wPlotHistsFigure(in)
 % You can modify this script to plot any of the data by changing the
 % idx values below.
 
-% [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData;
-
-
-%% PLOT THE FIRST EXAMPLE, M17
+%% PLOT THE FIRST EXAMPLE, M17 (Index 1 for male and 2 for female)
 
 limits = [0.2 6.0];
 sWIN = 50;
@@ -45,7 +43,7 @@ figure(27); clf;
     drawnow;
     pause(1);
     
-%% PLOT THE SECOND EXAMPLE, j160815
+%% PLOT THE SECOND EXAMPLE, j160815 (Index 7 for male and 8 for female)
 
 limits = [0 4.5];
 sWIN = 50;
