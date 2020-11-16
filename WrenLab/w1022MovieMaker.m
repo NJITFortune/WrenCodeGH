@@ -26,9 +26,8 @@ hFig = figure('MenuBar','none', 'Units','pixels', 'InnerPosition', [100 100 1920
    open(writerObj);
 
 
-%% Loop
+%% Loop for every frame
 
-% for jjj = 1:5
 while hasFrame(v) 
 
     im = readFrame(v);
@@ -169,7 +168,8 @@ femonly = (Avideo*0.4) + fem';
     femonly = 0.95 * (femonly / max(abs(femonly)));
 malonly = (Avideo*0.4) + mal';
     malonly = 0.95 * (malonly / max(abs(malonly)));
-audiowrite('combo.wav', combo, Fs);
-audiowrite('malonly.wav', malonly, Fs);
-audiowrite('femonly.wav', femonly, Fs);
+    
+    audiowrite('combo.wav', combo, Fs);
+    audiowrite('malonly.wav', malonly, Fs); 
+    audiowrite('femonly.wav', femonly, Fs);
  
