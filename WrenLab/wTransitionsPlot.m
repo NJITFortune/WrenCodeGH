@@ -361,7 +361,7 @@ axxm(2) = subplot(223); hold on; title('F2M Acute');
     % Male
         plotmasteryoda(msMHAU, bins4plot, typeofplot, 1);
         
-linkaxes(axxm, 'xy'); figure(2); subplot(223); ylim([0 50]);  xlim([-widow, widow]);
+linkaxes(axxm, 'xy'); figure(2); subplot(223); ylim([-10 50]);  xlim([-widow, widow]);
 
 end
 
