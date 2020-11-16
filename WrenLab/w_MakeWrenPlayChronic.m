@@ -4,14 +4,23 @@
 %% Make the audio file
 idx = [1, 2] ; % This is the Male (odd)
 rango = [0.1, 5.8];
-%idx = [5, 6] ; % This is the Male (odd)
-%rango = [0, 9];
 
-    specpos = 0;
-    if rango(1) < 0; specpos = abs(rango(1)); end
-    if rango(1) > 0; specpos = -rango(1); end
+    Fs = w(idx(1)).Fs;
+    
+% Time is from the start of the duet, which means there are
+% negative times possible (i.e. solo syllables before the duet)
+% specgram has only positive values from the start of the signal
+% that you give it. This code snipette solves this stupid problem
+% using a stupid solution.
 
-Fs = w(idx).Fs;
+    specpos = 0; % Position of the moving line that indicates current time on the specgram
+    if rango(1) < 0 
+        specpos = abs(rango(1)); 
+    end
+    if rango(1) > 0 
+        specpos = -rango(1); 
+    end
+
 
 % Make the Fake Spikes
 
@@ -35,6 +44,8 @@ Fs = w(idx).Fs;
     fem = zeros(1,length(outim));
     mal = zeros(1,length(outim));
 
+%% Male (odd)
+
 for k = 1:4
     spkidx = find(w(idx(1)).Cspikes{k} > rango(1) & w(idx(1)).Cspikes{k} < rango(2));
     for j = 1:length(spkidx)   
@@ -47,7 +58,7 @@ for k = 1:4
     end
 end
 
-% idx = 2; % This is the female (even)
+%% Female (even)
 
 for k = 1:4
     spkidx = find(w(idx(2)).Cspikes{k} > rango(1) & w(idx(2)).Cspikes{k} < rango(2));
