@@ -285,7 +285,7 @@ typeofplot = 2; % 1 is SPS, 2 is rawRS, 3 is normRS
 if analyzethis(jj) == 2 % Female data
     
 %% AWAKE PLOTS 
-figure('Name', 'Transition plot, AWAKE'); clf;
+figure(1); clf; figure('Name', 'Transition plot, AWAKE');
     
 axf(1) = subplot(222); hold on; title('Solo Female Chronic'); 
     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
