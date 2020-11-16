@@ -156,39 +156,39 @@ sumdat.fDuetAuto.pairidx = [];      sumdat.mDuetAuto.pairidx = [];
 
 % For Normalized RS data
 
-    meanNorm(1) = mean(sumdat.mDuetAuto.rsNorm); s(1) = std(sumdat.mDuetAuto.rsNorm);
-    meanNorm(2) = mean(sumdat.mSoloAuto.rsNorm); s(2) = std(sumdat.mSoloAuto.rsNorm);
-    meanNorm(3) = mean(sumdat.fDuetAuto.rsNorm); s(3) = std(sumdat.fDuetAuto.rsNorm);
-    meanNorm(4) = mean(sumdat.fSoloAuto.rsNorm); s(4) = std(sumdat.fSoloAuto.rsNorm);
+    medianNorm(1) = median(sumdat.mDuetAuto.rsNorm); s(1) = std(sumdat.mDuetAuto.rsNorm);
+    medianNorm(2) = median(sumdat.mSoloAuto.rsNorm); s(2) = std(sumdat.mSoloAuto.rsNorm);
+    medianNorm(3) = median(sumdat.fDuetAuto.rsNorm); s(3) = std(sumdat.fDuetAuto.rsNorm);
+    medianNorm(4) = median(sumdat.fSoloAuto.rsNorm); s(4) = std(sumdat.fSoloAuto.rsNorm);
 
 % For raw RS data
 
-    meanRaw(1) = mean(sumdat.mDuetAuto.rsRaw); sraw(1) = std(sumdat.mDuetAuto.rsRaw);
-    meanRaw(2) = mean(sumdat.mSoloAuto.rsRaw); sraw(2) = std(sumdat.mSoloAuto.rsRaw);
-    meanRaw(3) = mean(sumdat.fDuetAuto.rsRaw); sraw(3) = std(sumdat.fDuetAuto.rsRaw);
-    meanRaw(4) = mean(sumdat.fSoloAuto.rsRaw); sraw(4) = std(sumdat.fSoloAuto.rsRaw);
+    medianRaw(1) = median(sumdat.mDuetAuto.rsRaw); sraw(1) = std(sumdat.mDuetAuto.rsRaw);
+    medianRaw(2) = median(sumdat.mSoloAuto.rsRaw); sraw(2) = std(sumdat.mSoloAuto.rsRaw);
+    medianRaw(3) = median(sumdat.fDuetAuto.rsRaw); sraw(3) = std(sumdat.fDuetAuto.rsRaw);
+    medianRaw(4) = median(sumdat.fSoloAuto.rsRaw); sraw(4) = std(sumdat.fSoloAuto.rsRaw);
 
 % For SPS data
     
-    meanSPS(1) = mean(sumdat.mDuetAuto.SPS); sps(1) = std(sumdat.mDuetAuto.SPS);
-    meanSPS(2) = mean(sumdat.mSoloAuto.SPS); sps(2) = std(sumdat.mSoloAuto.SPS);
-    meanSPS(3) = mean(sumdat.fDuetAuto.SPS); sps(3) = std(sumdat.fDuetAuto.SPS);
-    meanSPS(4) = mean(sumdat.fSoloAuto.SPS); sps(4) = std(sumdat.fSoloAuto.SPS);
+    medianSPS(1) = median(sumdat.mDuetAuto.SPS); sps(1) = std(sumdat.mDuetAuto.SPS);
+    medianSPS(2) = median(sumdat.mSoloAuto.SPS); sps(2) = std(sumdat.mSoloAuto.SPS);
+    medianSPS(3) = median(sumdat.fDuetAuto.SPS); sps(3) = std(sumdat.fDuetAuto.SPS);
+    medianSPS(4) = median(sumdat.fSoloAuto.SPS); sps(4) = std(sumdat.fSoloAuto.SPS);
     
-figure(1); % Spikes Per Second PLOTS    
-hold on; title('Auto Spikes/Second'); 
+figure(1); % Response strength PLOTS    
+hold on; title('RS Spikes/Second'); 
     if whichlist == 4 % MALE SOLO/DUET DATA
-    plot([2 1], meanSPS(1:2), 'b.', 'MarkerSize', 16); 
-    errorbar([2 1], meanSPS(1:2), sps(1:2), 'b');
-        for p=1:length(sumdat.mDuetAuto.SPS); plot(2.1, sumdat.mDuetAuto.SPS(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.mSoloAuto.SPS); plot(1.1, sumdat.mSoloAuto.SPS(p), 'k.', 'MarkerSize', 8); end
+    plot([2 1], medianRaw(1:2), 'b.', 'MarkerSize', 16); 
+    errorbar([2 1], medianRaw(1:2), sraw(1:2), 'b');
+        for p=1:length(sumdat.mDuetAuto.rsRaw); plot(2.1, sumdat.mDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.mSoloAuto.rsRaw); plot(1.1, sumdat.mSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
     end
     
     if whichlist == 2 % FEMALE SOLO/DUET DATA
-    plot([4 3], meanSPS(3:4), 'm.', 'MarkerSize', 16); 
-    errorbar([4 3], meanSPS(3:4), sps(3:4), 'm' );
-        for p=1:length(sumdat.fDuetAuto.SPS); plot(4.1, sumdat.fDuetAuto.SPS(p), 'k.', 'MarkerSize', 8); end
-        for p=1:length(sumdat.fSoloAuto.SPS); plot(3.1, sumdat.fSoloAuto.SPS(p), 'k.', 'MarkerSize', 8); end
+    plot([4 3], medianRaw(3:4), 'm.', 'MarkerSize', 16); 
+    errorbar([4 3], medianRaw(3:4), sraw(3:4), 'm' );
+        for p=1:length(sumdat.fDuetAuto.rsRaw); plot(4.1, sumdat.fDuetAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
+        for p=1:length(sumdat.fSoloAuto.rsRaw); plot(3.1, sumdat.fSoloAuto.rsRaw(p), 'k.', 'MarkerSize', 8); end
     %ylim([-5 40]); 
     xlim([0.5 4.5]); plot([1,4], [0,0], 'k-');
     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
@@ -237,36 +237,36 @@ hold on; title('Auto Spikes/Second');
 
 % For Normalized RS data
 
-    meanNorm(1) = mean(sumdat.mDuetHetero.rsNorm); s(1) = std(sumdat.mDuetHetero.rsNorm);
-    meanNorm(2) = mean(sumdat.mSoloHetero.rsNorm); s(2) = std(sumdat.mSoloHetero.rsNorm);
-    meanNorm(3) = mean(sumdat.fDuetHetero.rsNorm); s(3) = std(sumdat.fDuetHetero.rsNorm);
-    meanNorm(4) = mean(sumdat.fSoloHetero.rsNorm); s(4) = std(sumdat.fSoloHetero.rsNorm);
+    medianNorm(1) = mean(sumdat.mDuetHetero.rsNorm); s(1) = std(sumdat.mDuetHetero.rsNorm);
+    medianNorm(2) = mean(sumdat.mSoloHetero.rsNorm); s(2) = std(sumdat.mSoloHetero.rsNorm);
+    medianNorm(3) = mean(sumdat.fDuetHetero.rsNorm); s(3) = std(sumdat.fDuetHetero.rsNorm);
+    medianNorm(4) = mean(sumdat.fSoloHetero.rsNorm); s(4) = std(sumdat.fSoloHetero.rsNorm);
 
 % For raw RS data
 
-    meanRaw(1) = mean(sumdat.mDuetHetero.rsRaw); sraw(1) = std(sumdat.mDuetHetero.rsRaw);
-    meanRaw(2) = mean(sumdat.mSoloHetero.rsRaw); sraw(2) = std(sumdat.mSoloHetero.rsRaw);
-    meanRaw(3) = mean(sumdat.fDuetHetero.rsRaw); sraw(3) = std(sumdat.fDuetHetero.rsRaw);
-    meanRaw(4) = mean(sumdat.fSoloHetero.rsRaw); sraw(4) = std(sumdat.fSoloHetero.rsRaw);
+    medianRaw(1) = mean(sumdat.mDuetHetero.rsRaw); sraw(1) = std(sumdat.mDuetHetero.rsRaw);
+    medianRaw(2) = mean(sumdat.mSoloHetero.rsRaw); sraw(2) = std(sumdat.mSoloHetero.rsRaw);
+    medianRaw(3) = mean(sumdat.fDuetHetero.rsRaw); sraw(3) = std(sumdat.fDuetHetero.rsRaw);
+    medianRaw(4) = mean(sumdat.fSoloHetero.rsRaw); sraw(4) = std(sumdat.fSoloHetero.rsRaw);
 
 % For SPS data
     
-    meanSPS(1) = mean(sumdat.mDuetHetero.SPS); sps(1) = std(sumdat.mDuetHetero.SPS);
-    meanSPS(2) = mean(sumdat.mSoloHetero.SPS); sps(2) = std(sumdat.mSoloHetero.SPS);
-    meanSPS(3) = mean(sumdat.fDuetHetero.SPS); sps(3) = std(sumdat.fDuetHetero.SPS);
-    meanSPS(4) = mean(sumdat.fSoloHetero.SPS); sps(4) = std(sumdat.fSoloHetero.SPS);
+    medianSPS(1) = mean(sumdat.mDuetHetero.SPS); sps(1) = std(sumdat.mDuetHetero.SPS);
+    medianSPS(2) = mean(sumdat.mSoloHetero.SPS); sps(2) = std(sumdat.mSoloHetero.SPS);
+    medianSPS(3) = mean(sumdat.fDuetHetero.SPS); sps(3) = std(sumdat.fDuetHetero.SPS);
+    medianSPS(4) = mean(sumdat.fSoloHetero.SPS); sps(4) = std(sumdat.fSoloHetero.SPS);
     
 figure(4); % RAW HETEROGENOUS PLOTS
 hold on; title('Hetero SPS');
     if whichlist == 2 % FEMALE SOLO/DUET DATA (hetero requires we plot OTHER bird)
-    plot([2 1], meanSPS(1:2), 'b.', 'MarkerSize', 16); 
-    errorbar([2 1], meanSPS(1:2), sps(1:2), 'b' );
+    plot([2 1], medianSPS(1:2), 'b.', 'MarkerSize', 16); 
+    errorbar([2 1], medianSPS(1:2), sps(1:2), 'b' );
         for p=1:length(sumdat.mDuetHetero.SPS); plot(2.1, sumdat.mDuetHetero.SPS(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.mSoloHetero.SPS); plot(1.1, sumdat.mSoloHetero.SPS(p), 'k.', 'MarkerSize', 8); end
     end
     if whichlist == 4 % MALE SOLO/DUET DATA (hetero requires we plot OTHER bird)
-    plot([4 3], meanSPS(3:4), 'm.', 'MarkerSize', 16); 
-    errorbar([4 3], meanSPS(3:4), sps(3:4), 'm' );
+    plot([4 3], medianSPS(3:4), 'm.', 'MarkerSize', 16); 
+    errorbar([4 3], medianSPS(3:4), sps(3:4), 'm' );
         for p=1:length(sumdat.fDuetHetero.SPS); plot(4.1, sumdat.fDuetHetero.SPS(p), 'k.', 'MarkerSize', 8); end
         for p=1:length(sumdat.fSoloHetero.SPS); plot(3.1, sumdat.fSoloHetero.SPS(p), 'k.', 'MarkerSize', 8); end
     % ylim([-10 65]); 
