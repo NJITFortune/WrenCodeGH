@@ -152,7 +152,7 @@ sumdat.fDuetAuto.pairidx = [];      sumdat.mDuetAuto.pairidx = [];
 
     end % End of calculations
 
-%% Plot MOTOR
+%% Plot MOTOR / autogenous
 
 % For Normalized RS data
 
@@ -175,7 +175,7 @@ sumdat.fDuetAuto.pairidx = [];      sumdat.mDuetAuto.pairidx = [];
     medianSPS(3) = median(sumdat.fDuetAuto.SPS); sps(3) = std(sumdat.fDuetAuto.SPS);
     medianSPS(4) = median(sumdat.fSoloAuto.SPS); sps(4) = std(sumdat.fSoloAuto.SPS);
     
-figure(1); clf; % Response strength PLOTS    
+figure('name', 'Autogenous'); clf; % Response strength PLOTS    
 hold on; title('RS Spikes/Second'); 
     if whichlist == 4 % MALE SOLO/DUET DATA
     plot([2 1], medianRaw(1:2), 'b.', 'MarkerSize', 16); 
@@ -196,7 +196,7 @@ hold on; title('RS Spikes/Second');
     xticklabels({' ','S',' ','D',' ','S',' ','D',' '})
     end
     
-%% Plot Sensory
+%% Plot heterogenous
 
 % Recall that PairList{1} = birdlist{2}(2:2:end)/2; % Index 1 is the FEMALE SOLO/DUET data
 % Recall that PairList{2} = birdlist{4}(2:2:end)/2; % Index 2 is the MALE SOLO/DUET data
@@ -224,7 +224,7 @@ hold on; title('RS Spikes/Second');
     medianSPS(3) = mean(sumdat.fDuetHetero.SPS); sps(3) = std(sumdat.fDuetHetero.SPS);
     medianSPS(4) = mean(sumdat.fSoloHetero.SPS); sps(4) = std(sumdat.fSoloHetero.SPS);
     
-figure(2); % RAW RS HETEROGENOUS PLOTS
+figure('name', 'Heterogenous'); % RAW RS HETEROGENOUS PLOTS
 hold on; title('Hetero RS');
     if whichlist == 2 % FEMALE SOLO/DUET DATA (hetero requires we plot OTHER bird)
     plot([2 1], medianRaw(1:2), 'b.', 'MarkerSize', 16); 
