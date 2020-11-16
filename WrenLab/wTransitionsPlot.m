@@ -245,46 +245,12 @@ end % End of female
 
 
 typeofplot = 2; % 1 is SPS, 2 is rawRS, 3 is normRS
-
-% figure(1+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]); 
-% 
-% % PLOT Male Autogenous DATA 
-% 
-% axc(1) = subplot(221); hold on; title('Solo Male Chronic'); 
-%     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
-%     % Female
-%         plotmasteryoda(msFSHC, bins4plot, typeofplot, 2);
-%     % Male
-%         plotmasteryoda(msMSAC, bins4plot, typeofplot, 1);
-% 
-% axc(2) = subplot(222); hold on; title('F2M Chronic'); 
-%     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
-%     % Female
-%         plotmasteryoda(msFAHC, bins4plot, typeofplot, 2);
-%     % Male
-%         plotmasteryoda(msMHAC, bins4plot, typeofplot, 1);
-%     
-% % PLOT Female Autogenous DATA
-% 
-% axc(3) = subplot(223); hold on; title('Solo Female Chronic'); 
-%     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
-%     % Male
-%         plotmasteryoda(msMSHC, bins4plot, typeofplot, 1);
-%     % Female
-%         plotmasteryoda(msFSAC, bins4plot, typeofplot, 2);
-% 
-% axc(4) = subplot(224); hold on; title('M2F Chronic'); 
-%     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
-%     % Male
-%         plotmasteryoda(msMAHC, bins4plot, typeofplot, 1);
-%     % Female
-%         plotmasteryoda(msFHAC, bins4plot, typeofplot, 2);
-
         
-% Custom figure
+% Figure for manuscript
+
 if analyzethis(jj) == 2 % Female data
     
-%% AWAKE PLOTS 
+% AWAKE PLOTS 
 figure(1); clf; 
     
 axf(1) = subplot(222); hold on; title('Solo Female Chronic'); 
@@ -304,24 +270,24 @@ axf(2) = subplot(224); hold on; title('M2F Chronic');
 linkaxes(axf, 'xy'); figure(1); subplot(222); ylim([-5 38]);  xlim([-widow, widow]);
 
 
-%% URETHANE PLOTS (not used in manuscript)
-figure(2); clf;
-    
-axxf(1) = subplot(222); hold on; title('Solo Female Acute'); 
-    plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
-    % Male
-        plotmasteryoda(msMSHU, bins4plot, typeofplot, 1);
-    % Female
-        plotmasteryoda(msFSAU, bins4plot, typeofplot, 2);
-
-axxf(2) = subplot(224); hold on; title('M2F Acute'); 
-    plot([0 0], [-10 100], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
-    % Male
-        plotmasteryoda(msMAHU, bins4plot, typeofplot, 1);
-    % Female
-        plotmasteryoda(msFHAU, bins4plot, typeofplot, 2);
-
-linkaxes(axxf, 'xy'); figure(2); subplot(222); ylim([-10 50]); xlim([-widow, widow]);
+% %% URETHANE PLOTS (not used in manuscript)
+% figure(2); clf;
+%     
+% axxf(1) = subplot(222); hold on; title('Solo Female Acute'); 
+%     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
+%     % Male
+%         plotmasteryoda(msMSHU, bins4plot, typeofplot, 1);
+%     % Female
+%         plotmasteryoda(msFSAU, bins4plot, typeofplot, 2);
+% 
+% axxf(2) = subplot(224); hold on; title('M2F Acute'); 
+%     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
+%     % Male
+%         plotmasteryoda(msMAHU, bins4plot, typeofplot, 1);
+%     % Female
+%         plotmasteryoda(msFHAU, bins4plot, typeofplot, 2);
+% 
+% linkaxes(axxf, 'xy'); figure(2); subplot(222); ylim([-10 50]); xlim([-widow, widow]);
 
 end
 
@@ -345,47 +311,30 @@ axm(2) = subplot(223); hold on; title('F2M Chronic');
         
 linkaxes(axm, 'xy'); figure(1); subplot(223); ylim([-10 78]);  xlim([-widow, widow]);
 
-figure(2);
-
-axxm(1) = subplot(221); hold on; title('Solo Male Acute'); 
-    plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
-    % Female
-        plotmasteryoda(msFSHU, bins4plot, typeofplot, 2);
-    % Male
-        plotmasteryoda(msMSAU, bins4plot, typeofplot, 1);
-        
-axxm(2) = subplot(223); hold on; title('F2M Acute'); 
-    plot([0 0], [-10 100], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
-    % Female
-        plotmasteryoda(msFAHU, bins4plot, typeofplot, 2);
-    % Male
-        plotmasteryoda(msMHAU, bins4plot, typeofplot, 1);
-        
+% %% URETHANE PLOTS (not used in manuscript)
+% figure(2);
+% 
+% axxm(1) = subplot(221); hold on; title('Solo Male Acute'); 
+%     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
+%     % Female
+%         plotmasteryoda(msFSHU, bins4plot, typeofplot, 2);
+%     % Male
+%         plotmasteryoda(msMSAU, bins4plot, typeofplot, 1);
+%         
+% axxm(2) = subplot(223); hold on; title('F2M Acute'); 
+%     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
+%     % Female
+%         plotmasteryoda(msFAHU, bins4plot, typeofplot, 2);
+%     % Male
+%         plotmasteryoda(msMHAU, bins4plot, typeofplot, 1);
+%         
 linkaxes(axxm, 'xy'); figure(2); subplot(223); ylim([-10 40]);  xlim([-widow, widow]);
 
 end
 
-% linkaxes(axc, 'xy'); figure(1+((jj-1)*10)); subplot(221); xlim([-widow-0.0001, widow+0.0001]);
-%     
-%     if analyzethis(jj)==2; ylim([0 40]); end
-%     if analyzethis(jj)==3; ylim([0 40]); end
-%     if analyzethis(jj)==4; ylim([0 75]); end
-    
 
 
 end % Cycling for each group
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 %% Embedded Concatonation function
