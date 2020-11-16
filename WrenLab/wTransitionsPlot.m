@@ -328,7 +328,7 @@ linkaxes(axm, 'xy'); figure(1); subplot(223); ylim([-10 78]);  xlim([-widow, wid
 %     % Male
 %         plotmasteryoda(msMHAU, bins4plot, typeofplot, 1);
 %         
-linkaxes(axxm, 'xy'); figure(2); subplot(223); ylim([-10 40]);  xlim([-widow, widow]);
+% linkaxes(axxm, 'xy'); figure(2); subplot(223); ylim([-10 40]);  xlim([-widow, widow]);
 
 end
 
