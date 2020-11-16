@@ -6,7 +6,6 @@ function wPlotHistsFigure(in)
 % We are using the examples M17 (indices 1-2) and j160815 (indices 7-8).
 % These are the prettiest examples!
 
-
 % [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData;
 
 
