@@ -1,15 +1,18 @@
 function wPlotHistsFigure(in)
 % This script makes the "raw" physiology plots for the manuscript.
-% The plots are then combined and cleaned up in Illustrator / Designer for
-% publications.
+% The plots were combined and cleaned up in Illustrator / Designer for
+% publication.
 
 % We are using the examples M17 (indices 1-2) and j160815 (indices 7-8).
 % These are the prettiest examples!
 
+% You can modify this script to plot any of the data by changing the
+% idx values below.
+
 % [msolosyls, mduetsyls, fsolosyls, fduetsyls, Cspon, Aspon] = wData;
 
 
-%% M17
+%% PLOT THE FIRST EXAMPLE, M17
 
 limits = [0.2 6.0];
 sWIN = 50;
@@ -17,14 +20,14 @@ sWIN = 50;
 % repnum = min([length(in(1).Aspikes), length(in(2).Aspikes)] );
 repnum = 30;
 
-idx = 1; % Male M17
+idx = 1; % Male M17  %% IDX values for males are ODD
 
 figure(1); clf; title('Male M17 idx=1'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, 4, 1);
 figure(2); clf; title('Male M17 idx=1'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
-idx = 2; % Female M17
+idx = 2; % Female M17 %% IDX values for females are EVEN, follow male idx
 
 figure(3); clf; title('Female M17 idx=2'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, 4, 1);
@@ -37,7 +40,7 @@ figure(27); clf;
     colormap(flipud(gray));
     ylim([500 4500]); caxis([-35 30]);
     
-%% j160815
+%% PLOT THE SECOND EXAMPLE, j160815
 
 limits = [0 4.5];
 sWIN = 50;
@@ -45,14 +48,14 @@ sWIN = 50;
 % repnum = min([length(in(7).Aspikes), length(in(8).Aspikes)] );
 repnum = 30;
 
-idx = 7; % Male j160815
+idx = 7; % Male j160815  %% IDX values for males are ODD
 
 figure(5); clf; title('Male j160815 idx=7'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, 4, 1);
 figure(6); clf; title('Male j160815 idx=7'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
 
-idx = 8; % Female j160815
+idx = 8; % Female j160815 %% IDX values for females are EVEN, follow male idx
 
 figure(7); clf; title('Female j160815 idx=8'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, 4, 1);
