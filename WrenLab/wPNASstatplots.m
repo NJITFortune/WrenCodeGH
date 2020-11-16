@@ -175,7 +175,7 @@ sumdat.fDuetAuto.pairidx = [];      sumdat.mDuetAuto.pairidx = [];
     medianSPS(3) = median(sumdat.fDuetAuto.SPS); sps(3) = std(sumdat.fDuetAuto.SPS);
     medianSPS(4) = median(sumdat.fSoloAuto.SPS); sps(4) = std(sumdat.fSoloAuto.SPS);
     
-figure(1); % Response strength PLOTS    
+figure(1); clf; % Response strength PLOTS    
 hold on; title('RS Spikes/Second'); 
     if whichlist == 4 % MALE SOLO/DUET DATA
     plot([2 1], medianRaw(1:2), 'b.', 'MarkerSize', 16); 
