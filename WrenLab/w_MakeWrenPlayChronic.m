@@ -1,5 +1,8 @@
 % Make the video that plays spikes along with a rolling line on 
-% a plot of the spectrogram for our best case, M17.
+% a plot of the spectrogram for our best case, M17 (indices 1 and 2)
+% You can edit idx below to any pair (i.e. idx = [odd, even];)
+% and you can adust the time window of the video (rango) in seconds
+% from the start of the duet.
 
 %% Make the audio file
 idx = [1, 2] ; % This is the Male (odd)
@@ -22,17 +25,19 @@ rango = [0.1, 5.8];
     end
 
 
-% Make the Fake Spikes
+%% Make the Fake Spikes
 
     spiketim = 1/Fs:1/Fs:0.005; % 4 msec duration for our fake spikes
     len = length(spiketim);
     rmp = 1/floor(len/2):1/floor(len/2):1;
 
- % We had 4 channels of neurophysiological data for the female and for the male   
+ % We had 4 channels of neurophysiological data for the female and for the male
+ % Make blips for each spike on each channel.
     for kk = 1:4
         fspike(:,kk) = sin(2*pi*(1200+(50*kk))*spiketim) * 0.5 ; % 800 Hz for females
             fspike(1:length(rmp),kk) = fspike(1:length(rmp),kk)' .* rmp;
             fspike(end+1-length(rmp):end,kk) = fspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
+            
         mspike(:,kk) = sin(2*pi*(800+(80*kk))*spiketim) * 0.25 ; % 300 Hz for males
             mspike(1:length(rmp),kk) = mspike(1:length(rmp),kk)' .* rmp;
             mspike(end+1-length(rmp):end,kk) = mspike(end+1-length(rmp):end,kk)' .* rmp(end:-1:1);
@@ -45,42 +50,42 @@ rango = [0.1, 5.8];
     fem = zeros(1,length(outim));
     mal = zeros(1,length(outim));
 
-%% Male (odd)
+% Male (odd)
 
 for k = 1:4
     spkidx = find(w(idx(1)).Cspikes{k} > rango(1) & w(idx(1)).Cspikes{k} < rango(2));
     for j = 1:length(spkidx)   
         curidx = find(outim >= w(idx(1)).Cspikes{k}(spkidx(j)), 1, 'first');    
-    if curidx+len-1 < length(outim)  % Need the if not to go over the end.   
-        mal(curidx:curidx+len-1) = mal(curidx:curidx+len-1) + mspike(:,k)';
-        % mal(curidx:curidx+len-1) = mspike;
-    end
-    
+        if curidx+len-1 < length(outim)  % Need the if not to go over the end.   
+            mal(curidx:curidx+len-1) = mal(curidx:curidx+len-1) + mspike(:,k)';
+            % mal(curidx:curidx+len-1) = mspike;
+        end
     end
 end
 
-%% Female (even)
+% Female (even)
 
 for k = 1:4
     spkidx = find(w(idx(2)).Cspikes{k} > rango(1) & w(idx(2)).Cspikes{k} < rango(2));
     for j = 1:length(spkidx)   
         curidx = find(outim >= w(idx(2)).Cspikes{k}(spkidx(j)), 1, 'first');    
-    if curidx+len-1 < length(outim)  % Need the if not to go over the end.   
-        %fem(curidx:curidx+len-1) = fspike;
-        fem(curidx:curidx+len-1) = fem(curidx:curidx+len-1) + fspike(:,k)';
-    end
-    
+        if curidx+len-1 < length(outim)  % Need the if not to go over the end.   
+            %fem(curidx:curidx+len-1) = fspike;
+            fem(curidx:curidx+len-1) = fem(curidx:curidx+len-1) + fspike(:,k)';
+        end
     end
 end
+
+%% Save spike channels audio files alone and together
 
 spks = fem' + mal';
 
 combo = spks + (outduet*0.8);
 femonly = (outduet*0.8) + fem';
 malonly = (outduet*0.8) + mal';
-audiowrite('combo.wav', combo, 10000);
-audiowrite('malonly.wav', malonly, 10000);
-audiowrite('femonly.wav', femonly, 10000);
+    audiowrite('combo.wav', combo, 10000);
+    audiowrite('malonly.wav', malonly, 10000);
+    audiowrite('femonly.wav', femonly, 10000);
 
 %% Quick plot in prep for the video
 
@@ -148,6 +153,7 @@ for vtim = outim(1):1/30:outim(end)
                plot([specpos+w(idx(2)).Cspikes{j}(femalespkidx(k)), specpos+w(idx(2)).Cspikes{j}(femalespkidx(k))], [4000+(j*100), 4000+(j*100)+90], 'm-', 'LineWidth', 1);
            end
         end
+        
     pause(0.1);
     frame = getframe(gcf);
     writeVideo(writerObj, frame);
