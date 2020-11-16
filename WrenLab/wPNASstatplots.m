@@ -156,24 +156,24 @@ sumdat.fDuetAuto.pairidx = [];      sumdat.mDuetAuto.pairidx = [];
 
 % For Normalized RS data
 
-    medianNorm(1) = nanmedian(sumdat.mDuetAuto.rsNorm); s(1) = std(sumdat.mDuetAuto.rsNorm);
-    medianNorm(2) = nanmedian(sumdat.mSoloAuto.rsNorm); s(2) = std(sumdat.mSoloAuto.rsNorm);
-    medianNorm(3) = nanmedian(sumdat.fDuetAuto.rsNorm); s(3) = std(sumdat.fDuetAuto.rsNorm);
-    medianNorm(4) = nanmedian(sumdat.fSoloAuto.rsNorm); s(4) = std(sumdat.fSoloAuto.rsNorm);
+    medianNorm(1) = nanmedian(sumdat.mDuetAuto.rsNorm); s(1) = nanstd(sumdat.mDuetAuto.rsNorm);
+    medianNorm(2) = nanmedian(sumdat.mSoloAuto.rsNorm); s(2) = nanstd(sumdat.mSoloAuto.rsNorm);
+    medianNorm(3) = nanmedian(sumdat.fDuetAuto.rsNorm); s(3) = nanstd(sumdat.fDuetAuto.rsNorm);
+    medianNorm(4) = nanmedian(sumdat.fSoloAuto.rsNorm); s(4) = nanstd(sumdat.fSoloAuto.rsNorm);
 
 % For raw RS data
 
-    medianRaw(1) = nanmedian(sumdat.mDuetAuto.rsRaw); sraw(1) = std(sumdat.mDuetAuto.rsRaw);
-    medianRaw(2) = nanmedian(sumdat.mSoloAuto.rsRaw); sraw(2) = std(sumdat.mSoloAuto.rsRaw);
-    medianRaw(3) = nanmedian(sumdat.fDuetAuto.rsRaw); sraw(3) = std(sumdat.fDuetAuto.rsRaw);
-    medianRaw(4) = nanmedian(sumdat.fSoloAuto.rsRaw); sraw(4) = std(sumdat.fSoloAuto.rsRaw);
+    medianRaw(1) = nanmedian(sumdat.mDuetAuto.rsRaw); sraw(1) = nanstd(sumdat.mDuetAuto.rsRaw);
+    medianRaw(2) = nanmedian(sumdat.mSoloAuto.rsRaw); sraw(2) = nanstd(sumdat.mSoloAuto.rsRaw);
+    medianRaw(3) = nanmedian(sumdat.fDuetAuto.rsRaw); sraw(3) = nanstd(sumdat.fDuetAuto.rsRaw);
+    medianRaw(4) = nanmedian(sumdat.fSoloAuto.rsRaw); sraw(4) = nanstd(sumdat.fSoloAuto.rsRaw);
 
 % For SPS data
     
-    medianSPS(1) = nanmedian(sumdat.mDuetAuto.SPS); sps(1) = std(sumdat.mDuetAuto.SPS);
-    medianSPS(2) = nanmedian(sumdat.mSoloAuto.SPS); sps(2) = std(sumdat.mSoloAuto.SPS);
-    medianSPS(3) = nanmedian(sumdat.fDuetAuto.SPS); sps(3) = std(sumdat.fDuetAuto.SPS);
-    medianSPS(4) = nanmedian(sumdat.fSoloAuto.SPS); sps(4) = std(sumdat.fSoloAuto.SPS);
+    medianSPS(1) = nanmedian(sumdat.mDuetAuto.SPS); sps(1) = nanstd(sumdat.mDuetAuto.SPS);
+    medianSPS(2) = nanmedian(sumdat.mSoloAuto.SPS); sps(2) = nanstd(sumdat.mSoloAuto.SPS);
+    medianSPS(3) = nanmedian(sumdat.fDuetAuto.SPS); sps(3) = nanstd(sumdat.fDuetAuto.SPS);
+    medianSPS(4) = nanmedian(sumdat.fSoloAuto.SPS); sps(4) = nanstd(sumdat.fSoloAuto.SPS);
     
 figure('name', 'Autogenous'); clf; % Response strength PLOTS    
 hold on; title('RS Spikes/Second'); 
@@ -205,24 +205,24 @@ hold on; title('RS Spikes/Second');
 
 % For Normalized RS data
 
-    medianNorm(1) = nanmedian(sumdat.mDuetHetero.rsNorm); s(1) = std(sumdat.mDuetHetero.rsNorm);
-    medianNorm(2) = nanmedian(sumdat.mSoloHetero.rsNorm); s(2) = std(sumdat.mSoloHetero.rsNorm);
-    medianNorm(3) = nanmedian(sumdat.fDuetHetero.rsNorm); s(3) = std(sumdat.fDuetHetero.rsNorm);
-    medianNorm(4) = nanmedian(sumdat.fSoloHetero.rsNorm); s(4) = std(sumdat.fSoloHetero.rsNorm);
+    medianNorm(1) = nanmedian(sumdat.mDuetHetero.rsNorm); s(1) = nanstd(sumdat.mDuetHetero.rsNorm);
+    medianNorm(2) = nanmedian(sumdat.mSoloHetero.rsNorm); s(2) = nanstd(sumdat.mSoloHetero.rsNorm);
+    medianNorm(3) = nanmedian(sumdat.fDuetHetero.rsNorm); s(3) = nanstd(sumdat.fDuetHetero.rsNorm);
+    medianNorm(4) = nanmedian(sumdat.fSoloHetero.rsNorm); s(4) = nanstd(sumdat.fSoloHetero.rsNorm);
 
 % For raw RS data
 
-    medianRaw(1) = nanmedian(sumdat.mDuetHetero.rsRaw); sraw(1) = std(sumdat.mDuetHetero.rsRaw);
-    medianRaw(2) = nanmedian(sumdat.mSoloHetero.rsRaw); sraw(2) = std(sumdat.mSoloHetero.rsRaw);
-    medianRaw(3) = nanmedian(sumdat.fDuetHetero.rsRaw); sraw(3) = std(sumdat.fDuetHetero.rsRaw);
-    medianRaw(4) = nanmedian(sumdat.fSoloHetero.rsRaw); sraw(4) = std(sumdat.fSoloHetero.rsRaw);
+    medianRaw(1) = nanmedian(sumdat.mDuetHetero.rsRaw); sraw(1) = nanstd(sumdat.mDuetHetero.rsRaw);
+    medianRaw(2) = nanmedian(sumdat.mSoloHetero.rsRaw); sraw(2) = nanstd(sumdat.mSoloHetero.rsRaw);
+    medianRaw(3) = nanmedian(sumdat.fDuetHetero.rsRaw); sraw(3) = nanstd(sumdat.fDuetHetero.rsRaw);
+    medianRaw(4) = nanmedian(sumdat.fSoloHetero.rsRaw); sraw(4) = nanstd(sumdat.fSoloHetero.rsRaw);
 
 % For SPS data
     
-    medianSPS(1) = nanmedian(sumdat.mDuetHetero.SPS); sps(1) = std(sumdat.mDuetHetero.SPS);
-    medianSPS(2) = nanmedian(sumdat.mSoloHetero.SPS); sps(2) = std(sumdat.mSoloHetero.SPS);
-    medianSPS(3) = nanmedian(sumdat.fDuetHetero.SPS); sps(3) = std(sumdat.fDuetHetero.SPS);
-    medianSPS(4) = nanmedian(sumdat.fSoloHetero.SPS); sps(4) = std(sumdat.fSoloHetero.SPS);
+    medianSPS(1) = nanmedian(sumdat.mDuetHetero.SPS); sps(1) = nanstd(sumdat.mDuetHetero.SPS);
+    medianSPS(2) = nanmedian(sumdat.mSoloHetero.SPS); sps(2) = nanstd(sumdat.mSoloHetero.SPS);
+    medianSPS(3) = nanmedian(sumdat.fDuetHetero.SPS); sps(3) = nanstd(sumdat.fDuetHetero.SPS);
+    medianSPS(4) = nanmedian(sumdat.fSoloHetero.SPS); sps(4) = nanstd(sumdat.fSoloHetero.SPS);
     
 figure('name', 'Heterogenous'); % RAW RS HETEROGENOUS PLOTS
 hold on; title('Hetero RS');
