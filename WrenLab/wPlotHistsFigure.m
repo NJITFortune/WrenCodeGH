@@ -22,7 +22,7 @@ repnum = 30;
 
 idx = 1; % Male M17  %% IDX values for males are ODD
 
-figure(1, 'Name', 'Male M17 idx=1'); clf; set(gcf,'renderer','Painters');
+figure('Name', 'Male M17 idx=1 AWAKE'); clf; set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, 4, 1);
 figure(2); clf; title('Male M17 idx=1'); set(gcf,'renderer','Painters');
     MakePlot(in(idx), limits, sWIN, repnum, 2);
