@@ -1,4 +1,5 @@
 function wPlotHistsFigure(in)
+% Usage: load 
 % This script makes the "raw" physiology plots for the manuscript.
 % The plots were combined and cleaned up in Illustrator / Designer for
 % publication.
