@@ -41,6 +41,8 @@ figure(27); clf;
     specgram(in(idx).duet(in(idx).tim > limits(1) & in(idx).tim < limits(2)), 512, in(idx).Fs, [], 500);
     colormap(flipud(gray));
     ylim([500 4500]); caxis([-35 30]);
+    drawnow;
+    pause(1);
     
 %% PLOT THE SECOND EXAMPLE, j160815
 
@@ -71,6 +73,7 @@ figure(27); set(gcf,'renderer','Painters');
     colormap(flipud(gray));
     ylim([500 4500]); caxis([-20 30]);
     drawnow;
+    pause(1);
 
 %% Plotting Function
 
