@@ -246,39 +246,39 @@ end % End of female
 
 typeofplot = 2; % 1 is SPS, 2 is rawRS, 3 is normRS
 
-figure(1+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]); 
-
-% PLOT Male Autogenous DATA 
-
-axc(1) = subplot(221); hold on; title('Solo Male Chronic'); 
-    plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
-    % Female
-        plotmasteryoda(msFSHC, bins4plot, typeofplot, 2);
-    % Male
-        plotmasteryoda(msMSAC, bins4plot, typeofplot, 1);
-
-axc(2) = subplot(222); hold on; title('F2M Chronic'); 
-    plot([0 0], [-10 100], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
-    % Female
-        plotmasteryoda(msFAHC, bins4plot, typeofplot, 2);
-    % Male
-        plotmasteryoda(msMHAC, bins4plot, typeofplot, 1);
-    
-% PLOT Female Autogenous DATA
-
-axc(3) = subplot(223); hold on; title('Solo Female Chronic'); 
-    plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
-    % Male
-        plotmasteryoda(msMSHC, bins4plot, typeofplot, 1);
-    % Female
-        plotmasteryoda(msFSAC, bins4plot, typeofplot, 2);
-
-axc(4) = subplot(224); hold on; title('M2F Chronic'); 
-    plot([0 0], [-10 100], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
-    % Male
-        plotmasteryoda(msMAHC, bins4plot, typeofplot, 1);
-    % Female
-        plotmasteryoda(msFHAC, bins4plot, typeofplot, 2);
+% figure(1+((jj-1)*10)); clf; set(gcf, 'Color', [1,1,1]); 
+% 
+% % PLOT Male Autogenous DATA 
+% 
+% axc(1) = subplot(221); hold on; title('Solo Male Chronic'); 
+%     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
+%     % Female
+%         plotmasteryoda(msFSHC, bins4plot, typeofplot, 2);
+%     % Male
+%         plotmasteryoda(msMSAC, bins4plot, typeofplot, 1);
+% 
+% axc(2) = subplot(222); hold on; title('F2M Chronic'); 
+%     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
+%     % Female
+%         plotmasteryoda(msFAHC, bins4plot, typeofplot, 2);
+%     % Male
+%         plotmasteryoda(msMHAC, bins4plot, typeofplot, 1);
+%     
+% % PLOT Female Autogenous DATA
+% 
+% axc(3) = subplot(223); hold on; title('Solo Female Chronic'); 
+%     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
+%     % Male
+%         plotmasteryoda(msMSHC, bins4plot, typeofplot, 1);
+%     % Female
+%         plotmasteryoda(msFSAC, bins4plot, typeofplot, 2);
+% 
+% axc(4) = subplot(224); hold on; title('M2F Chronic'); 
+%     plot([0 0], [-10 100], 'k-', 'LineWidth', 2); %plot([-widow widow], [0 0], 'k-', 'LineWidth', 2);
+%     % Male
+%         plotmasteryoda(msMAHC, bins4plot, typeofplot, 1);
+%     % Female
+%         plotmasteryoda(msFHAC, bins4plot, typeofplot, 2);
 
         
 % Custom figure
