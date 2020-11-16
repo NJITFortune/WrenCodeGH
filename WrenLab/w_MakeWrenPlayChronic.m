@@ -28,6 +28,7 @@ rango = [0.1, 5.8];
     len = length(spiketim);
     rmp = 1/floor(len/2):1/floor(len/2):1;
 
+ % We had 4 channels of neurophysiological data for the female and for the male   
     for kk = 1:4
         fspike(:,kk) = sin(2*pi*(1200+(50*kk))*spiketim) * 0.5 ; % 800 Hz for females
             fspike(1:length(rmp),kk) = fspike(1:length(rmp),kk)' .* rmp;
