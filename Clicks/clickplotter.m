@@ -28,7 +28,7 @@ function [ clicktimes ] = clickplotter( data, Fs, preclick )
                 hold on;
                 plot([preclick(1) preclick(1)], yvals, 'm'); 
                 hold off; 
-		end;
+        end
 
     % get clicks for the starts and ends of the syllables
     
