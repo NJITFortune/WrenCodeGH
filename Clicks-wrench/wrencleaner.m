@@ -7,11 +7,11 @@ function out = wrencleaner(in, dat, Fs)
 out = in;
 
 %% Loop through each syllable and check and correct the most common errors
-for i = 1:length(in);
+for i = 1:length(in)
     
 %% Check for zeros - we should never have a zero frequency
 
-    if ismember(0,[in(i).trace_freq]) == 1;
+    if ismember(0,[in(i).trace_freq]) == 1
 
         % Get the indices where these zeros happened
         zips = find([in(i).trace_freq] == 0);
@@ -19,14 +19,14 @@ for i = 1:length(in);
         % Most of the time there is only one zero value, usually at the
         % end - so we can easily fix that.
 
-        if length(zips) == 1; 
+        if length(zips) == 1 
             % If the zero is anywhere but the first value, we'll simply
             % copy the previous value
-            if zips ~= 1; 
+            if zips ~= 1 
                 out(i).trace_freq(zips) = in(i).trace_freq(zips-1);
             else
                 out(i).trace_freq(zips) = in(i).trace_freq(zips+1);
-            end;
+            end
         else
             % But if we have more than a single zero value, we'll need
             % to get user to help. Here we have the user click each zero.
