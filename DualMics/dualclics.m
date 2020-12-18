@@ -1,4 +1,4 @@
-function [md fd] = dualclics(malorig, femorig, Fs, td)
+function [md, fd] = dualclics(malorig, femorig, Fs, td)
 % [maledata femaledata] = dualclics(male, female, Fs);
 % mal is the sample data - straight from the Male wav file
 % fem is the sample data - straight from the Female wav file
@@ -33,7 +33,7 @@ function [md fd] = dualclics(malorig, femorig, Fs, td)
 
 % Send our data out for pre-handling
     
-   [mal fem dat tim] = wrenxc(malorig, femorig, Fs, td);
+   [mal fem dat, tim] = wrenxc(malorig, femorig, Fs, td);
 
 % This is the width of the clicking window in seconds. 
 windwid = 2.5;
@@ -43,10 +43,10 @@ ovrlp = 0.2;
 
 % We have to do this twice - once for female and once for male
 
-for sex = 1:2;
+for sex = 1:2
     
-    if sex == 1; sng = fem; oth = mal; end;
-    if sex == 2; sng = mal; oth = fem; end;
+    if sex == 1; sng = fem; oth = mal; end
+    if sex == 2; sng = mal; oth = fem; end
 
 %% Initialize BSX and SYLNUM
 
@@ -56,13 +56,13 @@ bsx = 0; sylnum = 1; preclick = 0;
 %% Loop through windows until user tells us that this is the end of sng
 cntu = 1;
 
-while cntu < 10;
+while cntu < 10
        
 % Get clicks
 
         tt = find(tim >= bsx & tim < bsx + windwid);
 
-        if preclick == 0; 
+        if preclick == 0 
             figure(2); close(2); figure(2); % Don't be a hater!
             figprop = get(gcf,'Position'); 
             set(gcf,'Position',[figprop(1) figprop(2)-400 1000 400]);
@@ -75,15 +75,15 @@ while cntu < 10;
             oscson(oth(tt), Fs, [-100 50]); 
             hold on; plot([ovrlp ovrlp], [100 5500], 'm'); hold off;
             cts = clickplotter(sng(tt), Fs, preclick);
-        end;
+        end
    
-        if mod(length(cts),2) == 1; % TRY AGAIN LOSER
+        if mod(length(cts),2) == 1 % TRY AGAIN LOSER
                 shit = input('Odd numbers of clicks do not work, clickturd. ');
-        end;
+        end
 
 % We loop to analyze each syllable
 
-        for ss = 1:2:length(cts)-1;
+        for ss = 1:2:length(cts)-1
 
             % Get the region of data for the current click from the data
             stt = find(tim >= bsx + cts(ss) & tim < bsx + cts(ss+1));
@@ -150,7 +150,7 @@ while cntu < 10;
 
             sylnum = sylnum + 1;
             
-        end;
+        end
                 
         % We are done clicking through the window, so let's save temp data
         % and reset bsx
@@ -160,62 +160,62 @@ while cntu < 10;
         
         % Ask if we are done
         cntu = input('Done? 99=yes, 0 or [return] to continue: ');
-        if isempty(cntu) == 1; cntu = 1; end;
+        if isempty(cntu) == 1; cntu = 1; end
         
-end;
+end
 
 %%%%%%%%%%%%%%%%%%% END OF CLICKING
 
 % After all is said and done, get inter-syllable-intervals
 
-    for j = 1:length(struct)-1;
+    for j = 1:length(struct)-1
         struct(j).ISI = struct(j+1).syltim(1) - struct(j).syltim(2);
-    end;
+    end
 
 
-    if sex == 1; fd = struct; clear struct; end;
-    if sex == 2; md = struct; clear struct; end;
+    if sex == 1; fd = struct; clear struct; end
+    if sex == 2; md = struct; clear struct; end
     
-end;
+end
 
-if (length(fd) ~= length(md));
+if (length(fd) ~= length(md))
     shit = input('Number of Male and Female Syllables do not match, clickturd. ');
-end;
+end
 
 %% Sex determination 
 
-for j = length(fd):-1:1;
+for j = length(fd):-1:1
 
     strt = min([fd(j).sylind(1) md(j).sylind(1)]);
     stp = max([fd(j).sylind(2) md(j).sylind(2)]);
 
     sx = length(find(dat(strt:stp) > 0)) - length(find(dat(strt:stp) < 0));
 
-    if sx < 0; fd(j).sex = 0; md(j).sex = 0; end;
-    if sx > 0; fd(j).sex = 1; md(j).sex = 1; end;
+    if sx < 0; fd(j).sex = 0; md(j).sex = 0; end
+    if sx > 0; fd(j).sex = 1; md(j).sex = 1; end
     
-end;
+end
 
 %% Slicer time (if there are less than 50 syllables)
-if length(md) < 50;
+if length(md) < 50
     
     msyls = slicer(md);
     fsyls = slicer(fd);
     
-    if (length(fsyls) ~= length(msyls));
+    if (length(fsyls) ~= length(msyls))
         shit = input('Did not make the same number of syllable types, clickturd. ');
-    end;
+    end
 
-  for p = 1:length(msyls);
-        for q = 1:length([msyls(p).num]);
+  for p = 1:length(msyls)
+        for q = 1:length([msyls(p).num])
             md(msyls(p).num(q)).id = p;
-        end;
-        for q = 1:length([fsyls(p).num]);
+        end
+        for q = 1:length([fsyls(p).num])
             fd(fsyls(p).num(q)).id = p;
-        end;
-  end;
+        end
+  end
     
-end;           
+end          
 
 % shit = (shit); % But you already knew that.
 
