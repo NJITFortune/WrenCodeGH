@@ -33,7 +33,7 @@ function [md, fd] = dualclics(malorig, femorig, Fs, td)
 
 % Send our data out for pre-handling
     
-   [mal fem dat, tim] = wrenxc(malorig, femorig, Fs, td);
+   [mal, fem, dat, tim] = wrenxc(malorig, femorig, Fs, td);
 
 % This is the width of the clicking window in seconds. 
 windwid = 2.5;
