@@ -88,7 +88,7 @@ for mm = length(clicked_m):-1:1 % For each male syllable
                 
 end % End of male section
 
-    save temp.mat out % JUST IN CASE
+    save temp.mat clicked_m clicked_f out % JUST IN CASE
 
 %% Slicer time - identify syllables and who sang what
 
@@ -96,8 +96,8 @@ end % End of male section
 hopeandpray = 1;
 while hopeandpray ~=0
     
-        msyls = slicer(out.msyl);
-        fsyls = slicer(out.fsyl);
+        msyls = slicer(clicked_m);
+        fsyls = slicer(clicked_f);
 
         if (length(fsyls) ~= length(msyls))
             fprintf('Did not make the same number of syllable types, clickturd - you have to do this again. \n ');
