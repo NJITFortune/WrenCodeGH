@@ -107,7 +107,7 @@ while hopeandpray ~=0
 end
 
 % Quality control - make sure syllable sequency is the same between
-% microphones
+% microphones. This is an unlikely event.
 
 if sum(find([msyls.num] ~= [fsyls.num])) ~= 0
     fprintf('Syllable order does not match between microphones.\n');
@@ -150,7 +150,7 @@ neworder = input('Enter proper order: ');
 
 end
 
-% Assign sex
+%% Assign sex
 
   for p = 1:length(msyls)
         for q = 1:length([msyls(p).num])
