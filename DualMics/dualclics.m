@@ -18,19 +18,6 @@ function [md, fd] = dualclics(malorig, femorig, Fs, td)
 
 %% Housekeeping
 
-% Get some basic information before we start
-    %nfo.year = input('Enter the year, e.g. 2011: ');
-    %nfo.month = input('Enter the month, e.g. 09: ');
-    %nfo.day = input('Enter the day of the month, e.g. 07: ');
-    %nfo.distance = input('Enter distance between birds: ');
-    %nfo.location{:} = input('Enter the location in single quotes: ');
-    %nfo.note{:} = input('Enter a note in single quotes: ');
-    %nfo.Malwav{:} = input('Enter the filename of the Male wav file in single quotes: ');
-    %nfo.Femwav{:} = input('Enter the filename of the Female wav file in single quotes: ');
- nfo.year=2011;nfo.month=12;nfo.day=25;nfo.location={'YY'}; 
- nfo.note={'Fabulous'}; nfo.Malwav = {'Malbar.wav'}; nfo.Femwav = {'Fembar.wav'};
- nfo.distance=0;% Placeholder
-
 % Send our data out for pre-handling
     
    [mal, fem, dat, tim] = wrenxc(malorig, femorig, Fs, td);
