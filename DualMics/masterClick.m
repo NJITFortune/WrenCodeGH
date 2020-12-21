@@ -27,11 +27,11 @@ end
     
     out.maleMic = filtfilt(b,a,MrawData); % Filter
         out.maleMic = 0.99 * (out.maleMic / (max(abs(out.maleMic)))); % Normalize
-    out.femaleMic = filtfilt(b,a,FrawData); % Filter
+    out.femMic = filtfilt(b,a,FrawData); % Filter
         out.femMic = 0.99 * (out.femMic / (max(abs(out.femMic)))); % Normalize
         
 %% Run the dualclics script
-    [clicked_m, clicked_f] = dualclics(out.maleMic, out.femaleMic, out.Fs, 0);
+    [clicked_m, clicked_f] = dualclics(out.maleMic, out.femMic, out.Fs, 0);
     
     save temp.mat clicked_m clicked_f out % JUST IN CASE
 
