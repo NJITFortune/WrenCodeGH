@@ -106,11 +106,10 @@ while hopeandpray ~=0
         hopeandpray = length(fsyls) - length(msyls);
 end
 
-
-
   for p = 1:length(msyls)
         for q = 1:length([msyls(p).num])
             out.msyl(msyls(p).num(q)).sexsyltype = p;
+            out.fsyl(msyls(p).num(q)).sexsyltype = p;
         end
         for q = 1:length([fsyls(p).num])
             out.msyl(fsyls(p).num(q)).sexsyltype = p + 50
