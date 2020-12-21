@@ -196,8 +196,8 @@ maleMicAmp = 0; femMicAmp = 0;
     caxis([-10 40]); colormap(flipud(gray));
     hold on; 
     for j=1:length(out.msyl) 
-        plot([out.msyl(j).syltim(1) out.msyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
-        plot([out.msyl(j).syltim(2) out.msyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
+        plot([out.msyl(j).syltim(1) out.msyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 2);
+        plot([out.msyl(j).syltim(2) out.msyl(j).syltim(2)], [500 4500], 'r', 'LineWidth', 2);
         if out.msyl(j).sex == 'M'
             text(out.msyl(j).syltim(1)+0.1, 4000, num2str(currMaleSequence(j)), 'Color','cyan','FontSize', 14);
         elseif out.msyl(j).sex == 'F'
@@ -208,8 +208,8 @@ maleMicAmp = 0; femMicAmp = 0;
     caxis([-10 40]); colormap(flipud(gray));
     hold on; 
     for j=1:length(out.fsyl) 
-        plot([out.fsyl(j).syltim(1) out.fsyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
-        plot([out.fsyl(j).syltim(2) out.fsyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
+        plot([out.fsyl(j).syltim(1) out.fsyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 2);
+        plot([out.fsyl(j).syltim(2) out.fsyl(j).syltim(2)], [500 4500], 'r', 'LineWidth', 2);
         if out.fsyl(j).sex == 'M'
             text(out.fsyl(j).syltim(1)+0.1, 4000, num2str(currFemaleSequence(j)), 'Color','cyan','FontSize', 14);
         elseif out.fsyl(j).sex == 'F'
