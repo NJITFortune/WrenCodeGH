@@ -42,8 +42,8 @@ for j = 1:length(in)
            subplot(212); plot([in(j).msyl(k-1).syltim(1), in(j).msyl(k-1).syltim(2)], [5500 5500], 'k-', 'LineWidth', 5);
        end
        
-aaa = 0;
-while aaa < 3
+aaa = 5;
+while aaa > 2
        
        figure(2); clf;
 
