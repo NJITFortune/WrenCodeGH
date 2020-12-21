@@ -112,6 +112,16 @@ end
 if sum(find([msyls.num] ~= [fsyls.num])) ~= 0
     fprintf('Syllable order does not match between microphones.\n');
     
+    currMaleSequence = zeros(1,max([msyls.num]));    
+    for jk = length(msyls):-1:1
+        currMaleSequence(msyls(jk).num) = jk;
+    end
+    
+    currFemaleSequence = zeros(1,max([fsyls.num]));
+    for jk = length(fsyls):-1:1
+        currFemaleSequence(fsyls(jk).num) = jk;
+    end
+    
     % Make a plot
     figure; clf;
     subplot(211); specgram(out.maleMic, 1024, out.Fs); ylim([200 5200]); 
@@ -120,7 +130,7 @@ if sum(find([msyls.num] ~= [fsyls.num])) ~= 0
     for j=1:length(out.msyl) 
         plot([out.msyl(j).syltim(1) out.msyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
         plot([out.msyl(j).syltim(2) out.msyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
-        text(out.msyl(j).syltim(1)+0.1, 4000, 
+        text(out.msyl(j).syltim(1)+0.1, 4000, num2str(currMaleSequence(j)));
     end
     subplot(212); specgram(out.femMic, 1024, out.Fs); ylim([200 5200]); 
     caxis([-10 40]); colormap(flipud(gray));
@@ -128,6 +138,7 @@ if sum(find([msyls.num] ~= [fsyls.num])) ~= 0
     for j=1:length(out.fsyl) 
         plot([out.fsyl(j).syltim(1) out.fsyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
         plot([out.fsyl(j).syltim(2) out.fsyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
+        text(out.fsyl(j).syltim(1)+0.1, 4000, num2str(currFemaleSequence(j)));
     end
     
 neworder = input('Enter proper order: ');
