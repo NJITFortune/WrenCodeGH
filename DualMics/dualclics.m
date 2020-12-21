@@ -120,12 +120,8 @@ while cntu < 10
             struct(sylnum).syltim = [tim(stt(1)) tim(stt(end))];
             struct(sylnum).sylind = [stt(1) stt(end)];
 
-            struct(sylnum).year = nfo.year; struct(sylnum).month = nfo.month;
-            struct(sylnum).day = nfo.day; struct(sylnum).location = nfo.location;
-            struct(sylnum).note = nfo.note; struct(sylnum).distance = nfo.distance;
-
-            if sex == 1; struct(sylnum).wavfile = nfo.Femwav; end;
-            if sex == 2; struct(sylnum).wavfile = nfo.Malwav; end;
+%            if sex == 1; struct(sylnum).wavfile = nfo.Femwav; end;
+%            if sex == 2; struct(sylnum).wavfile = nfo.Malwav; end;
 
             % PLOT ONTO OUR WINDOW
             figure(1); hold on;
