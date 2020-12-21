@@ -219,6 +219,7 @@ end
         end
         for q = 1:length([fsyls(p).num])
             fd(fsyls(p).num(q)).id = p;
+            +50
         end
   end
     
