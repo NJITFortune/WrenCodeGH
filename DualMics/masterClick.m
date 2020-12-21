@@ -25,10 +25,12 @@ end
     [b,a] = butter(5, 240 / (out.Fs/2), 'high'); % Highpass
     % [d,c] = butter(5, 10000 / (out.Fs/2), 'low'); % Lowpass
     
-    out.maleMic = filtfilt(b,a,MrawData);
-    out.femaleMic = filtfilt(b,a,FrawData);
-
-% Run the dualclics script
+    out.maleMic = filtfilt(b,a,MrawData); % Filter
+        out.maleMic = 0.99 * (out.maleMic / (max(abs(out.maleMic)))); % Normalize
+    out.femaleMic = filtfilt(b,a,FrawData); % Filter
+        out.femaleMic = 0.99 * (out.femaleMic / (max(abs(out.femaleMic)))); % Normalize
+        
+%% Run the dualclics script
     [clicked_m, clicked_f] = dualclics(out.maleMic, out.femaleMic, out.Fs, 0);
 
 if length(clicked_m) ~= length(clicked_f)
@@ -85,20 +87,23 @@ for mm = length(clicked_m):-1:1 % For each male syllable
                 
 end % End of male section
 
+
+
+
 %% Fix the data
 
     figure; clf;
-    subplot(211); specgram(datums(cnt+fidx).maleMic, 1024, datums(cnt+fidx).Fs); ylim([200 5200]); 
+    subplot(211); specgram(out.maleMic, 1024, out.Fs); ylim([200 5200]); 
     caxis([-10 40]); colormap('HOT');
     hold on; 
-    for j=1:length(datums(cnt+fidx).msyl) 
-        plot([datums(cnt+fidx).msyl(j).syltim(1) datums(cnt+fidx).msyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
-        plot([datums(cnt+fidx).msyl(j).syltim(2) datums(cnt+fidx).msyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
+    for j=1:length(out.msyl) 
+        plot([out.msyl(j).syltim(1) out.msyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
+        plot([out.msyl(j).syltim(2) out.msyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
     end
-    subplot(212); specgram(datums(cnt+fidx).femMic, 1024, datums(cnt+fidx).Fs); ylim([200 5200]); 
+    subplot(212); specgram(out.femMic, 1024, out.Fs); ylim([200 5200]); 
     caxis([-10 40]); colormap('HOT');
     hold on; 
-    for j=1:length(datums(cnt+fidx).fsyl) 
-        plot([datums(cnt+fidx).fsyl(j).syltim(1) datums(cnt+fidx).fsyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
-        plot([datums(cnt+fidx).fsyl(j).syltim(2) datums(cnt+fidx).fsyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
+    for j=1:length(out.fsyl) 
+        plot([out.fsyl(j).syltim(1) out.fsyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
+        plot([out.fsyl(j).syltim(2) out.fsyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
     end
