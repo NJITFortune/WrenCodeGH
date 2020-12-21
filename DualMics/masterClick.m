@@ -90,7 +90,7 @@ end % End of male section
 
     save temp.mat out % JUST IN CASE
 
-%% Slicer time 
+%% Slicer time - identify syllables and who sang what
 
 % Have the user sort syllables on the basis of the traces
 hopeandpray = 1;
@@ -106,11 +106,13 @@ while hopeandpray ~=0
         hopeandpray = length(fsyls) - length(msyls);
 end
 
-% Quality control - make sure traces align
+% Quality control - make sure syllable sequency is the same between
+% microphones
 
 if sum(find([msyls.num] ~= [fsyls.num])) ~= 0
-fprintf('Syllable order does not match between microphones.\n');
+    fprintf('Syllable order does not match between microphones.\n');
     
+    % Make a plot
     figure; clf;
     subplot(211); specgram(out.maleMic, 1024, out.Fs); ylim([200 5200]); 
     caxis([-10 40]); colormap(flipud(gray));
@@ -118,6 +120,7 @@ fprintf('Syllable order does not match between microphones.\n');
     for j=1:length(out.msyl) 
         plot([out.msyl(j).syltim(1) out.msyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
         plot([out.msyl(j).syltim(2) out.msyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
+        text(out.msyl(j).syltim(1)+0.1, 4000, 
     end
     subplot(212); specgram(out.femMic, 1024, out.Fs); ylim([200 5200]); 
     caxis([-10 40]); colormap(flipud(gray));
@@ -127,12 +130,17 @@ fprintf('Syllable order does not match between microphones.\n');
         plot([out.fsyl(j).syltim(2) out.fsyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
     end
     
-end
-
 neworder = input('Enter proper order: ');
     maxsyl = max(neworder);
     for jj = maxsyl:-1:1
-        msyls(jj).num
+        msyls(jj).num = find(neworder == jj);
+        fsyls(jj).num = find(neworder == jj);
+    end
+
+end
+
+% Assign sex
+
 
 
   for p = 1:length(msyls)
