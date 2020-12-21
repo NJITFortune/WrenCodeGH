@@ -123,7 +123,7 @@ if sum(find([msyls.num] ~= [fsyls.num])) ~= 0
     end
     
     % Make a plot
-    figure; clf;
+    figure(27); clf;
     subplot(211); specgram(out.maleMic, 1024, out.Fs); ylim([200 5200]); 
     caxis([-10 40]); colormap(flipud(gray));
     hold on; 
@@ -150,6 +150,8 @@ neworder = input('Enter proper order: ');
 
 end
 
+    close(27);
+    
 %% Assign sex
 
 maleMicAmp = 0; femMicAmp = 0;
@@ -157,16 +159,55 @@ maleMicAmp = 0; femMicAmp = 0;
     for pp = 1:length(msyls)
      
         for jj = 1:length(msyls(pp).num)
-          maleMicAmp = maleMicAmp + sum(abs(out.   out.msyl(msyls(pp).num(jj)).sylidx(1): ))
+          maleMicAmp = maleMicAmp + sum(abs(out.malMic(out.msyl(msyls(pp).num(jj)).sylidx(1):out.msyl(msyls(pp).num(jj)).sylidx(2))));
+          femMicAmp = femMicAmp + sum(abs(out.femMic(out.fsyl(fsyls(pp).num(jj)).sylidx(1):out.fsyl(fsyls(pp).num(jj)).sylidx(2))));
+        end
       
-        for q = 1:length([msyls(p).num])
-            out.msyl(msyls(p).num(q)).sexsyltype = p;
+        if maleMicAmp > femMicAmp % This is a male syllable
+            for q = 1:length([msyls(pp).num])
+                out.msyl(msyls(pp).num(q)).sexsyltype = pp;
+                out.msyl(fsyls(pp).num(q)).sex = 'M';
+                out.fsyl(fsyls(pp).num(q)).sexsyltype = pp;
+                out.fsyl(fsyls(pp).num(q)).sex = 'M';
+            end
         end
-        for q = 1:length([fsyls(p).num])
-            out.fsyl(fsyls(p).num(q)).sexsyltype = p;
+        if maleMicAmp < femMicAmp % This is a female syllable
+            for q = 1:length([msyls(pp).num])
+                out.msyl(msyls(pp).num(q)).sexsyltype = 50+pp;
+                out.msyl(fsyls(pp).num(q)).sex = 'F';
+                out.fsyl(fsyls(pp).num(q)).sexsyltype = 50+pp;
+                out.fsyl(fsyls(pp).num(q)).sex = 'F';
+            end
         end
-  end
+        
+    end
 
+    figure(3); clf;
+    subplot(211); specgram(out.maleMic, 1024, out.Fs); ylim([200 5200]); 
+    caxis([-10 40]); colormap(flipud(gray));
+    hold on; 
+    for j=1:length(out.msyl) 
+        plot([out.msyl(j).syltim(1) out.msyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
+        plot([out.msyl(j).syltim(2) out.msyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
+        if out.msyl(j).sex == 'M'
+            text(out.msyl(j).syltim(1)+0.1, 4000, num2str(currMaleSequence(j)), 'c');
+        elseif out.msyl(j).sex == 'F'
+            text(out.msyl(j).syltim(1)+0.1, 4000, num2str(currMaleSequence(j)), 'm');            
+        end
+    end
+    subplot(212); specgram(out.femMic, 1024, out.Fs); ylim([200 5200]); 
+    caxis([-10 40]); colormap(flipud(gray));
+    hold on; 
+    for j=1:length(out.fsyl) 
+        plot([out.fsyl(j).syltim(1) out.fsyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
+        plot([out.fsyl(j).syltim(2) out.fsyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
+        if out.fsyl(j).sex == 'M'
+            text(out.fsyl(j).syltim(1)+0.1, 4000, num2str(currFemaleSequence(j)), 'c');
+        elseif out.fsyl(j).sex == 'F'
+            text(out.fsyl(j).syltim(1)+0.1, 4000, num2str(currFemaleSequence(j)), 'm');            
+        end
+    end
+    
 
 
 %% Fix the data
