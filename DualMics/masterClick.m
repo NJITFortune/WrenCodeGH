@@ -1,0 +1,104 @@
+function out = masterClick(dist, vis, loc, day, mon, yr)
+% Usage: out = masterClick(dist, vis, loc, day, mon, yr)
+
+%% Prepartions
+
+    out.dist = dist; out.vis = vis; out.loc = loc;
+    out.day = day; out.mon = mon; out.yr = yr;
+
+% Get male wav data
+    [filename,pathname]=uigetfile('*.wav', 'Select Male WAV file');
+        [MrawData,mFs] = audioread([pathname filename]);
+% Get female wav data
+    [filename,pathname]=uigetfile('*.wav', 'Select female WAV file');
+        [FrawData,fFs] = audioread([pathname filename]);
+
+if mFs ~= fFs
+   fprintf('Male sample rate %i does not match female sample rate %i', mFs, fFs); 
+   return
+end
+
+    out.Fs = mFs;    
+    
+% Filter and normalize raw recording data
+
+    [b,a] = butter(5, 240 / (out.Fs/2), 'high'); % Highpass
+    % [d,c] = butter(5, 10000 / (out.Fs/2), 'low'); % Lowpass
+    
+    out.maleMic = filtfilt(b,a,MrawData);
+    out.femaleMic = filtfilt(b,a,FrawData);
+
+% Run the dualclics script
+    [clicked_m, clicked_f] = dualclics(out.maleMic, out.femaleMic, out.Fs, 0);
+
+if length(clicked_m) ~= length(clicked_f)
+   fprintf('Male syllable count %i does not match female syllable count %i', length(clicked_m), length(clicked_f)); 
+   save temp.mat clicked_m clicked_f
+   return
+end
+        
+%% Concatonate the data    
+
+for ff = length(clicked_f):-1:1 % For each female syllable
+        
+        out.fsyl(ff).sylen = clicked_f(ff).sylen; % Length of seconds of the syllable (not necessary because given by syltim(2)-syltim(1)
+        out.fsyl(ff).syltim = clicked_f(ff).syltim; % Beginning and end of each syllable
+        out.fsyl(ff).sylidx = clicked_f(ff).sylind; % Beginning and end of each syllable
+
+        out.fsyl(ff).traceFreq = clicked_f(ff).trace_freq; % Beginning and end of each syllable
+        out.fsyl(ff).traceTim = clicked_f(ff).trace_tim; % Beginning and end of each syllable
+            out.fsyl(ff).trace.slopemean = clicked_f.trace_slopemean;
+            out.fsyl(ff).trace.slopestd = clicked_f.trace_slopestd;
+            out.fsyl(ff).trace.slopevar = clicked_f.trace_slopevar;
+            out.fsyl(ff).trace.peakfreq = clicked_f.trace_peakf;
+
+        out.fsyl(ff).fftPower = foo.f(ff).spec_p; % fft over entire syllable (power values)
+        out.fsyl(ff).fftFreqs = foo.f(ff).spec_f; % frequency values that for fftPower
+            out.fsyl(ff).fft.peakf = clicked_f.spec_peakf;
+            out.fsyl(ff).fft.peakf = clicked_f.spec_peakf;
+            out.fsyl(ff).fft.minf = clicked_f.spec_minf;
+            out.fsyl(ff).fft.maxf = clicked_f.spec_maxf;
+            out.fsyl(ff).fft.band = clicked_f.spec_band;     
+        
+end % End of female section
+    
+for mm = length(clicked_m):-1:1 % For each male syllable
+        
+        out.msyl(mm).sylen = clicked_m(mm).sylen; % Length of seconds of the syllable (not necessary because given by syltim(2)-syltim(1)
+        out.msyl(mm).syltim = clicked_m(mm).syltim; % Beginning and end of each syllable
+        out.msyl(mm).sylidx = clicked_m(mm).sylind; % Beginning and end of each syllable
+
+        out.msyl(mm).traceFreq = clicked_m(mm).trace_freq; % Beginning and end of each syllable
+        out.msyl(mm).traceTim = clicked_m(mm).trace_tim; % Beginning and end of each syllable
+            out.msyl(mm).trace.slopemean = clicked_m(mm).trace_slopemean;
+            out.msyl(mm).trace.slopestd = clicked_m(mm).trace_slopestd;
+            out.msyl(mm).trace.slopevar = clicked_m(mm).trace_slopevar;
+            out.msyl(mm).trace.peakfreq = clicked_m(mm).trace_peakf;
+
+        out.msyl(mm).mmtPower = clicked_m(mm).spec_p; % mmt over entire syllable (power values)
+        out.msyl(mm).mmtFreqs = foo.m(mm).spec_f; % frequency values that for mmtPower
+            out.msyl(mm).fft.peakf = clicked_m(mm).spec_peakf;
+            out.msyl(mm).fft.peakf = clicked_m(mm).spec_peakf;
+            out.msyl(mm).fft.minf = clicked_m(mm).spec_minf;
+            out.msyl(mm).fft.maxf = clicked_m(mm).spec_maxf;
+            out.msyl(mm).fft.band = clicked_m(mm).spec_band;
+                
+end % End of male section
+
+%% Fix the data
+
+    figure; clf;
+    subplot(211); specgram(datums(cnt+fidx).maleMic, 1024, datums(cnt+fidx).Fs); ylim([200 5200]); 
+    caxis([-10 40]); colormap('HOT');
+    hold on; 
+    for j=1:length(datums(cnt+fidx).msyl); 
+        plot([datums(cnt+fidx).msyl(j).syltim(1) datums(cnt+fidx).msyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
+        plot([datums(cnt+fidx).msyl(j).syltim(2) datums(cnt+fidx).msyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
+    end
+    subplot(212); specgram(datums(cnt+fidx).femMic, 1024, datums(cnt+fidx).Fs); ylim([200 5200]); 
+    caxis([-10 40]); colormap('HOT');
+    hold on; 
+    for j=1:length(datums(cnt+fidx).fsyl); 
+        plot([datums(cnt+fidx).fsyl(j).syltim(1) datums(cnt+fidx).fsyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
+        plot([datums(cnt+fidx).fsyl(j).syltim(2) datums(cnt+fidx).fsyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
+    end
