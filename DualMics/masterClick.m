@@ -152,7 +152,13 @@ end
 
 %% Assign sex
 
-  for p = 1:length(msyls)
+maleMicAmp = 0; femMicAmp = 0;
+
+    for pp = 1:length(msyls)
+     
+        for jj = 1:length(msyls(pp).num)
+          maleMicAmp = maleMicAmp + sum(abs(out.msyl(msyls(pp).num(jj)).syl ))
+      
         for q = 1:length([msyls(p).num])
             out.msyl(msyls(p).num(q)).sexsyltype = p;
         end
