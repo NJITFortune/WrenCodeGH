@@ -157,7 +157,7 @@ maleMicAmp = 0; femMicAmp = 0;
     for pp = 1:length(msyls)
      
         for jj = 1:length(msyls(pp).num)
-          maleMicAmp = maleMicAmp + sum(abs(out.msyl(msyls(pp).num(jj)).syl ))
+          maleMicAmp = maleMicAmp + sum(abs(out.   out.msyl(msyls(pp).num(jj)).sylidx(1): ))
       
         for q = 1:length([msyls(p).num])
             out.msyl(msyls(p).num(q)).sexsyltype = p;
