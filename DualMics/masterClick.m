@@ -148,9 +148,9 @@ neworder = input('Enter proper order: ');
         fsyls(jj).num = find(neworder == jj);
     end
 
+    close(27);
 end
 
-    close(27);
     
 %% Assign sex
 
