@@ -112,8 +112,8 @@ end
             out.fsyl(msyls(p).num(q)).sexsyltype = p;
         end
         for q = 1:length([fsyls(p).num])
-            out.msyl(fsyls(p).num(q)).sexsyltype = p + 50
-            out.fsyl(fsyls(p).num(q)).sexsyltype = p + 50
+            out.msyl(fsyls(p).num(q)).sexsyltype = p + 50;
+            out.fsyl(fsyls(p).num(q)).sexsyltype = p + 50;
         end
   end
 
