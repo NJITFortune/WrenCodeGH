@@ -73,9 +73,9 @@ for i = 1:length(ll)
 
     clear xWins yWins; 
 
-end;
+end
 
-j=j-1;
+j = j - 1;
 
 % % % % Plot the selected traces in figure 2.
 
@@ -99,11 +99,11 @@ j=j-1;
     slctd = slctd + length([syls(sylidx).num]);
     sylidx = sylidx + 1;
     
-end;
+end
     
     sbtch = sbtch + btch + 1;
 
-end;
+end
 
 %% Lets do a simple sort on each syllable type and grab the first of each
 
@@ -119,7 +119,8 @@ tmpsylist = sort(tmpsyl);
 for j = 1:length(tmpsyl)
     p = find(tmpsyl == tmpsylist(j));
     psyl(j).num = syls(p).num;
-end;
+end
+
 syls = psyl;
 
 %% Set the "id" value for the main structure tst
