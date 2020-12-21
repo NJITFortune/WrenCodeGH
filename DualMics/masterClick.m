@@ -182,6 +182,15 @@ maleMicAmp = 0; femMicAmp = 0;
         
     end
 
+    currMaleSequence = zeros(1,max([msyls.num]));    
+    for jk = length(msyls):-1:1
+        currMaleSequence(msyls(jk).num) = jk;
+    end
+    currFemaleSequence = zeros(1,max([fsyls.num]));
+    for jk = length(fsyls):-1:1
+        currFemaleSequence(fsyls(jk).num) = jk;
+    end
+    
     figure(3); clf;
     subplot(211); specgram(out.maleMic, 1024, out.Fs); ylim([200 5200]); 
     caxis([-10 40]); colormap(flipud(gray));
