@@ -108,22 +108,31 @@ end
 
 % Quality control - make sure traces align
 
-
+if sum(find([msyls.num] ~= [fsyls.num])) ~= 0
+fprintf('Syllable order does not match between microphones.\n');
+    
     figure; clf;
     subplot(211); specgram(out.maleMic, 1024, out.Fs); ylim([200 5200]); 
-    caxis([-10 40]); colormap('HOT');
+    caxis([-10 40]); colormap(flipud(gray));
     hold on; 
     for j=1:length(out.msyl) 
         plot([out.msyl(j).syltim(1) out.msyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
         plot([out.msyl(j).syltim(2) out.msyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
     end
     subplot(212); specgram(out.femMic, 1024, out.Fs); ylim([200 5200]); 
-    caxis([-10 40]); colormap('HOT');
+    caxis([-10 40]); colormap(flipud(gray));
     hold on; 
     for j=1:length(out.fsyl) 
         plot([out.fsyl(j).syltim(1) out.fsyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
         plot([out.fsyl(j).syltim(2) out.fsyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
     end
+    
+end
+
+neworder = input('Enter proper order: ');
+    maxsyl = max(neworder);
+    for jj = maxsyl:-1:1
+        msyls(jj).num
 
 
   for p = 1:length(msyls)
