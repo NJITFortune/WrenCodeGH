@@ -196,26 +196,22 @@ for j = length(fd):-1:1
     
 end
 
-save tmpfile.mat md fd
+%% Slicer time 
 
 hopeandpray = 1;
 
-%% Slicer time (if there are less than 50 syllables)
 while hopeandpray ~=0
 
-if length(md) < 50
-    
-    msyls = slicer(md);
-    fsyls = slicer(fd);
-    
-    if (length(fsyls) ~= length(msyls))
-        fprintf('Did not make the same number of syllable types, clickturd - you have to do this again. \n ');
-    end
+        msyls = slicer(md);
+        fsyls = slicer(fd);
 
-    hopeandpray = length(fsyls) - length(msyls);
-    
+        if (length(fsyls) ~= length(msyls))
+            fprintf('Did not make the same number of syllable types, clickturd - you have to do this again. \n ');
+        end
+
+        hopeandpray = length(fsyls) - length(msyls);
+
 end
-end    
     
   for p = 1:length(msyls)
         for q = 1:length([msyls(p).num])
@@ -227,7 +223,4 @@ end
   end
     
 end          
-
-% shit = (shit); % But you already knew that.
-
-end    
+   
