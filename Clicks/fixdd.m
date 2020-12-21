@@ -42,6 +42,8 @@ for j = 1:length(in)
            subplot(212); plot([in(j).msyl(k-1).syltim(1), in(j).msyl(k-1).syltim(2)], [5500 5500], 'k-', 'LineWidth', 5);
        end
        
+aaa = 0;
+while aaa < 3
        
        figure(2); clf;
 
@@ -280,6 +282,7 @@ specgram(in(j).maleMic(tim > in(j).msyl(k).syltim(1)-buff & tim < in(j).msyl(k).
            
     end
    
+end % replot and re-ask if clicked.
     
    end % End of syllable loop
 
