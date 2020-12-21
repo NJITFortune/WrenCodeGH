@@ -28,7 +28,7 @@ end
     out.maleMic = filtfilt(b,a,MrawData); % Filter
         out.maleMic = 0.99 * (out.maleMic / (max(abs(out.maleMic)))); % Normalize
     out.femaleMic = filtfilt(b,a,FrawData); % Filter
-        out.femaleMic = 0.99 * (out.femaleMic / (max(abs(out.femaleMic)))); % Normalize
+        out.femMic = 0.99 * (out.femMic / (max(abs(out.femaleMic)))); % Normalize
         
 %% Run the dualclics script
     [clicked_m, clicked_f] = dualclics(out.maleMic, out.femaleMic, out.Fs, 0);
