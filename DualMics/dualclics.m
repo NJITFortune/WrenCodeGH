@@ -196,6 +196,8 @@ for j = length(fd):-1:1
     
 end
 
+save tmpfile.mat md fd
+
 %% Slicer time (if there are less than 50 syllables)
 if length(md) < 50
     
