@@ -52,8 +52,8 @@ for ff = length(clicked_f):-1:1 % For each female syllable
             out.fsyl(ff).trace.slopevar = clicked_f.trace_slopevar;
             out.fsyl(ff).trace.peakfreq = clicked_f.trace_peakf;
 
-        out.fsyl(ff).fftPower = foo.f(ff).spec_p; % fft over entire syllable (power values)
-        out.fsyl(ff).fftFreqs = foo.f(ff).spec_f; % frequency values that for fftPower
+        out.fsyl(ff).fftPower = clicked_f(ff).spec_p; % fft over entire syllable (power values)
+        out.fsyl(ff).fftFreqs = clicked_f(ff).spec_f; % frequency values that for fftPower
             out.fsyl(ff).fft.peakf = clicked_f.spec_peakf;
             out.fsyl(ff).fft.peakf = clicked_f.spec_peakf;
             out.fsyl(ff).fft.minf = clicked_f.spec_minf;
@@ -76,7 +76,7 @@ for mm = length(clicked_m):-1:1 % For each male syllable
             out.msyl(mm).trace.peakfreq = clicked_m(mm).trace_peakf;
 
         out.msyl(mm).mmtPower = clicked_m(mm).spec_p; % mmt over entire syllable (power values)
-        out.msyl(mm).mmtFreqs = foo.m(mm).spec_f; % frequency values that for mmtPower
+        out.msyl(mm).mmtFreqs = clicked_m(mm).spec_f; % frequency values that for mmtPower
             out.msyl(mm).fft.peakf = clicked_m(mm).spec_peakf;
             out.msyl(mm).fft.peakf = clicked_m(mm).spec_peakf;
             out.msyl(mm).fft.minf = clicked_m(mm).spec_minf;
@@ -91,14 +91,14 @@ end % End of male section
     subplot(211); specgram(datums(cnt+fidx).maleMic, 1024, datums(cnt+fidx).Fs); ylim([200 5200]); 
     caxis([-10 40]); colormap('HOT');
     hold on; 
-    for j=1:length(datums(cnt+fidx).msyl); 
+    for j=1:length(datums(cnt+fidx).msyl) 
         plot([datums(cnt+fidx).msyl(j).syltim(1) datums(cnt+fidx).msyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
         plot([datums(cnt+fidx).msyl(j).syltim(2) datums(cnt+fidx).msyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
     end
     subplot(212); specgram(datums(cnt+fidx).femMic, 1024, datums(cnt+fidx).Fs); ylim([200 5200]); 
     caxis([-10 40]); colormap('HOT');
     hold on; 
-    for j=1:length(datums(cnt+fidx).fsyl); 
+    for j=1:length(datums(cnt+fidx).fsyl) 
         plot([datums(cnt+fidx).fsyl(j).syltim(1) datums(cnt+fidx).fsyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
         plot([datums(cnt+fidx).fsyl(j).syltim(2) datums(cnt+fidx).fsyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
     end
