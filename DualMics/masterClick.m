@@ -32,10 +32,11 @@ end
         
 %% Run the dualclics script
     [clicked_m, clicked_f] = dualclics(out.maleMic, out.femaleMic, out.Fs, 0);
+    
+    save temp.mat clicked_m clicked_f out % JUST IN CASE
 
-if length(clicked_m) ~= length(clicked_f)
+if length(clicked_m) ~= length(clicked_f) % This should never ever happen
    fprintf('Male syllable count %i does not match female syllable count %i', length(clicked_m), length(clicked_f)); 
-   save temp.mat clicked_m clicked_f
    return
 end
         
@@ -87,6 +88,35 @@ for mm = length(clicked_m):-1:1 % For each male syllable
                 
 end % End of male section
 
+    save temp.mat out % JUST IN CASE
+
+%% Slicer time 
+
+hopeandpray = 1;
+
+while hopeandpray ~=0
+    
+        msyls = slicer(out.msyl);
+        fsyls = slicer(out.fsyl);
+
+        if (length(fsyls) ~= length(msyls))
+            fprintf('Did not make the same number of syllable types, clickturd - you have to do this again. \n ');
+        end
+
+        hopeandpray = length(fsyls) - length(msyls);
+end
+
+
+
+  for p = 1:length(msyls)
+        for q = 1:length([msyls(p).num])
+            out.msyl(msyls(p).num(q)).id = p;
+        end
+        for q = 1:length([fsyls(p).num])
+            fd(fsyls(p).num(q)).id = p;
+            +50
+        end
+  end
 
 
 
