@@ -103,7 +103,7 @@ while hopeandpray ~=0
             fprintf('Did not make the same number of syllable types, clickturd - you have to do this again. \n ');
         end
 
-        hopeandpray = length(fsyls) - length(msyls);
+        hopeandpray = abs(length(fsyls) - length(msyls));
 end
 
 % Quality control - make sure syllable sequency is the same between
