@@ -92,8 +92,8 @@ end % End of male section
 
 %% Slicer time 
 
+% Have the user sort syllables on the basis of the traces
 hopeandpray = 1;
-
 while hopeandpray ~=0
     
         msyls = slicer(out.msyl);
@@ -106,21 +106,8 @@ while hopeandpray ~=0
         hopeandpray = length(fsyls) - length(msyls);
 end
 
+% Quality control - make sure traces align
 
-
-
-  for p = 1:length(msyls)
-        for q = 1:length([msyls(p).num])
-            out.msyl(msyls(p).num(q)).sexsyltype = p;
-        end
-        for q = 1:length([fsyls(p).num])
-            out.fsyl(fsyls(p).num(q)).sexsyltype = p;
-        end
-  end
-
-
-
-%% Fix the data
 
     figure; clf;
     subplot(211); specgram(out.maleMic, 1024, out.Fs); ylim([200 5200]); 
@@ -137,3 +124,18 @@ end
         plot([out.fsyl(j).syltim(1) out.fsyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
         plot([out.fsyl(j).syltim(2) out.fsyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
     end
+
+
+  for p = 1:length(msyls)
+        for q = 1:length([msyls(p).num])
+            out.msyl(msyls(p).num(q)).sexsyltype = p;
+        end
+        for q = 1:length([fsyls(p).num])
+            out.fsyl(fsyls(p).num(q)).sexsyltype = p;
+        end
+  end
+
+
+
+%% Fix the data
+
