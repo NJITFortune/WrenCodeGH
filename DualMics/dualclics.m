@@ -182,33 +182,6 @@ for j = length(fd):-1:1
     if sx > 0; fd(j).sex = 1; md(j).sex = 1; end
     
 end
-
-%% Slicer time 
-
-hopeandpray = 1;
-
-while hopeandpray ~=0
-
-        msyls = slicer(md);
-        fsyls = slicer(fd);
-
-        if (length(fsyls) ~= length(msyls))
-            fprintf('Did not make the same number of syllable types, clickturd - you have to do this again. \n ');
-        end
-
-        hopeandpray = length(fsyls) - length(msyls);
-
-end
-    
-  for p = 1:length(msyls)
-        for q = 1:length([msyls(p).num])
-            md(msyls(p).num(q)).id = p;
-        end
-        for q = 1:length([fsyls(p).num])
-            fd(fsyls(p).num(q)).id = p;
-            +50
-        end
-  end
     
 end          
    
