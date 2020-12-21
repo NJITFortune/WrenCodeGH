@@ -199,9 +199,9 @@ maleMicAmp = 0; femMicAmp = 0;
         plot([out.msyl(j).syltim(1) out.msyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
         plot([out.msyl(j).syltim(2) out.msyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
         if out.msyl(j).sex == 'M'
-            text(out.msyl(j).syltim(1)+0.1, 4000, num2str(currMaleSequence(j)), 'c');
+            text(out.msyl(j).syltim(1)+0.1, 4000, num2str(currMaleSequence(j)), 'Color','cyan','FontSize', 14);
         elseif out.msyl(j).sex == 'F'
-            text(out.msyl(j).syltim(1)+0.1, 4000, num2str(currMaleSequence(j)), 'm');            
+            text(out.msyl(j).syltim(1)+0.1, 4000, num2str(currMaleSequence(j)), 'Color','magenta','FontSize', 14);            
         end
     end
     subplot(212); specgram(out.femMic, 1024, out.Fs); ylim([200 5200]); 
@@ -211,9 +211,9 @@ maleMicAmp = 0; femMicAmp = 0;
         plot([out.fsyl(j).syltim(1) out.fsyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 3);
         plot([out.fsyl(j).syltim(2) out.fsyl(j).syltim(2)], [500 4500], 'm', 'LineWidth', 3);
         if out.fsyl(j).sex == 'M'
-            text(out.fsyl(j).syltim(1)+0.1, 4000, num2str(currFemaleSequence(j)), 'c');
+            text(out.fsyl(j).syltim(1)+0.1, 4000, num2str(currFemaleSequence(j)), 'Color','cyan','FontSize', 14);
         elseif out.fsyl(j).sex == 'F'
-            text(out.fsyl(j).syltim(1)+0.1, 4000, num2str(currFemaleSequence(j)), 'm');            
+            text(out.fsyl(j).syltim(1)+0.1, 4000, num2str(currFemaleSequence(j)), 'Color','magenta','FontSize', 14);            
         end
     end
     
