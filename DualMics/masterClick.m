@@ -152,8 +152,6 @@ end
 
 % Assign sex
 
-
-
   for p = 1:length(msyls)
         for q = 1:length([msyls(p).num])
             out.msyl(msyls(p).num(q)).sexsyltype = p;
