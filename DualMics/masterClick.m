@@ -1,5 +1,9 @@
 function out = masterClick(dist, vis, loc, day, mon, yr)
 % Usage: out = masterClick(dist, vis, loc, day, mon, yr)
+% dist is an integer distance in meters
+% vis is visual condition - 1 for vision and 0 for blind
+% loc is the location, e.g. 'Yanayacu' (must use single quotes)
+% day, mon, yr are integers exactly as expected - please use full 4-digit year
 
 %% Prepartions
 
