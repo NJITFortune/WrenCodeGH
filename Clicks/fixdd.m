@@ -48,7 +48,7 @@ while aaa > 2
        
        figure(2); clf;
 
-       longerDur = max([in(j).fsyl(k).sylen, in(j).msyl(k).sylen]);
+       longerDur = max([out(j).fsyl(k).sylen, out(j).msyl(k).sylen]);
        
        % Set which2fix: 1 for fixing the heterogenous syllable, 2 for both
 %        if in(j).fsyl(k).sexsyltype > 49
@@ -68,13 +68,13 @@ while aaa > 2
        
        figure(2); axx(1) = subplot(211);  % Female Microphone
        
-       tim = 1/in(j).Fs:1/in(j).Fs:length(in(j).femMic)/out(j).Fs;
+       tim = 1/out(j).Fs:1/out(j).Fs:length(out(j).femMic)/out(j).Fs;
        
-       specgram(in(j).femMic(tim > in(j).fsyl(k).syltim(1)-buff & tim < in(j).fsyl(k).syltim(1)+longerDur+buff), 2048, in(j).Fs, [], 2000); 
+       specgram(out(j).femMic(tim > out(j).fsyl(k).syltim(1)-buff & tim < out(j).fsyl(k).syltim(1)+longerDur+buff), 2048, in(j).Fs, [], 2000); 
        hold on;
        text(0.05, 5000, 'Female Microphone', 'Color', 'w');
        
-            if (in(j).fsyl(k).sexsyltype > 49) % Female syllable
+            if (out(j).fsyl(k).sexsyltype > 49) % Female syllable
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 3); % HEAVY TRACE
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 2); % START LINE
                 plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 2); % END LINE
