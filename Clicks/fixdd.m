@@ -76,14 +76,14 @@ while aaa > 2
        
             if (out(j).fsyl(k).sexsyltype > 49) % Female syllable
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 3); % HEAVY TRACE
-                plot([buff, buff], [200 6000], 'g-', 'LineWidth', 2); % START LINE
-                plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 2); % END LINE
+                plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
+                plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
             if (out(j).fsyl(k).sexsyltype < 49) % Male syllable
-                plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'b-');
-                plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'y-');
-                plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1);
-                plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1);
+                plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'y-', 'LineWidth', 2); % Autogenous trace
+                plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'b-'); % Heterogenous trace
+                plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
+                plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
             
        figure(2); axx(2) = subplot(212); % Male Microphone
@@ -96,14 +96,14 @@ while aaa > 2
        
             if (out(j).msyl(k).sexsyltype < 49) % Male syllable
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'b-', 'LineWidth', 2);
-                plot([buff, buff], [200 6000], 'g-', 'LineWidth', 3);
-                plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 3);
+                plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE 
+                plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
             if (out(j).msyl(k).sexsyltype > 49) % Female syllable
-                plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'm-');
-                plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'y-');
-                plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1);
-                plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1);
+                plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'y-', 'LineWidth', 2); % Autogenous trace
+                plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'm-'); % Heterogenous trace
+                plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
+                plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
    
         linkaxes(axx, 'xy');
