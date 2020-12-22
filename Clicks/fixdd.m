@@ -258,12 +258,12 @@ while aaa > 2
             figure(2); [newclx, ~] = ginput(2);
             % newclx = sort(newclx);
             out(j).msyl(k).sylen = newclx(2) - newclx(1);
-            out(j).msyl(k).syltim(1) = in(j).msyl(k).syltim(1) + (newclx(1) - buff);
+            out(j).msyl(k).syltim(1) = out(j).msyl(k).syltim(1) + (newclx(1) - buff);
             out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + out(j).msyl(k).sylen;
-            out(j).msyl(k).sylidx(1) = round(in(j).msyl(k).sylidx(1) + ((newclx(1) - buff) * in(j).Fs));
-            out(j).msyl(k).sylidx(2) = round(out(j).msyl(k).sylidx(1) + (out(j).msyl(k).sylen * in(j).Fs));
+            out(j).msyl(k).sylidx(1) = round(out(j).msyl(k).sylidx(1) + ((newclx(1) - buff) * out(j).Fs));
+            out(j).msyl(k).sylidx(2) = round(out(j).msyl(k).sylidx(1) + (out(j).msyl(k).sylen * out(j).Fs));
             
-            tmp = syldat(in(j).maleMic(out(j).msyl(k).sylidx(1):out(j).msyl(k).sylidx(2)), in(j).Fs);
+            tmp = syldat(out(j).maleMic(out(j).msyl(k).sylidx(1):out(j).msyl(k).sylidx(2)), out(j).Fs);
             out(j).msyl(k).traceTim = tmp.trace_tim;
             out(j).msyl(k).traceFreq = tmp.trace_freq;
             out(j).msyl(k).trace.peakfreq = tmp.trace_peakf;
@@ -274,12 +274,12 @@ while aaa > 2
             fprintf('Click on start syllable at the female microphone.\n');
             figure(2); [newclk, ~] = ginput(1);
             out(j).fsyl(k).sylen = out(j).msyl(k).sylen;
-            out(j).fsyl(k).syltim(1) = in(j).fsyl(k).syltim(1) + (newclk - buff);
+            out(j).fsyl(k).syltim(1) = out(j).fsyl(k).syltim(1) + (newclk - buff);
             out(j).fsyl(k).syltim(2) = out(j).fsyl(k).syltim(1) + out(j).msyl(k).sylen;
-            out(j).fsyl(k).sylidx(1) = round(in(j).fsyl(k).sylidx(1) - ((newclk - buff) * in(j).Fs));
-            out(j).fsyl(k).sylidx(2) = round(out(j).fsyl(k).sylidx(1) + (out(j).msyl(k).sylen * in(j).Fs));
+            out(j).fsyl(k).sylidx(1) = round(out(j).fsyl(k).sylidx(1) - ((newclk - buff) * out(j).Fs));
+            out(j).fsyl(k).sylidx(2) = round(out(j).fsyl(k).sylidx(1) + (out(j).msyl(k).sylen * out(j).Fs));
 
-            tmp = syldat(in(j).femMic(out(j).fsyl(k).sylidx(1):out(j).fsyl(k).sylidx(2)), in(j).Fs);
+            tmp = syldat(out(j).femMic(out(j).fsyl(k).sylidx(1):out(j).fsyl(k).sylidx(2)), out(j).Fs);
             out(j).fsyl(k).traceTim = tmp.trace_tim;
             out(j).fsyl(k).traceFreq = tmp.trace_freq;
             out(j).fsyl(k).trace.peakfreq = tmp.trace_peakf;
