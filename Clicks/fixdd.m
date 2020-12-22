@@ -42,12 +42,13 @@ for j = 1:length(in)
            subplot(212); plot([in(j).msyl(k-1).syltim(1), in(j).msyl(k-1).syltim(2)], [5500 5500], 'k-', 'LineWidth', 5);
        end
        
-aaa = 5;
+       
+      aaa = 5;
 while aaa > 2
        
        figure(2); clf;
 
-       longerDur = max([out(j).fsyl(k).sylen, out(j).msyl(k).sylen]);
+       longerDur = max([in(j).fsyl(k).sylen, in(j).msyl(k).sylen]);
        
        % Set which2fix: 1 for fixing the heterogenous syllable, 2 for both
 %        if in(j).fsyl(k).sexsyltype > 49
@@ -66,14 +67,17 @@ while aaa > 2
 %        end
        
        figure(2); axx(1) = subplot(211);  % Female Microphone
-            tim = 1/out(j).Fs:1/out(j).Fs:length(out(j).femMic)/out(j).Fs;
-specgram(out(j).femMic(tim > out(j).fsyl(k).syltim(1)-buff & tim < out(j).fsyl(k).syltim(1)+longerDur+buff), 2048, out(j).Fs, [], 2000); 
-            hold on;
-            text(0.05, 5000, 'Female Microphone', 'Color', 'w');
-            if (out(j).fsyl(k).sexsyltype > 49) % Female syllable
-                plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 2);
-                plot([buff, buff], [200 6000], 'g-', 'LineWidth', 3);
-                plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 3);
+       
+       tim = 1/in(j).Fs:1/in(j).Fs:length(in(j).femMic)/out(j).Fs;
+       
+       specgram(in(j).femMic(tim > in(j).fsyl(k).syltim(1)-buff & tim < in(j).fsyl(k).syltim(1)+longerDur+buff), 2048, in(j).Fs, [], 2000); 
+       hold on;
+       text(0.05, 5000, 'Female Microphone', 'Color', 'w');
+       
+            if (in(j).fsyl(k).sexsyltype > 49) % Female syllable
+                plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 3); % HEAVY TRACE
+                plot([buff, buff], [200 6000], 'g-', 'LineWidth', 2); % START LINE
+                plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 2); % END LINE
             end
             if (out(j).fsyl(k).sexsyltype < 49) % Male syllable
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'b-');
@@ -83,10 +87,13 @@ specgram(out(j).femMic(tim > out(j).fsyl(k).syltim(1)-buff & tim < out(j).fsyl(k
             end
             
        figure(2); axx(2) = subplot(212); % Male Microphone
-            tim = 1/out(j).Fs:1/out(j).Fs:length(out(j).maleMic)/out(j).Fs;
-specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(k).syltim(1)+longerDur+buff), 2048, out(j).Fs, [], 2000); 
-            hold on;
-            text(0.05, 5000, 'Male Microphone', 'Color', 'w');
+       
+       tim = 1/out(j).Fs:1/out(j).Fs:length(out(j).maleMic)/out(j).Fs;
+            
+       specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(k).syltim(1)+longerDur+buff), 2048, out(j).Fs, [], 2000); 
+       hold on;
+       text(0.05, 5000, 'Male Microphone', 'Color', 'w');
+       
             if (out(j).msyl(k).sexsyltype < 49) % Male syllable
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'b-', 'LineWidth', 2);
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 3);
@@ -99,24 +106,25 @@ specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(
                 plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1);
             end
    
-    linkaxes(axx, 'xy');
-    figure(2); subplot(211); colormap('GRAY'); ylim([200 6000]);
-    pause(0.1);
+        linkaxes(axx, 'xy');
+        
+        figure(2); subplot(211); colormap('GRAY'); ylim([200 6000]);
+        pause(0.1);
     
     fprintf('0 do nothing, 1 both directions evenly, 2 end only, 3 get one click for start of heterogenous\n');
     fprintf('4 reclick both (3 clicks, start and end of autogenous, start of heterogenous.\n');
     aaa = input('Fix? ');
     
     if aaa == 1 % Extend heterogenous evenly in both directions
-        if (in(j).fsyl(k).sexsyltype > 49) % Female is autogenous
-            amt = (out(j).fsyl(k).sylen - in(j).msyl(k).sylen)/2;
-            out(j).msyl(k).sylen = in(j).fsyl(k).sylen;
-            out(j).msyl(k).syltim(1) = in(j).msyl(k).syltim(1)-amt;
-            out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + in(j).fsyl(k).sylen;
-            out(j).msyl(k).sylidx(1) = round(in(j).msyl(k).sylidx(1) - (amt * in(j).Fs));
-            out(j).msyl(k).sylidx(2) = out(j).msyl(k).sylidx(1) + (in(j).fsyl(k).sylidx(2) - in(j).fsyl(k).sylidx(1));
+        if (out(j).fsyl(k).sexsyltype > 49) % Female is autogenous
+            amt = (out(j).fsyl(k).sylen - out(j).msyl(k).sylen)/2;
+            out(j).msyl(k).sylen = out(j).fsyl(k).sylen;
+            out(j).msyl(k).syltim(1) = out(j).msyl(k).syltim(1)-amt;
+            out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + out(j).fsyl(k).sylen;
+            out(j).msyl(k).sylidx(1) = round(out(j).msyl(k).sylidx(1) - (amt * out(j).Fs));
+            out(j).msyl(k).sylidx(2) = out(j).msyl(k).sylidx(1) + (out(j).fsyl(k).sylidx(2) - out(j).fsyl(k).sylidx(1));
 
-            tmp = syldat(in(j).maleMic(out(j).msyl(k).sylidx(1):out(j).msyl(k).sylidx(2)), in(j).Fs);
+            tmp = syldat(out(j).maleMic(out(j).msyl(k).sylidx(1):out(j).msyl(k).sylidx(2)), out(j).Fs);
             out(j).msyl(k).traceTim = tmp.trace_tim;
             out(j).msyl(k).traceFreq = tmp.trace_freq;
             out(j).msyl(k).trace.peakfreq = tmp.trace_peakf;
@@ -125,15 +133,15 @@ specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(
             out(j).msyl(k).trace.slopevar = tmp.trace_slopevar;
             
         end
-        if (in(j).fsyl(k).sexsyltype < 49) % Male is autogenous
-            amt = (in(j).msyl(k).sylen - in(j).fsyl(k).sylen)/2;
-            out(j).fsyl(k).sylen = in(j).msyl(k).sylen;
-            out(j).fsyl(k).syltim(1) = in(j).fsyl(k).syltim(1)-amt;
-            out(j).fsyl(k).syltim(2) = out(j).fsyl(k).syltim(1) + in(j).msyl(k).sylen;
-            out(j).fsyl(k).sylidx(1) = round(in(j).fsyl(k).sylidx(1) - (amt * in(j).Fs));
-            out(j).fsyl(k).sylidx(2) = out(j).fsyl(k).sylidx(1) + (in(j).msyl(k).sylidx(2) - in(j).msyl(k).sylidx(1));
+        if (out(j).fsyl(k).sexsyltype < 49) % Male is autogenous
+            amt = (out(j).msyl(k).sylen - out(j).fsyl(k).sylen)/2;
+            out(j).fsyl(k).sylen = out(j).msyl(k).sylen;
+            out(j).fsyl(k).syltim(1) = out(j).fsyl(k).syltim(1)-amt;
+            out(j).fsyl(k).syltim(2) = out(j).fsyl(k).syltim(1) + out(j).msyl(k).sylen;
+            out(j).fsyl(k).sylidx(1) = round(out(j).fsyl(k).sylidx(1) - (amt * out(j).Fs));
+            out(j).fsyl(k).sylidx(2) = out(j).fsyl(k).sylidx(1) + (out(j).msyl(k).sylidx(2) - out(j).msyl(k).sylidx(1));
 
-            tmp = syldat(in(j).femMic(out(j).fsyl(k).sylidx(1):out(j).fsyl(k).sylidx(2)), in(j).Fs);
+            tmp = syldat(out(j).femMic(out(j).fsyl(k).sylidx(1):out(j).fsyl(k).sylidx(2)), out(j).Fs);
             out(j).fsyl(k).traceTim = tmp.trace_tim;
             out(j).fsyl(k).traceFreq = tmp.trace_freq;
             out(j).fsyl(k).trace.peakfreq = tmp.trace_peakf;
@@ -144,12 +152,12 @@ specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(
     end
     
     if aaa == 2 % Extend the end of heterogenous
-        if (in(j).fsyl(k).sexsyltype > 49) % Female is autogenous
-            out(j).msyl(k).sylen = in(j).fsyl(k).sylen;
-            out(j).msyl(k).syltim(2) = in(j).msyl(k).syltim(1) + in(j).fsyl(k).sylen;
-            out(j).msyl(k).sylidx(2) = in(j).msyl(k).sylidx(1) + (in(j).fsyl(k).sylidx(2) - in(j).fsyl(k).sylidx(1));
+        if (out(j).fsyl(k).sexsyltype > 49) % Female is autogenous
+            out(j).msyl(k).sylen = out(j).fsyl(k).sylen;
+            out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + out(j).fsyl(k).sylen;
+            out(j).msyl(k).sylidx(2) = out(j).msyl(k).sylidx(1) + (out(j).fsyl(k).sylidx(2) - out(j).fsyl(k).sylidx(1));
 
-            tmp = syldat(in(j).maleMic(out(j).msyl(k).sylidx(1):out(j).msyl(k).sylidx(2)), in(j).Fs);
+            tmp = syldat(out(j).maleMic(out(j).msyl(k).sylidx(1):out(j).msyl(k).sylidx(2)), out(j).Fs);
             out(j).msyl(k).traceTim = tmp.trace_tim;
             out(j).msyl(k).traceFreq = tmp.trace_freq;
             out(j).msyl(k).trace.peakfreq = tmp.trace_peakf;
@@ -157,12 +165,12 @@ specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(
             out(j).msyl(k).trace.slopestd = tmp.trace_slopestd;
             out(j).msyl(k).trace.slopevar = tmp.trace_slopevar;
         end
-        if (in(j).fsyl(k).sexsyltype < 49) % Male is autogenous
-            out(j).fsyl(k).sylen = in(j).msyl(k).sylen;
-            out(j).fsyl(k).syltim(2) = in(j).fsyl(k).syltim(1) + in(j).msyl(k).sylen;
-            out(j).fsyl(k).sylidx(2) = in(j).fsyl(k).sylidx(1) + (in(j).msyl(k).sylidx(2) - in(j).msyl(k).sylidx(1));
+        if (out(j).fsyl(k).sexsyltype < 49) % Male is autogenous
+            out(j).fsyl(k).sylen = out(j).msyl(k).sylen;
+            out(j).fsyl(k).syltim(2) = out(j).fsyl(k).syltim(1) + out(j).msyl(k).sylen;
+            out(j).fsyl(k).sylidx(2) = out(j).fsyl(k).sylidx(1) + (out(j).msyl(k).sylidx(2) - out(j).msyl(k).sylidx(1));
 
-            tmp = syldat(in(j).femMic(out(j).fsyl(k).sylidx(1):out(j).fsyl(k).sylidx(2)), in(j).Fs);
+            tmp = syldat(out(j).femMic(out(j).fsyl(k).sylidx(1):out(j).fsyl(k).sylidx(2)), out(j).Fs);
             out(j).fsyl(k).traceTim = tmp.trace_tim;
             out(j).fsyl(k).traceFreq = tmp.trace_freq;
             out(j).fsyl(k).trace.peakfreq = tmp.trace_peakf;
@@ -173,16 +181,16 @@ specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(
      end
     
     if aaa == 3 % Get single new click for heterogenous at start
-        if (in(j).fsyl(k).sexsyltype > 49) % Female is autogenous
+        if (out(j).fsyl(k).sexsyltype > 49) % Female is autogenous
             fprintf('Click on start syllable at the male microphone.\n');
-            out(j).msyl(k).sylen = in(j).fsyl(k).sylen;
+            out(j).msyl(k).sylen = out(j).fsyl(k).sylen;
             figure(2); [newclk, ~] = ginput(1); 
-            out(j).msyl(k).syltim(1) = in(j).msyl(k).syltim(1) + (newclk - buff);
-            out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + in(j).fsyl(k).sylen;
-            out(j).msyl(k).sylidx(1) = round(in(j).msyl(k).sylidx(1) + ((newclk - buff) * in(j).Fs));
-            out(j).msyl(k).sylidx(2) = out(j).msyl(k).sylidx(1) + (in(j).fsyl(k).sylidx(2) - in(j).fsyl(k).sylidx(1));
+            out(j).msyl(k).syltim(1) = out(j).msyl(k).syltim(1) + (newclk - buff);
+            out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + out(j).fsyl(k).sylen;
+            out(j).msyl(k).sylidx(1) = round(out(j).msyl(k).sylidx(1) + ((newclk - buff) * out(j).Fs));
+            out(j).msyl(k).sylidx(2) = out(j).msyl(k).sylidx(1) + (out(j).fsyl(k).sylidx(2) - out(j).fsyl(k).sylidx(1));
 
-            tmp = syldat(in(j).maleMic(out(j).msyl(k).sylidx(1):out(j).msyl(k).sylidx(2)), in(j).Fs);
+            tmp = syldat(out(j).maleMic(out(j).msyl(k).sylidx(1):out(j).msyl(k).sylidx(2)), out(j).Fs);
             out(j).msyl(k).traceTim = tmp.trace_tim;
             out(j).msyl(k).traceFreq = tmp.trace_freq;
             out(j).msyl(k).trace.peakfreq = tmp.trace_peakf;
@@ -190,16 +198,16 @@ specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(
             out(j).msyl(k).trace.slopestd = tmp.trace_slopestd;
             out(j).msyl(k).trace.slopevar = tmp.trace_slopevar;            
         end
-        if (in(j).fsyl(k).sexsyltype < 49) % Male is autogenous
+        if (out(j).fsyl(k).sexsyltype < 49) % Male is autogenous
             fprintf('Click on start syllable at the female microphone.\n');
-            out(j).fsyl(k).sylen = in(j).msyl(k).sylen;
+            out(j).fsyl(k).sylen = out(j).msyl(k).sylen;
             figure(2); [newclk, ~] = ginput(1); 
-            out(j).fsyl(k).syltim(1) = in(j).fsyl(k).syltim(1) + (newclk - buff);
-            out(j).fsyl(k).syltim(2) = out(j).fsyl(k).syltim(1) + in(j).msyl(k).sylen;
-            out(j).fsyl(k).sylidx(1) = round(in(j).fsyl(k).sylidx(1) + ((newclk - buff) * in(j).Fs));
-            out(j).fsyl(k).sylidx(2) = out(j).fsyl(k).sylidx(1) + (in(j).msyl(k).sylidx(2) - in(j).msyl(k).sylidx(1));
+            out(j).fsyl(k).syltim(1) = out(j).fsyl(k).syltim(1) + (newclk - buff);
+            out(j).fsyl(k).syltim(2) = out(j).fsyl(k).syltim(1) + out(j).msyl(k).sylen;
+            out(j).fsyl(k).sylidx(1) = round(out(j).fsyl(k).sylidx(1) + ((newclk - buff) * out(j).Fs));
+            out(j).fsyl(k).sylidx(2) = out(j).fsyl(k).sylidx(1) + (out(j).msyl(k).sylidx(2) - out(j).msyl(k).sylidx(1));
 
-            tmp = syldat(in(j).femMic(out(j).fsyl(k).sylidx(1):out(j).fsyl(k).sylidx(2)), in(j).Fs);
+            tmp = syldat(out(j).femMic(out(j).fsyl(k).sylidx(1):out(j).fsyl(k).sylidx(2)), out(j).Fs);
             out(j).fsyl(k).traceTim = tmp.trace_tim;
             out(j).fsyl(k).traceFreq = tmp.trace_freq;
             out(j).fsyl(k).trace.peakfreq = tmp.trace_peakf;
@@ -210,17 +218,17 @@ specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(
     end
     
     if aaa == 4 % Get new clicks for autogenous and start click for heterogenous
-        if (in(j).fsyl(k).sexsyltype > 49) % Female is autogenous
+        if (out(j).fsyl(k).sexsyltype > 49) % Female is autogenous
             fprintf('Click on start and end of female syllable, female microphone.\n');
             figure(2); [newclx, ~] = ginput(2);
             % newclx = sort(newclx);
             out(j).fsyl(k).sylen = newclx(2) - newclx(1);
-            out(j).fsyl(k).syltim(1) = in(j).fsyl(k).syltim(1) + (newclx(1) - buff);
+            out(j).fsyl(k).syltim(1) = out(j).fsyl(k).syltim(1) + (newclx(1) - buff);
             out(j).fsyl(k).syltim(2) = out(j).fsyl(k).syltim(1) + out(j).fsyl(k).sylen;
-            out(j).fsyl(k).sylidx(1) = round(in(j).fsyl(k).sylidx(1) + ((newclx(1) - buff) * in(j).Fs));
-            out(j).fsyl(k).sylidx(2) = round(out(j).fsyl(k).sylidx(1) + (out(j).fsyl(k).sylen * in(j).Fs));
+            out(j).fsyl(k).sylidx(1) = round(out(j).fsyl(k).sylidx(1) + ((newclx(1) - buff) * out(j).Fs));
+            out(j).fsyl(k).sylidx(2) = round(out(j).fsyl(k).sylidx(1) + (out(j).fsyl(k).sylen * out(j).Fs));
             
-            tmp = syldat(in(j).femMic(out(j).fsyl(k).sylidx(1):out(j).fsyl(k).sylidx(2)), in(j).Fs);
+            tmp = syldat(out(j).femMic(out(j).fsyl(k).sylidx(1):out(j).fsyl(k).sylidx(2)), out(j).Fs);
             out(j).fsyl(k).traceTim = tmp.trace_tim;
             out(j).fsyl(k).traceFreq = tmp.trace_freq;
             out(j).fsyl(k).trace.peakfreq = tmp.trace_peakf;
@@ -231,12 +239,12 @@ specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(
             fprintf('Click on start syllable at the male microphone.\n');
             figure(2); [newclk, ~] = ginput(1);
             out(j).msyl(k).sylen = out(j).fsyl(k).sylen;
-            out(j).msyl(k).syltim(1) = in(j).msyl(k).syltim(1) + (newclk - buff);
+            out(j).msyl(k).syltim(1) = out(j).msyl(k).syltim(1) + (newclk - buff);
             out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + out(j).fsyl(k).sylen;
-            out(j).msyl(k).sylidx(1) = round(in(j).msyl(k).sylidx(1) - ((newclk - buff) * in(j).Fs));
-            out(j).msyl(k).sylidx(2) = round(out(j).msyl(k).sylidx(1) + (out(j).fsyl(k).sylen * in(j).Fs));
+            out(j).msyl(k).sylidx(1) = round(out(j).msyl(k).sylidx(1) - ((newclk - buff) * out(j).Fs));
+            out(j).msyl(k).sylidx(2) = round(out(j).msyl(k).sylidx(1) + (out(j).fsyl(k).sylen * out(j).Fs));
 
-            tmp = syldat(in(j).maleMic(out(j).msyl(k).sylidx(1):out(j).msyl(k).sylidx(2)), in(j).Fs);
+            tmp = syldat(out(j).maleMic(out(j).msyl(k).sylidx(1):out(j).msyl(k).sylidx(2)), out(j).Fs);
             out(j).msyl(k).traceTim = tmp.trace_tim;
             out(j).msyl(k).traceFreq = tmp.trace_freq;
             out(j).msyl(k).trace.peakfreq = tmp.trace_peakf;
@@ -245,7 +253,7 @@ specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(
             out(j).msyl(k).trace.slopevar = tmp.trace_slopevar;            
         end
         
-        if (in(j).fsyl(k).sexsyltype < 49) % Male is autogenous
+        if (out(j).fsyl(k).sexsyltype < 49) % Male is autogenous
             fprintf('Click on start and end of male syllable, male microphone.\n');
             figure(2); [newclx, ~] = ginput(2);
             % newclx = sort(newclx);
