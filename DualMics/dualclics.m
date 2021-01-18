@@ -142,7 +142,9 @@ while cntu < 10
         preclick = ovrlp;
         
         % Ask if we are done
+        pause(1);
         cntu = input('Done? 99=yes, 0 or [return] to continue: ');
+        pause(1);
         if isempty(cntu) == 1; cntu = 1; end
         
 end
