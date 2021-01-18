@@ -159,9 +159,9 @@ end
     
 %% Assign sex
 
-maleMicAmp = 0; femMicAmp = 0;
-
     for pp = 1:length(msyls)
+
+        maleMicAmp = 0; femMicAmp = 0;
      
         for jj = 1:length(msyls(pp).num)
           maleMicAmp = maleMicAmp + median(abs(out.maleMic(out.msyl(msyls(pp).num(jj)).sylidx(1):out.msyl(msyls(pp).num(jj)).sylidx(2))));
