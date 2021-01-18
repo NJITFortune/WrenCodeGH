@@ -155,6 +155,7 @@ neworder = input('Enter proper order: ');
     close(27);
 end
 
+    save tempsexed.mat clicked_m clicked_f out msyls fsyls % JUST IN CASE
     
 %% Assign sex
 
