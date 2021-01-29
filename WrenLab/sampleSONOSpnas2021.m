@@ -8,7 +8,7 @@ clrmap = flipud(gray);
 cmap = [-24 33];
 
 %% Figure 1
-figure(1); clf;
+figure(1); clf; set(gcf, 'Renderer', 'painters');
 % 1024
 nfft = 1024; 
 subplot(411);
