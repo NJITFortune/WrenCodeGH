@@ -75,7 +75,7 @@ for j=1:length(fsolosyls)
         
         % Intersyllable interval between end of male syllable and start
         % of subsequent female syllable
-        if ~isempty(in(j*2).syl(fsolosyls{j}(k)+1).tim(1)))
+        if ~isempty(in(j*2).syl(fsolosyls{j}(k)+1).tim(1))
             out.FS(end+1) = in(j*2).syl(fsolosyls{j}(k)+1).tim(1) - in(j*2).syl(fsolosyls{j}(k)).tim(2);
         end
     end
