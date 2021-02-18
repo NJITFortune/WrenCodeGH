@@ -62,7 +62,7 @@ for j=1:length(msolosyls)    % For each duet
         
         % Intersyllable interval between end of male solo syllable and start
         % of subsequent syllable
-            out.MS(end+1) = in(j*2).syl(mduetsyls{j}(k)+1).tim(1) - in(j*2).syl(mduetsyls{j}(k)).tim(2);
+            out.MS(end+1) = in(j*2).syl(msolosyls{j}(k)+1).tim(1) - in(j*2).syl(msolosyls{j}(k)).tim(2);
     end
 end
 
