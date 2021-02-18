@@ -7,7 +7,7 @@ function out = wGetISI(in)
 
 
 % Get the list of duet syllables
-[~, mduetsyls, ~, fduetsyls, ~, ~] = wData;
+[msolosyls, mduetsyls, ~, fduetsyls, ~, ~] = wData;
 
 % Initialize variables 
     out.FM = []; out.MF = [];
