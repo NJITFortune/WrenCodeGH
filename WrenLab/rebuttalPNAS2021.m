@@ -3,7 +3,7 @@ function rebuttalPNAS2021
 % [ww, Fs] = audioread('C:\Users\eric_fortune\Downloads\wrenagade.wav');
 [ww, Fs] = audioread('/Users/eric/Downloads/Gordon2017tmp/wrenagade.wav');
 
-cmap = [-15 33]; 
+cmap = [-20 33]; 
 nfft = [256 512 1024 2048];
 
 ww = ww(1:floor(length(ww)/2)); % only used the first half of the data
