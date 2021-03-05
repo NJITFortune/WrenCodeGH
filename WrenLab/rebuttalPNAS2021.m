@@ -4,7 +4,7 @@ function rebuttalPNAS2021
 [ww, Fs] = audioread('/Users/eric/Downloads/Gordon2017tmp/wrenagade.wav');
 
 cmap = [-20 33]; 
-nfft = [1024 512 1024 512];
+nfft = [2048 1024 1024 512];
 
 plotit(ww, Fs, cmap, nfft);
 
