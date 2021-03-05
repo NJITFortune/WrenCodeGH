@@ -1,6 +1,7 @@
 function rebuttalPNAS2021
 
-[ww, Fs] = audioread('C:\Users\eric_fortune\Downloads\wrenagade.wav');
+% [ww, Fs] = audioread('C:\Users\eric_fortune\Downloads\wrenagade.wav');
+[ww, Fs] = audioread('/Users/eric/Downloads/Gordon2017tmp/wrenagade.wav');
 
 cmap = [0 33]; 
 nfft = [1024 512 1024 512];
