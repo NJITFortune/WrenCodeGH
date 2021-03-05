@@ -6,6 +6,8 @@ function rebuttalPNAS2021
 cmap = [-20 33]; 
 nfft = [2048 1024 1024 512];
 
+ww = ww(1:floor(length(ww)/2)); % only used the first half of the data
+
 plotit(ww, Fs, cmap, nfft);
 
 maxtim = length(ww)/Fs;
