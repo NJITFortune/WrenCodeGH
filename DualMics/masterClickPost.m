@@ -12,7 +12,7 @@ out.day = day; out.mon = mon; out.yr = yr;
 
 
 % EDIT THIS LINE
-postPath='~/Documents/MATLAB/post';
+postPath='~/Documents/MATLAB/postbirds';
 
 
 % Get male wav data
