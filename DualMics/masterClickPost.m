@@ -10,8 +10,12 @@ isSAP=1;
 out.dist = dist; out.vis = vis; out.loc = loc;
 out.day = day; out.mon = mon; out.yr = yr;
 
-% Get male wav data
+
+% EDIT THIS LINE
 postPath='/Users/daynf/Documents/WrenData/postBirds-2/';
+
+
+% Get male wav data
 %[mfilename,mpathname]=uigetfile('*.wav', 'Select Male WAV file');
 [mfilename,mpathname]=uigetfile([postPath,'Male-',num2str(out.dist),'m/*.wav'], 'Select Male WAV file');
 [MrawData,mFs] = audioread([mpathname mfilename]);
