@@ -12,7 +12,7 @@ out.day = day; out.mon = mon; out.yr = yr;
 
 
 % EDIT THIS LINE
-postPath='/Users/daynf/Documents/WrenData/postBirds-2/';
+postPath='~/Documents/MATLAB/post';
 
 
 % Get male wav data
