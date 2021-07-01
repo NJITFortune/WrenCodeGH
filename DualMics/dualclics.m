@@ -144,6 +144,7 @@ while cntu < 10
         % Ask if we are done
         pause(0.5);
         cntu = input('Done? 99=yes, 0 or [return] to continue: ');
+        cntu
         pause(0.5);
         if isempty(cntu) == 1; cntu = 1; end
         
