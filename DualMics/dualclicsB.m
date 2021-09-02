@@ -1,4 +1,4 @@
-function [md, fd] = dualclics(malorig, femorig, Fs, td)
+function [md, fd] = dualclicsB(malorig, femorig, Fs, td)
 % [maledata femaledata] = dualclics(male, female, Fs);
 % mal is the sample data - straight from the Male wav file
 % fem is the sample data - straight from the Female wav file
@@ -145,11 +145,12 @@ while cntu < 20
         preclick = ovrlp;
         
         % Ask if we are done
-        pause(2);
-        cntu = input('Done? 99=yes, 0 or [return] to continue: ');
-       % pause(2);
-        if isempty(cntu) == 1; cntu = 1; end
         
+        cntu = input('Done? 99=yes, 0 or [return] to continue: ');
+        
+        if isempty(cntu) == 1; cntu = 1; end
+        cntu = cntu + 1;
+
 end
 
 %%%%%%%%%%%%%%%%%%% END OF CLICKING
