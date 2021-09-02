@@ -155,6 +155,7 @@ end
 
 %%%%%%%%%%%%%%%%%%% END OF CLICKING
 
+
 % After all is said and done, get inter-syllable-intervals
 
     for j = 1:length(struct)-1
