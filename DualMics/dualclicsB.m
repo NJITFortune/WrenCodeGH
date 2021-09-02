@@ -138,6 +138,7 @@ while cntu < 20
             
         end
                 
+    pause(3);        
         % We are done clicking through the window, so let's save temp data
         % and reset bsx
              
