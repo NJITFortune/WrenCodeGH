@@ -254,7 +254,7 @@ if ~isempty(yn)
     if yn == 1
         sexstring = [];
          for j=1:length(out.fsyl)
-             sexstring = [sexstring, string(out.fsyl(j).sexsyltype), ' '];
+             sexstring = [sexstring string(out.fsyl(j).sexsyltype) ' '];
          end
         
         fprintf('Current syllables: %s \n', string([out.fsyl.sexsyltype])) 
