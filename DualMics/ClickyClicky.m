@@ -18,6 +18,7 @@ function out = ClickyClicky(dataPath, pairname)
 % automatically find matching female file
 fpathname=strrep(mpathname,'Male','Female'); ffilename=strrep(mfilename,'Male','Female');
 [FrawData,fFs] = audioread([fpathname ffilename]);
+fprintf('Loaded female data %s.', ffilename);
 
 if mFs ~= fFs
     fprintf('Male sample rate %i does not match female sample rate %i', mFs, fFs);
