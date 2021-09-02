@@ -48,7 +48,7 @@ end
 [clicked_m, clicked_f] = dualclicsB(out.maleMic, out.femMic, out.Fs, 0);
 
 % Save temporary data in case you fuck up slicing
-    cd dataPath
+    cd dataPath 
     save(tempFN,'clicked_m','clicked_f')
 
 if length(clicked_m) ~= length(clicked_f) % This should never ever happen
