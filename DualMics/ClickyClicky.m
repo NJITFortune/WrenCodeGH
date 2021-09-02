@@ -1,6 +1,8 @@
 function out = ClickyClicky(dataPath, pairname)
 % Usage: out = ClickyClicky(dataPath, pairname)
 % Where dataPath might be '/Users/daynf/Documents/WrenData/postBirds-2/'
+% relies on dualclicsB.m, slicerB.m
+%
 
 %% Load data
 
