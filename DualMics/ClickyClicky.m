@@ -1,40 +1,35 @@
-function out = masterClickPost(dist, vis, loc, day, mon, yr)
-% Usage: out = masterClick(dist, vis, loc, day, mon, yr)
-% dist is an integer distance in meters
-% vis is visual condition - 1 for vision and 0 for blind
-% loc is the location, e.g. 'Yanayacu' (must use single quotes)
-% day, mon, yr are integers exactly as expected - please use full 4-digit year
+function out = ClickyClicky(dataPath)
+% Usage: out = ClickyClicky(dataPath)
+% Where dataPath might be '/Users/daynf/Documents/WrenData/postBirds-2/'
 
-%% Prepartions
-isSAP=1;
-out.dist = dist; out.vis = vis; out.loc = loc;
-out.day = day; out.mon = mon; out.yr = yr;
+%% Load data
 
 % Get male wav data
-postPath='/Users/daynf/Documents/WrenData/postBirds-2/';
+% dataPath = '/Users/daynf/Documents/WrenData/postBirds-2/';
+
 %[mfilename,mpathname]=uigetfile('*.wav', 'Select Male WAV file');
-[mfilename,mpathname]=uigetfile([postPath,'Male-',num2str(out.dist),'m/*.wav'], 'Select Male WAV file');
+[mfilename,mpathname]=uigetfile([dataPath,'Male-',num2str(out.dist),'m/*.wav'], 'Select Male WAV file');
 [MrawData,mFs] = audioread([mpathname mfilename]);
+
 % Get female wav data
 %[ffilename,fpathname]=uigetfile('*.wav', 'Select female WAV file');
 % automatically find matching female file
 fpathname=strrep(mpathname,'Male','Female'); ffilename=strrep(mfilename,'Male','Female');
 [FrawData,fFs] = audioread([fpathname ffilename]);
 
-if isSAP==1
-    out.mFile=mfilename; out.fFile=ffilename;
-    s=strsplit(mfilename(1:length(mfilename)-4),'_');
-    timestamp=s{end};
-    FN=['post',num2str(out.dist),'m',timestamp,'.mat'];
-    tempFN=['TEMPpost',num2str(out.dist),'m',timestamp,'.mat'];
-end
-
 if mFs ~= fFs
     fprintf('Male sample rate %i does not match female sample rate %i', mFs, fFs);
     return
 end
 
-out.Fs = mFs;
+    out.Fs = mFs;
+    out.mFile = mfilename; 
+    out.fFile = ffilename;
+    s=strsplit(mfilename(1:length(mfilename)-4),'_');
+    timestamp=s{end};
+    FN=['post',num2str(out.dist),'m',timestamp,'.mat'];
+    tempFN=['tmpfile',num2str(out.dist),'m',timestamp,'.mat'];
+
 
 % Filter and normalize raw recording data
 
