@@ -147,8 +147,8 @@ while cntu < 20
         
         % Ask if we are done
         
-        cntu = input('Done? 99=yes, 0 or [return] to continue: ');
-        
+        %cntu = input('Done? 99=yes, 0 or [return] to continue: ');
+        cntu = inputdlg('99 = yes, 0 to continue', 'Are we done here?');
         if isempty(cntu) == 1; cntu = 1; end
         cntu = cntu + 1;
 
