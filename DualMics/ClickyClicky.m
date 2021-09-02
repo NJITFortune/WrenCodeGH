@@ -230,6 +230,8 @@ for j=1:length(out.msyl)
         text(out.msyl(j).syltim(1)+0.1, 4000, num2str(currMaleSequence(j)), 'Color','magenta','FontSize', 14);
     end
 end
+text(0.5, 1000, 'Male Microphone');
+
 subplot(212); specgram(out.femMic, 1024, out.Fs); ylim([200 5200]);
 caxis([-10 40]); colormap(flipud(gray));
 hold on;
@@ -242,6 +244,7 @@ for j=1:length(out.fsyl)
         text(out.fsyl(j).syltim(1)+0.1, 4000, num2str(currFemaleSequence(j)), 'Color','magenta','FontSize', 14);
     end
 end
+text(0.5, 1000, 'Female Microphone');
 
 
 save(FN,'out')
