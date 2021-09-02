@@ -22,7 +22,7 @@ function [ clicktimes ] = clickplotterB(data1, data2, Fs, preclick)
 
 	% Plot prior click in the main window
 
- 		if nargin == 4; 
+ 		if nargin == 4 
                figure(1); 
                  hold on;
                  plot([preclick(1) preclick(1)], yvals, 'm','LineWidth',2); 
