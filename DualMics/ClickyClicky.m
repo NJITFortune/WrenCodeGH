@@ -27,11 +27,19 @@ end
     out.Fs = mFs;
     out.mFile = mfilename; 
     out.fFile = ffilename;
-    s=strsplit(mfilename(1:length(mfilename)-4),'_');
-    timestamp=s{end};
-    distance = regexprep(s{1}, '\D', '');
-    FN = [pairname, distance,'m',timestamp,'.mat'];
-    tempFN = ['tmpfile', distance,'m',timestamp,'.mat'];
+    out.pairname = pairname;
+    
+        s=strsplit(mfilename(1:length(mfilename)-4),'_');        
+            timestamp=s{end};
+            out.distance = regexprep(s{1}, '\D', '');
+            out.day = str2num(s{2});
+            out.month = str2num(s{3});
+            out.year = str2num(s{4});
+            out.location = s{5};
+            out.timestamp = str2num(timestamp);
+            
+    FN = [pairname, out.distance,'m',timestamp,'.mat'];
+    tempFN = ['tmpfile', out.distance,'m',timestamp,'.mat'];
 
 %% Filter and normalize raw recording data
 
