@@ -27,7 +27,7 @@ end
     out.fFile = ffilename;
     s=strsplit(mfilename(1:length(mfilename)-4),'_');
     timestamp=s{end};
-    FN=['post',num2str(out.dist),'m',timestamp,'.mat'];
+    FN=[pairname,num2str(out.dist),'m',timestamp,'.mat'];
     tempFN=['tmpfile',num2str(out.dist),'m',timestamp,'.mat'];
 
 
