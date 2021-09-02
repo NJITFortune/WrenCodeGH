@@ -263,5 +263,8 @@ end
     movefile([mpathname,mfilename],[mpathname,'clicked/',mfilename])
     movefile([fpathname,ffilename],[fpathname,'clicked/',ffilename])
     disp('Files moved')
+    
 %% Fix the data
+
+fprintf('Last chance to fix numbers and sex. \n);
 
