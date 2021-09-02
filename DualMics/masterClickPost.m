@@ -12,12 +12,12 @@ out.day = day; out.mon = mon; out.yr = yr;
 
 
 % EDIT THIS LINE
-postPath='~/Documents/MATLAB/postbirds';
+pairPath='~/Documents/MATLAB/postbirds';
 
 
 % Get male wav data
 %[mfilename,mpathname]=uigetfile('*.wav', 'Select Male WAV file');
-[mfilename,mpathname]=uigetfile([postPath,'Male-',num2str(out.dist),'m/*.wav'], 'Select Male WAV file');
+[mfilename,mpathname]=uigetfile([pairPath,'Male-',num2str(out.dist),'m/*.wav'], 'Select Male WAV file');
 [MrawData,mFs] = audioread([mpathname mfilename]);
 % Get female wav data
 %[ffilename,fpathname]=uigetfile('*.wav', 'Select female WAV file');
