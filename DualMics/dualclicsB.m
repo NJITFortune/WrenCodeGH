@@ -153,8 +153,6 @@ while cntu < 20
 
 end
 
-%%%%%%%%%%%%%%%%%%% END OF CLICKING
-
 
 % After all is said and done, get inter-syllable-intervals
 
@@ -168,11 +166,15 @@ end
     
 end
 
+%%%%%%%%%%%%%%%%%%% END OF CLICKING
+
+%% Post Clicking cleanup
+
 if (length(fd) ~= length(md))
     shit = input('Number of Male and Female Syllables do not match, clickturd. ');
 end
 
-%% Sex determination 
+% Sex determination 
 
 for j = length(fd):-1:1
 
