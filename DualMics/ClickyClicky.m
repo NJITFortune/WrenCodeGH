@@ -8,7 +8,7 @@ function out = ClickyClicky(dataPath, pairname)
 % dataPath = '/Users/daynf/Documents/WrenData/postBirds-2/';
 
 %[mfilename,mpathname]=uigetfile('*.wav', 'Select Male WAV file');
-[mfilename,mpathname]=uigetfile([dataPath, pairname,'Male*.wav'], 'Select Male WAV file');
+[mfilename,mpathname]=uigetfile([dataPath, '/', pairname, 'Male*.wav'], 'Select Male WAV file');
 [MrawData,mFs] = audioread([mpathname mfilename]);
 
 % Get female wav data
