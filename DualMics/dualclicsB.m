@@ -138,7 +138,7 @@ while cntu < 20
             
         end
                 
-    pause(3);        
+    pause(1);        
         % We are done clicking through the window, so let's save temp data
         % and reset bsx
              
@@ -148,7 +148,7 @@ while cntu < 20
         % Ask if we are done
         
         %cntu = input('Done? 99=yes, 0 or [return] to continue: ');
-        usertmp = inputdlg('99 = yes, 0 to continue', 'Are we done here?');
+        usertmp = inputdlg('Enter 99 to end, Hit OK only to continue.', 'Are we done here?');
         if isempty(usertmp{1})
             cntu = 1;
         else
