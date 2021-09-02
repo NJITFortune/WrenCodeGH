@@ -78,7 +78,7 @@ while cntu < 20
             stt = find(tim >= bsx + cts(ss) & tim < bsx + cts(ss+1));
 
             % Send the data to our analysis and tracing function
-            temptemp = syldata(sng(stt),Fs);
+            temptemp = syldataB(sng(stt),Fs);
  
                 struct(sylnum).sylen = temptemp.sylen;
                 struct(sylnum).loud = temptemp.loud;
