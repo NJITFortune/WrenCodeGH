@@ -246,9 +246,24 @@ for j=1:length(out.fsyl)
 end
 text(0.5, 1000, 'Female Microphone');
 
+%% Final opportunity to fix the data
+
+fprintf('Last chance to fix numbers and sex! \n');
+yn = input('Enter 1 to fix.\n');
+if ~isempty(yn)
+    if yn == 1
+        fprintf('Current syllables: %s.', out.fyls.) 
+        
+    end
+end
+
+
+%% Cleanup
 
 save(FN,'out')
+fprintf('File %s saved.\n', FN)
 
+% Move files to completed dir
 if exist([mpathname,'clicked'],'dir') == 0 
     mkdir([mpathname,'clicked'])
 end
@@ -257,14 +272,10 @@ if exist([fpathname,'clicked'],'dir') == 0
     mkdir([fpathname,'clicked'])
 end
 
-
-%move files to completed dir
-
     movefile([mpathname,mfilename],[mpathname,'clicked/',mfilename])
     movefile([fpathname,ffilename],[fpathname,'clicked/',ffilename])
-    disp('Files moved')
+fprintf('wav files moved to %s.\n', [mpathname,'clicked/',mfilename]);
     
-%% Fix the data
 
-fprintf('Last chance to fix numbers and sex. \n);
+
 
