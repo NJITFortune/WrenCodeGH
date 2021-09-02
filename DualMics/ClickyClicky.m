@@ -1,5 +1,5 @@
-function out = ClickyClicky(dataPath)
-% Usage: out = ClickyClicky(dataPath)
+function out = ClickyClicky(dataPath, pairname)
+% Usage: out = ClickyClicky(dataPath, pairname)
 % Where dataPath might be '/Users/daynf/Documents/WrenData/postBirds-2/'
 
 %% Load data
@@ -8,7 +8,7 @@ function out = ClickyClicky(dataPath)
 % dataPath = '/Users/daynf/Documents/WrenData/postBirds-2/';
 
 %[mfilename,mpathname]=uigetfile('*.wav', 'Select Male WAV file');
-[mfilename,mpathname]=uigetfile([dataPath,'Male-',num2str(out.dist),'m/*.wav'], 'Select Male WAV file');
+[mfilename,mpathname]=uigetfile([dataPath, pairname,'Male-',num2str(out.dist),'m/*.wav'], 'Select Male WAV file');
 [MrawData,mFs] = audioread([mpathname mfilename]);
 
 % Get female wav data
