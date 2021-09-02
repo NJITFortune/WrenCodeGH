@@ -252,6 +252,11 @@ fprintf('Last chance to fix numbers and sex! \n');
 yn = input('Enter 1 to fix.\n');
 if ~isempty(yn)
     if yn == 1
+        sexstring = [];
+         for j=1:length(out.fsyl)
+             sexstring = [sexstring, string(out.fsyl(j).sexsyltype), ' '];
+         end
+        
         fprintf('Current syllables: %s \n', string([out.fsyl.sexsyltype])) 
         
     end
