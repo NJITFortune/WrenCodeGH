@@ -27,29 +27,30 @@ end
     out.fFile = ffilename;
     s=strsplit(mfilename(1:length(mfilename)-4),'_');
     timestamp=s{end};
-    FN=[pairname,num2str(out.dist),'m',timestamp,'.mat'];
-    tempFN=['tmpfile',num2str(out.dist),'m',timestamp,'.mat'];
+    distance = regexprep(s{1}, '\D', '');
+    FN = [pairname, distance,'m',timestamp,'.mat'];
+    tempFN = ['tmpfile', distance,'m',timestamp,'.mat'];
 
-
-% Filter and normalize raw recording data
+%% Filter and normalize raw recording data
 
 [b,a] = butter(5, 240 / (out.Fs/2), 'high'); % Highpass
 % [d,c] = butter(5, 10000 / (out.Fs/2), 'low'); % Lowpass
 
-out.maleMic = filtfilt(b,a,MrawData); % Filter
-out.maleMic = 0.99 * (out.maleMic / (max(abs(out.maleMic)))); % Normalize
-out.femMic = filtfilt(b,a,FrawData); % Filter
-out.femMic = 0.99 * (out.femMic / (max(abs(out.femMic)))); % Normalize
+    out.maleMic = filtfilt(b,a,MrawData); % Filter
+    out.maleMic = 0.99 * (out.maleMic / (max(abs(out.maleMic)))); % Normalize
+    out.femMic = filtfilt(b,a,FrawData); % Filter
+    out.femMic = 0.99 * (out.femMic / (max(abs(out.femMic)))); % Normalize
 
 %% Run the dualclics script
+
 [clicked_m, clicked_f] = dualclicsB(out.maleMic, out.femMic, out.Fs, 0);
-%save dir
-cd ~/Documents/WrenData
-save(tempFN,'clicked_m','clicked_f')
-%save temp.mat clicked_m clicked_f out % JUST IN CASE
+
+% Save temporary data in case you fuck up slicing
+    cd dataPath
+    save(tempFN,'clicked_m','clicked_f')
 
 if length(clicked_m) ~= length(clicked_f) % This should never ever happen
-    fprintf('Male syllable count %i does not match female syllable count %i', length(clicked_m), length(clicked_f));
+    fprintf('Male Mic syllable count %i does not match Female Mic syllable count %i', length(clicked_m), length(clicked_f));
     return
 end
 
@@ -101,12 +102,13 @@ for mm = length(clicked_m):-1:1 % For each male syllable
     
 end % End of male section
 
-save(tempFN,'out','clicked_m','clicked_f') %save temp.mat clicked_m clicked_f out % JUST IN CASE
+save(tempFN, 'out', 'clicked_m', 'clicked_f') %save temp.mat clicked_m clicked_f out % JUST IN CASE
 
 %% Slicer time - identify syllables and who sang what
 
 % Have the user sort syllables on the basis of the traces
 hopeandpray = 1;
+
 while hopeandpray ~=0
     
     msyls = slicerB(clicked_m);
@@ -119,7 +121,7 @@ while hopeandpray ~=0
     hopeandpray = abs(length(fsyls) - length(msyls));
 end
 
-% Quality control - make sure syllable sequency is the same between
+% Quality control - make sure syllable sequence is the same between
 % microphones. This is an unlikely event.
 
 if sum(find([msyls.num] ~= [fsyls.num])) ~= 0
