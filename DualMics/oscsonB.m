@@ -8,9 +8,12 @@ function oscsonB(sig1,sig2, Fs, opt)
 % Set up a time series
 tim1 = 1/Fs:1/Fs:length(sig1)/Fs;
 tim2 = 1/Fs:1/Fs:length(sig2)/Fs;
+
 oscplt1 = sig1 - min(sig1); % Add the minimum to the signal - min is now zero.
 oscplt2= sig2 - min(sig2);
-cntr = 500; % This is the frequency around which the oscillo will be centered
+
+cntr = 500; % This is the frequency on the specgram around which the oscillo will be centered
+
 oscplt1 = oscplt1 * cntr/max(oscplt1); %% Center the signal at desired f.
 oscplt2 = oscplt2 * cntr/max(oscplt2); %% Center the signal at desired f.
 
