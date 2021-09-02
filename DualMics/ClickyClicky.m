@@ -252,7 +252,7 @@ fprintf('Last chance to fix numbers and sex! \n');
 yn = input('Enter 1 to fix.\n');
 if ~isempty(yn)
     if yn == 1
-        fprintf('Current syllables: %s.', out.fyls.) 
+        fprintf('Current syllables: %s', [out.fsyl.sexsyltype]) 
         
     end
 end
