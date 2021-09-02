@@ -255,8 +255,9 @@ end
 
 
 %move files to completed dir
-movefile([mpathname,mfilename],[mpathname,'clicked/',mfilename])
-movefile([fpathname,ffilename],[fpathname,'clicked/',ffilename])
-disp('Files moved')
+
+    movefile([mpathname,mfilename],[mpathname,'clicked/',mfilename])
+    movefile([fpathname,ffilename],[fpathname,'clicked/',ffilename])
+    disp('Files moved')
 %% Fix the data
 
