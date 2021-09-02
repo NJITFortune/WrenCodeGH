@@ -257,8 +257,26 @@ if ~isempty(yn)
              sexstring = [sexstring out.fsyl(j).sexsyltype];
          end
         
-        fprintf('Current syllables: %s \n', string([out.fsyl.sexsyltype])) 
+        fprintf('Current syllables: %s \n', num2str(sexstring)) ;
+        newstr = input('Entry new numbers:');
         
+        while length(newstr) ~= length(out.fsyl)
+            fprintf('WRONG NUMBER OF SYLLABLES, fucktard.\n);
+            newstr = input('Entry new numbers:');
+        end
+        
+        for j = 1:length(newstr)
+            out.fsyl(j).sexsyltype = newstr(j);
+            out.msyl(j).sexsyltype = newstr(j);
+            if newstr(j) > 50
+                out.fsyl(j).sex = 'F';
+                out.msyl(j).sex = 'F';
+            end
+            if newstr(j) < 50
+                out.fsyl(j).sex = 'M';
+                out.msyl(j).sex = 'M';
+            end
+        end
     end
 end
 
