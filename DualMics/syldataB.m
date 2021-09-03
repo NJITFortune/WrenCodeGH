@@ -1,4 +1,4 @@
-function out = syldata(data, Fs)
+function out = syldataB(data, Fs)
 % out = syldata(data, Fs);
 % Give this script 1 syllable worth of data - no more, no less.
 %
