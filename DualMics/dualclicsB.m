@@ -9,7 +9,6 @@ function [md, fd] = dualclicsB(malorig, femorig, Fs, td)
 % relative to the male, td is negative. Perfectly aligned, use 0.
 % Fs is the sample rate in Hz
 %
-% This function depends on oscsonB for plotting.
 % This function depends on syldata for analysis.
 % This function depends on the SAMIII tree via syldata.
 % This function depends on sexd for determining the sex of each syllable.
