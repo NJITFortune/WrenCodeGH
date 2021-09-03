@@ -169,10 +169,10 @@ if sum(find([msyls.num] ~= [fsyls.num])) ~= 0
     end
     
     neworder = inputdlg('Enter proper order: ', 'Error Will Robinson');
-    maxsyl = max(neworder);
+    maxsyl = max(str2num(neworder{1}));
     for jj = maxsyl:-1:1
-        msyls(jj).num = find(neworder == jj);
-        fsyls(jj).num = find(neworder == jj);
+        msyls(jj).num = find(str2num(neworder{1}) == jj);
+        fsyls(jj).num = find(str2num(neworder{1}) == jj);
     end
     
     close(27);
