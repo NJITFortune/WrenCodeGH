@@ -252,7 +252,7 @@ text(0.5, 1000, 'Female Microphone');
 fprintf('Last chance to fix numbers and sex! \n');
 yn = inputdlg('Enter 1 to fix.');
 if ~isempty(yn{1})
-    if yn{1} == 1
+    if str2num(yn{1}) == 1
         sexstring = [];
          for j=1:length(out.fsyl)
              sexstring = [sexstring out.fsyl(j).sexsyltype];
