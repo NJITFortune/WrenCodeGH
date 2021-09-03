@@ -262,7 +262,7 @@ if ~isempty(yn)
         newstr = input('Entry new numbers:');
         
         while length(newstr) ~= length(out.fsyl)
-            fprintf('WRONG NUMBER OF SYLLABLES, fucktard.\n);
+            fprintf('WRONG NUMBER OF SYLLABLES, fucktard.\n');
             newstr = input('Entry new numbers:');
         end
         
