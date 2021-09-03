@@ -1,7 +1,7 @@
 function out = ClickyClicky(dataPath, pairname)
 % Usage: out = ClickyClicky(dataPath, pairname)
 % Where dataPath might be '/Users/daynf/Documents/WrenData/postBirds-2/'
-% relies on dualclicsB.m, slicerB.m
+% relies on dualclicsB.m, slicerB.m, ginputc.m, SAMIII directory, 
 %
 
 %% Load data
@@ -250,7 +250,7 @@ text(0.5, 1000, 'Female Microphone');
 %% Final opportunity to fix the data
 
 fprintf('Last chance to fix numbers and sex! \n');
-yn = inputdlg('Enter 1 to fix.');
+yn = inputdlg('Enter 1 to fix.', 'IS THE SEQUENCE CORRECT?');
 if ~isempty(yn{1})
     if str2num(yn{1}) == 1
         sexstring = [];
@@ -282,7 +282,11 @@ if ~isempty(yn{1})
         end
     end
 end
+%% One final question
 
+    vv = inputdlg('One final question...', 'Vision?');
+    out.vision = str2num(vv{1});
+    
 
 %% Cleanup
 
