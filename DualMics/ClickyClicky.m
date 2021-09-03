@@ -259,11 +259,13 @@ if ~isempty(yn{1})
          end
         
         fprintf('Current syllables: %s \n', num2str(sexstring)) ;
-        newstr = input('Entry new numbers:');
+        tmpnewstr = inputdlg('Enter new numbers: ');
+        newstr = str2num(tmpnewstr{1});
         
         while length(newstr) ~= length(out.fsyl)
             fprintf('WRONG NUMBER OF SYLLABLES, fucktard.\n');
-            newstr = input('Entry new numbers:');
+            tmpnewstr = inputdlg('Enter new numbers: ');
+            newstr = str2num(tmpnewstr{1});
         end
         
         for j = 1:length(newstr)
