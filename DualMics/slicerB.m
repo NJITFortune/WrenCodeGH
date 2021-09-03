@@ -44,6 +44,7 @@ while length(ll) > 0
 
     figure(1); hold on;
     [xx, yy] = ginputc(2,'Color','k','ShowPoints',true,'ConnectPoints',true);
+    
     figure(1); hold on; 
         plot(xx,yy,'r*-');
         xx = sort(xx); yy = sort(yy);
@@ -102,8 +103,8 @@ syls = psyl;
 %% Set the "id" value for the main structure tst
 %
 % for j=1:length(syls); for i=1:length(syls(j).num); tst(syls(j).num(i)).id = j; end; end;
-
-
+%
+%
 %% Plots all of syllable type 2. Change k as necessary. Max 16 syllable reps
 % (4x4 subplots)
 %
@@ -111,7 +112,7 @@ syls = psyl;
 % for i=1:length([syls(k).num]);subplot(4,4,i);
 % wrengram(a(tst(syls(k).num(i)).sylind(1):tst(syls(k).num(i)).sylind(2)),Fs); 
 % end;
-
+%
 %% This plots all of the stick figures on a continuous plot... syls is
 % syllable list from this script, tst is from hagaclics
 %
@@ -125,7 +126,7 @@ syls = psyl;
 %        plot(tst(syls(k).num(i)).trace_tim + tst(syls(k).num(i)).syltim(1), tst(syls(k).num(i)).trace_freq,colrl(k));
 %    end;
 %end;
-
+%
 %figure(2);
 %for j=1:min([16 length(syls)]);
 %	subplot(4,4,j); hold on;
@@ -136,5 +137,5 @@ syls = psyl;
 %            xlim([-0.05 xx+0.05]);
 %	end;
 %end;
-
+%
 
