@@ -1,5 +1,5 @@
 function syls = slicerB(in)
-% syls = slicer(in);
+% syls = slicerB(in);
 % This is an interface for selecting syllables from frequency tracers
 % created using "hagaclics" (via syldata).
 
@@ -11,11 +11,14 @@ function syls = slicerB(in)
 % Start with the first syllable, no selected syllables.
     sylidx = 1;
     slctd = 0; 
+
 % get colors
-[colorMat,colorsToChoose]=colorChoose(length(in));
+[colorMat,~]=colorChoose(length(in));
+
 for i=1:length(in)
     in(i).color=colorMat(i,1:3);
 end
+
 %% Loop to take care of all of the syllables - until all are selected
 while slctd < length(in)
 
@@ -34,7 +37,7 @@ while length(ll) > 0
     figure(1); clf; 
     for i = 1:length(ll)
         if in(ll(i)).sex==0; lineSty='-'; else lineSty=':'; end
-        plot(in(ll(i)).trace_tim, in(ll(i)).trace_freq,'LineStyle',lineSty,'Color',in(ll(i)).color); hold on;
+        plot(in(ll(i)).trace_tim, in(ll(i)).trace_freq, 'LineStyle',lineSty, 'Color', in(ll(i)).color); hold on;
     end
 
 % Get two clicks for a line (which is actually a box for the analysis)
