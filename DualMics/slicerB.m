@@ -37,7 +37,7 @@ while length(ll) > 0
     figure(1); clf; 
     for i = 1:length(ll)
         if in(ll(i)).sex==0; lineSty='-'; else lineSty=':'; end
-        plot(in(ll(i)).trace_tim, in(ll(i)).trace_freq, 'LineStyle',lineSty, 'Color', in(ll(i)).color); hold on;
+        plot(in(ll(i)).trace_tim, in(ll(i)).trace_freq, 'LineWidth', 2, 'LineStyle',lineSty, 'Color', in(ll(i)).color); hold on;
     end
 
 % Get two clicks for a line (which is actually a box for the analysis)
