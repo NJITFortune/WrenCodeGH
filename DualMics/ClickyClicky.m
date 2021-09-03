@@ -16,9 +16,10 @@ function out = ClickyClicky(dataPath, pairname)
 % Get female wav data
 %[ffilename,fpathname]=uigetfile('*.wav', 'Select female WAV file');
 % automatically find matching female file
-fpathname=strrep(mpathname,'Male','Female'); ffilename=strrep(mfilename,'Male','Female');
+    fpathname=strrep(mpathname,'Male','Female'); 
+    ffilename=strrep(mfilename,'Male','Female');
 [FrawData,fFs] = audioread([fpathname ffilename]);
-fprintf('Loaded female data %s. \n', ffilename);
+fprintf('Loaded female data %s \n', ffilename);
 
 if mFs ~= fFs
     fprintf('Male sample rate %i does not match female sample rate %i', mFs, fFs);
