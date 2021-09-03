@@ -259,7 +259,7 @@ if ~isempty(yn{1})
          end
         
         fprintf('Current syllables: %s \n', num2str(sexstring)) ;
-        tmpnewstr = inputdlg('Enter new numbers: ');
+        tmpnewstr = inputdlg('Enter new numbers: ', sexstring);
         newstr = str2num(tmpnewstr{1});
         
         while length(newstr) ~= length(out.fsyl)
