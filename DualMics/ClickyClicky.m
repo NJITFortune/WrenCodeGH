@@ -31,9 +31,9 @@ end
     out.fFile = ffilename;
     out.pairname = pairname;
     
-        s=strsplit(mfilename(1:length(mfilename)-4),'_');        
-            timestamp=s{end};
-            out.distance = regexprep(s{1}, '\D', '');
+        s = strsplit(mfilename(1:length(mfilename)-4),'_');        
+            timestamp = str2num(s{end});
+            out.distance = str2num(regexprep(s{1}, '\D', ''));
             out.day = str2num(s{2});
             out.month = str2num(s{3});
             out.year = str2num(s{4});
