@@ -14,7 +14,7 @@ function [md, fd] = dualclicsB(malorig, femorig, Fs, td)
 % This function depends on the SAMIII tree via syldata.
 % This function depends on sexd for determining the sex of each syllable.
 % This function depends on ginputc for clicking (can be reverted to ginput easily).
-% This function works with slicer for selecting syllable types.
+% This function works with slicerB for selecting syllable types.
 
 %% Housekeeping
 
