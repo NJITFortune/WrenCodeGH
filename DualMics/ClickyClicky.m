@@ -168,7 +168,7 @@ if sum(find([msyls.num] ~= [fsyls.num])) ~= 0
         text(out.fsyl(j).syltim(1)+0.1, 4000, num2str(currFemaleSequence(j)));
     end
     
-    neworder = input('Enter proper order: ');
+    neworder = inputdlg('Enter proper order: ');
     maxsyl = max(neworder);
     for jj = maxsyl:-1:1
         msyls(jj).num = find(neworder == jj);
