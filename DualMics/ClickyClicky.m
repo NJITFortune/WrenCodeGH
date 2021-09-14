@@ -41,10 +41,10 @@ end
             out.month = str2num(s{3});
             out.year = str2num(s{4});
             out.location = s{5};
-            out.timestamp = str2num(timestamp);
+            out.timestamp = timestamp;
             
-    FN = [pairname, out.distance,'m',timestamp,'.mat'];
-    tempFN = ['tmpfile', out.distance,'m',timestamp,'.mat'];
+    FN = [pairname, num2str(out.distance),'m',num2str(timestamp),'.mat'];
+    tempFN = ['tmpfile', num2str(out.distance),'m',num2str(timestamp),'.mat'];
 
 %% Filter and normalize raw recording data
 
