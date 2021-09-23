@@ -171,7 +171,7 @@ if sum(find([msyls.num] ~= [fsyls.num])) ~= 0
         text(out.fsyl(j).syltim(1)+0.1, 4000, num2str(currFemaleSequence(j)));
     end
     
-    neworder = inputdlg('Enter proper order: ', 'Error Will Robinson', 'WindowStyle', 'normal');
+    neworder = inputdlg('Enter proper order: ', 'Error Will Robinson', [1,50], 'WindowStyle', 'normal');
     maxsyl = max(str2num(neworder{1}));
     for jj = maxsyl:-1:1
         msyls(jj).num = find(str2num(neworder{1}) == jj);
