@@ -265,12 +265,12 @@ if ~isempty(yn{1})
          end
         
         fprintf('Current syllables: %s \n', num2str(sexstring)) ;
-        tmpnewstr = inputdlg(num2str(sexstring),'Enter new numbers!',  [1,50], 'WindowStyle', 'normal');
+        tmpnewstr = inputdlg(num2str(sexstring),'Enter new numbers!',  'Numbers', [1,50], 'WindowStyle', 'normal');
         newstr = str2num(tmpnewstr{1});
         
         while length(newstr) ~= length(out.fsyl)
             fprintf('WRONG NUMBER OF SYLLABLES, fucktard.\n');
-            tmpnewstr = inputdlg('Enter new numbers: ');
+            tmpnewstr = inputdlg('Enter new numbers: ', 'Numbers', [1,50], 'WindowStyle', 'normal');
             newstr = str2num(tmpnewstr{1});
         end
         
