@@ -296,7 +296,7 @@ if ~isempty(yn{1})
 end
 %% One final question
 
-    vv = inputdlg('One final question... 1 vision, 2 no vision', 'Vision?', [1,5], 'WindowStyle', 'normal');
+    vv = inputdlg('One final question... 1 vision, 2 no vision', 'Vision?');
     out.vision = str2num(vv{1});
     
 
