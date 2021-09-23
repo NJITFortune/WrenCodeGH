@@ -221,7 +221,8 @@ for jk = length(fsyls):-1:1
     currFemaleSequence(fsyls(jk).num) = jk;
 end
 
-figure(3); clf;
+figure(3); clf; 
+set(gcf, 'Position', [50 50 scr_siz(3)-200 scr_siz(4)-200])
 subplot(211); specgram(out.maleMic, 1024, out.Fs); ylim([200 5200]);
 caxis([-10 40]); colormap(flipud(gray));
 hold on;
