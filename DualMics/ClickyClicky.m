@@ -256,7 +256,7 @@ text(0.5, 1000, 'Female Microphone');
 %% Final opportunity to fix the data
 
 fprintf('Last chance to fix numbers and sex! \n');
-yn = inputdlg('Enter 1 to fix.', 'IS THE SEQUENCE CORRECT?',  [1,5], 'WindowStyle', 'normal');
+yn = inputdlg('Enter 1 to fix.', 'IS THE SEQUENCE CORRECT?', [1,5], 'WindowStyle', 'normal');
 if ~isempty(yn{1})
     if str2num(yn{1}) == 1
         sexstring = [];
@@ -265,7 +265,7 @@ if ~isempty(yn{1})
          end
         
         fprintf('Current syllables: %s \n', num2str(sexstring)) ;
-        tmpnewstr = inputdlg(num2str(sexstring),'Enter new numbers!', 'WindowStyle', 'normal');
+        tmpnewstr = inputdlg(num2str(sexstring),'Enter new numbers!',  [1,50], 'WindowStyle', 'normal');
         newstr = str2num(tmpnewstr{1});
         
         while length(newstr) ~= length(out.fsyl)
