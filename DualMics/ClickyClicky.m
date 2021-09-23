@@ -156,6 +156,7 @@ if sum(find([msyls.num] ~= [fsyls.num])) ~= 0
     
     % Make a plot
     figure(27); clf; 
+        set(gcf, 'Position', [50 50 scr_siz(3)-200 scr_siz(4)-200])
     subplot(211); title(FN,'Interpreter','none'); specgram(out.maleMic, 1024, out.Fs); ylim([200 5200]);
     caxis([-10 40]); colormap(flipud(gray));
     hold on;
