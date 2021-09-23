@@ -256,7 +256,7 @@ text(0.5, 1000, 'Female Microphone');
 %% Final opportunity to fix the data
 
 fprintf('Last chance to fix numbers and sex! \n');
-yn = inputdlg('Enter 1 to fix.', 'IS THE SEQUENCE CORRECT?', 'WindowStyle', 'normal');
+yn = inputdlg('Enter 1 to fix.', 'IS THE SEQUENCE CORRECT?',  [1,5], 'WindowStyle', 'normal');
 if ~isempty(yn{1})
     if str2num(yn{1}) == 1
         sexstring = [];
