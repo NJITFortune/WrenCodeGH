@@ -172,7 +172,7 @@ if sum(find([msyls.num] ~= [fsyls.num])) ~= 0
     end
     
 %    neworder = inputdlg('Enter proper order: ', 'Error Will Robinson');
-    prompt = 'Enter proper order: '; dlgtitle = 'Error Will Robinson'; definput = {}; opts.WindowStyle = 'normal';
+    prompt = 'Enter proper order: '; dlgtitle = 'Error Will Robinson'; definput = {' '}; opts.WindowStyle = 'normal';
     neworder = inputdlg(prompt, dlgtitle, [1 50], definput, opts);
     maxsyl = max(str2num(neworder{1}));
     for jj = maxsyl:-1:1
