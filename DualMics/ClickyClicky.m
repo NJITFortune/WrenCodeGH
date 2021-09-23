@@ -269,7 +269,9 @@ if ~isempty(yn{1})
          end
         
         fprintf('Current syllables: %s \n', num2str(sexstring)) ;
-        tmpnewstr = inputdlg(num2str(sexstring),'Enter new numbers!',  'Numbers', [1,50], 'WindowStyle', 'normal');
+        prompt = 'num2str(sexstring)'; dlgtitle = 'Enter new numbers!'; definput = {' '}; opts.WindowStyle = 'normal';
+        neworder = inputdlg(prompt, dlgtitle, [1 50], definput, opts);
+        %tmpnewstr = inputdlg(num2str(sexstring),'Enter new numbers!');
         newstr = str2num(tmpnewstr{1});
         
         while length(newstr) ~= length(out.fsyl)
