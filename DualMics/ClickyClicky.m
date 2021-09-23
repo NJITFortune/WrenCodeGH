@@ -270,13 +270,13 @@ if ~isempty(yn{1})
         
         fprintf('Current syllables: %s \n', num2str(sexstring)) ;
         prompt = 'num2str(sexstring)'; dlgtitle = 'Enter new numbers!'; definput = {' '}; opts.WindowStyle = 'normal';
-        neworder = inputdlg(prompt, dlgtitle, [1 50], definput, opts);
+        tmpnewstr = inputdlg(prompt, dlgtitle, [1 50], definput, opts);
         %tmpnewstr = inputdlg(num2str(sexstring),'Enter new numbers!');
         newstr = str2num(tmpnewstr{1});
         
         while length(newstr) ~= length(out.fsyl)
             fprintf('WRONG NUMBER OF SYLLABLES, fucktard.\n');
-            tmpnewstr = inputdlg('Enter new numbers: ', 'Numbers', [1,50], 'WindowStyle', 'normal');
+            tmpnewstr = inputdlg(prompt, dlgtitle, [1 50], definput, opts);
             newstr = str2num(tmpnewstr{1});
         end
         
