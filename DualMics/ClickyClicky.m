@@ -296,7 +296,9 @@ if ~isempty(yn{1})
 end
 %% One final question
 
-    vv = inputdlg('One final question... 1 vision, 2 no vision', 'Vision?');
+        prompt = 'One final question... 1 vision, 2 no vision'; dlgtitle = 'Vision?'; definput = {' '}; opts.WindowStyle = 'normal';
+        vv = inputdlg(prompt, dlgtitle, [1 50], definput, opts);
+%    vv = inputdlg('One final question... 1 vision, 2 no vision', 'Vision?');
     out.vision = str2num(vv{1});
     
 
