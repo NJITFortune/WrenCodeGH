@@ -7,6 +7,8 @@ function out = ClickyClicky(dataPath, pairname)
 % Can be used with DualClickQuick.m
 %
 
+scr_siz = get(0,'ScreenSize') ;
+
 %% Load data
 
 % Get male wav data
@@ -223,7 +225,6 @@ for jk = length(fsyls):-1:1
     currFemaleSequence(fsyls(jk).num) = jk;
 end
 
-scr_siz = get(0,'ScreenSize') ;
 figure(3); clf; 
     set(gcf, 'Position', [50 50 scr_siz(3)-200 scr_siz(4)-200])
 
