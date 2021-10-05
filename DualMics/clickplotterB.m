@@ -1,4 +1,4 @@
-function [ clicktimes ] = clickplotterB(data1, data2, Fs, preclick, topper)
+function [ clicktimes ] = clickplotterB(data1, data2, Fs, topper, preclick)
 % clicktimes = clickplotter(data, Fs);
 % data is a chunk of raw wren wrecorded data
 % Fs is the sample rate in Hz
@@ -18,12 +18,12 @@ function [ clicktimes ] = clickplotterB(data1, data2, Fs, preclick, topper)
 % 		figprop = get(gcf,'Position'); 
 %         set(gcf,'Position',[figprop(1) figprop(2) 1000 400]);
 
-        oscsonB(data1, data2, Fs,[-30 20]);
+        oscsonB(data1, data2, Fs,[-30 20], topper);
 
 	% Plot prior click in the main window
 
- 		if nargin == 4 
-               figure(1); 
+        if nargin == 5 
+               figure(1); subplot(211);
                  hold on;
                  plot([preclick(1) preclick(1)], yvals, 'm','LineWidth',2); 
                  hold off; 
