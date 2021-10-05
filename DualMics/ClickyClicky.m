@@ -17,6 +17,7 @@ scr_siz = get(0,'ScreenSize') ;
 %[mfilename,mpathname]=uigetfile('*.wav', 'Select Male WAV file');
 [mfilename,mpathname]=uigetfile([dataPath, '/', pairname, 'Male*.wav'], 'Select Male WAV file');
 [MrawData,mFs] = audioread([mpathname mfilename]);
+fprintf('Loaded male data %s as requested. \n', mfilename);
 
 % Get female wav data
 %[ffilename,fpathname]=uigetfile('*.wav', 'Select female WAV file');
@@ -24,7 +25,7 @@ scr_siz = get(0,'ScreenSize') ;
     fpathname=strrep(mpathname,'Male','Female'); 
     ffilename=strrep(mfilename,'Male','Female');
 [FrawData,fFs] = audioread([fpathname ffilename]);
-fprintf('Loaded female data %s \n', ffilename);
+fprintf('Used male filename to load the female data %s successfully. \n', ffilename);
 
 if mFs ~= fFs
     fprintf('Male sample rate %i does not match female sample rate %i', mFs, fFs);
