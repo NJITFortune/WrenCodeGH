@@ -58,18 +58,19 @@ if nargin ==3
 end
 
 %% Now that we've adjusted the colors, plot the oscillogram on top.
-subplot(2,1,1)
-hold on;
-    plot(ax1, tim1, oscplt1, 'k');
-    text(0.1, 3000, sex{1});
-hold off
 
 colormap(ax2,'gray');
 subplot(2,1,2)
 hold on;
     plot(ax2, tim2,oscplt2,'k');
     text(0.1, 3000, sex{2});
-
 hold off;
+
+subplot(2,1,1)
+hold on;
+    plot(ax1, tim1, oscplt1, 'k');
+    text(0.1, 3000, sex{1});
+hold off
+
 
 end
