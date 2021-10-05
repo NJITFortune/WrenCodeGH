@@ -61,13 +61,13 @@ end
 subplot(2,1,1)
 hold on;
     plot(ax1, tim1, oscplt1, 'k');
-    text(0.1, 5000, sex{1});
+    text(0.1, 3000, sex{1});
 hold off
 
 colormap(ax2,'gray');
 hold on;
     plot(ax2, tim2,oscplt2,'k');
-    text(0.1, 5000, sex{2});
+    text(0.1, 3000, sex{2});
 
 hold off;
 
