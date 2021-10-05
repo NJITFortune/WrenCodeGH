@@ -65,6 +65,7 @@ hold on;
 hold off
 
 colormap(ax2,'gray');
+subplot(2,1,2)
 hold on;
     plot(ax2, tim2,oscplt2,'k');
     text(0.1, 3000, sex{2});
