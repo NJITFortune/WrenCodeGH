@@ -1,4 +1,4 @@
-function oscsonB(sig1,sig2, Fs, opt)
+function oscsonB(sig1,sig2, Fs, opt, topper)
 % Usage: oscon(signal, Fs, [color thresholds]);
 % Plots a specgram with parameters for wren songs with an oscillogram
 % imposed on it. 
@@ -16,6 +16,12 @@ cntr = 1000; % This is the frequency on the specgram around which the oscillo wi
 
 oscplt1 = oscplt1 * cntr/max(oscplt1); %% Center the signal at desired f.
 oscplt2 = oscplt2 * cntr/max(oscplt2); %% Center the signal at desired f.
+
+    if topper == 'F'
+        sex{1} = 'Female'; sex{2} = 'Male';
+    else 
+        sex{1} = 'Male'; sex{2} = 'Female';
+    end
 
 
 %% Plotting
@@ -54,12 +60,14 @@ end
 %% Now that we've adjusted the colors, plot the oscillogram on top.
 subplot(2,1,1)
 hold on;
-plot(ax1, tim1, oscplt1, 'k');
+    plot(ax1, tim1, oscplt1, 'k');
+    text(0.1, 5000, sex{1});
 hold off
 
 colormap(ax2,'gray');
 hold on;
-plot(ax2, tim2,oscplt2,'k');
+    plot(ax2, tim2,oscplt2,'k');
+    text(0.1, 5000, sex{2});
 
 hold off;
 
