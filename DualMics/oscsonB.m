@@ -12,7 +12,7 @@ tim2 = 1/Fs:1/Fs:length(sig2)/Fs;
 oscplt1 = sig1 - min(sig1); % Add the minimum to the signal - min is now zero.
 oscplt2= sig2 - min(sig2);
 
-cntr = 500; % This is the frequency on the specgram around which the oscillo will be centered
+cntr = 1000; % This is the frequency on the specgram around which the oscillo will be centered
 
 oscplt1 = oscplt1 * cntr/max(oscplt1); %% Center the signal at desired f.
 oscplt2 = oscplt2 * cntr/max(oscplt2); %% Center the signal at desired f.
@@ -54,12 +54,12 @@ end
 %% Now that we've adjusted the colors, plot the oscillogram on top.
 subplot(2,1,1)
 hold on;
-plot(ax1, tim1, oscplt1, 'w');
+plot(ax1, tim1, oscplt1, 'k');
 hold off
 
 colormap(ax2,'gray');
 hold on;
-plot(ax2, tim2,oscplt2,'w');
+plot(ax2, tim2,oscplt2,'k');
 
 hold off;
 
