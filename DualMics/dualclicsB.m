@@ -30,8 +30,8 @@ ovrlp = 0.2;
 
 for sex = 1:2
     
-    if sex == 1; sng = fem; oth = mal; end
-    if sex == 2; sng = mal; oth = fem; end
+    if sex == 1; sng = fem; topper = 'F'; oth = mal; end
+    if sex == 2; sng = mal; topper = 'M'; oth = fem; end
 
 %% Initialize BSX and SYLNUM
 
@@ -53,7 +53,7 @@ while cntu < 20
             %set(gcf,'Position',[figprop(1) figprop(2)-400 1000 400]);
             %oscsonB(sng(tt), oth(tt), Fs, [-100 50]); %plots Figure 2; 
             disp('Hit Enter to Move to next segment')
-            cts = clickplotterB(sng(tt),oth(tt), Fs); % plots Figure 1;
+            cts = clickplotterB(sng(tt),oth(tt), Fs, topper); % plots Figure 1;
         else
 %             figure(2); 
 %             figprop = get(gcf,'Position'); 
@@ -61,7 +61,7 @@ while cntu < 20
 %             oscson(oth(tt), Fs, [-100 50]); 
 %             hold on; plot([ovrlp ovrlp], [100 5500], 'm'); hold off;
             disp('Hit Enter to Move to next segment')
-            cts = clickplotterB(sng(tt), oth(tt),Fs, preclick);
+            cts = clickplotterB(sng(tt), oth(tt), Fs, topper, preclick);
         end
    
         if mod(length(cts),2) == 1 % TRY AGAIN LOSER
