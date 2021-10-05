@@ -1,4 +1,4 @@
-function [ clicktimes ] = clickplotterB(data1, data2, Fs, preclick)
+function [ clicktimes ] = clickplotterB(data1, data2, Fs, preclick, topper)
 % clicktimes = clickplotter(data, Fs);
 % data is a chunk of raw wren wrecorded data
 % Fs is the sample rate in Hz
