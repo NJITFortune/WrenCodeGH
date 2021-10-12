@@ -275,7 +275,7 @@ fprintf('Last chance to fix numbers and sex! \n');
          end
         
         fprintf('Current syllables: %s \n', num2str(sexstring)) ;
-        prompt = 'num2str(sexstring)'; dlgtitle = 'Enter new numbers!'; definput = {' '}; opts.WindowStyle = 'normal';
+        prompt = num2str(sexstring); dlgtitle = 'Enter new numbers!'; definput = {' '}; opts.WindowStyle = 'normal';
         tmpnewstr = inputdlg(prompt, dlgtitle, [1 50], definput, opts);
         %tmpnewstr = inputdlg(num2str(sexstring),'Enter new numbers!');
         newstr = str2num(tmpnewstr{1});
