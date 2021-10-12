@@ -259,12 +259,15 @@ end
 text(0.5, 1000, 'Female Microphone');
 
 %% Final opportunity to fix the data
+yn = {};
+
+while ~isempty(yn{1})
 
 fprintf('Last chance to fix numbers and sex! \n');
     prompt = 'Enter 1 to fix.'; dlgtitle = 'IS THE SEQUENCE CORRECT?'; definput = {' '}; opts.WindowStyle = 'normal';
     yn = inputdlg(prompt, dlgtitle, [1,50], definput, opts);
     % yn = inputdlg('Enter 1 to fix.', 'IS THE SEQUENCE CORRECT?');
-if ~isempty(yn{1})
+    
     if str2num(yn{1}) == 1
         sexstring = [];
          for j=1:length(out.fsyl)
