@@ -231,7 +231,7 @@ end
 %% Final opportunity to fix the data
 yn = {'1'};
 
-while yn ~= ' '
+while yn{1} ~= ' '
 
 figure(3); clf; 
     set(gcf, 'Position', [50 50 scr_siz(3)-200 scr_siz(4)-200])
