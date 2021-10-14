@@ -229,7 +229,7 @@ end
 
 
 %% Final opportunity to fix the data
-yn = {'1'};
+yn{1} = '1';
 
 while yn{1} ~= ' '
 
@@ -270,7 +270,7 @@ fprintf('Last chance to fix numbers and sex! \n');
     yn = inputdlg(prompt, dlgtitle, [1,50], definput, opts);
     % yn = inputdlg('Enter 1 to fix.', 'IS THE SEQUENCE CORRECT?');
     
-    if str2num(yn{1}) == 1
+    if str2num(yn{1}) ~= ' '
         sexstring = [];
          for j=1:length(out.fsyl)
              sexstring = [sexstring out.fsyl(j).sexsyltype];
@@ -300,7 +300,7 @@ fprintf('Last chance to fix numbers and sex! \n');
                 out.msyl(j).sex = 'M';
             end
         end
-        yn{1} = ' ';
+        yn{1} = '1';
     end
 end
 
