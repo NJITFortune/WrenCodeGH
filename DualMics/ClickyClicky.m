@@ -227,6 +227,12 @@ for jk = length(fsyls):-1:1
     currFemaleSequence(fsyls(jk).num) = jk;
 end
 
+
+%% Final opportunity to fix the data
+yn = {'1'};
+
+while yn{1} ~= ' '
+
 figure(3); clf; 
     set(gcf, 'Position', [50 50 scr_siz(3)-200 scr_siz(4)-200])
 
@@ -250,19 +256,15 @@ hold on;
 for j=1:length(out.fsyl)
     plot([out.fsyl(j).syltim(1) out.fsyl(j).syltim(1)], [500 4500], 'g', 'LineWidth', 2);
     plot([out.fsyl(j).syltim(2) out.fsyl(j).syltim(2)], [500 4500], 'r', 'LineWidth', 2);
-    if out.fsyl(j).sex == 'M'
+    if out.fsyl(j).sexsyltype < 50 % 'M'
         text(out.fsyl(j).syltim(1)+0.1, 4000, num2str(currFemaleSequence(j)), 'Color','cyan','FontSize', 14);
-    elseif out.fsyl(j).sex == 'F'
+    elseif out.fsyl(j).sexsyltype > 50 % 'F'
         text(out.fsyl(j).syltim(1)+0.1, 4000, num2str(currFemaleSequence(j)), 'Color','magenta','FontSize', 14);
     end
 end
 text(0.5, 1000, 'Female Microphone');
-
-%% Final opportunity to fix the data
-yn = {'1'};
-
-while yn{1} ~= ' '
-
+    
+    
 fprintf('Last chance to fix numbers and sex! \n');
     prompt = 'Enter 1 to fix.'; dlgtitle = 'IS THE SEQUENCE CORRECT?'; definput = {' '}; opts.WindowStyle = 'normal';
     yn = inputdlg(prompt, dlgtitle, [1,50], definput, opts);
@@ -300,6 +302,7 @@ fprintf('Last chance to fix numbers and sex! \n');
         end
     end
 end
+
 %% One final question
 
         prompt = 'One final question... 1 vision, 2 no vision'; dlgtitle = 'Vision?'; definput = {' '}; opts.WindowStyle = 'normal';
