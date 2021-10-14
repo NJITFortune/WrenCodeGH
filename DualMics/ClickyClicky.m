@@ -259,9 +259,9 @@ end
 text(0.5, 1000, 'Female Microphone');
 
 %% Final opportunity to fix the data
-yn = {' '};
+yn = {'1'};
 
-while yn{1} == ' '
+while yn{1} ~= ' '
 
 fprintf('Last chance to fix numbers and sex! \n');
     prompt = 'Enter 1 to fix.'; dlgtitle = 'IS THE SEQUENCE CORRECT?'; definput = {' '}; opts.WindowStyle = 'normal';
