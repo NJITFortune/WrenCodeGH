@@ -300,6 +300,7 @@ fprintf('Last chance to fix numbers and sex! \n');
                 out.msyl(j).sex = 'M';
             end
         end
+        yn{1} = ' ';
     end
 end
 
