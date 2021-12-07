@@ -108,8 +108,9 @@ while aaa > 2
    
         linkaxes(axx, 'xy');
         
-        figure(2); subplot(211); colormap('GRAY'); ylim([200 6000]); grid("on", "LineWidth", 1);
+        figure(2); subplot(211); colormap('GRAY'); ylim([200 6000]); 
         pause(0.1);
+        grid(axx(1), "on", "LineWidth", 1)
 
     
     fprintf('0 do nothing, 1 both directions evenly, 2 end only, 3 get one click for start of heterogenous\n');
