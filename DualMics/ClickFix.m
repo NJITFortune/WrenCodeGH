@@ -12,7 +12,7 @@ for j = 1:length(in)
 % Plot the specgrams for each microphone    
     figure(1); clf;
     ax(1) = subplot(211); specgram(in(j).femMic, 2048, in(j).Fs, [], 2000); hold on;
-    ax(2) = subplot(212); specgram(in(j).maleMic, 2048, in(j).Fs, [], 2000); hold on;
+    ax(2) = subplot(212); specgram(in(j).maleMic, 2048, in(j).Fs, [], 2000); hold on; 
     linkaxes(ax, 'xy');
     ylim([200 6000]);
 
@@ -67,7 +67,7 @@ while aaa > 2
 %        end
        
        figure(2); axx(1) = subplot(211);  % Female Microphone
-       
+       grid on;
        tim = 1/out(j).Fs:1/out(j).Fs:length(out(j).femMic)/out(j).Fs;
        
        specgram(out(j).femMic(tim > out(j).fsyl(k).syltim(1)-buff & tim < out(j).fsyl(k).syltim(1)+longerDur+buff), 2048, in(j).Fs, [], 2000); 
@@ -87,7 +87,7 @@ while aaa > 2
             end
             
        figure(2); axx(2) = subplot(212); % Male Microphone
-       
+       grid on;
        tim = 1/out(j).Fs:1/out(j).Fs:length(out(j).maleMic)/out(j).Fs;
             
        specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(k).syltim(1)+longerDur+buff), 2048, out(j).Fs, [], 2000); 
