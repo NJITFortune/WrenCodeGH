@@ -1,4 +1,4 @@
-function out = fixdd(in)
+function out = ClickFix(in)
 % out = fixdd(in) 
 % This fixes some clicking issues for the distance data.
 
