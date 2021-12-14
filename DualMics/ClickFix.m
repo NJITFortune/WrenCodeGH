@@ -124,7 +124,7 @@ while aaa > 2
         pause(0.1);
         grid(axx, "on")
         set(gca,'GridColor',[0 0.9 1])
-        axx.GridAlpha = 0.5;
+        axx(1).GridAlpha = 0.5;
 
     
     fprintf('2 FIX end only, 3 get one click for start of heterogenous\n');
