@@ -83,7 +83,7 @@ while aaa > 2
             if (out(j).fsyl(k).sexsyltype < 49) % Male syllable
                 text(0.05, 5000, 'Blue is other microphone, Yellow is this microphone', 'Color', 'k');
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'b-', 'LineWidth', 2); % Autogenous trace
-                plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'y-'); % Heterogenous trace
+                plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'y-', 'LineWidth', 3); % Heterogenous trace
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
                 plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
@@ -105,7 +105,7 @@ while aaa > 2
             if (out(j).msyl(k).sexsyltype > 49) % Female syllable
                 text(0.05, 5000, 'Magenta is other microphone, Yellow is this microphone', 'Color', 'k');
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 2); % Autogenous trace
-                plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'y-'); % Heterogenous trace
+                plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'y-', 'LineWidth', 3); % Heterogenous trace
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
                 plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
