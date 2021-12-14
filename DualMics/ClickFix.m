@@ -123,6 +123,7 @@ while aaa > 2
         figure(2); subplot(211); colormap('GRAY'); ylim([200 6000]); 
         pause(0.1);
         grid(axx, "on")
+        set(gca,'GridColor',[0.1 0.2 0.9])
 
     
     fprintf('2 FIX end only, 3 get one click for start of heterogenous\n');
