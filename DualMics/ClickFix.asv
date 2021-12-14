@@ -123,14 +123,21 @@ while aaa > 2
         figure(2); subplot(211); colormap('GRAY'); ylim([200 6000]); 
         pause(0.1);
         grid(axx, "on")
+        axx(1).GridColor = [0 0.9 1];
+        axx(1).GridAlpha = 0.5;
+        axx(2).GridColor = [0 0.9 1];
+        axx(2).GridAlpha = 0.5;
 
     
-    fprintf('2 FIX end only, 3 get one click for start of heterogenous\n');
+    fprintf('2 FIX end only and move to next syllable\' ...
+    fprintf(3 get one click for start of heterogenous\n']);
     fprintf('4 reclick both (3 clicks, start and end of autogenous, start of heterogenous.\n');
-    fprintf('\n');
+    fprintf('10 to 90 change contrast (lower is higher) \n');
     aaa = input('ACTION: ');
 
-    if aaa > 
+    if aaa > 10
+        pltrng = aaa;
+    end
     
     if aaa == 1 % Extend heterogenous evenly in both directions
         if (out(j).fsyl(k).sexsyltype > 49) % Female is autogenous
