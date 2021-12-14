@@ -119,7 +119,8 @@ while aaa > 2
     
     fprintf('2 FIX end only, 3 get one click for start of heterogenous\n');
     fprintf('4 reclick both (3 clicks, start and end of autogenous, start of heterogenous.\n');
-    aaa = input('Fix? ');
+    fprintf('\n');
+    aaa = input('ACTION: ');
     
     if aaa == 1 % Extend heterogenous evenly in both directions
         if (out(j).fsyl(k).sexsyltype > 49) % Female is autogenous
