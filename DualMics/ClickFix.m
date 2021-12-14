@@ -43,7 +43,8 @@ for j = 1:length(in)
        end
        
        
-      aaa = 5;
+      aaa = 5; % Just a dummy to get things started for our while loop...
+
 while aaa > 2
        
        figure(2); clf;
