@@ -123,8 +123,10 @@ while aaa > 2
         figure(2); subplot(211); colormap('GRAY'); ylim([200 6000]); 
         pause(0.1);
         grid(axx, "on")
-        set(gca,'GridColor',[0 0.9 1])
+        axx(1).GridColor = [0 0.9 1];
         axx(1).GridAlpha = 0.5;
+        axx(2).GridColor = [0 0.9 1];
+        axx(2).GridAlpha = 0.5;
 
     
     fprintf('2 FIX end only, 3 get one click for start of heterogenous\n');
