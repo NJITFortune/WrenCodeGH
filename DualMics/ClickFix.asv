@@ -73,16 +73,16 @@ while aaa > 2
        
        specgram(out(j).femMic(tim > out(j).fsyl(k).syltim(1)-buff & tim < out(j).fsyl(k).syltim(1)+longerDur+buff), 2048, in(j).Fs, [], 2000); 
        hold on;
-       text(0.05, 5000, 'Female Microphone', 'Color', 'w');
-       if in(j).fsyl(k).sexsyltype > 49       
+           text(0.05, 5500, 'Female Microphone', 'Color', 'w');
             if (out(j).fsyl(k).sexsyltype > 49) % Female syllable
+                text(0.05, 5000, 'This is a female syllable', 'Color', 'm');
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 3); % HEAVY TRACE
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
                 plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
             if (out(j).fsyl(k).sexsyltype < 49) % Male syllable
-                plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'y-', 'LineWidth', 2); % Autogenous trace
-                plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'b-'); % Heterogenous trace
+                plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'b-', 'LineWidth', 2); % Autogenous trace
+                plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'y-'); % Heterogenous trace
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
                 plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
@@ -93,16 +93,17 @@ while aaa > 2
             
        specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(k).syltim(1)+longerDur+buff), 2048, out(j).Fs, [], 2000); 
        hold on;
-       text(0.05, 5000, 'Male Microphone', 'Color', 'w');
+       text(0.05, 5500, 'Male Microphone', 'Color', 'w');
        
             if (out(j).msyl(k).sexsyltype < 49) % Male syllable
+                text(0.05, 5000, 'This is a female syllable', 'Color', 'b');
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'b-', 'LineWidth', 2);
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE 
                 plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
             if (out(j).msyl(k).sexsyltype > 49) % Female syllable
-                plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'y-', 'LineWidth', 2); % Autogenous trace
-                plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'm-'); % Heterogenous trace
+                plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 2); % Autogenous trace
+                plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'y-'); % Heterogenous trace
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
                 plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
@@ -114,7 +115,7 @@ while aaa > 2
         grid(axx, "on")
 
     
-    fprintf('0 do nothing, 1 both directions evenly, 2 end only, 3 get one click for start of heterogenous\n');
+    fprintf('2 FIX end only, 3 get one click for start of heterogenous\n');
     fprintf('4 reclick both (3 clicks, start and end of autogenous, start of heterogenous.\n');
     aaa = input('Fix? ');
     
