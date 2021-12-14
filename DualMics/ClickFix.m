@@ -87,7 +87,7 @@ while aaa > 2
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
                 plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
-            
+            cx{1} = caxis;
        figure(2); axx(2) = subplot(212); % Male Microphone
        grid on;
        tim = 1/out(j).Fs:1/out(j).Fs:length(out(j).maleMic)/out(j).Fs;
@@ -109,11 +109,14 @@ while aaa > 2
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
                 plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
+
+            cx{2} = caxis;
    
         linkaxes(axx, 'xy');
         
         figure(2); subplot(211); colormap('GRAY'); ylim([200 6000]); 
         pause(0.1);
+        cx
         grid(axx, "on")
 
     
