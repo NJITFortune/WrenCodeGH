@@ -131,7 +131,7 @@ while aaa > 2
     
     fprintf('2 FIX end only, 3 get one click for start of heterogenous\n');
     fprintf('4 reclick both (3 clicks, start and end of autogenous, start of heterogenous.\n');
-    fprintf('\n');
+    fprintf('10 to 90 change contrast (lower is higher) \n');
     aaa = input('ACTION: ');
 
     if aaa > 10
