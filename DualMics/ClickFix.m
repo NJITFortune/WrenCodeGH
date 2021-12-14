@@ -43,7 +43,8 @@ for j = 1:length(in)
        end
        
        
-      aaa = 5; % Just a dummy to get things started for our while loop...
+      aaa = 27; % Just a dummy to get things started for our while loop...
+
 
 while aaa > 2
        
@@ -87,7 +88,10 @@ while aaa > 2
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
                 plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
-            cx{1} = caxis;
+       cx{1} = caxis;
+            if aaa > 20 && aaa ~= 27
+                caxis([cx{1}(1)*(aaa/100), floor(cx{1}(2))])
+            end
        figure(2); axx(2) = subplot(212); % Male Microphone
        grid on;
        tim = 1/out(j).Fs:1/out(j).Fs:length(out(j).maleMic)/out(j).Fs;
@@ -111,12 +115,13 @@ while aaa > 2
             end
 
             cx{2} = caxis;
-   
+            if aaa > 20 && aaa ~= 27
+                caxis([cx{2}(1)*(aaa/100), floor(cx{2}(2))])
+            end   
         linkaxes(axx, 'xy');
         
         figure(2); subplot(211); colormap('GRAY'); ylim([200 6000]); 
         pause(0.1);
-        cx
         grid(axx, "on")
 
     
