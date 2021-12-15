@@ -14,7 +14,8 @@ for j = 1:length(in)
 
 % Plot the specgrams for each microphone so that we can track our progress    
     figure(1); clf;
-        ax(1) = subplot(211); specgram(in(j).femMic, 2048, in(j).Fs, [], 2000); hold on;
+        ax(1) = subplot(211); specgram(in(j).femMic, 2048, in(j).Fs, [], 2000); 
+        hold on; text(0.5, 4500, num2str(length(in(j).fsyl)));
         ax(2) = subplot(212); specgram(in(j).maleMic, 2048, in(j).Fs, [], 2000); hold on; 
         linkaxes(ax, 'xy');
         ylim([200 6000]);
@@ -30,7 +31,7 @@ for j = 1:length(in)
     end
 
 %% Cycle through each syllable to make corrections
-   for k = 1:length([in(j).fsyl.sexsyltype])
+   for k = 1:length(in(j).fsyl)
        
        figure(1); % This puts the bars along the top of the sonogram to mark user progress
        if in(j).fsyl(k).sexsyltype > 49
@@ -77,16 +78,16 @@ while aaa > 1
        
        specgram(out(j).femMic(tim > out(j).fsyl(k).syltim(1)-buff & tim < out(j).fsyl(k).syltim(1)+longerDur+buff), 2048, in(j).Fs, [], 2000); 
        cx{1} = caxis; caxis([cx{1}(1)*(pltrng/100), floor(cx{1}(2))]); hold on;
-       text(0.05, 5500, 'Female Microphone', 'Color', 'w');
+       text(0.05, 5300, 'Female Microphone', 'Color', 'w');
 
             if (out(j).fsyl(k).sexsyltype > 49) % Female syllable
-                text(0.05, 5000, 'This is a female syllable', 'Color', 'm');
+                text(0.05, 4700, 'This is a female syllable', 'Color', 'm');
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 3); % HEAVY TRACE
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
                 plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
             if (out(j).fsyl(k).sexsyltype < 49) % Male syllable
-                text(0.05, 5000, 'Blue is other microphone, Yellow is this microphone', 'Color', 'y');
+                text(0.05, 4700, 'Blue is other microphone, Yellow is this microphone', 'Color', 'y');
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'b-', 'LineWidth', 2); % Autogenous trace
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'y-', 'LineWidth', 3); % Heterogenous trace
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
@@ -99,16 +100,16 @@ while aaa > 1
             
        specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(k).syltim(1)+longerDur+buff), 2048, out(j).Fs, [], 2000); 
        cx{2} = caxis; caxis([cx{2}(1)*(pltrng/100), floor(cx{2}(2))]); hold on;
-       text(0.05, 5500, 'Male Microphone', 'Color', 'w');
+       text(0.05, 5300, 'Male Microphone', 'Color', 'w');
        
             if (out(j).msyl(k).sexsyltype < 49) % Male syllable
-                text(0.05, 5000, 'This is a male syllable', 'Color', 'b');
+                text(0.05, 4700, 'This is a male syllable', 'Color', 'b');
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'b-', 'LineWidth', 2);
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE 
                 plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
             if (out(j).msyl(k).sexsyltype > 49) % Female syllable
-                text(0.05, 5000, 'Magenta is other microphone, Yellow is this microphone', 'Color', 'y');
+                text(0.05, 4700, 'Magenta is other microphone, Yellow is this microphone', 'Color', 'y');
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 2); % Autogenous trace
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'y-', 'LineWidth', 3); % Heterogenous trace
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
