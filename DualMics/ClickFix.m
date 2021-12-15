@@ -71,7 +71,7 @@ while aaa > 1
 %             end           
 %        end
        
-       figure(2); axx(1) = subplot(211); grid on; % FEMALE MICROPHONE
+       figure(2); axx(1) = subplot(211); % FEMALE MICROPHONE
        
        tim = 1/out(j).Fs:1/out(j).Fs:length(out(j).femMic)/out(j).Fs;
        
@@ -93,7 +93,7 @@ while aaa > 1
                 plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
 
-       figure(2); axx(2) = subplot(212); grid on; % Male Microphone
+       figure(2); axx(2) = subplot(212); % Male Microphone
 
        tim = 1/out(j).Fs:1/out(j).Fs:length(out(j).maleMic)/out(j).Fs;
             
@@ -119,7 +119,7 @@ while aaa > 1
         
         figure(2); subplot(211); colormap('GRAY'); ylim([200 6000]); 
         pause(0.1);
-        % grid(axx, "on")
+        grid(axx, "on")
         axx(1).GridColor = [0 0.9 1];
         axx(1).GridAlpha = 0.5;
         axx(2).GridColor = [0 0.9 1];
