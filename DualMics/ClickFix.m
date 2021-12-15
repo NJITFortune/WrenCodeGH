@@ -1,28 +1,30 @@
 function out = ClickFix(in)
-% out = fixdd(in) 
+% out = ClickFix(in) 
 % This fixes some clicking issues for the distance data.
 
+%% SETUP
+out = in; % Copy the input to the output
+
 buff = 0.100; % Buffer before and after the syllable in seconds (0.050 seems appropriate)
-out = in;
-pltrng = 50;
+pltrng = 50; % This is in % for caxis.
 
 
-%% Cycle through every duet in the sample
+%% Cycle through every duet in the sample (With current plan, just a single duet)
 for j = 1:length(in)
 
-% Plot the specgrams for each microphone    
+% Plot the specgrams for each microphone so that we can track our progress    
     figure(1); clf;
-    ax(1) = subplot(211); specgram(in(j).femMic, 2048, in(j).Fs, [], 2000); hold on;
-    ax(2) = subplot(212); specgram(in(j).maleMic, 2048, in(j).Fs, [], 2000); hold on; 
-    linkaxes(ax, 'xy');
-    ylim([200 6000]);
+        ax(1) = subplot(211); specgram(in(j).femMic, 2048, in(j).Fs, [], 2000); hold on;
+        ax(2) = subplot(212); specgram(in(j).maleMic, 2048, in(j).Fs, [], 2000); hold on; 
+        linkaxes(ax, 'xy');
+        ylim([200 6000]);
 
 % Plot the autogenous traces across both specgrams
-    tt =  find([in(j).fsyl.sexsyltype] > 49);    
+    tt =  find([in(j).fsyl.sexsyltype] > 49); % FEMALE SYLLABLES IN TOP PLOT   
     for k = 1:length(tt)
         subplot(211); plot(in(j).fsyl(tt(k)).traceTim + in(j).fsyl(tt(k)).syltim(1), in(j).fsyl(tt(k)).traceFreq, 'm-', 'LineWidth', 2);
     end
-    tt =  find([in(j).msyl.sexsyltype] < 49);    
+    tt =  find([in(j).msyl.sexsyltype] < 49); % MALE SYLLABLES IN BOTTOM PLOT
     for k = 1:length(tt)
         subplot(212); plot(in(j).msyl(tt(k)).traceTim + in(j).msyl(tt(k)).syltim(1), in(j).msyl(tt(k)).traceFreq, 'b-', 'LineWidth', 2);
     end
