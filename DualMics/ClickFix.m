@@ -44,12 +44,12 @@ for j = 1:length(in)
            subplot(211); plot([in(j).fsyl(k-1).syltim(1), in(j).fsyl(k-1).syltim(2)], [5500 5500], 'k-', 'LineWidth', 5);
            subplot(212); plot([in(j).msyl(k-1).syltim(1), in(j).msyl(k-1).syltim(2)], [5500 5500], 'k-', 'LineWidth', 5);
        end
-       
-       
-      aaa = 9; % Just a dummy to get things started for our while loop...
 
 
-while aaa > 2
+
+aaa = 9; % Just a dummy to get things started for our while loop...
+
+while aaa > 1 
        
        figure(2); clf;
 
@@ -71,13 +71,14 @@ while aaa > 2
 %             end           
 %        end
        
-       figure(2); axx(1) = subplot(211);  % Female Microphone
-       grid on;
+       figure(2); axx(1) = subplot(211); grid on; % FEMALE MICROPHONE
+       
        tim = 1/out(j).Fs:1/out(j).Fs:length(out(j).femMic)/out(j).Fs;
        
        specgram(out(j).femMic(tim > out(j).fsyl(k).syltim(1)-buff & tim < out(j).fsyl(k).syltim(1)+longerDur+buff), 2048, in(j).Fs, [], 2000); 
-       hold on;
-           text(0.05, 5500, 'Female Microphone', 'Color', 'w');
+       cx{1} = caxis; caxis([cx{1}(1)*(pltrng/100), floor(cx{1}(2))]); hold on;
+       text(0.05, 5500, 'Female Microphone', 'Color', 'w');
+
             if (out(j).fsyl(k).sexsyltype > 49) % Female syllable
                 text(0.05, 5000, 'This is a female syllable', 'Color', 'm');
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 3); % HEAVY TRACE
@@ -92,15 +93,12 @@ while aaa > 2
                 plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
 
-       cx{1} = caxis;
-       caxis([cx{1}(1)*(pltrng/100), floor(cx{1}(2))])
+       figure(2); axx(2) = subplot(212); grid on; % Male Microphone
 
-       figure(2); axx(2) = subplot(212); % Male Microphone
-       grid on;
        tim = 1/out(j).Fs:1/out(j).Fs:length(out(j).maleMic)/out(j).Fs;
             
        specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(k).syltim(1)+longerDur+buff), 2048, out(j).Fs, [], 2000); 
-       hold on;
+       cx{2} = caxis; caxis([cx{2}(1)*(pltrng/100), floor(cx{2}(2))]); hold on;
        text(0.05, 5500, 'Male Microphone', 'Color', 'w');
        
             if (out(j).msyl(k).sexsyltype < 49) % Male syllable
@@ -116,15 +114,12 @@ while aaa > 2
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
                 plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
-
-            cx{2} = caxis;
-            caxis([cx{2}(1)*(pltrng/100), floor(cx{2}(2))])
  
         linkaxes(axx, 'xy');
         
         figure(2); subplot(211); colormap('GRAY'); ylim([200 6000]); 
         pause(0.1);
-        grid(axx, "on")
+        % grid(axx, "on")
         axx(1).GridColor = [0 0.9 1];
         axx(1).GridAlpha = 0.5;
         axx(2).GridColor = [0 0.9 1];
