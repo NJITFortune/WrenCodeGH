@@ -77,16 +77,16 @@ while aaa > 1
        
        specgram(out(j).femMic(tim > out(j).fsyl(k).syltim(1)-buff & tim < out(j).fsyl(k).syltim(1)+longerDur+buff), 2048, in(j).Fs, [], 2000); 
        cx{1} = caxis; caxis([cx{1}(1)*(pltrng/100), floor(cx{1}(2))]); hold on;
-       text(0.05, 5500, 'Female Microphone', 'Color', 'w');
+       text(0.05, 5300, 'Female Microphone', 'Color', 'w');
 
             if (out(j).fsyl(k).sexsyltype > 49) % Female syllable
-                text(0.05, 5000, 'This is a female syllable', 'Color', 'm');
+                text(0.05, 4700, 'This is a female syllable', 'Color', 'm');
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 3); % HEAVY TRACE
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
                 plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
             if (out(j).fsyl(k).sexsyltype < 49) % Male syllable
-                text(0.05, 5000, 'Blue is other microphone, Yellow is this microphone', 'Color', 'y');
+                text(0.05, 4700, 'Blue is other microphone, Yellow is this microphone', 'Color', 'y');
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'b-', 'LineWidth', 2); % Autogenous trace
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'y-', 'LineWidth', 3); % Heterogenous trace
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
@@ -99,16 +99,16 @@ while aaa > 1
             
        specgram(out(j).maleMic(tim > out(j).msyl(k).syltim(1)-buff & tim < out(j).msyl(k).syltim(1)+longerDur+buff), 2048, out(j).Fs, [], 2000); 
        cx{2} = caxis; caxis([cx{2}(1)*(pltrng/100), floor(cx{2}(2))]); hold on;
-       text(0.05, 5500, 'Male Microphone', 'Color', 'w');
+       text(0.05, 5300, 'Male Microphone', 'Color', 'w');
        
             if (out(j).msyl(k).sexsyltype < 49) % Male syllable
-                text(0.05, 5000, 'This is a male syllable', 'Color', 'b');
+                text(0.05, 4700, 'This is a male syllable', 'Color', 'b');
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'b-', 'LineWidth', 2);
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE 
                 plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
             if (out(j).msyl(k).sexsyltype > 49) % Female syllable
-                text(0.05, 5000, 'Magenta is other microphone, Yellow is this microphone', 'Color', 'y');
+                text(0.05, 4700, 'Magenta is other microphone, Yellow is this microphone', 'Color', 'y');
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 2); % Autogenous trace
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'y-', 'LineWidth', 3); % Heterogenous trace
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
@@ -128,8 +128,8 @@ while aaa > 1
     
     fprintf('1 FIX end only and move to next syllable. \n');
     fprintf('2 get one click for start of heterogenous and review. \n');
-    fprintf('3 reclick both (3 clicks, start and end of autogenous, start of heterogenous.\n');
-    fprintf('10 to 90 change contrast (lower is higher) \n');
+    fprintf('3 reclick both (3 clicks, start and end of autogenous, start of heterogenous) and review. \n');
+    fprintf('10 to 90 change contrast (lower is higher). \n');
     aaa = input('ACTION: ');
 
     if aaa >= 10
@@ -239,10 +239,10 @@ while aaa > 1
     end
     
     if aaa == 3 % Get new clicks for autogenous and start click for heterogenous
-        
+
         if (out(j).fsyl(k).sexsyltype > 49) % Female is autogenous
             fprintf('Click on start and end of female syllable, female microphone.\n');
-            figure(2); [newclx, ~] = ginput(2);
+            figure(2); [newclx, ~] = ginput(2); newclx = sort(newclx);
                 out(j).fsyl(k).sylen = newclx(2) - newclx(1);
                 out(j).fsyl(k).syltim(1) = out(j).fsyl(k).syltim(1) + (newclx(1) - buff);
                 out(j).fsyl(k).syltim(2) = out(j).fsyl(k).syltim(1) + out(j).fsyl(k).sylen;
@@ -259,54 +259,53 @@ while aaa > 1
 
             fprintf('Click on start syllable at the male microphone.\n');
             figure(2); [newclk, ~] = ginput(1);
-            out(j).msyl(k).sylen = out(j).fsyl(k).sylen;
-            out(j).msyl(k).syltim(1) = out(j).msyl(k).syltim(1) + (newclk - buff);
-            out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + out(j).fsyl(k).sylen;
-            out(j).msyl(k).sylidx(1) = round(out(j).msyl(k).sylidx(1) - ((newclk - buff) * out(j).Fs));
-            out(j).msyl(k).sylidx(2) = round(out(j).msyl(k).sylidx(1) + (out(j).fsyl(k).sylen * out(j).Fs));
+                out(j).msyl(k).sylen = out(j).fsyl(k).sylen;
+                out(j).msyl(k).syltim(1) = out(j).msyl(k).syltim(1) + (newclk - buff);
+                out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + out(j).fsyl(k).sylen;
+                out(j).msyl(k).sylidx(1) = out(j).msyl(k).sylidx(1) + round(((newclk - buff) * out(j).Fs));
+                out(j).msyl(k).sylidx(2) = out(j).msyl(k).sylidx(1) + round((out(j).fsyl(k).sylen * out(j).Fs));
 
             tmp = syldat(out(j).maleMic(out(j).msyl(k).sylidx(1):out(j).msyl(k).sylidx(2)), out(j).Fs);
-            out(j).msyl(k).traceTim = tmp.trace_tim;
-            out(j).msyl(k).traceFreq = tmp.trace_freq;
-            out(j).msyl(k).trace.peakfreq = tmp.trace_peakf;
-            out(j).msyl(k).trace.slopemean = tmp.trace_slopemean;
-            out(j).msyl(k).trace.slopestd = tmp.trace_slopestd;
-            out(j).msyl(k).trace.slopevar = tmp.trace_slopevar;            
+                out(j).msyl(k).traceTim = tmp.trace_tim;
+                out(j).msyl(k).traceFreq = tmp.trace_freq;
+                out(j).msyl(k).trace.peakfreq = tmp.trace_peakf;
+                out(j).msyl(k).trace.slopemean = tmp.trace_slopemean;
+                out(j).msyl(k).trace.slopestd = tmp.trace_slopestd;
+                out(j).msyl(k).trace.slopevar = tmp.trace_slopevar;            
         end
         
         if (out(j).fsyl(k).sexsyltype < 49) % Male is autogenous
             fprintf('Click on start and end of male syllable, male microphone.\n');
-            figure(2); [newclx, ~] = ginput(2);
-            % newclx = sort(newclx);
-            out(j).msyl(k).sylen = newclx(2) - newclx(1);
-            out(j).msyl(k).syltim(1) = out(j).msyl(k).syltim(1) + (newclx(1) - buff);
-            out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + out(j).msyl(k).sylen;
-            out(j).msyl(k).sylidx(1) = round(out(j).msyl(k).sylidx(1) + ((newclx(1) - buff) * out(j).Fs));
-            out(j).msyl(k).sylidx(2) = round(out(j).msyl(k).sylidx(1) + (out(j).msyl(k).sylen * out(j).Fs));
+            figure(2); [newclx, ~] = ginput(2); newclx = sort(newclx);
+                out(j).msyl(k).sylen = newclx(2) - newclx(1);
+                out(j).msyl(k).syltim(1) = out(j).msyl(k).syltim(1) + (newclx(1) - buff);
+                out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + out(j).msyl(k).sylen;
+                out(j).msyl(k).sylidx(1) = out(j).msyl(k).sylidx(1) + round(((newclx(1) - buff) * out(j).Fs));
+                out(j).msyl(k).sylidx(2) = out(j).msyl(k).sylidx(1) + round((out(j).msyl(k).sylen * out(j).Fs));
             
             tmp = syldat(out(j).maleMic(out(j).msyl(k).sylidx(1):out(j).msyl(k).sylidx(2)), out(j).Fs);
-            out(j).msyl(k).traceTim = tmp.trace_tim;
-            out(j).msyl(k).traceFreq = tmp.trace_freq;
-            out(j).msyl(k).trace.peakfreq = tmp.trace_peakf;
-            out(j).msyl(k).trace.slopemean = tmp.trace_slopemean;
-            out(j).msyl(k).trace.slopestd = tmp.trace_slopestd;
-            out(j).msyl(k).trace.slopevar = tmp.trace_slopevar;            
+                out(j).msyl(k).traceTim = tmp.trace_tim;
+                out(j).msyl(k).traceFreq = tmp.trace_freq;
+                out(j).msyl(k).trace.peakfreq = tmp.trace_peakf;
+                out(j).msyl(k).trace.slopemean = tmp.trace_slopemean;
+                out(j).msyl(k).trace.slopestd = tmp.trace_slopestd;
+                out(j).msyl(k).trace.slopevar = tmp.trace_slopevar;            
 
             fprintf('Click on start syllable at the female microphone.\n');
             figure(2); [newclk, ~] = ginput(1);
-            out(j).fsyl(k).sylen = out(j).msyl(k).sylen;
-            out(j).fsyl(k).syltim(1) = out(j).fsyl(k).syltim(1) + (newclk - buff);
-            out(j).fsyl(k).syltim(2) = out(j).fsyl(k).syltim(1) + out(j).msyl(k).sylen;
-            out(j).fsyl(k).sylidx(1) = round(out(j).fsyl(k).sylidx(1) - ((newclk - buff) * out(j).Fs));
-            out(j).fsyl(k).sylidx(2) = round(out(j).fsyl(k).sylidx(1) + (out(j).msyl(k).sylen * out(j).Fs));
+                out(j).fsyl(k).sylen = out(j).msyl(k).sylen;
+                out(j).fsyl(k).syltim(1) = out(j).fsyl(k).syltim(1) + (newclk - buff);
+                out(j).fsyl(k).syltim(2) = out(j).fsyl(k).syltim(1) + out(j).msyl(k).sylen;
+                out(j).fsyl(k).sylidx(1) = out(j).fsyl(k).sylidx(1) + round(((newclk - buff) * out(j).Fs));
+                out(j).fsyl(k).sylidx(2) = out(j).fsyl(k).sylidx(1) + round((out(j).msyl(k).sylen * out(j).Fs));
 
             tmp = syldat(out(j).femMic(out(j).fsyl(k).sylidx(1):out(j).fsyl(k).sylidx(2)), out(j).Fs);
-            out(j).fsyl(k).traceTim = tmp.trace_tim;
-            out(j).fsyl(k).traceFreq = tmp.trace_freq;
-            out(j).fsyl(k).trace.peakfreq = tmp.trace_peakf;
-            out(j).fsyl(k).trace.slopemean = tmp.trace_slopemean;
-            out(j).fsyl(k).trace.slopestd = tmp.trace_slopestd;
-            out(j).fsyl(k).trace.slopevar = tmp.trace_slopevar;        
+                out(j).fsyl(k).traceTim = tmp.trace_tim;
+                out(j).fsyl(k).traceFreq = tmp.trace_freq;
+                out(j).fsyl(k).trace.peakfreq = tmp.trace_peakf;
+                out(j).fsyl(k).trace.slopemean = tmp.trace_slopemean;
+                out(j).fsyl(k).trace.slopestd = tmp.trace_slopestd;
+                out(j).fsyl(k).trace.slopevar = tmp.trace_slopevar;        
         end
            
     end
