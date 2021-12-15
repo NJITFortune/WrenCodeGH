@@ -102,7 +102,7 @@ while aaa > 1
        text(0.05, 5500, 'Male Microphone', 'Color', 'w');
        
             if (out(j).msyl(k).sexsyltype < 49) % Male syllable
-                text(0.05, 5000, 'This is a female syllable', 'Color', 'b');
+                text(0.05, 5000, 'This is a male syllable', 'Color', 'b');
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'b-', 'LineWidth', 2);
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE 
                 plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
