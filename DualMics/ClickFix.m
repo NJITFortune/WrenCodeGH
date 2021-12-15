@@ -126,13 +126,13 @@ while aaa > 1
         axx(2).GridAlpha = 0.5;
 
     
-    fprintf('2 FIX end only and move to next syllable. \n');
-    fprintf('3 get one click for start of heterogenous and review. \n');
-    fprintf('4 reclick both (3 clicks, start and end of autogenous, start of heterogenous.\n');
+    fprintf('1 FIX end only and move to next syllable. \n');
+    fprintf('2 get one click for start of heterogenous and review. \n');
+    fprintf('3 reclick both (3 clicks, start and end of autogenous, start of heterogenous.\n');
     fprintf('10 to 90 change contrast (lower is higher) \n');
     aaa = input('ACTION: ');
 
-    if aaa > 10
+    if aaa >= 10
         pltrng = aaa;
     end
     
