@@ -136,7 +136,7 @@ while aaa > 1
         pltrng = aaa;
     end
     
-    if aaa == 1 % Extend heterogenous evenly in both directions
+    if aaa == 0 % Extend heterogenous evenly in both directions
         if (out(j).fsyl(k).sexsyltype > 49) % Female is autogenous
             amt = (out(j).fsyl(k).sylen - out(j).msyl(k).sylen)/2;
             out(j).msyl(k).sylen = out(j).fsyl(k).sylen;
@@ -172,7 +172,7 @@ while aaa > 1
         end
     end
     
-    if aaa == 2 % Extend the end of heterogenous
+    if aaa == 1 % Extend the end of heterogenous
         if (out(j).fsyl(k).sexsyltype > 49) % Female is autogenous
             out(j).msyl(k).sylen = out(j).fsyl(k).sylen;
             out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + out(j).fsyl(k).sylen;
@@ -201,7 +201,7 @@ while aaa > 1
         end
      end
     
-    if aaa == 3 % Get single new click for heterogenous at start
+    if aaa == 2 % Get single new click for heterogenous at start
         if (out(j).fsyl(k).sexsyltype > 49) % Female is autogenous
             fprintf('Click on start syllable at the male microphone.\n');
             out(j).msyl(k).sylen = out(j).fsyl(k).sylen;
@@ -238,7 +238,7 @@ while aaa > 1
         end
     end
     
-    if aaa == 4 % Get new clicks for autogenous and start click for heterogenous
+    if aaa == 3 % Get new clicks for autogenous and start click for heterogenous
         if (out(j).fsyl(k).sexsyltype > 49) % Female is autogenous
             fprintf('Click on start and end of female syllable, female microphone.\n');
             figure(2); [newclx, ~] = ginput(2);
