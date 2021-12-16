@@ -43,7 +43,7 @@ for j = length(out.fsyl):-1:2
 
 end
 
-ax(3) = subplot(313); hold on;
+subplot(313); hold on;
 
     plot(fISI, 'mo-');  
     plot(mISI, 'bo-');
