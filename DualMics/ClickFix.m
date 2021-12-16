@@ -200,7 +200,7 @@ while aaa > 1
             out(j).fsyl(k).trace.slopestd = tmp.trace_slopestd;
             out(j).fsyl(k).trace.slopevar = tmp.trace_slopevar;        
         end
-        fprintf('Trimmed: F %f2.2 M %f2.2', out(j).fsyl(k).sylen, out(j).msyl(k).sylen)
+        fprintf('Trimmed: F %2.2f M %2.2f', out(j).fsyl(k).sylen, out(j).msyl(k).sylen)
      end
     
     if aaa == 2 % Get single new click for heterogenous at start
