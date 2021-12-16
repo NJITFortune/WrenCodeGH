@@ -48,11 +48,14 @@ subplot(313); hold on;
 
     plot(fISI*1000, 'mo-');  
     plot(mISI*1000, 'bo-');
-    plot(abs(mISI - fISI)*1000, 'k.-', 'MarkerSize', 16);
+    isidiffs = abs(mISI - fISI)*1000;
+    plot(isidiffs, 'k.-', 'MarkerSize', 16);
     xlabel('Interval number');
     ylabel('ISI msec')
 
-    ISImsg = ['Mean ISI diff: ' num2str(mean(abs(mISI - fISI)*1000)) ' Distance delay: ' num2str(2 * 3 * out.distance)];
+
+
+    ISImsg = ['Mean ISI diff: ' num2str(mean(isidiffs(isidiffs ~= 0))) ' Distance delay: ' num2str(2 * 3 * out.distance)];
 
     text(1, max([fISI*1000 mISI*1000])*0.9, ISImsg, 'Color', 'k', 'FontSize', 18);
 
