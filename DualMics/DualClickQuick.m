@@ -7,7 +7,7 @@ ss = 1 / 343;
     figure(27); clf; 
 
 %% Male Microphone    
-    ax(1) = subplot(311); title(out.pairname,'Interpreter','none'); 
+    ax(1) = subplot(312); title(out.pairname,'Interpreter','none'); 
     specgram(out.maleMic, 1024, out.Fs); ylim([200 6000]);
     caxis([-10 40]); colormap(flipud(gray));
     hold on;
@@ -23,7 +23,7 @@ ss = 1 / 343;
     text(0.5, 500, 'Male Microphone');
 
 %% Female Microphone
-    ax(2) = subplot(312); specgram(out.femMic, 1024, out.Fs); ylim([200 5200]);
+    ax(2) = subplot(311); specgram(out.femMic, 1024, out.Fs); ylim([200 5200]);
     caxis([-10 40]); colormap(flipud(gray));
     hold on;
     for j=1:length(out.fsyl)
