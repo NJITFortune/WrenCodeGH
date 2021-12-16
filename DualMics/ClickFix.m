@@ -131,6 +131,7 @@ while aaa > 1
     fprintf('2 get one click for start of heterogenous and review. \n');
     fprintf('3 reclick both (3 clicks, start and end of autogenous, start of heterogenous) and review. \n');
     fprintf('10 to 90 change contrast (lower is higher). \n');
+    fprintf('Use a negative number to go back to previous syllable. \n')
     aaa = input('ACTION: ');
 
     if aaa >= 10
@@ -314,6 +315,11 @@ while aaa > 1
    
 end % replot and re-ask if clicked.
     
+
+if aaa < 0
+    k = k -1;
+end
+
    end % End of syllable loop
 
 end % End of loop by duet
