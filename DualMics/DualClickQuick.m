@@ -52,4 +52,8 @@ subplot(313); hold on;
     xlabel('Interval number');
     ylabel('ISI msec')
 
+    ISImsg = ['Mean ISI diff: ' num2str(mean(abs(mISI - fISI)*1000)) ' Distance delay: ' num2str(2 * 3 * )
+
+    text(1,0.5,ISImsg)
+
 
