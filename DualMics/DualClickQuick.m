@@ -48,7 +48,7 @@ subplot(313); hold on;
 
     plot(fISI*1000, 'mo-');  
     plot(mISI*1000, 'bo-');
-    plot(abs(mISI - fISI)*1000, 'k.-', 'MarkerSize', 8);
+    plot(abs(mISI - fISI)*1000, 'k.-', 'MarkerSize', 16);
     xlabel('Interval number');
     ylabel('ISI msec')
 
