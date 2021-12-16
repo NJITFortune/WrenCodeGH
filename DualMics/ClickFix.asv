@@ -14,7 +14,8 @@ for j = 1:length(in)
 
 % Plot the specgrams for each microphone so that we can track our progress    
     figure(1); clf;
-        ax(1) = subplot(211); specgram(in(j).femMic, 2048, in(j).Fs, [], 2000); hold on;
+        ax(1) = subplot(211); specgram(in(j).femMic, 2048, in(j).Fs, [], 2000); 
+        hold on; text(0.5, 4500, num2str(length(in(j).fsyl)));
         ax(2) = subplot(212); specgram(in(j).maleMic, 2048, in(j).Fs, [], 2000); hold on; 
         linkaxes(ax, 'xy');
         ylim([200 6000]);
@@ -30,7 +31,7 @@ for j = 1:length(in)
     end
 
 %% Cycle through each syllable to make corrections
-   for k = 1:length([in(j).fsyl.sexsyltype])
+   for k = 1:length(in(j).fsyl)
        
        figure(1); % This puts the bars along the top of the sonogram to mark user progress
        if in(j).fsyl(k).sexsyltype > 49
@@ -172,7 +173,7 @@ while aaa > 1
         end
     end
     
-    if aaa == 1 % Extend the end of heterogenous
+    if aaa == 1 % Match the end of heterogenous to autogenous
         if (out(j).fsyl(k).sexsyltype > 49) % Female is autogenous
             out(j).msyl(k).sylen = out(j).fsyl(k).sylen;
             out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + out(j).fsyl(k).sylen;
@@ -199,6 +200,7 @@ while aaa > 1
             out(j).fsyl(k).trace.slopestd = tmp.trace_slopestd;
             out(j).fsyl(k).trace.slopevar = tmp.trace_slopevar;        
         end
+        fprintf('Trimmed: F %2.3f   M %2.3f  \n', out(j).fsyl(k).sylen, out(j).msyl(k).sylen)
      end
     
     if aaa == 2 % Get single new click for heterogenous at start
@@ -312,6 +314,11 @@ while aaa > 1
    
 end % replot and re-ask if clicked.
     
+
+if aaa < 0
+    k = k -1;
+end
+
    end % End of syllable loop
 
 end % End of loop by duet
