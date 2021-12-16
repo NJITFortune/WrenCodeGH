@@ -173,7 +173,7 @@ while aaa > 1
         end
     end
     
-    if aaa == 1 % Extend the end of heterogenous
+    if aaa == 1 % Match the end of heterogenous to autogenous
         if (out(j).fsyl(k).sexsyltype > 49) % Female is autogenous
             out(j).msyl(k).sylen = out(j).fsyl(k).sylen;
             out(j).msyl(k).syltim(2) = out(j).msyl(k).syltim(1) + out(j).fsyl(k).sylen;
@@ -200,6 +200,7 @@ while aaa > 1
             out(j).fsyl(k).trace.slopestd = tmp.trace_slopestd;
             out(j).fsyl(k).trace.slopevar = tmp.trace_slopevar;        
         end
+        fprintf('Trimmed: F %f2.2 M %f2.2', out(j).fsyl(k).sylen, out(j).msyl(k).sylen)
      end
     
     if aaa == 2 % Get single new click for heterogenous at start
