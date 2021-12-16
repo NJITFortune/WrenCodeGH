@@ -34,6 +34,7 @@ function DualClickQuick(out)
     end
     text(0.5, 500, 'Female Microphone');
 
+linkaxes(ax, 'xy');
 
 %% ISI Plot
 for j = length(out.fsyl):-1:2
@@ -45,11 +46,10 @@ end
 
 subplot(313); hold on;
 
-    plot(fISI, 'mo-');  
-    plot(mISI, 'bo-');
-    plot(abs(mISI - fISI), 'k.-', 'MarkerSize', 8);
-
-
-linkaxes(ax, 'xy');
+    plot(fISI*1000, 'mo-');  
+    plot(mISI*1000, 'bo-');
+    plot(abs(mISI - fISI)*1000, 'k.-', 'MarkerSize', 8);
+    xlabel('Interval number');
+    ylabel('ISI msec')
 
 
