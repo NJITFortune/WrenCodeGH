@@ -2,7 +2,9 @@ function DualClickQuick(out)
 
 % Make a plot
     figure(27); clf; 
-    ax(1) = subplot(211); title(out.pairname,'Interpreter','none'); 
+
+%% Male Microphone    
+    ax(1) = subplot(311); title(out.pairname,'Interpreter','none'); 
     specgram(out.maleMic, 1024, out.Fs); ylim([200 6000]);
     caxis([-10 40]); colormap(flipud(gray));
     hold on;
@@ -16,8 +18,9 @@ function DualClickQuick(out)
         end
     end
     text(0.5, 500, 'Male Microphone');
-    
-    ax(2) = subplot(212); specgram(out.femMic, 1024, out.Fs); ylim([200 5200]);
+
+%% Female Microphone
+    ax(2) = subplot(312); specgram(out.femMic, 1024, out.Fs); ylim([200 5200]);
     caxis([-10 40]); colormap(flipud(gray));
     hold on;
     for j=1:length(out.fsyl)
@@ -30,4 +33,23 @@ function DualClickQuick(out)
         end
     end
     text(0.5, 500, 'Female Microphone');
-    linkaxes(ax, 'xy');
+
+
+%% ISI Plot
+for j = length(out.fsyl):-1:2
+
+    fISI(j-1) = out.fsyl(j).syltim(1) - out.fsyl(j-1).syltim(2);
+    mISI(j-1) = out.msyl(j).syltim(1) - out.msyl(j-1).syltim(2);
+
+end
+
+ax(3) = subplot(313); hold on;
+
+    plot(fISI, 'mo-');  
+    plot(mISI, 'bo-');
+    plot(abs(mISI - fISI), 'k.-', 'MarkerSize', 8);
+
+
+linkaxes(ax, 'xy');
+
+
