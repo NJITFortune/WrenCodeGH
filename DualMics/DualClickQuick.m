@@ -60,6 +60,7 @@ subplot(313); hold on;
 
     ISImsg = ['Mean ISI diff: ' num2str(mean(isidiffs(isidiffs > 5))) ' Distance delay: ' num2str(2 * ss * out.distance * 1000)];
 
-    text(1, max([fISI*1000 mISI*1000])*0.9, ISImsg, 'Color', 'k', 'FontSize', 18);
+    text(1.5, max([fISI*1000 mISI*1000])*0.9, ISImsg, 'Color', 'k', 'FontSize', 18);
+    
 
 
