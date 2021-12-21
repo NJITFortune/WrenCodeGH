@@ -81,6 +81,12 @@ end
 
 fprintf('New sequence is: %s \n', num2str(newseq))
 
+for j=1:length(newseq)
+    foo.fsyl(j).sexsyltype = newseq(j);
+    foo.msyl(j).sexsyltype = newseq(j);
+end
+
+
 
 
 
