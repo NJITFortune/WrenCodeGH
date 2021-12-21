@@ -92,11 +92,11 @@ for j=1:length(newseq)
     foo.msyl(j).sexsyltype = newseq(j);
     
     if newseq(j) > 50
-        foo.fsyl(j).sex = 'F'
-        foo.msyl(j).sex = 'F'
+        foo.fsyl(j).sex = 'F';
+        foo.msyl(j).sex = 'F';
     elseif newseq(j) < 50
-        foo.fsyl(j).sex = 'M'
-        foo.msyl(j).sex = 'M'
+        foo.fsyl(j).sex = 'M';
+        foo.msyl(j).sex = 'M';
     end
 end
 
