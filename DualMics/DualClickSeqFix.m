@@ -77,7 +77,7 @@ newseq = 0;
 while length(theseq) ~= length(newseq)
     fprintf('The current sequence is: %s \n', num2str(theseq));
 
-    newseq = input ('The new Sequence: ');
+    newseq = input ('Enter the new Sequence (with [] around the numbers): ');
 
     if length(theseq) ~= length(newseq)
         fprintf('Length of sequence incorrect - try again! \n')
