@@ -63,5 +63,11 @@ subplot(313); hold on;
 
     text(1.5, max([fISI*1000 mISI*1000])*0.9, ISImsg, 'Color', 'k', 'FontSize', 18);
     
+%% Sequence fix
+
+theseq = [out.fsyl.sexsyltype];
+
+fprintf('The current sequence is: %s', num2str(theseq));
+
 
 
