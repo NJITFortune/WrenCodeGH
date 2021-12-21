@@ -66,8 +66,23 @@ subplot(313); hold on;
 %% Sequence fix
 
 theseq = [out.fsyl.sexsyltype];
+newseq = 0;
 
-fprintf('The current sequence is: %s \n', num2str(theseq));
+while length(theseq) ~= length(newseq)
+    fprintf('The current sequence is: %s \n', num2str(theseq));
+
+    newseq = input ('The new Sequence: ');
+
+    if length(theseq) ~= length(newseq)
+        fprintf('Length of sequence incorrect - try again! \n')
+    end
+
+end
+
+fprintf('New sequence is: %s \n', num2str(newseq))
+
+
+
 
 
 
