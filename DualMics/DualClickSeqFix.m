@@ -1,7 +1,8 @@
-function DualClickQuick(out)
+function foo = DualClickSeqFix(out)
 
 % Speed of sound (milliseconds per meter)
 ss = 1 / 343;
+foo = out;
 
 % Make a plot
     figure(27); clf; 
