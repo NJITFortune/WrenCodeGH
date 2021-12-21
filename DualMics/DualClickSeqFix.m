@@ -1,4 +1,10 @@
 function foo = DualClickSeqFix(out)
+% Function asdf = DualClickSeqFix(out);
+% Usage: load filename.mat
+% Then asdf = DualClickSeqFix(out);
+% Then out = asdf;
+% Then save filenameA.mat
+
 
 % Speed of sound (milliseconds per meter)
 ss = 1 / 343;
@@ -84,7 +90,11 @@ fprintf('New sequence is: %s \n', num2str(newseq))
 for j=1:length(newseq)
     foo.fsyl(j).sexsyltype = newseq(j);
     foo.msyl(j).sexsyltype = newseq(j);
+    
+    if newseq(j) > 50
+        foo.fsyl(j).sex
 end
+
 
 
 
