@@ -67,7 +67,7 @@ subplot(313); hold on;
 
 theseq = [out.fsyl.sexsyltype];
 
-fprintf('The current sequence is: %s', num2str(theseq));
+fprintf('The current sequence is: %s \n', num2str(theseq));
 
 
 
