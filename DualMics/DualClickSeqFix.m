@@ -1,4 +1,4 @@
-lfunction foo = DualClickSeqFix(out)
+function foo = DualClickSeqFix(out)
 % Function asdf = DualClickSeqFix(out);
 % Usage: load filename.mat
 % Then asdf = DualClickSeqFix(out);
