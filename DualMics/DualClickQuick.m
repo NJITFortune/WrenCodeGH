@@ -4,7 +4,7 @@ function DualClickQuick(out)
 ss = 1 / 343;
 
 % Make a plot
-    figure(27); clf; 
+    figure(28); clf; 
 
 %% Male Microphone    
     ax(1) = subplot(312); title(out.pairname,'Interpreter','none'); 
@@ -58,7 +58,7 @@ subplot(313); hold on;
 
 
 
-    ISImsg = ['Mean ISI diff: ' num2str(mean(isidiffs(isidiffs > 5))) ' Distance delay: ' num2str(2 * ss * out.distance * 1000)];
+    ISImsg = ['Mean ISI diff: ' num2str(mean(isidiffs)) ' Distance delay: ' num2str(2 * ss * out.distance * 1000)];
 
     text(1.5, max([fISI*1000 mISI*1000])*0.9, ISImsg, 'Color', 'k', 'FontSize', 18);
     
