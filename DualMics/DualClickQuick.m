@@ -4,7 +4,7 @@ function DualClickQuick(out)
 ss = 1 / 343;
 
 % Make a plot
-    figure(28); clf; 
+    figure(27); clf; 
 
 %% Male Microphone    
     ax(1) = subplot(312); title(out.pairname,'Interpreter','none'); 
