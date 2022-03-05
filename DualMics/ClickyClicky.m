@@ -3,6 +3,9 @@ function out = ClickyClicky(dataPath, pairname)
 % Where dataPath might be '/Users/daynf/Documents/WrenData/postBirds-2/'
 % and pairname might be 'post'
 %
+% It expects two folders named "Male" and "Female" in the same path.
+% Choose the Male file first.
+%
 % relies on dualclicsB.m, slicerB.m, ginputc.m, syldataB.m, the SAMIII directory 
 % Can be used with DualClickQuick.m
 %
