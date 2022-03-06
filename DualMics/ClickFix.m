@@ -2,7 +2,7 @@ function out = ClickFix(in)
 % out = ClickFix(in) 
 % This fixes some clicking issues for the distance data.
 
-maxsonofreq = 5000; % The max frequency for the sonograms.  Change if working with Yanayacu versus Siempre Verde, for example.
+maxsonofreq = 4000; % The max frequency for the sonograms.  Change if working with Yanayacu versus Siempre Verde, for example.
 
 %% SETUP
 out = in; % Copy the input to the output
