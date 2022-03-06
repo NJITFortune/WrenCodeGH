@@ -2,7 +2,7 @@ function out = ClickFix(in)
 % out = ClickFix(in) 
 % This fixes some clicking issues for the distance data.
 
-maxsonofreq = 4000; % The max frequency for the sonograms.  Change if working with Yanayacu versus Siempre Verde, for example.
+maxsonofreq = 4500; % The max frequency for the sonograms.  Change if working with Yanayacu versus Siempre Verde, for example.
 
 %% SETUP
 out = in; % Copy the input to the output
@@ -83,13 +83,13 @@ while aaa > 1
        text(0.05, 5300, 'Female Microphone', 'Color', 'w');
 
             if (out(j).fsyl(k).sexsyltype > 49) % Female syllable
-                text(0.05, 4700, 'This is a female syllable', 'Color', 'm');
+                text(0.05, 3700, 'This is a female syllable', 'Color', 'm');
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 3); % HEAVY TRACE
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
                 plot([buff+out(j).fsyl(k).sylen, buff+out(j).fsyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
             if (out(j).fsyl(k).sexsyltype < 49) % Male syllable
-                text(0.05, 4700, 'Blue is other microphone, Yellow is this microphone', 'Color', 'y');
+                text(0.05, 3700, 'Blue is other microphone, Yellow is this microphone', 'Color', 'y');
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'b-', 'LineWidth', 2); % Autogenous trace
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'y-', 'LineWidth', 3); % Heterogenous trace
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
@@ -105,13 +105,13 @@ while aaa > 1
        text(0.05, 5300, 'Male Microphone', 'Color', 'w');
        
             if (out(j).msyl(k).sexsyltype < 49) % Male syllable
-                text(0.05, 4700, 'This is a male syllable', 'Color', 'b');
+                text(0.05, 3700, 'This is a male syllable', 'Color', 'b');
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'b-', 'LineWidth', 2);
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE 
                 plot([buff+out(j).msyl(k).sylen, buff+out(j).msyl(k).sylen], [200 6000], 'r-', 'LineWidth', 1); % END LINE
             end
             if (out(j).msyl(k).sexsyltype > 49) % Female syllable
-                text(0.05, 4700, 'Magenta is other microphone, Yellow is this microphone', 'Color', 'y');
+                text(0.05, 3700, 'Magenta is other microphone, Yellow is this microphone', 'Color', 'y');
                 plot(out(j).fsyl(k).traceTim+buff, out(j).fsyl(k).traceFreq, 'm-', 'LineWidth', 2); % Autogenous trace
                 plot(out(j).msyl(k).traceTim+buff, out(j).msyl(k).traceFreq, 'y-', 'LineWidth', 3); % Heterogenous trace
                 plot([buff, buff], [200 6000], 'g-', 'LineWidth', 1); % START LINE
