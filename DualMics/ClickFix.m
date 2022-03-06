@@ -35,17 +35,17 @@ for j = 1:length(in)
 %% Cycle through each syllable to make corrections
    for k = 1:length(in(j).fsyl)
        
-       figure(1); % This puts the bars along the top of the sonogram to mark user progress
+       figure(1); % This puts the bars along the bottom of the sonogram to mark user progress
        if in(j).fsyl(k).sexsyltype > 49
-           subplot(211); plot([in(j).fsyl(k).syltim(1), in(j).fsyl(k).syltim(2)], [5500 5500], 'm-', 'LineWidth', 4);
-           subplot(212); plot([in(j).msyl(k).syltim(1), in(j).msyl(k).syltim(2)], [5500 5500], 'm-', 'LineWidth', 4);
+           subplot(211); plot([in(j).fsyl(k).syltim(1), in(j).fsyl(k).syltim(2)], [400 400], 'm-', 'LineWidth', 4);
+           subplot(212); plot([in(j).msyl(k).syltim(1), in(j).msyl(k).syltim(2)], [400 400], 'm-', 'LineWidth', 4);
        else
-           subplot(211); plot([in(j).fsyl(k).syltim(1), in(j).fsyl(k).syltim(2)], [5500 5500], 'b-', 'LineWidth', 4);
-           subplot(212); plot([in(j).msyl(k).syltim(1), in(j).msyl(k).syltim(2)], [5500 5500], 'b-', 'LineWidth', 4);
+           subplot(211); plot([in(j).fsyl(k).syltim(1), in(j).fsyl(k).syltim(2)], [400 400], 'b-', 'LineWidth', 4);
+           subplot(212); plot([in(j).msyl(k).syltim(1), in(j).msyl(k).syltim(2)], [400 400], 'b-', 'LineWidth', 4);
        end
        if k > 1
-           subplot(211); plot([in(j).fsyl(k-1).syltim(1), in(j).fsyl(k-1).syltim(2)], [5500 5500], 'k-', 'LineWidth', 5);
-           subplot(212); plot([in(j).msyl(k-1).syltim(1), in(j).msyl(k-1).syltim(2)], [5500 5500], 'k-', 'LineWidth', 5);
+           subplot(211); plot([in(j).fsyl(k-1).syltim(1), in(j).fsyl(k-1).syltim(2)], [400 400], 'k-', 'LineWidth', 5);
+           subplot(212); plot([in(j).msyl(k-1).syltim(1), in(j).msyl(k-1).syltim(2)], [400 400], 'k-', 'LineWidth', 5);
        end
 
 
