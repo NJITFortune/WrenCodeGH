@@ -2,6 +2,8 @@ function out = ClickFix(in)
 % out = ClickFix(in) 
 % This fixes some clicking issues for the distance data.
 
+maxsonofreq = 5000; % The max frequency for the sonograms.  Change if working with Yanayacu versus Siempre Verde, for example.
+
 %% SETUP
 out = in; % Copy the input to the output
 
@@ -18,7 +20,7 @@ for j = 1:length(in)
         hold on; text(0.5, 4500, num2str(length(in(j).fsyl)));
         ax(2) = subplot(212); specgram(in(j).maleMic, 2048, in(j).Fs, [], 2000); hold on; 
         linkaxes(ax, 'xy');
-        ylim([200 6000]);
+        ylim([200 maxsonofreq]);
 
 % Plot the autogenous traces across both specgrams
     tt =  find([in(j).fsyl.sexsyltype] > 49); % FEMALE SYLLABLES IN TOP PLOT   
@@ -118,7 +120,7 @@ while aaa > 1
  
         linkaxes(axx, 'xy');
         
-        figure(2); subplot(211); colormap('GRAY'); ylim([200 6000]); 
+        figure(2); subplot(211); colormap('GRAY'); ylim([200 maxsonofreq]); 
         pause(0.1);
         grid(axx, "on")
         axx(1).GridColor = [0 0.9 1];
