@@ -1,4 +1,4 @@
-function w_gphysplot(in, win, binwidth, plt_type)
+function w_ophysplot(in, win, binwidth, plt_type)
 % w_gphysplot(in, win, binwidth, plt_type)
 % For plotting the Chronic data.
 % in is the data structure for a single Chronic event (e.g. w(2))
@@ -12,7 +12,7 @@ function w_gphysplot(in, win, binwidth, plt_type)
 
 if nargin < 4; plt_type = 0; end % Default osc plot
 
-signal = in.duet;
+signal = in.stim;
 Fs = in.Fs;
 binwidth = binwidth/1000;
 tim = in.tim;
