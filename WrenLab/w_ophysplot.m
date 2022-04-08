@@ -26,7 +26,7 @@ set(gcf, 'Color', [1,1,1]); % This sets the background to white
 axs(1)=subplot(3,1,1);
 
 % This calls our plotting function "bs_raster"
-    bs_raster(in.Cspikes);
+    bs_raster(in.spikes);
     
     % set the window width to what the user asked for in "win"
     xlim([win(1) win(2)]);
