@@ -55,7 +55,7 @@ for i = 1:binnum
     % and cycle here by reps of the stimulus
     
     for j = 1:length(in.spikes)       
-        repbinisi = sum (in.spikes{j} > binstart & in.spikes{j} <= binend);
+        repbinisi = sum (in.spikes{j} > binstart & in.Cspikes{j} <= binend);
         a(i) = a(i) + repbinisi;
     end
 end
