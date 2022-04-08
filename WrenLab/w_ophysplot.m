@@ -123,34 +123,34 @@ axs(3)=subplot(3,1,3);
 % end
 
 %% Now add spike counts
-
-    for j=1:length(in.syl)
-        if ~isempty(in.syl(j).tim)
-            stimSpikeCount = 0;
-        for i=1:length(in.spikes) 
-            stimSpikeCount = stimSpikeCount + length(find(in.spikes{i} >= in.syl(j).tim(1) & in.spikes{i} < in.syl(j).tim(2)));     
-        end
-            stimSpikeRate = stimSpikeCount / (length(in.spikes)*(in.syl(j).tim(2) - in.syl(j).tim(1)));
-
-            subplot(3,1,1); 
-        if in.sylsex(j) == 1 % This is a male syllable
-            text(in.syl(j).tim(1)+0.050, 0.5, num2str(stimSpikeCount), 'Color', 'b', 'FontSize',10); 
-            text(in.syl(j).tim(1)+0.050, -0.1, num2str(round(stimSpikeRate)), 'Color', 'b', 'FontSize',10);             
-        end
-        if in.sylsex(j) == 2 % This is a female syllable
-            text(in.syl(j).tim(1)+0.050, 0.5, num2str(stimSpikeCount), 'Color', 'm', 'FontSize',10); 
-            text(in.syl(j).tim(1)+0.050, -0.1, num2str(round(stimSpikeRate)), 'Color', 'm', 'FontSize',10); 
-        end
-        end 
-    end
-    
- %% Add the ID of the duet to the plot
-    if in.sexy == 1 % Male bird
-        subplot(313); 
-        text(0, -0.2, in.id, 'Color', 'b', 'FontSize',12);
-    end
-    if in.sexy == 2 % Female bird
-        subplot(313); text(0, -0.2, in.id, 'Color', 'm', 'FontSize',12);
-    end
-            
-    
+% 
+%     for j=1:length(in.syl)
+%         if ~isempty(in.syl(j).tim)
+%             stimSpikeCount = 0;
+%         for i=1:length(in.spikes) 
+%             stimSpikeCount = stimSpikeCount + length(find(in.spikes{i} >= in.syl(j).tim(1) & in.spikes{i} < in.syl(j).tim(2)));     
+%         end
+%             stimSpikeRate = stimSpikeCount / (length(in.spikes)*(in.syl(j).tim(2) - in.syl(j).tim(1)));
+% 
+%             subplot(3,1,1); 
+%         if in.sylsex(j) == 1 % This is a male syllable
+%             text(in.syl(j).tim(1)+0.050, 0.5, num2str(stimSpikeCount), 'Color', 'b', 'FontSize',10); 
+%             text(in.syl(j).tim(1)+0.050, -0.1, num2str(round(stimSpikeRate)), 'Color', 'b', 'FontSize',10);             
+%         end
+%         if in.sylsex(j) == 2 % This is a female syllable
+%             text(in.syl(j).tim(1)+0.050, 0.5, num2str(stimSpikeCount), 'Color', 'm', 'FontSize',10); 
+%             text(in.syl(j).tim(1)+0.050, -0.1, num2str(round(stimSpikeRate)), 'Color', 'm', 'FontSize',10); 
+%         end
+%         end 
+%     end
+%     
+%  %% Add the ID of the duet to the plot
+%     if in.sexy == 1 % Male bird
+%         subplot(313); 
+%         text(0, -0.2, in.id, 'Color', 'b', 'FontSize',12);
+%     end
+%     if in.sexy == 2 % Female bird
+%         subplot(313); text(0, -0.2, in.id, 'Color', 'm', 'FontSize',12);
+%     end
+%             
+%     
