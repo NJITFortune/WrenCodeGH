@@ -100,27 +100,27 @@ axs(3)=subplot(3,1,3);
     linkaxes(axs,'x');
     
 %% Now plot the Syllable starts and ends
-
-for j=1:3 % For each subplot
-    
-        subplot(3,1,j); hold on;
-        xx = axis;
-        
-    for k=1:length(in.syl)
-        if ~isempty(in.syl(k).tim)
-        plot([in.syl(k).tim(1), in.syl(k).tim(1)], [xx(3), xx(4)], 'g-');
-        
-        if in.sylsex(k) == 1 % This is a male syllable
-            text(in.syl(k).tim(1), xx(4)-(0.10*xx(4)), num2str(k), 'Color', 'b', 'FontSize',14);
-        end
-        if in.sylsex(k) == 2 % This is a female syllable
-            text(in.syl(k).tim(1), xx(4)-(0.10*xx(4)), num2str(k), 'Color', 'm', 'FontSize',14);
-        end
-        
-        plot([in.syl(k).tim(2), in.syl(k).tim(2)], [xx(3), xx(4)], 'r-');        
-        end        
-    end
-end
+% 
+% for j=1:3 % For each subplot
+%     
+%         subplot(3,1,j); hold on;
+%         xx = axis;
+%         
+%     for k=1:length(in.syl)
+%         if ~isempty(in.syl(k).tim)
+%         plot([in.syl(k).tim(1), in.syl(k).tim(1)], [xx(3), xx(4)], 'g-');
+%         
+%         if in.sylsex(k) == 1 % This is a male syllable
+%             text(in.syl(k).tim(1), xx(4)-(0.10*xx(4)), num2str(k), 'Color', 'b', 'FontSize',14);
+%         end
+%         if in.sylsex(k) == 2 % This is a female syllable
+%             text(in.syl(k).tim(1), xx(4)-(0.10*xx(4)), num2str(k), 'Color', 'm', 'FontSize',14);
+%         end
+%         
+%         plot([in.syl(k).tim(2), in.syl(k).tim(2)], [xx(3), xx(4)], 'r-');        
+%         end        
+%     end
+% end
 
 %% Now add spike counts
 
