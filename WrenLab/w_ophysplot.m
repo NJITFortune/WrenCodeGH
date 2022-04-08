@@ -62,7 +62,7 @@ end
 
 % And now add the overlapping histogram (because we can)
 
-    swpsthdata = bs_swPSTH(in.Cspikes, win, binwidth*1000, 0);
+    swpsthdata = bs_swPSTH(in.spikes, win, binwidth*1000, 0);
 
 % And plot!
 
@@ -127,10 +127,10 @@ end
     for j=1:length(in.syl)
         if ~isempty(in.syl(j).tim)
             stimSpikeCount = 0;
-        for i=1:length(in.Cspikes) 
-            stimSpikeCount = stimSpikeCount + length(find(in.Cspikes{i} >= in.syl(j).tim(1) & in.Cspikes{i} < in.syl(j).tim(2)));     
+        for i=1:length(in.spikes) 
+            stimSpikeCount = stimSpikeCount + length(find(in.spikes{i} >= in.syl(j).tim(1) & in.spikes{i} < in.syl(j).tim(2)));     
         end
-            stimSpikeRate = stimSpikeCount / (length(in.Cspikes)*(in.syl(j).tim(2) - in.syl(j).tim(1)));
+            stimSpikeRate = stimSpikeCount / (length(in.spikes)*(in.syl(j).tim(2) - in.syl(j).tim(1)));
 
             subplot(3,1,1); 
         if in.sylsex(j) == 1 % This is a male syllable
