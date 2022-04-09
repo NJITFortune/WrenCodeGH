@@ -85,7 +85,7 @@ end
         h = gca; set(h, 'Ycolor', [1,1,1], 'Box', 'off'); 
         f = axis;
         axis([win(1) win(2) f(3) f(4)]);
-        text(0.5, f(4)*0.75, in.StimName);
+        text(win(1)+0.5, f(4)*0.75, in.StimName);
     end
 
 % Option to plot an spectrogram
