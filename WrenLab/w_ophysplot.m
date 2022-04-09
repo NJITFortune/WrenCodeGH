@@ -17,6 +17,7 @@ Fs = in.Fs;
 binwidth = binwidth/1000;
 tim = in.tim;
 
+figure(1); clf;
 set(gcf, 'Color', [1,1,1]); % This sets the background to white
 
 %% The raster plot
