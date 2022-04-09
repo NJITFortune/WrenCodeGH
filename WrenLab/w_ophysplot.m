@@ -85,6 +85,7 @@ end
         h = gca; set(h, 'Ycolor', [1,1,1], 'Box', 'off'); 
         f = axis;
         axis([win(1) win(2) f(3) f(4)]);
+        text(in.StimName, 0.5, f(4)*0.75);
     end
 
 % Option to plot an spectrogram
@@ -94,6 +95,7 @@ end
         xx = [abs(win(1)), abs(win(1))]; yy = [600, 4900];
         hold on; plot(xx, yy, 'b', 'LineWidth', 1); hold off;
         ylim([500 4500]); colormap(flipud(gray)); caxis([10 50]);
+        text(in.StimName, 0.5, 4000);
 %         h = gca; ts = str2num(get(h,'XTickLabel')); set(h, 'Box', 'off');
 %         ts = ts + win(1);
 %         set(h,'XTickLabel', ts);
