@@ -5,4 +5,5 @@
 tt = [34.9 42.82];
 figure(1); specgram(s(tim > tt(1) & tim < tt(2)), 2048, Fs, [], 2000);
 figure(1); colormap(flipud(gray)); caxis([-10 30]); ylim([500 4200])
+set(gcf, 'Renderer', 'painters');
 
