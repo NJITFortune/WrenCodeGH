@@ -92,21 +92,21 @@ axs(3)=subplot(4,1,4);
         f = axis;
         axis([win(1) win(2) f(3) f(4)]);
         text(win(1)+1, -2, stimname, 'BackgroundColor',[.7 .9 .7]);
+        linkaxes(axs,'x');
     end;
 
 % Option to plot an spectrogram
     if plt_type == 1;
-        specgram(signal(tt),2048,struct(stimnum).Fs,[],2000);
+        specgram(signal(tt),1024,struct(stimnum).Fs,[],1000);
         xx = [abs(win(1)), abs(win(1))]; yy = [600, 4900];
         text(1, 4000, struct(stimnum).StimName, 'BackgroundColor',[.7 .9 .7]);
         hold on; plot(xx, yy, 'b', 'LineWidth', 1); hold off;
-        ylim([500 5000]); colormap(flipud(hot)); caxis([0 50]);
+        ylim([500 4200]); colormap(flipud(gray)); caxis([0 50]);
         %h = gca; ts = str2num(get(h,'XTickLabel')); set(h, 'Box', 'off');
         %ts = ts + win(1);
         %set(h,'XTickLabel', ts);
     end;
 
-    linkaxes(axs,'x');
     
 % Label the plot with relevant information
     lbl = [struct(stimnum).birdname ', ' struct(stimnum).date ', ' struct(stimnum).sex ', site:' struct(stimnum).site ', unit:' struct(stimnum).unit];
