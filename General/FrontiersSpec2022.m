@@ -42,3 +42,6 @@ set(gcf, 'Renderer', 'painters');
 
 
 
+figure(2); specgram(newK(tim < 6), 2048, Fs, [], 2000);
+figure(2); colormap(flipud(gray)); caxis([-10 30]); ylim([500 4200])
+set(gcf, 'Renderer', 'painters');
