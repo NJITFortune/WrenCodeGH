@@ -34,7 +34,7 @@ set(gcf, 'Renderer', 'painters');
 %%
 [k, Fs] = audioread('~/Downloads/plaintail-1.mp3');
 %%
-tim = 1/Fs:1/Fs:length(s)/Fs;
+tim = 1/Fs:1/Fs:length(k)/Fs;
 tt = [0 10];
 figure(1); specgram(k(tim > tt(1) & tim < tt(2)), 2048, Fs, [], 2000);
 figure(1); colormap(flipud(gray)); caxis([-10 30]); ylim([500 4200])
