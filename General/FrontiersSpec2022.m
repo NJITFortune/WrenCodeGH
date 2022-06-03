@@ -57,6 +57,6 @@ set(gcf, 'Renderer', 'painters');
 tt = find(tim < 1); newS = k(tt);
 tt = find(tim > 3.5); newS = [newS', k(tt)'];
 
-figure(2); specgram(newS(tim < 6), 2048, Fs, [], 2000);
+figure(2); specgram(newS(tim < 7.92), 2048, Fs, [], 2000);
 figure(2); colormap(flipud(gray)); caxis([-10 30]); ylim([500 4200])
 set(gcf, 'Renderer', 'painters');
