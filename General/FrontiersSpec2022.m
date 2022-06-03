@@ -14,5 +14,9 @@ load /Users/eric/Sync/Wren/ChronicCompleat2021CodesG.mat
 
 %%
 
+specgram(w(11).duet, 512, w(11).Fs, [], 500); 
+    ylim([500 4200]); colormap(flipud(gray)); 
+    caxis([-12 25]);
 
+set(gcf, 'Renderer', 'painters');
 
