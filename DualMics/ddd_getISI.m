@@ -1,5 +1,5 @@
 function out = ddd_getISI(in)
-% out = dd_getISI(in)
+% out = ddd_getISI(in)
 % Where in is a structure for two-microphone recordings of wrens
 % This is not a general tool.
 % out includes the following:
@@ -154,10 +154,11 @@ out.M2M = M2M; out.M2Md = M2Md; out.M2Mf = M2Mf;
 
 
 figure(3); clf; 
-subplot(211); hold on; 
+qwe(1) = subplot(211); hold on; 
     for j=1:length(out.F2Fd); plot(out.F2Fd(j), out.F2F(j), '*m');end;
     for j=1:length(out.M2Md); plot(out.M2Md(j)+0.1, out.M2M(j), '*b');end;   
-subplot(212); hold on;
+    title('Autogenous gaps at Bird Own Microphone')
+qwe(2) = subplot(212); hold on;
     for jj = 1:length(distances)
         FFF(jj) = mean(out.F2F([out.F2Fd] == distances(jj)));
         MMM(jj) = mean(out.M2M([out.M2Md] == distances(jj)));
@@ -168,11 +169,14 @@ subplot(212); hold on;
     errorbar(distances-0.1, FFF, FFFstd, 'om');
     errorbar(distances+0.1, MMM, MMMstd, 'ob');
 
+linkaxes(qwe, 'xy'); xlim([-1 10]); ylim([0 1]);
+
 figure(4); clf; 
-subplot(211); hold on; 
+ewq(1) = subplot(211); hold on; 
     for j=1:length(out.F2Fd); plot(out.F2Fd(j), out.F2Fm(j), '*m');end;
     for j=1:length(out.M2Md); plot(out.M2Md(j)+0.1, out.M2Mf(j), '*b');end;   
-subplot(212); hold on;
+    title('Heterogenous gaps at Other Bird Microphone')
+ewq(2) = subplot(212); hold on;
     for jj = 1:length(distances)
         FFFm(jj) = mean(out.F2Fm([out.F2Fd] == distances(jj)));
         MMMf(jj) = mean(out.M2Mf([out.M2Md] == distances(jj)));
@@ -182,5 +186,10 @@ subplot(212); hold on;
 
     errorbar(distances-0.1, FFFm, FFFmstd, 'om');
     errorbar(distances+0.1, MMMf, MMMfstd, 'ob');
+
+    linkaxes(ewq, 'xy'); xlim([-1 10]); ylim([0 0.7]);
+
+
+
     
     
