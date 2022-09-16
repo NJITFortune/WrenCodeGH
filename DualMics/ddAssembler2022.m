@@ -4,6 +4,7 @@
 %% OLDE (pairnum = 1)  
 % This is a Bellavista pair from November 2012 with both vision and no vision
 
+% ZERO M
 idx = 1;
     load olde0m14232153A.mat
     dd(idx) = foo;
@@ -12,121 +13,532 @@ idx = 1;
     clear foo;
 
 idx = 2;
+    load olde0m14232156A.mat
+        foo.pairnum = 1;
+    dd(idx) = foo;
+    dd(idx).vision = 9; % Not yet known
+    dd(idx).pairnum = 1;
+    clear foo;
+
+idx = 3;
     load olde0m14232157A.mat
         foo.pairnum = 1;
     dd(idx) = foo;
     dd(idx).vision = 9; % Not yet known
     clear foo;
     
-idx = 3;
+% ONE M
+
+idx = 4;
     load olde1m14151234A.mat
         foo.pairnum = 1;
     dd(idx) = foo;
     dd(idx).vision = 9; % Not yet known
     clear foo;
     
-idx = 4;
+idx = 5;
     load olde1m14232170A.mat
         out.pairnum = 1;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;
 
-idx = 5;
+idx = 6;
+    load olde1m14152103A.mat
+        foo.pairnum = 1;
+    dd(idx) = foo;
+    dd(idx).vision = 9; % Not yet known
+    clear foo;
+
+idx = 7;
     load olde1m14232171A.mat
         out.pairnum = 1;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;
     
-idx = 6;
+idx = 8;
     load olde1m14232172A.mat
         out.pairnum = 1;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;    
     
-idx = 7;
+idx = 9;
     load olde1m14232173A.mat
         out.pairnum = 1;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;
 
-idx = 8;
+idx = 10;
     load olde1m14232174A.mat
         out.pairnum = 1;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;
     
-idx = 9;
+% THREE M
+
+idx = 11;
     load olde3m14152117A.mat
         foo.pairnum = 1;
     dd(idx) = foo;
     dd(idx).vision = 9; % Not yet known
     clear foo;
     
-idx = 10;
+idx = 12;
+    load olde3m14152121A.mat
+        foo.pairnum = 1;
+    dd(idx) = foo;
+    dd(idx).vision = 9; % Not yet known
+    clear foo;
+
+idx = 13;
     load olde3m14232181A.mat
         out.pairnum = 1;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;
 
-idx = 11;
+% FIVE M
+
+idx = 14;
     load olde5m14152125A.mat
         foo.pairnum = 1;
     dd(idx) = foo;
     dd(idx).vision = 9; % Not yet known
     clear foo;
     
-idx = 12;
+idx = 15;
+    load olde5m14152126A.mat
+        foo.pairnum = 1;
+    dd(idx) = foo;
+    dd(idx).vision = 9; % Not yet known
+    clear foo;
+
+idx = 16;
     load olde5m14232192A.mat
         foo.pairnum = 1;
     dd(idx) = foo;
     dd(idx).vision = 9; % Not yet known
     clear foo;    
     
-idx = 13;
+idx = 17;
     load olde5m32222205A.mat
         out.pairnum = 1;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;
 
-idx = 14;
+% SEVEN M
+
+idx = 18;
     load olde7m14152146A.mat
         foo.pairnum = 1;
     dd(idx) = foo;
     dd(idx).vision = 9; % Not yet known
     clear foo;
+   
+idx = 19;
+    load olde7m14152148A.mat 
+        foo.pairnum = 1;
+    dd(idx) = foo;
+    dd(idx).vision = 9; % Not yet known
+    clear foo;
     
-idx = 15;
+idx = 20;
     load olde7m14232199A.mat
         foo.pairnum = 1;
     dd(idx) = foo;
     dd(idx).vision = 9; % Not yet known
     clear foo;
     
-idx = 16;
+idx = 21;
     load olde7m32222230A.mat
         out.pairnum = 1;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;
 
-idx = 17;
+idx = 22;
     load olde7m32222231A.mat
         out.pairnum = 1;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;
     
-idx = 18;
+idx = 23;
     load olde7m32222232A.mat
         out.pairnum = 1;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;    
     
+%% PULL (pairnum = 2)  
+% This is I HAVE NO IDEA
+
+% ZERO M
+
+idx = 24;
+    load pull0m23452345A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+
+idx = 25;
+    load pull0m23452355A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+        
+idx = 26;
+    load pull0m23452365A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+
+idx = 27;
+    load pull0m23452377A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+
+% TWO M
+
+idx = 28;
+    load pull2m23452383A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+
+idx = 29;
+    load pull2m23452389A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+
+idx = 30;
+    load pull2m23452391A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+
+% pull2m23452391AX.mat
+
+idx = 31;
+    load pull2m23452393A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;   
+
+idx = 32;
+    load pull2m23452395A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+
+idx = 33;
+    load pull2m23452398A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+
+idx = 34;
+    load pull2m23452399A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+    
+idx = 35;
+    load pull2m23452532A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+    
+idx = 36;
+    load pull2m23452535A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+    
+idx = 37;
+    load pull2m23452537A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+
+idx = 38;
+    load pull2m23452538A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;    
+
+idx = 39;
+    load pull2m23452612A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;  
+
+idx = 40;
+    load pull2m23452622A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;  
+
+idx = 41;
+    load pull2m23452624A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;  
+
+idx = 42;
+    load pull2m23452625A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;  
+
+idx = 42;
+    load pull2m23452627A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 43;
+    load pull2m23452628A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 44;
+    load pull2m23452630A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 45;
+    load pull2m23452633A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 46;
+    load pull2m23452634A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+% THREE M
+
+idx = 47;
+    load pull3m23452648A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 48;
+    load pull3m23452650A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 49;
+    load pull3m23452651A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 50;
+    load pull3m23452655A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 51;
+    load pull3m23452656A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+% NINE M
+
+idx = 52;
+    load pull9m23452657A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 53;
+    load pull9m23452658A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 54;
+    load pull9m23452659A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 55;
+    load pull9m23452661A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 56;
+    load pull9m23452666A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 57;
+    load pull9m23452667A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 58;
+    load pull9m23452669A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out; 
+
+idx = 59;
+    load pull9m23452677A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+% pull9m23452678A.mat Error that needs fixing as of Sept. 2022
+
+idx = 60;
+    load pull9m23452680A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+% TEN M
+
+idx = 61;
+    load pull10m23453333A.mat
+        out.pairnum = 2;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+%% SIXT (pairnum = 3)  
+% This is I HAVE NO IDEA
+
+% THREE M
+
+idx = 62;
+    load sixt3m32222240A.mat
+        out.pairnum = 3;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+% FIVE M
+
+idx = 63;
+    load sixt5m32222233A.mat
+        out.pairnum = 3;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+idx = 64;
+    load sixt5m32222234A.mat
+        out.pairnum = 3;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+% SEVEN M
+ 
+idx = 64;
+    load sixt7m32222235A.mat
+        out.pairnum = 3;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+idx = 65;
+    load sixt7m32222236A.mat
+        out.pairnum = 3;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+idx = 66;
+    load sixt7m32222237A.mat
+        out.pairnum = 3;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+idx = 67;
+    load sixt7m32222238A.mat
+        out.pairnum = 3;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+idx = 68;
+    load sixt7m32222241A.mat
+        out.pairnum = 3;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+idx = 68;
+    load sixt7m32222242A.mat
+        out.pairnum = 3;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+
+
+
+
+
