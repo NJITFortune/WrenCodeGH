@@ -27,6 +27,11 @@ mm = []; ff = [];
 
 %% Cycle through every duet in the structure
 
+
+for jj = 1:length(idxpairs)
+
+    idx = find([in.pairnum] == idxpairs(jj));
+
 for d = 1:length(idx)
 
     numsyls = length(in(idx(d)).fsyl);
@@ -40,7 +45,7 @@ for d = 1:length(idx)
 
         if currFisi > 0.22 
             if in(idx(d)).fsyl(s).sexsyltype < 49 && in(idx(d)).fsyl(s+1).sexsyltype > 49 % MF
-            ff(end+1) = d;
+                ff(end+1) = d;
             end
         end
         if currMisi > 0.22 
@@ -75,6 +80,8 @@ for d = 1:length(idx)
     end
             
         
+end
+
 end
 
 figure(1); subplot(211); plot([0 11], [0 0], 'k-');
