@@ -1,4 +1,4 @@
-function out = dd_getISidx(in, idx)
+function out = dd_getISidx(in)
 % out = dd_getISI(in)
 % Where in is a structure for two-microphone recordings of wrens
 % This is not a general tool.
@@ -11,6 +11,8 @@ function out = dd_getISidx(in, idx)
 % out.Mmfd = []; Male microphone, distance for current ISI male-to-female
 % out.Mfm = []; Male microphone, ISI female-to-male
 % out.Mfmd = []; Male microphone, distance for current ISI female-to-male
+
+idxpairs = unique([in.pairnum]);
 
 mmfcnt = 0; mfmcnt = 0; fmfcnt = 0; ffmcnt = 0;
 
