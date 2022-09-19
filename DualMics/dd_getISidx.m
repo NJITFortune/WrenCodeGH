@@ -12,7 +12,7 @@ function out = dd_getISidx(in)
 % out.Mfm = []; Male microphone, ISI female-to-male
 % out.Mfmd = []; Male microphone, distance for current ISI female-to-male
 
-idxpairs = unique([in.pairnum]);
+idxpairs = sort(unique([in.pairnum]));
 
 mmfcnt = 0; mfmcnt = 0; fmfcnt = 0; ffmcnt = 0;
 
