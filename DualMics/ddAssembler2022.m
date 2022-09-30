@@ -538,7 +538,36 @@ idx = 68;
     clear out;
 
 
+%% YEGE (pairnum = 4)  
+% This is I HAVE NO IDEA
 
+% ZERO M
+
+idx = 69;
+    load yege0m43221001A.mat
+        foo.pairnum = 4;
+    dd(idx) = foo;
+    dd(idx).vision = 9; % Not yet known
+    clear foo;
+
+% TWO M
+
+idx = 70;
+    load yege2m43211219A.mat
+        foo.pairnum = 4;
+    dd(idx) = foo;
+    dd(idx).vision = 9; % Not yet known
+    clear foo;
+
+
+% FIVE M
+
+idx = 71;
+    load yege5m44421658A.mat
+        foo.pairnum = 4;
+    dd(idx) = foo;
+    dd(idx).vision = 9; % Not yet known
+    clear foo;
 
 
 
