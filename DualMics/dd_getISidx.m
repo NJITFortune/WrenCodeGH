@@ -189,39 +189,39 @@ for d = 1:length(idx)
         
     end
 end
-
-out.F2F = F2F; out.F2Fd = F2Fd; out.F2Fm = F2Fm;
-out.M2M = M2M; out.M2Md = M2Md; out.M2Mf = M2Mf;
-
-
-figure(3); clf; 
-subplot(211); hold on; 
-    for j=1:length(out.F2Fd); plot(out.F2Fd(j), out.F2F(j), '*m');end;
-    for j=1:length(out.M2Md); plot(out.M2Md(j)+0.1, out.M2M(j), '*b');end;   
-subplot(212); hold on;
-    for jj = 1:length(distances)
-        FFF(jj) = mean(out.F2F([out.F2Fd] == distances(jj)));
-        MMM(jj) = mean(out.M2M([out.M2Md] == distances(jj)));
-        FFFstd(jj) = std(out.F2F([out.F2Fd] == distances(jj)));
-        MMMstd(jj) = std(out.M2M([out.M2Md] == distances(jj)));
-    end
-
-    errorbar(distances-0.1, FFF, FFFstd, 'om');
-    errorbar(distances+0.1, MMM, MMMstd, 'ob');
-
-figure(4); clf; 
-subplot(211); hold on; 
-    for j=1:length(out.F2Fd); plot(out.F2Fd(j), out.F2Fm(j), '*m');end;
-    for j=1:length(out.M2Md); plot(out.M2Md(j)+0.1, out.M2Mf(j), '*b');end;   
-subplot(212); hold on;
-    for jj = 1:length(distances)
-        FFFm(jj) = mean(out.F2Fm([out.F2Fd] == distances(jj)));
-        MMMf(jj) = mean(out.M2Mf([out.M2Md] == distances(jj)));
-        FFFmstd(jj) = std(out.F2Fm([out.F2Fd] == distances(jj)));
-        MMMfstd(jj) = std(out.M2Mf([out.M2Md] == distances(jj)));
-    end
-
-    errorbar(distances-0.1, FFFm, FFFmstd, 'om');
-    errorbar(distances+0.1, MMMf, MMMfstd, 'ob');
+% 
+% out.F2F = F2F; out.F2Fd = F2Fd; out.F2Fm = F2Fm;
+% out.M2M = M2M; out.M2Md = M2Md; out.M2Mf = M2Mf;
+% 
+% 
+% figure(3); clf; 
+% subplot(211); hold on; 
+%     for j=1:length(out.F2Fd); plot(out.F2Fd(j), out.F2F(j), '*m');end;
+%     for j=1:length(out.M2Md); plot(out.M2Md(j)+0.1, out.M2M(j), '*b');end;   
+% subplot(212); hold on;
+%     for jj = 1:length(distances)
+%         FFF(jj) = mean(out.F2F([out.F2Fd] == distances(jj)));
+%         MMM(jj) = mean(out.M2M([out.M2Md] == distances(jj)));
+%         FFFstd(jj) = std(out.F2F([out.F2Fd] == distances(jj)));
+%         MMMstd(jj) = std(out.M2M([out.M2Md] == distances(jj)));
+%     end
+% 
+%     errorbar(distances-0.1, FFF, FFFstd, 'om');
+%     errorbar(distances+0.1, MMM, MMMstd, 'ob');
+% 
+% figure(4); clf; 
+% subplot(211); hold on; 
+%     for j=1:length(out.F2Fd); plot(out.F2Fd(j), out.F2Fm(j), '*m');end;
+%     for j=1:length(out.M2Md); plot(out.M2Md(j)+0.1, out.M2Mf(j), '*b');end;   
+% subplot(212); hold on;
+%     for jj = 1:length(distances)
+%         FFFm(jj) = mean(out.F2Fm([out.F2Fd] == distances(jj)));
+%         MMMf(jj) = mean(out.M2Mf([out.M2Md] == distances(jj)));
+%         FFFmstd(jj) = std(out.F2Fm([out.F2Fd] == distances(jj)));
+%         MMMfstd(jj) = std(out.M2Mf([out.M2Md] == distances(jj)));
+%     end
+% 
+%     errorbar(distances-0.1, FFFm, FFFmstd, 'om');
+%     errorbar(distances+0.1, MMMf, MMMfstd, 'ob');
     
     
