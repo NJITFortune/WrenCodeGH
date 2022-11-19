@@ -4,6 +4,8 @@
 %% OLDE (pairnum = 1)  
 % This is a Bellavista pair from November 2012 with both vision and no vision
 
+cd olde
+
 % ZERO M
 idx = 1;
     load olde0m14232153A.mat
@@ -177,6 +179,7 @@ idx = 23;
     
 %% PULL (pairnum = 2)  
 % This is I HAVE NO IDEA
+cd ../pull
 
 % ZERO M
 
@@ -467,7 +470,7 @@ idx = 61;
 
 %% SIXT (pairnum = 3)  
 % This is I HAVE NO IDEA
-
+cd ../sixt
 % THREE M
 
 idx = 62;
@@ -540,7 +543,7 @@ idx = 68;
 
 %% YEGE (pairnum = 4)  
 % This is I HAVE NO IDEA
-
+cd ../yege
 % ZERO M
 
 idx = 69;
@@ -569,5 +572,55 @@ idx = 71;
     dd(idx).vision = 9; % Not yet known
     clear foo;
 
+
+
+%% POST (pairnum = 5)  
+% This is I HAVE NO IDEA
+cd ../post
+% THREE M
+
+idx = 72;
+    load post3m41137938A.mat
+        out.pairnum = 5;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+idx = 73;
+    load post3m41165559A.mat
+        out.pairnum = 5;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+% idx = 74;
+%     load post3m42523714A.mat
+%         out.pairnum = 5;
+%     dd(idx) = out;
+%     dd(idx).vision = 9; % Not yet known
+%     clear out;
+
+% THREE M
+
+idx = 74;
+    load post5m25997390A.mat
+        out.pairnum = 5;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+idx = 75;
+    load post5m26553835A.mat
+        out.pairnum = 5;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
+
+idx = 76;
+    load post5m28848247A.mat
+        out.pairnum = 5;
+    dd(idx) = out;
+    dd(idx).vision = 9; % Not yet known
+    clear out;
 
 

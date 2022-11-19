@@ -14,8 +14,8 @@ function out = dd_getISidx(in)
 
 idxpairs = sort(unique([in.pairnum]));
 
-    blues = winter(length(idxpairs)); % Colors for male birds
-    reds = copper(length(idxpairs)); % Colors for female birds
+    blues = winter(length(idxpairs)*2); % Colors for male birds
+    reds = copper(length(idxpairs)*2); % Colors for female birds
 
 % mmfcnt = 0; mfmcnt = 0; fmfcnt = 0; ffmcnt = 0;
 
@@ -117,25 +117,31 @@ for kk = 1:length(idxpairs)
 figure(1); 
 xxax(1) = subplot(211); hold on;
     jt = rand(1,length(currFMdIDX));
-    plot(distances(dn)*ones(1,length(currFMdIDX)) + kk*0.1 + (jt/5), out(kk).Ffm(currFMdIDX), 'o', 'Color', blues(kk,:));
+    plot(distances(dn)*ones(1,length(currFMdIDX)) + kk*0.1 + (jt/5), out(kk).Ffm(currFMdIDX), '.', 'Color', blues(kk*2,:), 'MarkerSize', 8);
 
 xxax(2) = subplot(212); hold on;
     jt = rand(1,length(currMFdIDX));
-    plot(distances(dn)*ones(1,length(currMFdIDX)) + kk*0.1 + (jt/5), out(kk).Mmf(currMFdIDX), 'o', 'Color', reds(kk,:));
+    plot(distances(dn)*ones(1,length(currMFdIDX)) + kk*0.1 + (jt/5), out(kk).Mmf(currMFdIDX), '.', 'Color', reds(kk*2,:), 'MarkerSize', 8);
 
     end
     linkaxes(xxax, 'xy'); ylim([0 0.2]); xlim([-1 11]);
 
 figure(2);
 
-axxx(1) = subplot(211); hold on;
-    errorbar(distances-(kk*0.1), dad(kk).Ffm, dad(kk).Ffmstd, 'o', 'Color', blues(kk,:), 'LineWidth', 2);
-    errorbar(distances+(kk*0.1), dad(kk).Fmf, dad(kk).Fmfstd, '*', 'Color', reds(kk,:));
+axxx(1) = subplot(411); hold on;
+    errorbar(distances-(kk*0.1), dad(kk).Ffm, dad(kk).Ffmstd, 'o', 'Color', blues(kk*2,:), 'LineWidth', 2);
 text(1, 0.0, 'Female Microphone', 'Color', 'm');
 
-axxx(2) = subplot(212); 
-    errorbar(distances+(kk*0.1), dad(kk).Mfm, dad(kk).Ffmstd, '*', 'Color', blues(kk,:));
-    errorbar(distances-(kk*0.1), dad(kk).Mmf, dad(kk).Fmfstd, 'o', 'Color', reds(kk,:), 'LineWidth', 2);
+axxx(2) = subplot(412); hold on;
+    errorbar(distances+(kk*0.1), dad(kk).Fmf, dad(kk).Fmfstd, '*', 'Color', reds(kk*2,:));
+text(1, 0.0, 'Female Microphone', 'Color', 'm');
+
+axxx(3) = subplot(413); hold on;
+    errorbar(distances-(kk*0.1), dad(kk).Mmf, dad(kk).Fmfstd, 'o', 'Color', reds(kk*2,:), 'LineWidth', 2);
+text(1, 0.0, 'Male Microphone', 'Color', 'b');
+
+axxx(4) = subplot(414); hold on;
+    errorbar(distances+(kk*0.1), dad(kk).Mfm, dad(kk).Ffmstd, '*', 'Color', blues(kk*2,:));
 text(1, 0.0, 'Male Microphone', 'Color', 'b');
 
 end
