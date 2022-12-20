@@ -185,7 +185,8 @@ idx = 23;
     clear out;    
     
 %% PULL (pairnum = 2)  
-% This is a 2016 Yanayacu pair
+% This is a 2016 Yanayacu pair 5-January-2016 - BEND BIRDS
+% All vision
 cd ../pull
 
 % ZERO M
@@ -440,21 +441,21 @@ idx = 57;
     load pull9m23452667A.mat
         out.pairnum = 2;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision 
     clear out; 
 
 idx = 58;
     load pull9m23452669A.mat
         out.pairnum = 2;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision 
     clear out; 
 
 idx = 59;
     load pull9m23452677A.mat
         out.pairnum = 2;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision 
     clear out;
 
 % pull9m23452678A.mat Error that needs fixing as of Sept. 2022
@@ -463,7 +464,7 @@ idx = 60;
     load pull9m23452680A.mat
         out.pairnum = 2;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision 
     clear out;
 
 % TEN M
@@ -472,7 +473,7 @@ idx = 61;
     load pull10m23453333A.mat
         out.pairnum = 2;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision 
     clear out;
 
 %% SIXT (pairnum = 3)  
