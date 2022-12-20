@@ -557,7 +557,10 @@ idx = 68;
 % This is I HAVE NO IDEA
 cd ../yege
 % ZERO M
-% 
+% Siempre Verde 8-January-2014 9-January-2014
+% 9-January Vision up to 9:35am 3,5,7,0
+% 9-January No Vision 2,5 10am, 11am
+% 9-January Vision 2m 5pm
 
 idx = 69;
     load yege0m43221001A.mat
