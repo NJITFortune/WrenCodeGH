@@ -18,7 +18,7 @@ idx = 2;
     load olde0m14232156A.mat
         foo.pairnum = 1;
     dd(idx) = foo;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision
     dd(idx).pairnum = 1;
     clear foo;
 
@@ -26,10 +26,12 @@ idx = 3;
     load olde0m14232157A.mat
         foo.pairnum = 1;
     dd(idx) = foo;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision
     clear foo;
     
 % ONE M
+% 8am - 9:05am Vision
+% 9:05am and later No Vision
 
 idx = 4;
     load olde1m14151234A.mat
@@ -81,6 +83,8 @@ idx = 10;
     clear out;
     
 % THREE M
+% 9:40am Vision
+% 12:00pm No Vision
 
 idx = 11;
     load olde3m14152117A.mat
@@ -104,6 +108,8 @@ idx = 13;
     clear out;
 
 % FIVE M
+% 12:17pm Vision
+% 2:47pm No Vision
 
 idx = 14;
     load olde5m14152125A.mat
@@ -134,6 +140,7 @@ idx = 17;
     clear out;
 
 % SEVEN M
+% All No Vision
 
 idx = 18;
     load olde7m14152146A.mat
@@ -178,7 +185,8 @@ idx = 23;
     clear out;    
     
 %% PULL (pairnum = 2)  
-% This is I HAVE NO IDEA
+% This is a 2016 Yanayacu pair 5-January-2016 - BEND BIRDS
+% All vision
 cd ../pull
 
 % ZERO M
@@ -433,21 +441,21 @@ idx = 57;
     load pull9m23452667A.mat
         out.pairnum = 2;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision 
     clear out; 
 
 idx = 58;
     load pull9m23452669A.mat
         out.pairnum = 2;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision 
     clear out; 
 
 idx = 59;
     load pull9m23452677A.mat
         out.pairnum = 2;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision 
     clear out;
 
 % pull9m23452678A.mat Error that needs fixing as of Sept. 2022
@@ -456,7 +464,7 @@ idx = 60;
     load pull9m23452680A.mat
         out.pairnum = 2;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision 
     clear out;
 
 % TEN M
@@ -465,11 +473,11 @@ idx = 61;
     load pull10m23453333A.mat
         out.pairnum = 2;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision 
     clear out;
 
 %% SIXT (pairnum = 3)  
-% This is I HAVE NO IDEA
+% This is Bellavisat 26-November-2016
 cd ../sixt
 % THREE M
 
@@ -481,6 +489,7 @@ idx = 62;
     clear out;
 
 % FIVE M
+% 11am No Vision
 
 idx = 63;
     load sixt5m32222233A.mat
