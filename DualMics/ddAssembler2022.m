@@ -576,6 +576,8 @@ idx = 71;
 
 %% POST (pairnum = 5)  
 % This is I HAVE NO IDEA
+% 24-August-2016
+
 cd ../post
 % THREE M
 
@@ -583,21 +585,21 @@ idx = 72;
     load post3m41137938A.mat
         out.pairnum = 5;
     dd(idx) = out;
-    dd(idx).vision = 1; % Not yet known
+    dd(idx).vision = 1; % Vision
     clear out;
 
 idx = 73;
     load post3m41165559A.mat
         out.pairnum = 5;
     dd(idx) = out;
-    dd(idx).vision = 1; % Not yet known
+    dd(idx).vision = 1; % Vision
     clear out;
 
 % idx = 74;
 %     load post3m42523714A.mat
 %         out.pairnum = 5;
 %     dd(idx) = out;
-%     dd(idx).vision = 9; % Not yet known
+%     dd(idx).vision = 1; % Vision
 %     clear out;
 
 % FIVE M
@@ -606,21 +608,21 @@ idx = 74;
     load post5m25997390A.mat
         out.pairnum = 5;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision
     clear out;
 
 idx = 75;
     load post5m26553835A.mat
         out.pairnum = 5;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision
     clear out;
 
 idx = 76;
     load post5m28848247A.mat
         out.pairnum = 5;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision
     clear out;
 
 %% End of script
