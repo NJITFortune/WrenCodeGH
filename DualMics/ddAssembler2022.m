@@ -185,7 +185,7 @@ idx = 23;
     clear out;    
     
 %% PULL (pairnum = 2)  
-% This is I HAVE NO IDEA
+% This is a 2016 Yanayacu pair
 cd ../pull
 
 % ZERO M
