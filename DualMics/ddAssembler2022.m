@@ -623,4 +623,7 @@ idx = 76;
     dd(idx).vision = 9; % Not yet known
     clear out;
 
+%% End of script
+
+cd ..
 
