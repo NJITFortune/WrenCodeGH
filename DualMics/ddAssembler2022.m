@@ -10,7 +10,7 @@ cd olde
 idx = 1;
     load olde0m14232153A.mat
     dd(idx) = foo;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision
     dd(idx).pairnum = 1;
     clear foo;
 
@@ -18,7 +18,7 @@ idx = 2;
     load olde0m14232156A.mat
         foo.pairnum = 1;
     dd(idx) = foo;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision
     dd(idx).pairnum = 1;
     clear foo;
 
@@ -26,10 +26,12 @@ idx = 3;
     load olde0m14232157A.mat
         foo.pairnum = 1;
     dd(idx) = foo;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Vision
     clear foo;
     
 % ONE M
+% 8am - 9:05am Vision
+% 9:05am and later No Vision
 
 idx = 4;
     load olde1m14151234A.mat
@@ -139,42 +141,42 @@ idx = 18;
     load olde7m14152146A.mat
         foo.pairnum = 1;
     dd(idx) = foo;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 0; % No Vision
     clear foo;
    
 idx = 19;
     load olde7m14152148A.mat 
         foo.pairnum = 1;
     dd(idx) = foo;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 0; % No Vision
     clear foo;
     
 idx = 20;
     load olde7m14232199A.mat
         foo.pairnum = 1;
     dd(idx) = foo;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 0; % No Vision
     clear foo;
     
 idx = 21;
     load olde7m32222230A.mat
         out.pairnum = 1;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 0; % No Vision
     clear out;
 
 idx = 22;
     load olde7m32222231A.mat
         out.pairnum = 1;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 0; % No Vision
     clear out;
     
 idx = 23;
     load olde7m32222232A.mat
         out.pairnum = 1;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 0; % No Vision
     clear out;    
     
 %% PULL (pairnum = 2)  
