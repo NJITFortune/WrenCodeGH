@@ -83,6 +83,8 @@ idx = 10;
     clear out;
     
 % THREE M
+% 9:40am Vision
+% 12:00pm No Vision
 
 idx = 11;
     load olde3m14152117A.mat
