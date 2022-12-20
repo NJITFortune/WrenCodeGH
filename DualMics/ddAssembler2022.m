@@ -140,6 +140,7 @@ idx = 17;
     clear out;
 
 % SEVEN M
+% All No Vision
 
 idx = 18;
     load olde7m14152146A.mat
