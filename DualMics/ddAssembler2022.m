@@ -480,6 +480,7 @@ idx = 61;
 % This is Bellavisat 26-November-2016
 cd ../sixt
 % THREE M
+% Vision unknown from notes
 
 idx = 62;
     load sixt3m32222240A.mat
