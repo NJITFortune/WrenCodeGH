@@ -583,14 +583,14 @@ idx = 72;
     load post3m41137938A.mat
         out.pairnum = 5;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Not yet known
     clear out;
 
 idx = 73;
     load post3m41165559A.mat
         out.pairnum = 5;
     dd(idx) = out;
-    dd(idx).vision = 9; % Not yet known
+    dd(idx).vision = 1; % Not yet known
     clear out;
 
 % idx = 74;
