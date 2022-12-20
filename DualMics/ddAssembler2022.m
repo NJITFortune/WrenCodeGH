@@ -477,7 +477,7 @@ idx = 61;
     clear out;
 
 %% SIXT (pairnum = 3)  
-% This is I HAVE NO IDEA
+% This is Bellavisat 26-November-2016
 cd ../sixt
 % THREE M
 
@@ -489,6 +489,7 @@ idx = 62;
     clear out;
 
 % FIVE M
+% 11am No Vision
 
 idx = 63;
     load sixt5m32222233A.mat
@@ -505,6 +506,8 @@ idx = 64;
     clear out;
 
 % SEVEN M
+% 2:15pm No Vision
+% 4:15pm Vision
  
 idx = 64;
     load sixt7m32222235A.mat
