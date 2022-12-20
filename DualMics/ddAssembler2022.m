@@ -108,6 +108,8 @@ idx = 13;
     clear out;
 
 % FIVE M
+% 12:17pm Vision
+% 2:47pm No Vision
 
 idx = 14;
     load olde5m14152125A.mat
