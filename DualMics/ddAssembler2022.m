@@ -593,7 +593,6 @@ idx = 73;
 
 
 %% POST (pairnum = 5)  
-% This is I HAVE NO IDEA
 % 24-August-2016
 
 cd ../post
