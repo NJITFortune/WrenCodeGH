@@ -510,42 +510,42 @@ idx = 64;
 % 2:15pm No Vision
 % 4:15pm Vision
  
-idx = 64;
+idx = 65;
     load sixt7m32222235A.mat
         out.pairnum = 3;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;
 
-idx = 65;
+idx = 66;
     load sixt7m32222236A.mat
         out.pairnum = 3;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;
 
-idx = 66;
+idx = 67;
     load sixt7m32222237A.mat
         out.pairnum = 3;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;
 
-idx = 67;
+idx = 68;
     load sixt7m32222238A.mat
         out.pairnum = 3;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;
 
-idx = 68;
+idx = 69;
     load sixt7m32222241A.mat
         out.pairnum = 3;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out;
 
-idx = 68;
+idx = 70;
     load sixt7m32222242A.mat
         out.pairnum = 3;
     dd(idx) = out;
@@ -561,7 +561,7 @@ idx = 68;
 cd ../yege
 % ZERO M
 
-idx = 69;
+idx = 71;
     load yege0m43221001A.mat
         foo.pairnum = 4;
     dd(idx) = foo;
@@ -570,7 +570,7 @@ idx = 69;
 
 % TWO M
 
-idx = 70;
+idx = 72;
     load yege2m43211219A.mat
         foo.pairnum = 4;
     dd(idx) = foo;
@@ -580,7 +580,7 @@ idx = 70;
 
 % FIVE M
 
-idx = 71;
+idx = 73;
     load yege5m44421658A.mat
         foo.pairnum = 4;
     dd(idx) = foo;
@@ -596,14 +596,14 @@ idx = 71;
 cd ../post
 % THREE M
 
-idx = 72;
+idx = 74;
     load post3m41137938A.mat
         out.pairnum = 5;
     dd(idx) = out;
     dd(idx).vision = 1; % Vision
     clear out;
 
-idx = 73;
+idx = 75;
     load post3m41165559A.mat
         out.pairnum = 5;
     dd(idx) = out;
@@ -619,21 +619,21 @@ idx = 73;
 
 % FIVE M
 
-idx = 74;
+idx = 76;
     load post5m25997390A.mat
         out.pairnum = 5;
     dd(idx) = out;
     dd(idx).vision = 1; % Vision
     clear out;
 
-idx = 75;
+idx = 77;
     load post5m26553835A.mat
         out.pairnum = 5;
     dd(idx) = out;
     dd(idx).vision = 1; % Vision
     clear out;
 
-idx = 76;
+idx = 78;
     load post5m28848247A.mat
         out.pairnum = 5;
     dd(idx) = out;
