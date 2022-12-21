@@ -3,6 +3,7 @@
 % 
 %% OLDE (pairnum = 1)  
 % This is a Bellavista pair from November 2012 with both vision and no vision
+% Red Male / Blue Female
 
 cd olde
 
@@ -478,6 +479,8 @@ idx = 61;
 
 %% SIXT (pairnum = 3)  
 % This is Bellavista 26-November-2012
+% Green Male / Blue Female 
+
 cd ../sixt
 % THREE M
 % Vision unknown from notes
