@@ -477,7 +477,7 @@ idx = 61;
     clear out;
 
 %% SIXT (pairnum = 3)  
-% This is Bellavista 26-November-2016
+% This is Bellavista 26-November-2012
 cd ../sixt
 % THREE M
 % Vision unknown from notes
