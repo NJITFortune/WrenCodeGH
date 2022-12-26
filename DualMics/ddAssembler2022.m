@@ -642,6 +642,19 @@ idx = 78;
     dd(idx).vision = 1; % Vision
     clear out;
 
+%% CARL (pairnum = 6)  
+% 27-July-2012
+
+cd ../carl
+% TWO M
+
+idx = 79;
+    load carl2m_A.mat
+        foo.pairnum = 6;
+    dd(idx) = foo;
+    dd(idx).vision = 0; % No Vision
+    clear foo;
+
 %% End of script
 
 cd ..
