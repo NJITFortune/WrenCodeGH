@@ -329,35 +329,35 @@ idx = 42;
     dd(idx).vision = 9; % Not yet known
     clear out;  
 
-idx = 42;
+idx = 43;
     load pull2m23452627A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out; 
 
-idx = 43;
+idx = 44;
     load pull2m23452628A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out; 
 
-idx = 44;
+idx = 45;
     load pull2m23452630A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out; 
 
-idx = 45;
+idx = 46;
     load pull2m23452633A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out; 
 
-idx = 46;
+idx = 47;
     load pull2m23452634A.mat
         out.pairnum = 2;
     dd(idx) = out;
@@ -366,35 +366,35 @@ idx = 46;
 
 % THREE M
 
-idx = 47;
+idx = 48;
     load pull3m23452648A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out; 
 
-idx = 48;
+idx = 49;
     load pull3m23452650A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out; 
 
-idx = 49;
+idx = 50;
     load pull3m23452651A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out; 
 
-idx = 50;
+idx = 51;
     load pull3m23452655A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out; 
 
-idx = 51;
+idx = 52;
     load pull3m23452656A.mat
         out.pairnum = 2;
     dd(idx) = out;
@@ -403,56 +403,56 @@ idx = 51;
 
 % NINE M
 
-idx = 52;
+idx = 53;
     load pull9m23452657A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out; 
 
-idx = 53;
+idx = 54;
     load pull9m23452658A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out; 
 
-idx = 54;
+idx = 55;
     load pull9m23452659A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out; 
 
-idx = 55;
+idx = 56;
     load pull9m23452661A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out; 
 
-idx = 56;
+idx = 57;
     load pull9m23452666A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 9; % Not yet known
     clear out; 
 
-idx = 57;
+idx = 58;
     load pull9m23452667A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 1; % Vision 
     clear out; 
 
-idx = 58;
+idx = 59;
     load pull9m23452669A.mat
         out.pairnum = 2;
     dd(idx) = out;
     dd(idx).vision = 1; % Vision 
     clear out; 
 
-idx = 59;
+idx = 60;
     load pull9m23452677A.mat
         out.pairnum = 2;
     dd(idx) = out;
@@ -461,7 +461,7 @@ idx = 59;
 
 % pull9m23452678A.mat Error that needs fixing as of Sept. 2022
 
-idx = 60;
+idx = 61;
     load pull9m23452680A.mat
         out.pairnum = 2;
     dd(idx) = out;
@@ -470,7 +470,7 @@ idx = 60;
 
 % TEN M
 
-idx = 61;
+idx = 62;
     load pull10m23453333A.mat
         out.pairnum = 2;
     dd(idx) = out;
@@ -591,7 +591,6 @@ idx = 73;
     clear foo;
 
 
-
 %% POST (pairnum = 5)  
 % 24-August-2016
 
@@ -654,6 +653,50 @@ idx = 79;
     dd(idx) = foo;
     dd(idx).vision = 0; % No Vision
     clear foo;
+
+% FOUR M
+
+idx = 80;
+    load carl4m_A10_44.mat
+        foo.pairnum = 6;
+    dd(idx) = foo;
+    dd(idx).vision = 0; % No Vision
+    clear foo;
+
+% FIVE M
+
+idx = 81;
+    load carl5m_A11_26.mat
+        foo.pairnum = 6;
+    dd(idx) = foo;
+    dd(idx).vision = 0; % No Vision
+    clear foo;
+
+% SIX M
+
+idx = 82;
+    load carl6m_A11_32.mat
+        foo.pairnum = 6;
+    dd(idx) = foo;
+    dd(idx).vision = 0; % No Vision
+    clear foo;
+
+idx = 83;
+    load carl6m_A11_46.mat
+        foo.pairnum = 6;
+    dd(idx) = foo;
+    dd(idx).vision = 0; % No Vision
+    clear foo;
+
+% SEVEN M
+
+idx = 84;
+    load carl7m_A12_12.mat
+        foo.pairnum = 6;
+    dd(idx) = foo;
+    dd(idx).vision = 0; % No Vision
+    clear foo;
+
 
 %% End of script
 
