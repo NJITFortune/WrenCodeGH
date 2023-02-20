@@ -4,7 +4,7 @@ function wrengram(sig, Fs, cmap)
 % wrengram makes a nice spectrogram for Wren songs
 % with an embedded oscillogram. 
 
-if nargin == 2; cmap=1; end;
+if nargin == 2; cmap=1; end
 
 mag = 300; % A scalar for the specgram
 cx = [0 50]; % Color Axis map
@@ -21,9 +21,9 @@ cx = [0 50]; % Color Axis map
         specgram(sig,1024,Fs,[],1000); 	
 	%spectrogram(sig,1024,1000,1024,Fs,'yaxis');
 
-if cmap == 1; colormap('HOT'); end;
+if cmap == 1; colormap('HOT'); end
 
-if cmap == 2; gg = abs(gray - 1); colormap(gg); end;
+if cmap == 2; gg = abs(gray - 1); colormap(gg); end
 
 linkaxes(ax,'x');
 ylim([500 7000]); caxis(cx);
