@@ -566,12 +566,14 @@ idx = 70;
 
 
 %% YEGE (pairnum = 4)  
-% Siempre Verde 8-January-2014 9-January-2014
+% Siempre Verde 8-January-2014 9-January-2014 (may be listed in places as 2016)
 % 7-Jan 2m 0m all vision
 % 8-Jan no notes assume vision
 % 9-January Vision up to 9:35am 3,5,7,2,0
 % 9-January No Vision 2, 5 10am, 11am
 % 9-January Vision 2m 5pm
+
+%%%%%%%%% 19 May 2023... ADD DATA  Drive Simpre_Verde_1.8.14_distance
 
 cd ../yege
 % ZERO M
