@@ -109,6 +109,8 @@ idx = 13;
     clear out;
 
 %%%%%%%% NEED TO ADD NOVISION CONDITION ZOOM0006_3m_male_noVision.mp3
+%%%%%%%% Added below Indices 108, 109, 110
+
 
 % FIVE M
 % 12:17pm Vision
@@ -906,8 +908,40 @@ idx = 107;
     dd(idx).vision = 1; % Vision
     clear foo;    
 
-    
-    
+
+
+
+%% Additions
+
+% OLDE ZOOM0006_3m_male_noVision.mp3
+
+cd ../olde
+
+idx = 108;
+    load olde3m743-fixed.mat
+        foo.pairnum = 1;
+        foo.timestamp = 743;
+    dd(idx) = foo;
+    dd(idx).vision = 0; % No Vision
+    clear foo;  
+
+idx = 109;
+    load olde3m14710-fixed.mat
+        foo.pairnum = 1;
+        foo.timestamp = 14710;
+    dd(idx) = foo;
+    dd(idx).vision = 0; % No Vision
+    clear foo;   
+
+idx = 110;
+    load olde3m15000-fixed.mat
+        foo.pairnum = 1;
+        foo.timestamp = 15000;
+    dd(idx) = foo;
+    dd(idx).vision = 0; % No Vision
+    clear foo;  
+
+
 %% End of script
 
 cd ..

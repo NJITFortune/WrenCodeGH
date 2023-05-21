@@ -9,6 +9,8 @@ function out = ClickyClicky(dataPath, pairname)
 % relies on dualclicsB.m, slicerB.m, ginputc.m, syldataB.m, the SAMIII directory 
 % Can be used with DualClickQuick.m
 %
+% A valid wav filename might be sixtMale7m_26_11_2012_Bellavista_32222238.wav
+% and the corresponding sixtFemale7m_26_11_2012_Bellavista_32222238.wav
 
 scr_siz = get(0,'ScreenSize') ;
 
