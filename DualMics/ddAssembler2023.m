@@ -606,7 +606,9 @@ idx = 73;
     clear foo;
 
 %%%%%%%%%%%%%%% NEED TO ADD 2M and 5M both vision and no vision
-%%%%%%%%%%%%%%% Added below as entries 2M is 112-114
+%%%%%%%%%%%%%%% Added 2M below as entries 112-114
+%%%%%%%%%%%%%%% Added 5M below as entries 115-117
+
 
 %% POST (pairnum = 5)  
 % 24-August-2016
@@ -974,6 +976,30 @@ idx = 114;
     dd(idx).vision = 0; % No Vision
     clear foo;
 
+idx = 115;
+    load yege5m1925vision-fixedfixed.mat
+        foo.pairnum = 1;
+        foo.timestamp = 1925;
+    dd(idx) = foo;
+    dd(idx).vision = 1; % Vision
+    clear foo;
+
+idx = 116;
+    load yege5m1201vision-fixed.mat
+        foo.pairnum = 1;
+        foo.timestamp = 1201;
+    dd(idx) = foo;
+    dd(idx).vision = 1; % Vision
+    clear foo;
+
+idx = 117;
+    load yege5m13900novision-fixed.mat
+        foo.pairnum = 1;
+        foo.timestamp = 1201;
+    dd(idx) = foo;
+    dd(idx).vision = 0; % No Vision
+    clear foo;
+    
 %% End of script
 
 cd ..
