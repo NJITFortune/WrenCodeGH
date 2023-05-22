@@ -145,7 +145,7 @@ idx = 17;
     clear out;
 
 %%%%%%%% May NEED TO ADD NOVISION CONDITION ZOOM0008_5m_male_noVision.mp3
-
+%%%%%%%% Added another 5m NoVision for entry 111
 
 % SEVEN M
 
@@ -156,7 +156,7 @@ idx = 18;
     dd(idx).vision = 1; % Vision
     clear foo;
    
-%%%%%%%% Should ADD VISION CONDITION ZOOM0008_7m_male_vision.mp3  
+%%%%%%%% Entry 18 is the only full usable duet from ZOOM0008_7m_male_vision.mp3  
 
 idx = 19;
     load olde7m14152148A.mat % ZOOM0009_7m_male_noVision 22nd!!!
@@ -399,7 +399,7 @@ idx = 51;
     load pull3m23452655A.mat
         out.pairnum = 2;
     dd(idx) = out;
-    dd(idx).vision = 1; % Not yet known
+    dd(idx).vision = 1; % Vision
     clear out; 
 
 idx = 52;
@@ -467,8 +467,6 @@ idx = 60;
     dd(idx).vision = 1; % Vision 
     clear out;
 
-% pull9m23452678A.mat Error that needs fixing as of Sept. 2022
-
 idx = 61;
     load pull9m23452680A.mat
         out.pairnum = 2;
@@ -493,15 +491,17 @@ cd ../sixt
 % THREE M
 % Vision unknown from notes [27th No Vision] [22nd with Vision]
 
+
+
+% FIVE M
+% 11am No Vision [26th No vision] [22nd vision]
+
 idx = 62; %% This is properly labeled in dataset as 5m
-    load sixt3m32222240A.mat % See below
+    load sixt3m32222240A.mat % ZOOM0001_5m_maleGreen_noVision.mp3
         out.pairnum = 3;
     dd(idx) = out;
     dd(idx).vision = 0; % See below
     clear out;
-
-% FIVE M
-% 11am No Vision [26th No vision] [22nd vision]
 
 %%%% AS of 19-May-2023 entry 62 and 63 are duplicates!!!!
 
@@ -584,7 +584,7 @@ idx = 71;
     load yege0m43221001A.mat % ZOOM0002_greenMale_0m.mp3
         foo.pairnum = 4;
     dd(idx) = foo;
-    dd(idx).vision = 9; % Doesn't say in audio or notes, but probably vision
+    dd(idx).vision = 1; % Doesn't say in audio or notes, but probably vision
     clear foo;
 
 % TWO M
@@ -593,9 +593,8 @@ idx = 72;
     load yege2m43211219A.mat % ZOOM0001_greenMale_2m.mp3 8-January
         foo.pairnum = 4;
     dd(idx) = foo;
-    dd(idx).vision = 9; % Doesn't say in audio or notes, but probably vision
+    dd(idx).vision = 1; % Doesn't say in audio or notes, but probably vision
     clear foo;
-
 
 % FIVE M
 
@@ -607,7 +606,7 @@ idx = 73;
     clear foo;
 
 %%%%%%%%%%%%%%% NEED TO ADD 2M and 5M both vision and no vision
-
+%%%%%%%%%%%%%%% Added below as entries 2M is 112-114
 
 %% POST (pairnum = 5)  
 % 24-August-2016
@@ -941,6 +940,39 @@ idx = 110;
     dd(idx).vision = 0; % No Vision
     clear foo;  
 
+idx = 111;
+    load olde5m5749-fixed.mat
+        foo.pairnum = 1;
+        foo.timestamp = 5749;
+    dd(idx) = foo;
+    dd(idx).vision = 0; % No Vision
+    clear foo;  
+
+cd ../yege
+
+idx = 112;
+    load yege2m173050vision-fixed.mat
+        foo.pairnum = 1;
+        foo.timestamp = 5749;
+    dd(idx) = foo;
+    dd(idx).vision = 1; % Vision
+    clear foo;
+
+idx = 113;
+    load yege2m322625novision-fixed.mat
+        foo.pairnum = 1;
+        foo.timestamp = 5749;
+    dd(idx) = foo;
+    dd(idx).vision = 0; % No Vision
+    clear foo;
+
+idx = 114;
+    load yege2m431020novision-fixed.mat
+        foo.pairnum = 1;
+        foo.timestamp = 5749;
+    dd(idx) = foo;
+    dd(idx).vision = 0; % No Vision
+    clear foo;
 
 %% End of script
 
